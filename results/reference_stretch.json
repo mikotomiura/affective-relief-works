@@ -1,0 +1,1826 @@
+{
+ "meta": {
+  "conditions_sha256": "8b62cc9c64d725af523296cbe3ee600d56befb4f446cd16f6b9521e078b1d117",
+  "script_sha256": "caf329960226f6b9c21ab7a90be20d5a8de3078103af175fe538dfd8e17bda08",
+  "lexicon_sha256": "537cf39afd50f89cc4c69842f9876df7ff48f9950da849d739bdde7fc00d9e83",
+  "dicdir_sha256": {
+   "COPYING": "fca02d9adb601d101eccdf3131119abfff2d9c825ef5c759d7a89ebbaa972099",
+   "char.bin": "81bba502ae48fa005a374819f15e44452eb68086a8b323ec20a044d514400832",
+   "dicrc": "add6bb131a75e69478961ea59712541ace3779f7c5daa4da80d281f097c9d4d1",
+   "matrix.bin": "ee44d7350cdcb680ebd699f83e121be1dc63310f8832d55bcb537a068177611a",
+   "mecabrc": "cf91ca4aec6bbf596eda5034aefb73ae90999678b59f20ce3deb35d91fddb009",
+   "sys.dic": "223af63996d5d9a104d8c8baaf32029fbbf6a370d7dff33fe19fda2e92ac0ac1",
+   "unk.dic": "f0bf15e3e28259f4470b9c1e775d98bef53207d4b09afcd6d8545209b7b53f88",
+   "version": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "uv_lock_sha256": "33888369e6efb8c679a50056dd54fa7aeade07bb75e8302279f0846cfccf9db6",
+  "python": "3.13.12",
+  "platform": "Darwin arm64",
+  "atact_commit": "b559a80c623d36357dd0736b887497a0cb789af5",
+  "fugashi": "1.5.2",
+  "ipadic": "1.0.0",
+  "numpy": "2.5.4",
+  "git_commit": "690eec77d2e3898c0843a016491b1cd6765eae40",
+  "git_dirty": false,
+  "eligible_persons": 181,
+  "eligible_works": 3028,
+  "started": "2026-10-27T13:50:18+00:00",
+  "finished": "2026-10-27T13:52:06+00:00"
+ },
+ "result": {
+  "k": 4.166451147971101,
+  "Q": 0.21601117306709933,
+  "target": 0.9,
+  "quantile": 0.99,
+  "clip_rate": 0.0011949451895879768,
+  "pooled_percentiles": {
+   "unstretched": {
+    "V": {
+     "1": -0.031405705262230445,
+     "50": 0.10221362672147907,
+     "99": 0.21601117306709933
+    },
+    "A": {
+     "1": -0.07175506435212636,
+     "50": -0.010544344499762768,
+     "99": 0.06853084255811975
+    }
+   },
+   "stretched": {
+    "V": {
+     "1": -0.13085033674266208,
+     "50": 0.42586808239199603,
+     "99": 0.9000000000000001
+    },
+    "A": {
+     "1": -0.2989639702426571,
+     "50": -0.043932496245639344,
+     "99": 0.2855304076477048
+    }
+   }
+  },
+  "k_leave_one_out": {
+   "min": 4.160364774012077,
+   "max": 4.5439386126001855,
+   "work_of_min": "046647",
+   "work_of_max": "045471"
+  }
+ },
+ "works": [
+  {
+   "person": "000241",
+   "author": "小栗風葉",
+   "work_id": "046647",
+   "title": "深川女房",
+   "url": "https://www.aozora.gr.jp/cards/000241/files/46647_ruby_25780.zip",
+   "zip": "external/reference-stretch-20261028/zips/000241/46647_ruby_25780.zip",
+   "zip_sha256": "478f19cce17a56839d5e145460686c18cd9e01a1db33a01e61a231590c5f54ff",
+   "txt_name": "fukagawa_nyobo.txt",
+   "body_sha256": "fce9be33f7cab31b15726d6a70edd40a79a30c1670738d0f58890d60b13de1d3",
+   "sentences": 732,
+   "date_note": null,
+   "matched_share": 0.9480874316939891,
+   "matched_token_share": 0.9927470534904805,
+   "windows": 693,
+   "gaps": 0,
+   "V": {
+    "1": -0.0033640184763063796,
+    "50": 0.11434863257419876,
+    "99": 0.17605917990783795
+   },
+   "A": {
+    "1": -0.06344088342879282,
+    "50": -0.02781594666976418,
+    "99": 0.037039680747822226
+   },
+   "max_abs": {
+    "1": 0.020522880532832806,
+    "50": 0.11434863257419876,
+    "99": 0.17605917990783795
+   }
+  },
+  {
+   "person": "001866",
+   "author": "楠田匡介",
+   "work_id": "057499",
+   "title": "雪",
+   "url": "https://www.aozora.gr.jp/cards/001866/files/57499_ruby_60656.zip",
+   "zip": "external/reference-stretch-20261028/zips/001866/57499_ruby_60656.zip",
+   "zip_sha256": "10bb4ddafb7a80baa51aeb012eee454d25f61b35b981483be2b7e3037838492c",
+   "txt_name": "yuki.txt",
+   "body_sha256": "4841de12b5e0c96574a5fdf2af56c6b024ab8bf6bf7c68bc7fd0cce0bd4f2232",
+   "sentences": 769,
+   "date_note": null,
+   "matched_share": 0.9401820546163849,
+   "matched_token_share": 0.994366784894638,
+   "windows": 730,
+   "gaps": 0,
+   "V": {
+    "1": 0.00683701642969991,
+    "50": 0.09422271273126659,
+    "99": 0.1793129568022017
+   },
+   "A": {
+    "1": -0.06660627052131053,
+    "50": -0.033568827952049414,
+    "99": 0.0183390589153696
+   },
+   "max_abs": {
+    "1": 0.01370810090193909,
+    "50": 0.09422271273126659,
+    "99": 0.1793129568022017
+   }
+  },
+  {
+   "person": "000800",
+   "author": "水上滝太郎",
+   "work_id": "056833",
+   "title": "遺産",
+   "url": "https://www.aozora.gr.jp/cards/000800/files/56833_ruby_67401.zip",
+   "zip": "external/reference-stretch-20261028/zips/000800/56833_ruby_67401.zip",
+   "zip_sha256": "71a1315e276efaf13466aa9c4f62de0a0c3f70c6b91e6e7bfda9d231bc81e532",
+   "txt_name": "isan.txt",
+   "body_sha256": "71f70cc60bb56d8870740320a083b18478923b60601a62b4b7ed24ba428374a6",
+   "sentences": 385,
+   "date_note": null,
+   "matched_share": 0.987012987012987,
+   "matched_token_share": 0.9931308749096168,
+   "windows": 346,
+   "gaps": 0,
+   "V": {
+    "1": -0.0318162273301857,
+    "50": 0.11310029836631182,
+    "99": 0.16527175579541198
+   },
+   "A": {
+    "1": -0.04504338801403083,
+    "50": -0.012255247270651616,
+    "99": 0.018380766840185248
+   },
+   "max_abs": {
+    "1": 0.013039904015330037,
+    "50": 0.11310029836631182,
+    "99": 0.16527175579541198
+   }
+  },
+  {
+   "person": "001154",
+   "author": "岸田国士",
+   "work_id": "043849",
+   "title": "この握りめし",
+   "url": "https://www.aozora.gr.jp/cards/001154/files/43849_ruby_45001.zip",
+   "zip": "external/reference-stretch-20261028/zips/001154/43849_ruby_45001.zip",
+   "zip_sha256": "e095b9df2853ee80e182cb67e26f374b7a0c8e8169ca05fbc895f7b364adce69",
+   "txt_name": "kono_nigirimeshi.txt",
+   "body_sha256": "605c02fe9b99a6ed3bcfc5c0b2058f9d10e12de870f9307d2642344a2e39e0cb",
+   "sentences": 390,
+   "date_note": null,
+   "matched_share": 0.9897435897435898,
+   "matched_token_share": 0.994267287710498,
+   "windows": 351,
+   "gaps": 0,
+   "V": {
+    "1": 0.0487535262405199,
+    "50": 0.10380600036534368,
+    "99": 0.20349862601292237
+   },
+   "A": {
+    "1": -0.06599970509530322,
+    "50": -0.017779201585804136,
+    "99": 0.02926737907364647
+   },
+   "max_abs": {
+    "1": 0.0487535262405199,
+    "50": 0.10380600036534368,
+    "99": 0.20349862601292237
+   }
+  },
+  {
+   "person": "001670",
+   "author": "野村胡堂",
+   "work_id": "056363",
+   "title": "銭形平次捕物控",
+   "url": "https://www.aozora.gr.jp/cards/001670/files/56363_ruby_62528.zip",
+   "zip": "external/reference-stretch-20261028/zips/001670/56363_ruby_62528.zip",
+   "zip_sha256": "09f884a78448c96f6afa434d993b59d66704ba1d5b088f54daac07a0c4892cb6",
+   "txt_name": "084osomeno_nageki.txt",
+   "body_sha256": "b0d09c654a72ff1608908c62944f6b45056faf3c6d7192741db5601a5ef21c35",
+   "sentences": 450,
+   "date_note": null,
+   "matched_share": 0.9711111111111111,
+   "matched_token_share": 0.9942509299966182,
+   "windows": 411,
+   "gaps": 0,
+   "V": {
+    "1": -0.011956879575603712,
+    "50": 0.06362143025435993,
+    "99": 0.1498181491095974
+   },
+   "A": {
+    "1": -0.046640756645399496,
+    "50": 2.2286235145762586e-06,
+    "99": 0.03705348527853108
+   },
+   "max_abs": {
+    "1": 0.01345196881430535,
+    "50": 0.06362143025435993,
+    "99": 0.1498181491095974
+   }
+  },
+  {
+   "person": "001801",
+   "author": "山川方夫",
+   "work_id": "059534",
+   "title": "待っている女",
+   "url": "https://www.aozora.gr.jp/cards/001801/files/59534_ruby_72430.zip",
+   "zip": "external/reference-stretch-20261028/zips/001801/59534_ruby_72430.zip",
+   "zip_sha256": "85cbe1cc2a4d26716b1ddd28c2e2e78c08a950da9dc30f837262c77c8b100b17",
+   "txt_name": "matteiru_onna.txt",
+   "body_sha256": "5812944df15e977b618b0ea3e0efb122623aa7f635d89854707eb4cb0a430804",
+   "sentences": 247,
+   "date_note": null,
+   "matched_share": 0.9838056680161943,
+   "matched_token_share": 0.9991789819376026,
+   "windows": 208,
+   "gaps": 0,
+   "V": {
+    "1": 0.0844563460962821,
+    "50": 0.12821500363196708,
+    "99": 0.1826435723546975
+   },
+   "A": {
+    "1": -0.035531665751354774,
+    "50": 0.000550160765775806,
+    "99": 0.04407648142975256
+   },
+   "max_abs": {
+    "1": 0.0844563460962821,
+    "50": 0.12821500363196708,
+    "99": 0.1826435723546975
+   }
+  },
+  {
+   "person": "001488",
+   "author": "火野葦平",
+   "work_id": "051168",
+   "title": "糞尿譚",
+   "url": "https://www.aozora.gr.jp/cards/001488/files/51168_ruby_53797.zip",
+   "zip": "external/reference-stretch-20261028/zips/001488/51168_ruby_53797.zip",
+   "zip_sha256": "698ca9d1b20af27df92eeb38f21b5069698525738ea91aef749ce4a9f672e499",
+   "txt_name": "funnyotan.txt",
+   "body_sha256": "c14def52f35d30f01f266c4308d8330c6d347cb85ab83f301917518f235ef02f",
+   "sentences": 680,
+   "date_note": null,
+   "matched_share": 0.9823529411764705,
+   "matched_token_share": 0.9896692421217119,
+   "windows": 641,
+   "gaps": 0,
+   "V": {
+    "1": 0.018122393451194346,
+    "50": 0.10368087073898088,
+    "99": 0.1658891125300616
+   },
+   "A": {
+    "1": -0.06023088991529139,
+    "50": -0.030678008089216762,
+    "99": 0.0037187281484533444
+   },
+   "max_abs": {
+    "1": 0.018122393451194346,
+    "50": 0.10368087073898088,
+    "99": 0.1658891125300616
+   }
+  },
+  {
+   "person": "000289",
+   "author": "浜尾四郎",
+   "work_id": "051270",
+   "title": "悪魔の弟子",
+   "url": "https://www.aozora.gr.jp/cards/000289/files/51270_ruby_47852.zip",
+   "zip": "external/reference-stretch-20261028/zips/000289/51270_ruby_47852.zip",
+   "zip_sha256": "e83460f74cff8f34384155676eadd4c82971399abdb403ea721dd576687024fa",
+   "txt_name": "akumano_deshi.txt",
+   "body_sha256": "9c9944639e15489f996883a43974525b73227a965ab170b484d3a0c355420c54",
+   "sentences": 776,
+   "date_note": null,
+   "matched_share": 0.9871134020618557,
+   "matched_token_share": 0.9962429555416406,
+   "windows": 737,
+   "gaps": 0,
+   "V": {
+    "1": -0.043957461775326154,
+    "50": 0.08940149418293043,
+    "99": 0.19957621652230254
+   },
+   "A": {
+    "1": -0.024960719722697155,
+    "50": 0.021883582532569067,
+    "99": 0.10237775775067812
+   },
+   "max_abs": {
+    "1": 0.028952970675405816,
+    "50": 0.09510107056903913,
+    "99": 0.19957621652230254
+   }
+  },
+  {
+   "person": "001306",
+   "author": "川田功",
+   "work_id": "047475",
+   "title": "偽刑事",
+   "url": "https://www.aozora.gr.jp/cards/001306/files/47475_ruby_33425.zip",
+   "zip": "external/reference-stretch-20261028/zips/001306/47475_ruby_33425.zip",
+   "zip_sha256": "5e8a496f2ec69fb65fa49177c4c08fd319eed44b572e518a6855dfc715433ade",
+   "txt_name": "nisekeiji.txt",
+   "body_sha256": "4155346aedcb9e0949d352f8d1316a60102f479a2c752a7ad15866bd448dec3b",
+   "sentences": 286,
+   "date_note": null,
+   "matched_share": 0.986013986013986,
+   "matched_token_share": 0.9889073765945646,
+   "windows": 247,
+   "gaps": 0,
+   "V": {
+    "1": -0.0071008747071499125,
+    "50": 0.06794992637908917,
+    "99": 0.12683728257729188
+   },
+   "A": {
+    "1": -0.0338446509235277,
+    "50": 0.00671647987504191,
+    "99": 0.029254985811970953
+   },
+   "max_abs": {
+    "1": 0.009979905803950462,
+    "50": 0.06794992637908917,
+    "99": 0.12683728257729188
+   }
+  },
+  {
+   "person": "001822",
+   "author": "中村地平",
+   "work_id": "057021",
+   "title": "霧の蕃社",
+   "url": "https://www.aozora.gr.jp/cards/001822/files/57021_ruby_60797.zip",
+   "zip": "external/reference-stretch-20261028/zips/001822/57021_ruby_60797.zip",
+   "zip_sha256": "1bac281158a92a8b9e6665e352c1dca842e591ad3b7381b95f964d445554756d",
+   "txt_name": "kirino_bansha.txt",
+   "body_sha256": "63e56bbf2459c9a04c14f7e212553aa602a9fe0638800a3ae2ac2d3dfd7ee632",
+   "sentences": 737,
+   "date_note": null,
+   "matched_share": 0.9972862957937585,
+   "matched_token_share": 0.9678217821782178,
+   "windows": 698,
+   "gaps": 0,
+   "V": {
+    "1": 0.0038223371764536792,
+    "50": 0.08722101730421963,
+    "99": 0.19822126894869246
+   },
+   "A": {
+    "1": -0.02966066226566469,
+    "50": 0.0028968395865587395,
+    "99": 0.04111551165039805
+   },
+   "max_abs": {
+    "1": 0.02050723691322109,
+    "50": 0.08722101730421963,
+    "99": 0.19822126894869246
+   }
+  },
+  {
+   "person": "001289",
+   "author": "犬田卯",
+   "work_id": "047147",
+   "title": "橋の上",
+   "url": "https://www.aozora.gr.jp/cards/001289/files/47147_ruby_29250.zip",
+   "zip": "external/reference-stretch-20261028/zips/001289/47147_ruby_29250.zip",
+   "zip_sha256": "311a5bc07006414a7dc7d8103405c116f7197ec7fccaa94a85c9b6e3a5645ac7",
+   "txt_name": "hasino_ue.txt",
+   "body_sha256": "156ced8509b39bd571066aece48e510aa0a26877c7c3f205e2d6275f150619ea",
+   "sentences": 221,
+   "date_note": null,
+   "matched_share": 0.9547511312217195,
+   "matched_token_share": 0.9895104895104895,
+   "windows": 182,
+   "gaps": 0,
+   "V": {
+    "1": -0.031405705262230445,
+    "50": 0.044800299141666104,
+    "99": 0.08769361147615784
+   },
+   "A": {
+    "1": -0.026276012997389336,
+    "50": 0.005012914973700947,
+    "99": 0.038142886893460105
+   },
+   "max_abs": {
+    "1": 0.01307429102058222,
+    "50": 0.044800299141666104,
+    "99": 0.08769361147615784
+   }
+  },
+  {
+   "person": "000125",
+   "author": "小栗虫太郎",
+   "work_id": "001321",
+   "title": "人外魔境",
+   "url": "https://www.aozora.gr.jp/cards/000125/files/1321_ruby_3826.zip",
+   "zip": "external/reference-stretch-20261028/zips/000125/1321_ruby_3826.zip",
+   "zip_sha256": "b7199165ff6009b1cd6ddaa1a22932a83f72e87c6f8e5ac46807c9e6f2fb38d4",
+   "txt_name": "08seru_miku_shua.txt",
+   "body_sha256": "378fd77a773665b8a6d405327b356985ccea844e254b37d26be04fed62829ac9",
+   "sentences": 645,
+   "date_note": null,
+   "matched_share": 0.9767441860465116,
+   "matched_token_share": 0.9817374136229022,
+   "windows": 606,
+   "gaps": 0,
+   "V": {
+    "1": -0.010639594767557865,
+    "50": 0.0818693861061965,
+    "99": 0.15665281716193055
+   },
+   "A": {
+    "1": -0.030213008111024536,
+    "50": 0.008766710908103496,
+    "99": 0.0758676067621819
+   },
+   "max_abs": {
+    "1": 0.035372547238275286,
+    "50": 0.08194143349282001,
+    "99": 0.15665281716193055
+   }
+  },
+  {
+   "person": "000012",
+   "author": "素木しづ",
+   "work_id": "002585",
+   "title": "惨事のあと",
+   "url": "https://www.aozora.gr.jp/cards/000012/files/2585_ruby_20968.zip",
+   "zip": "external/reference-stretch-20261028/zips/000012/2585_ruby_20968.zip",
+   "zip_sha256": "8f173d32635578879597a0cda7a5707926929f413e1af9eca28a903d37ff2955",
+   "txt_name": "sanjino_ato.txt",
+   "body_sha256": "23a33f43140fdb2d0038b580172ba31fa1aae399d132fe5d300739590b52abee",
+   "sentences": 294,
+   "date_note": null,
+   "matched_share": 0.9897959183673469,
+   "matched_token_share": 0.997244094488189,
+   "windows": 255,
+   "gaps": 0,
+   "V": {
+    "1": 0.06112182268705633,
+    "50": 0.12553043251920865,
+    "99": 0.17308459140780214
+   },
+   "A": {
+    "1": -0.056891438815152975,
+    "50": -0.019154987878334456,
+    "99": 0.013758808764219189
+   },
+   "max_abs": {
+    "1": 0.06112182268705633,
+    "50": 0.12553043251920865,
+    "99": 0.17308459140780214
+   }
+  },
+  {
+   "person": "001872",
+   "author": "大下宇陀児",
+   "work_id": "057901",
+   "title": "金魚は死んでいた",
+   "url": "https://www.aozora.gr.jp/cards/001872/files/57901_ruby_62115.zip",
+   "zip": "external/reference-stretch-20261028/zips/001872/57901_ruby_62115.zip",
+   "zip_sha256": "f7def959f0742ba0909f0f1959bb76f402418fa561e4d47f498419d038c81d8e",
+   "txt_name": "kingyowa_shindeita.txt",
+   "body_sha256": "96985854059082d615c7808640e329621134f226fc5dfda9075d0da6ea8a314d",
+   "sentences": 337,
+   "date_note": null,
+   "matched_share": 0.9673590504451038,
+   "matched_token_share": 0.9931807111544082,
+   "windows": 298,
+   "gaps": 0,
+   "V": {
+    "1": -0.048025556113598614,
+    "50": 0.08983742310213921,
+    "99": 0.15004704017248566
+   },
+   "A": {
+    "1": -0.04610681144687852,
+    "50": -0.01451709580392171,
+    "99": 0.05520936044962209
+   },
+   "max_abs": {
+    "1": 0.004948429899622813,
+    "50": 0.08983742310213921,
+    "99": 0.15004704017248566
+   }
+  },
+  {
+   "person": "001529",
+   "author": "作者不詳",
+   "work_id": "060798",
+   "title": "現代語訳　平家物語",
+   "url": "https://www.aozora.gr.jp/cards/001529/files/60798_ruby_75858.zip",
+   "zip": "external/reference-stretch-20261028/zips/001529/60798_ruby_75858.zip",
+   "zip_sha256": "2bc56e73456e9a14a08f6e4eb153d057e8287122402d02e2b369d83aac90135f",
+   "txt_name": "heike_monogatari07.txt",
+   "body_sha256": "9d8faf8103b7cbf5e54ed580c7091886c01607b6edc2bd6659fe09707f615b38",
+   "sentences": 539,
+   "date_note": null,
+   "matched_share": 0.9944341372912802,
+   "matched_token_share": 0.993190040434135,
+   "windows": 500,
+   "gaps": 0,
+   "V": {
+    "1": 0.07150215690390604,
+    "50": 0.11022323143861544,
+    "99": 0.16183072106276572
+   },
+   "A": {
+    "1": -0.07190065760751067,
+    "50": -0.027430676800380593,
+    "99": 0.02499290846186454
+   },
+   "max_abs": {
+    "1": 0.07150215690390604,
+    "50": 0.11022323143861544,
+    "99": 0.16183072106276572
+   }
+  },
+  {
+   "person": "001397",
+   "author": "橘外男",
+   "work_id": "051246",
+   "title": "令嬢エミーラの日記",
+   "url": "https://www.aozora.gr.jp/cards/001397/files/51246_ruby_68432.zip",
+   "zip": "external/reference-stretch-20261028/zips/001397/51246_ruby_68432.zip",
+   "zip_sha256": "bd2f6f091847e2b8ad073bef86142c3529627996b545df1b58dc4efdd39cb77a",
+   "txt_name": "reijo_emirano_nikki.txt",
+   "body_sha256": "ac823dc1da9606e7fc5287ef4a14f9632495e303817d0a1c809fb650deea8e06",
+   "sentences": 856,
+   "date_note": null,
+   "matched_share": 0.985981308411215,
+   "matched_token_share": 0.9817883061755442,
+   "windows": 817,
+   "gaps": 0,
+   "V": {
+    "1": -0.07829343103030545,
+    "50": 0.0979592071092605,
+    "99": 0.1876671619797557
+   },
+   "A": {
+    "1": -0.033343142594222885,
+    "50": 0.0042563238943305595,
+    "99": 0.1112636892346123
+   },
+   "max_abs": {
+    "1": 0.005585547930286672,
+    "50": 0.10024357446023445,
+    "99": 0.1876671619797557
+   }
+  },
+  {
+   "person": "000252",
+   "author": "金史良",
+   "work_id": "052358",
+   "title": "土城廊",
+   "url": "https://www.aozora.gr.jp/cards/000252/files/52358_ruby_70382.zip",
+   "zip": "external/reference-stretch-20261028/zips/000252/52358_ruby_70382.zip",
+   "zip_sha256": "47167e93babfceb1c192c1fec9153c8542708975949e93509a9ee44d58022cc6",
+   "txt_name": "tosonran.txt",
+   "body_sha256": "de90f4faeb39c8ef6d4f7ab5b856019f36da016d37f92b9f685ec610f1d71702",
+   "sentences": 920,
+   "date_note": null,
+   "matched_share": 0.9847826086956522,
+   "matched_token_share": 0.989581637636334,
+   "windows": 881,
+   "gaps": 0,
+   "V": {
+    "1": -0.0680780195003859,
+    "50": 0.04865399226808741,
+    "99": 0.13902516944242452
+   },
+   "A": {
+    "1": -0.02653009169165923,
+    "50": 0.017074398442641147,
+    "99": 0.07511673622206905
+   },
+   "max_abs": {
+    "1": 0.015086813076416874,
+    "50": 0.06081489369365625,
+    "99": 0.13902516944242452
+   }
+  },
+  {
+   "person": "000221",
+   "author": "平林初之輔",
+   "work_id": "048105",
+   "title": "秘密",
+   "url": "https://www.aozora.gr.jp/cards/000221/files/48105_ruby_38613.zip",
+   "zip": "external/reference-stretch-20261028/zips/000221/48105_ruby_38613.zip",
+   "zip_sha256": "05f0c68b5871723bcb4ee080fb05c507d4daf1c5700640f581616d960a5e5d6a",
+   "txt_name": "himitsu.txt",
+   "body_sha256": "57114f776c28512be289d4fc27bb3e92cc7c0be54f59098fdad51340aae9e8af",
+   "sentences": 354,
+   "date_note": null,
+   "matched_share": 0.9858757062146892,
+   "matched_token_share": 0.9947478991596639,
+   "windows": 315,
+   "gaps": 0,
+   "V": {
+    "1": 0.04529765023504313,
+    "50": 0.1346444810167003,
+    "99": 0.19667807002805074
+   },
+   "A": {
+    "1": -0.03615501475882562,
+    "50": -0.0012999164491262962,
+    "99": 0.04381945049581294
+   },
+   "max_abs": {
+    "1": 0.04529765023504313,
+    "50": 0.1346444810167003,
+    "99": 0.19667807002805074
+   }
+  },
+  {
+   "person": "000398",
+   "author": "池谷信三郎",
+   "work_id": "004089",
+   "title": "橋",
+   "url": "https://www.aozora.gr.jp/cards/000398/files/4089_ruby_6972.zip",
+   "zip": "external/reference-stretch-20261028/zips/000398/4089_ruby_6972.zip",
+   "zip_sha256": "534ccf8a90f747e7a344dbd0ff66eda7e596cbe9fbbd5dfe436b051813e0a67a",
+   "txt_name": "hashi.txt",
+   "body_sha256": "3234cd5547e25d13ed3308298925b9d617f813ab21c8eb6a52bded5bb4474fe3",
+   "sentences": 613,
+   "date_note": null,
+   "matched_share": 0.9380097879282219,
+   "matched_token_share": 0.9878306878306878,
+   "windows": 574,
+   "gaps": 0,
+   "V": {
+    "1": 0.042165997460023155,
+    "50": 0.1204069230064255,
+    "99": 0.18948137665661605
+   },
+   "A": {
+    "1": -0.05884521549870142,
+    "50": -0.015930751958070546,
+    "99": 0.06484847607743657
+   },
+   "max_abs": {
+    "1": 0.04423774958992711,
+    "50": 0.1204069230064255,
+    "99": 0.18948137665661605
+   }
+  },
+  {
+   "person": "001308",
+   "author": "徳永直",
+   "work_id": "049291",
+   "title": "戦争雑記",
+   "url": "https://www.aozora.gr.jp/cards/001308/files/49291_ruby_66926.zip",
+   "zip": "external/reference-stretch-20261028/zips/001308/49291_ruby_66926.zip",
+   "zip_sha256": "5355dea65e3c3c3a986f1cb94aa662ada9da275edb59a7a51ebf466921a461cf",
+   "txt_name": "senso_zakki.txt",
+   "body_sha256": "cb9c37932329491d9b6814f9e2f8d047d035bcbd6cc858540e926a256b64cb89",
+   "sentences": 346,
+   "date_note": null,
+   "matched_share": 0.9797687861271677,
+   "matched_token_share": 0.9898534385569335,
+   "windows": 307,
+   "gaps": 0,
+   "V": {
+    "1": -0.046020039855664156,
+    "50": 0.10462976769637343,
+    "99": 0.2011491305785304
+   },
+   "A": {
+    "1": -0.050463452946199375,
+    "50": -0.005766820576785389,
+    "99": 0.0510287619147732
+   },
+   "max_abs": {
+    "1": 0.012816969743913168,
+    "50": 0.10462976769637343,
+    "99": 0.2011491305785304
+   }
+  },
+  {
+   "person": "000081",
+   "author": "宮沢賢治",
+   "work_id": "045471",
+   "title": "或る農学生の日誌",
+   "url": "https://www.aozora.gr.jp/cards/000081/files/45471_ruby_35664.zip",
+   "zip": "external/reference-stretch-20261028/zips/000081/45471_ruby_35664.zip",
+   "zip_sha256": "e4019d3de7fdc4baa8f72e14b08742e2e83d84246b8d6243790e73b387a3f54d",
+   "txt_name": "aru_nogakuseino_nisshi.txt",
+   "body_sha256": "6b3ed45b3164c31ecb1330987eb1c9e3846386bfa600cc1b137919d1dfaa6c08",
+   "sentences": 360,
+   "date_note": null,
+   "matched_share": 0.9944444444444445,
+   "matched_token_share": 0.9981378026070763,
+   "windows": 321,
+   "gaps": 0,
+   "V": {
+    "1": 0.10891050845756392,
+    "50": 0.20679303597260454,
+    "99": 0.2464557388343426
+   },
+   "A": {
+    "1": -0.08973430037658203,
+    "50": -0.056106451215821154,
+    "99": -0.010595668427453664
+   },
+   "max_abs": {
+    "1": 0.10891050845756392,
+    "50": 0.20679303597260454,
+    "99": 0.2464557388343426
+   }
+  },
+  {
+   "person": "001316",
+   "author": "大庭武年",
+   "work_id": "047767",
+   "title": "旅客機事件",
+   "url": "https://www.aozora.gr.jp/cards/001316/files/47767_ruby_32676.zip",
+   "zip": "external/reference-stretch-20261028/zips/001316/47767_ruby_32676.zip",
+   "zip_sha256": "54b53fa970fa3801344bc69472868dbef8ff54062a5f4ed72cbc24a0249f2298",
+   "txt_name": "ryokakuki_jiken.txt",
+   "body_sha256": "a661b20e2cdc33f3f647312b6a9fc87244c84ec65846deb88d40afe9810ae629",
+   "sentences": 297,
+   "date_note": null,
+   "matched_share": 0.9595959595959596,
+   "matched_token_share": 0.9906666666666667,
+   "windows": 258,
+   "gaps": 0,
+   "V": {
+    "1": -0.02218544149954458,
+    "50": 0.06851967285051433,
+    "99": 0.14920157478807014
+   },
+   "A": {
+    "1": -0.03783731682709116,
+    "50": -0.010240860091894056,
+    "99": 0.03023562408190348
+   },
+   "max_abs": {
+    "1": 0.006155918808626444,
+    "50": 0.06851967285051433,
+    "99": 0.14920157478807014
+   }
+  },
+  {
+   "person": "000997",
+   "author": "北条民雄",
+   "work_id": "000398",
+   "title": "いのちの初夜",
+   "url": "https://www.aozora.gr.jp/cards/000997/files/398_ruby_2016.zip",
+   "zip": "external/reference-stretch-20261028/zips/000997/398_ruby_2016.zip",
+   "zip_sha256": "83441ebcf0fe2f92f75aa6a05eb117a31b16d7a319eea63be0e37795f33887f8",
+   "txt_name": "inochino_shoya.txt",
+   "body_sha256": "4ea08ff8fe1eb8f9e08d8b87a7f35f69ef7bd5dda46165672d5930a930541b40",
+   "sentences": 751,
+   "date_note": null,
+   "matched_share": 0.9707057256990679,
+   "matched_token_share": 0.9967793880837359,
+   "windows": 712,
+   "gaps": 0,
+   "V": {
+    "1": -0.07365539559604654,
+    "50": 0.09503526965822763,
+    "99": 0.1654392007723198
+   },
+   "A": {
+    "1": -0.055876911783494625,
+    "50": -0.007720914433691608,
+    "99": 0.09288120039412615
+   },
+   "max_abs": {
+    "1": 0.019164829888735857,
+    "50": 0.0961013474931414,
+    "99": 0.1654392007723198
+   }
+  },
+  {
+   "person": "000134",
+   "author": "佐左木俊郎",
+   "work_id": "051274",
+   "title": "三稜鏡",
+   "url": "https://www.aozora.gr.jp/cards/000134/files/51274_ruby_42076.zip",
+   "zip": "external/reference-stretch-20261028/zips/000134/51274_ruby_42076.zip",
+   "zip_sha256": "92466ca92b6fa33d769e49af556c17ec5c2a1112830733cee7afb02f4c997718",
+   "txt_name": "sanryokyo.txt",
+   "body_sha256": "fd9778db2b017adf8c2facd6112c2236689584225eb2236f83eea2e362e44d60",
+   "sentences": 619,
+   "date_note": null,
+   "matched_share": 0.9321486268174475,
+   "matched_token_share": 0.9920861727852275,
+   "windows": 580,
+   "gaps": 0,
+   "V": {
+    "1": -0.03666940605612026,
+    "50": 0.06643342541861802,
+    "99": 0.12374862387074415
+   },
+   "A": {
+    "1": -0.03948095028504406,
+    "50": 0.007945254916481766,
+    "99": 0.06144918880068778
+   },
+   "max_abs": {
+    "1": 0.016576477302353156,
+    "50": 0.06643342541861802,
+    "99": 0.12374862387074415
+   }
+  },
+  {
+   "person": "001224",
+   "author": "久生十蘭",
+   "work_id": "046098",
+   "title": "雪間",
+   "url": "https://www.aozora.gr.jp/cards/001224/files/46098_ruby_72456.zip",
+   "zip": "external/reference-stretch-20261028/zips/001224/46098_ruby_72456.zip",
+   "zip_sha256": "0e8682b9b530521ddf01ba8eb2d851d318486ab3d1619616769a369f37794aad",
+   "txt_name": "yukima.txt",
+   "body_sha256": "1011feb3849d8c1e7d231919faec67ad490e4d076974c40e869e009f59f6c185",
+   "sentences": 329,
+   "date_note": null,
+   "matched_share": 0.9726443768996961,
+   "matched_token_share": 0.9916859122401848,
+   "windows": 290,
+   "gaps": 0,
+   "V": {
+    "1": 0.029181977065113895,
+    "50": 0.10828339605342222,
+    "99": 0.17504824126112334
+   },
+   "A": {
+    "1": -0.04154195024036446,
+    "50": 8.007213372602007e-05,
+    "99": 0.02844498690195456
+   },
+   "max_abs": {
+    "1": 0.030857697795861415,
+    "50": 0.10828339605342222,
+    "99": 0.17504824126112334
+   }
+  },
+  {
+   "person": "000941",
+   "author": "水野葉舟",
+   "work_id": "004493",
+   "title": "帰途",
+   "url": "https://www.aozora.gr.jp/cards/000941/files/4493_ruby_14521.zip",
+   "zip": "external/reference-stretch-20261028/zips/000941/4493_ruby_14521.zip",
+   "zip_sha256": "0dc282b582a1a5d1bb5ad22640c9a5d88dc85724d16dcaa625ba94e4b05d687b",
+   "txt_name": "kito.txt",
+   "body_sha256": "c8fc2208b539eb6c22ea956a39009757c1da21ea375f69c7a0dc1ab164d401c8",
+   "sentences": 517,
+   "date_note": null,
+   "matched_share": 0.9535783365570599,
+   "matched_token_share": 0.9926894959599846,
+   "windows": 478,
+   "gaps": 0,
+   "V": {
+    "1": 0.10030673036852288,
+    "50": 0.14577120442103036,
+    "99": 0.22690237478913572
+   },
+   "A": {
+    "1": -0.08275907550381503,
+    "50": -0.05617303622470802,
+    "99": -0.008955189567705978
+   },
+   "max_abs": {
+    "1": 0.10030673036852288,
+    "50": 0.14577120442103036,
+    "99": 0.22690237478913572
+   }
+  },
+  {
+   "person": "000082",
+   "author": "岡本綺堂",
+   "work_id": "001023",
+   "title": "半七捕物帳",
+   "url": "https://www.aozora.gr.jp/cards/000082/files/1023_ruby_2143.zip",
+   "zip": "external/reference-stretch-20261028/zips/000082/1023_ruby_2143.zip",
+   "zip_sha256": "ae75c1654496fa34bbdd1ab0c7144e76e1c814182846f48fdf54047089a2001d",
+   "txt_name": "14yamaiwaino_yo.txt",
+   "body_sha256": "1d8e19b418b936937836157f55909118234f1f7de09cb6982cd81548de5462ab",
+   "sentences": 295,
+   "date_note": null,
+   "matched_share": 0.9830508474576272,
+   "matched_token_share": 0.9939562993956299,
+   "windows": 256,
+   "gaps": 0,
+   "V": {
+    "1": -0.05296996715517498,
+    "50": 0.06781343615855405,
+    "99": 0.13292379187139242
+   },
+   "A": {
+    "1": -0.059405613872427064,
+    "50": -0.0029338805563438415,
+    "99": 0.04797306379005943
+   },
+   "max_abs": {
+    "1": 0.022351015110122854,
+    "50": 0.06781343615855405,
+    "99": 0.13292379187139242
+   }
+  },
+  {
+   "person": "001562",
+   "author": "吉川英治",
+   "work_id": "056067",
+   "title": "濞かみ浪人",
+   "url": "https://www.aozora.gr.jp/cards/001562/files/56067_ruby_51559.zip",
+   "zip": "external/reference-stretch-20261028/zips/001562/56067_ruby_51559.zip",
+   "zip_sha256": "0eab0c2f4d30bb0ebb0fb5f6d07c168ff7939e9194f159640dfd5e62e9e34f14",
+   "txt_name": "hanakami_ronin.txt",
+   "body_sha256": "73c7dfd51729ffc7f42a2c7d12c063d7a9cadbb22673a8a296b7ee2e0b4bbf64",
+   "sentences": 776,
+   "date_note": "（昭和十三年一月）",
+   "matched_share": 0.9407216494845361,
+   "matched_token_share": 0.9932203389830508,
+   "windows": 737,
+   "gaps": 0,
+   "V": {
+    "1": 0.0003172677299197917,
+    "50": 0.10131979003754435,
+    "99": 0.1619201802117354
+   },
+   "A": {
+    "1": -0.060808714685486286,
+    "50": -0.010731626638346098,
+    "99": 0.028394659160693152
+   },
+   "max_abs": {
+    "1": 0.008688589845567451,
+    "50": 0.10131979003754435,
+    "99": 0.1619201802117354
+   }
+  },
+  {
+   "person": "001653",
+   "author": "李孝石",
+   "work_id": "054261",
+   "title": "蕎麦の花の頃",
+   "url": "https://www.aozora.gr.jp/cards/001653/files/54261_ruby_70155.zip",
+   "zip": "external/reference-stretch-20261028/zips/001653/54261_ruby_70155.zip",
+   "zip_sha256": "39bd327569473f655f4f01faa96463128a5210039c94849ffa7002fae6d37d77",
+   "txt_name": "sobano_hanano_koro.txt",
+   "body_sha256": "13779423a288a4a28f67ee4196becdafd44931485b60294ef19d2575e5c6dcff",
+   "sentences": 243,
+   "date_note": null,
+   "matched_share": 0.9917695473251029,
+   "matched_token_share": 0.9933454325468845,
+   "windows": 204,
+   "gaps": 0,
+   "V": {
+    "1": 0.005541582435565311,
+    "50": 0.07495644400734087,
+    "99": 0.16564045653969384
+   },
+   "A": {
+    "1": -0.04786325222879765,
+    "50": 0.0006783570184350319,
+    "99": 0.042839377442288565
+   },
+   "max_abs": {
+    "1": 0.029994268175450117,
+    "50": 0.07495644400734087,
+    "99": 0.16564045653969384
+   }
+  },
+  {
+   "person": "001082",
+   "author": "相馬泰三",
+   "work_id": "042289",
+   "title": "六月",
+   "url": "https://www.aozora.gr.jp/cards/001082/files/42289_ruby_15591.zip",
+   "zip": "external/reference-stretch-20261028/zips/001082/42289_ruby_15591.zip",
+   "zip_sha256": "5c5946741a4e805fc660f52559804428aa798a9f74a94c9ac436ef88c3285cd7",
+   "txt_name": "rokugatsu.txt",
+   "body_sha256": "d16bb120dbdf947c6e8bd3677cfcf74a1bbacaa4955f94cf32d7d7b9189627ed",
+   "sentences": 498,
+   "date_note": null,
+   "matched_share": 0.9899598393574297,
+   "matched_token_share": 0.9952830188679245,
+   "windows": 459,
+   "gaps": 0,
+   "V": {
+    "1": 0.0710455798305762,
+    "50": 0.12489918094072039,
+    "99": 0.1833123874455861
+   },
+   "A": {
+    "1": -0.06952855025081023,
+    "50": -0.022776587858456744,
+    "99": 0.06291826117338369
+   },
+   "max_abs": {
+    "1": 0.0710455798305762,
+    "50": 0.12489918094072039,
+    "99": 0.1833123874455861
+   }
+  },
+  {
+   "person": "001798",
+   "author": "梅崎春生",
+   "work_id": "056778",
+   "title": "凡人凡語",
+   "url": "https://www.aozora.gr.jp/cards/001798/files/56778_ruby_58805.zip",
+   "zip": "external/reference-stretch-20261028/zips/001798/56778_ruby_58805.zip",
+   "zip_sha256": "2ae2d27607b0fb4020bc838e02f0a79f65a3a4a2f938e00aca7aa72c3c79ccfc",
+   "txt_name": "bonjin_bongo.txt",
+   "body_sha256": "1a8e3d20ac5f9dfc65178ff91e8eb4f0403673ad011bac505d3295a6f05f7ea8",
+   "sentences": 536,
+   "date_note": null,
+   "matched_share": 0.9701492537313433,
+   "matched_token_share": 0.996,
+   "windows": 497,
+   "gaps": 0,
+   "V": {
+    "1": -0.02493700172830534,
+    "50": 0.0896232490279184,
+    "99": 0.1798355902907464
+   },
+   "A": {
+    "1": -0.061631682565680745,
+    "50": -0.009821369242128732,
+    "99": 0.04250861714923067
+   },
+   "max_abs": {
+    "1": 0.0124763143708472,
+    "50": 0.0896232490279184,
+    "99": 0.1798355902907464
+   }
+  },
+  {
+   "person": "001869",
+   "author": "山本周五郎",
+   "work_id": "057740",
+   "title": "暴風雨の中",
+   "url": "https://www.aozora.gr.jp/cards/001869/files/57740_ruby_74378.zip",
+   "zip": "external/reference-stretch-20261028/zips/001869/57740_ruby_74378.zip",
+   "zip_sha256": "1724c911edf43eef5a1dc48a7a661fcbf6da2b80300de0dadc343cd547810025",
+   "txt_name": "arashino_naka.txt",
+   "body_sha256": "db4e15a474df29d1dcd9c8daceb605e2959592b2f45de348e4b1ba296b5a5472",
+   "sentences": 384,
+   "date_note": null,
+   "matched_share": 0.9895833333333334,
+   "matched_token_share": 0.9904732636754764,
+   "windows": 345,
+   "gaps": 0,
+   "V": {
+    "1": 0.027678713757641527,
+    "50": 0.07863295521962073,
+    "99": 0.1329341147041233
+   },
+   "A": {
+    "1": -0.05644056586228443,
+    "50": -0.01525815750464569,
+    "99": 0.026121903202690804
+   },
+   "max_abs": {
+    "1": 0.027678713757641527,
+    "50": 0.07863295521962073,
+    "99": 0.1329341147041233
+   }
+  },
+  {
+   "person": "000260",
+   "author": "甲賀三郎",
+   "work_id": "047761",
+   "title": "殺人迷路",
+   "url": "https://www.aozora.gr.jp/cards/000260/files/47761_ruby_29705.zip",
+   "zip": "external/reference-stretch-20261028/zips/000260/47761_ruby_29705.zip",
+   "zip_sha256": "5e79cd9deb222d44c23a15949c751bce5091c4fc7acd7e4d0c98734fa54342dd",
+   "txt_name": "satsujin_meiro_10.txt",
+   "body_sha256": "d025bd3982b2b0c3bd734ddfd892f3e2ac46902b6c354d593d3a44f75bc1bdf0",
+   "sentences": 270,
+   "date_note": null,
+   "matched_share": 0.9222222222222223,
+   "matched_token_share": 0.9925434962717481,
+   "windows": 231,
+   "gaps": 0,
+   "V": {
+    "1": -0.030530057584227693,
+    "50": 0.07089446569675852,
+    "99": 0.16609173461743143
+   },
+   "A": {
+    "1": -0.059203075903433405,
+    "50": -0.003976364831561193,
+    "99": 0.09444907540172329
+   },
+   "max_abs": {
+    "1": 0.025670175212756767,
+    "50": 0.07744459422774493,
+    "99": 0.16609173461743143
+   }
+  },
+  {
+   "person": "000214",
+   "author": "田山花袋",
+   "work_id": "001098",
+   "title": "少女病",
+   "url": "https://www.aozora.gr.jp/cards/000214/files/1098_ruby_4607.zip",
+   "zip": "external/reference-stretch-20261028/zips/000214/1098_ruby_4607.zip",
+   "zip_sha256": "280dbe3eac8fe7fecdb7f1fa995fac0fb418249ec80765bc2713f75a772fcac6",
+   "txt_name": "shojobyo.txt",
+   "body_sha256": "5f6c90a9a9fbdac238bab3d0c2f8d1312332df4df1ba1af2c43bbf01490258dc",
+   "sentences": 259,
+   "date_note": null,
+   "matched_share": 0.9922779922779923,
+   "matched_token_share": 0.9955963302752293,
+   "windows": 220,
+   "gaps": 0,
+   "V": {
+    "1": 0.1169873360016302,
+    "50": 0.16698317354147546,
+    "99": 0.21608639412917047
+   },
+   "A": {
+    "1": -0.054768991768269305,
+    "50": -0.022790670792623084,
+    "99": 0.0066920842599266644
+   },
+   "max_abs": {
+    "1": 0.1169873360016302,
+    "50": 0.16698317354147546,
+    "99": 0.21608639412917047
+   }
+  },
+  {
+   "person": "001422",
+   "author": "戸田豊子",
+   "work_id": "050296",
+   "title": "鋳物工場",
+   "url": "https://www.aozora.gr.jp/cards/001422/files/50296_ruby_70693.zip",
+   "zip": "external/reference-stretch-20261028/zips/001422/50296_ruby_70693.zip",
+   "zip_sha256": "70c23d495c569b29f65dcc9f80e58aaf0be20a5ab9fbd53ce1ce96bc552198ac",
+   "txt_name": "imono_kojo.txt",
+   "body_sha256": "ad00513f9efef7f00e13d4a215bdad28ffef949ffba4949c555680390077b6f3",
+   "sentences": 400,
+   "date_note": null,
+   "matched_share": 0.97,
+   "matched_token_share": 0.9920760697305864,
+   "windows": 361,
+   "gaps": 0,
+   "V": {
+    "1": 0.040903217653679505,
+    "50": 0.08076242419460691,
+    "99": 0.15754549512170093
+   },
+   "A": {
+    "1": -0.048494747653882744,
+    "50": -0.007171054220858472,
+    "99": 0.01631125208919452
+   },
+   "max_abs": {
+    "1": 0.040903217653679505,
+    "50": 0.08076242419460691,
+    "99": 0.15754549512170093
+   }
+  },
+  {
+   "person": "000507",
+   "author": "川上眉山",
+   "work_id": "046648",
+   "title": "書記官",
+   "url": "https://www.aozora.gr.jp/cards/000507/files/46648_ruby_26374.zip",
+   "zip": "external/reference-stretch-20261028/zips/000507/46648_ruby_26374.zip",
+   "zip_sha256": "a9cd739fa4403508ed44855293c807490b10678571690be4cf7ed9564cf8fc3a",
+   "txt_name": "shokikan.txt",
+   "body_sha256": "4437bc983f60acf642b7f565aca548eae585d6f17e1fd285177e0f4f733b3a9d",
+   "sentences": 588,
+   "date_note": null,
+   "matched_share": 0.9693877551020408,
+   "matched_token_share": 0.990118100747168,
+   "windows": 549,
+   "gaps": 0,
+   "V": {
+    "1": 0.04322639364216779,
+    "50": 0.11828282456407066,
+    "99": 0.15462127470272466
+   },
+   "A": {
+    "1": -0.05855471398579504,
+    "50": -0.01734764286644233,
+    "99": 0.044030603554861346
+   },
+   "max_abs": {
+    "1": 0.04412739601644564,
+    "50": 0.11828282456407066,
+    "99": 0.15462127470272466
+   }
+  },
+  {
+   "person": "001568",
+   "author": "妹尾アキ夫",
+   "work_id": "052467",
+   "title": "凍るアラベスク",
+   "url": "https://www.aozora.gr.jp/cards/001568/files/52467_ruby_49652.zip",
+   "zip": "external/reference-stretch-20261028/zips/001568/52467_ruby_49652.zip",
+   "zip_sha256": "2c8e2a4c705cec89519f6997753864db75ad4d1fca6499920314e7115a6383b1",
+   "txt_name": "koru_arabesuku.txt",
+   "body_sha256": "1dc1cc8e7705944c1fca72d729cb21bad28e18dd4372512690197daf9dde784b",
+   "sentences": 249,
+   "date_note": null,
+   "matched_share": 0.9678714859437751,
+   "matched_token_share": 0.9965546942291128,
+   "windows": 210,
+   "gaps": 0,
+   "V": {
+    "1": 0.09180064899319941,
+    "50": 0.1603180923970875,
+    "99": 0.19869990500505877
+   },
+   "A": {
+    "1": -0.0762569305433336,
+    "50": -0.040410246103739667,
+    "99": -0.0022772132302742594
+   },
+   "max_abs": {
+    "1": 0.09180064899319941,
+    "50": 0.1603180923970875,
+    "99": 0.19869990500505877
+   }
+  },
+  {
+   "person": "000031",
+   "author": "葉山嘉樹",
+   "work_id": "002845",
+   "title": "乳色の靄",
+   "url": "https://www.aozora.gr.jp/cards/000031/files/2845_ruby_37268.zip",
+   "zip": "external/reference-stretch-20261028/zips/000031/2845_ruby_37268.zip",
+   "zip_sha256": "dfa72e0ee232bdfcba4e6529359a95fea20250f2fb6007bb2f5e3a0f772c3971",
+   "txt_name": "chichiirono_moya.txt",
+   "body_sha256": "a7af013d915e99520ac79e5f5bfb7776e28c1a695859fbf6f9b6adaa1776346c",
+   "sentences": 472,
+   "date_note": null,
+   "matched_share": 0.972457627118644,
+   "matched_token_share": 0.9931662870159453,
+   "windows": 433,
+   "gaps": 0,
+   "V": {
+    "1": -0.053203489121858495,
+    "50": 0.01914118136260263,
+    "99": 0.10349387189798749
+   },
+   "A": {
+    "1": -0.06185847863968479,
+    "50": 0.009831964708586799,
+    "99": 0.050854011894135534
+   },
+   "max_abs": {
+    "1": 0.00873967475584804,
+    "50": 0.03284944406440796,
+    "99": 0.10349387189798749
+   }
+  },
+  {
+   "person": "000137",
+   "author": "岩野泡鳴",
+   "work_id": "050133",
+   "title": "猫八",
+   "url": "https://www.aozora.gr.jp/cards/000137/files/50133_ruby_56453.zip",
+   "zip": "external/reference-stretch-20261028/zips/000137/50133_ruby_56453.zip",
+   "zip_sha256": "ffc64728e8340497fb4b4e2fbafd046d6bdfa4337410cdb45b10accaabc23646",
+   "txt_name": "nekohachi.txt",
+   "body_sha256": "c21c993eb85208f0355dc80022b2c21e8721f5536148e7bbad1bf7f9f30b9239",
+   "sentences": 415,
+   "date_note": null,
+   "matched_share": 0.9855421686746988,
+   "matched_token_share": 0.9932414868728879,
+   "windows": 376,
+   "gaps": 0,
+   "V": {
+    "1": 0.10618551263455472,
+    "50": 0.13082227223697948,
+    "99": 0.18175870808111594
+   },
+   "A": {
+    "1": -0.03998671487766699,
+    "50": -0.02457727960382573,
+    "99": 0.008904317237971438
+   },
+   "max_abs": {
+    "1": 0.10618551263455472,
+    "50": 0.13082227223697948,
+    "99": 0.18175870808111594
+   }
+  },
+  {
+   "person": "000183",
+   "author": "牧野信一",
+   "work_id": "045214",
+   "title": "吊籠と月光と",
+   "url": "https://www.aozora.gr.jp/cards/000183/files/45214_ruby_18361.zip",
+   "zip": "external/reference-stretch-20261028/zips/000183/45214_ruby_18361.zip",
+   "zip_sha256": "bee14e9ffbe26035200622436151c1115bee59f70f11384b613c95dc8b7eb924",
+   "txt_name": "tsurubeto_gekkoto.txt",
+   "body_sha256": "d0c7217da9e43fe1ade958e9e09aa4b375c372a6ec2293f92683af09a710cdf7",
+   "sentences": 365,
+   "date_note": null,
+   "matched_share": 0.958904109589041,
+   "matched_token_share": 0.9848594087959625,
+   "windows": 326,
+   "gaps": 0,
+   "V": {
+    "1": 0.04908413861752959,
+    "50": 0.13022260078796613,
+    "99": 0.17391997063911108
+   },
+   "A": {
+    "1": -0.034238358844270976,
+    "50": -0.008127306129666896,
+    "99": 0.028739403842477192
+   },
+   "max_abs": {
+    "1": 0.04908413861752959,
+    "50": 0.13022260078796613,
+    "99": 0.17391997063911108
+   }
+  }
+ ],
+ "skipped": [
+  {
+   "person": "001154",
+   "author": "岸田国士",
+   "work_id": "043859",
+   "title": "光は影を",
+   "url": "https://www.aozora.gr.jp/cards/001154/files/43859_ruby_49064.zip",
+   "zip": "external/reference-stretch-20261028/zips/001154/43859_ruby_49064.zip",
+   "zip_sha256": "a83fa2525aa7305d5ca910f6a929dc5eb1c02b80072db95f920cca2a4453d801",
+   "txt_name": "hikariwa_kageo.txt",
+   "reason": "4387 sentences"
+  },
+  {
+   "person": "001471",
+   "author": "今野大力",
+   "work_id": "050760",
+   "title": "トンカトントンカッタカッタ",
+   "url": "https://www.aozora.gr.jp/cards/001471/files/50760_txt_41582.zip",
+   "zip": "external/reference-stretch-20261028/zips/001471/50760_txt_41582.zip",
+   "zip_sha256": "791cb7c6d8b7bfae78604e5c44fca2347046e2db8a5effef6c132ed6cb63aa7d",
+   "txt_name": "tonkatonton_kattakatta.txt",
+   "reason": "42 sentences"
+  },
+  {
+   "person": "000933",
+   "author": "折口信夫",
+   "work_id": "004398",
+   "title": "死者の書",
+   "url": "https://www.aozora.gr.jp/cards/000933/files/4398_ruby_14165.zip",
+   "zip": "external/reference-stretch-20261028/zips/000933/4398_ruby_14165.zip",
+   "zip_sha256": "ab0ac4d8447f3b04aeaf102b9cc05c38bfc02bfb498f6167fd9fc055e23547a6",
+   "txt_name": "shishano_sho.txt",
+   "reason": "2164 sentences"
+  },
+  {
+   "person": "001306",
+   "author": "川田功",
+   "work_id": "056513",
+   "title": "乗合自動車",
+   "url": "https://www.aozora.gr.jp/cards/001306/files/56513_ruby_64883.zip",
+   "zip": "external/reference-stretch-20261028/zips/001306/56513_ruby_64883.zip",
+   "zip_sha256": "b35ff47781449a8e86a3160e9b97edc46a9d8c275cef7d5c9ac46720559da7c6",
+   "txt_name": "noriai_jidosha.txt",
+   "reason": "148 sentences"
+  },
+  {
+   "person": "000553",
+   "author": "児玉花外",
+   "work_id": "049201",
+   "title": "菜の花物語",
+   "url": "https://www.aozora.gr.jp/cards/000553/files/49201_ruby_32176.zip",
+   "zip": "external/reference-stretch-20261028/zips/000553/49201_ruby_32176.zip",
+   "zip_sha256": "0aedc60c0930933b50bb6341bc4f995a171b0a275525b4edc7363212c38d62cf",
+   "txt_name": "nanohanamonogatari.txt",
+   "reason": "40 sentences"
+  },
+  {
+   "person": "001305",
+   "author": "羽志主水",
+   "work_id": "047417",
+   "title": "越後獅子",
+   "url": "https://www.aozora.gr.jp/cards/001305/files/47417_ruby_33644.zip",
+   "zip": "external/reference-stretch-20261028/zips/001305/47417_ruby_33644.zip",
+   "zip_sha256": "6b3f489ae883dbf00e0e194ecb075782645839c1a57e909350290027e6accc61",
+   "txt_name": "echigojishi.txt",
+   "reason": "191 sentences"
+  },
+  {
+   "person": "001305",
+   "author": "羽志主水",
+   "work_id": "047418",
+   "title": "監獄部屋",
+   "url": "https://www.aozora.gr.jp/cards/001305/files/47418_ruby_29113.zip",
+   "zip": "external/reference-stretch-20261028/zips/001305/47418_ruby_29113.zip",
+   "zip_sha256": "ee86d10d8cd0edf5b9e7ddd168279c2637824b49096985b84d3dc20a8f7df792",
+   "txt_name": "kangokubeya.txt",
+   "reason": "111 sentences"
+  },
+  {
+   "person": "000491",
+   "author": "片岡鉄兵",
+   "work_id": "002698",
+   "title": "今度こそ",
+   "url": "https://www.aozora.gr.jp/cards/000491/files/2698_ruby_6141.zip",
+   "zip": "external/reference-stretch-20261028/zips/000491/2698_ruby_6141.zip",
+   "zip_sha256": "d5b5bf7f2371c1b5f44a999d2b84abd4ba3c43150d8c5ddf938ea0ff4c3cbf18",
+   "txt_name": "kondokoso.txt",
+   "reason": "110 sentences"
+  },
+  {
+   "person": "001289",
+   "author": "犬田卯",
+   "work_id": "047139",
+   "title": "一老人",
+   "url": "https://www.aozora.gr.jp/cards/001289/files/47139_ruby_29256.zip",
+   "zip": "external/reference-stretch-20261028/zips/001289/47139_ruby_29256.zip",
+   "zip_sha256": "0c3cf0070dddd2792491cf14e406ed2ca785b1feb383ef3b6ecca90f257b2bcf",
+   "txt_name": "ichirojin.txt",
+   "reason": "89 sentences"
+  },
+  {
+   "person": "000125",
+   "author": "小栗虫太郎",
+   "work_id": "043656",
+   "title": "潜航艇「鷹の城」",
+   "url": "https://www.aozora.gr.jp/cards/000125/files/43656_ruby_24010.zip",
+   "zip": "external/reference-stretch-20261028/zips/000125/43656_ruby_24010.zip",
+   "zip_sha256": "07fc3c4567ff7979a45283970f6c899f6f1ff8ed5b11b4dc76ed92b272d54b34",
+   "txt_name": "senkotei_habichtburg.txt",
+   "reason": "1378 sentences"
+  },
+  {
+   "person": "001097",
+   "author": "下村湖人",
+   "work_id": "042692",
+   "title": "次郎物語",
+   "url": "https://www.aozora.gr.jp/cards/001097/files/42692_ruby_21001.zip",
+   "zip": "external/reference-stretch-20261028/zips/001097/42692_ruby_21001.zip",
+   "zip_sha256": "a81d385120bb7d5e4b5e9f08bec869afba831e020ed548ef866a0a2e9c3fbf4c",
+   "txt_name": "jiromonogatari_1.txt",
+   "reason": "5427 sentences"
+  },
+  {
+   "person": "001097",
+   "author": "下村湖人",
+   "work_id": "043790",
+   "title": "次郎物語",
+   "url": "https://www.aozora.gr.jp/cards/001097/files/43790_ruby_20882.zip",
+   "zip": "external/reference-stretch-20261028/zips/001097/43790_ruby_20882.zip",
+   "zip_sha256": "2a6b9bfe4d210cb755fdedddf2615a8cf2fd16968cb0eba89a6799c64eb539d1",
+   "txt_name": "jiromonogatari_3.txt",
+   "reason": "3524 sentences"
+  },
+  {
+   "person": "001097",
+   "author": "下村湖人",
+   "work_id": "043789",
+   "title": "次郎物語",
+   "url": "https://www.aozora.gr.jp/cards/001097/files/43789_ruby_21003.zip",
+   "zip": "external/reference-stretch-20261028/zips/001097/43789_ruby_21003.zip",
+   "zip_sha256": "2f010e8d8804455fa586dcc1b6cc31d9ca348d3c5f6d62639bc8fc99f1db1608",
+   "txt_name": "jiromonogatari_2.txt",
+   "reason": "5023 sentences"
+  },
+  {
+   "person": "001097",
+   "author": "下村湖人",
+   "work_id": "043792",
+   "title": "次郎物語",
+   "url": "https://www.aozora.gr.jp/cards/001097/files/43792_ruby_21947.zip",
+   "zip": "external/reference-stretch-20261028/zips/001097/43792_ruby_21947.zip",
+   "zip_sha256": "4dd417cd3e85e1667ce8df52508c3d37a68140f36dd2c75101c0a0545e9fc6ec",
+   "txt_name": "jiromonogatari_5.txt",
+   "reason": "5400 sentences"
+  },
+  {
+   "person": "001097",
+   "author": "下村湖人",
+   "work_id": "043791",
+   "title": "次郎物語",
+   "url": "https://www.aozora.gr.jp/cards/001097/files/43791_ruby_21659.zip",
+   "zip": "external/reference-stretch-20261028/zips/001097/43791_ruby_21659.zip",
+   "zip_sha256": "159701cdbca269f69302c94842cfae1d1a6c58daa6927ed46a71058158f073d7",
+   "txt_name": "jiromonogatari_4.txt",
+   "reason": "5605 sentences"
+  },
+  {
+   "person": "001569",
+   "author": "中谷宇吉郎",
+   "work_id": "059781",
+   "title": "『死者の書』",
+   "url": "https://www.aozora.gr.jp/cards/001569/files/59781_ruby_74896.zip",
+   "zip": "external/reference-stretch-20261028/zips/001569/59781_ruby_74896.zip",
+   "zip_sha256": "2ac4221a15031e689b9ff7c6f4206569541c56dcf5b08e22fd5e5ec0e2503c7f",
+   "txt_name": "shishano_sho.txt",
+   "reason": "35 sentences"
+  },
+  {
+   "person": "000006",
+   "author": "二葉亭四迷",
+   "work_id": "001869",
+   "title": "浮雲",
+   "url": "https://www.aozora.gr.jp/cards/000006/files/1869_ruby_33306.zip",
+   "zip": "external/reference-stretch-20261028/zips/000006/1869_ruby_33306.zip",
+   "zip_sha256": "7132ceee7b1d66f7b556137e037bd59463e18d093521d295d96fe26ceff76cca",
+   "txt_name": "ukigumo.txt",
+   "reason": "2697 sentences"
+  },
+  {
+   "person": "000006",
+   "author": "二葉亭四迷",
+   "work_id": "003310",
+   "title": "平凡",
+   "url": "https://www.aozora.gr.jp/cards/000006/files/3310_ruby_8278.zip",
+   "zip": "external/reference-stretch-20261028/zips/000006/3310_ruby_8278.zip",
+   "zip_sha256": "7fe297ba075bd954fe86c7c28adefddd0a06899bdf46b4fea3ac1262954c8b35",
+   "txt_name": "heibon.txt",
+   "reason": "2037 sentences"
+  },
+  {
+   "person": "000802",
+   "author": "三宅花圃",
+   "work_id": "046650",
+   "title": "藪の鶯",
+   "url": "https://www.aozora.gr.jp/cards/000802/files/46650_ruby_26376.zip",
+   "zip": "external/reference-stretch-20261028/zips/000802/46650_ruby_26376.zip",
+   "zip_sha256": "ac2293bd8ab57fa0735b3d77c9279ad865028a9a96fa60a47dc1dd66ec215de2",
+   "txt_name": "yabuno_uguisu.txt",
+   "reason": "1966 sentences"
+  },
+  {
+   "person": "000012",
+   "author": "素木しづ",
+   "work_id": "000223",
+   "title": "晩餐",
+   "url": "https://www.aozora.gr.jp/cards/000012/files/223_ruby_2389.zip",
+   "zip": "external/reference-stretch-20261028/zips/000012/223_ruby_2389.zip",
+   "zip_sha256": "34444a27ff7c48d7660abb0646fd6ba6c1445bd5fe7d647a4a6adefe7990b0a4",
+   "txt_name": "bansan.txt",
+   "reason": "102 sentences"
+  },
+  {
+   "person": "001361",
+   "author": "本田親二",
+   "work_id": "049257",
+   "title": "□本居士",
+   "url": "https://www.aozora.gr.jp/cards/001361/files/49257_ruby_32161.zip",
+   "zip": "external/reference-stretch-20261028/zips/001361/49257_ruby_32161.zip",
+   "zip_sha256": "ea0c4eb1d6612a96932ae995d4fa61db1661ab4355413a104441a3b873a900b1",
+   "txt_name": "honkoji.txt",
+   "reason": "62 sentences"
+  },
+  {
+   "person": "000398",
+   "author": "池谷信三郎",
+   "work_id": "055988",
+   "title": "忠僕",
+   "url": "https://www.aozora.gr.jp/cards/000398/files/55988_ruby_55574.zip",
+   "zip": "external/reference-stretch-20261028/zips/000398/55988_ruby_55574.zip",
+   "zip_sha256": "e6e4cf0ddba85dc50ce72465ee4c4013d793b6f286e82cd2a141ceaa6b110d8c",
+   "txt_name": "chuboku.txt",
+   "reason": "94 sentences"
+  },
+  {
+   "person": "001308",
+   "author": "徳永直",
+   "work_id": "049298",
+   "title": "眼",
+   "url": "https://www.aozora.gr.jp/cards/001308/files/49298_ruby_33974.zip",
+   "zip": "external/reference-stretch-20261028/zips/001308/49298_ruby_33974.zip",
+   "zip_sha256": "4a47a8e162d8797f9598c9bd6a5cc56f6471cc09a96f5babc942c6950ea6516f",
+   "txt_name": "me.txt",
+   "reason": "142 sentences"
+  },
+  {
+   "person": "001355",
+   "author": "岡田三郎助",
+   "work_id": "049239",
+   "title": "白い蝶",
+   "url": "https://www.aozora.gr.jp/cards/001355/files/49239_ruby_32154.zip",
+   "zip": "external/reference-stretch-20261028/zips/001355/49239_ruby_32154.zip",
+   "zip_sha256": "59ae5c97ad1753ed56c678e16c100f957846b0911c87cbcaa7cbae90d40a8a20",
+   "txt_name": "shiroi_cho.txt",
+   "reason": "6 sentences"
+  },
+  {
+   "person": "000726",
+   "author": "長谷川時雨",
+   "work_id": "047339",
+   "title": "人魂火",
+   "url": "https://www.aozora.gr.jp/cards/000726/files/47339_ruby_28457.zip",
+   "zip": "external/reference-stretch-20261028/zips/000726/47339_ruby_28457.zip",
+   "zip_sha256": "0b0d56b31fc595d52d52bf1304f82b3e946f3ec3574ff4bec69939fc3b4ccc85",
+   "txt_name": "hitodama.txt",
+   "reason": "11 sentences"
+  },
+  {
+   "person": "000726",
+   "author": "長谷川時雨",
+   "work_id": "047338",
+   "title": "糸繰沼",
+   "url": "https://www.aozora.gr.jp/cards/000726/files/47338_ruby_28456.zip",
+   "zip": "external/reference-stretch-20261028/zips/000726/47338_ruby_28456.zip",
+   "zip_sha256": "c76b2796301eb31ead67749ff2e953dbce3208bdce496fd314c599b76c27551c",
+   "txt_name": "itotorinuma.txt",
+   "reason": "16 sentences"
+  },
+  {
+   "person": "001208",
+   "author": "山下利三郎",
+   "work_id": "047592",
+   "title": "誘拐者",
+   "url": "https://www.aozora.gr.jp/cards/001208/files/47592_ruby_29749.zip",
+   "zip": "external/reference-stretch-20261028/zips/001208/47592_ruby_29749.zip",
+   "zip_sha256": "ead76677cfe1a2b84efa29fb626a7fa8fe5eb3f524e090753e31c30548e94221",
+   "txt_name": "yukaisha.txt",
+   "reason": "95 sentences"
+  },
+  {
+   "person": "001208",
+   "author": "山下利三郎",
+   "work_id": "045545",
+   "title": "流転",
+   "url": "https://www.aozora.gr.jp/cards/001208/files/45545_ruby_19323.zip",
+   "zip": "external/reference-stretch-20261028/zips/001208/45545_ruby_19323.zip",
+   "zip_sha256": "834e8fd7fc11df41123e0a0f6d534e828a065fc29bf8d34523d7b034fbd648eb",
+   "txt_name": "ruten.txt",
+   "reason": "124 sentences"
+  },
+  {
+   "person": "000941",
+   "author": "水野葉舟",
+   "work_id": "049209",
+   "title": "テレパシー",
+   "url": "https://www.aozora.gr.jp/cards/000941/files/49209_ruby_32175.zip",
+   "zip": "external/reference-stretch-20261028/zips/000941/49209_ruby_32175.zip",
+   "zip_sha256": "f775133059c6fc95388249444ce5df473b26d7d80bf79c28a1b6f2d951ec43cf",
+   "txt_name": "telepathy.txt",
+   "reason": "23 sentences"
+  },
+  {
+   "person": "000282",
+   "author": "富ノ沢麟太郎",
+   "work_id": "001714",
+   "title": "あめんちあ",
+   "url": "https://www.aozora.gr.jp/cards/000282/files/1714_ruby_29965.zip",
+   "zip": "external/reference-stretch-20261028/zips/000282/1714_ruby_29965.zip",
+   "zip_sha256": "bb40ca627763bc3dfe426f505ea4db9899ed591316673c679fd88c638a18fa37",
+   "txt_name": "amentia.txt",
+   "reason": "1389 sentences"
+  },
+  {
+   "person": "001562",
+   "author": "吉川英治",
+   "work_id": "053195",
+   "title": "黒田如水",
+   "url": "https://www.aozora.gr.jp/cards/001562/files/53195_ruby_50518.zip",
+   "zip": "external/reference-stretch-20261028/zips/001562/53195_ruby_50518.zip",
+   "zip_sha256": "2effef49902a499b0f4ae15b5b898b7e5de5d23a82fbb2e301ffd4dfaec92933",
+   "txt_name": "kuroda_josui.txt",
+   "reason": "5351 sentences"
+  },
+  {
+   "person": "001562",
+   "author": "吉川英治",
+   "work_id": "052453",
+   "title": "茶漬三略",
+   "url": "https://www.aozora.gr.jp/cards/001562/files/52453_ruby_49998.zip",
+   "zip": "external/reference-stretch-20261028/zips/001562/52453_ruby_49998.zip",
+   "zip_sha256": "d8bc0b43483b15d8864f68ab1750d5f0f0282d3a065235dfcca6be9aa7cc769e",
+   "txt_name": "chazuke_sanryaku.txt",
+   "reason": "1440 sentences"
+  },
+  {
+   "person": "001562",
+   "author": "吉川英治",
+   "work_id": "056072",
+   "title": "大岡越前",
+   "url": "https://www.aozora.gr.jp/cards/001562/files/56072_ruby_51743.zip",
+   "zip": "external/reference-stretch-20261028/zips/001562/56072_ruby_51743.zip",
+   "zip_sha256": "06107c892c7b404fcfd14ab1bd771e2aa1ddb073a93abd640beb3d4ef421a35b",
+   "txt_name": "ookaechizen.txt",
+   "reason": "8219 sentences"
+  },
+  {
+   "person": "001562",
+   "author": "吉川英治",
+   "work_id": "052430",
+   "title": "私本太平記",
+   "url": "https://www.aozora.gr.jp/cards/001562/files/52430_ruby_49708.zip",
+   "zip": "external/reference-stretch-20261028/zips/001562/52430_ruby_49708.zip",
+   "zip_sha256": "f6fd5217c640e100dddfc73ed83c9208b063b487578cf06c8b4a3bab9179f28e",
+   "txt_name": "10kazabana_jo.txt",
+   "reason": "4833 sentences"
+  },
+  {
+   "person": "001562",
+   "author": "吉川英治",
+   "work_id": "056068",
+   "title": "篝火の女",
+   "url": "https://www.aozora.gr.jp/cards/001562/files/56068_ruby_52997.zip",
+   "zip": "external/reference-stretch-20261028/zips/001562/56068_ruby_52997.zip",
+   "zip_sha256": "6088d7d954c7467d66978e4b0b78a48d9593d8ab23c6412ae2f66b7ad3614aa6",
+   "txt_name": "kagaribino_onna.txt",
+   "reason": "1121 sentences"
+  },
+  {
+   "person": "001562",
+   "author": "吉川英治",
+   "work_id": "056756",
+   "title": "新書太閤記",
+   "url": "https://www.aozora.gr.jp/cards/001562/files/56756_ruby_57338.zip",
+   "zip": "external/reference-stretch-20261028/zips/001562/56756_ruby_57338.zip",
+   "zip_sha256": "21a76e784d6fc0476517556317d458435dbadb75278124b4d84fb4eafcfa8524",
+   "txt_name": "shinsho_taikoki05.txt",
+   "reason": "7386 sentences"
+  },
+  {
+   "person": "001082",
+   "author": "相馬泰三",
+   "work_id": "045648",
+   "title": "田舎医師の子",
+   "url": "https://www.aozora.gr.jp/cards/001082/files/45648_ruby_27859.zip",
+   "zip": "external/reference-stretch-20261028/zips/001082/45648_ruby_27859.zip",
+   "zip_sha256": "753630c03c6a0a1d202dbc1b09a5ea6dfc04613c7ffbed62dc23c24a6783cd1c",
+   "txt_name": "inakaishino_ko.txt",
+   "reason": "1266 sentences"
+  },
+  {
+   "person": "001798",
+   "author": "梅崎春生",
+   "work_id": "056634",
+   "title": "幻化",
+   "url": "https://www.aozora.gr.jp/cards/001798/files/56634_ruby_58202.zip",
+   "zip": "external/reference-stretch-20261028/zips/001798/56634_ruby_58202.zip",
+   "zip_sha256": "855cc852cfb7c4f47e4979c3d5c316e6d916816a7958b1b4197c4c3ed410e07e",
+   "txt_name": "genka.txt",
+   "reason": "3923 sentences"
+  },
+  {
+   "person": "000214",
+   "author": "田山花袋",
+   "work_id": "001672",
+   "title": "新茶のかおり",
+   "url": "https://www.aozora.gr.jp/cards/000214/files/1672_txt_4841.zip",
+   "zip": "external/reference-stretch-20261028/zips/000214/1672_txt_4841.zip",
+   "zip_sha256": "c16f90ebc6d0989293c37bf0503f532fddfbac860bbad643cfd0cc0ee96e706f",
+   "txt_name": "shinchano_kaori.txt",
+   "reason": "ValueError: no header block between two lines of hyphens near the start"
+  },
+  {
+   "person": "000295",
+   "author": "広津柳浪",
+   "work_id": "002953",
+   "title": "昇降場",
+   "url": "https://www.aozora.gr.jp/cards/000295/files/2953_ruby_5754.zip",
+   "zip": "external/reference-stretch-20261028/zips/000295/2953_ruby_5754.zip",
+   "zip_sha256": "52bc8b440ff4970c583912ac1a9c183b7f860295e915dd8b36a31eb2f5fcedf7",
+   "txt_name": "shokojo.txt",
+   "reason": "154 sentences"
+  },
+  {
+   "person": "000295",
+   "author": "広津柳浪",
+   "work_id": "042145",
+   "title": "今戸心中",
+   "url": "https://www.aozora.gr.jp/cards/000295/files/42145_ruby_22356.zip",
+   "zip": "external/reference-stretch-20261028/zips/000295/42145_ruby_22356.zip",
+   "zip_sha256": "70fa45376ae1c553c23fa7aa3e0c787eaa7df2d0fbe69dfe1e4796b9c6612cbe",
+   "txt_name": "imado_shinju.txt",
+   "reason": "1330 sentences"
+  },
+  {
+   "person": "000031",
+   "author": "葉山嘉樹",
+   "work_id": "000863",
+   "title": "海に生くる人々",
+   "url": "https://www.aozora.gr.jp/cards/000031/files/863_ruby_22417.zip",
+   "zip": "external/reference-stretch-20261028/zips/000031/863_ruby_22417.zip",
+   "zip_sha256": "4c7d4cbf250c8bd4d83c05b50656b2884401880da3cfb0416c1ce1d782af8c71",
+   "txt_name": "umini_ikuru_hitobito.txt",
+   "reason": "4569 sentences"
+  },
+  {
+   "person": "000031",
+   "author": "葉山嘉樹",
+   "work_id": "050114",
+   "title": "山谿に生くる人々",
+   "url": "https://www.aozora.gr.jp/cards/000031/files/50114_ruby_65946.zip",
+   "zip": "external/reference-stretch-20261028/zips/000031/50114_ruby_65946.zip",
+   "zip_sha256": "bfe6ae8aa67846b6e4d94b8fc2bbb3d426a924ee67cb50f6cca6a654f800ac2b",
+   "txt_name": "sankeini_ikuru_hitobito.txt",
+   "reason": "1016 sentences"
+  }
+ ]
+}
