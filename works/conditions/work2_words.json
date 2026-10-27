@@ -1,0 +1,158 @@
+{
+ "purpose": "Work 2 redesigned (decisions 1 and 2 of .steering/20261028-overall-inspection, decision 1 of .steering/20261028-work2-redesign): for each of the six authors, the 20 distinctive words that occur in at least two of its works, one tile per word; the field of an author is one seed with warp 0.25; the affect of a word (MEmoLon through map B) gives f, s and gamma of its tile. This run selects the words of all six authors and draws the sketches (tiles and an icosahedron, images only) of the two trial authors.",
+ "fixed_before_running": "Written on 2026-10-28 and committed before the script was run. Seen before: the values of works 1 and 2 (commit 500c58f), checks 1 to 5 (7a25e70, 0b7d6e4), among them the 30 words of largest z per author under the same statistic without the filter on works (check 5) and the fluctuation of the window means per author (check 4: Dazai largest, Okamoto Kanoko smallest). Not seen before: any word list under the filter below, any tile or solid with these words or seeds. The change of work 2 from the window trajectories to word tiles, the warp and the trial authors were decided after those values were seen; the paper on the works states it. results/work2/ is kept as material and not changed.",
+ "version": 1,
+ "inputs": "works, lexicon, map B and tagger of works/conditions/work2.json (read from that file; its SHA-256 is recorded); the words of a sentence are its matched words as recorded by the Japanese text step (surface forms that are entries of the lexicon, parts of speech of POS_ALLOWED), the same as check 5",
+ "work2_conditions_sha256": "a56209998d026485c156f2d2d51539724dca50ad6c1dfad17af2fb2a06631859",
+ "generator": {
+  "requirement": "atact @ git+https://github.com/mikotomiura/affective-relief-audit@b559a80c623d36357dd0736b887497a0cb789af5",
+  "commit": "b559a80c623d36357dd0736b887497a0cb789af5",
+  "library_sha256": {
+   "__init__.py": "d5980876e37cb7a1f5dc379028ab50f7a0c1d77d84c7651ee5d1beefd623b6ab",
+   "field.py": "4162e8faa60ca78257fd0777a3a7dceaaa7bbab6bfe6691de46f49a339b641c5",
+   "lexicon.py": "36cad1e49a25b352a7ae04868c6693ef349e8276d51909061eeb378085065e81",
+   "mapping.py": "83a50faaa664ddcb99004392e13a73fb096a85588a8b3c423b2c8b71ce626d26",
+   "transform.py": "5d35c9c10dfa6c8d5d3b2a9e8126ab45b895a1be14e05650c3ef60ffd3431bd1"
+  }
+ },
+ "selection": {
+  "statistic": "for every author against the other five: the weighted log-odds ratio with an informative Dirichlet prior (Monroe, Colaresi and Quinn 2008), the prior being the counts of all six authors scaled to a total of 1000, z-scores (log_odds of checks/author_texture.py, the statistic of check 5)",
+  "min_count": 2,
+  "min_works": 2,
+  "max_share": 0.6666666666666666,
+  "share": "for a word and its author: the rate in each work of the author (count / matched tokens of the work), and the largest rate divided by the sum of the rates over the works of the author",
+  "candidate": "a word with count >= min_count in at least min_works works of its author, share <= max_share, and z > 0 (share compared with a tolerance of 1e-12, so that 2/3 computed in floating point is admitted)",
+  "n_words": 20,
+  "order": "z descending, ties by the word (Unicode order)",
+  "shortfall": "fewer than n_words candidates for an author stops the run (the filter is not loosened)",
+  "audit": "no word is removed by hand; the list with the counts per work is written out and read for name fragments and inflected pieces, and what is found is recorded in the decisions"
+ },
+ "sensitivity": {
+  "thresholds": {
+   "min_count": [
+    1,
+    2,
+    3
+   ],
+   "max_share": [
+    0.5,
+    0.6666666666666666,
+    1.0
+   ]
+  },
+  "leave_one_work_out": "every work removed in turn from the whole corpus (the prior and the other authors recomputed); for its author, the share of the 20 words that stay among the 20 selected (for an author with three works, removing one leaves two, and min_works = 2 then requires both: a lower retention there reflects the stricter filter, not only instability)",
+  "reported_as": "for every setting and author: the number of candidates and the overlap with the selected 20; not used to choose anything"
+ },
+ "reported": {
+  "spread": "per author, the standard deviation (ddof 0) of V, A, f, s and gamma over its 20 words (the spread of the chosen words; not the fluctuation of the window means of check 4)",
+  "z_and_V": "per author, the Spearman rho between z and V over its 20 words (whether the order of the tiles carries affect)"
+ },
+ "authors": [
+  {
+   "author": "夏目漱石",
+   "slug": "soseki",
+   "seed": 101
+  },
+  {
+   "author": "芥川竜之介",
+   "slug": "akutagawa",
+   "seed": 102
+  },
+  {
+   "author": "梶井基次郎",
+   "slug": "kajii",
+   "seed": 103
+  },
+  {
+   "author": "岡本かの子",
+   "slug": "okamoto",
+   "seed": 104
+  },
+  {
+   "author": "中島敦",
+   "slug": "nakajima",
+   "seed": 105
+  },
+  {
+   "author": "太宰治",
+   "slug": "dazai",
+   "seed": 106
+  }
+ ],
+ "seeds_note": "the seeds are numbers given by the makers in the order of the authors in work2.json; they carry nothing of the data",
+ "trial_authors": [
+  "太宰治",
+  "岡本かの子"
+ ],
+ "common_seed": 100,
+ "field": {
+  "octaves": 4,
+  "normalize": "ampsum",
+  "freq_unit": "cycles",
+  "octave_form": "product",
+  "warp": 0.25,
+  "function": "atact.field.procedural_field",
+  "note": "variant P1 of check 2; the warp of Table 2 of the paper on the rule, away from the default 0 of the reconstruction"
+ },
+ "relief": {
+  "L_mm": 50.0,
+  "D_mm": 1.2,
+  "s_max": 0.3,
+  "e_min_mm": 0.4,
+  "base_mm": 2.0,
+  "heights": "H_eps = s T_{gamma,eps}(F) with eps = e_min G* / (2 L) of src/relief.py (as the STL of work 1); common scale z = D H_eps / (2 s_max)"
+ },
+ "tiles": {
+  "tile_px": 200,
+  "gap_px": 8,
+  "label_px": 30,
+  "columns": 5,
+  "rows": 4,
+  "block_gap_px": 48,
+  "grey": "z / D + 1/2 (common scale), rows flipped so that the origin is at the lower left",
+  "order": "z order, row by row from the upper left",
+  "figures": {
+   "tiles.png": "the two trial authors side by side, each under its own seed",
+   "tiles_common_seed.png": "the same 40 words, both authors under the common seed (a control: differences come from the words only)",
+   "note": "a tile shows the whole unit square without taper; a face of the icosahedron shows the triangle (0,0), (1,0), (1/2, sqrt 3/2) of the same field with the taper, so the same word looks partly different on the two"
+  },
+  "font_file": "/System/Library/Fonts/Hiragino Sans GB.ttc",
+  "font_use": "labels only (its SHA-256 is recorded)",
+  "supersample": 4,
+  "sampling": "every tile is rendered on a grid supersample times finer (800 x 800) and averaged over blocks to tile_px (code review before the run: with warp 0.25 the top octave at f = 7 exceeds the Nyquist limit of a 200 px grid, which would flatten high-arousal tiles)"
+ },
+ "icosahedron": {
+  "edge_mm": 50.0,
+  "vertices": "(0, +-1, +-phi), (+-1, +-phi, 0), (+-phi, 0, +-1) scaled by edge / 2",
+  "face_order": "faces sorted by the height of their centre (descending, rounded to 1e-9), then by the azimuth of the centre in [0, 2 pi); the k-th face carries the k-th word in z order",
+  "face_frame": "apex C the vertex of the face with the largest height (ties: the smallest azimuth); A, B the other two such that (B - A) x (C - A) points outward; the triangle A (0, 0), B (1, 0), C (1/2, sqrt 3 / 2) of the field domain, one domain unit = edge mm",
+  "taper": "z multiplied by smoothstep(d / (taper_width r)), d the distance to the nearest edge of the triangle, r its inradius, so that every face returns to its plane at the edges",
+  "face_grid": 1600,
+  "render": "orthographic ray casting on the undisplaced solid with the normal from the gradient of z (bump shading, relief at true scale), half-Lambert shading 0.15 + 0.85 (1 + n.L) / 2 (a smoke run with dummy affect values, before any word, showed that plain Lambert leaves the faces turned away from the light flat), white background, view_px a view, 16 px between views",
+  "views": {
+   "front": [
+    0.35,
+    -0.85,
+    0.4
+   ],
+   "back": [
+    -0.35,
+    0.85,
+    -0.4
+   ]
+  },
+  "light": "0.45 d + 0.65 up - 0.60 right in the frame of each view, normalised",
+  "figure": "icosa.png: rows the two trial authors, columns the two views",
+  "taper_width": 0.2,
+  "view_px": 800,
+  "face_grid_note": "1600 per domain unit (raised from 400 after the code review before the run, for the same reason as the supersampling of the tiles)"
+ },
+ "criteria": [
+  "D1 (by eye): the 20 tiles of one author under its own seed read as one family of pattern (expected by design: the seed is the makers' choice)",
+  "D2 (by eye): within an author, the tiles differ in fineness, depth or sharpness from word to word",
+  "D3 (by eye): the two sets of 20 can be told apart side by side under their own seeds; D3c: also under the common seed (only the words differ)",
+  "D4 (by eye): on the icosahedron views, the faces differ from each other; if not, it is written whether the form or the drawing is the reason"
+ ],
+ "outputs": "results/work2_words/words.json, tiles.png, tiles_common_seed.png, icosa.png",
+ "not_claimed": "The words mix the style and the subjects of the works (check 5); the selection was not validated on other texts and is not evidence that the authors are told apart. The affect of a word is the dictionary value of its surface form, without context. The spread of the 20 words is not the fluctuation of the window means. The difference of seeds between authors is a choice of the makers, not of the data. The sketches are images; touch is not tested."
+}
