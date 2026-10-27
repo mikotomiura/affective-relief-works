@@ -1,0 +1,104 @@
+{
+ "purpose": "Check, before any text of a work is computed, how the Japanese text step (src/japanese_text.py) responds to three choices: the map from the scale of the Japanese MEmoLon lexicon to [-1, 1] (A: nominal (x - 5) / 4 clipped; B: the calibrated line of results/calibrate_memolon.json clipped, the decision of the researcher; C: the mid-rank distribution function of the lexicon, 2 F(x) - 1), the order of clip and mean (word: map and clip each word value, then average, the decision of the researcher; sentence: average on the lexicon scale, then map and clip), and the word selection (pos: the IPAdic parts of speech of POS_ALLOWED, the decision of the researcher; all: every word found except symbols, the supplement). This is a check of the step on check sentences, not a result about any work, and not a basis for choosing the map again: if it led to a change, the change would be a new version of the conditions of the step with its reason.",
+ "fixed_before_running": "Written on 2026-10-27 and committed, with the script, the module and the check sentences, before the script was run. Seen before: the unit tests of the module (tests/, with fake lexicons of a few words) and the tokens and parts of speech of five other self-written sentences printed while writing the module (no lexicon values). The surface forms of about 25 words were looked up in the Japanese lexicon for presence only (all present except two forms in the old orthography). No value of the check sentences under any map was computed or seen. Before the first commit of this file, the module, the script and this file were reviewed independently (a code review by Claude and a review by Codex, given the code and this file only) and changed; no value of the check sentences was computed before or after.",
+ "version": 1,
+ "sentences": {
+  "file": "checks/reference/japanese_check_sentences.tsv",
+  "author": "Written by the makers for this check on 2026-10-27; not taken from any text of a work. Groups: pleasant, unpleasant, high and low arousal, neutral (three each), dialogue (three), two sentences expected to have no matched word, and minimal pairs for negation, the polite form and auxiliary verbs. Written by the makers, so the makers' expectations are in them; the check shows the response of the step, not its validity.",
+  "sha256": "d9eeaa81942f867bb2a22a684b06fff08381a25dcf5373c858ed373e5701e670",
+  "ids": [
+   "p1",
+   "p2",
+   "p3",
+   "n1",
+   "n2",
+   "n3",
+   "h1",
+   "h2",
+   "h3",
+   "l1",
+   "l2",
+   "l3",
+   "z1",
+   "z2",
+   "z3",
+   "d1",
+   "d2",
+   "d3",
+   "u1",
+   "u2",
+   "m1a",
+   "m1b",
+   "m2a",
+   "m2b",
+   "m3a",
+   "m3b",
+   "m4a",
+   "m4b",
+   "m5a",
+   "m5b",
+   "m6a",
+   "m6b"
+  ]
+ },
+ "pairs": [
+  [
+   "m1a",
+   "m1b"
+  ],
+  [
+   "m2a",
+   "m2b"
+  ],
+  [
+   "m3a",
+   "m3b"
+  ],
+  [
+   "m4a",
+   "m4b"
+  ],
+  [
+   "m5a",
+   "m5b"
+  ],
+  [
+   "m6a",
+   "m6b"
+  ]
+ ],
+ "main_combination": "B_calibrated/word/pos",
+ "calibration": {
+  "file": "results/calibrate_memolon.json",
+  "sha256": "a84da6f57fd37091fe69f9f931d061c687e76c404ce900c5b342be1e37065989",
+  "use": "b and a of valence and arousal (V = 0.40982 x - 2.01110, A = 0.42190 x - 1.69426)"
+ },
+ "lexicon": {
+  "file": "external/memolon-20261027/MTL_grouped-ja.tsv (ja.tsv of MTL_grouped.zip, Zenodo record 3756607, v1.0, CC BY 4.0; not in the repository)",
+  "sha256": "537cf39afd50f89cc4c69842f9876df7ff48f9950da849d739bdde7fc00d9e83"
+ },
+ "versions": {
+  "python": "3.13.12",
+  "fugashi": "1.5.2",
+  "ipadic": "1.0.0",
+  "numpy": "2.5.4",
+  "atact_commit": "b559a80c623d36357dd0736b887497a0cb789af5"
+ },
+ "step": "Each check sentence is passed to sentence_point of src/japanese_text.py as one sentence (no Aozora cleaning and no sentence split: the sentences are already single sentences). Unmatched sentences get (0, 0) and the flag, and are left out of the percentiles. The rule's map (f, s, gamma) = params(V, A) of the pinned generator (atact.mapping) is applied to each point.",
+ "readouts": "For each of the 12 combinations (map A, B, C x order word, sentence x selection pos, all): per sentence the matched words, Z, the number of candidates, V, A, f, s, gamma; the number and share of unmatched sentences; the matched and candidate occurrences; the percentiles 0, 25, 50, 75, 100 (nearest index) of V, A, f, s, gamma over matched sentences; for the linear maps A and B, the share changed by the clip, per dimension, counted where the clip acts: over matched word occurrences for order word (weighted by occurrence, not by lexicon entry), over matched sentences (the mapped mean) for order sentence. For the main combination, the differences b - a of V, A, f, s, gamma within each minimal pair, with the matched words. Also the value of the nominal neutral 5 under B before the clip.",
+ "not_done": "No text of a work is read. No window, no path drawing and no relief are made. No significance test: 32 sentences written by the makers are not a sample of anything.",
+ "deviations": [],
+ "ipadic_dicdir_sha256": {
+  "COPYING": "fca02d9adb601d101eccdf3131119abfff2d9c825ef5c759d7a89ebbaa972099",
+  "char.bin": "81bba502ae48fa005a374819f15e44452eb68086a8b323ec20a044d514400832",
+  "dicrc": "add6bb131a75e69478961ea59712541ace3779f7c5daa4da80d281f097c9d4d1",
+  "matrix.bin": "ee44d7350cdcb680ebd699f83e121be1dc63310f8832d55bcb537a068177611a",
+  "mecabrc": "cf91ca4aec6bbf596eda5034aefb73ae90999678b59f20ce3deb35d91fddb009",
+  "sys.dic": "223af63996d5d9a104d8c8baaf32029fbbf6a370d7dff33fe19fda2e92ac0ac1",
+  "unk.dic": "f0bf15e3e28259f4470b9c1e775d98bef53207d4b09afcd6d8545209b7b53f88",
+  "version": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+ },
+ "atact_mapping_sha256": "83a50faaa664ddcb99004392e13a73fb096a85588a8b3c423b2c8b71ce626d26",
+ "checks_before_computing": "The script stops unless: the versions equal 'versions'; the tracked inputs are committed (git status) and the script, the module, this file, the check sentences and the calibration result are byte-equal to HEAD; the SHA-256 of the check sentences, the calibration result, the lexicon, every file of the IPAdic dictionary directory and the installed atact/mapping.py equal those given here; the ids, the pairs and the main combination match.",
+ "interpretation": "For the linear maps A and B, the two orders differ only by the clip (a straight line commutes with the mean). For map C, which is not linear, the order also changes the result through the nonlinearity (the rank of a mean is not the mean of the ranks); the two kinds of difference are read separately."
+}
