@@ -1,0 +1,104 @@
+{
+  "purpose": "The overall inspection before the design of the changes to the two works is discussed (the researcher's plan of 2026-10-28). Four checks, none of them a part of a work: 2 where a layer of content could be carried so that it is seen; 3 whether the story of work 1 has an order that a strip could show; 4 whether the fluctuation of the authors of work 2 survives other windows and is not explained by other properties of the works; 5 whether the frequency of the matched words separates the authors more than their mean affect does. Check 1 (the strip sketch, commit 7a25e70) found that the seed only draws the phases of the field and carries no visible content.",
+  "fixed_before_running": "Written on 2026-10-28 and committed before any of the three scripts was run. Seen before: results/work1/work1.json and results/work2/work2.json (the values of both works, commit 500c58f), the figures of work 1 and of the strip sketch, and per author the median and the standard deviation of the window V at W = 40 (Nakajima 0.086 to Kajii 0.158; standard deviations 0.031 Okamoto to 0.062 Dazai). Not seen before: any tile under another form of the field or with warp, any statistic of the order of the sentences of work 1, any window other than 40, any frequency of matched words. The criteria and thresholds below were written before any of these was computed. Works, results/work1 and results/work2 are not changed. Revised before the first run after a code review (code-reviewer, no HIGH): the result files are written only after their text is built, the moving average is 2 px, the first paragraph has its line too, the input files must equal their committed bytes, and the standard deviation is stated as ddof 0.",
+  "version": 1,
+  "generator": {
+    "package": "atact",
+    "commit": "b559a80c623d36357dd0736b887497a0cb789af5"
+  },
+  "check2_content_channel": {
+    "script": "checks/content_channel.py",
+    "question": "Which quantity that the description of the rule leaves open changes the look of a tile with the seed (so that content could be carried by the seed), while the affect of the sentence still shows?",
+    "open_quantities": "atact.field.RenderConfig documents two reconstruction assumptions where the description of the rule does not determine the field: A1 the form of an octave ('product' of two sines, the default and the form of work 1; 'oriented', a plane wave in a direction drawn from the seed) and A3 the warp (0 by default and in work 1; Table 2 of the rule's paper gives 0.25, its text calls it optional).",
+    "variants": {
+      "P0": {
+        "octave_form": "product",
+        "warp": 0.0,
+        "note": "as work 1"
+      },
+      "P1": {
+        "octave_form": "product",
+        "warp": 0.25
+      },
+      "O0": {
+        "octave_form": "oriented",
+        "warp": 0.0
+      },
+      "O1": {
+        "octave_form": "oriented",
+        "warp": 0.25
+      }
+    },
+    "field": "atact.field.procedural_field with RenderConfig(n = 180, octaves = 4, normalize = 'ampsum', freq_unit = 'cycles', octave_form, warp), H = s T_gamma(F); grey under the common scale of work 1 (D H / (2 s_max) / D + 1/2, D = 1.2, s_max = 0.3)",
+    "sentences": "three sentences of work 1 (results/work1/work1.json): the smallest s, the sentence whose s is the median (the lower of the two middle values, ties to the smaller index), and the largest s",
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "figure": "results/overall_inspection/content_channel.png: rows the four variants, columns the three sentences each under the three seeds (9 tiles a row, 180 px, 6 px gaps, a wider gap between sentences)",
+    "measures": "for every variant: the mean over the three sentences of the mean absolute Pearson correlation between the H of the same sentence under two different seeds (lower = the seed changes the tile more); and the ratio of the range of the standard deviation of H over the three sentences to its mean (how much the affect shows)",
+    "criteria": [
+      "C2a (by eye): in a variant, the same sentence under different seeds can be told apart at a glance (the seed is visible)",
+      "C2b (by eye): in a variant, the three sentences can still be told apart, under every seed (the affect is visible)",
+      "C2c (recorded, not a pass): a variant other than P0 departs from the defaults of the reconstruction of the rule; if used, the work and the paper state it"
+    ]
+  },
+  "check3_story_flow": {
+    "script": "checks/story_flow.py",
+    "question": "Do the values of work 1 follow an order along the story (neighbouring sentences alike, paragraphs different), beyond what a random order would give?",
+    "input": "results/work1/work1.json (V, A of the 104 sentences) and the paragraph of every sentence from results/strip_sketch.json",
+    "statistics": {
+      "r1": "lag-1 autocorrelation of V and of A over the 104 sentences (Pearson of x[i] and x[i+1])",
+      "eta2": "share of the variance of V and of A between paragraphs (one-way, 25 paragraphs)",
+      "null": "10000 random permutations of the 104 sentences (numpy.random.default_rng(20261028)); the paragraph sizes are kept for eta2. One-sided p = (1 + number of permutations with a statistic at least the observed) / 10001"
+    },
+    "figure": "results/overall_inspection/story_flow.png: two panels one above the other (V, A), sentence index on the x axis, each value as a thin grey line, a centred moving average over 9 sentences (shorter at the ends) as a dark line 2 px, the first sentence of every paragraph as a light vertical line; white background, black and grey only",
+    "criteria": [
+      "F1: r1 of V or of A has p < 0.05 (neighbouring sentences are alike)",
+      "F2: eta2 of V or of A has p < 0.05 (paragraphs differ in affect)",
+      "F3 (by eye, recorded): the moving average shows a shape along the story (rises and falls over tens of sentences) rather than a flat band"
+    ],
+    "note": "Two statistics on two dimensions: four tests, not corrected; they are read as a description, not as a finding."
+  },
+  "check4_fluctuation": {
+    "script": "checks/author_texture.py",
+    "question": "Is the fluctuation of the window means of an author stable across windows, larger between authors than within them, and not explained by properties of the works that are not the author?",
+    "input": "the 23 works of works/conditions/work2.json run again through the Japanese text step with the same lexicon, map and tagger (the script stops unless the number of sentences and the matched share of every work equal results/work2/work2.json)",
+    "windows": [
+      20,
+      40,
+      80
+    ],
+    "fluctuation": "for a work and a window W: the standard deviation of V (and of A) over its windows that have a point (unstretched); for an author: the mean over its works (each work weight 1); standard deviation with ddof 0 (as the values 0.031 to 0.062 seen before)",
+    "properties_of_works": {
+      "length": "number of sentences",
+      "dialogue": "share of sentences that open with 「 or 『",
+      "matched_share": "share of sentences with at least one matched word",
+      "z_mean": "mean number of matched words over the matched sentences"
+    },
+    "criteria": [
+      "R1: the order of the six authors by the fluctuation of V has Kendall tau of at least 0.6 between W = 20 and W = 80 (and is reported for every pair)",
+      "R2: at W = 40, the fluctuation of V of the 23 works differs between authors: the one-way F statistic with the author as factor has p < 0.05 under 10000 permutations of the author labels over the works (numpy.random.default_rng(20261028))",
+      "R3: none of the four properties has |Spearman rho| of at least 0.5 with the fluctuation of V of the 23 works at W = 40; a property that does is reported as a possible confound"
+    ]
+  },
+  "check5_frequency": {
+    "script": "checks/author_texture.py",
+    "question": "Does the frequency of the matched words separate the authors more than their mean affect does?",
+    "words": "the matched words of every sentence as recorded by the text step (surface forms that are entries of the lexicon), counted per author and per work",
+    "measures": {
+      "distinctive": "for every author against the other five: the weighted log-odds ratio with an informative Dirichlet prior (Monroe, Colaresi and Quinn 2008; the prior is the counts of all six authors, scaled to a total of 1000), z-scores; the 30 words with the largest z, with their V and A from the lexicon through the map",
+      "mean_affect": "for every author, the token-weighted mean V of all its matched words, and the mean V of its 30 distinctive words",
+      "divergence": "Jensen-Shannon divergence (base 2) between the word distributions of two works: the mean over pairs of works of different authors, and over pairs of works of the same author"
+    },
+    "criteria": [
+      "Q1: the range over the six authors of the mean V of their distinctive words is at least twice the range of their token-weighted mean V",
+      "Q2: the mean divergence between works of different authors exceeds the mean divergence between works of the same author, with p < 0.05 under 10000 permutations of the author labels over the works (same seed as R2)",
+      "Q3 (by eye, recorded): the distinctive words of each author read as a recognisable vocabulary (a world, a register), written down for the discussion"
+    ],
+    "note": "Words of one form only (no lemmas); the lexicon decides which words are counted, so the vocabulary seen is the affect vocabulary, not all words."
+  },
+  "outputs": "results/overall_inspection/{content_channel,story_flow,author_texture}.json and the two figures; the notes by eye in .steering/20261028-overall-inspection/decisions.md (outside the repository)",
+  "not_claimed": "None of the four checks is a finding about the authors, the story or touch. They inform a design discussion; any change to a work made because of them is stated as made after the values were seen."
+}
