@@ -19,11 +19,15 @@ import json
 import platform
 import subprocess
 import sys
+import tempfile
 from dataclasses import dataclass
 from importlib import metadata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+# compile the imported modules afresh: a cached .pyc in src/__pycache__ (ignored by git) is never used, so the code
+# that runs is the source compared with HEAD below
+sys.pycache_prefix = tempfile.mkdtemp(prefix="pycache-")
 sys.path.insert(0, str(ROOT / "src"))
 
 import atact  # noqa: E402
@@ -150,9 +154,14 @@ def run_combo(rows: list[dict], lex: Lexicon, tagger: Tagger, vmap, select: str,
 
 
 def pair_differences(pts: list[dict], pairs: list[list[str]]) -> dict:
+    """b - a within each pair; null when either sentence is unmatched ((0, 0) is a flag, not a value)."""
     by = {q["id"]: q for q in pts}
-    return {f"{a}-{b}": {k: by[b][k] - by[a][k] for k in ("V", "A", "f", "s", "gamma")} | {
-        "matched_a": by[a]["matched"], "matched_b": by[b]["matched"]} for a, b in pairs}
+    out = {}
+    for a, b in pairs:
+        both = not (by[a]["unmatched"] or by[b]["unmatched"])
+        out[f"{a}-{b}"] = {k: (by[b][k] - by[a][k]) if both else None for k in ("V", "A", "f", "s", "gamma")} | {
+            "Z_a": by[a]["Z"], "Z_b": by[b]["Z"], "matched_a": by[a]["matched"], "matched_b": by[b]["matched"]}
+    return out
 
 
 def main() -> None:
@@ -168,15 +177,16 @@ def main() -> None:
     if state["git_dirty"]:
         raise SystemExit("the tracked inputs differ from the last commit")
     same_as_head([SCRIPT, MODULE, COND, ROOT / c["sentences"]["file"], ROOT / c["calibration"]["file"]])
-    atact_mapping = Path(atact.__file__).parent / "mapping.py"
-    if sha256(atact_mapping) != c["atact_mapping_sha256"]:
-        raise SystemExit("the installed atact/mapping.py differs from the one named in the conditions")
+    atact_dir = Path(atact.__file__).parent
+    atact_sha = {n: sha256(atact_dir / n) for n in ("__init__.py", "mapping.py")}
+    if atact_sha != c["atact_sha256"]:
+        raise SystemExit("the installed atact files differ from those named in the conditions")
     rows = check_sentences(c)
     ids = {r["id"] for r in rows}
     if any(i not in ids for pair in c["pairs"] for i in pair) or c["main_combination"] != "B_calibrated/word/pos":
         raise SystemExit("the pairs or the main combination do not match the check sentences and the step")
     b_map = calibration(c)
-    lex = load_memolon(ROOT / c["lexicon"]["file"].split(" ")[0])
+    lex = load_memolon(ROOT / c["lexicon"]["path"])
     if lex.sha256 != c["lexicon"]["sha256"]:
         raise SystemExit("the lexicon does not match the SHA-256 of the conditions")
     tagger = Tagger()
@@ -197,7 +207,7 @@ def main() -> None:
            "lexicon_entries": len(lex.entries)}
     out = {"meta": {"conditions_sha256": hashlib.sha256(cond_raw).hexdigest(), "script_sha256": sha256(SCRIPT),
                     "module_sha256": sha256(MODULE), "lexicon_sha256_checked": lex.sha256,
-                    "ipadic_dicdir_sha256": tagger.dicdir_sha256, "atact_mapping_sha256": sha256(atact_mapping),
+                    "ipadic_dicdir_sha256": tagger.dicdir_sha256, "atact_sha256": atact_sha,
                     "versions": got,
                     "uv_lock_sha256": sha256(ROOT / "uv.lock"), "pyproject_sha256": sha256(ROOT / "pyproject.toml"),
                     "platform": f"{platform.system()} {platform.machine()}", **state,

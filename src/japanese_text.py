@@ -117,8 +117,8 @@ class LinearMap:
 
 
 def clip(x: float) -> float:
-    if math.isnan(x):  # min/max would turn NaN into a number
-        raise ValueError("NaN value")
+    if not math.isfinite(x):  # min/max would turn NaN into a number, and an overflow into a bound
+        raise ValueError(f"non-finite value {x!r}")
     return min(1.0, max(-1.0, x))
 
 
@@ -175,12 +175,16 @@ class SentencePoint:
         return self.Z == 0
 
 
+def check_options(select: str, order: str) -> None:
+    if select not in SELECTIONS or order not in ORDERS:
+        raise ValueError(f"unknown selection {select!r} or order {order!r}")
+
+
 def sentence_point(text: str, lex: Lexicon, tagger: Tagger, vmap: ValueMap, select: str = "pos",
                    order: str = "word") -> SentencePoint:
     """order="word": map and clip each word value, then average (the main form). order="sentence": average the values
     on the scale of the lexicon, then map and clip the mean (kept only for the sensitivity check)."""
-    if select not in SELECTIONS or order not in ORDERS:  # checked first, so that unmatched sentences do not hide it
-        raise ValueError(f"unknown selection {select!r} or order {order!r}")
+    check_options(select, order)  # checked first, so that unmatched sentences do not hide a wrong option
     cand = [t.surface for t in tagger.tokens(text) if is_candidate(t, select)]
     matched = [w for w in cand if w in lex.entries]
     z = len(matched)
@@ -198,6 +202,7 @@ def sentence_point(text: str, lex: Lexicon, tagger: Tagger, vmap: ValueMap, sele
 def text_path(sentences: list[str], lex: Lexicon, tagger: Tagger, vmap: ValueMap, select: str = "pos",
               order: str = "word") -> list[SentencePoint]:
     """The path of a text: one point per sentence, in order (unmatched sentences stay in place, flagged)."""
+    check_options(select, order)
     return [sentence_point(s, lex, tagger, vmap, select, order) for s in sentences]
 
 
@@ -209,6 +214,7 @@ FORWARD_HEADING = re.compile(r"［＃「([^「」［］]+)」は(?:同行|窓)?[
 ACCENT = re.compile(r"〔([\x20-\x7e]+)〕")  # accent decomposition: Latin letters and ASCII marks, closed on the line
 INLINE_HEADING = re.compile(r"［＃((?:同行|窓)?[大中小]見出し)］.*?［＃\1終わり］")
 BLOCK_HEADING_START = re.compile(r"［＃ここから((?:同行|窓)?[大中小]見出し)］")
+HEADING_NOTE_END = re.compile(r"見出し(?:終わり)?］$")
 HEADER_SEARCH_LINES = 60
 
 
@@ -247,7 +253,7 @@ def _remove_notes(s: str, rep: AozoraReport, heading_guard: bool = True) -> str:
             out.append(s[i:])
             break
         end = _note_end(s, k)
-        if heading_guard and "見出し" in s[k:end]:
+        if heading_guard and HEADING_NOTE_END.search(s[k:end]):
             # a heading note that the heading rules did not take (its text would stay in the body)
             raise ValueError(f"unhandled heading note: {s[k:end]!r}")
         if k > i and s[k - 1] == "※":
@@ -278,8 +284,9 @@ def strip_aozora(text: str) -> tuple[str, AozoraReport]:
     an error if it is not found), the footer from the line that starts with 底本： or from the note ［＃本文終わり］,
     whichever comes first (an error if neither is found), the ruby start mark ｜ and ruby 《...》, headings (forward notes X［＃「X」は中見出し］, inline
     start/end notes and multi-line ［＃ここから中見出し］ blocks, with their text), external character notes
-    ※［＃...］ (replaced by GAIJI), every other note ［＃...］ (nested notes counted; the text of a warichu note stays
-    in the body), the brackets 〔〕 of accent decomposition (only around ASCII text; other 〔〕 are ordinary brackets), and leading and trailing white space of each line. Empty lines are kept as empty strings."""
+    ※［＃...］ (replaced by GAIJI), every other note ［＃...］ (nested brackets are matched; the text of a warichu note
+    stays in the body), the brackets 〔〕 of accent decomposition (only around ASCII text, so an ordinary 〔1〕 loses
+    its brackets too; other 〔〕 are kept as ordinary brackets), and leading and trailing white space of each line. Empty lines are kept as empty strings."""
     rep = AozoraReport()
     lines = text.replace("\r\n", "\n").replace("\r", "\n").split("\n")
     rep.lines_in = len(lines)
@@ -309,6 +316,8 @@ def strip_aozora(text: str) -> tuple[str, AozoraReport]:
             continue
         if m := BLOCK_HEADING_START.search(ln):
             _no_text_outside_notes(ln)
+            if f"［＃ここで{m.group(1)}終わり］" in ln:
+                raise ValueError(f"heading block opens and closes on one line: {ln!r}")
             block = m.group(1)
             rep.headings += 1
             rep.heading_block_lines += 1
@@ -334,7 +343,7 @@ def _no_text_outside_notes(ln: str) -> None:
 
 
 def _has_word_char(s: str) -> bool:
-    return any(unicodedata.category(ch)[0] in "LN" and ch != GAIJI for ch in s)
+    return any(unicodedata.category(ch)[0] in "LN" for ch in s)  # GAIJI (〓, So) is not a letter
 
 
 def _next_visible(s: str, i: int) -> str:

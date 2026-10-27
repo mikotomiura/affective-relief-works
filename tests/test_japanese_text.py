@@ -102,6 +102,16 @@ def test_accent_brackets_and_indentation():
     assert body.strip() == "繁雑な日本の e'tiquette も、〔亀甲〕の括弧。"
 
 
+def test_heading_block_on_one_line_fails():
+    with pytest.raises(ValueError, match="one line"):
+        strip_aozora(HEADER + "［＃ここから中見出し］［＃ここで中見出し終わり］\n本文。" + FOOTER)
+
+
+def test_note_that_only_mentions_the_word_heading_is_removed():
+    body, _ = strip_aozora(HEADER + "見出しという語［＃「見出し」に傍点］。" + FOOTER)
+    assert body.strip() == "見出しという語。"
+
+
 def test_text_beside_a_heading_block_note_fails():
     with pytest.raises(ValueError, match="beside"):
         strip_aozora(HEADER + "本文［＃ここから中見出し］\n見出し\n［＃ここで中見出し終わり］\n" + FOOTER)
@@ -227,6 +237,19 @@ def test_order_of_clip_and_mean(tagger):
     assert sent.V == pytest.approx(1.0)  # (3 + -1) / 2 = 1, then clip
     with pytest.raises(ValueError):
         sentence_point("本。", lex, tagger, IDENTITY, order="later")
+
+
+def test_unknown_options_fail_on_an_empty_path(tagger):
+    with pytest.raises(ValueError):
+        text_path([], Lexicon({}), tagger, IDENTITY, select="nouns")
+    with pytest.raises(ValueError):
+        text_path([], Lexicon({}), tagger, IDENTITY, order="later")
+
+
+def test_overflow_in_the_sentence_order_is_rejected(tagger):
+    lex = Lexicon({"本": (1e308, 0.0)})
+    with pytest.raises(ValueError):
+        sentence_point("本と本。", lex, tagger, LinearMap(1e-308, -1.0, 1.0, 0.0), order="sentence")
 
 
 def test_non_finite_values_are_rejected():
