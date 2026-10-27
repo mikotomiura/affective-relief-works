@@ -1,0 +1,1303 @@
+{
+ "meta": {
+  "conditions_sha256": "6765ade369abcac8b000073378ef7d0b6d9273a85145baf9f7f085c6a66b8f4b",
+  "spec_sha256": "0ab265408e73e8a7b75e58f60df990ebd718db0f2b8b3b3c27d501bcdad096dc",
+  "script_sha256": "56fa1d81d8b190f309920cb91ed93e5e9f08121e67088a78b37d543d291ef795",
+  "library_sha256": {
+   "src/atact/field.py": "4162e8faa60ca78257fd0777a3a7dceaaa7bbab6bfe6691de46f49a339b641c5",
+   "src/atact/lexicon.py": "36cad1e49a25b352a7ae04868c6693ef349e8276d51909061eeb378085065e81",
+   "src/atact/mapping.py": "83a50faaa664ddcb99004392e13a73fb096a85588a8b3c423b2c8b71ce626d26",
+   "src/atact/transform.py": "5d35c9c10dfa6c8d5d3b2a9e8126ab45b895a1be14e05650c3ef60ffd3431bd1",
+   "uv.lock": "3c607b98159fa9c06fdff7ec2fceef1de576c8d10d3329916da797acbfd65e28"
+  },
+  "lexicon_sha256": "42c718817fc91d5c133581b24b0bb31d2b14a0b16edb19bc6ce6ab70343e5a45",
+  "k2_sha256": "84678dbf8b278e9c86c62281bb43e082c57f27e6620da98df85c57660a8cb463",
+  "numpy": "2.5.4",
+  "scipy": "1.18.1",
+  "sklearn": "1.9.1",
+  "python": "3.13.12",
+  "git_commit": "e434776ea00b307b7832d092502585bd2eba6c1b",
+  "git_dirty": false,
+  "smoke": false,
+  "platform": "Darwin arm64",
+  "started": "2026-10-26T05:14:20+00:00",
+  "finished": "2026-10-26T05:14:23+00:00"
+ },
+ "interpretation": [
+  "Sentences are split and tokenised by atact.lexicon. In the variant without function words a matched term is dropped when every token of it is in the stop-word list; V, A and Z are then recomputed from the remaining terms, and Z = 0 gives (0, 0) with the unmatched flag, as in the main variant.",
+  "The gradient of S2.6 is numpy.gradient(X, 1/N), its magnitude hypot(d/dx, d/dy), maximised over all grid points, edges included. Physical slope = (height scale) |grad H| / L with height scale D / (2 s_max) for the common exports and D / (max H - min H) for min-max; angle = atan(slope) in degrees.",
+  "P-T1 compares the exported min-max image z / D with (T - min T) / (max T - min T), T = T_gamma(F), written out separately, elementwise. P-T3 uses G = max |grad F| on the same grid and is checked only for gamma > 1 (sigma_eps is defined there). P-T4 is judged per text when at least two of its sentences are unmatched in the variant without function words: their (V, A) must be (0, 0), their parameters those of (0, 0), and their tiles equal on every grid and export; otherwise it is reported as not applicable. All texts share the seed and the grids.",
+  "Before any tile is computed, the sentence counts and Z of every text and variant are compared with 'expected_coverage' of the conditions; a difference stops the run. A prediction that fails does not stop the run; it is reported as it comes out. The real run refuses to start when the tracked inputs differ from the last commit.",
+  "edge_argmax records whether the grid point of the largest slope lies in the first or last row or column; f is in general not an integer here, so the field jumps at the domain edge (S1.6), and the one-sided differences at the edge do not see the jump.",
+  "In the figure, unmatched sentences (Z = 0) are ringed, and labels of coincident points are merged.",
+  "Grey levels of the figure: z / D + 1/2 for the common exports (so that z = 0 is mid grey and |z| <= D/2 under ampsum and s <= s_max), z / D for min-max; both on [0, 1] with the grey colour map, no shading, origin lower."
+ ],
+ "analysis": {
+  "dimensions": {
+   "D": 1.2,
+   "L": 50.0,
+   "s_max": 0.3
+  },
+  "eps": 0.3529079159926097,
+  "seed": 42,
+  "grids_N": [
+   128,
+   1024
+  ],
+  "texts": {
+   "A": {
+    "content": "Is this the place? Where am I? Who am I?",
+    "variants": {
+     "main": [
+      {
+       "text": "Is this the place?",
+       "matched": [
+        "is",
+        "this",
+        "place"
+       ],
+       "Z": 3,
+       "unmatched": false,
+       "V": 0.048666666666666664,
+       "A": -0.15933333333333333,
+       "f": 4.681333333333333,
+       "f_frac": 0.6813333333333329,
+       "s": 0.17415999999999998,
+       "gamma": 1.64749,
+       "grids": {
+        "128": {
+         "G": 45.83835493324779,
+         "angle_deg": {
+          "common": 30.7807448037239,
+          "minmax": 50.99302244467467,
+          "common_eps": 22.904939964534965
+         },
+         "slope": {
+          "common": 0.5956642408803211,
+          "minmax": 1.2345897084847868,
+          "common_eps": 0.42251814512174735
+         },
+         "edge_argmax": {
+          "common": true,
+          "minmax": true,
+          "common_eps": true
+         },
+         "span_mm": {
+          "common": 0.5789754151876549,
+          "minmax": 1.2,
+          "common_eps": 0.5686778167722797
+         },
+         "shape_change_mm": 0.033260016778618624,
+         "pt1_diff": 3.3306690738754696e-16,
+         "pt2_common_expected": 0.5789754151876549,
+         "pt3_slope_bound": 0.4920747024827142,
+         "pt3_shape_bound_mm": 0.18510414255420687
+        },
+        "1024": {
+         "G": 55.92117670092546,
+         "angle_deg": {
+          "common": 51.53099217068382,
+          "minmax": 68.9821698348998,
+          "common_eps": 26.741217878612368
+         },
+         "slope": {
+          "common": 1.2585690715030489,
+          "minmax": 2.602667910289522,
+          "common_eps": 0.5038492910340793
+         },
+         "edge_argmax": {
+          "common": true,
+          "minmax": true,
+          "common_eps": false
+         },
+         "span_mm": {
+          "common": 0.580282593808003,
+          "minmax": 1.2,
+          "common_eps": 0.5701276148931933
+         },
+         "shape_change_mm": 0.033260016815626854,
+         "pt1_diff": 4.440892098500626e-16,
+         "pt2_common_expected": 0.5802825938080028,
+         "pt3_slope_bound": 0.60031378586041,
+         "pt3_shape_bound_mm": 0.18510414255420687
+        }
+       }
+      },
+      {
+       "text": "Where am I?",
+       "matched": [
+        "where",
+        "am"
+       ],
+       "Z": 2,
+       "unmatched": false,
+       "V": 0.0,
+       "A": 0.0,
+       "f": 5.0,
+       "f_frac": 0.0,
+       "s": 0.18,
+       "gamma": 1.75,
+       "grids": {
+        "128": {
+         "G": 47.60663999406239,
+         "angle_deg": {
+          "common": 34.455894972746705,
+          "minmax": 53.65989930500625,
+          "common_eps": 25.486573118077242
+         },
+         "slope": {
+          "common": 0.6861481711917595,
+          "minmax": 1.359339989913758,
+          "common_eps": 0.47668790711835257
+         },
+         "edge_argmax": {
+          "common": true,
+          "minmax": true,
+          "common_eps": true
+         },
+         "span_mm": {
+          "common": 0.6057188132031265,
+          "minmax": 1.2,
+          "common_eps": 0.5940906162604633
+         },
+         "shape_change_mm": 0.039837664858533,
+         "pt1_diff": 3.3306690738754696e-16,
+         "pt2_common_expected": 0.6057188132031265,
+         "pt3_slope_bound": 0.5492662982078437,
+         "pt3_shape_bound_mm": 0.19852870092401917
+        },
+        "1024": {
+         "G": 59.701304330692665,
+         "angle_deg": {
+          "common": 56.9762923639496,
+          "minmax": 71.82473418834441,
+          "common_eps": 29.987082795361925
+         },
+         "slope": {
+          "common": 1.538470935843649,
+          "minmax": 3.0459483080004905,
+          "common_eps": 0.5770497113043941
+         },
+         "edge_argmax": {
+          "common": true,
+          "minmax": true,
+          "common_eps": false
+         },
+         "span_mm": {
+          "common": 0.6061052047939355,
+          "minmax": 1.2,
+          "common_eps": 0.594526459871606
+         },
+         "shape_change_mm": 0.039837664917418546,
+         "pt1_diff": 4.440892098500626e-16,
+         "pt2_common_expected": 0.6061052047939355,
+         "pt3_slope_bound": 0.6888096793218205,
+         "pt3_shape_bound_mm": 0.19852870092401917
+        }
+       }
+      },
+      {
+       "text": "Who am I?",
+       "matched": [
+        "am"
+       ],
+       "Z": 1,
+       "unmatched": false,
+       "V": 0.0,
+       "A": 0.0,
+       "f": 5.0,
+       "f_frac": 0.0,
+       "s": 0.18,
+       "gamma": 1.75,
+       "grids": {
+        "128": {
+         "G": 47.60663999406239,
+         "angle_deg": {
+          "common": 34.455894972746705,
+          "minmax": 53.65989930500625,
+          "common_eps": 25.486573118077242
+         },
+         "slope": {
+          "common": 0.6861481711917595,
+          "minmax": 1.359339989913758,
+          "common_eps": 0.47668790711835257
+         },
+         "edge_argmax": {
+          "common": true,
+          "minmax": true,
+          "common_eps": true
+         },
+         "span_mm": {
+          "common": 0.6057188132031265,
+          "minmax": 1.2,
+          "common_eps": 0.5940906162604633
+         },
+         "shape_change_mm": 0.039837664858533,
+         "pt1_diff": 3.3306690738754696e-16,
+         "pt2_common_expected": 0.6057188132031265,
+         "pt3_slope_bound": 0.5492662982078437,
+         "pt3_shape_bound_mm": 0.19852870092401917
+        },
+        "1024": {
+         "G": 59.701304330692665,
+         "angle_deg": {
+          "common": 56.9762923639496,
+          "minmax": 71.82473418834441,
+          "common_eps": 29.987082795361925
+         },
+         "slope": {
+          "common": 1.538470935843649,
+          "minmax": 3.0459483080004905,
+          "common_eps": 0.5770497113043941
+         },
+         "edge_argmax": {
+          "common": true,
+          "minmax": true,
+          "common_eps": false
+         },
+         "span_mm": {
+          "common": 0.6061052047939355,
+          "minmax": 1.2,
+          "common_eps": 0.594526459871606
+         },
+         "shape_change_mm": 0.039837664917418546,
+         "pt1_diff": 4.440892098500626e-16,
+         "pt2_common_expected": 0.6061052047939355,
+         "pt3_slope_bound": 0.6888096793218205,
+         "pt3_shape_bound_mm": 0.19852870092401917
+        }
+       }
+      }
+     ],
+     "function_words_removed": [
+      {
+       "text": "Is this the place?",
+       "matched": [
+        "place"
+       ],
+       "Z": 1,
+       "unmatched": false,
+       "V": 0.146,
+       "A": -0.478,
+       "f": 4.0440000000000005,
+       "f_frac": 0.04400000000000048,
+       "s": 0.16247999999999999,
+       "gamma": 1.4424700000000001,
+       "grids": {
+        "128": {
+         "G": 41.55558147527047,
+         "angle_deg": {
+          "common": 22.97842806945627,
+          "minmax": 43.963508862161675,
+          "common_eps": 17.39110303980164
+         },
+         "slope": {
+          "common": 0.42403054841225696,
+          "minmax": 0.9644587053751799,
+          "common_eps": 0.3132104812913299
+         },
+         "edge_argmax": {
+          "common": true,
+          "minmax": true,
+          "common_eps": true
+         },
+         "span_mm": {
+          "common": 0.5275878119600445,
+          "minmax": 1.2,
+          "common_eps": 0.520390274200749
+         },
+         "shape_change_mm": 0.020987965818683167,
+         "pt1_diff": 3.3306690738754696e-16,
+         "pt2_common_expected": 0.5275878119600445,
+         "pt3_slope_bound": 0.37849496154104856,
+         "pt3_shape_bound_mm": 0.15784970174602198
+        },
+        "1024": {
+         "G": 48.341549066409286,
+         "angle_deg": {
+          "common": 38.85797533036349,
+          "minmax": 61.37441571793924,
+          "common_eps": 20.36673172686659
+         },
+         "slope": {
+          "common": 0.8056879763759126,
+          "minmax": 1.8321826687078433,
+          "common_eps": 0.3712358612891224
+         },
+         "edge_argmax": {
+          "common": true,
+          "minmax": true,
+          "common_eps": false
+         },
+         "span_mm": {
+          "common": 0.5276905999405366,
+          "minmax": 1.2,
+          "common_eps": 0.5204995065008683
+         },
+         "shape_change_mm": 0.020987966831691927,
+         "pt1_diff": 5.551115123125783e-16,
+         "pt2_common_expected": 0.5276905999405367,
+         "pt3_slope_bound": 0.44030265261993196,
+         "pt3_shape_bound_mm": 0.15784970174602198
+        }
+       }
+      },
+      {
+       "text": "Where am I?",
+       "matched": [],
+       "Z": 0,
+       "unmatched": true,
+       "V": 0.0,
+       "A": 0.0,
+       "f": 5.0,
+       "f_frac": 0.0,
+       "s": 0.18,
+       "gamma": 1.75,
+       "grids": {
+        "128": {
+         "G": 47.60663999406239,
+         "angle_deg": {
+          "common": 34.455894972746705,
+          "minmax": 53.65989930500625,
+          "common_eps": 25.486573118077242
+         },
+         "slope": {
+          "common": 0.6861481711917595,
+          "minmax": 1.359339989913758,
+          "common_eps": 0.47668790711835257
+         },
+         "edge_argmax": {
+          "common": true,
+          "minmax": true,
+          "common_eps": true
+         },
+         "span_mm": {
+          "common": 0.6057188132031265,
+          "minmax": 1.2,
+          "common_eps": 0.5940906162604633
+         },
+         "shape_change_mm": 0.039837664858533,
+         "pt1_diff": 3.3306690738754696e-16,
+         "pt2_common_expected": 0.6057188132031265,
+         "pt3_slope_bound": 0.5492662982078437,
+         "pt3_shape_bound_mm": 0.19852870092401917
+        },
+        "1024": {
+         "G": 59.701304330692665,
+         "angle_deg": {
+          "common": 56.9762923639496,
+          "minmax": 71.82473418834441,
+          "common_eps": 29.987082795361925
+         },
+         "slope": {
+          "common": 1.538470935843649,
+          "minmax": 3.0459483080004905,
+          "common_eps": 0.5770497113043941
+         },
+         "edge_argmax": {
+          "common": true,
+          "minmax": true,
+          "common_eps": false
+         },
+         "span_mm": {
+          "common": 0.6061052047939355,
+          "minmax": 1.2,
+          "common_eps": 0.594526459871606
+         },
+         "shape_change_mm": 0.039837664917418546,
+         "pt1_diff": 4.440892098500626e-16,
+         "pt2_common_expected": 0.6061052047939355,
+         "pt3_slope_bound": 0.6888096793218205,
+         "pt3_shape_bound_mm": 0.19852870092401917
+        }
+       }
+      },
+      {
+       "text": "Who am I?",
+       "matched": [],
+       "Z": 0,
+       "unmatched": true,
+       "V": 0.0,
+       "A": 0.0,
+       "f": 5.0,
+       "f_frac": 0.0,
+       "s": 0.18,
+       "gamma": 1.75,
+       "grids": {
+        "128": {
+         "G": 47.60663999406239,
+         "angle_deg": {
+          "common": 34.455894972746705,
+          "minmax": 53.65989930500625,
+          "common_eps": 25.486573118077242
+         },
+         "slope": {
+          "common": 0.6861481711917595,
+          "minmax": 1.359339989913758,
+          "common_eps": 0.47668790711835257
+         },
+         "edge_argmax": {
+          "common": true,
+          "minmax": true,
+          "common_eps": true
+         },
+         "span_mm": {
+          "common": 0.6057188132031265,
+          "minmax": 1.2,
+          "common_eps": 0.5940906162604633
+         },
+         "shape_change_mm": 0.039837664858533,
+         "pt1_diff": 3.3306690738754696e-16,
+         "pt2_common_expected": 0.6057188132031265,
+         "pt3_slope_bound": 0.5492662982078437,
+         "pt3_shape_bound_mm": 0.19852870092401917
+        },
+        "1024": {
+         "G": 59.701304330692665,
+         "angle_deg": {
+          "common": 56.9762923639496,
+          "minmax": 71.82473418834441,
+          "common_eps": 29.987082795361925
+         },
+         "slope": {
+          "common": 1.538470935843649,
+          "minmax": 3.0459483080004905,
+          "common_eps": 0.5770497113043941
+         },
+         "edge_argmax": {
+          "common": true,
+          "minmax": true,
+          "common_eps": false
+         },
+         "span_mm": {
+          "common": 0.6061052047939355,
+          "minmax": 1.2,
+          "common_eps": 0.594526459871606
+         },
+         "shape_change_mm": 0.039837664917418546,
+         "pt1_diff": 4.440892098500626e-16,
+         "pt2_common_expected": 0.6061052047939355,
+         "pt3_slope_bound": 0.6888096793218205,
+         "pt3_shape_bound_mm": 0.19852870092401917
+        }
+       }
+      }
+     ]
+    }
+   },
+   "B": {
+    "content": "Is this the old station in the cold rain? Where am I, lost among strangers on an empty platform? Who am I, when no one knows my face or my voice?",
+    "variants": {
+     "main": [
+      {
+       "text": "Is this the old station in the cold rain?",
+       "matched": [
+        "is",
+        "this",
+        "station",
+        "cold",
+        "rain"
+       ],
+       "Z": 5,
+       "unmatched": false,
+       "V": 0.033600000000000005,
+       "A": -0.08280000000000001,
+       "f": 4.8344000000000005,
+       "f_frac": 0.8344000000000005,
+       "s": 0.175968,
+       "gamma": 1.694257,
+       "grids": {
+        "128": {
+         "G": 46.859106425581544,
+         "angle_deg": {
+          "common": 32.14626856606169,
+          "minmax": 52.046200513538714,
+          "common_eps": 24.29106393186475
+         },
+         "slope": {
+          "common": 0.6284246964447153,
+          "minmax": 1.2820711867292036,
+          "common_eps": 0.45132956648334094
+         },
+         "edge_argmax": {
+          "common": true,
+          "minmax": true,
+          "common_eps": true
+         },
+         "span_mm": {
+          "common": 0.5881963837417866,
+          "minmax": 1.2,
+          "common_eps": 0.5773187191650538
+         },
+         "shape_change_mm": 0.03605226456102091,
+         "pt1_diff": 3.3306690738754696e-16,
+         "pt2_common_expected": 0.5881963837417866,
+         "pt3_slope_bound": 0.5177107220720486,
+         "pt3_shape_bound_mm": 0.19031816045206454
+        },
+        "1024": {
+         "G": 57.73706048714221,
+         "angle_deg": {
+          "common": 53.816222495297104,
+          "minmax": 70.2434881416668,
+          "common_eps": 28.143728750672974
+         },
+         "slope": {
+          "common": 1.3671387547998666,
+          "minmax": 2.7842356892159925,
+          "common_eps": 0.5349314776247891
+         },
+         "edge_argmax": {
+          "common": true,
+          "minmax": true,
+          "common_eps": false
+         },
+         "span_mm": {
+          "common": 0.5892340623727166,
+          "minmax": 1.2,
+          "common_eps": 0.5784780721795185
+         },
+         "shape_change_mm": 0.036052264629793836,
+         "pt1_diff": 4.440892098500626e-16,
+         "pt2_common_expected": 0.5892340623727166,
+         "pt3_slope_bound": 0.6378929850612272,
+         "pt3_shape_bound_mm": 0.19031816045206454
+        }
+       }
+      },
+      {
+       "text": "Where am I, lost among strangers on an empty platform?",
+       "matched": [
+        "where",
+        "am",
+        "lost",
+        "among",
+        "on",
+        "empty",
+        "platform"
+       ],
+       "Z": 7,
+       "unmatched": false,
+       "V": -0.14157142857142857,
+       "A": -0.13199999999999998,
+       "f": 4.736,
+       "f_frac": 0.7359999999999998,
+       "s": 0.1969885714285714,
+       "gamma": 1.7191874999999999,
+       "grids": {
+        "128": {
+         "G": 45.623639847464325,
+         "angle_deg": {
+          "common": 34.72713018866898,
+          "minmax": 51.707715295454335,
+          "common_eps": 24.884618093813856
+         },
+         "slope": {
+          "common": 0.6931336001963639,
+          "minmax": 1.2665702354487807,
+          "common_eps": 0.4638582756652552
+         },
+         "edge_argmax": {
+          "common": true,
+          "minmax": true,
+          "common_eps": true
+         },
+         "span_mm": {
+          "common": 0.6567028791268896,
+          "minmax": 1.2,
+          "common_eps": 0.643859655378626
+         },
+         "shape_change_mm": 0.04181114249548998,
+         "pt1_diff": 4.440892098500626e-16,
+         "pt2_common_expected": 0.6567028791268895,
+         "pt3_slope_bound": 0.5696133913600938,
+         "pt3_shape_bound_mm": 0.2149607548416145
+        },
+        "1024": {
+         "G": 56.56955014294483,
+         "angle_deg": {
+          "common": 58.149129854309344,
+          "minmax": 71.1006635202223,
+          "common_eps": 30.631860347650335
+         },
+         "slope": {
+          "common": 1.609642098849284,
+          "minmax": 2.920871366052461,
+          "common_eps": 0.5921491522400978
+         },
+         "edge_argmax": {
+          "common": true,
+          "minmax": true,
+          "common_eps": false
+         },
+         "span_mm": {
+          "common": 0.6612994125892117,
+          "minmax": 1.2,
+          "common_eps": 0.6489725114380469
+         },
+         "shape_change_mm": 0.0418111425532897,
+         "pt1_diff": 3.3306690738754696e-16,
+         "pt2_common_expected": 0.6612994125892117,
+         "pt3_slope_bound": 0.7062736207012331,
+         "pt3_shape_bound_mm": 0.2149607548416145
+        }
+       }
+      },
+      {
+       "text": "Who am I, when no one knows my face or my voice?",
+       "matched": [
+        "am",
+        "when",
+        "no one",
+        "face",
+        "voice"
+       ],
+       "Z": 5,
+       "unmatched": false,
+       "V": -0.014000000000000007,
+       "A": -0.2676,
+       "f": 4.4648,
+       "f_frac": 0.4648000000000003,
+       "s": 0.18168,
+       "gamma": 1.606316,
+       "grids": {
+        "128": {
+         "G": 44.26429250514795,
+         "angle_deg": {
+          "common": 30.35049184631421,
+          "minmax": 49.42053336566426,
+          "common_eps": 22.555752665905683
+         },
+         "slope": {
+          "common": 0.5855355957562134,
+          "minmax": 1.1675665807385065,
+          "common_eps": 0.41535404200275955
+         },
+         "edge_argmax": {
+          "common": true,
+          "minmax": true,
+          "common_eps": true
+         },
+         "span_mm": {
+          "common": 0.6018009820587895,
+          "minmax": 1.2,
+          "common_eps": 0.5916064780585263
+         },
+         "shape_change_mm": 0.03245835730905009,
+         "pt1_diff": 4.440892098500626e-16,
+         "pt2_common_expected": 0.6018009820587895,
+         "pt3_slope_bound": 0.4872815324649747,
+         "pt3_shape_bound_mm": 0.18999278458352772
+        },
+        "1024": {
+         "G": 53.34086991744144,
+         "angle_deg": {
+          "common": 51.045595732152144,
+          "minmax": 67.90562968145177,
+          "common_eps": 26.257291511705795
+         },
+         "slope": {
+          "common": 1.2369084944836142,
+          "minmax": 2.4633973657040884,
+          "common_eps": 0.49330364573033697
+         },
+         "edge_argmax": {
+          "common": true,
+          "minmax": true,
+          "common_eps": false
+         },
+         "span_mm": {
+          "common": 0.6025378666247363,
+          "minmax": 1.2,
+          "common_eps": 0.5924138923257041
+         },
+         "shape_change_mm": 0.03245835731388093,
+         "pt1_diff": 5.551115123125783e-16,
+         "pt2_common_expected": 0.6025378666247362,
+         "pt3_slope_bound": 0.5872006388301102,
+         "pt3_shape_bound_mm": 0.18999278458352772
+        }
+       }
+      }
+     ],
+     "function_words_removed": [
+      {
+       "text": "Is this the old station in the cold rain?",
+       "matched": [
+        "station",
+        "cold",
+        "rain"
+       ],
+       "Z": 3,
+       "unmatched": false,
+       "V": 0.056000000000000015,
+       "A": -0.138,
+       "f": 4.724,
+       "f_frac": 0.7240000000000002,
+       "s": 0.17328,
+       "gamma": 1.657095,
+       "grids": {
+        "128": {
+         "G": 46.33351967147076,
+         "angle_deg": {
+          "common": 30.228796139203936,
+          "minmax": 50.59915650317381,
+          "common_eps": 22.129773909170478
+         },
+         "slope": {
+          "common": 0.5826869291606345,
+          "minmax": 1.2173833840749668,
+          "common_eps": 0.406663354911207
+         },
+         "edge_argmax": {
+          "common": true,
+          "minmax": true,
+          "common_eps": true
+         },
+         "span_mm": {
+          "common": 0.5743665669661406,
+          "minmax": 1.2,
+          "common_eps": 0.5637539160657696
+         },
+         "shape_change_mm": 0.03358818042983173,
+         "pt1_diff": 4.440892098500626e-16,
+         "pt2_common_expected": 0.5743665669661405,
+         "pt3_slope_bound": 0.4967964078234981,
+         "pt3_shape_bound_mm": 0.18484495570895773
+        },
+        "1024": {
+         "G": 56.427449845659375,
+         "angle_deg": {
+          "common": 53.41451811057214,
+          "minmax": 70.32805452193483,
+          "common_eps": 26.91528201092921
+         },
+         "slope": {
+          "common": 1.3472141849008465,
+          "minmax": 2.7972065722615986,
+          "common_eps": 0.5076643718814741
+         },
+         "edge_argmax": {
+          "common": true,
+          "minmax": true,
+          "common_eps": false
+         },
+         "span_mm": {
+          "common": 0.5779541053251264,
+          "minmax": 1.2,
+          "common_eps": 0.5677483308197178
+         },
+         "shape_change_mm": 0.03358818054907844,
+         "pt1_diff": 4.440892098500626e-16,
+         "pt2_common_expected": 0.5779541053251264,
+         "pt3_slope_bound": 0.6050253592805533,
+         "pt3_shape_bound_mm": 0.18484495570895773
+        }
+       }
+      },
+      {
+       "text": "Where am I, lost among strangers on an empty platform?",
+       "matched": [
+        "lost",
+        "platform"
+       ],
+       "Z": 2,
+       "unmatched": false,
+       "V": -0.21550000000000002,
+       "A": 0.0030000000000000027,
+       "f": 5.006,
+       "f_frac": 0.006000000000000227,
+       "s": 0.20586,
+       "gamma": 1.8157687500000002,
+       "grids": {
+        "128": {
+         "G": 47.956512774426166,
+         "angle_deg": {
+          "common": 39.08479011764611,
+          "minmax": 54.42085791405524,
+          "common_eps": 29.236670099180394
+         },
+         "slope": {
+          "common": 0.8122372644693311,
+          "minmax": 1.3978600499291116,
+          "common_eps": 0.559721331366023
+         },
+         "edge_argmax": {
+          "common": true,
+          "minmax": true,
+          "common_eps": true
+         },
+         "span_mm": {
+          "common": 0.6972691704098888,
+          "minmax": 1.2,
+          "common_eps": 0.6832659883214943
+         },
+         "shape_change_mm": 0.04951099479433606,
+         "pt1_diff": 4.440892098500626e-16,
+         "pt2_common_expected": 0.6972691704098887,
+         "pt3_slope_bound": 0.647369705098527,
+         "pt3_shape_bound_mm": 0.23199846388733827
+        },
+        "1024": {
+         "G": 59.76371182243954,
+         "angle_deg": {
+          "common": 62.47201277169853,
+          "minmax": 73.14678628313284,
+          "common_eps": 34.02976646381134
+         },
+         "slope": {
+          "common": 1.9186932694042107,
+          "minmax": 3.3010763213648087,
+          "common_eps": 0.6752646676797208
+         },
+         "edge_argmax": {
+          "common": true,
+          "minmax": true,
+          "common_eps": false
+         },
+         "span_mm": {
+          "common": 0.6974791550209076,
+          "minmax": 1.2,
+          "common_eps": 0.6835055538993802
+         },
+         "shape_change_mm": 0.04951099630943313,
+         "pt1_diff": 3.3306690738754696e-16,
+         "pt2_common_expected": 0.6974791550209076,
+         "pt3_slope_bound": 0.806756251858202,
+         "pt3_shape_bound_mm": 0.23199846388733827
+        }
+       }
+      },
+      {
+       "text": "Who am I, when no one knows my face or my voice?",
+       "matched": [
+        "face",
+        "voice"
+       ],
+       "Z": 2,
+       "unmatched": false,
+       "V": 0.16499999999999998,
+       "A": -0.484,
+       "f": 4.032,
+       "f_frac": 0.03200000000000003,
+       "s": 0.1602,
+       "gamma": 1.4335025,
+       "grids": {
+        "128": {
+         "G": 41.58761250762926,
+         "angle_deg": {
+          "common": 23.663146954650276,
+          "minmax": 45.351067840712304,
+          "common_eps": 17.222009889923495
+         },
+         "slope": {
+          "common": 0.438202377146627,
+          "minmax": 1.012330284973409,
+          "common_eps": 0.30997271427837814
+         },
+         "edge_argmax": {
+          "common": true,
+          "minmax": true,
+          "common_eps": true
+         },
+         "span_mm": {
+          "common": 0.5194380335956903,
+          "minmax": 1.2,
+          "common_eps": 0.5124455855668885
+         },
+         "shape_change_mm": 0.02025781843607454,
+         "pt1_diff": 4.440892098500626e-16,
+         "pt2_common_expected": 0.5194380335956904,
+         "pt3_slope_bound": 0.37169361881702095,
+         "pt3_shape_bound_mm": 0.1549332673283819
+        },
+        "1024": {
+         "G": 48.16662826233347,
+         "angle_deg": {
+          "common": 39.46487263596957,
+          "minmax": 62.26433980727012,
+          "common_eps": 19.932059087451155
+         },
+         "slope": {
+          "common": 0.8233072055772608,
+          "minmax": 1.901842348265498,
+          "common_eps": 0.3626279332596325
+         },
+         "edge_argmax": {
+          "common": true,
+          "minmax": true,
+          "common_eps": false
+         },
+         "span_mm": {
+          "common": 0.5194797810626899,
+          "minmax": 1.2,
+          "common_eps": 0.5124901515786214
+         },
+         "shape_change_mm": 0.020257818460137515,
+         "pt1_diff": 3.3306690738754696e-16,
+         "pt2_common_expected": 0.5194797810626899,
+         "pt3_slope_bound": 0.4304942574367925,
+         "pt3_shape_bound_mm": 0.1549332673283819
+        }
+       }
+      }
+     ]
+    }
+   }
+  },
+  "predictions": {
+   "P-T1": {
+    "max_diff": {
+     "main N=128": 4.440892098500626e-16,
+     "main N=1024": 5.551115123125783e-16,
+     "function_words_removed N=128": 4.440892098500626e-16,
+     "function_words_removed N=1024": 5.551115123125783e-16
+    },
+    "holds": true
+   },
+   "P-T2": {
+    "max_minmax_dev_mm": 0.0,
+    "max_common_dev_mm": 1.1102230246251565e-16,
+    "holds": true
+   },
+   "P-T3": {
+    "cases_checked": 24,
+    "holds": true
+   },
+   "P-T4": {
+    "A": {
+     "unmatched": [
+      1,
+      2
+     ],
+     "at_origin_with_params_of_(0,0)": true,
+     "max_diff_mm": 0.0,
+     "holds": true
+    },
+    "B": {
+     "unmatched": [],
+     "holds": null,
+     "note": "not applicable: fewer than two unmatched sentences"
+    }
+   }
+  },
+  "comparison": {
+   "main": {
+    "A": {
+     "Z": [
+      3,
+      2,
+      1
+     ],
+     "common_span_ratio_to_largest": [
+      0.8816398307213512,
+      0.9223635718004642,
+      0.9223635718004642
+     ]
+    },
+    "B": {
+     "Z": [
+      5,
+      7,
+      5
+     ],
+     "common_span_ratio_to_largest": [
+      0.8956811404935747,
+      1.0,
+      0.9163976604745602
+     ]
+    }
+   },
+   "function_words_removed": {
+    "A": {
+     "Z": [
+      1,
+      0,
+      0
+     ],
+     "common_span_ratio_to_largest": [
+      0.7566487008882131,
+      0.8687015558812896,
+      0.8687015558812896
+     ]
+    },
+    "B": {
+     "Z": [
+      3,
+      2,
+      2
+     ],
+     "common_span_ratio_to_largest": [
+      0.8237372184812072,
+      1.0,
+      0.7449605627771256
+     ]
+    }
+   }
+  }
+ },
+ "figures": {
+  "main": {
+   "file": "results/figs/fig5_text_path.pdf",
+   "grey": [
+    {
+     "export": "common",
+     "text": "A",
+     "sentence": 1,
+     "grey_min": 0.24168920329204074,
+     "grey_max": 0.7241687159484199
+    },
+    {
+     "export": "common",
+     "text": "A",
+     "sentence": 2,
+     "grey_min": 0.2310216333428276,
+     "grey_max": 0.7357873110120997
+    },
+    {
+     "export": "common",
+     "text": "A",
+     "sentence": 3,
+     "grey_min": 0.2310216333428276,
+     "grey_max": 0.7357873110120997
+    },
+    {
+     "export": "common",
+     "text": "B",
+     "sentence": 1,
+     "grey_min": 0.2381224939254724,
+     "grey_max": 0.7282861470436279
+    },
+    {
+     "export": "common",
+     "text": "B",
+     "sentence": 2,
+     "grey_min": 0.2083469843719234,
+     "grey_max": 0.7555993836443314
+    },
+    {
+     "export": "common",
+     "text": "B",
+     "sentence": 3,
+     "grey_min": 0.23136766424126315,
+     "grey_max": 0.7328684826235878
+    },
+    {
+     "export": "minmax",
+     "text": "A",
+     "sentence": 1,
+     "grey_min": 0.0,
+     "grey_max": 1.0
+    },
+    {
+     "export": "minmax",
+     "text": "A",
+     "sentence": 2,
+     "grey_min": 0.0,
+     "grey_max": 1.0
+    },
+    {
+     "export": "minmax",
+     "text": "A",
+     "sentence": 3,
+     "grey_min": 0.0,
+     "grey_max": 1.0
+    },
+    {
+     "export": "minmax",
+     "text": "B",
+     "sentence": 1,
+     "grey_min": 0.0,
+     "grey_max": 1.0
+    },
+    {
+     "export": "minmax",
+     "text": "B",
+     "sentence": 2,
+     "grey_min": 0.0,
+     "grey_max": 1.0
+    },
+    {
+     "export": "minmax",
+     "text": "B",
+     "sentence": 3,
+     "grey_min": 0.0,
+     "grey_max": 1.0
+    },
+    {
+     "export": "common_eps",
+     "text": "A",
+     "sentence": 1,
+     "grey_min": 0.2442447772945131,
+     "grey_max": 0.7181429579380795
+    },
+    {
+     "export": "common_eps",
+     "text": "A",
+     "sentence": 2,
+     "grey_min": 0.23390206489684334,
+     "grey_max": 0.7289775784472294
+    },
+    {
+     "export": "common_eps",
+     "text": "A",
+     "sentence": 3,
+     "grey_min": 0.23390206489684334,
+     "grey_max": 0.7289775784472294
+    },
+    {
+     "export": "common_eps",
+     "text": "B",
+     "sentence": 1,
+     "grey_min": 0.24081861533917592,
+     "grey_max": 0.7219175479767208
+    },
+    {
+     "export": "common_eps",
+     "text": "B",
+     "sentence": 2,
+     "grey_min": 0.2116321807594994,
+     "grey_max": 0.7481818935750211
+    },
+    {
+     "export": "common_eps",
+     "text": "B",
+     "sentence": 3,
+     "grey_min": 0.2339232037952867,
+     "grey_max": 0.726928602177392
+    }
+   ]
+  },
+  "function_words_removed": {
+   "file": "results/figs/figS_text_path_nofunction.pdf",
+   "grey": [
+    {
+     "export": "common",
+     "text": "A",
+     "sentence": 1,
+     "grey_min": 0.2627820516030308,
+     "grey_max": 0.7024385615697346
+    },
+    {
+     "export": "common",
+     "text": "A",
+     "sentence": 2,
+     "grey_min": 0.2310216333428276,
+     "grey_max": 0.7357873110120997
+    },
+    {
+     "export": "common",
+     "text": "A",
+     "sentence": 3,
+     "grey_min": 0.2310216333428276,
+     "grey_max": 0.7357873110120997
+    },
+    {
+     "export": "common",
+     "text": "B",
+     "sentence": 1,
+     "grey_min": 0.24304314583648085,
+     "grey_max": 0.721681951641598
+    },
+    {
+     "export": "common",
+     "text": "B",
+     "sentence": 2,
+     "grey_min": 0.19111232510043147,
+     "grey_max": 0.7721699671086721
+    },
+    {
+     "export": "common",
+     "text": "B",
+     "sentence": 3,
+     "grey_min": 0.2662958250614201,
+     "grey_max": 0.6991608530578287
+    },
+    {
+     "export": "minmax",
+     "text": "A",
+     "sentence": 1,
+     "grey_min": 0.0,
+     "grey_max": 1.0
+    },
+    {
+     "export": "minmax",
+     "text": "A",
+     "sentence": 2,
+     "grey_min": 0.0,
+     "grey_max": 1.0
+    },
+    {
+     "export": "minmax",
+     "text": "A",
+     "sentence": 3,
+     "grey_min": 0.0,
+     "grey_max": 1.0
+    },
+    {
+     "export": "minmax",
+     "text": "B",
+     "sentence": 1,
+     "grey_min": 0.0,
+     "grey_max": 1.0
+    },
+    {
+     "export": "minmax",
+     "text": "B",
+     "sentence": 2,
+     "grey_min": 0.0,
+     "grey_max": 1.0
+    },
+    {
+     "export": "minmax",
+     "text": "B",
+     "sentence": 3,
+     "grey_min": 0.0,
+     "grey_max": 1.0
+    },
+    {
+     "export": "common_eps",
+     "text": "A",
+     "sentence": 1,
+     "grey_min": 0.26460269284257576,
+     "grey_max": 0.6982612546765333
+    },
+    {
+     "export": "common_eps",
+     "text": "A",
+     "sentence": 2,
+     "grey_min": 0.23390206489684334,
+     "grey_max": 0.7289775784472294
+    },
+    {
+     "export": "common_eps",
+     "text": "A",
+     "sentence": 3,
+     "grey_min": 0.23390206489684334,
+     "grey_max": 0.7289775784472294
+    },
+    {
+     "export": "common_eps",
+     "text": "B",
+     "sentence": 1,
+     "grey_min": 0.24563037102621965,
+     "grey_max": 0.7154253010810278
+    },
+    {
+     "export": "common_eps",
+     "text": "B",
+     "sentence": 2,
+     "grey_min": 0.19457307757212344,
+     "grey_max": 0.7639614011733686
+    },
+    {
+     "export": "common_eps",
+     "text": "B",
+     "sentence": 3,
+     "grey_min": 0.26806366264521014,
+     "grey_max": 0.6951016506176173
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,20 @@
+[project]
+name = "affective-tactility-works"
+version = "0.0.0"
+description = "Works made with the rule from affect to tactile relief: scripts, conditions and results"
+authors = [{ name = "Mikoto Miura" }, { name = "Yuusuke Harada" }]
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    # the generator, pinned to a commit of the public repository (cited as Zenodo 10.5281/zenodo.23681773)
+    "atact @ git+https://github.com/mikotomiura/affective-relief-audit@b559a80c623d36357dd0736b887497a0cb789af5",
+    # the versions of the computations of the paper on the rule (results/text_path_example.json of that repository)
+    "numpy==2.5.4",
+    "scipy==1.18.1",
+    "scikit-learn==1.9.1",
+]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.uv]
+package = false

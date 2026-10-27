@@ -1,0 +1,33 @@
+{
+ "purpose": "Check that the generator installed from the public repository at a pinned commit gives, for the texts of the text example of the paper on the rule (Section 6 of the submitted version shows text B; text A is in its supplement), the same values as the results stored in that repository. This is a check of how the works obtain the generator, not a new computation: nothing of the paper is re-estimated.",
+ "fixed_before_running": "Written on 2026-10-27 and committed before the script was run. Values seen before: while finding the structure of the stored JSON, its 'meta' and the stored readouts of the first two sentences of text A (main variant) were printed. The check compares with stored values and predicts nothing, so seeing them does not change it. The same check was run once before, under other file names, at a local commit that was not kept; it passed with every difference 0. The files were renamed so that their names do not refer to a journal or a figure number, and this file was committed again before the check was run again.",
+ "version": 1,
+ "generator": {
+  "requirement": "atact @ git+https://github.com/mikotomiura/affective-relief-audit@b559a80c623d36357dd0736b887497a0cb789af5",
+  "commit": "b559a80c623d36357dd0736b887497a0cb789af5",
+  "check": "The commit recorded by the installer (direct_url.json of the installed atact) must equal 'commit'."
+ },
+ "versions": {
+  "python": "3.13.12",
+  "numpy": "2.5.4",
+  "scipy": "1.18.1",
+  "sklearn": "1.9.1",
+  "note": "The versions recorded in the stored results; pinned in pyproject.toml so that the comparison is of the same arithmetic."
+ },
+ "reference": {
+  "file": "checks/reference/text_path_example.json",
+  "source": "results/text_path_example.json of the public repository at commit b559a80 (CC BY 4.0), copied unchanged",
+  "sha256": "300ed0c8c77b43f949ee82edcd70a4b3e0949b0ba1e6ccc2ecc752871cc56730"
+ },
+ "lexicon": {
+  "file": "external/nrc-vad-v2.1-20261026/NRC-VAD-Lexicon-v2.1/NRC-VAD-Lexicon-v2.1.txt (not in the repository; its terms of use do not allow redistribution)",
+  "sha256": "42c718817fc91d5c133581b24b0bb31d2b14a0b16edb19bc6ce6ab70343e5a45"
+ },
+ "inputs_from_reference": "The texts, the seed, the grids, eps and the dimensions are read from the reference file, not retyped.",
+ "procedure": "For each text, variant ('main' and 'function_words_removed') and sentence: the matched terms, Z, V, A, f, s and gamma by atact.lexicon and atact.mapping.params, as in experiments/text_path_example.py of the public repository (point()). For each grid of the reference (128 and 1024): the tile and its readouts by the formulas of tile() of that script, written out in checks/reproduce_text_example.py with functions of atact (procedural_field_separable with four octaves and 'ampsum', t_gamma, t_gamma_eps).",
+ "compared": "Every number stored per sentence and grid in the reference (V, A, f, f_frac, s, gamma, G, angle_deg, slope, span_mm, shape_change_mm, pt1_diff, pt2_common_expected, pt3_slope_bound, pt3_shape_bound_mm); the matched terms, Z, the unmatched flag and edge_argmax exactly.",
+ "tolerance": 1e-12,
+ "passes_when": "Every compared number differs by at most the tolerance (absolute) and every exact item is equal.",
+ "negative_control": "In a temporary directory, the same pyproject.toml with the commit replaced by cec06910f0db5840c3801c18fd5e06893a1e16b6 (the parent of b559a80) is locked by uv; the commit recorded in its uv.lock must differ from 'commit'. The library code of the two commits is the same (git diff of src/ is empty), so the values are not expected to change; the control shows only that the commit is recorded, not that the values depend on it.",
+ "not_done": "The figures are not redrawn. No new text is computed."
+}
