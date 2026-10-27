@@ -73,7 +73,8 @@ def git_state() -> dict:
 def main() -> None:
     if OUT.exists():
         raise SystemExit(f"{OUT} exists; refusing to overwrite")
-    c = json.loads(COND.read_text())
+    cond_raw = COND.read_bytes()  # read once: the conditions used and the hash recorded come from the same bytes
+    c = json.loads(cond_raw)
     if platform.python_version() != c["python"]:
         raise SystemExit(f"Python is {platform.python_version()}, not {c['python']} as in the conditions")
     state = git_state()
@@ -96,9 +97,9 @@ def main() -> None:
                           "share_changed_by_clip": sum(m != q for m, q in zip(mapped, clipped)) / len(mapped),
                           "share_clipped_low": sum(m < -1.0 for m in mapped) / len(mapped),
                           "share_clipped_high": sum(m > 1.0 for m in mapped) / len(mapped),
-                          "zero_point_on_memolon_scale": -a / b,
+                          "zero_point_on_memolon_scale": -a / b if b != 0 else None,
                           "nrc_common_percentiles": percentiles(y)}
-    out = {"meta": {"conditions_sha256": sha256(COND), "script_sha256": sha256(SCRIPT),
+    out = {"meta": {"conditions_sha256": hashlib.sha256(cond_raw).hexdigest(), "script_sha256": sha256(SCRIPT),
                     "lexicon_sha256_checked": {k: v["sha256"] for k, v in lx.items()},
                     "uv_lock_sha256": sha256(ROOT / "uv.lock"), "pyproject_sha256": sha256(ROOT / "pyproject.toml"),
                     "python": platform.python_version(), "platform": f"{platform.system()} {platform.machine()}",
@@ -107,7 +108,7 @@ def main() -> None:
            "result": res}
     OUT.parent.mkdir(exist_ok=True)
     with OUT.open("x") as f:  # exclusive creation: never overwrites a result written in the meantime
-        f.write(json.dumps(out, indent=1, ensure_ascii=False) + "\n")
+        f.write(json.dumps(out, indent=1, ensure_ascii=False, allow_nan=False) + "\n")
     print(json.dumps(res, indent=1, ensure_ascii=False))
 
 

@@ -39,7 +39,7 @@ OUT = ROOT / "results" / "reproduce_text_example.json"
 OCTAVES = 4
 EXPORTS = ("common", "minmax", "common_eps")
 EXACT = ("matched", "Z", "unmatched")
-LIB_FILES = ("field.py", "lexicon.py", "mapping.py", "transform.py")
+LIB_FILES = ("__init__.py", "field.py", "lexicon.py", "mapping.py", "transform.py")
 
 
 def sha256(p: Path) -> str:
@@ -81,14 +81,24 @@ def check_inputs(c: dict) -> tuple[dict, Lexicon]:
     for k, v in got.items():
         if v != c["versions"][k]:
             raise SystemExit(f"{k} is {v}, not {c['versions'][k]} as in the conditions")
-    ref_path = ROOT / c["reference"]["file"]
-    if sha256(ref_path) != c["reference"]["sha256"]:
-        raise SystemExit(f"{ref_path} differs from the reference named in the conditions")
+    # the reference is read once; its hash and the parsed values come from the same bytes
+    ref_raw = (ROOT / c["reference"]["file"]).read_bytes()
+    if hashlib.sha256(ref_raw).hexdigest() != c["reference"]["sha256"]:
+        raise SystemExit("the reference differs from the one named in the conditions")
+    # load_lexicon parses the file first and returns the hash of the bytes it parsed; a wrong file may therefore stop
+    # with an error of the parser before this comparison
     lex = load_lexicon(ROOT / c["lexicon"]["file"].split(" ")[0])
-    # the hash of the bytes that load_lexicon parsed, not of a second read of the file
     if lex.sha256 != c["lexicon"]["sha256"]:
         raise SystemExit("the lexicon does not match the SHA-256 of the conditions")
-    return json.loads(ref_path.read_text()), lex
+    return json.loads(ref_raw), lex
+
+
+def check_structure(c: dict, a: dict) -> None:
+    """The texts, the variants, the number of sentences of each and the grids of the reference, by name."""
+    e = c["expected"]
+    got = {name: {v: len(rows) for v, rows in t["variants"].items()} for name, t in a["texts"].items()}
+    if got != e["sentences"] or a["grids_N"] != e["grids_N"]:
+        raise SystemExit(f"the reference has {got} and grids {a['grids_N']}, not those of the conditions")
 
 
 def point(sentence: str, lex: Lexicon, drop: frozenset[str] | None) -> dict:
@@ -141,7 +151,8 @@ def tile(p: dict, n: int, seed: int, eps: float, d: dict) -> dict:
 
 
 def compare(ref, got, path: str, diffs: list, mismatches: list) -> None:
-    """Walk the stored value; every stored number must be matched by the recomputed one.
+    """Walk the stored value; every stored number must be matched by the recomputed one (got must use Python types:
+    numpy scalars are reported as mismatches).
 
     Dicts are compared key by key and lists element by element. Strings, booleans and the items of EXACT must be
     equal and of the same type (so 3 and 3.0, or 1 and True, differ). Other numbers must be finite on both sides and
@@ -171,12 +182,14 @@ def compare(ref, got, path: str, diffs: list, mismatches: list) -> None:
 def main() -> None:
     if OUT.exists():
         raise SystemExit(f"{OUT} exists; refusing to overwrite")
-    c = json.loads(COND.read_text())
+    cond_raw = COND.read_bytes()  # read once: the conditions used and the hash recorded come from the same bytes
+    c = json.loads(cond_raw)
     ref, lex = check_inputs(c)
     state = git_state()
     if state["git_dirty"]:
         raise SystemExit("the tracked inputs differ from the last commit")
     a = ref["analysis"]
+    check_structure(c, a)
     drops = {"main": None, "function_words_removed": frozenset(ENGLISH_STOP_WORDS)}
     diffs: list = []
     mismatches: list = []
@@ -196,7 +209,7 @@ def main() -> None:
     passed = (not mismatches and not over and n_rows == c["expected"]["sentence_variant_rows"]
               and len(diffs) == c["expected"]["numbers_compared"])
 
-    out = {"meta": {"conditions_sha256": sha256(COND), "script_sha256": sha256(SCRIPT),
+    out = {"meta": {"conditions_sha256": hashlib.sha256(cond_raw).hexdigest(), "script_sha256": sha256(SCRIPT),
                     "uv_lock_sha256": sha256(ROOT / "uv.lock"), "pyproject_sha256": sha256(ROOT / "pyproject.toml"),
                     "atact_commit": installed_commit(), "atact_library_sha256": library_sha256(),
                     "reference_sha256": sha256(ROOT / c["reference"]["file"]), "lexicon_sha256": lex.sha256,
@@ -210,7 +223,7 @@ def main() -> None:
                       "passed": passed}}
     OUT.parent.mkdir(exist_ok=True)
     with OUT.open("x") as f:  # exclusive creation: never overwrites a result written in the meantime
-        f.write(json.dumps(out, indent=1) + "\n")
+        f.write(json.dumps(out, indent=1, allow_nan=False) + "\n")
     print(json.dumps(out["result"], indent=1))
     sys.exit(0 if passed else 1)
 
