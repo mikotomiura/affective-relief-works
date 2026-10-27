@@ -1,0 +1,26 @@
+{
+ "purpose": "Fix the map from the scale of the Japanese MEmoLon lexicon to [-1, 1] for the Japanese text step of work 2. Decision of the researcher (2026-10-27): calibrate through English, i.e. fit, on the English words that are in both lexicons, a straight line from the English MEmoLon value to the NRC VAD v2.1 value, per dimension, and apply the same line to the Japanese MEmoLon values. The line is a decision of the makers, fixed from the two lexicons alone; no text of any work is used.",
+ "fixed_before_running": "Written on 2026-10-27 and committed before the script was run. Seen before: in an exploratory run in the analysis session (not kept), the same fit gave V: 0.410 x - 2.011 (r = 0.775) and A: 0.422 x - 1.694 (r = 0.447) on 41,991 common words, and the percentiles of the Japanese and English MEmoLon values listed in advice (not in the repository). The script computes them again from the files named here; the stored result is the one that counts.",
+ "version": 1,
+ "lexicons": {
+  "nrc_vad": {
+   "file": "external/nrc-vad-v2.1-20261026/NRC-VAD-Lexicon-v2.1/NRC-VAD-Lexicon-v2.1.txt (not in the repository; its terms of use do not allow redistribution)",
+   "sha256": "42c718817fc91d5c133581b24b0bb31d2b14a0b16edb19bc6ce6ab70343e5a45",
+   "columns": "term, valence, arousal (scores in [-1, 1])"
+  },
+  "memolon_en": {
+   "file": "external/memolon-20261027/MTL_grouped-en.tsv (en.tsv of MTL_grouped.zip, Zenodo record 3756607, v1.0, CC BY 4.0; extracted with its CRC checked)",
+   "sha256": "cb2056c68172b8a6d756c45aafc2be87a002cb631ad25f82fb0d7a8af9824bbb",
+   "columns": "word, valence, arousal (nominal scale 1 to 9, 5 neutral; predictions may lie outside)"
+  },
+  "memolon_ja": {
+   "file": "external/memolon-20261027/MTL_grouped-ja.tsv (ja.tsv of the same archive)",
+   "sha256": "537cf39afd50f89cc4c69842f9876df7ff48f9950da849d739bdde7fc00d9e83"
+  }
+ },
+ "common_words": "The terms of NRC VAD v2.1 (as written in its file, no change of case) that are words of the English MEmoLon file, exact string match. Multiword NRC terms match only if MEmoLon has the same string.",
+ "fit": "Per dimension (valence, arousal): ordinary least squares of the NRC value on the English MEmoLon value over the common words, y = b x + a (statistics.linear_regression of Python 3.13), and Pearson's r (statistics.correlation). Dominance is not used by the rule and is not fitted.",
+ "map": "For a Japanese MEmoLon value x: x' = b x + a, then clipped to [-1, 1]. The clip is part of the map (the rule takes points in [-1, 1]^2); the share of Japanese entries that the clip changes is reported.",
+ "readouts": "b, a and r per dimension; the number of common words; the percentiles 0, 1, 25, 50, 75, 99 and 100 of the mapped Japanese values (before and after the clip) and of the NRC values on the common words; the share of Japanese entries changed by the clip.",
+ "not_done": "No text is mapped. No other fit (total least squares, quantile matching, per-part-of-speech fits) is made; they were not chosen. The fit does not show that the Japanese values are compressed as the English ones are; that is the assumption of the decision, stated with it."
+}
