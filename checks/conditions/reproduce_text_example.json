@@ -1,11 +1,17 @@
 {
  "purpose": "Check that the generator installed from the public repository at a pinned commit gives, for the texts of the text example of the paper on the rule (Section 6 of the submitted version shows text B; text A is in its supplement), the same values as the results stored in that repository. This is a check of how the works obtain the generator, not a new computation: nothing of the paper is re-estimated.",
  "fixed_before_running": "Written on 2026-10-27 and committed before the script was run. Values seen before: while finding the structure of the stored JSON, its 'meta' and the stored readouts of the first two sentences of text A (main variant) were printed. The check compares with stored values and predicts nothing, so seeing them does not change it. The same check was run once before, under other file names, at a local commit that was not kept; it passed with every difference 0. The files were renamed so that their names do not refer to a journal or a figure number, and this file was committed again before the check was run again.",
- "version": 1,
+ "version": 2,
  "generator": {
   "requirement": "atact @ git+https://github.com/mikotomiura/affective-relief-audit@b559a80c623d36357dd0736b887497a0cb789af5",
   "commit": "b559a80c623d36357dd0736b887497a0cb789af5",
-  "check": "The commit recorded by the installer (direct_url.json of the installed atact) must equal 'commit'."
+  "check": "The commit recorded by the installer (direct_url.json of the installed atact) must equal 'commit', and the SHA-256 of the four installed library files must equal 'library_sha256' (computed from 'git show b559a80:src/atact/<file>' in the public repository; they are also the values recorded in the stored results).",
+  "library_sha256": {
+   "field.py": "4162e8faa60ca78257fd0777a3a7dceaaa7bbab6bfe6691de46f49a339b641c5",
+   "lexicon.py": "36cad1e49a25b352a7ae04868c6693ef349e8276d51909061eeb378085065e81",
+   "mapping.py": "83a50faaa664ddcb99004392e13a73fb096a85588a8b3c423b2c8b71ce626d26",
+   "transform.py": "5d35c9c10dfa6c8d5d3b2a9e8126ab45b895a1be14e05650c3ef60ffd3431bd1"
+  }
  },
  "versions": {
   "python": "3.13.12",
@@ -25,9 +31,17 @@
  },
  "inputs_from_reference": "The texts, the seed, the grids, eps and the dimensions are read from the reference file, not retyped.",
  "procedure": "For each text, variant ('main' and 'function_words_removed') and sentence: the matched terms, Z, V, A, f, s and gamma by atact.lexicon and atact.mapping.params, as in experiments/text_path_example.py of the public repository (point()). For each grid of the reference (128 and 1024): the tile and its readouts by the formulas of tile() of that script, written out in checks/reproduce_text_example.py with functions of atact (procedural_field_separable with four octaves and 'ampsum', t_gamma, t_gamma_eps).",
- "compared": "Every number stored per sentence and grid in the reference (V, A, f, f_frac, s, gamma, G, angle_deg, slope, span_mm, shape_change_mm, pt1_diff, pt2_common_expected, pt3_slope_bound, pt3_shape_bound_mm); the matched terms, Z, the unmatched flag and edge_argmax exactly.",
+ "compared": "Every value stored per sentence and grid in the reference: dicts key by key, lists element by element; numbers (V, A, f, f_frac, s, gamma, G, angle_deg, slope, span_mm, shape_change_mm, pt1_diff, pt2_common_expected, pt3_slope_bound, pt3_shape_bound_mm) must be finite on both sides and not booleans; the text, the matched terms, Z, the unmatched flag and edge_argmax must be equal and of the same type.",
  "tolerance": 1e-12,
- "passes_when": "Every compared number differs by at most the tolerance (absolute) and every exact item is equal.",
+ "passes_when": "Every compared number differs by at most the tolerance (judged one by one, so a non-finite value cannot hide), there is no mismatch, and the counts equal 'expected'.",
  "negative_control": "In a temporary directory, the same pyproject.toml with the commit replaced by cec06910f0db5840c3801c18fd5e06893a1e16b6 (the parent of b559a80) is locked by uv; the commit recorded in its uv.lock must differ from 'commit'. The library code of the two commits is the same (git diff of src/ is empty), so the values are not expected to change; the control shows only that the commit is recorded, not that the values depend on it.",
- "not_done": "The figures are not redrawn. No new text is computed."
+ "not_done": "The figures are not redrawn. No new text is computed.",
+ "expected": {
+  "sentence_variant_rows": 12,
+  "numbers_compared": 432,
+  "note": "The counts of version 1 of this check (2 texts x 2 variants x 3 sentences; 432 numbers). A reference that lost rows or keys would compare fewer numbers and fail."
+ },
+ "deviations": [
+  "2026-10-27, after the run of version 1 (result at a9cc19c, passed, every difference 0), version 1 -> 2. Reason: independent reviews of the script (a code review by Claude and a review by Codex) found that the comparison could pass with a non-finite difference (max over tuples ignores NaN unless it comes first), did not check types (3 == 3.0, True == 1), did not check the exit code of git, did not check the installed library files beyond the commit in direct_url.json, and hashed the lexicon in a second read. The script now judges every difference, rejects non-finite numbers and type changes, recurses into lists, requires the expected counts, runs git with check=True, compares the SHA-256 of the installed library files, uses the hash of the bytes the lexicon loader parsed, includes .python-version in the check of the tracked inputs, and creates the result exclusively. The result of version 1 is removed in the same commit and the check is run again; no value of the reference or of the inputs changed."
+ ]
 }

@@ -1,7 +1,7 @@
 {
  "purpose": "Fix the map from the scale of the Japanese MEmoLon lexicon to [-1, 1] for the Japanese text step of work 2. Decision of the researcher (2026-10-27): calibrate through English, i.e. fit, on the English words that are in both lexicons, a straight line from the English MEmoLon value to the NRC VAD v2.1 value, per dimension, and apply the same line to the Japanese MEmoLon values. The line is a decision of the makers, fixed from the two lexicons alone; no text of any work is used.",
  "fixed_before_running": "Written on 2026-10-27 and committed before the script was run. Seen before: in an exploratory run in the analysis session (not kept), the same fit gave V: 0.410 x - 2.011 (r = 0.775) and A: 0.422 x - 1.694 (r = 0.447) on 41,991 common words, and the percentiles of the Japanese and English MEmoLon values listed in advice (not in the repository). The script computes them again from the files named here; the stored result is the one that counts.",
- "version": 1,
+ "version": 2,
  "lexicons": {
   "nrc_vad": {
    "file": "external/nrc-vad-v2.1-20261026/NRC-VAD-Lexicon-v2.1/NRC-VAD-Lexicon-v2.1.txt (not in the repository; its terms of use do not allow redistribution)",
@@ -21,6 +21,11 @@
  "common_words": "The terms of NRC VAD v2.1 (as written in its file, no change of case) that are words of the English MEmoLon file, exact string match. Multiword NRC terms match only if MEmoLon has the same string.",
  "fit": "Per dimension (valence, arousal): ordinary least squares of the NRC value on the English MEmoLon value over the common words, y = b x + a (statistics.linear_regression of Python 3.13), and Pearson's r (statistics.correlation). Dominance is not used by the rule and is not fitted.",
  "map": "For a Japanese MEmoLon value x: x' = b x + a, then clipped to [-1, 1]. The clip is part of the map (the rule takes points in [-1, 1]^2); the share of Japanese entries that the clip changes is reported.",
- "readouts": "b, a and r per dimension; the number of common words; the percentiles 0, 1, 25, 50, 75, 99 and 100 of the mapped Japanese values (before and after the clip) and of the NRC values on the common words; the share of Japanese entries changed by the clip.",
- "not_done": "No text is mapped. No other fit (total least squares, quantile matching, per-part-of-speech fits) is made; they were not chosen. The fit does not show that the Japanese values are compressed as the English ones are; that is the assumption of the decision, stated with it."
+ "readouts": "b, a and r per dimension; the number of common words; the percentiles 0, 1, 25, 50, 75, 99 and 100 of the mapped Japanese values (before and after the clip) and of the NRC values on the common words; the share of Japanese entries changed by the clip. Also: the shares clipped below -1 and above 1, the zero point -a/b of each line on the MEmoLon scale, the entry counts of the two English lexicons.",
+ "not_done": "No text is mapped. No other fit (total least squares, quantile matching, per-part-of-speech fits) is made; they were not chosen. The fit does not show that the Japanese values are compressed as the English ones are; that is the assumption of the decision, stated with it.",
+ "python": "3.13.12",
+ "percentiles": "Nearest rank: the value at index round(q/100 (n - 1)) of the sorted values (Python round, half to even).",
+ "deviations": [
+  "2026-10-27, after the run of version 1 (result at 1fea2f9), version 1 -> 2. Reason: independent reviews of the script (a code review by Claude and a review by Codex) found that it did not check the exit code of git, did not check the Python version, hashed the lexicons in a separate read from the one it parsed, accepted non-finite values and short lines, did not record the lock file, the platform and the entry counts, and did not state how the percentiles are taken. Codex also noted that the zero point of the line moves the neutral point of the rule (it is not 5 on the MEmoLon scale), so it is now reported. The script now does all of these; the fit, the map and the inputs are unchanged. The result of version 1 is removed in the same commit and the script is run again."
+ ]
 }
