@@ -1,0 +1,51 @@
+{
+ "meta": {
+  "conditions_sha256": "d819b4ae01bf87154d7aad0f64dc968c3778942db18cc6e6b5d6f7c3aaf51ff0",
+  "script_sha256": "48f9a7f48ba44572a4058c10ad7a73d8a4d3b379affc7d29794d293c97b79df7",
+  "answers_sha256": "d771b9e2eafb00fa886fa5505187971830fd019bc27c661634eaaf39ebcd4c9b",
+  "seed_check_sha256": "189d8c7b7db01604061070d05abb495837629768bbeb8eddff3300f4bb0b40c5",
+  "git_commit": "8c1d2e20db1c984488f4c024efaf638d9ee5474d"
+ },
+ "rows_remaining": [],
+ "two_claims": false,
+ "disagreements": {
+  "L2_intensifier": [
+   "100",
+   "200",
+   "300",
+   "400",
+   "500"
+  ],
+  "P1_first_person": [
+   "100",
+   "200",
+   "300",
+   "400",
+   "500"
+  ]
+ },
+ "figure6": {
+  "remains": {
+   "L1_adversative": false,
+   "L2_intensifier": false,
+   "P1_first_person": false,
+   "O1_iu": false
+  },
+  "judged_invisible": {
+   "L1_adversative": true,
+   "L2_intensifier": true,
+   "P1_first_person": true,
+   "O1_iu": true
+  },
+  "visible": "P1_first_person",
+  "visible_remains": false,
+  "invisible": "L2_intensifier",
+  "invisible_judged": true,
+  "invisible_eligible": [
+   "L1_adversative",
+   "L2_intensifier",
+   "P1_first_person",
+   "O1_iu"
+  ]
+ }
+}
