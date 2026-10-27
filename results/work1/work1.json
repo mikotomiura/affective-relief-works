@@ -1,0 +1,4406 @@
+{
+ "meta": {
+  "conditions_sha256": "e1d66fd796ad22622f15fb35abbb6e8173abf6674b6ac7315e850b71ae0f332e",
+  "lexicon_sha256": "42c718817fc91d5c133581b24b0bb31d2b14a0b16edb19bc6ce6ab70343e5a45",
+  "atact_library_sha256": {
+   "__init__.py": "d5980876e37cb7a1f5dc379028ab50f7a0c1d77d84c7651ee5d1beefd623b6ab",
+   "field.py": "4162e8faa60ca78257fd0777a3a7dceaaa7bbab6bfe6691de46f49a339b641c5",
+   "lexicon.py": "36cad1e49a25b352a7ae04868c6693ef349e8276d51909061eeb378085065e81",
+   "mapping.py": "83a50faaa664ddcb99004392e13a73fb096a85588a8b3c423b2c8b71ce626d26",
+   "transform.py": "5d35c9c10dfa6c8d5d3b2a9e8126ab45b895a1be14e05650c3ef60ffd3431bd1"
+  },
+  "uv_lock_sha256": "33888369e6efb8c679a50056dd54fa7aeade07bb75e8302279f0846cfccf9db6",
+  "python": "3.13.12",
+  "platform": "Darwin arm64",
+  "atact_commit": "b559a80c623d36357dd0736b887497a0cb789af5",
+  "numpy": "2.5.4",
+  "pillow": "13.0.0",
+  "git_commit": "c1e21b743209295e5778b9d174d5f72183bd4087",
+  "git_dirty": false,
+  "started": "2026-10-27T14:13:28+00:00",
+  "finished": "2026-10-27T14:14:54+00:00"
+ },
+ "story": {
+  "start_line": 6925,
+  "end_line": 7118,
+  "paragraphs": 25,
+  "dropped_brackets": [],
+  "body_sha256": "a596b4be42dd1ea115fa44d4ff0fe946150fdd8c14dacc7bc5438de9046e3171",
+  "dropped_pieces": []
+ },
+ "eps": 0.3529079159926097,
+ "grid_intervals": 250,
+ "layout": {
+  "columns": 11,
+  "rows": 10,
+  "tile_mm": 15.254545454545456,
+  "figure_height_mm": 161.54545454545456,
+  "tile_px": 180,
+  "base_period_mm_at_f_max": 2.1792207792207794
+ },
+ "figures": {
+  "common": {
+   "file": "common.png",
+   "sha256": "479f1be16edc6f6e96028cb90161a98567bfe867e7ed2543590664035f57451d"
+  },
+  "minmax": {
+   "file": "minmax.png",
+   "sha256": "44424f5e007e89cb69b8cf906c1103995db8a95c60941597587c5f625b9b37cb"
+  },
+  "common_eps": {
+   "file": "common_eps.png",
+   "sha256": "2ec68492d5c01cdfee492d36a1b67e2d53aa53c365b5ee62820065af699abf51"
+  }
+ },
+ "unmatched": 0,
+ "matched_share": 1.0,
+ "sentences": [
+  {
+   "text": "Little Mrs. Sommers one day found herself the unexpected possessor of fifteen dollars.",
+   "V": 0.094,
+   "A": -0.14100000000000001,
+   "Z": 8,
+   "unmatched": false,
+   "matched": [
+    "little",
+    "one day",
+    "found",
+    "herself",
+    "unexpected",
+    "possessor",
+    "of",
+    "fifteen"
+   ],
+   "f": 4.718,
+   "s": 0.16871999999999998,
+   "gamma": 1.6441325,
+   "stl": {
+    "common": {
+     "file": "s000_common.stl",
+     "sha256": "021edea1ec564fc56be3217e6cb9679eb39417efecc4ac0492eb04af2ee6a75e",
+     "facets": 128000,
+     "volume_mm3": 6504.8038488920865,
+     "z_min_mm": 2.3026016830952476,
+     "z_max_mm": 2.8536805183127893
+    },
+    "minmax": {
+     "file": "s000_minmax.stl",
+     "sha256": "0400be8ccf200cea34f18bec67ba4f1ecb64f1d891625bde3fe129825bba9859",
+     "facets": 128000,
+     "volume_mm3": 6629.457552129704,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "It seemed to her a very large amount of money, and the way in which it stuffed and bulged her worn old _porte-monnaie_ gave her a feeling of importance such as she had not enjoyed for years.",
+   "V": 0.10036842105263158,
+   "A": -0.05089473684210526,
+   "Z": 19,
+   "unmatched": false,
+   "matched": [
+    "it",
+    "to",
+    "very",
+    "large amount",
+    "of",
+    "money",
+    "and",
+    "way",
+    "which",
+    "it",
+    "and",
+    "worn",
+    "gave",
+    "feeling",
+    "of",
+    "importance",
+    "such as",
+    "for",
+    "years"
+   ],
+   "f": 4.89821052631579,
+   "s": 0.16795578947368422,
+   "gamma": 1.692021052631579,
+   "stl": {
+    "common": {
+     "file": "s001_common.stl",
+     "sha256": "075f55ea930fbe6156f652edb4c5f796581549fd7f4138475e880c40407f3701",
+     "facets": 128000,
+     "volume_mm3": 6506.5682146029685,
+     "z_min_mm": 2.3034443244324154,
+     "z_max_mm": 2.8548974795202513
+    },
+    "minmax": {
+     "file": "s001_minmax.stl",
+     "sha256": "fd72345ce08517c11547ed0095b397ff5291259be90d3fae004c57f2c3255998",
+     "facets": 128000,
+     "volume_mm3": 6627.606763705861,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "The question of investment was one that occupied her greatly.",
+   "V": 0.08975,
+   "A": 0.01125,
+   "Z": 8,
+   "unmatched": false,
+   "matched": [
+    "question",
+    "of",
+    "investment",
+    "was",
+    "one",
+    "that",
+    "occupied",
+    "greatly"
+   ],
+   "f": 5.0225,
+   "s": 0.16923,
+   "gamma": 1.7295150000000001,
+   "stl": {
+    "common": {
+     "file": "s002_common.stl",
+     "sha256": "2b340d1b3038ea7f8b8e1baa9fcbcfc43102c0dd1a9bdeb5c4dced0fca35fd2c",
+     "facets": 128000,
+     "volume_mm3": 6507.0304909520155,
+     "z_min_mm": 2.3000422446206414,
+     "z_max_mm": 2.857997846323721
+    },
+    "minmax": {
+     "file": "s002_minmax.stl",
+     "sha256": "43fc81694e0ecce6bb55e2de43b6eb69a25bc2ec3b09e561a7de1ab5d53fba97",
+     "facets": 128000,
+     "volume_mm3": 6627.924967439537,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "For a day or two she walked about apparently in a dreamy state, but really absorbed in speculation and calculation.",
+   "V": 0.08783333333333333,
+   "A": -0.10216666666666667,
+   "Z": 12,
+   "unmatched": false,
+   "matched": [
+    "for",
+    "day",
+    "or two",
+    "about",
+    "apparently",
+    "dreamy",
+    "state",
+    "but",
+    "absorbed",
+    "speculation",
+    "and",
+    "calculation"
+   ],
+   "f": 4.7956666666666665,
+   "s": 0.16946,
+   "gamma": 1.6674225,
+   "stl": {
+    "common": {
+     "file": "s003_common.stl",
+     "sha256": "1d68a3b5fd35fa5b54a7c5ab394b58547b7cd17b9991ec6c2f64ec5a132adb40",
+     "facets": 128000,
+     "volume_mm3": 6505.613063675902,
+     "z_min_mm": 2.3007813181097263,
+     "z_max_mm": 2.8564522423413425
+    },
+    "minmax": {
+     "file": "s003_minmax.stl",
+     "sha256": "3fe317258bda201de57018f6ea1bd7375373211933509d02f3ea3473656ec5cc",
+     "facets": 128000,
+     "volume_mm3": 6627.567110503682,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She did not wish to act hastily, to do anything she might afterward regret.",
+   "V": -0.006700000000000003,
+   "A": 0.1827,
+   "Z": 10,
+   "unmatched": false,
+   "matched": [
+    "did",
+    "wish",
+    "to",
+    "act",
+    "hastily",
+    "to do",
+    "anything",
+    "might",
+    "afterward",
+    "regret"
+   ],
+   "f": 5.3654,
+   "s": 0.18080399999999996,
+   "gamma": 1.852935,
+   "stl": {
+    "common": {
+     "file": "s004_common.stl",
+     "sha256": "7afc3a41bacdd1ddb70b036c2d9e226a1900d06b043ae86c99cde6349a3da90c",
+     "facets": 128000,
+     "volume_mm3": 6508.645028982165,
+     "z_min_mm": 2.277493880935288,
+     "z_max_mm": 2.879395669977023
+    },
+    "minmax": {
+     "file": "s004_minmax.stl",
+     "sha256": "e8f76de4ac3a3a678bcfa7ce93ff98f04359aa89080a451c754783587c02cfc3",
+     "facets": 128000,
+     "volume_mm3": 6624.671017679601,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "But it was during the still hours of the night when she lay awake revolving plans in her mind that she seemed to see her way clearly toward a proper and judicious use of the money.",
+   "V": 0.14933333333333335,
+   "A": -0.15325,
+   "Z": 24,
+   "unmatched": false,
+   "matched": [
+    "but",
+    "it",
+    "was",
+    "during",
+    "still",
+    "of",
+    "night",
+    "when",
+    "lay",
+    "awake",
+    "revolving",
+    "mind",
+    "that",
+    "to",
+    "see",
+    "way",
+    "clearly",
+    "toward",
+    "proper",
+    "and",
+    "judicious",
+    "use",
+    "of",
+    "money"
+   ],
+   "f": 4.6935,
+   "s": 0.16208,
+   "gamma": 1.6209027083333334,
+   "stl": {
+    "common": {
+     "file": "s005_common.stl",
+     "sha256": "c83251a83530b067e739036c48f61ad91380af347ee682e3f3610218f678fe87",
+     "facets": 128000,
+     "volume_mm3": 6504.390411156198,
+     "z_min_mm": 2.3145693139023367,
+     "z_max_mm": 2.8437927418136715
+    },
+    "minmax": {
+     "file": "s005_minmax.stl",
+     "sha256": "c40c614e3d0e35c18331620ee4a8039ab795f562cd33d2c090fc54db2ac52ceb",
+     "facets": 128000,
+     "volume_mm3": 6627.971297688838,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "A dollar or two should be added to the price usually paid for Janie’s shoes, which would insure their lasting an appreciable time longer than they usually did.",
+   "V": 0.16522727272727275,
+   "A": -0.10645454545454545,
+   "Z": 22,
+   "unmatched": false,
+   "matched": [
+    "dollar",
+    "or two",
+    "should",
+    "be",
+    "added",
+    "to",
+    "price",
+    "usually",
+    "paid",
+    "for",
+    "shoes",
+    "which",
+    "would",
+    "insure",
+    "their",
+    "lasting",
+    "appreciable",
+    "time",
+    "longer",
+    "they",
+    "usually",
+    "did"
+   ],
+   "f": 4.787090909090909,
+   "s": 0.16017272727272724,
+   "gamma": 1.6420287500000001,
+   "stl": {
+    "common": {
+     "file": "s006_common.stl",
+     "sha256": "b05030e045edb528189860b10563b615575b65d2f7ef5be7f5165da02c27e967",
+     "facets": 128000,
+     "volume_mm3": 6505.062692724936,
+     "z_min_mm": 2.3175387287827864,
+     "z_max_mm": 2.841584707446309
+    },
+    "minmax": {
+     "file": "s006_minmax.stl",
+     "sha256": "c789ccd9b371facc66251c8143a09c2f3f59271724aebbab38be5b255aee8aa1",
+     "facets": 128000,
+     "volume_mm3": 6628.595731984507,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She would buy so and so many yards of percale for new shirt waists for the boys and Janie and Mag.",
+   "V": 0.18409090909090908,
+   "A": -0.0033636363636363603,
+   "Z": 11,
+   "unmatched": false,
+   "matched": [
+    "would",
+    "buy",
+    "and so",
+    "of",
+    "for",
+    "new",
+    "shirt",
+    "for",
+    "boys",
+    "and",
+    "and"
+   ],
+   "f": 4.9932727272727275,
+   "s": 0.1579090909090909,
+   "gamma": 1.6933745454545455,
+   "stl": {
+    "common": {
+     "file": "s007_common.stl",
+     "sha256": "1221214c8519e2db3a3535bc0097a6eba1b6dacc7a4ddfd6430055580978dd70",
+     "facets": 128000,
+     "volume_mm3": 6506.306011401283,
+     "z_min_mm": 2.320677193104808,
+     "z_max_mm": 2.8397063617858054
+    },
+    "minmax": {
+     "file": "s007_minmax.stl",
+     "sha256": "1a2475106bdba6c9cbff204f51966b1e27305268bd35db663ac0cdfd55335bc1",
+     "facets": 128000,
+     "volume_mm3": 6629.071517877984,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She had intended to make the old ones do by skilful patching.",
+   "V": -0.006499999999999999,
+   "A": -0.0635,
+   "Z": 4,
+   "unmatched": false,
+   "matched": [
+    "intended",
+    "to",
+    "make",
+    "do by"
+   ],
+   "f": 4.873,
+   "s": 0.18078,
+   "gamma": 1.71685,
+   "stl": {
+    "common": {
+     "file": "s008_common.stl",
+     "sha256": "9aa1f2a530347815bf819343aa47090d94feb054b604c154670ba361de590c37",
+     "facets": 128000,
+     "volume_mm3": 6507.108506761285,
+     "z_min_mm": 2.279883066986193,
+     "z_max_mm": 2.875032794149736
+    },
+    "minmax": {
+     "file": "s008_minmax.stl",
+     "sha256": "6506f6e95519b530b3bcf34ddbdf423c713c2b638726720a2755fd3db282a635",
+     "facets": 128000,
+     "volume_mm3": 6627.961776842009,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "Mag should have another gown.",
+   "V": 0.18675,
+   "A": -0.25275,
+   "Z": 4,
+   "unmatched": false,
+   "matched": [
+    "should",
+    "have",
+    "another",
+    "gown"
+   ],
+   "f": 4.4945,
+   "s": 0.15759,
+   "gamma": 1.5547974999999998,
+   "stl": {
+    "common": {
+     "file": "s009_common.stl",
+     "sha256": "c59b13110958adff0c959d395aff9f78ae710d018ed3a74834341acb7c494c04",
+     "facets": 128000,
+     "volume_mm3": 6505.021295920272,
+     "z_min_mm": 2.323698737136978,
+     "z_max_mm": 2.834736951584721
+    },
+    "minmax": {
+     "file": "s009_minmax.stl",
+     "sha256": "ca80aa03c91f91fa43f73099e4f20f39d37c40480fe7f99b9d5086966fe754c9",
+     "facets": 128000,
+     "volume_mm3": 6633.790429733007,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She had seen some beautiful patterns, veritable bargains in the shop windows.",
+   "V": 0.35760000000000003,
+   "A": 0.0304,
+   "Z": 5,
+   "unmatched": false,
+   "matched": [
+    "seen",
+    "some",
+    "beautiful",
+    "veritable",
+    "shop"
+   ],
+   "f": 5.0608,
+   "s": 0.137088,
+   "gamma": 1.6604100000000002,
+   "stl": {
+    "common": {
+     "file": "s010_common.stl",
+     "sha256": "7d3b3c316221ec177132a92531d8c234eb21819f02b9d46c2439e4f951e8c813",
+     "facets": 128000,
+     "volume_mm3": 6505.31785909707,
+     "z_min_mm": 2.3579827060490848,
+     "z_max_mm": 2.8072503569719625
+    },
+    "minmax": {
+     "file": "s010_minmax.stl",
+     "sha256": "463204615c5654abe2940d50145b86de3073cca2c05d985cba152407c50da774",
+     "facets": 128000,
+     "volume_mm3": 6630.282776554001,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "And still there would be left enough for new stockings—two pairs apiece—and what darning that would save for a while!",
+   "V": 0.043833333333333335,
+   "A": -0.22194444444444444,
+   "Z": 18,
+   "unmatched": false,
+   "matched": [
+    "and",
+    "still",
+    "there",
+    "would",
+    "be",
+    "left",
+    "enough",
+    "for",
+    "new",
+    "stockings",
+    "two",
+    "apiece",
+    "and",
+    "what",
+    "that",
+    "would",
+    "save for",
+    "a while"
+   ],
+   "f": 4.556111111111111,
+   "s": 0.17474,
+   "gamma": 1.6143352777777777,
+   "stl": {
+    "common": {
+     "file": "s011_common.stl",
+     "sha256": "50286dc888ff0632a69af8fcfb33e37ef8b015a3ddf83f1ab595cbb55260e3c5",
+     "facets": 128000,
+     "volume_mm3": 6505.590115249387,
+     "z_min_mm": 2.2923812458979165,
+     "z_max_mm": 2.86258407236139
+    },
+    "minmax": {
+     "file": "s011_minmax.stl",
+     "sha256": "89421f7c2e333cb6791c618966a0b0f02f2c0b13c9450178b1017078035dd2d8",
+     "facets": 128000,
+     "volume_mm3": 6630.234642518474,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She would get caps for the boys and sailor-hats for the girls.",
+   "V": 0.144,
+   "A": 0.08462499999999999,
+   "Z": 8,
+   "unmatched": false,
+   "matched": [
+    "would",
+    "get",
+    "caps",
+    "for",
+    "boys",
+    "and",
+    "for",
+    "girls"
+   ],
+   "f": 5.16925,
+   "s": 0.16271999999999998,
+   "gamma": 1.7539153124999998,
+   "stl": {
+    "common": {
+     "file": "s012_common.stl",
+     "sha256": "23d6c959f50473ebfc15bf55527eaf665a4f315aa580756462bb001c0cef334b",
+     "facets": 128000,
+     "volume_mm3": 6506.585441388922,
+     "z_min_mm": 2.3111936201985444,
+     "z_max_mm": 2.848684939504971
+    },
+    "minmax": {
+     "file": "s012_minmax.stl",
+     "sha256": "a4df0d765a3764fad3878d9d6f1965ebdcecc870ed8d2d7bf60048f091617b96",
+     "facets": 128000,
+     "volume_mm3": 6626.67123926412,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "The vision of her little brood looking fresh and dainty and new for once in their lives excited her and made her restless and wakeful with anticipation.",
+   "V": 0.15221052631578946,
+   "A": 0.0693157894736842,
+   "Z": 19,
+   "unmatched": false,
+   "matched": [
+    "vision",
+    "of",
+    "little",
+    "brood",
+    "fresh",
+    "and",
+    "dainty",
+    "and",
+    "new",
+    "for once",
+    "their",
+    "excited",
+    "and",
+    "made",
+    "restless",
+    "and",
+    "wakeful",
+    "with",
+    "anticipation"
+   ],
+   "f": 5.138631578947368,
+   "s": 0.16173473684210526,
+   "gamma": 1.7430143421052633,
+   "stl": {
+    "common": {
+     "file": "s013_common.stl",
+     "sha256": "b0d191e17d184c7df6bc693f6cd469d9d786b1da257f82a9730c4efc588c29fa",
+     "facets": 128000,
+     "volume_mm3": 6506.578974552896,
+     "z_min_mm": 2.313110793169817,
+     "z_max_mm": 2.8470096076138374
+    },
+    "minmax": {
+     "file": "s013_minmax.stl",
+     "sha256": "8c8a50216c8bdf1ce6f7c037633fa044867628043251ef090be5d9c2e58fa258",
+     "facets": 128000,
+     "volume_mm3": 6626.829593421176,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "The neighbors sometimes talked of certain “better days” that little Mrs. Sommers had known before she had ever thought of being Mrs. Sommers.",
+   "V": 0.16125,
+   "A": -0.176375,
+   "Z": 8,
+   "unmatched": false,
+   "matched": [
+    "of",
+    "certain",
+    "better",
+    "that",
+    "little",
+    "known",
+    "before",
+    "thought of"
+   ],
+   "f": 4.64725,
+   "s": 0.16065,
+   "gamma": 1.6045809375000002,
+   "stl": {
+    "common": {
+     "file": "s014_common.stl",
+     "sha256": "150dfbf86aa45298cfffcf7bac7a835f3ca78e1e806d9eecde560fa34177e229",
+     "facets": 128000,
+     "volume_mm3": 6504.3727167252755,
+     "z_min_mm": 2.3173685755527202,
+     "z_max_mm": 2.841094521033013
+    },
+    "minmax": {
+     "file": "s014_minmax.stl",
+     "sha256": "4a7b84ec7c2c718c256dd5d5615345e50488bdf8a74bc148b3f1498aa0d8d4df",
+     "facets": 128000,
+     "volume_mm3": 6628.984666254245,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She herself indulged in no such morbid retrospection.",
+   "V": -0.25825,
+   "A": -0.18675,
+   "Z": 4,
+   "unmatched": false,
+   "matched": [
+    "herself",
+    "no such",
+    "morbid",
+    "retrospection"
+   ],
+   "f": 4.6265,
+   "s": 0.21098999999999998,
+   "gamma": 1.7236500000000001,
+   "stl": {
+    "common": {
+     "file": "s015_common.stl",
+     "sha256": "6b11782e1487bc2452f9924aef3b422503190221e68e524377c9247bc99b0142",
+     "facets": 128000,
+     "volume_mm3": 6506.950254601076,
+     "z_min_mm": 2.2261905320073443,
+     "z_max_mm": 2.919323993429562
+    },
+    "minmax": {
+     "file": "s015_minmax.stl",
+     "sha256": "a2d6384dbf4dab401edf87e3f70b4b6e655aee4bbb1353e53b98d9c194d6231c",
+     "facets": 128000,
+     "volume_mm3": 6629.9439732953715,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She had no time—no second of time to devote to the past.",
+   "V": 0.1225,
+   "A": -0.20049999999999998,
+   "Z": 8,
+   "unmatched": false,
+   "matched": [
+    "time",
+    "second",
+    "of",
+    "time",
+    "to",
+    "devote",
+    "to",
+    "past"
+   ],
+   "f": 4.599,
+   "s": 0.1653,
+   "gamma": 1.60278,
+   "stl": {
+    "common": {
+     "file": "s016_common.stl",
+     "sha256": "69b2331227bd47074ae5206461570d4e74a882dae549bde68a0fff20fa95146c",
+     "facets": 128000,
+     "volume_mm3": 6504.889758618595,
+     "z_min_mm": 2.309214169957252,
+     "z_max_mm": 2.847981627591654
+    },
+    "minmax": {
+     "file": "s016_minmax.stl",
+     "sha256": "3464bd9f1948af4ccecd732794671c7e8dff9e9082bb395b50a16927cecdc350",
+     "facets": 128000,
+     "volume_mm3": 6630.063561044865,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "The needs of the present absorbed her every faculty.",
+   "V": 0.1645,
+   "A": -0.1655,
+   "Z": 4,
+   "unmatched": false,
+   "matched": [
+    "of",
+    "present",
+    "absorbed",
+    "faculty"
+   ],
+   "f": 4.6690000000000005,
+   "s": 0.16026,
+   "gamma": 1.6096225,
+   "stl": {
+    "common": {
+     "file": "s017_common.stl",
+     "sha256": "9b017137be3ef3e17414f717621a8f30b33ab4ae906e7774e54a422b3b196b18",
+     "facets": 128000,
+     "volume_mm3": 6504.292740424918,
+     "z_min_mm": 2.3179595865276656,
+     "z_max_mm": 2.840672310709797
+    },
+    "minmax": {
+     "file": "s017_minmax.stl",
+     "sha256": "446ca6aafb906447398010a35f52584e34b5050ec7e8862fb589ec9bfae70ed0",
+     "facets": 128000,
+     "volume_mm3": 6628.566687488543,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "A vision of the future like some dim, gaunt monster sometimes appalled her, but luckily to-morrow never comes.",
+   "V": 0.0035000000000000053,
+   "A": 0.066,
+   "Z": 12,
+   "unmatched": false,
+   "matched": [
+    "vision",
+    "of",
+    "future",
+    "like",
+    "some",
+    "dim",
+    "gaunt",
+    "monster",
+    "appalled",
+    "but",
+    "luckily",
+    "never"
+   ],
+   "f": 5.132,
+   "s": 0.17958,
+   "gamma": 1.78542375,
+   "stl": {
+    "common": {
+     "file": "s018_common.stl",
+     "sha256": "1c1f750626dcb544df1b693910d4658bf7c757f30f142486c478240834b46b85",
+     "facets": 128000,
+     "volume_mm3": 6507.631195874277,
+     "z_min_mm": 2.280854233135126,
+     "z_max_mm": 2.8753205724508586
+    },
+    "minmax": {
+     "file": "s018_minmax.stl",
+     "sha256": "2f457f5981a22b7de1ab71a7035cf4e898b3f1d4e832221b4ee84c8828d81913",
+     "facets": 128000,
+     "volume_mm3": 6625.987331570616,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "Mrs. Sommers was one who knew the value of bargains; who could stand for hours making her way inch by inch toward the desired object that was selling below cost.",
+   "V": 0.06061111111111111,
+   "A": -0.13666666666666666,
+   "Z": 18,
+   "unmatched": false,
+   "matched": [
+    "was",
+    "one",
+    "knew",
+    "value",
+    "of",
+    "could",
+    "stand for",
+    "way",
+    "inch",
+    "by",
+    "inch",
+    "toward",
+    "desired",
+    "object",
+    "that",
+    "was",
+    "below",
+    "cost"
+   ],
+   "f": 4.726666666666667,
+   "s": 0.17272666666666667,
+   "gamma": 1.6564598611111112,
+   "stl": {
+    "common": {
+     "file": "s019_common.stl",
+     "sha256": "7bced34b4888cd0bb7005a0058f7e06e81f0edcb711d58f23176d56a8a81ab4a",
+     "facets": 128000,
+     "volume_mm3": 6505.050756662204,
+     "z_min_mm": 2.295153620244095,
+     "z_max_mm": 2.861031796335312
+    },
+    "minmax": {
+     "file": "s019_minmax.stl",
+     "sha256": "46717764518498b821f22b1e502f480f13e0876ec8cc48b064ae7108f3c1f477",
+     "facets": 128000,
+     "volume_mm3": 6626.852005651977,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She could elbow her way if need be; she had learned to clutch a piece of goods and hold it and stick to it with persistence and determination till her turn came to be served, no matter when it came.",
+   "V": 0.10056666666666667,
+   "A": -0.14236666666666667,
+   "Z": 30,
+   "unmatched": false,
+   "matched": [
+    "could",
+    "elbow",
+    "way",
+    "if",
+    "need be",
+    "learned",
+    "to",
+    "clutch",
+    "piece",
+    "of",
+    "goods",
+    "and",
+    "hold it",
+    "and",
+    "stick to",
+    "it",
+    "with",
+    "persistence",
+    "and",
+    "determination",
+    "till",
+    "turn",
+    "came",
+    "to",
+    "be",
+    "served",
+    "no matter",
+    "when",
+    "it",
+    "came"
+   ],
+   "f": 4.7152666666666665,
+   "s": 0.16793199999999997,
+   "gamma": 1.6414238333333335,
+   "stl": {
+    "common": {
+     "file": "s020_common.stl",
+     "sha256": "7af205e574a88e40d9a3d457e257721ee865bba510ff20fe9beddd20b9f9360c",
+     "facets": 128000,
+     "volume_mm3": 6504.7503090921155,
+     "z_min_mm": 2.3039180849001877,
+     "z_max_mm": 2.8529721383908413
+    },
+    "minmax": {
+     "file": "s020_minmax.stl",
+     "sha256": "6e76493f3ace8e0aa3565ae6daa695d1e5a3d5bd3d43bc2600c085b8e681056f",
+     "facets": 128000,
+     "volume_mm3": 6628.156846335462,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "But that day she was a little faint and tired.",
+   "V": -0.13925,
+   "A": -0.1695,
+   "Z": 8,
+   "unmatched": false,
+   "matched": [
+    "but",
+    "that",
+    "day",
+    "was",
+    "a little",
+    "faint",
+    "and",
+    "tired"
+   ],
+   "f": 4.661,
+   "s": 0.19671,
+   "gamma": 1.6977781250000001,
+   "stl": {
+    "common": {
+     "file": "s021_common.stl",
+     "sha256": "398cb8f9824573a01ce82bf9fb4b3e2b71df8542050c97bb271f416e6beaa463",
+     "facets": 128000,
+     "volume_mm3": 6505.984357973655,
+     "z_min_mm": 2.2520473884073415,
+     "z_max_mm": 2.898700721035351
+    },
+    "minmax": {
+     "file": "s021_minmax.stl",
+     "sha256": "82b7823eb06642c4aaf3d359e275278750842c183eec0dc66bf3c884a7f77aab",
+     "facets": 128000,
+     "volume_mm3": 6625.351653442594,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She had swallowed a light luncheon—no! when she came to think of it, between getting the children fed and the place righted, and preparing herself for the shopping bout, she had actually forgotten to eat any luncheon at all!",
+   "V": 0.17156,
+   "A": -0.09459999999999999,
+   "Z": 25,
+   "unmatched": false,
+   "matched": [
+    "light",
+    "luncheon",
+    "when",
+    "came",
+    "to",
+    "think of",
+    "it",
+    "between",
+    "getting",
+    "children",
+    "fed",
+    "and",
+    "place",
+    "and",
+    "preparing",
+    "herself",
+    "for",
+    "shopping",
+    "bout",
+    "actually",
+    "forgotten",
+    "to",
+    "eat",
+    "luncheon",
+    "at all"
+   ],
+   "f": 4.8108,
+   "s": 0.15941280000000002,
+   "gamma": 1.6466944,
+   "stl": {
+    "common": {
+     "file": "s022_common.stl",
+     "sha256": "530150fc6982d73334736a263e79a748a63db3ad32bfbcf529936c81d4750c22",
+     "facets": 128000,
+     "volume_mm3": 6505.286749554328,
+     "z_min_mm": 2.3189261036991717,
+     "z_max_mm": 2.838834255524298
+    },
+    "minmax": {
+     "file": "s022_minmax.stl",
+     "sha256": "b0bc7856567b380f8e2fa0c4f8f6053854f80be6bcbf6cdf3a5acc828b85c99b",
+     "facets": 128000,
+     "volume_mm3": 6634.068989793075,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She sat herself upon a revolving stool before a counter that was comparatively deserted, trying to gather strength and courage to charge through an eager multitude that was besieging breastworks of shirting and figured lawn.",
+   "V": 0.08248148148148148,
+   "A": 0.017703703703703704,
+   "Z": 27,
+   "unmatched": false,
+   "matched": [
+    "sat",
+    "herself",
+    "upon",
+    "revolving",
+    "stool",
+    "before",
+    "counter",
+    "that",
+    "was",
+    "comparatively",
+    "deserted",
+    "to",
+    "gather",
+    "strength",
+    "and",
+    "courage",
+    "to",
+    "charge",
+    "through",
+    "eager",
+    "multitude",
+    "that",
+    "was",
+    "of",
+    "and",
+    "figured",
+    "lawn"
+   ],
+   "f": 5.0354074074074076,
+   "s": 0.1701022222222222,
+   "gamma": 1.7352430555555554,
+   "stl": {
+    "common": {
+     "file": "s023_common.stl",
+     "sha256": "e7a5bb78c700d202c786f7bc2e21f23c64a72b7a12012653edc42d739f6f1cee",
+     "facets": 128000,
+     "volume_mm3": 6507.118562380371,
+     "z_min_mm": 2.2984013628785926,
+     "z_max_mm": 2.8594080263509385
+    },
+    "minmax": {
+     "file": "s023_minmax.stl",
+     "sha256": "09d4cc38d174402cff4d9ede7c6ad0c445c3cac0ad95b9c8c0b5c6fa26368ec7",
+     "facets": 128000,
+     "volume_mm3": 6628.034469786387,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "An all-gone limp feeling had come over her and she rested her hand aimlessly upon the counter.",
+   "V": 0.04455555555555554,
+   "A": -0.2711111111111111,
+   "Z": 9,
+   "unmatched": false,
+   "matched": [
+    "limp",
+    "feeling",
+    "come over",
+    "and",
+    "rested",
+    "hand",
+    "aimlessly",
+    "upon",
+    "counter"
+   ],
+   "f": 4.457777777777778,
+   "s": 0.17465333333333333,
+   "gamma": 1.5869558333333331,
+   "stl": {
+    "common": {
+     "file": "s024_common.stl",
+     "sha256": "ea8716185cc795db0ae4d76be8a0470cee3a709b7b3f148ac769ff6f3219299f",
+     "facets": 128000,
+     "volume_mm3": 6506.133466316537,
+     "z_min_mm": 2.293471842633703,
+     "z_max_mm": 2.8606964849585803
+    },
+    "minmax": {
+     "file": "s024_minmax.stl",
+     "sha256": "ba17d319989e0d64e92d4b84e10990185d68bacfe29c51496b62c1fef072a3ba",
+     "facets": 128000,
+     "volume_mm3": 6634.175532505171,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She wore no gloves.",
+   "V": 0.042,
+   "A": -0.6085,
+   "Z": 2,
+   "unmatched": false,
+   "matched": [
+    "wore",
+    "gloves"
+   ],
+   "f": 3.783,
+   "s": 0.17496,
+   "gamma": 1.40130875,
+   "stl": {
+    "common": {
+     "file": "s025_common.stl",
+     "sha256": "936ca20815df34e5f2b59a68bbc038e27831548e3086e1b28856d87fede085fb",
+     "facets": 128000,
+     "volume_mm3": 6503.078118815621,
+     "z_min_mm": 2.296819049696333,
+     "z_max_mm": 2.854095097377401
+    },
+    "minmax": {
+     "file": "s025_minmax.stl",
+     "sha256": "e5dd712d9a9ff07d77df6b4f5e8152779d54280fdfd2352f68f709b6c740fb11",
+     "facets": 128000,
+     "volume_mm3": 6638.750845510308,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "By degrees she grew aware that her hand had encountered something very soothing, very pleasant to touch.",
+   "V": 0.23075,
+   "A": -0.08466666666666667,
+   "Z": 12,
+   "unmatched": false,
+   "matched": [
+    "by",
+    "grew",
+    "aware",
+    "that",
+    "hand",
+    "something",
+    "very",
+    "soothing",
+    "very",
+    "pleasant",
+    "to",
+    "touch"
+   ],
+   "f": 4.830666666666667,
+   "s": 0.15231,
+   "gamma": 1.6345735416666667,
+   "stl": {
+    "common": {
+     "file": "s026_common.stl",
+     "sha256": "1817cea4c7260575e6c68c255489baf4d796678a1a7027018fa7b04d5f624258",
+     "facets": 128000,
+     "volume_mm3": 6505.150437860252,
+     "z_min_mm": 2.3315467836333403,
+     "z_max_mm": 2.829517746380269
+    },
+    "minmax": {
+     "file": "s026_minmax.stl",
+     "sha256": "96dd78b79e2594cb3148a52b03c464f98d474bbea5909fbbd08b3a17ea932e29",
+     "facets": 128000,
+     "volume_mm3": 6629.693768930454,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She looked down to see that her hand lay upon a pile of silk stockings.",
+   "V": 0.012000000000000005,
+   "A": -0.2780909090909091,
+   "Z": 11,
+   "unmatched": false,
+   "matched": [
+    "down",
+    "to",
+    "see",
+    "that",
+    "hand",
+    "lay",
+    "upon",
+    "pile",
+    "of",
+    "silk",
+    "stockings"
+   ],
+   "f": 4.443818181818182,
+   "s": 0.17856,
+   "gamma": 1.5927847727272726,
+   "stl": {
+    "common": {
+     "file": "s027_common.stl",
+     "sha256": "8eb3724f6acba118d35151c88ee44063cb0fbc530e80300ae60110b909d60e4c",
+     "facets": 128000,
+     "volume_mm3": 6506.432805001862,
+     "z_min_mm": 2.286111286486963,
+     "z_max_mm": 2.867527606892826
+    },
+    "minmax": {
+     "file": "s027_minmax.stl",
+     "sha256": "18d078aa74deeb18dfeeabc39be7efdda9cac983f14ca97d97f914910d1b6b87",
+     "facets": 128000,
+     "volume_mm3": 6632.884172170317,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "A placard near by announced that they had been reduced in price from two dollars and fifty cents to one dollar and ninety-eight cents; and a young girl who stood behind the counter asked her if she wished to examine their line of silk hosiery.",
+   "V": 0.029068965517241377,
+   "A": -0.12427586206896551,
+   "Z": 29,
+   "unmatched": false,
+   "matched": [
+    "placard",
+    "near by",
+    "announced",
+    "that",
+    "they",
+    "been",
+    "reduced",
+    "price",
+    "from",
+    "two",
+    "and",
+    "fifty",
+    "to",
+    "one",
+    "dollar",
+    "and",
+    "and",
+    "young girl",
+    "stood",
+    "behind",
+    "counter",
+    "if",
+    "to",
+    "examine",
+    "their",
+    "line",
+    "of",
+    "silk",
+    "hosiery"
+   ],
+   "f": 4.751448275862069,
+   "s": 0.17651172413793104,
+   "gamma": 1.6726895689655172,
+   "stl": {
+    "common": {
+     "file": "s028_common.stl",
+     "sha256": "c0e60f33538a39fb425c304761664c0f719bddc3011d80e1d67eb135d3d48769",
+     "facets": 128000,
+     "volume_mm3": 6505.460374840135,
+     "z_min_mm": 2.2881471591347298,
+     "z_max_mm": 2.8672941774601606
+    },
+    "minmax": {
+     "file": "s028_minmax.stl",
+     "sha256": "b33b00cc07e32a3adef6bbaf40349955808ed9480d6d00b78bd639848bb3764b",
+     "facets": 128000,
+     "volume_mm3": 6626.7216133891025,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She smiled, just as if she had been asked to inspect a tiara of diamonds with the ultimate view of purchasing it.",
+   "V": 0.21346666666666667,
+   "A": -0.05773333333333333,
+   "Z": 15,
+   "unmatched": false,
+   "matched": [
+    "smiled",
+    "just as",
+    "if",
+    "been",
+    "to",
+    "inspect",
+    "tiara",
+    "of",
+    "diamonds",
+    "with",
+    "ultimate",
+    "view",
+    "of",
+    "purchasing",
+    "it"
+   ],
+   "f": 4.884533333333334,
+   "s": 0.154384,
+   "gamma": 1.6545960000000002,
+   "stl": {
+    "common": {
+     "file": "s029_common.stl",
+     "sha256": "0e4b4eaaed40782f8f1e712f1a69edbc6cc24ae42d104bab2b47398f1d8eba9c",
+     "facets": 128000,
+     "volume_mm3": 6505.736166385167,
+     "z_min_mm": 2.3275562846624474,
+     "z_max_mm": 2.8331667608032025
+    },
+    "minmax": {
+     "file": "s029_minmax.stl",
+     "sha256": "9d1a179d69c721d040480e589b9b8a421e988187feb731184dd33ceb6a49fb00",
+     "facets": 128000,
+     "volume_mm3": 6630.137395777328,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "But she went on feeling the soft, sheeny luxurious things—with both hands now, holding them up to see them glisten, and to feel them glide serpent-like through her fingers.",
+   "V": 0.18254545454545454,
+   "A": -0.04531818181818182,
+   "Z": 22,
+   "unmatched": false,
+   "matched": [
+    "but",
+    "went",
+    "on",
+    "feeling",
+    "soft",
+    "luxurious",
+    "things",
+    "with",
+    "both",
+    "now",
+    "holding",
+    "them",
+    "up to",
+    "see",
+    "them",
+    "glisten",
+    "and",
+    "to",
+    "feel",
+    "them",
+    "glide",
+    "through"
+   ],
+   "f": 4.909363636363636,
+   "s": 0.15809454545454543,
+   "gamma": 1.6706544318181817,
+   "stl": {
+    "common": {
+     "file": "s030_common.stl",
+     "sha256": "0cde457b77b54fed1c6bcee5b70560da2048a69bd8ce943a23d57ceb37bb3dc7",
+     "facets": 128000,
+     "volume_mm3": 6506.076485384224,
+     "z_min_mm": 2.320766797523515,
+     "z_max_mm": 2.8389118183126314
+    },
+    "minmax": {
+     "file": "s030_minmax.stl",
+     "sha256": "2aaeb312c34323a1a7fba094d9691ff1631fc2b7c70ccd526ec9c7f0b81f2dba",
+     "facets": 128000,
+     "volume_mm3": 6630.800947249539,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "Two hectic blotches came suddenly into her pale cheeks.",
+   "V": -0.02028571428571429,
+   "A": -0.11085714285714285,
+   "Z": 7,
+   "unmatched": false,
+   "matched": [
+    "two",
+    "hectic",
+    "came",
+    "suddenly",
+    "into",
+    "pale",
+    "cheeks"
+   ],
+   "f": 4.7782857142857145,
+   "s": 0.18243428571428572,
+   "gamma": 1.6947864285714287,
+   "stl": {
+    "common": {
+     "file": "s031_common.stl",
+     "sha256": "17b338d781ee773c3bf1006f04cc96f315ad35c06bcc38d33513e9e86c578ebd",
+     "facets": 128000,
+     "volume_mm3": 6506.059000215034,
+     "z_min_mm": 2.2772688690103826,
+     "z_max_mm": 2.8768851212061475
+    },
+    "minmax": {
+     "file": "s031_minmax.stl",
+     "sha256": "13e8992e5ba4dab97cfb413b3bebc1d231f78a392a98ea1dc8741c1272a774e4",
+     "facets": 128000,
+     "volume_mm3": 6626.814132420553,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She looked up at the girl.",
+   "V": 0.315,
+   "A": 0.396,
+   "Z": 2,
+   "unmatched": false,
+   "matched": [
+    "up",
+    "at"
+   ],
+   "f": 5.792,
+   "s": 0.1422,
+   "gamma": 1.8750775,
+   "stl": {
+    "common": {
+     "file": "s032_common.stl",
+     "sha256": "4034cd047d6c25dcc0d863a4c1bc16327a0e153b5cacf6395129e8909c78e16f",
+     "facets": 128000,
+     "volume_mm3": 6506.017620038728,
+     "z_min_mm": 2.346068810390505,
+     "z_max_mm": 2.8202786935334716
+    },
+    "minmax": {
+     "file": "s032_minmax.stl",
+     "sha256": "409339e11fbce48e87b5ba0b6f7b498c910eb506ce830ca23a6584032569753c",
+     "facets": 128000,
+     "volume_mm3": 6621.675842959873,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "“Do you think there are any eights-and-a-half among these?”",
+   "V": 0.1024,
+   "A": -0.13279999999999997,
+   "Z": 5,
+   "unmatched": false,
+   "matched": [
+    "do",
+    "you think",
+    "there are",
+    "among",
+    "these"
+   ],
+   "f": 4.7344,
+   "s": 0.16771199999999997,
+   "gamma": 1.646164,
+   "stl": {
+    "common": {
+     "file": "s033_common.stl",
+     "sha256": "c0798978026c0fa5c63af9cfb1d9448b89039bafe1d7d0bb3b8e4e8869a5d04f",
+     "facets": 128000,
+     "volume_mm3": 6504.885943757229,
+     "z_min_mm": 2.3042005765945848,
+     "z_max_mm": 2.853097595368227
+    },
+    "minmax": {
+     "file": "s033_minmax.stl",
+     "sha256": "4f8af9647146f60a9d8e20744ff92de77860cb72005ee00d8338bc0330703c22",
+     "facets": 128000,
+     "volume_mm3": 6627.375211733357,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "There were any number of eights-and-a-half.",
+   "V": -0.047,
+   "A": -0.1345,
+   "Z": 4,
+   "unmatched": false,
+   "matched": [
+    "there",
+    "were",
+    "number",
+    "of"
+   ],
+   "f": 4.731,
+   "s": 0.18563999999999997,
+   "gamma": 1.68967125,
+   "stl": {
+    "common": {
+     "file": "s034_common.stl",
+     "sha256": "1a188d2d3f690d66ed8bffb3f967647afe7c3cf81babb09a205c4603569ed6a5",
+     "facets": 128000,
+     "volume_mm3": 6505.696202245603,
+     "z_min_mm": 2.271711641137703,
+     "z_max_mm": 2.8816747912459135
+    },
+    "minmax": {
+     "file": "s034_minmax.stl",
+     "sha256": "7f369ac9afe38c3da2b2525644279a35a61e7c31e431a2889f8bc0052a532e4e",
+     "facets": 128000,
+     "volume_mm3": 6625.8367726820115,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "In fact, there were more of that size than any other.",
+   "V": 0.063875,
+   "A": -0.12337500000000001,
+   "Z": 8,
+   "unmatched": false,
+   "matched": [
+    "in fact",
+    "there",
+    "were",
+    "more",
+    "of",
+    "that",
+    "size",
+    "other"
+   ],
+   "f": 4.7532499999999995,
+   "s": 0.172335,
+   "gamma": 1.6628325,
+   "stl": {
+    "common": {
+     "file": "s035_common.stl",
+     "sha256": "c08f393917fd02f1aeef3546f0029be4aae64fe4f72aa6e44f6157a802147387",
+     "facets": 128000,
+     "volume_mm3": 6505.279804024976,
+     "z_min_mm": 2.2957277816888375,
+     "z_max_mm": 2.8605850210302486
+    },
+    "minmax": {
+     "file": "s035_minmax.stl",
+     "sha256": "a28378ee7f51bb3914b3e2b7f44d518b6e1d3d82e91e697241f94a1e9f7521d8",
+     "facets": 128000,
+     "volume_mm3": 6627.229601678287,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "Here was a light-blue pair; there were some lavender, some all black and various shades of tan and gray.",
+   "V": 0.04533333333333333,
+   "A": -0.16233333333333333,
+   "Z": 15,
+   "unmatched": false,
+   "matched": [
+    "here",
+    "was",
+    "pair",
+    "there",
+    "were",
+    "some",
+    "lavender",
+    "some",
+    "all",
+    "and",
+    "various",
+    "shades of",
+    "tan",
+    "and",
+    "gray"
+   ],
+   "f": 4.675333333333334,
+   "s": 0.17456,
+   "gamma": 1.6468241666666668,
+   "stl": {
+    "common": {
+     "file": "s036_common.stl",
+     "sha256": "fd3711718742bb96efe697212a85c14543b59656555fb17b78fa8e748f180914",
+     "facets": 128000,
+     "volume_mm3": 6504.916311025695,
+     "z_min_mm": 2.292090539309395,
+     "z_max_mm": 2.863175404797346
+    },
+    "minmax": {
+     "file": "s036_minmax.stl",
+     "sha256": "c71fe4e3856c6a19dead7c05f7d570c524519f2aba2ae3aafe6e43280fc6f42a",
+     "facets": 128000,
+     "volume_mm3": 6627.828038452416,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "Mrs. Sommers selected a black pair and looked at them very long and closely.",
+   "V": 0.036,
+   "A": -0.133375,
+   "Z": 8,
+   "unmatched": false,
+   "matched": [
+    "pair",
+    "and",
+    "at",
+    "them",
+    "very",
+    "long",
+    "and",
+    "closely"
+   ],
+   "f": 4.73325,
+   "s": 0.17568,
+   "gamma": 1.6656003125,
+   "stl": {
+    "common": {
+     "file": "s037_common.stl",
+     "sha256": "87abdf7ed3f0bc03ca6134589642e2a8e1e099c657c6c1c87f1e4d6692680487",
+     "facets": 128000,
+     "volume_mm3": 6505.243694557175,
+     "z_min_mm": 2.2897838110754867,
+     "z_max_mm": 2.865753388904057
+    },
+    "minmax": {
+     "file": "s037_minmax.stl",
+     "sha256": "ce1c8bf276eeb7c271edbe4a4957469d009c90abbd0e01b21d05843a142874ee",
+     "facets": 128000,
+     "volume_mm3": 6626.7195995394095,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She pretended to be examining their texture, which the clerk assured her was excellent.",
+   "V": 0.15999999999999998,
+   "A": -0.05669999999999999,
+   "Z": 10,
+   "unmatched": false,
+   "matched": [
+    "pretended",
+    "to",
+    "be",
+    "their",
+    "texture",
+    "which",
+    "clerk",
+    "assured",
+    "was",
+    "excellent"
+   ],
+   "f": 4.8866,
+   "s": 0.1608,
+   "gamma": 1.67107325,
+   "stl": {
+    "common": {
+     "file": "s038_common.stl",
+     "sha256": "324c9a940894bc599b2e6ca595b08ca3b23245ee1dbf064718c905ff85d92492",
+     "facets": 128000,
+     "volume_mm3": 6506.097072219135,
+     "z_min_mm": 2.3159308010566164,
+     "z_max_mm": 2.8434066371748603
+    },
+    "minmax": {
+     "file": "s038_minmax.stl",
+     "sha256": "5eca0d8ed6a45f00fd5a3c3ba2356d02aaf9ee2229bb19b157d54f250c6a5874",
+     "facets": 128000,
+     "volume_mm3": 6629.504186250985,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "“A dollar and ninety-eight cents,” she mused aloud.",
+   "V": 0.20375000000000001,
+   "A": 0.08925,
+   "Z": 4,
+   "unmatched": false,
+   "matched": [
+    "dollar",
+    "and",
+    "mused",
+    "aloud"
+   ],
+   "f": 5.1785,
+   "s": 0.15555,
+   "gamma": 1.7386949999999999,
+   "stl": {
+    "common": {
+     "file": "s039_common.stl",
+     "sha256": "2dfe5435c6d15a2d09ecaf897392d208f9a530e19b9c9e8a514a6ff393da0300",
+     "facets": 128000,
+     "volume_mm3": 6506.193485690782,
+     "z_min_mm": 2.324190460196829,
+     "z_max_mm": 2.8374396471652314
+    },
+    "minmax": {
+     "file": "s039_minmax.stl",
+     "sha256": "f3f93c01a1b4171ad8cc385a043b8ecfc17e644cf7a72bc6d0f1b8f4da3a5a90",
+     "facets": 128000,
+     "volume_mm3": 6626.61884929974,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "“Well, I’ll take this pair.”",
+   "V": 0.44,
+   "A": -0.13775,
+   "Z": 4,
+   "unmatched": false,
+   "matched": [
+    "well",
+    "take",
+    "this",
+    "pair"
+   ],
+   "f": 4.7245,
+   "s": 0.1272,
+   "gamma": 1.5429931250000002,
+   "stl": {
+    "common": {
+     "file": "s040_common.stl",
+     "sha256": "a56fc7725ae07030cfb02a0ecae499aaad2440e30250cf2b6a7138ed25b76371",
+     "facets": 128000,
+     "volume_mm3": 6503.1197315154595,
+     "z_min_mm": 2.377233927323938,
+     "z_max_mm": 2.7891805735731063
+    },
+    "minmax": {
+     "file": "s040_minmax.stl",
+     "sha256": "66a21e09c358469ab7666dec20a2c39a7a803ca67c6a3ebe779a925e71c4a606",
+     "facets": 128000,
+     "volume_mm3": 6631.380913659935,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She handed the girl a five-dollar bill and waited for her change and for her parcel.",
+   "V": 0.05171428571428571,
+   "A": -0.05685714285714286,
+   "Z": 7,
+   "unmatched": false,
+   "matched": [
+    "bill",
+    "and",
+    "for",
+    "change",
+    "and",
+    "for",
+    "parcel"
+   ],
+   "f": 4.886285714285714,
+   "s": 0.1737942857142857,
+   "gamma": 1.7032014285714285,
+   "stl": {
+    "common": {
+     "file": "s041_common.stl",
+     "sha256": "d8490a79e676980ae9c9819d559deb64e1ddd4823822efcfec5a45eae2c3382e",
+     "facets": 128000,
+     "volume_mm3": 6506.819922910673,
+     "z_min_mm": 2.292400726686222,
+     "z_max_mm": 2.8641347366622143
+    },
+    "minmax": {
+     "file": "s041_minmax.stl",
+     "sha256": "26d9b8eeba889bdce1a0949a5c370d6ed7fdd8bf4d97a90a0b2703b6c077089b",
+     "facets": 128000,
+     "volume_mm3": 6628.347641545869,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "What a very small parcel it was!",
+   "V": 0.09116666666666667,
+   "A": -0.21016666666666664,
+   "Z": 6,
+   "unmatched": false,
+   "matched": [
+    "what",
+    "very",
+    "small",
+    "parcel",
+    "it",
+    "was"
+   ],
+   "f": 4.579666666666666,
+   "s": 0.16906,
+   "gamma": 1.6067608333333334,
+   "stl": {
+    "common": {
+     "file": "s042_common.stl",
+     "sha256": "373183de8419a15a90674939df8d3be4d82ac043035ad243ec30061cb0eddbe1",
+     "facets": 128000,
+     "volume_mm3": 6505.189125665337,
+     "z_min_mm": 2.3025296922256735,
+     "z_max_mm": 2.853793850917415
+    },
+    "minmax": {
+     "file": "s042_minmax.stl",
+     "sha256": "30a08f25ae202a991e944e4b879637a275f0fafbaaca5fc593bf420d5ece9afd",
+     "facets": 128000,
+     "volume_mm3": 6630.14021605391,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "It seemed lost in the depths of her shabby old shopping-bag.",
+   "V": -0.29125,
+   "A": 0.02050000000000001,
+   "Z": 4,
+   "unmatched": false,
+   "matched": [
+    "it",
+    "lost",
+    "of",
+    "shabby"
+   ],
+   "f": 5.041,
+   "s": 0.21495,
+   "gamma": 1.847973125,
+   "stl": {
+    "common": {
+     "file": "s043_common.stl",
+     "sha256": "da16b0b8f97dc518fd4672496488cdc1c79edab1977c3e52225dbbe5495c9569",
+     "facets": 128000,
+     "volume_mm3": 6509.944183557972,
+     "z_min_mm": 2.216655996186538,
+     "z_max_mm": 2.9320290097895545
+    },
+    "minmax": {
+     "file": "s043_minmax.stl",
+     "sha256": "7b3fcc431bad461596b009822ae14d9481cbd13060715fdd6dbfcb3dac32dbfc",
+     "facets": 128000,
+     "volume_mm3": 6624.278538500158,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "Mrs. Sommers after that did not move in the direction of the bargain counter.",
+   "V": 0.196375,
+   "A": 0.0765,
+   "Z": 8,
+   "unmatched": false,
+   "matched": [
+    "after",
+    "that",
+    "did",
+    "move in",
+    "direction",
+    "of",
+    "bargain",
+    "counter"
+   ],
+   "f": 5.1530000000000005,
+   "s": 0.156435,
+   "gamma": 1.7338446875,
+   "stl": {
+    "common": {
+     "file": "s044_common.stl",
+     "sha256": "3ecc32731bb63fceaa94e408fd58616207692e44f4a06e62ca517ccf923834a9",
+     "facets": 128000,
+     "volume_mm3": 6506.25252222117,
+     "z_min_mm": 2.322756748702998,
+     "z_max_mm": 2.8385967554215266
+    },
+    "minmax": {
+     "file": "s044_minmax.stl",
+     "sha256": "6609d390f58b64c35e50671e930300a2acafc4c72190fec8fb6b2a6f85702758",
+     "facets": 128000,
+     "volume_mm3": 6626.924570170147,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She took the elevator, which carried her to an upper floor into the region of the ladies’ waiting-rooms.",
+   "V": 0.10827272727272728,
+   "A": -0.07981818181818182,
+   "Z": 11,
+   "unmatched": false,
+   "matched": [
+    "took",
+    "elevator",
+    "which",
+    "carried",
+    "to",
+    "upper",
+    "floor",
+    "into",
+    "region",
+    "of",
+    "ladies"
+   ],
+   "f": 4.840363636363636,
+   "s": 0.16700727272727273,
+   "gamma": 1.6736893181818182,
+   "stl": {
+    "common": {
+     "file": "s045_common.stl",
+     "sha256": "204b0b3c66f45f8b91b4783113c5189b899c0764bc0e182d719a650012b6421c",
+     "facets": 128000,
+     "volume_mm3": 6506.009567559334,
+     "z_min_mm": 2.3049697292489757,
+     "z_max_mm": 2.8527957831174486
+    },
+    "minmax": {
+     "file": "s045_minmax.stl",
+     "sha256": "38eb40d4db9aaaa63116fdbbcaf9deca2c2cc7401f950a657fadcd16e2020d90",
+     "facets": 128000,
+     "volume_mm3": 6628.805873651549,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "Here, in a retired corner, she exchanged her cotton stockings for the new silk ones which she had just bought.",
+   "V": 0.15841666666666668,
+   "A": -0.18775,
+   "Z": 12,
+   "unmatched": false,
+   "matched": [
+    "here",
+    "retired",
+    "corner",
+    "exchanged",
+    "cotton",
+    "stockings",
+    "for",
+    "new",
+    "silk",
+    "which",
+    "just",
+    "bought"
+   ],
+   "f": 4.6245,
+   "s": 0.16099,
+   "gamma": 1.5991391666666668,
+   "stl": {
+    "common": {
+     "file": "s046_common.stl",
+     "sha256": "385a8aad5afc371ea414baa117e36229c072a8a888c89e46bc85c76800223e72",
+     "facets": 128000,
+     "volume_mm3": 6504.515550122058,
+     "z_min_mm": 2.3168595072719755,
+     "z_max_mm": 2.8398113835300594
+    },
+    "minmax": {
+     "file": "s046_minmax.stl",
+     "sha256": "3a6a01a035e34e0fe699d739fa3ed71f208704096b42f52653221b5fc5e3c77d",
+     "facets": 128000,
+     "volume_mm3": 6634.643983326046,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She was not going through any acute mental process or reasoning with herself, nor was she striving to explain to her satisfaction the motive of her action.",
+   "V": 0.15564705882352942,
+   "A": 0.09688235294117648,
+   "Z": 17,
+   "unmatched": false,
+   "matched": [
+    "was",
+    "going",
+    "through",
+    "acute",
+    "mental",
+    "process",
+    "reasoning",
+    "with",
+    "herself",
+    "was",
+    "to",
+    "explain",
+    "to",
+    "satisfaction",
+    "motive",
+    "of",
+    "action"
+   ],
+   "f": 5.193764705882353,
+   "s": 0.16132235294117647,
+   "gamma": 1.7572225,
+   "stl": {
+    "common": {
+     "file": "s047_common.stl",
+     "sha256": "a9a79c933cdae854f9ad4b205b477c6be3d0c8c9154cf90dfefb586cf657ba38",
+     "facets": 128000,
+     "volume_mm3": 6506.537613937373,
+     "z_min_mm": 2.3140257340234274,
+     "z_max_mm": 2.846541998310025
+    },
+    "minmax": {
+     "file": "s047_minmax.stl",
+     "sha256": "0b41d50a22baa3b3b380e51267493e88f3c9b50891afa68fbb88873e6c74e1b4",
+     "facets": 128000,
+     "volume_mm3": 6625.805618637041,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She was not thinking at all.",
+   "V": 0.12533333333333332,
+   "A": -0.215,
+   "Z": 3,
+   "unmatched": false,
+   "matched": [
+    "was",
+    "thinking",
+    "at all"
+   ],
+   "f": 4.57,
+   "s": 0.16496,
+   "gamma": 1.5939258333333335,
+   "stl": {
+    "common": {
+     "file": "s048_common.stl",
+     "sha256": "fb1bc93d8415f58732b725fbaaf687eee49051677164457a24c213b06fc64c22",
+     "facets": 128000,
+     "volume_mm3": 6505.03742198242,
+     "z_min_mm": 2.30999498279514,
+     "z_max_mm": 2.8472268063327997
+    },
+    "minmax": {
+     "file": "s048_minmax.stl",
+     "sha256": "3495f0438eaeb1f70f9de6aacae0a20955257af318865e54c6389d45dca547ea",
+     "facets": 128000,
+     "volume_mm3": 6630.692598234502,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She seemed for the time to be taking a rest from that laborious and fatiguing function and to have abandoned herself to some mechanical impulse that directed her actions and freed her of responsibility.",
+   "V": 0.11327999999999999,
+   "A": -0.014119999999999997,
+   "Z": 25,
+   "unmatched": false,
+   "matched": [
+    "for",
+    "time",
+    "to",
+    "be",
+    "rest",
+    "from",
+    "that",
+    "laborious",
+    "and",
+    "function",
+    "and",
+    "to",
+    "have",
+    "abandoned",
+    "herself",
+    "to",
+    "some",
+    "mechanical",
+    "impulse",
+    "that",
+    "directed",
+    "and",
+    "freed",
+    "of",
+    "responsibility"
+   ],
+   "f": 4.97176,
+   "s": 0.16640639999999998,
+   "gamma": 1.7084979,
+   "stl": {
+    "common": {
+     "file": "s049_common.stl",
+     "sha256": "4fdea9e3ffb98ee6e64344514f2d4bead4a3563e0e25832451cd0fd202d2bee1",
+     "facets": 128000,
+     "volume_mm3": 6506.742901217007,
+     "z_min_mm": 2.30540615214286,
+     "z_max_mm": 2.853043158870329
+    },
+    "minmax": {
+     "file": "s049_minmax.stl",
+     "sha256": "6aa0ebd0300f05a5f63a6672916dcfda688ad277ecf6ae07415e138aa57a041d",
+     "facets": 128000,
+     "volume_mm3": 6628.584285597608,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "How good was the touch of the raw silk to her flesh!",
+   "V": 0.12475,
+   "A": -0.238125,
+   "Z": 8,
+   "unmatched": false,
+   "matched": [
+    "how",
+    "good",
+    "was",
+    "touch of",
+    "raw",
+    "silk",
+    "to",
+    "flesh"
+   ],
+   "f": 4.52375,
+   "s": 0.16503,
+   "gamma": 1.5813228124999998,
+   "stl": {
+    "common": {
+     "file": "s050_common.stl",
+     "sha256": "0f1c992ae8cb41b886d984dd56f9cacd82c245917377fb49cfa90f52b0049f09",
+     "facets": 128000,
+     "volume_mm3": 6505.246736430807,
+     "z_min_mm": 2.3101077338233234,
+     "z_max_mm": 2.8468343949231767
+    },
+    "minmax": {
+     "file": "s050_minmax.stl",
+     "sha256": "010120c8a88325a89a9429f94bb775d294d0ef84206430f1621105a57b1eda9a",
+     "facets": 128000,
+     "volume_mm3": 6632.065157638165,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She felt like lying back in the cushioned chair and reveling for a while in the luxury of it.",
+   "V": 0.021,
+   "A": -0.1076,
+   "Z": 10,
+   "unmatched": false,
+   "matched": [
+    "felt like",
+    "lying",
+    "back in",
+    "chair",
+    "and",
+    "for",
+    "a while",
+    "luxury",
+    "of",
+    "it"
+   ],
+   "f": 4.7848,
+   "s": 0.17747999999999997,
+   "gamma": 1.6843035,
+   "stl": {
+    "common": {
+     "file": "s051_common.stl",
+     "sha256": "749cf9b59d4837e6463fe30f5350de64bc1d36061a58783cff57d9dffac740e9",
+     "facets": 128000,
+     "volume_mm3": 6505.887032932454,
+     "z_min_mm": 2.286236441833539,
+     "z_max_mm": 2.869080252303128
+    },
+    "minmax": {
+     "file": "s051_minmax.stl",
+     "sha256": "9cd0135bd9b3a350cf504e3f284695a48924a4cc6df07b7510f868f414adfb36",
+     "facets": 128000,
+     "volume_mm3": 6627.117070936562,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She did for a little while.",
+   "V": 0.018,
+   "A": 0.07175000000000001,
+   "Z": 4,
+   "unmatched": false,
+   "matched": [
+    "did",
+    "for",
+    "a little",
+    "while"
+   ],
+   "f": 5.1434999999999995,
+   "s": 0.17784,
+   "gamma": 1.7842868749999998,
+   "stl": {
+    "common": {
+     "file": "s052_common.stl",
+     "sha256": "c13b8fbb993eaad67e3ce73d514ae70dd9c17f2a3cbbe59c42426afb389e5659",
+     "facets": 128000,
+     "volume_mm3": 6507.490089074155,
+     "z_min_mm": 2.283884894911301,
+     "z_max_mm": 2.8728237380352732
+    },
+    "minmax": {
+     "file": "s052_minmax.stl",
+     "sha256": "6dccfe9eed608034249bcf60025bbe840173df36d63feb9d055ecd1fd509d538",
+     "facets": 128000,
+     "volume_mm3": 6625.522639923348,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "Then she replaced her shoes, rolled the cotton stockings together and thrust them into her bag.",
+   "V": 0.09545454545454546,
+   "A": -0.135,
+   "Z": 11,
+   "unmatched": false,
+   "matched": [
+    "then",
+    "replaced",
+    "shoes",
+    "cotton",
+    "stockings",
+    "together",
+    "and",
+    "thrust",
+    "them",
+    "into",
+    "bag"
+   ],
+   "f": 4.73,
+   "s": 0.16854545454545455,
+   "gamma": 1.6470147727272728,
+   "stl": {
+    "common": {
+     "file": "s053_common.stl",
+     "sha256": "c5dfe54cd8a1029145637d4bd42f5dca0174a48f584397b278d7033f02daf37b",
+     "facets": 128000,
+     "volume_mm3": 6504.886865138877,
+     "z_min_mm": 2.3026903165100645,
+     "z_max_mm": 2.854366010685494
+    },
+    "minmax": {
+     "file": "s053_minmax.stl",
+     "sha256": "e28adef40760a07b975ad6931e96e58e8355ff63021a92702a2982b7953a8d08",
+     "facets": 128000,
+     "volume_mm3": 6627.39322969941,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "After doing this she crossed straight over to the shoe department and took her seat to be fitted.",
+   "V": 0.0756923076923077,
+   "A": -0.14807692307692308,
+   "Z": 13,
+   "unmatched": false,
+   "matched": [
+    "after",
+    "this",
+    "crossed",
+    "over",
+    "to",
+    "shoe",
+    "department",
+    "and",
+    "took",
+    "seat",
+    "to",
+    "be",
+    "fitted"
+   ],
+   "f": 4.703846153846154,
+   "s": 0.17091692307692308,
+   "gamma": 1.6456690384615384,
+   "stl": {
+    "common": {
+     "file": "s054_common.stl",
+     "sha256": "c73d34217a8bb2dfc71853805a553402e8cbe10af06c5fe6b0634a857dc79d1a",
+     "facets": 128000,
+     "volume_mm3": 6504.818580583604,
+     "z_min_mm": 2.2985211327502455,
+     "z_max_mm": 2.8579014527746334
+    },
+    "minmax": {
+     "file": "s054_minmax.stl",
+     "sha256": "6d0eb4db58b8f60df1c24702fe671080467bbae433be217aba97c4ea281f0d84",
+     "facets": 128000,
+     "volume_mm3": 6627.191496120264,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She was fastidious.",
+   "V": 0.3335,
+   "A": -0.375,
+   "Z": 2,
+   "unmatched": false,
+   "matched": [
+    "was",
+    "fastidious"
+   ],
+   "f": 4.25,
+   "s": 0.13998,
+   "gamma": 1.4435962500000001,
+   "stl": {
+    "common": {
+     "file": "s055_common.stl",
+     "sha256": "fc119ab08115df1dccfc8944bc3b1ddb0299f9f5336070b0187a8928f0a8d6db",
+     "facets": 128000,
+     "volume_mm3": 6503.951602992245,
+     "z_min_mm": 2.356553073608251,
+     "z_max_mm": 2.8049363242545935
+    },
+    "minmax": {
+     "file": "s055_minmax.stl",
+     "sha256": "6a3715e8b0be197aae04e95a1c35ed46174d8b7fb4b5c4b58bc032d133f5bf3f",
+     "facets": 128000,
+     "volume_mm3": 6639.407138743055,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "The clerk could not make her out; he could not reconcile her shoes with her stockings, and she was not too easily pleased.",
+   "V": 0.23473333333333332,
+   "A": -0.12513333333333335,
+   "Z": 15,
+   "unmatched": false,
+   "matched": [
+    "clerk",
+    "could",
+    "make",
+    "out",
+    "he",
+    "could",
+    "reconcile",
+    "shoes",
+    "with",
+    "stockings",
+    "and",
+    "was",
+    "too",
+    "easily",
+    "pleased"
+   ],
+   "f": 4.749733333333333,
+   "s": 0.151832,
+   "gamma": 1.6110306666666667,
+   "stl": {
+    "common": {
+     "file": "s056_common.stl",
+     "sha256": "df9d417b7c84f91974a88e6683730b0c0a6465f88468e57c9482d56c4dc211c0",
+     "facets": 128000,
+     "volume_mm3": 6504.310327138369,
+     "z_min_mm": 2.3327828110226947,
+     "z_max_mm": 2.8280810600453696
+    },
+    "minmax": {
+     "file": "s056_minmax.stl",
+     "sha256": "a6fb1b1068e1fc64ae7ee69e7c311bfbe07257b6d37a9aa801d69d2b080f49e2",
+     "facets": 128000,
+     "volume_mm3": 6628.9659002259605,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She held back her skirts and turned her feet one way and her head another way as she glanced down at the polished, pointed-tipped boots.",
+   "V": 0.005875000000000003,
+   "A": -0.178625,
+   "Z": 16,
+   "unmatched": false,
+   "matched": [
+    "held",
+    "back",
+    "skirts",
+    "and",
+    "turned",
+    "feet",
+    "one way",
+    "and",
+    "head",
+    "another",
+    "way",
+    "as",
+    "down",
+    "at",
+    "polished",
+    "boots"
+   ],
+   "f": 4.6427499999999995,
+   "s": 0.17929499999999998,
+   "gamma": 1.6495618749999998,
+   "stl": {
+    "common": {
+     "file": "s057_common.stl",
+     "sha256": "92c0c14c124bb2acb849b0353dc564954374b571786fea93dfee0c571ca3926f",
+     "facets": 128000,
+     "volume_mm3": 6505.24034613241,
+     "z_min_mm": 2.2838184890945348,
+     "z_max_mm": 2.8706733260303814
+    },
+    "minmax": {
+     "file": "s057_minmax.stl",
+     "sha256": "aca4a3e1a2d71dac7ec0c32fb488029a952dc81d94ae8ebeffe66d93d5a72af7",
+     "facets": 128000,
+     "volume_mm3": 6627.034298406715,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "Her foot and ankle looked very pretty.",
+   "V": 0.1746,
+   "A": -0.16799999999999998,
+   "Z": 5,
+   "unmatched": false,
+   "matched": [
+    "foot",
+    "and",
+    "ankle",
+    "very",
+    "pretty"
+   ],
+   "f": 4.664,
+   "s": 0.159048,
+   "gamma": 1.6052365000000002,
+   "stl": {
+    "common": {
+     "file": "s058_common.stl",
+     "sha256": "6bdd8ba7921c491d308f4da10ad6b559e1a26d0443d2d6c29b6b1ec2b39f6e7e",
+     "facets": 128000,
+     "volume_mm3": 6504.249053293774,
+     "z_min_mm": 2.320197808147887,
+     "z_max_mm": 2.8386833459618326
+    },
+    "minmax": {
+     "file": "s058_minmax.stl",
+     "sha256": "803e345ef747eddf6d42d2cd10e676195a59635b421471253174ce4329820809",
+     "facets": 128000,
+     "volume_mm3": 6628.792663236275,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She could not realize that they belonged to her and were a part of herself.",
+   "V": 0.04111111111111111,
+   "A": -0.09033333333333332,
+   "Z": 9,
+   "unmatched": false,
+   "matched": [
+    "could",
+    "realize",
+    "that",
+    "they",
+    "to",
+    "and",
+    "were",
+    "part of",
+    "herself"
+   ],
+   "f": 4.819333333333333,
+   "s": 0.17506666666666665,
+   "gamma": 1.6878602777777778,
+   "stl": {
+    "common": {
+     "file": "s059_common.stl",
+     "sha256": "b9abc6398036cd15afb959ad904679b58846caa88e457552919fab76f246c367",
+     "facets": 128000,
+     "volume_mm3": 6506.1864337447505,
+     "z_min_mm": 2.290593296629951,
+     "z_max_mm": 2.8648981821764394
+    },
+    "minmax": {
+     "file": "s059_minmax.stl",
+     "sha256": "303e0028c8d0ecd07f1051cf383e424d7ebcfda776b070f2a65026fed5dda7a5",
+     "facets": 128000,
+     "volume_mm3": 6629.176164752214,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She wanted an excellent and stylish fit, she told the young fellow who served her, and she did not mind the difference of a dollar or two more in the price so long as she got what she desired.",
+   "V": 0.1989047619047619,
+   "A": 0.04257142857142857,
+   "Z": 21,
+   "unmatched": false,
+   "matched": [
+    "excellent",
+    "and",
+    "stylish",
+    "fit",
+    "told",
+    "fellow",
+    "served",
+    "and",
+    "did",
+    "mind",
+    "difference",
+    "of a",
+    "dollar",
+    "or two",
+    "more",
+    "price",
+    "so long",
+    "as",
+    "got",
+    "what",
+    "desired"
+   ],
+   "f": 5.085142857142857,
+   "s": 0.15613142857142856,
+   "gamma": 1.7143465476190476,
+   "stl": {
+    "common": {
+     "file": "s060_common.stl",
+     "sha256": "feb8683a75d477a01eee503b0ed7fd7ce4d1c78d0dc81a372dd1ac5f0a7d0509",
+     "facets": 128000,
+     "volume_mm3": 6506.3900018139275,
+     "z_min_mm": 2.32350869039527,
+     "z_max_mm": 2.8375884633926165
+    },
+    "minmax": {
+     "file": "s060_minmax.stl",
+     "sha256": "bbf142c896d2db008e513d8445d1bc3e81df94c56804cbf3bdc0d3fd30b0de02",
+     "facets": 128000,
+     "volume_mm3": 6628.428066008073,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "It was a long time since Mrs. Sommers had been fitted with gloves.",
+   "V": 0.00975,
+   "A": -0.240375,
+   "Z": 8,
+   "unmatched": false,
+   "matched": [
+    "it",
+    "was",
+    "long time",
+    "since",
+    "been",
+    "fitted",
+    "with",
+    "gloves"
+   ],
+   "f": 4.5192499999999995,
+   "s": 0.17883,
+   "gamma": 1.6142921874999998,
+   "stl": {
+    "common": {
+     "file": "s061_common.stl",
+     "sha256": "19f74778e2764b69224e0c31d2ad528ef6dc9a895207216e1849b79d80834c74",
+     "facets": 128000,
+     "volume_mm3": 6505.983214165583,
+     "z_min_mm": 2.285236182026797,
+     "z_max_mm": 2.8686305178221834
+    },
+    "minmax": {
+     "file": "s061_minmax.stl",
+     "sha256": "18962877667d5b5865ac39e80fb3264409f5dada7da9939872d74d89701c08ee",
+     "facets": 128000,
+     "volume_mm3": 6630.923120439031,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "On rare occasions when she had bought a pair they were always “bargains,” so cheap that it would have been preposterous and unreasonable to have expected them to be fitted to the hand.",
+   "V": 0.047807692307692315,
+   "A": -0.08096153846153846,
+   "Z": 26,
+   "unmatched": false,
+   "matched": [
+    "on",
+    "rare occasions",
+    "when",
+    "bought",
+    "a pair",
+    "they",
+    "were",
+    "always",
+    "cheap",
+    "that",
+    "it",
+    "would",
+    "have",
+    "been",
+    "preposterous",
+    "and",
+    "unreasonable",
+    "to",
+    "have",
+    "expected",
+    "them",
+    "to",
+    "be",
+    "fitted",
+    "to",
+    "hand"
+   ],
+   "f": 4.838076923076923,
+   "s": 0.1742630769230769,
+   "gamma": 1.6910459615384617,
+   "stl": {
+    "common": {
+     "file": "s062_common.stl",
+     "sha256": "16c54555d5946ada7bf2fcc0e541beb8d2c677faa3fc3eb098bb1d15377fcb5d",
+     "facets": 128000,
+     "volume_mm3": 6506.371241932579,
+     "z_min_mm": 2.291820191582129,
+     "z_max_mm": 2.864254435810229
+    },
+    "minmax": {
+     "file": "s062_minmax.stl",
+     "sha256": "adbdee5db2b3ad4e56948947d2739ffd3df05a785d20711c2ea6d36d191d6b26",
+     "facets": 128000,
+     "volume_mm3": 6628.457634278784,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "Now she rested her elbow on the cushion of the glove counter, and a pretty, pleasant young creature, delicate and deft of touch, drew a long-wristed “kid” over Mrs. Sommers’s hand.",
+   "V": 0.2178,
+   "A": -0.17025,
+   "Z": 20,
+   "unmatched": false,
+   "matched": [
+    "now",
+    "rested",
+    "elbow",
+    "on",
+    "cushion",
+    "of",
+    "glove",
+    "counter",
+    "and",
+    "pretty",
+    "pleasant",
+    "creature",
+    "delicate",
+    "and",
+    "deft",
+    "of",
+    "touch",
+    "kid",
+    "over",
+    "hand"
+   ],
+   "f": 4.6594999999999995,
+   "s": 0.153864,
+   "gamma": 1.5911413749999999,
+   "stl": {
+    "common": {
+     "file": "s063_common.stl",
+     "sha256": "26bf60920bfb0cdb013acfab98748611cdfef55079aff28487cfe0a5d3092726",
+     "facets": 128000,
+     "volume_mm3": 6504.039613482474,
+     "z_min_mm": 2.3295647972967823,
+     "z_max_mm": 2.8302783666494773
+    },
+    "minmax": {
+     "file": "s063_minmax.stl",
+     "sha256": "8a41efd23af4c2981da3610ea15b94c3c92d85fe51896eab31d1a0ba0f4d6849",
+     "facets": 128000,
+     "volume_mm3": 6629.9800801005285,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She smoothed it down over the wrist and buttoned it neatly, and both lost themselves for a second or two in admiring contemplation of the little symmetrical gloved hand.",
+   "V": 0.02014285714285714,
+   "A": -0.18442857142857141,
+   "Z": 21,
+   "unmatched": false,
+   "matched": [
+    "it",
+    "down",
+    "over",
+    "wrist",
+    "and",
+    "it",
+    "neatly",
+    "and",
+    "both",
+    "lost",
+    "themselves",
+    "for",
+    "second",
+    "or two",
+    "admiring",
+    "contemplation",
+    "of",
+    "little",
+    "symmetrical",
+    "gloved",
+    "hand"
+   ],
+   "f": 4.631142857142857,
+   "s": 0.17758285714285715,
+   "gamma": 1.6421107142857143,
+   "stl": {
+    "common": {
+     "file": "s064_common.stl",
+     "sha256": "a966928af39825a1131aa3e03d1137abbd86de7b08a06e0f0ff1a31ba22ac117",
+     "facets": 128000,
+     "volume_mm3": 6505.2358048990145,
+     "z_min_mm": 2.287326319708126,
+     "z_max_mm": 2.865867748329914
+    },
+    "minmax": {
+     "file": "s064_minmax.stl",
+     "sha256": "3576f8884a5f4af1728a53846f04dda5877b47b2cb91a1e33f9f6622a707c7a1",
+     "facets": 128000,
+     "volume_mm3": 6632.215012648737,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "But there were other places where money might be spent.",
+   "V": 0.07855555555555555,
+   "A": -0.03211111111111112,
+   "Z": 9,
+   "unmatched": false,
+   "matched": [
+    "but",
+    "there",
+    "were",
+    "other",
+    "where",
+    "money",
+    "might",
+    "be",
+    "spent"
+   ],
+   "f": 4.935777777777778,
+   "s": 0.17057333333333335,
+   "gamma": 1.7088883333333333,
+   "stl": {
+    "common": {
+     "file": "s065_common.stl",
+     "sha256": "bdf7a365f5a1a4dadf33a58a39a776923f813f309e1a389ad1a1433f1de5b127",
+     "facets": 128000,
+     "volume_mm3": 6506.883319088213,
+     "z_min_mm": 2.298110696660558,
+     "z_max_mm": 2.859045193161247
+    },
+    "minmax": {
+     "file": "s065_minmax.stl",
+     "sha256": "c179958799cb53b218e6334a450b8710393d8d963f15a417cff68f255414a2e8",
+     "facets": 128000,
+     "volume_mm3": 6629.295221141991,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "There were books and magazines piled up in the window of a stall a few paces down the street.",
+   "V": 0.013000000000000003,
+   "A": -0.16833333333333333,
+   "Z": 12,
+   "unmatched": false,
+   "matched": [
+    "there",
+    "were",
+    "books",
+    "and",
+    "piled",
+    "up",
+    "window",
+    "of a",
+    "stall",
+    "a few",
+    "down",
+    "street"
+   ],
+   "f": 4.663333333333333,
+   "s": 0.17844,
+   "gamma": 1.653128333333333,
+   "stl": {
+    "common": {
+     "file": "s066_common.stl",
+     "sha256": "5254396f6a4b7515fc50e24c926f605a92ca3d93192e391b5fc4c4d6122c90ec",
+     "facets": 128000,
+     "volume_mm3": 6505.110988852551,
+     "z_min_mm": 2.285150446876401,
+     "z_max_mm": 2.869537171769551
+    },
+    "minmax": {
+     "file": "s066_minmax.stl",
+     "sha256": "c13c9f008c87c7ee3dbc22e16f8d56c2e00fda7328c386e539cff6000e52a9a4",
+     "facets": 128000,
+     "volume_mm3": 6626.802600631967,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "Mrs. Sommers bought two high-priced magazines such as she had been accustomed to read in the days when she had been accustomed to other pleasant things.",
+   "V": 0.11316666666666668,
+   "A": -0.31183333333333335,
+   "Z": 12,
+   "unmatched": false,
+   "matched": [
+    "bought",
+    "two",
+    "such as",
+    "been",
+    "accustomed to",
+    "read in",
+    "when",
+    "been",
+    "accustomed to",
+    "other",
+    "pleasant",
+    "things"
+   ],
+   "f": 4.376333333333333,
+   "s": 0.16642,
+   "gamma": 1.5440450000000001,
+   "stl": {
+    "common": {
+     "file": "s067_common.stl",
+     "sha256": "73eb299f48fa6c383cf08f89704e3f4de25aa681d77323255dd42c27f4445d84",
+     "facets": 128000,
+     "volume_mm3": 6505.972039826479,
+     "z_min_mm": 2.308471650751808,
+     "z_max_mm": 2.847616068780053
+    },
+    "minmax": {
+     "file": "s067_minmax.stl",
+     "sha256": "b779231a9390f07eadfbc86392e82fdbc638dc7fceefabde693ac5983d563a99",
+     "facets": 128000,
+     "volume_mm3": 6635.464386915203,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She carried them without wrapping.",
+   "V": -0.15,
+   "A": -0.2175,
+   "Z": 4,
+   "unmatched": false,
+   "matched": [
+    "carried",
+    "them",
+    "without",
+    "wrapping"
+   ],
+   "f": 4.5649999999999995,
+   "s": 0.19799999999999998,
+   "gamma": 1.67445625,
+   "stl": {
+    "common": {
+     "file": "s068_common.stl",
+     "sha256": "6933a8f5202cda5054b4369f77c211dd2e665864f0514debc498606596c89441",
+     "facets": 128000,
+     "volume_mm3": 6506.774080351078,
+     "z_min_mm": 2.2501811035112165,
+     "z_max_mm": 2.8998636455716214
+    },
+    "minmax": {
+     "file": "s068_minmax.stl",
+     "sha256": "17d10434f425ca013241bf275877bf74004a810d25b820e54edc98865b772532",
+     "facets": 128000,
+     "volume_mm3": 6627.849784428483,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "As well as she could she lifted her skirts at the crossings.",
+   "V": 0.18433333333333332,
+   "A": -0.128,
+   "Z": 6,
+   "unmatched": false,
+   "matched": [
+    "as well",
+    "as",
+    "could",
+    "lifted",
+    "skirts",
+    "at"
+   ],
+   "f": 4.744,
+   "s": 0.15788,
+   "gamma": 1.6244408333333333,
+   "stl": {
+    "common": {
+     "file": "s069_common.stl",
+     "sha256": "6c8cc54561f24eb4dd3eb2dfffa9b0cb898eb1755f12f71f80e37d965f82be20",
+     "facets": 128000,
+     "volume_mm3": 6504.526911046262,
+     "z_min_mm": 2.32196574079743,
+     "z_max_mm": 2.837328154687918
+    },
+    "minmax": {
+     "file": "s069_minmax.stl",
+     "sha256": "344f711dcd61a01bc888c56511fc0da1db9373bc2a75df0d4afe2d6c91381151",
+     "facets": 128000,
+     "volume_mm3": 6629.018820174305,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "Her stockings and boots and well fitting gloves had worked marvels in her bearing—had given her a feeling of assurance, a sense of belonging to the well-dressed multitude.",
+   "V": 0.21453333333333333,
+   "A": -0.13646666666666668,
+   "Z": 15,
+   "unmatched": false,
+   "matched": [
+    "stockings",
+    "and",
+    "boots",
+    "and",
+    "well",
+    "fitting",
+    "gloves",
+    "bearing",
+    "feeling",
+    "of",
+    "assurance",
+    "sense",
+    "of",
+    "to",
+    "multitude"
+   ],
+   "f": 4.7270666666666665,
+   "s": 0.154256,
+   "gamma": 1.6107785,
+   "stl": {
+    "common": {
+     "file": "s070_common.stl",
+     "sha256": "1204c2b06343fef3ee8ab738df48ac943ef074db117e9944dfb2eff174c8a45b",
+     "facets": 128000,
+     "volume_mm3": 6504.232631280531,
+     "z_min_mm": 2.328513898493898,
+     "z_max_mm": 2.8317084059324715
+    },
+    "minmax": {
+     "file": "s070_minmax.stl",
+     "sha256": "d380f2f9ce9f540979eb42b3bad0a8d63f1405d8836727a1c4cf9dd90a087fbf",
+     "facets": 128000,
+     "volume_mm3": 6628.669331054275,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She was very hungry.",
+   "V": -0.2303333333333333,
+   "A": 0.09899999999999999,
+   "Z": 3,
+   "unmatched": false,
+   "matched": [
+    "was",
+    "very",
+    "hungry"
+   ],
+   "f": 5.198,
+   "s": 0.20764,
+   "gamma": 1.8732216666666668,
+   "stl": {
+    "common": {
+     "file": "s071_common.stl",
+     "sha256": "97c156275e386ded3c01619fce80a18c6ca71778b5db90dd6d9a534e1253c482",
+     "facets": 128000,
+     "volume_mm3": 6509.286179290991,
+     "z_min_mm": 2.229713832002334,
+     "z_max_mm": 2.9213512510796438
+    },
+    "minmax": {
+     "file": "s071_minmax.stl",
+     "sha256": "73cb833864e4ea1a2350e8d1e0258074cae0aeae32184140eafe679e2ef48ef5",
+     "facets": 128000,
+     "volume_mm3": 6622.2400471635,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "Another time she would have stilled the cravings for food until reaching her own home, where she would have brewed herself a cup of tea and taken a snack of anything that was available.",
+   "V": 0.18733333333333335,
+   "A": -0.1595,
+   "Z": 24,
+   "unmatched": false,
+   "matched": [
+    "another",
+    "time",
+    "would",
+    "have",
+    "for",
+    "food",
+    "until",
+    "own",
+    "home",
+    "where",
+    "would",
+    "have",
+    "herself",
+    "cup",
+    "of",
+    "tea",
+    "and",
+    "taken",
+    "snack",
+    "of",
+    "anything",
+    "that",
+    "was",
+    "available"
+   ],
+   "f": 4.681,
+   "s": 0.15752,
+   "gamma": 1.6061445833333332,
+   "stl": {
+    "common": {
+     "file": "s072_common.stl",
+     "sha256": "d7da26b21426eb0e5b8f04ae2d44692088ccf927943ed8fc8c7c96b453eba145",
+     "facets": 128000,
+     "volume_mm3": 6504.173128255992,
+     "z_min_mm": 2.322881336381219,
+     "z_max_mm": 2.836407789927644
+    },
+    "minmax": {
+     "file": "s072_minmax.stl",
+     "sha256": "f84871c4743a7594db8bcb0594d6934829a44cc8692cc6d215f91cce8034bd8c",
+     "facets": 128000,
+     "volume_mm3": 6628.66730372822,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "But the impulse that was guiding her would not suffer her to entertain any such thought.",
+   "V": 0.08545454545454546,
+   "A": 0.13336363636363638,
+   "Z": 11,
+   "unmatched": false,
+   "matched": [
+    "but",
+    "impulse",
+    "that",
+    "was",
+    "guiding",
+    "would",
+    "suffer",
+    "to",
+    "entertain",
+    "such",
+    "thought"
+   ],
+   "f": 5.266727272727273,
+   "s": 0.16974545454545453,
+   "gamma": 1.7982606818181819,
+   "stl": {
+    "common": {
+     "file": "s073_common.stl",
+     "sha256": "811a13a3eafa2495824bf20a118080aa6f3d7c08b0e7952fc807fe2457668137",
+     "facets": 128000,
+     "volume_mm3": 6507.4094294955385,
+     "z_min_mm": 2.298095668372513,
+     "z_max_mm": 2.860845491130604
+    },
+    "minmax": {
+     "file": "s073_minmax.stl",
+     "sha256": "9423ac8bea063524187301b0eeb6f0d1a7b4cb066a76ad06e72437b2a4edcd6e",
+     "facets": 128000,
+     "volume_mm3": 6625.241401281233,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "There was a restaurant at the corner.",
+   "V": 0.069,
+   "A": -0.13579999999999998,
+   "Z": 5,
+   "unmatched": false,
+   "matched": [
+    "there",
+    "was",
+    "restaurant",
+    "at",
+    "corner"
+   ],
+   "f": 4.728400000000001,
+   "s": 0.17171999999999998,
+   "gamma": 1.654443,
+   "stl": {
+    "common": {
+     "file": "s074_common.stl",
+     "sha256": "46f1a5b6f0a3a81b98b9ebafdf7d20077307d2fd261a55727c9a63a259951947",
+     "facets": 128000,
+     "volume_mm3": 6505.01867280938,
+     "z_min_mm": 2.296944279408798,
+     "z_max_mm": 2.859396996621636
+    },
+    "minmax": {
+     "file": "s074_minmax.stl",
+     "sha256": "3385600a51ec21bda256435451551101c940fa9b1ed21218f1182fbf52dfe57a",
+     "facets": 128000,
+     "volume_mm3": 6627.1404541138145,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She had never entered its doors; from the outside she had sometimes caught glimpses of spotless damask and shining crystal, and soft-stepping waiters serving people of fashion.",
+   "V": 0.13492857142857143,
+   "A": -0.10021428571428571,
+   "Z": 14,
+   "unmatched": false,
+   "matched": [
+    "never",
+    "from",
+    "outside",
+    "caught",
+    "of",
+    "spotless",
+    "damask",
+    "and",
+    "shining",
+    "crystal",
+    "and",
+    "people",
+    "of",
+    "fashion"
+   ],
+   "f": 4.799571428571428,
+   "s": 0.16380857142857141,
+   "gamma": 1.654490357142857,
+   "stl": {
+    "common": {
+     "file": "s075_common.stl",
+     "sha256": "e0fbb82c4c22d1e0dcd1afd4e539a6ab0504f1d43dcb72072f04260d0b0e845e",
+     "facets": 128000,
+     "volume_mm3": 6505.377422019593,
+     "z_min_mm": 2.3112892997379215,
+     "z_max_mm": 2.847285359167158
+    },
+    "minmax": {
+     "file": "s075_minmax.stl",
+     "sha256": "7179ade45ec97ff2284d7b4a2e5a40073b571a7ffd19ccca65baa9a4f5a6d58a",
+     "facets": 128000,
+     "volume_mm3": 6627.969072022007,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "When she entered her appearance created no surprise, no consternation, as she had half feared it might.",
+   "V": -0.05670000000000001,
+   "A": 0.11499999999999999,
+   "Z": 10,
+   "unmatched": false,
+   "matched": [
+    "when",
+    "appearance",
+    "created",
+    "no surprise",
+    "consternation",
+    "as",
+    "half",
+    "feared",
+    "it",
+    "might"
+   ],
+   "f": 5.23,
+   "s": 0.186804,
+   "gamma": 1.83040575,
+   "stl": {
+    "common": {
+     "file": "s076_common.stl",
+     "sha256": "7f4041d6882e1b58f14188081922ff24171a1783b376ff4b30ac4b3401af7424",
+     "facets": 128000,
+     "volume_mm3": 6508.182590587859,
+     "z_min_mm": 2.2671630818693576,
+     "z_max_mm": 2.8880408893758887
+    },
+    "minmax": {
+     "file": "s076_minmax.stl",
+     "sha256": "c236a907fa66ed490afa4c8c0e097f8bd4a6bfd685b161cef60d508108dbbc6a",
+     "facets": 128000,
+     "volume_mm3": 6624.039146230473,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She seated herself at a small table alone, and an attentive waiter at once approached to take her order.",
+   "V": 0.1391666666666667,
+   "A": -0.25266666666666665,
+   "Z": 12,
+   "unmatched": false,
+   "matched": [
+    "herself",
+    "at",
+    "small",
+    "table",
+    "alone",
+    "and",
+    "attentive",
+    "waiter",
+    "at once",
+    "to",
+    "take",
+    "order"
+   ],
+   "f": 4.494666666666667,
+   "s": 0.1633,
+   "gamma": 1.5689995833333334,
+   "stl": {
+    "common": {
+     "file": "s077_common.stl",
+     "sha256": "ef20866887c68faa44ccbaa9be45a64dfa3dd1526f4f4c891851c32cae3ccbaa",
+     "facets": 128000,
+     "volume_mm3": 6505.309491457025,
+     "z_min_mm": 2.313413842126465,
+     "z_max_mm": 2.8437605938706287
+    },
+    "minmax": {
+     "file": "s077_minmax.stl",
+     "sha256": "41f052ef43b7504de453e9c3b50d8c0e1cc322c9f525b2c328d69ec5c4be15e9",
+     "facets": 128000,
+     "volume_mm3": 6633.138810414236,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She did not want a profusion; she craved a nice and tasty bite—a half dozen blue-points, a plump chop with cress, a something sweet—a crème-frappée, for instance; a glass of Rhine wine, and after all a small cup of black coffee.",
+   "V": 0.12730434782608696,
+   "A": 0.001999999999999996,
+   "Z": 23,
+   "unmatched": false,
+   "matched": [
+    "did",
+    "want",
+    "profusion",
+    "nice",
+    "and",
+    "tasty",
+    "bite",
+    "half dozen",
+    "plump",
+    "chop",
+    "with",
+    "something",
+    "sweet",
+    "for instance",
+    "glass",
+    "of",
+    "wine",
+    "and",
+    "after all",
+    "small",
+    "cup",
+    "of",
+    "coffee"
+   ],
+   "f": 5.004,
+   "s": 0.16472347826086958,
+   "gamma": 1.713231956521739,
+   "stl": {
+    "common": {
+     "file": "s078_common.stl",
+     "sha256": "d10c72e4a496997ad8851524ac17797587a1690a653cfdd2b945137b30661054",
+     "facets": 128000,
+     "volume_mm3": 6506.719228630008,
+     "z_min_mm": 2.308751361387522,
+     "z_max_mm": 2.848378223999399
+    },
+    "minmax": {
+     "file": "s078_minmax.stl",
+     "sha256": "6cdca2947a05912029492652f1a40ca471592dc35d205a17ceafc0bbbfc0e768",
+     "facets": 128000,
+     "volume_mm3": 6634.108772019073,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "While waiting to be served she removed her gloves very leisurely and laid them beside her.",
+   "V": 0.022153846153846156,
+   "A": -0.2745384615384615,
+   "Z": 13,
+   "unmatched": false,
+   "matched": [
+    "while",
+    "waiting",
+    "to",
+    "be",
+    "served",
+    "removed",
+    "gloves",
+    "very",
+    "leisurely",
+    "and",
+    "laid",
+    "them",
+    "beside"
+   ],
+   "f": 4.450923076923077,
+   "s": 0.17734153846153844,
+   "gamma": 1.5917267307692309,
+   "stl": {
+    "common": {
+     "file": "s079_common.stl",
+     "sha256": "e9f88fb6713e04aba8443008bb897d20682d7c38409ca0a12b8f46d1be61ff3b",
+     "facets": 128000,
+     "volume_mm3": 6506.323132471573,
+     "z_min_mm": 2.2882600076139576,
+     "z_max_mm": 2.8656169631593116
+    },
+    "minmax": {
+     "file": "s079_minmax.stl",
+     "sha256": "8a123253fce6f0a3999bdc5e9231a6f8805e1f5b3f591de5010ef3e9c996e3fd",
+     "facets": 128000,
+     "volume_mm3": 6632.971989236161,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "Then she picked up a magazine and glanced through it, cutting the pages with a blunt edge of her knife.",
+   "V": -0.011000000000000001,
+   "A": -0.0002500000000000002,
+   "Z": 12,
+   "unmatched": false,
+   "matched": [
+    "then",
+    "picked up",
+    "magazine",
+    "and",
+    "through",
+    "it",
+    "cutting",
+    "with",
+    "blunt",
+    "edge",
+    "of",
+    "knife"
+   ],
+   "f": 4.9995,
+   "s": 0.18131999999999998,
+   "gamma": 1.7531343750000001,
+   "stl": {
+    "common": {
+     "file": "s080_common.stl",
+     "sha256": "b092901ce22930cb4c759dcbaefadd96c21874d690f2cf5c47692fe94da89662",
+     "facets": 128000,
+     "volume_mm3": 6507.686920028544,
+     "z_min_mm": 2.278581711548452,
+     "z_max_mm": 2.8753153139995464
+    },
+    "minmax": {
+     "file": "s080_minmax.stl",
+     "sha256": "5113241a08bc888a321363c201603b613db56fb4f5312da4919b015c35b74c52",
+     "facets": 128000,
+     "volume_mm3": 6631.346322418394,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "It was all very agreeable.",
+   "V": 0.191,
+   "A": -0.073,
+   "Z": 5,
+   "unmatched": false,
+   "matched": [
+    "it",
+    "was",
+    "all",
+    "very",
+    "agreeable"
+   ],
+   "f": 4.854,
+   "s": 0.15708,
+   "gamma": 1.652845,
+   "stl": {
+    "common": {
+     "file": "s081_common.stl",
+     "sha256": "e351234c484d97a1d5c255bcba5a3adee4c23bea0bce01bf58eb016727567c5f",
+     "facets": 128000,
+     "volume_mm3": 6505.62897181679,
+     "z_min_mm": 2.3229091473200203,
+     "z_max_mm": 2.8371139514803563
+    },
+    "minmax": {
+     "file": "s081_minmax.stl",
+     "sha256": "ade792c11ef1bbe7890082bb014467bce1987a0979393322fb2f7f54ddbdf416",
+     "facets": 128000,
+     "volume_mm3": 6629.753979590423,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "The damask was even more spotless than it had seemed through the window, and the crystal more sparkling.",
+   "V": 0.28054545454545454,
+   "A": -0.21663636363636363,
+   "Z": 11,
+   "unmatched": false,
+   "matched": [
+    "damask",
+    "was",
+    "even more",
+    "spotless",
+    "it",
+    "through",
+    "window",
+    "and",
+    "crystal",
+    "more",
+    "sparkling"
+   ],
+   "f": 4.566727272727273,
+   "s": 0.14633454545454544,
+   "gamma": 1.5468461363636363,
+   "stl": {
+    "common": {
+     "file": "s082_common.stl",
+     "sha256": "2db1af60780fc7c0d50ab308f5261fe85ff8c4418808f520a1ed3d46987609f5",
+     "facets": 128000,
+     "volume_mm3": 6504.174717772642,
+     "z_min_mm": 2.3435472464171823,
+     "z_max_mm": 2.8178287530924946
+    },
+    "minmax": {
+     "file": "s082_minmax.stl",
+     "sha256": "5d491ac11834ed04fc272b4cfb80b30e6219cc7c691a46adc8afbbed837d3598",
+     "facets": 128000,
+     "volume_mm3": 6632.717934900407,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "There were quiet ladies and gentlemen, who did not notice her, lunching at the small tables like her own.",
+   "V": 0.27091666666666664,
+   "A": -0.15183333333333332,
+   "Z": 12,
+   "unmatched": false,
+   "matched": [
+    "there",
+    "were",
+    "quiet",
+    "ladies",
+    "and",
+    "gentlemen",
+    "did",
+    "notice",
+    "at",
+    "small",
+    "like",
+    "own"
+   ],
+   "f": 4.6963333333333335,
+   "s": 0.14749,
+   "gamma": 1.585514375,
+   "stl": {
+    "common": {
+     "file": "s083_common.stl",
+     "sha256": "7470c3412eb6a891bd41a054740a298fd8cd9913af72923bf6262d1a7b6ddf3f",
+     "facets": 128000,
+     "volume_mm3": 6503.787655445239,
+     "z_min_mm": 2.3408781033418955,
+     "z_max_mm": 2.820781859126913
+    },
+    "minmax": {
+     "file": "s083_minmax.stl",
+     "sha256": "063094741666b6cd9ff1300fe14eebb40961a804d10aa00662b7e07eb8ccc873",
+     "facets": 128000,
+     "volume_mm3": 6629.3076860089905,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "A soft, pleasing strain of music could be heard, and a gentle breeze was blowing through the window.",
+   "V": 0.22893333333333335,
+   "A": -0.15986666666666668,
+   "Z": 15,
+   "unmatched": false,
+   "matched": [
+    "soft",
+    "pleasing",
+    "strain",
+    "of",
+    "music",
+    "could",
+    "be",
+    "heard",
+    "and",
+    "gentle",
+    "breeze",
+    "was",
+    "blowing",
+    "through",
+    "window"
+   ],
+   "f": 4.680266666666666,
+   "s": 0.152528,
+   "gamma": 1.593566,
+   "stl": {
+    "common": {
+     "file": "s084_common.stl",
+     "sha256": "903ee1dc8e867e9119467920e3c50e01c57bba8f570a3736236ef1faded37628",
+     "facets": 128000,
+     "volume_mm3": 6503.963720382043,
+     "z_min_mm": 2.3318760126139075,
+     "z_max_mm": 2.8285196345822365
+    },
+    "minmax": {
+     "file": "s084_minmax.stl",
+     "sha256": "52f47d5693ef7ff8de6bfb838bbfedac241698fbc7076a198ecaa427caf391a2",
+     "facets": 128000,
+     "volume_mm3": 6629.193230607813,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She tasted a bite, and she read a word or two, and she sipped the amber wine and wiggled her toes in the silk stockings.",
+   "V": 0.09549999999999999,
+   "A": -0.15775,
+   "Z": 12,
+   "unmatched": false,
+   "matched": [
+    "tasted",
+    "bite",
+    "and",
+    "read",
+    "word",
+    "or two",
+    "and",
+    "amber",
+    "wine",
+    "and",
+    "silk",
+    "stockings"
+   ],
+   "f": 4.6845,
+   "s": 0.16854,
+   "gamma": 1.634431875,
+   "stl": {
+    "common": {
+     "file": "s085_common.stl",
+     "sha256": "ef520250d1470928d3fe35eda9ceebbac25b1347a7fc1920c43e981a49a04edc",
+     "facets": 128000,
+     "volume_mm3": 6504.652587534794,
+     "z_min_mm": 2.302930077256289,
+     "z_max_mm": 2.8537503925443235
+    },
+    "minmax": {
+     "file": "s085_minmax.stl",
+     "sha256": "4073e1c5abdb5482e0d02b0c30ca9c3c5591b6d0edf52f790dede22406de6e29",
+     "facets": 128000,
+     "volume_mm3": 6628.1042104964135,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "The price of it made no difference.",
+   "V": -0.013600000000000001,
+   "A": 0.07900000000000001,
+   "Z": 5,
+   "unmatched": false,
+   "matched": [
+    "price",
+    "of",
+    "it",
+    "made",
+    "difference"
+   ],
+   "f": 5.1579999999999995,
+   "s": 0.18163200000000002,
+   "gamma": 1.7976935,
+   "stl": {
+    "common": {
+     "file": "s086_common.stl",
+     "sha256": "aad95adc32e7c45b9cddd6d67a06bb8858075160a3a15172f09677efab39b0f6",
+     "facets": 128000,
+     "volume_mm3": 6507.678597267631,
+     "z_min_mm": 2.276887540660818,
+     "z_max_mm": 2.8790677080325713
+    },
+    "minmax": {
+     "file": "s086_minmax.stl",
+     "sha256": "b87bbcc9ad4a549014e9f156ec8d59480a0d0085c165a9641e66fa17e72678b9",
+     "facets": 128000,
+     "volume_mm3": 6625.014816055041,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She counted the money out to the waiter and left an extra coin on his tray, whereupon he bowed before her as before a princess of royal blood.",
+   "V": 0.09647368421052631,
+   "A": -0.06326315789473685,
+   "Z": 19,
+   "unmatched": false,
+   "matched": [
+    "money",
+    "out to",
+    "waiter",
+    "and",
+    "left",
+    "extra",
+    "coin",
+    "on",
+    "tray",
+    "whereupon",
+    "he",
+    "bowed",
+    "before",
+    "as",
+    "before",
+    "princess",
+    "of",
+    "royal",
+    "blood"
+   ],
+   "f": 4.873473684210526,
+   "s": 0.16842315789473683,
+   "gamma": 1.6863461842105263,
+   "stl": {
+    "common": {
+     "file": "s087_common.stl",
+     "sha256": "d6be2f4aa7872124b02d8f9bc9e0c710886ccd0c87c9d9c2b8a576002ba988c4",
+     "facets": 128000,
+     "volume_mm3": 6506.41622374762,
+     "z_min_mm": 2.3022606079072703,
+     "z_max_mm": 2.8553620068358634
+    },
+    "minmax": {
+     "file": "s087_minmax.stl",
+     "sha256": "5b2381866024e1af59caf5c81ad6632418fddf3ab2d3257d995599888486c868",
+     "facets": 128000,
+     "volume_mm3": 6628.847162439054,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "There was still money in her purse, and her next temptation presented itself in the shape of a matinee poster.",
+   "V": 0.11515384615384615,
+   "A": -0.13676923076923078,
+   "Z": 13,
+   "unmatched": false,
+   "matched": [
+    "there",
+    "was",
+    "still",
+    "money",
+    "purse",
+    "and",
+    "next",
+    "temptation",
+    "itself",
+    "shape",
+    "of a",
+    "matinee",
+    "poster"
+   ],
+   "f": 4.726461538461539,
+   "s": 0.16618153846153844,
+   "gamma": 1.6401767307692308,
+   "stl": {
+    "common": {
+     "file": "s088_common.stl",
+     "sha256": "5ab79d6f3b5130741555215ed98c672982a107a248cb33b45e7629401b346c7a",
+     "facets": 128000,
+     "volume_mm3": 6504.751857960662,
+     "z_min_mm": 2.3069977278821097,
+     "z_max_mm": 2.8506133044648942
+    },
+    "minmax": {
+     "file": "s088_minmax.stl",
+     "sha256": "0ce29b9a9ea9a687c9325d15c920f8b3db57f640b75ceaf2a577bdd80d5d26bc",
+     "facets": 128000,
+     "volume_mm3": 6627.4534517022885,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "It was a little later when she entered the theatre, the play had begun and the house seemed to her to be packed.",
+   "V": 0.1296923076923077,
+   "A": -0.14153846153846156,
+   "Z": 13,
+   "unmatched": false,
+   "matched": [
+    "it",
+    "was",
+    "a little",
+    "later",
+    "when",
+    "theatre",
+    "play",
+    "begun",
+    "and",
+    "house",
+    "to",
+    "to",
+    "be"
+   ],
+   "f": 4.716923076923077,
+   "s": 0.1644369230769231,
+   "gamma": 1.6332165384615385,
+   "stl": {
+    "common": {
+     "file": "s089_common.stl",
+     "sha256": "364a85cb1ca12016581855987f6db5b667b6c70ab83eff60ed528d5906642c68",
+     "facets": 128000,
+     "volume_mm3": 6504.605888619776,
+     "z_min_mm": 2.3103246139044655,
+     "z_max_mm": 2.8469817000166984
+    },
+    "minmax": {
+     "file": "s089_minmax.stl",
+     "sha256": "d456f3dae76517b85cb7f36345ed23d86bbfbf7ce23adb939c8030818d1dbde2",
+     "facets": 128000,
+     "volume_mm3": 6629.631375347993,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "But there were vacant seats here and there, and into one of them she was ushered, between brilliantly dressed women who had gone there to kill time and eat candy and display their gaudy attire.",
+   "V": 0.12489285714285714,
+   "A": -0.0385,
+   "Z": 28,
+   "unmatched": false,
+   "matched": [
+    "but",
+    "there",
+    "were",
+    "vacant",
+    "here",
+    "and",
+    "there",
+    "and",
+    "into",
+    "one",
+    "of",
+    "them",
+    "was",
+    "between",
+    "brilliantly",
+    "women",
+    "gone",
+    "there",
+    "to",
+    "kill time",
+    "and",
+    "eat",
+    "candy",
+    "and",
+    "display",
+    "their",
+    "gaudy",
+    "attire"
+   ],
+   "f": 4.923,
+   "s": 0.16501285714285713,
+   "gamma": 1.6915731250000001,
+   "stl": {
+    "common": {
+     "file": "s090_common.stl",
+     "sha256": "ed1efb9be6801aaf21d63297e56f91da8754dd7357453afac4b5444529c6d597",
+     "facets": 128000,
+     "volume_mm3": 6506.519500344489,
+     "z_min_mm": 2.30818693181484,
+     "z_max_mm": 2.8504425580108124
+    },
+    "minmax": {
+     "file": "s090_minmax.stl",
+     "sha256": "66c68855a56858cc01772460fa04d37219054e094e606296fb7ce29474691c23",
+     "facets": 128000,
+     "volume_mm3": 6628.867571792257,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "There were many others who were there solely for the play and acting.",
+   "V": 0.1353,
+   "A": 0.035,
+   "Z": 10,
+   "unmatched": false,
+   "matched": [
+    "there",
+    "were",
+    "others",
+    "were",
+    "there",
+    "solely",
+    "for",
+    "play",
+    "and",
+    "acting"
+   ],
+   "f": 5.07,
+   "s": 0.163764,
+   "gamma": 1.7290857499999999,
+   "stl": {
+    "common": {
+     "file": "s091_common.stl",
+     "sha256": "bfdd2b1fb860cae1f054cfe572830087e91db32cc5e34fb9260e3a986ac36b7b",
+     "facets": 128000,
+     "volume_mm3": 6506.823112371839,
+     "z_min_mm": 2.30977758583903,
+     "z_max_mm": 2.8496649155475735
+    },
+    "minmax": {
+     "file": "s091_minmax.stl",
+     "sha256": "7bb41f41feddbf533c1a00cdbac8ec7217b86198b3233d71caeef1c5438cd864",
+     "facets": 128000,
+     "volume_mm3": 6627.848866952496,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "It is safe to say there was no one present who bore quite the attitude which Mrs. Sommers did to her surroundings.",
+   "V": 0.080625,
+   "A": -0.123,
+   "Z": 16,
+   "unmatched": false,
+   "matched": [
+    "it",
+    "is",
+    "safe",
+    "to",
+    "say",
+    "there",
+    "was",
+    "no one",
+    "present",
+    "bore",
+    "quite",
+    "attitude",
+    "which",
+    "did",
+    "to",
+    "surroundings"
+   ],
+   "f": 4.754,
+   "s": 0.170325,
+   "gamma": 1.6580565625,
+   "stl": {
+    "common": {
+     "file": "s092_common.stl",
+     "sha256": "f4c1d8da546999643ef7eb8ff09d815c3bd3064c328b0ee96bed18a9e493d48c",
+     "facets": 128000,
+     "volume_mm3": 6505.192433540987,
+     "z_min_mm": 2.2993885285481337,
+     "z_max_mm": 2.8573521906060937
+    },
+    "minmax": {
+     "file": "s092_minmax.stl",
+     "sha256": "98ca219edfe1435b67adc77260dcbc93b191e50fae713e35ce97fa907b1e0b30",
+     "facets": 128000,
+     "volume_mm3": 6627.4632110495795,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She gathered in the whole—stage and players and people in one wide impression, and absorbed it and enjoyed it.",
+   "V": 0.07723076923076923,
+   "A": -0.16107692307692306,
+   "Z": 13,
+   "unmatched": false,
+   "matched": [
+    "the whole",
+    "stage",
+    "and",
+    "and",
+    "people",
+    "one",
+    "wide",
+    "impression",
+    "and",
+    "absorbed",
+    "it",
+    "and",
+    "it"
+   ],
+   "f": 4.677846153846154,
+   "s": 0.17073230769230768,
+   "gamma": 1.6380288461538461,
+   "stl": {
+    "common": {
+     "file": "s093_common.stl",
+     "sha256": "5b5a2e7c5c396f16ccf372ccea6ad3bd24edd3c70c3136bbdf31fb01c4d764e5",
+     "facets": 128000,
+     "volume_mm3": 6504.744649624602,
+     "z_min_mm": 2.2989999365858313,
+     "z_max_mm": 2.857346586696537
+    },
+    "minmax": {
+     "file": "s093_minmax.stl",
+     "sha256": "035d303feaaa805012d2091205dde353666f6a9355dd3a9ac08e4702f2309ad1",
+     "facets": 128000,
+     "volume_mm3": 6627.472414880755,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "She laughed at the comedy and wept—she and the gaudy woman next to her wept over the tragedy.",
+   "V": -0.098,
+   "A": -0.025500000000000005,
+   "Z": 10,
+   "unmatched": false,
+   "matched": [
+    "at",
+    "comedy",
+    "and",
+    "wept",
+    "and",
+    "gaudy",
+    "next to",
+    "wept",
+    "over",
+    "tragedy"
+   ],
+   "f": 4.949,
+   "s": 0.19176,
+   "gamma": 1.7650662499999998,
+   "stl": {
+    "common": {
+     "file": "s094_common.stl",
+     "sha256": "aa6cbc5cac41e3719f2d9003fc096aba832733a0ea2935ca93048d93827593d7",
+     "facets": 128000,
+     "volume_mm3": 6508.1910407803,
+     "z_min_mm": 2.2594978518006568,
+     "z_max_mm": 2.8934475952225864
+    },
+    "minmax": {
+     "file": "s094_minmax.stl",
+     "sha256": "e856bf3bac8f785d4bd55f9472b80cadc62610f8601e9975603d265decf7e1b5",
+     "facets": 128000,
+     "volume_mm3": 6626.841410535075,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "And they talked a little together over it.",
+   "V": 0.13666666666666666,
+   "A": -0.14016666666666666,
+   "Z": 6,
+   "unmatched": false,
+   "matched": [
+    "and",
+    "they",
+    "a little",
+    "together",
+    "over",
+    "it"
+   ],
+   "f": 4.719666666666667,
+   "s": 0.16359999999999997,
+   "gamma": 1.6318995833333334,
+   "stl": {
+    "common": {
+     "file": "s095_common.stl",
+     "sha256": "48a9b04d458863891d948e6d4e8afe6f886498b86b4512d93c955842b0f07fbf",
+     "facets": 128000,
+     "volume_mm3": 6504.587336320947,
+     "z_min_mm": 2.311878685279626,
+     "z_max_mm": 2.845451905992061
+    },
+    "minmax": {
+     "file": "s095_minmax.stl",
+     "sha256": "f85d7c542aefdf16854842f0987521f5b7d2e443220f411e5612bbe78ed6f189",
+     "facets": 128000,
+     "volume_mm3": 6630.270624073511,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "And the gaudy woman wiped her eyes and sniffled on a tiny square of filmy, perfumed lace and passed little Mrs. Sommers her box of candy.",
+   "V": 0.12070588235294118,
+   "A": -0.21629411764705883,
+   "Z": 17,
+   "unmatched": false,
+   "matched": [
+    "and",
+    "gaudy",
+    "wiped",
+    "eyes",
+    "and",
+    "on",
+    "tiny",
+    "square",
+    "of",
+    "filmy",
+    "perfumed",
+    "lace",
+    "and",
+    "little",
+    "box",
+    "of",
+    "candy"
+   ],
+   "f": 4.5674117647058825,
+   "s": 0.16551529411764704,
+   "gamma": 1.5945874999999998,
+   "stl": {
+    "common": {
+     "file": "s096_common.stl",
+     "sha256": "6417fa72cdb4951fe52904e1467e3392fe08e5d0d64f722fd1bbe14bf76ed7d4",
+     "facets": 128000,
+     "volume_mm3": 6505.076598178274,
+     "z_min_mm": 2.308987858478828,
+     "z_max_mm": 2.84806175659581
+    },
+    "minmax": {
+     "file": "s096_minmax.stl",
+     "sha256": "911fae69b2f1a1bfcf20b21983648837d73de15d9afd56d88ad2faf6f9ed7882",
+     "facets": 128000,
+     "volume_mm3": 6630.812297986685,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "The play was over, the music ceased, the crowd filed out.",
+   "V": 0.045625000000000006,
+   "A": -0.05424999999999999,
+   "Z": 8,
+   "unmatched": false,
+   "matched": [
+    "play",
+    "was",
+    "over",
+    "music",
+    "ceased",
+    "crowd",
+    "filed",
+    "out"
+   ],
+   "f": 4.8915,
+   "s": 0.17452499999999999,
+   "gamma": 1.7064534375,
+   "stl": {
+    "common": {
+     "file": "s097_common.stl",
+     "sha256": "9646de063dd3e619048baf6935db6ed829953153d68d926c2b9b6f9cf8ee1b02",
+     "facets": 128000,
+     "volume_mm3": 6506.898824375945,
+     "z_min_mm": 2.2910578437765436,
+     "z_max_mm": 2.8652641149815383
+    },
+    "minmax": {
+     "file": "s097_minmax.stl",
+     "sha256": "5bd539208b4dfe5e6ce819653d99a6777e7c3bd8326b5217981c83adf5048308",
+     "facets": 128000,
+     "volume_mm3": 6628.517666335836,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "It was like a dream ended.",
+   "V": 0.146,
+   "A": -0.269,
+   "Z": 5,
+   "unmatched": false,
+   "matched": [
+    "it",
+    "was",
+    "like",
+    "dream",
+    "ended"
+   ],
+   "f": 4.462,
+   "s": 0.16247999999999999,
+   "gamma": 1.5579425,
+   "stl": {
+    "common": {
+     "file": "s098_common.stl",
+     "sha256": "dabb178ea1586d7ecf018aa83eeac815c0d92ef59fb0b0b129ef4eaaf2e318c9",
+     "facets": 128000,
+     "volume_mm3": 6505.455328000332,
+     "z_min_mm": 2.315831321376756,
+     "z_max_mm": 2.8408021452110637
+    },
+    "minmax": {
+     "file": "s098_minmax.stl",
+     "sha256": "091494c9b6101f517719fb74b1c09b849f9792729ec3b77405342b045d14099d",
+     "facets": 128000,
+     "volume_mm3": 6636.381281508567,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "People scattered in all directions.",
+   "V": -0.09399999999999999,
+   "A": -0.19200000000000003,
+   "Z": 3,
+   "unmatched": false,
+   "matched": [
+    "people",
+    "scattered",
+    "in all"
+   ],
+   "f": 4.616,
+   "s": 0.19128,
+   "gamma": 1.671885,
+   "stl": {
+    "common": {
+     "file": "s099_common.stl",
+     "sha256": "6a9fd1fffdf2e11c575f68ba194ad9583877ac330906b2c56bb8d0bbed09a067",
+     "facets": 128000,
+     "volume_mm3": 6506.02905136639,
+     "z_min_mm": 2.262068087378886,
+     "z_max_mm": 2.889596030062377
+    },
+    "minmax": {
+     "file": "s099_minmax.stl",
+     "sha256": "096c6b1ad8a52627668af9d7f3ff36d9f55dd9d4dad02b9cc41449502602ecfd",
+     "facets": 128000,
+     "volume_mm3": 6627.067943633508,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "Mrs. Sommers went to the corner and waited for the cable car.",
+   "V": 0.074,
+   "A": -0.042285714285714274,
+   "Z": 7,
+   "unmatched": false,
+   "matched": [
+    "went",
+    "to",
+    "corner",
+    "and",
+    "for",
+    "cable",
+    "car"
+   ],
+   "f": 4.9154285714285715,
+   "s": 0.17112,
+   "gamma": 1.704622142857143,
+   "stl": {
+    "common": {
+     "file": "s100_common.stl",
+     "sha256": "3e5b032ae90af7d7b5dc794c29d26e6241667c92d684952d1e20488e9a0f2c6d",
+     "facets": 128000,
+     "volume_mm3": 6506.836619115927,
+     "z_min_mm": 2.2971445155407504,
+     "z_max_mm": 2.8601326669499043
+    },
+    "minmax": {
+     "file": "s100_minmax.stl",
+     "sha256": "22d582353dcb55f74fc2d9c3212a5bfded811bda5d784d4570e9bf66051e9c87",
+     "facets": 128000,
+     "volume_mm3": 6628.4008703060435,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "A man with keen eyes, who sat opposite to her, seemed to like the study of her small, pale face.",
+   "V": 0.08246153846153846,
+   "A": -0.18276923076923077,
+   "Z": 13,
+   "unmatched": false,
+   "matched": [
+    "with",
+    "keen",
+    "eyes",
+    "sat",
+    "opposite",
+    "to",
+    "to",
+    "like",
+    "study",
+    "of",
+    "small",
+    "pale",
+    "face"
+   ],
+   "f": 4.634461538461538,
+   "s": 0.17010461538461538,
+   "gamma": 1.6244876923076923,
+   "stl": {
+    "common": {
+     "file": "s101_common.stl",
+     "sha256": "c9c24b61f6230623f625156cb6fa42d71c02712a249678d229f7b17b17097e99",
+     "facets": 128000,
+     "volume_mm3": 6504.864865792343,
+     "z_min_mm": 2.30087882740447,
+     "z_max_mm": 2.8545953358597957
+    },
+    "minmax": {
+     "file": "s101_minmax.stl",
+     "sha256": "c200a384b38bd572daf545fdf21858bea1a3f19e9713f65368a66177f74757a5",
+     "facets": 128000,
+     "volume_mm3": 6631.162053439727,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "It puzzled him to decipher what he saw there.",
+   "V": -0.05722222222222222,
+   "A": 0.011777777777777783,
+   "Z": 9,
+   "unmatched": false,
+   "matched": [
+    "it",
+    "puzzled",
+    "him",
+    "to",
+    "decipher",
+    "what",
+    "he",
+    "saw",
+    "there"
+   ],
+   "f": 5.023555555555555,
+   "s": 0.18686666666666668,
+   "gamma": 1.7735308333333335,
+   "stl": {
+    "common": {
+     "file": "s102_common.stl",
+     "sha256": "2a5a8bd57754d1a8d9abdf8577f38313fc9cd9bfd45cb7e2676551a431a0f83c",
+     "facets": 128000,
+     "volume_mm3": 6508.093769538226,
+     "z_min_mm": 2.268028752274007,
+     "z_max_mm": 2.8863420216023052
+    },
+    "minmax": {
+     "file": "s102_minmax.stl",
+     "sha256": "f2c704ae4a3b3bc57343e23c9709ed9e1f9e3c14160a42b97ace7ea26a520759",
+     "facets": 128000,
+     "volume_mm3": 6626.402530012804,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  },
+  {
+   "text": "In truth, he saw nothing—unless he were wizard enough to detect a poignant wish, a powerful longing that the cable car would never stop anywhere, but go on and on with her forever.",
+   "V": 0.09922222222222221,
+   "A": -0.06255555555555556,
+   "Z": 27,
+   "unmatched": false,
+   "matched": [
+    "in truth",
+    "he",
+    "saw",
+    "nothing",
+    "unless",
+    "he",
+    "were",
+    "wizard",
+    "enough",
+    "to",
+    "detect",
+    "poignant",
+    "wish",
+    "powerful",
+    "longing",
+    "that",
+    "cable",
+    "car",
+    "would",
+    "never",
+    "stop",
+    "anywhere",
+    "but",
+    "go on",
+    "and",
+    "on",
+    "with"
+   ],
+   "f": 4.874888888888889,
+   "s": 0.16809333333333332,
+   "gamma": 1.6859194444444445,
+   "stl": {
+    "common": {
+     "file": "s103_common.stl",
+     "sha256": "fac68389b05dff4b52ec080f9214ca02185e8f22bc924ff384ad8899721ec481",
+     "facets": 128000,
+     "volume_mm3": 6506.409905110864,
+     "z_min_mm": 2.302802742636662,
+     "z_max_mm": 2.8549686753483674
+    },
+    "minmax": {
+     "file": "s103_minmax.stl",
+     "sha256": "e6414521fe65bfba129a4934f327994ed6fe93b241b03150ab89f573b1bfb123",
+     "facets": 128000,
+     "volume_mm3": 6628.647485942082,
+     "z_min_mm": 2.0,
+     "z_max_mm": 3.2
+    }
+   }
+  }
+ ]
+}
