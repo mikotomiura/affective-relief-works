@@ -1,0 +1,571 @@
+{
+ "purpose": "Check 6, a supplement to the overall inspection (decided by the researcher on 2026-10-28, AskUserQuestion): does the choice of an author differ from the other authors when the context is held fixed? A: for sets of ways of saying the same thing (variants), the share of each variant per work; B: the frequency of words within one kind of scene only (narration or dialogue). The claim of work 2 ('the character of an author shows in the choice of words') rests on frequencies that mix the subjects and the style of the works.",
+ "fixed_before_running": "Written on 2026-10-28 and committed before the script was run. Seen before: checks 1 to 5 and work 2 redesigned (results/work2_words, commit 75c967c), among them the distinctive words of check 5 (for example 云う and 云っ of Soseki and Akutagawa, こう of Akutagawa, お母さん of Dazai), which suggested some of the sets below (O1, P2); the sets were written from general knowledge of Japanese, not from counts of these works, and every set is reported whatever its result. The tokenization of the variants was tried on sentences written for this purpose (not from any work): 併し is cut as 併 + し by IPAdic and was left out; 急に, 不意に, 俄に and 非常に are a noun followed by に and are matched as two lemmas. Not seen before: any count of these variants or of the scenes in the works. Revised before the first run after a code review (code-reviewer, no HIGH): the scene rule carries open quotations across sentences, because split_sentences cuts at 。 inside a quotation (so a continuation of speech would have counted as narration), and narration is now only sentences with no quotation mark; ties of the dominant variant are reported; pooled shares use the included works only. Version 2, written on 2026-10-28 after the run of version 1 (commit a7debcd, results 1feb6e6) and before running it: the run of version 1 showed that in five works (琴のそら音, 玄鶴山房, 歯車, 冬の日, 悟浄出世) the depth of quotations never returned to 0 because the closing marks of dropped pieces were not counted, so that every later sentence was counted as dialogue. Seen before version 2: all results of version 1 (part A, and part B where narration showed D 0.063 and 0.064 with p 0.0001; dialogue was not read). Only the scene rule changes; part A is computed again unchanged and must equal version 1. The decision to rerun was the researcher's (AskUserQuestion).",
+ "version": 2,
+ "inputs": "the 23 works, lexicon, map and MeCab dictionary of works/conditions/work2.json (its SHA-256 below), through the Japanese text step of work 2 (the sentences and the matched words of every sentence); the lemmas come from MeCab with the same dictionary (fugashi GenericTagger with ipadic.MECAB_ARGS, feature 6), run on each sentence",
+ "work2_conditions_sha256": "a56209998d026485c156f2d2d51539724dca50ad6c1dfad17af2fb2a06631859",
+ "partA_variants": {
+  "matching": "a token counts for a variant if its lemma (feature 6) equals one lemma of the variant and its part of speech (feature 0) is in pos1 of the set (and feature 1 in pos2 if given); a variant given as two lemmas matches a token and the next token of the same sentence (the first token's part of speech checked against pos1); a token counts at most once",
+  "sets": {
+   "orthography": {
+    "O1_iu": {
+     "pos1": [
+      "動詞"
+     ],
+     "variants": {
+      "言う": [
+       [
+        "言う"
+       ]
+      ],
+      "云う": [
+       [
+        "云う"
+       ]
+      ]
+     }
+    },
+    "O2_koto": {
+     "pos1": [
+      "名詞"
+     ],
+     "variants": {
+      "事": [
+       [
+        "事"
+       ]
+      ],
+      "こと": [
+       [
+        "こと"
+       ]
+      ]
+     }
+    },
+    "O3_toki": {
+     "pos1": [
+      "名詞"
+     ],
+     "variants": {
+      "時": [
+       [
+        "時"
+       ]
+      ],
+      "とき": [
+       [
+        "とき"
+       ]
+      ]
+     }
+    },
+    "O4_tokoro": {
+     "pos1": [
+      "名詞"
+     ],
+     "variants": {
+      "所": [
+       [
+        "所"
+       ]
+      ],
+      "ところ": [
+       [
+        "ところ"
+       ]
+      ]
+     }
+    },
+    "O5_iru": {
+     "pos1": [
+      "動詞"
+     ],
+     "variants": {
+      "居る": [
+       [
+        "居る"
+       ]
+      ],
+      "いる": [
+       [
+        "いる"
+       ]
+      ]
+     }
+    },
+    "O6_dekiru": {
+     "pos1": [
+      "動詞"
+     ],
+     "variants": {
+      "出来る": [
+       [
+        "出来る"
+       ]
+      ],
+      "できる": [
+       [
+        "できる"
+       ]
+      ]
+     }
+    },
+    "O7_mata": {
+     "pos1": [
+      "副詞",
+      "接続詞"
+     ],
+     "variants": {
+      "又": [
+       [
+        "又"
+       ]
+      ],
+      "また": [
+       [
+        "また"
+       ]
+      ]
+     }
+    },
+    "O8_mada": {
+     "pos1": [
+      "副詞"
+     ],
+     "variants": {
+      "未だ": [
+       [
+        "未だ"
+       ]
+      ],
+      "まだ": [
+       [
+        "まだ"
+       ]
+      ]
+     }
+    },
+    "O9_tame": {
+     "pos1": [
+      "名詞"
+     ],
+     "variants": {
+      "為": [
+       [
+        "為"
+       ]
+      ],
+      "ため": [
+       [
+        "ため"
+       ]
+      ]
+     }
+    },
+    "O10_naze": {
+     "pos1": [
+      "副詞"
+     ],
+     "variants": {
+      "何故": [
+       [
+        "何故"
+       ]
+      ],
+      "なぜ": [
+       [
+        "なぜ"
+       ]
+      ]
+     }
+    },
+    "O11_sukoshi": {
+     "pos1": [
+      "副詞"
+     ],
+     "variants": {
+      "少し": [
+       [
+        "少し"
+       ]
+      ],
+      "すこし": [
+       [
+        "すこし"
+       ]
+      ]
+     }
+    }
+   },
+   "lexical": {
+    "L1_adversative": {
+     "pos1": [
+      "接続詞"
+     ],
+     "variants": {
+      "しかし": [
+       [
+        "しかし"
+       ],
+       [
+        "然し"
+       ]
+      ],
+      "だが": [
+       [
+        "だが"
+       ]
+      ],
+      "けれども": [
+       [
+        "けれども"
+       ],
+       [
+        "けれど"
+       ]
+      ],
+      "でも": [
+       [
+        "でも"
+       ]
+      ],
+      "ところが": [
+       [
+        "ところが"
+       ]
+      ]
+     }
+    },
+    "L2_intensifier": {
+     "pos1": [
+      "副詞",
+      "名詞"
+     ],
+     "variants": {
+      "とても": [
+       [
+        "とても"
+       ]
+      ],
+      "たいへん": [
+       [
+        "たいへん"
+       ]
+      ],
+      "甚だ": [
+       [
+        "甚だ"
+       ],
+       [
+        "はなはだ"
+       ]
+      ],
+      "随分": [
+       [
+        "随分"
+       ],
+       [
+        "ずいぶん"
+       ]
+      ],
+      "余程": [
+       [
+        "余程"
+       ],
+       [
+        "よほど"
+       ]
+      ],
+      "非常に": [
+       [
+        "非常",
+        "に"
+       ]
+      ]
+     }
+    },
+    "L3_a_little": {
+     "pos1": [
+      "副詞"
+     ],
+     "variants": {
+      "少し": [
+       [
+        "少し"
+       ],
+       [
+        "すこし"
+       ]
+      ],
+      "ちょっと": [
+       [
+        "ちょっと"
+       ],
+       [
+        "一寸"
+       ]
+      ],
+      "僅か": [
+       [
+        "僅か"
+       ],
+       [
+        "わずか"
+       ]
+      ],
+      "多少": [
+       [
+        "多少"
+       ]
+      ]
+     }
+    },
+    "L4_suddenly": {
+     "pos1": [
+      "副詞",
+      "名詞"
+     ],
+     "variants": {
+      "突然": [
+       [
+        "突然"
+       ]
+      ],
+      "いきなり": [
+       [
+        "いきなり"
+       ]
+      ],
+      "急に": [
+       [
+        "急",
+        "に"
+       ]
+      ],
+      "不意に": [
+       [
+        "不意",
+        "に"
+       ]
+      ],
+      "俄に": [
+       [
+        "俄",
+        "に"
+       ]
+      ]
+     }
+    },
+    "L5_always": {
+     "pos1": [
+      "副詞"
+     ],
+     "variants": {
+      "いつも": [
+       [
+        "いつも"
+       ]
+      ],
+      "常に": [
+       [
+        "常に"
+       ]
+      ],
+      "始終": [
+       [
+        "始終"
+       ]
+      ],
+      "絶えず": [
+       [
+        "絶えず"
+       ]
+      ]
+     }
+    },
+    "L6_perhaps": {
+     "pos1": [
+      "副詞"
+     ],
+     "variants": {
+      "多分": [
+       [
+        "多分"
+       ],
+       [
+        "たぶん"
+       ]
+      ],
+      "恐らく": [
+       [
+        "恐らく"
+       ],
+       [
+        "おそらく"
+       ]
+      ]
+     }
+    },
+    "L7_beautiful": {
+     "pos1": [
+      "形容詞",
+      "名詞"
+     ],
+     "variants": {
+      "美しい": [
+       [
+        "美しい"
+       ]
+      ],
+      "綺麗": [
+       [
+        "綺麗"
+       ],
+       [
+        "きれい"
+       ]
+      ]
+     }
+    }
+   },
+   "reference_to_people": {
+    "P1_first_person": {
+     "pos1": [
+      "名詞"
+     ],
+     "pos2": [
+      "代名詞"
+     ],
+     "variants": {
+      "私": [
+       [
+        "私"
+       ],
+       [
+        "わたし"
+       ],
+       [
+        "わたくし"
+       ]
+      ],
+      "僕": [
+       [
+        "僕"
+       ],
+       [
+        "ぼく"
+       ]
+      ],
+      "俺": [
+       [
+        "俺"
+       ],
+       [
+        "おれ"
+       ]
+      ],
+      "あたし": [
+       [
+        "あたし"
+       ]
+      ],
+      "我": [
+       [
+        "我"
+       ],
+       [
+        "われ"
+       ],
+       [
+        "吾"
+       ]
+      ]
+     }
+    },
+    "P2_mother": {
+     "pos1": [
+      "名詞"
+     ],
+     "variants": {
+      "母": [
+       [
+        "母"
+       ]
+      ],
+      "母親": [
+       [
+        "母親"
+       ]
+      ],
+      "お母さん": [
+       [
+        "お母さん"
+       ],
+       [
+        "母さん"
+       ],
+       [
+        "おっかさん"
+       ]
+      ]
+     }
+    },
+    "P3_father": {
+     "pos1": [
+      "名詞"
+     ],
+     "variants": {
+      "父": [
+       [
+        "父"
+       ]
+      ],
+      "父親": [
+       [
+        "父親"
+       ]
+      ],
+      "お父さん": [
+       [
+        "お父さん"
+       ],
+       [
+        "父さん"
+       ]
+      ]
+     }
+    }
+   }
+  },
+  "min_total": 5,
+  "statistic": "per set, the works with at least min_total matched tokens; per work, the distribution over the variants; the Jensen-Shannon divergence (base 2) between the distributions of two works; D = mean over pairs of works of different authors minus mean over pairs of the same author",
+  "analysed_if": "at least 8 works included, from at least 3 authors with at least 2 works each; otherwise reported as sparse",
+  "null": "10000 permutations of the author labels over the 23 works (numpy.random.default_rng(20261028)), the same permutations for every set; one-sided p = (1 + number with D at least the observed) / 10001, D computed on the works included in the set",
+  "aggregate": "for each kind (orthography, lexical, reference_to_people): the mean of D over its analysed sets, with the same permutations",
+  "reported": "per set and author: the share of every variant pooled over the included works only, the number of included works, and per included work (by work id) its dominant variant, or all tied variants with a flag",
+  "hiragana_note": "O1 has no variant いう: the lemma いう is mostly the quotative という, which is grammar, not the verb of speaking; left out on purpose"
+ },
+ "partB_scenes": {
+  "scene": "per work, in order, with the depth of open quotation marks 「『 carried from sentence to sentence: a sentence is dialogue if it opens with 「 or 『 or starts inside an open quotation; mixed if it starts outside but contains 「 or 』 or 『 or 」 (narration with quoted speech); narration otherwise (no quotation mark at all). The depth never goes below 0. Narration and dialogue are analysed; mixed is reported by its count only Version 2: the depth also counts the quotation marks of the pieces that split_sentences drops (pieces without a letter or digit, such as ……」), walking every piece of the body in order.",
+  "vocabularies": {
+   "matched": "the matched words of the text step (surface forms in the lexicon, as check 5)",
+   "content": "the lemmas of the tokens whose part of speech is in POS_ALLOWED of src/japanese_text.py (the candidates of the text step, matched in the lexicon or not)"
+  },
+  "min_tokens": 300,
+  "statistic": "per scene and vocabulary, the works with at least min_tokens tokens in that scene; D as in part A on the word distributions; the same permutations",
+  "analysed_if": "as in part A",
+  "reported": "the number of included works per scene, D with the two means and p; for comparison the same on all sentences; per work the number of sentences of each scene",
+  "rule": "body"
+ },
+ "criteria": [
+  "C6a (reported, not a test of choice): the orthography sets differ between authors (aggregate p < 0.05); notation also depends on the edition and the period",
+  "C6b: the lexical sets differ between authors beyond the works: aggregate D > 0 with p < 0.05",
+  "C6c (reported separately): the sets of reference to people, which also depend on who narrates and who appears",
+  "C6d: in narration only, the word distributions differ between authors beyond the works (D > 0, p < 0.05) for both vocabularies; dialogue is reported where analysed",
+  "C6e (by eye, recorded): the per-author shares read as habits of an author (consistent across its works), written down for the discussion"
+ ],
+ "note": "Many sets and two scenes: the per-set p values are not corrected and are read as a description. The 23 works are the same data as checks 4 and 5; nothing here is evidence that the authors can be told apart on other texts. The permutations are of all 23 labels, and the included works are a subset fixed by the counts: an unconditional test, as written; a test that permutes within the included works only would be the conditional one.",
+ "outputs": "results/check6_context/context_choice_v2.json (version 1 stays as context_choice.json)",
+ "not_claimed": "Not a finding about the authors; an exploratory check of whether the differences in word frequency survive holding the meaning or the scene fixed.",
+ "output_file": "context_choice_v2.json"
+}

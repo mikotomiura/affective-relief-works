@@ -34,11 +34,10 @@ import japanese_text  # noqa: E402
 from author_texture import between_minus_within, jsd  # noqa: E402
 from pipeline import calibration_map, read_aozora_zip, work2_body, work2_text  # noqa: E402
 
-COND = ROOT / "checks" / "conditions" / "check6_context.json"
+COND = ROOT / "checks" / "conditions" / (sys.argv[1] if len(sys.argv) > 1 else "check6_context.json")
 WORK2_COND = ROOT / "works" / "conditions" / "work2.json"
 WORK2_RESULT = ROOT / "results" / "work2" / "work2.json"
 OUT_DIR = ROOT / "results" / "check6_context"
-OUT = OUT_DIR / "context_choice.json"
 CODE = ["checks/context_choice.py", "checks/author_texture.py", "works/_common.py", "src/pipeline.py",
         "src/japanese_text.py"]
 SEED, PERMUTATIONS = 20261028, 10000
@@ -90,6 +89,27 @@ def scenes_of(sentences: list[str]) -> list[str]:
     return out
 
 
+def scenes_of_body(body: str) -> list[str]:
+    """As scenes_of, but the depth also counts the quotation marks of the pieces that split_sentences drops (pieces
+    without a letter or digit, such as ……」), walking every piece of the body in order (version 2 of the conditions)."""
+    out, depth = [], 0
+    for ln in body.split("\n"):
+        for piece in japanese_text._pieces(ln):
+            if japanese_text._has_word_char(piece):
+                if depth > 0 or piece.startswith(OPENERS):
+                    out.append("dialogue")
+                elif any(ch in piece for ch in "「」『』"):
+                    out.append("mixed")
+                else:
+                    out.append("narration")
+            for ch in piece:
+                if ch in "「『":
+                    depth += 1
+                elif ch in "」』":
+                    depth = max(0, depth - 1)
+    return out
+
+
 def analysable(labels: np.ndarray) -> bool:
     counts = Counter(labels.tolist())
     return len(labels) >= 8 and sum(n >= 2 for n in counts.values()) >= 3
@@ -115,6 +135,7 @@ def aggregate(results: list[dict]) -> dict:
 
 
 def main() -> None:
+    OUT = OUT_DIR / json.loads(COND.read_bytes()).get("output_file", "context_choice.json")
     if OUT.exists():
         raise SystemExit(f"{OUT} exists; refusing to overwrite")
     raw = COND.read_bytes()
@@ -158,7 +179,9 @@ def main() -> None:
             raise SystemExit(f"{w['work_id']}: the text step gives another result than results/work2")
         variants = {k: {s: Counter() for s in sets} for k, sets in kinds.items()}
         scenes = {sc: {"matched": Counter(), "content": Counter()} for sc in ("narration", "dialogue", "mixed", "all")}
-        kinds_of = scenes_of(t.sentences)
+        kinds_of = scenes_of_body(body) if B.get("rule") == "body" else scenes_of(t.sentences)
+        if len(kinds_of) != len(t.sentences):
+            raise SystemExit(f"{w['work_id']}: the scenes do not line up with the sentences")
         for sent, p, sc in zip(t.sentences, t.points, kinds_of):
             toks = lemmas(lemma_tagger, sent)
             for k, sets in kinds.items():

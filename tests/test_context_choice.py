@@ -45,3 +45,12 @@ def test_scene_carries_open_quotations():
 
     sents = ["「どうした。", "行こう」と言った。", "彼は「はい」と答えた。", "雨が降る。", "――「いや」"]
     assert scenes_of(sents) == ["dialogue", "dialogue", "mixed", "narration", "mixed"]
+
+
+def test_scene_of_body_counts_the_marks_of_dropped_pieces():
+    from context_choice import scenes_of, scenes_of_body
+
+    body = "「待て。\n……」\n雨が降る。"
+    # the kept sentences are 「待て。 and 雨が降る。; the dropped ……」 closes the quotation
+    assert scenes_of(["「待て。", "雨が降る。"]) == ["dialogue", "dialogue"]  # version 1: stuck
+    assert scenes_of_body(body) == ["dialogue", "narration"]
