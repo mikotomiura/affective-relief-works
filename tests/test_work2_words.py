@@ -92,3 +92,37 @@ def test_view_of_flat_faces_is_the_plain_solid():
     assert img[0, 0] == 1.0 and img[60, 60] < 1.0  # background at the corner, the solid in the middle
     # a flat face is shaded uniformly: few distinct grey levels on the solid
     assert len(np.unique(np.round(img[img < 1.0], 6))) <= 20
+
+
+def test_view_of_a_planar_slope_gives_the_expected_normal():
+    # z = a x + b y (mm, x and y in domain units) on every face: the shade must be that of n - a' e1 - b' e2, with
+    # a' = a / edge and b' = b / edge the slopes in mm per mm (catches a swapped axis, a wrong sign or unit)
+    edge, n, a, b = 50.0, 200, 3.0, -2.0
+    y, x = np.mgrid[0:n, 0:n] / n
+    V, faces = icosahedron(edge)
+    zs = [a * x + b * y for _ in faces]
+    d = np.array([0.35, -0.85, 0.40])
+    img = view(V, faces, zs, edge, d.tolist(), 400)
+    d /= np.linalg.norm(d)
+    right = np.cross([0.0, 0.0, 1.0], d)
+    right /= np.linalg.norm(right)
+    up = np.cross(d, right)
+    light = 0.45 * d + 0.65 * up - 0.60 * right
+    light /= np.linalg.norm(light)
+    expected = set()
+    for p, q, r in faces:
+        e1 = (V[q] - V[p]) / edge
+        e2 = (V[r] - V[p]) - np.dot(V[r] - V[p], e1) * e1
+        e2 /= np.linalg.norm(e2)
+        nf = np.cross(V[q] - V[p], V[r] - V[p])
+        nf /= np.linalg.norm(nf)
+        if np.dot(nf, d) <= 0:
+            continue
+        m = nf - a / edge * e1 - b / edge * e2
+        m /= np.linalg.norm(m)
+        expected.add(round(0.15 + 0.85 * (1 + m @ light) / 2, 4))
+    seen = set(np.round(img[img < 1.0], 4))
+    # interior pixels take exactly the expected shades (pixels next to an edge may sample across it)
+    counts = {s: int(np.sum(np.round(img, 4) == s)) for s in expected}
+    assert all(c > 100 for c in counts.values()), counts
+    assert len(expected) >= 8 and expected <= seen
