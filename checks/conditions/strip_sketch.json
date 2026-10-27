@@ -1,0 +1,65 @@
+{
+  "purpose": "A check for choosing the direction of work 1, not a part of the work: the 104 sentences of work 1 laid out as one continuous strip (13 tiles a row, 8 rows, no gap inside a row), in three versions, to see whether a second layer of content (the author's own paragraphs, standing in for the scene) makes the series less uniform and lets a change of scene and a change of affect be told apart. Affect stays on the three quantities of the rule (f, s, gamma); content goes to the seed of the field, which the rule leaves open.",
+  "fixed_before_running": "Written on 2026-10-28 and committed before the script was run. Seen before: the three figures of work 1 (results/work1/, commit 500c58f; one seed for every tile, 11 columns with gaps), which read as one diagonal lattice in different shades, and the (V, A, f, s, gamma) of its sentences. Not seen before: any tile of work 1 with another seed, and any strip layout. The criteria were written before any figure of this check was made. Work 1 itself (works/, results/work1/) is not changed by this check. Revised before the first run after a code review (code-reviewer): seams of 1 px inside a row removed, the key marks made black (a white mark at the left edge of a row was invisible), checks of the 25 paragraphs and of (f, s, gamma) against params(V, A) added, works/ added to the clean-tree check.",
+  "version": 1,
+  "generator": {
+    "package": "atact",
+    "commit": "b559a80c623d36357dd0736b887497a0cb789af5",
+    "functions": "atact.mapping.params, atact.field.procedural_field_separable (4 octaves, normalize 'ampsum'), atact.transform.t_gamma"
+  },
+  "input": {
+    "points": "results/work1/work1.json",
+    "points_sha256": "99cbe5507080942e708cc4ab7ccb007d21d250ffe00bb3e12aa8f1fc15289bdc",
+    "points_note": "V and A of every sentence as computed by works/work1.py at c1e21b7; the lexicon is not used again",
+    "text": "external/text-candidates-20261027/gutenberg/pg160.txt",
+    "text_sha256": "31d4577d255806b92c6296419adddd5ca460bdb788743878a09ded1e19f4161a",
+    "heading": "A PAIR OF SILK STOCKINGS",
+    "next_heading": "THE LOCKET",
+    "occurrence": -1,
+    "paragraphs": "src/english_text.extract_story gives the paragraphs; the sentences of paragraph k are split_paragraph(p_k) without the pieces that have no letter or digit (the rule of split_sentences). The script stops unless the sentences in this order are exactly the texts of the points (104)."
+  },
+  "dimensions": {
+    "D_mm": 1.2,
+    "s_max": 0.3,
+    "source": "as work 1 (works/conditions/work1.json, relief)"
+  },
+  "versions": {
+    "v1": {
+      "seed": "42 for every tile (as work 1)",
+      "scale": "common"
+    },
+    "v2": {
+      "seed": "42 + k for every tile of paragraph k (k = 0 .. 24)",
+      "scale": "common"
+    },
+    "v3": {
+      "seed": "as v2",
+      "scale": "minmax"
+    },
+    "v2_key": {
+      "as": "v2",
+      "marks": "a black vertical line 0.5 mm wide on the left edge of the first tile of every paragraph after the first, so that the boundaries of the paragraphs can be found after the unmarked figures have been judged"
+    },
+    "paragraphs": 25
+  },
+  "heights": "H = s T_gamma(F) (as the figures of work 1, not H_eps); common grey = D H / (2 s_max) / D + 1/2, min-max grey = D (H - min H) / (max H - min H) / D (the order of operations of work 1)",
+  "strip": {
+    "per_row": 13,
+    "rows": 8,
+    "width_mm": 177.8,
+    "row_gap_mm": 3.0,
+    "dpi": 300,
+    "tile_mm": "whole pixels: tile_px = floor(width / per_row at the dpi); tiles side by side with no seam; the strip is per_row x tile_px wide (a little under width_mm) and rows round(row_gap_mm at the dpi) pixels apart; the sizes as drawn are recorded",
+    "grid_per_tile": "as many points per side as the printed tile has pixels (rounded down)",
+    "order": "left to right, top to bottom, in the order of the sentences"
+  },
+  "criteria": [
+    "K1 (by eye, on v1 and v2 without marks): v2 reads as less uniform than v1, that is, groups of neighbouring tiles that share a pattern can be seen, and they are not all the same lattice",
+    "K2 (by eye, on v2 without marks, then checked on v2_key): the places where the pattern changes can be found, and most of them fall on the boundaries of the paragraphs",
+    "K3 (by eye, on v2): inside a paragraph of four or more sentences, tiles still differ in fineness or depth (the affect layer is not hidden by the content layer)",
+    "K4 (by eye, on v2 and v3): the difference between the common scale and min-max (the axis of the paper) can still be seen next to the content layer"
+  ],
+  "judges": "the main agent writes its notes first, on the unmarked figures, before opening v2_key; then the researcher looks and writes theirs. Both are recorded in .steering/20261028-strip-sketch/decisions.md. The decision on the direction is the researcher's and the second author's.",
+  "outputs": "results/strip_sketch.json (paragraph of every sentence, seeds, layout, file hashes) and results/strip_sketch/{v1,v2,v3,v2_key}.png",
+  "not_claimed": "Paragraphs are a stand-in for scene, not a measure of it. A figure is not the touch of the printed relief. This check was made after the values of work 1 were seen; if the work changes because of it, that is stated in the paper."
+}
