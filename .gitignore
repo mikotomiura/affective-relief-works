@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+# Local material that is not part of the archive
+source/
+# External sources (downloaded texts, data and code) are kept outside the archive
+external/
+# Working notes
+advice/
+handoff/
+review/
+.steering/
