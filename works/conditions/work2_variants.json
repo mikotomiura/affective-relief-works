@@ -1,0 +1,96 @@
+{
+ "purpose": "Work 2, the choice among variants of the same meaning (the material of check 6) added as tiles (decided by the researcher on 2026-10-28 after the results of check 6 version 2 were seen; .steering/20261028-check6-tiles, decision 1): for each author and each of five sets of variants, ten tiles whose composition follows the share of each spelling in the works of the author; every tile is the relief of the lexicon value of its spelling under the unchanged rule of work 2 (MEmoLon through map B, (V, A) -> (f, s, gamma), the field and heights of works/conditions/work2_words.json).",
+ "fixed_before_running": "Written on 2026-10-28 and committed before the script was run. Seen before: all results of check 6 versions 1 and 2 (results/check6_context, commits 1feb6e6 and f3e9f8e), among them the per-set D and p and the pooled share of every variant per author; the decision to add this material, the five sets, the representative of orthography (O1, the orthography set with the largest D), the number of tiles, the recount by spelling, the seeds and the two authors drawn were all made after those values were seen. Also seen: the lexicon values of the spellings of the five sets (mapped by map B, looked up to write the options), and the counts of tiles that ten tiles per set would give from the pooled shares of the variants (not of the spellings). Not seen before: any count by spelling, any tile or figure of this run.",
+ "version": 1,
+ "inputs": "the 23 works, lexicon, map B and MeCab dictionary of works/conditions/work2.json through the Japanese text step of work 2, the lemmas and the matching of check 6 (checks/context_choice.py: lemmas, match_set) with every spelling of a set counted on its own; the per-work counts of the variants of check 6 version 2 (results/check6_context/context_choice_v2.json) as the reference the recount must equal; the field, relief, tiles and seeds of works/conditions/work2_words.json",
+ "work2_conditions_sha256": "a56209998d026485c156f2d2d51539724dca50ad6c1dfad17af2fb2a06631859",
+ "check6_conditions": "checks/conditions/check6_context_v2.json",
+ "check6_conditions_sha256": "fac6f947f9b1494b45c118082afeb8267d59ea3dcb17655dbf8ae87633e2d1aa",
+ "check6_result": "results/check6_context/context_choice_v2.json",
+ "check6_result_sha256": "0c99ab8bc81d83762398ec25521715de7d2d2bdb467d574bc6b73a8b30506c73",
+ "work2_words_conditions_sha256": "7978599bdeed5f2973cae03dfbd2f85f26fc25173ea022f68a0e0e6c9a671164",
+ "sets": {
+  "chosen": [
+   ["lexical", "L1_adversative"],
+   ["lexical", "L2_intensifier"],
+   ["lexical", "L5_always"],
+   ["reference_to_people", "P1_first_person"],
+   ["orthography", "O1_iu"]
+  ],
+  "specs": "the sets are read from the check 6 conditions above (the same pos1, pos2 and spellings), not copied here",
+  "not_chosen": {
+   "O2_koto": "orthography, differs between authors in check 6 (p 0.004); one set per kind, O1 chosen for orthography (largest D)",
+   "O3_toki": "orthography, differs (p 0.007); one set per kind, as O2",
+   "O4_tokoro": "orthography; one set per kind (p 0.06)",
+   "O5_iru": "orthography; one set per kind (p 0.24)",
+   "O6_dekiru": "orthography; one set per kind (p 0.15)",
+   "O7_mata": "orthography; one set per kind (p 0.18)",
+   "O8_mada": "orthography; one set per kind (p 0.62)",
+   "O9_tame": "orthography; one set per kind (p 0.24)",
+   "O10_naze": "orthography; sparse in check 6",
+   "O11_sukoshi": "orthography; one set per kind (p 0.48)",
+   "L3_a_little": "not among the kinds named by the researcher (p 0.09)",
+   "L4_suddenly": "not among the kinds named (p 0.37)",
+   "L6_perhaps": "not among the kinds named; sparse in check 6",
+   "L7_beautiful": "not among the kinds named (p 0.52)",
+   "P2_mother": "reference to people other than the first person, not named (p 0.15)",
+   "P3_father": "not named; sparse in check 6"
+  },
+  "order": "rows in the order of chosen; within a row the spellings in the order of the check 6 conditions (variant by variant, spelling by spelling)"
+ },
+ "spelling": {
+  "unit": "a spelling is one form of a variant in the check 6 conditions (for example the two forms of one adversative variant); its key is its lemmas joined",
+  "count": "match_set of check 6 on a spec in which every spelling is its own variant (same pos1 and pos2, spellings in the same order); the counts of the spellings of a variant summed must equal the per-work count of that variant in the check 6 result, for every work and set, or the run stops",
+  "value": "the lexicon entry of the key; for a spelling of two lemmas whose key is not an entry (非常に), the entry of its first lemma; a spelling with a count above 0 and no entry stops the run",
+  "map": "map B of work 2, then params(V, A) as the 20 words"
+ },
+ "tiles_per_set": {
+  "n_tiles": 10,
+  "works": "per author and set, the works of the author with at least min_total (5, as check 6) matched tokens of the set; the pooled counts of the spellings over those works (the pooled share of check 6, by spelling)",
+  "allocation": "largest remainder: floor of share x n_tiles, the tiles left go to the largest remainders, ties by the order of the spellings",
+  "too_few": "an author with pooled n below n_tiles in a set gets no tiles in that row; the row says 'n < 10' with its n (not the same as a count of 0)",
+  "equal_weight": "reported only: the mean over the included works of the per-work shares, and its allocation; the rows where it gives other counts are listed"
+ },
+ "authors_drawn": [
+  "太宰治",
+  "岡本かの子"
+ ],
+ "authors_note": "the two trial authors of the 20 words; shares and counts are computed for all six authors and written to the result",
+ "seeds": {
+  "common": [
+   100,
+   200
+  ],
+  "main": 100,
+  "own": "the seeds of the authors in works/conditions/work2_words.json (a version for the work, not the comparison)",
+  "note": "under one seed the same spelling gives the same tile for every author, so that under a common seed the two authors differ only in the composition of their rows"
+ },
+ "figure": {
+  "tile_px": 160,
+  "supersample": 4,
+  "gap_px": 6,
+  "tile_label_px": 26,
+  "row_label_px": 30,
+  "row_gap_px": 14,
+  "block_gap_px": 48,
+  "grey": "z / D + 1/2 (common scale), rows flipped so that the origin is at the lower left (as the 20 words)",
+  "row_label": "set id, n, included works / works of the author, the pooled share of every spelling with a count above 0, and the spellings that got 0 tiles",
+  "tile_label": "the spelling",
+  "font_file": "/System/Library/Fonts/Hiragino Sans GB.ttc",
+  "files": {
+   "tiles_seed100.png": "the two authors side by side under the common seed 100 (main)",
+   "tiles_seed200.png": "the same under the common seed 200 (the reading does not depend on one seed)",
+   "tiles_own_seed.png": "the same under the seeds of the authors (the version for the work)"
+  },
+  "tile_px_note": "160 instead of 200 of the 20 words so that ten tiles fit a row; the field and heights are computed as the 20 words on a grid supersample times finer and averaged"
+ },
+ "criteria": [
+  "E1 (by eye): under a common seed, the tiles of the same spelling look the same for both authors (expected by design)",
+  "E2 (by eye): under a common seed, the rows of the two authors read as different compositions (which spellings, how many) in the sets where their shares differ",
+  "E3 (by eye): under the own seeds, the two authors are told apart by the seed alone, without reading the compositions (the difference given by the makers)",
+  "E4 (by eye): within a row, tiles of different spellings differ in depth, fineness or sharpness (the lexicon values of the spellings of a set are close, so they may not)",
+  "E5 (computed): the recount by spelling equals check 6 version 2 for every work and set"
+ ],
+ "outputs": "results/work2_variants/variants.json, tiles_seed100.png, tiles_seed200.png, tiles_own_seed.png",
+ "not_claimed": "Not a finding about the authors and not evidence that they can be told apart: the sets were chosen after the values of check 6 were seen, the per-set p values are uncorrected and exploratory, and the test of check 6 is about the composition of words, not about the tiles. Orthography also depends on the edition and the period. The first person is a property of the narrator (a work told by a narrator in the first person fills that row). The pronoun 吾 is not tagged as a pronoun by IPAdic and is not counted, so the variant 我 may be undercounted. The variants of a set are not interchangeable in every context (the meaning, the register and the speaker differ). The pooled share is dominated by the longer works and the works that use the set most. The affect of a tile is the dictionary value of the spelling, without context. Ten tiles quantise the shares. The sketches are images; touch is not tested."
+}
