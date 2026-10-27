@@ -1,0 +1,187 @@
+{
+ "meta": {
+  "conditions_sha256": "2fb0539ea8f86914434af15a18865f09b67e680db19e85ab7ce95979b3d3ce2c",
+  "script_sha256": "db4425162afcbd04845624e91e915ddb989e5c5510c1e97800422b5b37ab44e1",
+  "work2_words_conditions_sha256": "7978599bdeed5f2973cae03dfbd2f85f26fc25173ea022f68a0e0e6c9a671164",
+  "work2_words_result_sha256": "3f48ff8fd0233704a37042763680ab034e7dbc39fa33d2044c5858023d460cf9",
+  "python": "3.13.12",
+  "platform": "Darwin arm64",
+  "atact_commit": "b559a80c623d36357dd0736b887497a0cb789af5",
+  "numpy": "2.5.4",
+  "scipy": "1.18.1",
+  "pillow": "13.0.0",
+  "git_commit": "ce142b446307107b09f0d2725ff0390115d5576d",
+  "git_dirty": false,
+  "started": "2026-10-27T17:06:48+00:00",
+  "finished": "2026-10-27T17:07:22+00:00"
+ },
+ "eps": 0.3529079159926097,
+ "control_k1_equals_icosa_png": true,
+ "convergence": [
+  {
+   "author": "太宰治",
+   "view": "front",
+   "k": 1,
+   "vs_k": 4,
+   "pixels": "solid",
+   "n": 324590,
+   "mean": 1.2893619643242245,
+   "p99": 13.0
+  },
+  {
+   "author": "太宰治",
+   "view": "front",
+   "k": 1,
+   "vs_k": 4,
+   "pixels": "interior",
+   "n": 320952,
+   "mean": 1.1552537451083027,
+   "p99": 10.0
+  },
+  {
+   "author": "太宰治",
+   "view": "front",
+   "k": 2,
+   "vs_k": 4,
+   "pixels": "solid",
+   "n": 324590,
+   "mean": 0.30487692165501096,
+   "p99": 4.0
+  },
+  {
+   "author": "太宰治",
+   "view": "front",
+   "k": 2,
+   "vs_k": 4,
+   "pixels": "interior",
+   "n": 320952,
+   "mean": 0.2481897604626237,
+   "p99": 3.0
+  },
+  {
+   "author": "太宰治",
+   "view": "back",
+   "k": 1,
+   "vs_k": 4,
+   "pixels": "solid",
+   "n": 324590,
+   "mean": 1.2019747989771712,
+   "p99": 15.0
+  },
+  {
+   "author": "太宰治",
+   "view": "back",
+   "k": 1,
+   "vs_k": 4,
+   "pixels": "interior",
+   "n": 320952,
+   "mean": 1.0507396744684563,
+   "p99": 11.0
+  },
+  {
+   "author": "太宰治",
+   "view": "back",
+   "k": 2,
+   "vs_k": 4,
+   "pixels": "solid",
+   "n": 324590,
+   "mean": 0.28432792137773805,
+   "p99": 4.0
+  },
+  {
+   "author": "太宰治",
+   "view": "back",
+   "k": 2,
+   "vs_k": 4,
+   "pixels": "interior",
+   "n": 320952,
+   "mean": 0.22203631695705278,
+   "p99": 3.0
+  },
+  {
+   "author": "岡本かの子",
+   "view": "front",
+   "k": 1,
+   "vs_k": 4,
+   "pixels": "solid",
+   "n": 324590,
+   "mean": 1.2111278844080224,
+   "p99": 12.0
+  },
+  {
+   "author": "岡本かの子",
+   "view": "front",
+   "k": 1,
+   "vs_k": 4,
+   "pixels": "interior",
+   "n": 320952,
+   "mean": 1.0749582492086045,
+   "p99": 9.0
+  },
+  {
+   "author": "岡本かの子",
+   "view": "front",
+   "k": 2,
+   "vs_k": 4,
+   "pixels": "solid",
+   "n": 324590,
+   "mean": 0.28539388151206135,
+   "p99": 5.0
+  },
+  {
+   "author": "岡本かの子",
+   "view": "front",
+   "k": 2,
+   "vs_k": 4,
+   "pixels": "interior",
+   "n": 320952,
+   "mean": 0.22842044916373788,
+   "p99": 3.0
+  },
+  {
+   "author": "岡本かの子",
+   "view": "back",
+   "k": 1,
+   "vs_k": 4,
+   "pixels": "solid",
+   "n": 324590,
+   "mean": 1.318367787054438,
+   "p99": 14.0
+  },
+  {
+   "author": "岡本かの子",
+   "view": "back",
+   "k": 1,
+   "vs_k": 4,
+   "pixels": "interior",
+   "n": 320952,
+   "mean": 1.1682245320172486,
+   "p99": 11.0
+  },
+  {
+   "author": "岡本かの子",
+   "view": "back",
+   "k": 2,
+   "vs_k": 4,
+   "pixels": "solid",
+   "n": 324590,
+   "mean": 0.2927200468283065,
+   "p99": 4.0
+  },
+  {
+   "author": "岡本かの子",
+   "view": "back",
+   "k": 2,
+   "vs_k": 4,
+   "pixels": "interior",
+   "n": 320952,
+   "mean": 0.22991599990029662,
+   "p99": 3.0
+  }
+ ],
+ "figures": {
+  "icosa_k4.png": "c77daf0ec98ec8f23a8b1888e9b9e5273a9a24592d0bad678ff8f5c590cb54e2",
+  "icosa_k1_k4.png": "32bdb5e2ab85ac505bf4eb905ea5977263be11c0c29be2a0b3916e94798f4c7e",
+  "zoom.png": "2915d30f04e0c8b498a982649b31985c4853ea482c81ea60a088dec63dd20ced"
+ }
+}
