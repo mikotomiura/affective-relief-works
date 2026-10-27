@@ -1,0 +1,37 @@
+{
+ "meta": {
+  "conditions_sha256": "c26945b43b6b3ef3011542cb98390ef12d579dd1254e0f6251137ed77ff75eb9",
+  "script_sha256": "e1f0dfb0f6f2bc004e14543ab21721b37af55f624b3a9b6cbde61c450e39dbbc",
+  "uv_lock_sha256": "62425b8b39c2eb618094359d8edd71d2dc5c88725bf125c27988c7ea6ee68b9f",
+  "pyproject_sha256": "b2a9afe9f1bf081741bce43e97ee22ec4530184fd3fd04dacc18b453e0fd92f4",
+  "atact_commit": "b559a80c623d36357dd0736b887497a0cb789af5",
+  "atact_library_sha256": {
+   "__init__.py": "d5980876e37cb7a1f5dc379028ab50f7a0c1d77d84c7651ee5d1beefd623b6ab",
+   "field.py": "4162e8faa60ca78257fd0777a3a7dceaaa7bbab6bfe6691de46f49a339b641c5",
+   "lexicon.py": "36cad1e49a25b352a7ae04868c6693ef349e8276d51909061eeb378085065e81",
+   "mapping.py": "83a50faaa664ddcb99004392e13a73fb096a85588a8b3c423b2c8b71ce626d26",
+   "transform.py": "5d35c9c10dfa6c8d5d3b2a9e8126ab45b895a1be14e05650c3ef60ffd3431bd1"
+  },
+  "reference_sha256": "300ed0c8c77b43f949ee82edcd70a4b3e0949b0ba1e6ccc2ecc752871cc56730",
+  "lexicon_sha256": "42c718817fc91d5c133581b24b0bb31d2b14a0b16edb19bc6ce6ab70343e5a45",
+  "python": "3.13.12",
+  "numpy": "2.5.4",
+  "scipy": "1.18.1",
+  "sklearn": "1.9.1",
+  "git_commit": "b223776442c6890956944c960f181b2386919cb8",
+  "git_dirty": false,
+  "platform": "Darwin arm64",
+  "finished": "2026-10-27T09:15:34+00:00"
+ },
+ "result": {
+  "sentence_variant_rows": 12,
+  "numbers_compared": 432,
+  "max_abs_diff": 0.0,
+  "max_abs_diff_at": "A.main[0].V",
+  "n_exact_diff_zero": 432,
+  "over_tolerance": [],
+  "mismatches": [],
+  "tolerance": 1e-12,
+  "passed": true
+ }
+}
