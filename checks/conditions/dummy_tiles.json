@@ -1,0 +1,40 @@
+{
+  "purpose": "Fix the range of the number of sentences of work 1 (one tile per sentence of one English story) by how a series of that many tiles reads when the whole series is printed as one figure in black and white, and by how many tiles have to be printed. The tiles are made from coordinates that mean nothing (drawn from a fixed seed), so that no text and no lexicon is used: this is a check of layout and print, not of any text.",
+  "fixed_before_running": "Written on 2026-10-27 and committed before the script was run. No tile of this check has been made before. The range in use until now is 40 to 150 sentences (a working value); the six candidate stories have 60 to 148 sentences under the splitter of src/english_text.py (counted without a lexicon). The criteria below were written before any figure was made; the decision on the range is the researcher's, made after looking at the figures.",
+  "version": 1,
+  "generator": {"package": "atact", "commit": "b559a80c623d36357dd0736b887497a0cb789af5", "functions": "atact.mapping.params, atact.field.procedural_field_separable (4 octaves, normalize 'ampsum'), atact.transform.t_gamma"},
+  "coordinates": {"distribution": "V and A independent and uniform on [-1, 1]", "seed": 20261027, "generator": "numpy.random.default_rng(seed).uniform(-1, 1, size=(n_max, 2)); a series of n tiles takes the first n rows", "n_max": 200},
+  "surface": {"seed": 42, "note": "one seed for every tile, as in the text example of the paper on the rule (the series differs only through (f, s, gamma))"},
+  "dimensions": {"L_mm": 50.0, "D_mm": 1.2, "s_max": 0.3, "source": "the dimensions of the text example of the paper on the rule (experiments/conditions/text_path_example.json of the public repository, 'exports.dimensions')"},
+  "exports": {
+    "common": "z = D H / (2 s_max); grey = z / D + 1/2 (z = 0 is mid grey)",
+    "minmax": "z = D (H - min H) / (max H - min H); grey = z / D",
+    "note": "the grey levels of the figures of the text example; grey colour map, no shading"
+  },
+  "series_sizes": [40, 100, 150, 200],
+  "figure": {
+    "width_mm": 177.8,
+    "width_source": "7 inches, the width that Leonardo asks for line art; the printed size is set by the journal and is not known. Continuous-tone images are asked at 8 inches; 7 is the narrower of the two",
+    "dpi": 300,
+    "gap_mm": 1.0,
+    "columns": "ceil(sqrt(n)); rows ceil(n / columns); tile side = (width - (columns - 1) gap) / columns",
+    "grid_per_tile": "the field is computed on a grid of as many points per side as the printed tile has pixels (rounded down), so that the figure shows the surface at print resolution",
+    "max_height_mm": 230.0,
+    "max_height_source": "assumed usable height of a printed page (the page size of the journal was not checked)"
+  },
+  "print": {
+    "bed_mm": 220.0,
+    "bed_source": "assumed square bed of a common desktop printer; the printer that will be used is not known",
+    "gap_mm": 5.0,
+    "tiles_per_plate": "floor((bed + gap) / (L + gap)) squared",
+    "board": "the series laid out with the same columns as the figure, tiles L apart by gap: width columns (L + gap) - gap, height rows (L + gap) - gap"
+  },
+  "criteria": [
+    "C1: the printed tile is at least 12 mm wide",
+    "C2: the base period at the highest base frequency of the rule (f = 7 cycles per tile) is at least 1.5 mm in print",
+    "C3: the figure fits the assumed page height",
+    "C4 (by eye, recorded): looking at the figure at print size (100 %, 300 dpi) in grey, tiles with a low and a high base frequency can be told apart, and the common export shows differences of depth between tiles"
+  ],
+  "outputs": "results/dummy_tiles.json (layout, the criteria, the coordinates and (f, s, gamma) of every tile) and results/dummy_tiles/n{n}_{export}.png",
+  "not_claimed": "Nothing about any text or about how the work will look: the coordinates are uniform, while the points of a text are not."
+}
