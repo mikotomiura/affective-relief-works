@@ -395,3 +395,20 @@ def split_sentences(body: str) -> tuple[list[str], list[str]]:
         for piece in _pieces(ln):
             (kept if _has_word_char(piece) else dropped).append(piece)
     return kept, dropped
+
+
+# ---------------------------------------------------------------- date note at the end of a work
+
+DATE_NOTE = re.compile(r"（(?:明治|大正|昭和)(?:元|[〇一二三四五六七八九十]+)年(?:[〇一二三四五六七八九十]+月)?）")
+
+
+def strip_date_note(body: str) -> tuple[str, str | None]:
+    """Remove the last non-empty line of a body text (from strip_aozora) when it is a date note and nothing else:
+    full-width parentheses around an era name (明治, 大正 or 昭和), a year in kanji numerals and, optionally, a month,
+    such as （大正六年十一月）. Returns the body and the removed line (None if nothing was removed). Other lines at
+    the end (a source note, a line between dashes) are text of the work and stay."""
+    lines = body.split("\n")
+    k = next((i for i in range(len(lines) - 1, -1, -1) if lines[i].strip()), None)
+    if k is None or not DATE_NOTE.fullmatch(lines[k].strip()):
+        return body, None
+    return "\n".join(lines[:k] + lines[k + 1 :]), lines[k].strip()

@@ -5,7 +5,7 @@ from __future__ import annotations
 import pytest
 
 from japanese_text import (GAIJI, POS_ALLOWED, Lexicon, LinearMap, Tagger, Token, is_candidate, load_memolon,
-                           sentence_point, split_line, split_sentences, strip_aozora, text_path)
+                           sentence_point, split_line, split_sentences, strip_aozora, strip_date_note, text_path)
 
 IDENTITY = LinearMap(1.0, 0.0, 1.0, 0.0)  # values of the fake lexicons below are already in [-1, 1] or test the clip
 
@@ -309,3 +309,35 @@ def test_heading_note_outside_the_heading_rules_fails():
     # a forward heading note whose text holds an external character note is not taken by the heading rules
     with pytest.raises(ValueError, match="unhandled heading"):
         strip_aozora(HEADER + "本※［＃米印、1-2-8］［＃「本※［＃米印、1-2-8］」は中見出し］" + FOOTER)
+
+
+# ---------------------------------------------------------------- date note
+
+
+@pytest.mark.parametrize("note", ["（大正六年十一月）", "（昭和十二年十月）", "（明治四十年）", "（昭和元年）"])
+def test_date_note_on_the_last_line_is_removed(note):
+    assert strip_date_note("本文の文。\n\n最後の文。\n" + note + "\n\n") == ("本文の文。\n\n最後の文。\n\n", note)
+
+
+@pytest.mark.parametrize("line", ["（古い伝えから。）", "（こんな言葉もどこかで読んだ）", "――「物語」の中――",
+                                  "（大正六年十一月、東京にて）", "(大正六年十一月)", "（二〇二〇年十一月）",
+                                  "（大正六年十一月）の夜。", "（大正元十年）", "（平成元年）"])
+def test_other_last_lines_stay(line):
+    assert strip_date_note("本文。\n" + line) == ("本文。\n" + line, None)
+
+
+def test_date_note_that_is_not_the_last_line_stays():
+    text = "本文。\n（大正六年十一月）\n後の文。"
+    assert strip_date_note(text) == (text, None)
+
+
+def test_empty_body_is_returned_unchanged():
+    assert strip_date_note("\n\n") == ("\n\n", None)
+
+
+def test_only_the_last_of_two_date_lines_is_removed():
+    assert strip_date_note("本文。\n（大正六年）\n（大正七年）") == ("本文。\n（大正六年）", "（大正七年）")
+
+
+def test_a_body_that_is_only_a_date_note():
+    assert strip_date_note("（昭和二年）\n") == ("", "（昭和二年）")
