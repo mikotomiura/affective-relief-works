@@ -12,3 +12,6 @@ advice/
 handoff/
 review/
 .steering/
+
+# Large generated files (STL), recorded by SHA-256 in results/
+output/

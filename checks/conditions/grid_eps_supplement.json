@@ -1,0 +1,62 @@
+{
+ "purpose": "Supplement to decisions 1 and 2 of .steering/20261028-while-waiting-2 (proposed by the researcher on 2026-10-27): how much the printed shape of a tile changes if the grid is made finer (points 0.1 mm apart instead of e_min / 2 = 0.2 mm) and if eps is taken from the analytic bound of the gradient (G* = 93.83, eps 0.3753) instead of the G* of the paper on the rule (88.227, eps 0.3529). No text and no lexicon: three points of the rule and the seed of the works. The main decisions are not changed by this check; it gives the size of what was not chosen, to be written with the work.",
+ "fixed_before_running": "Written on 2026-10-27 and committed, with the script and src/relief.py, before the script was run. Seen before: the largest gradient of F at f = 7, seed 42 (74.64 at 251 points, 83.29 at 1024, 83.85 at 4096) and one STL of the point V = -0.6, A = -0.8 at 0.2 mm, looked at to check its orientation and closure. Revised before any run after independent reviews (Codex and a code review by Claude): the generator is checked, the slope is also taken from the normals of the triangles, the min-max scale is added to R1, and an anomaly in R3 stops the script.",
+ "version": 1,
+ "points": [
+  {
+   "name": "low",
+   "V": 1.0,
+   "A": -1.0
+  },
+  {
+   "name": "mid",
+   "V": 0.0,
+   "A": 0.0
+  },
+  {
+   "name": "high",
+   "V": -1.0,
+   "A": 1.0
+  }
+ ],
+ "points_source": "the points of the eps example of the paper on the rule (k2_gradient_and_figures.json of the public repository): smallest, middle and largest gamma",
+ "seed": 42,
+ "dimensions": {
+  "L_mm": 50.0,
+  "D_mm": 1.2,
+  "s_max": 0.3,
+  "base_mm": 2.0,
+  "e_min_mm": 0.4
+ },
+ "grids": {
+  "main_intervals": 250,
+  "fine_intervals": 500
+ },
+ "eps": {
+  "E1": {
+   "G_star": 88.22697899815242,
+   "source": "results/k2_gradient.json of the public repository (the main eps 0.3529079159926097)"
+  },
+  "E2": {
+   "G_star": "2 pi f_max O / 1.875 with f_max = 7, O = 4"
+  }
+ },
+ "readouts": [
+  "R1 (grid): for each point, for H_eps under E1 (common and min-max scales) and for H (common): the largest difference in mm between the fine grid values and the surface of the STL of the main grid at the same points (the STL is linear on its triangles, split along the diagonal from (i, j) to (i + 1, j + 1), so a fine point halfway along an edge or a diagonal is the mean of the two ends; the fine points that are main points have no difference by construction and are left out)",
+  "R2 (eps): for each point on the fine grid, common scale: the largest |z_E2 - z_E1| in mm, and the largest slope of each, in degrees, both atan(D |grad H_eps| / (2 s_max L)) with numpy.gradient over the grid and the largest angle of the normals of the top triangles of the STL surface on that grid from the vertical (central differences can underestimate the steepest triangle)",
+  "R3 (one STL at 0.1 mm): the point 'high', common scale, E1: facets, bytes, the closure check of src/relief.edge_check, the volume and the range of the vertices, beside the same at 0.2 mm. The script stops with an error, and writes no result, if a closure check fails, a volume is not positive or the range is not [0, L] x [0, L] x [0, b + D]"
+ ],
+ "outputs": "results/grid_eps_supplement.json; the STL of R3 in output/grid_eps_supplement/ (outside the repository, SHA-256 recorded)",
+ "not_claimed": "Nothing about printing: no printer has been used; the layer height and the extrusion width are other limits (the second opinion of Codex, decisions of .steering/20261028-while-waiting-2).",
+ "generator": {
+  "requirement": "atact @ git+https://github.com/mikotomiura/affective-relief-audit@b559a80c623d36357dd0736b887497a0cb789af5",
+  "commit": "b559a80c623d36357dd0736b887497a0cb789af5",
+  "library_sha256": {
+   "__init__.py": "d5980876e37cb7a1f5dc379028ab50f7a0c1d77d84c7651ee5d1beefd623b6ab",
+   "field.py": "4162e8faa60ca78257fd0777a3a7dceaaa7bbab6bfe6691de46f49a339b641c5",
+   "lexicon.py": "36cad1e49a25b352a7ae04868c6693ef349e8276d51909061eeb378085065e81",
+   "mapping.py": "83a50faaa664ddcb99004392e13a73fb096a85588a8b3c423b2c8b71ce626d26",
+   "transform.py": "5d35c9c10dfa6c8d5d3b2a9e8126ab45b895a1be14e05650c3ef60ffd3431bd1"
+  }
+ }
+}

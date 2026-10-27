@@ -1,0 +1,72 @@
+{
+ "purpose": "Work 2: for each Japanese author chosen with the second author (3 to 6 of six candidates, fixed on 2026-10-27), one trajectory per work from the 40-sentence window means of the sentence points, unstretched and under one common stretch. This file is the template: the method was committed before the authors and works were chosen; the inputs marked FILL are written after the choice and committed before the script is run.",
+ "fixed_before_running": "FILL: date, the choice (authors included, works kept or replaced) and that no affect value or lexicon match of the chosen works was computed before this commit",
+ "version": 1,
+ "works": "FILL: one object per work: author, work_id, title, card (URL of the library card), zip (path under external/), zip_url, zip_sha256, txt_name, encoding 'cp932', body_sha256 (of the body after strip_aozora and strip_date_note, UTF-8), sentences, date_note (the removed line or null)",
+ "range": {
+  "min_sentences": 200,
+  "max_sentences": 1000,
+  "min_authors": 3,
+  "max_authors": 6,
+  "min_works_per_author": 3,
+  "source": "advice/text-candidates.md (fixed on 2026-10-27) and decision 2 of .steering/20261028-text-candidates"
+ },
+ "steps": "src/japanese_text.strip_aozora (header to the second line of hyphens, footer from 底本： or ［＃本文終わり］, ruby, headings, notes), src/japanese_text.strip_date_note (decision 2 of .steering/20261028-while-waiting), src/japanese_text.split_sentences, src/japanese_text.sentence_point, src/window.trajectory, src/stretch.stretch",
+ "step": {
+  "select": "pos",
+  "order": "word",
+  "pos_allowed": "japanese_text.POS_ALLOWED",
+  "unmatched": "a sentence with no matched token has no point; it is left out of the window mean (decision 4 of .steering/20261028-while-waiting)"
+ },
+ "lexicon": {
+  "name": "MEmoLon, Japanese (MTL_grouped-ja.tsv)",
+  "file": "external/memolon-20261027/MTL_grouped-ja.tsv",
+  "sha256": "537cf39afd50f89cc4c69842f9876df7ff48f9950da849d739bdde7fc00d9e83",
+  "terms": "CC BY 4.0, Zenodo 10.5281/zenodo.3756606"
+ },
+ "map": {
+  "file": "results/calibrate_memolon.json",
+  "sha256": "a84da6f57fd37091fe69f9f931d061c687e76c404ce900c5b342be1e37065989",
+  "use": "map B: V = 0.40982 x - 2.01110, A = 0.42190 x - 1.69426 per word, clipped to [-1, 1], then averaged"
+ },
+ "tagger": {
+  "fugashi": "1.5.2",
+  "ipadic": "1.0.0",
+  "dicdir_sha256": {
+   "COPYING": "fca02d9adb601d101eccdf3131119abfff2d9c825ef5c759d7a89ebbaa972099",
+   "char.bin": "81bba502ae48fa005a374819f15e44452eb68086a8b323ec20a044d514400832",
+   "dicrc": "add6bb131a75e69478961ea59712541ace3779f7c5daa4da80d281f097c9d4d1",
+   "matrix.bin": "ee44d7350cdcb680ebd699f83e121be1dc63310f8832d55bcb537a068177611a",
+   "mecabrc": "cf91ca4aec6bbf596eda5034aefb73ae90999678b59f20ce3deb35d91fddb009",
+   "sys.dic": "223af63996d5d9a104d8c8baaf32029fbbf6a370d7dff33fe19fda2e92ac0ac1",
+   "unk.dic": "f0bf15e3e28259f4470b9c1e775d98bef53207d4b09afcd6d8545209b7b53f88",
+   "version": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+ },
+ "window": {
+  "W": 40,
+  "min_matched_fraction": 0.5,
+  "rule": "decision 4 of .steering/20261028-while-waiting: one sentence at a time, every window of W sentences (no padding), position (start + W/2) / n, matched sentences with equal weight, a gap if fewer than half are matched, works never joined"
+ },
+ "stretch": {
+  "k": "FILL: result.k of results/reference_stretch.json",
+  "file": "results/reference_stretch.json",
+  "sha256": "FILL",
+  "rule": "decisions 3 and 4 of .steering/20261028-while-waiting-2: V' = k V, A' = k A, clipped to [-1, 1], one k for every author and work, the zero of map B kept; k = 0.9 / Q with Q the weighted 0.99 quantile of max(|V|, |A|) over the windows of 40 reference works of other authors"
+ },
+ "generator": {
+  "requirement": "atact @ git+https://github.com/mikotomiura/affective-relief-audit@b559a80c623d36357dd0736b887497a0cb789af5",
+  "commit": "b559a80c623d36357dd0736b887497a0cb789af5",
+  "library_sha256": {
+   "__init__.py": "d5980876e37cb7a1f5dc379028ab50f7a0c1d77d84c7651ee5d1beefd623b6ab",
+   "field.py": "4162e8faa60ca78257fd0777a3a7dceaaa7bbab6bfe6691de46f49a339b641c5",
+   "lexicon.py": "36cad1e49a25b352a7ae04868c6693ef349e8276d51909061eeb378085065e81",
+   "mapping.py": "83a50faaa664ddcb99004392e13a73fb096a85588a8b3c423b2c8b71ce626d26",
+   "transform.py": "5d35c9c10dfa6c8d5d3b2a9e8126ab45b895a1be14e05650c3ef60ffd3431bd1"
+  }
+ },
+ "outputs": "results/work2/work2.json: per author and work, the unstretched and the stretched trajectory (start, position, number of matched sentences, gap, V, A, f, s, gamma), the clipped windows and the shares of matched sentences and tokens",
+ "reported": "the shares of matched sentences and tokens, as a check of quality; they are not a reason to change the works",
+ "not_drawn": "the form of the portrait (P1-P3 of .steering/20261028-while-waiting/design.md) is not decided",
+ "not_claimed": "Nothing about the emotion of the works or of the authors, and not that an author can be told from the portrait."
+}

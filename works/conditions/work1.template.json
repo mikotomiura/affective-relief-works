@@ -1,0 +1,40 @@
+{
+ "purpose": "Work 1: one English story chosen by the second author from six candidates (advice of the makers, fixed on 2026-10-27), one tile per sentence, the whole series under the common height scale and under per-tile min-max. This file is the template: the method was committed before the story was chosen; the inputs marked FILL are written after the choice and committed before the script is run.",
+ "fixed_before_running": "FILL: date, who chose the story, and that no affect value or lexicon match of the chosen story was computed before this commit",
+ "version": 1,
+ "text": {
+  "source": "FILL: Project Gutenberg eBook number and URL of the plain-text file",
+  "file": "FILL: path under external/ (not in the repository)",
+  "sha256": "FILL",
+  "encoding": "utf-8",
+  "heading": "FILL: the heading line of the story, matched exactly after stripping",
+  "next_heading": "FILL: the heading line of the next story, or null for the END marker",
+  "occurrence": -1,
+  "heading_line": "FILL: 1-based line of the heading (counts_final.json, work1, lines[0])",
+  "body_sha256": "FILL: counts_final.json, work1, body_sha256",
+  "sentences": "FILL: number of sentences under src/english_text.split_sentences (counts_final.json, work1, sentences)"
+ },
+ "steps": "src/english_text.extract_story (body between the heading and the next heading inside the START and END markers; lines of a paragraph joined by one space; paragraphs wholly in square brackets dropped and listed), src/english_text.split_sentences (decision 1 of .steering/20261028-while-waiting: terminal marks with closing quotation marks, a capital, opening mark or digit next; no cut after Mr Mrs Dr St Messrs Mme Mlle; paragraph ends always cut; pieces without a letter or digit dropped and listed), atact.lexicon.sentence_point (every matched term averaged; a sentence with no matched term is (0, 0) and flagged), atact.mapping.params.",
+ "range": {"min_sentences": 40, "max_sentences": 150, "source": "decision 5 of .steering/20261028-while-waiting (dummy tiles, commits 01ca654 and 0b0917d)"},
+ "lexicon": {"name": "NRC VAD Lexicon v2.1", "file": "external/nrc-vad-v2.1-20261026/NRC-VAD-Lexicon-v2.1/NRC-VAD-Lexicon-v2.1.txt", "sha256": "42c718817fc91d5c133581b24b0bb31d2b14a0b16edb19bc6ce6ab70343e5a45", "terms": "non-commercial research and education only; not redistributed"},
+ "generator": {
+  "requirement": "atact @ git+https://github.com/mikotomiura/affective-relief-audit@b559a80c623d36357dd0736b887497a0cb789af5",
+  "commit": "b559a80c623d36357dd0736b887497a0cb789af5",
+  "library_sha256": {"__init__.py": "d5980876e37cb7a1f5dc379028ab50f7a0c1d77d84c7651ee5d1beefd623b6ab", "field.py": "4162e8faa60ca78257fd0777a3a7dceaaa7bbab6bfe6691de46f49a339b641c5", "lexicon.py": "36cad1e49a25b352a7ae04868c6693ef349e8276d51909061eeb378085065e81", "mapping.py": "83a50faaa664ddcb99004392e13a73fb096a85588a8b3c423b2c8b71ce626d26", "transform.py": "5d35c9c10dfa6c8d5d3b2a9e8126ab45b895a1be14e05650c3ef60ffd3431bd1"}
+ },
+ "relief": {
+  "L_mm": 50.0, "D_mm": 1.2, "s_max": 0.3, "base_mm": 2.0, "e_min_mm": 0.4,
+  "G_star": 88.22697899815242, "eps": 0.3529079159926097, "grid_intervals": 250,
+  "seed": 42, "octaves": 4, "normalize": "ampsum",
+  "decisions": "decisions 1 and 2 of .steering/20261028-while-waiting-2: L, D and s_max of the text example of the paper on the rule; base 2.0 mm and e_min 0.4 mm provisional until the printer is known; eps = e_min G* / (2 L) with the G* of that paper (results/k2_gradient.json of the public repository); grid points e_min / 2 apart; STL from H_eps; one seed for every tile"
+ },
+ "exports": {
+  "common": "z = D H / (2 s_max); top of the solid b + D/2 + z",
+  "minmax": "z = D (H - min H) / (max H - min H); top b + z",
+  "figures": "grey common z / D + 1/2 (of H and of H_eps), min-max z / D (of H)"
+ },
+ "figure": {"width_mm": 177.8, "dpi": 300, "gap_mm": 1.0, "columns": "ceil(sqrt(n))", "source": "as the dummy tiles (checks/conditions/dummy_tiles.json)"},
+ "outputs": "results/work1/work1.json and results/work1/{common,minmax,common_eps}.png; output/work1/stl/s{i:03d}_{common,minmax}.stl (outside the repository)",
+ "reported": "the share of sentences with at least one matched term, as a check of quality; it is not a reason to change the story",
+ "not_claimed": "Nothing about the emotion of the story: each point is the mean of dictionary values of the matched terms."
+}
