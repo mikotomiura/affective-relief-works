@@ -259,7 +259,8 @@ def test_filled_conditions_of_the_tests_keep_the_template(tmp_path):
     assert diff == [".relief.L_mm: 50.0 -> 5.0", ".relief.eps: 0.3529079159926097 -> 3.529079159926097",
                     ".relief.grid_intervals: 250 -> 25"]  # the test tile is small on purpose
     c2 = work2_conditions(tmp_path)
-    assert cm.matches_template(json.loads((ROOT / "works/conditions/work2.template.json").read_text()), c2) == []
+    assert cm.matches_template(json.loads((ROOT / "works/conditions/work2.template.json").read_text()), c2) == [
+        ".stretch.k: 4.166451147971101 -> 1.5", f".stretch.sha256: '{json.loads((ROOT / 'works/conditions/work2.template.json').read_text())['stretch']['sha256']}' -> '{'0' * 64}'"]
 
 
 def test_gates(tmp_path, monkeypatch):

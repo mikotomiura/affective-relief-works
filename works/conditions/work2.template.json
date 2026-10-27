@@ -49,10 +49,11 @@
   "rule": "decision 4 of .steering/20261028-while-waiting: one sentence at a time, every window of W sentences (no padding), position (start + W/2) / n, matched sentences with equal weight, a gap if fewer than half are matched, works never joined"
  },
  "stretch": {
-  "k": "FILL: result.k of results/reference_stretch.json",
+  "k": 4.166451147971101,
   "file": "results/reference_stretch.json",
-  "sha256": "FILL",
-  "rule": "decisions 3 and 4 of .steering/20261028-while-waiting-2: V' = k V, A' = k A, clipped to [-1, 1], one k for every author and work, the zero of map B kept; k = 0.9 / Q with Q the weighted 0.99 quantile of max(|V|, |A|) over the windows of 40 reference works of other authors"
+  "sha256": "b11a3590499c14c53e535ff255e1c112a288f992604a0ab9a77c5d8e23d319cf",
+  "rule": "decisions 3 and 4 of .steering/20261028-while-waiting-2: V' = k V, A' = k A, clipped to [-1, 1], one k for every author and work, the zero of map B kept; k = 0.9 / Q with Q the weighted 0.99 quantile of max(|V|, |A|) over the windows of 40 reference works of other authors",
+  "fixed": "k written into the template on 2026-10-27 from results/reference_stretch.json (commit 8a9fc8a), before the choice of the second author arrived and before any value of a candidate text was computed; kept as the committed rule gave it after the researcher looked at the reference result (decision 6 of .steering/20261028-while-waiting-2)"
  },
  "generator": {
   "requirement": "atact @ git+https://github.com/mikotomiura/affective-relief-audit@b559a80c623d36357dd0736b887497a0cb789af5",
