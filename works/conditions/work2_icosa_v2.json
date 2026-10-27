@@ -1,0 +1,62 @@
+{
+ "purpose": "The icosahedron of work 2 drawn again (point 1 of handoff/20261028-artwork-after-redesign.md, the first point of the independent review of .steering/20261028-work2-redesign): the same words, seeds and relief as results/work2_words/, shaded on a grid k times finer than the image and then averaged over k x k blocks, so that the stripes seen on oblique faces can be told apart as a property of the form or of the drawing.",
+ "fixed_before_running": "Written on 2026-10-28 and committed before the script was run. Seen before: results/work2_words/ (the words, the tiles and icosa.png drawn with one ray per pixel, finding D4: stripes on oblique faces, possibly aliasing). Not seen before: any view drawn with more than one ray per pixel. No 3D printer is available (decision 1 of .steering/20261028-icosa-redraw); no STL is made here.",
+ "version": 1,
+ "inputs": "results/work2_words/words.json (the 20 words of the trial authors with V and A, eps, and the order of the faces) and works/conditions/work2_words.json (field, relief, seeds, icosahedron and views); both read as committed, their SHA-256 recorded",
+ "work2_words_conditions_sha256": "7978599bdeed5f2973cae03dfbd2f85f26fc25173ea022f68a0e0e6c9a671164",
+ "work2_words_result_sha256": "3f48ff8fd0233704a37042763680ab034e7dbc39fa33d2044c5858023d460cf9",
+ "heights": "per face, z_mm of works/work2_words.py on the face grid of work2_words.json (1600 per domain unit) times the taper, as in work2_words.py; the faces, their order and frame from icosahedron() of work2_words.py, checked against icosahedron_faces of words.json; eps checked against words.json",
+ "shading": "the shading of view() of works/work2_words.py (orthographic rays on the undisplaced solid, the normal from the gradient of z, half-Lambert 0.15 + 0.85 (1 + n.L) / 2, the same light and views), evaluated at k x k sub-positions per pixel and averaged; a ray that misses the solid counts as white (1.0), so the outline is averaged too",
+ "sub_positions": "pixel i of the 800 has its centre at -ext + i delta, delta = 2 ext / (px - 1), as in view(); its sub-positions are the centre + ((j + 1/2) / k - 1/2) delta, j = 0..k-1, in both directions; for k = 1 this is the centre itself",
+ "k": [
+  1,
+  2,
+  4
+ ],
+ "main_k": 4,
+ "rows_per_chunk": 64,
+ "control": "k = 1 must reproduce results/work2_words/icosa.png pixel for pixel (the run stops otherwise); it shows that the new code shades as view() did",
+ "convergence": "for every author and view, |image_k - image_main_k| in grey levels (0 to 255) for every k other than main_k, over two sets of pixels: 'solid' (main_k below white in floating point, the outline included, where one ray per pixel is binary and main_k is graded) and 'interior' (the 3 x 3 neighbourhood of the pixel in k = 1 entirely on the solid; the outline left out); the mean and the 99th percentile; reported, not used to choose anything",
+ "figures": {
+  "icosa_k4.png": "the layout of icosa.png (rows the two trial authors, columns the two views, 16 px between views) drawn with k = 4",
+  "icosa_k1_k4.png": "for each trial author, the front view with k = 1 (left) and k = 4 (right), 16 px apart, rows the authors",
+  "zoom.png": "for each trial author (rows) and each region of zoom (in the order grazing, oblique): k = 1 then k = 4, enlarged 3 times by repeating pixels, 16 px apart"
+ },
+ "criteria": [
+  "D4a (by eye, icosa_k1_k4.png and zoom.png): the stripes on oblique faces seen in icosa.png are gone or much weaker with k = 4 (then they came from the drawing), or they remain (then they belong to the relief as computed on the face grid)",
+  "D4b (by eye, icosa_k4.png): the faces differ from each other beyond the brightness set by their orientation (the relief of each word is readable), judged as in D4 of work2_words.json",
+  "D4c (numbers, 'interior'): the difference of k = 2 from k = 4 is smaller than that of k = 1 from k = 4 (the image converges with k); if not, k = 4 is not called converged. 'solid' is reported beside it and not read for D4c (the outline alone would make it hold)"
+ ],
+ "outputs": "results/work2_icosa_v2/icosa_k4.png, icosa_k1_k4.png, zoom.png, icosa_v2.json",
+ "not_claimed": "The views are drawings of the relief at true scale on the undisplaced solid (bump shading), not of a printed object; what can be felt is not tested. The face grid stays at 1600 per domain unit, so detail finer than that grid is not drawn at any k. Whether a tile or the icosahedron is chosen is not decided by these images (decision 2 of .steering/20261028-work2-redesign).",
+ "zoom": {
+  "regions": {
+   "grazing": {
+    "view": "back",
+    "rows": [
+     560,
+     760
+    ],
+    "cols": [
+     120,
+     320
+    ]
+   },
+   "oblique": {
+    "view": "front",
+    "rows": [
+     300,
+     500
+    ],
+    "cols": [
+     480,
+     680
+    ]
+   }
+  },
+  "chosen": "on results/work2_words/icosa.png (one ray per pixel) before any new view was drawn: 'grazing' holds the lower left face of the back view seen almost edge on, where speckle and broken stripes appear; 'oblique' holds the edge between the central face and the face on the right of the front view",
+  "enlarge": 3,
+  "coordinates": "rows and columns within one view of view_px x view_px (not within the composed icosa.png)"
+ },
+ "code_review": "code-reviewer (opus) before the run, no HIGH. Changed after it: the 'interior' pixels of the convergence (MEDIUM: the outline alone would make D4c hold), the gradients built once per author (MEDIUM: memory), all imported files guarded, the output directory checked again before the rename, the first view checked against the old image before the others are drawn, the types of k checked and the figure names built from main_k, the coordinates of the zoom written down"
+}
