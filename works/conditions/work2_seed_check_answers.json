@@ -1,0 +1,113 @@
+{
+ "researcher": {
+  "L1_adversative": {
+   "100": false,
+   "200": false,
+   "300": false,
+   "400": false,
+   "500": false
+  },
+  "L2_intensifier": {
+   "100": false,
+   "200": false,
+   "300": false,
+   "400": false,
+   "500": false
+  },
+  "P1_first_person": {
+   "100": false,
+   "200": false,
+   "300": false,
+   "400": false,
+   "500": false
+  },
+  "O1_iu": {
+   "100": false,
+   "200": false,
+   "300": false,
+   "400": false,
+   "500": false
+  },
+  "words20": {
+   "100": false,
+   "200": false,
+   "300": false,
+   "400": false,
+   "500": false
+  }
+ },
+ "main": {
+  "L1_adversative": {
+   "100": false,
+   "200": false,
+   "300": false,
+   "400": false,
+   "500": false
+  },
+  "L2_intensifier": {
+   "100": true,
+   "200": true,
+   "300": true,
+   "400": true,
+   "500": true
+  },
+  "P1_first_person": {
+   "100": true,
+   "200": true,
+   "300": true,
+   "400": true,
+   "500": true
+  },
+  "O1_iu": {
+   "100": false,
+   "200": false,
+   "300": false,
+   "400": false,
+   "500": false
+  },
+  "words20": {
+   "100": false,
+   "200": false,
+   "300": false,
+   "400": false,
+   "500": false
+  }
+ },
+ "deciding": {
+  "L1_adversative": {
+   "100": false,
+   "200": false,
+   "300": false,
+   "400": false,
+   "500": false
+  },
+  "L2_intensifier": {
+   "100": false,
+   "200": false,
+   "300": false,
+   "400": false,
+   "500": false
+  },
+  "P1_first_person": {
+   "100": false,
+   "200": false,
+   "300": false,
+   "400": false,
+   "500": false
+  },
+  "O1_iu": {
+   "100": false,
+   "200": false,
+   "300": false,
+   "400": false,
+   "500": false
+  },
+  "words20": {
+   "100": false,
+   "200": false,
+   "300": false,
+   "400": false,
+   "500": false
+  }
+ }
+}
