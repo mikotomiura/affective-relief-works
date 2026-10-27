@@ -1,0 +1,111 @@
+{
+ "meta": {
+  "conditions_sha256": "5e688e44188a88873d43ab030624f0ead59fbdccd34ca6c331a1ee88b92fb191",
+  "script_sha256": "810d8bb3048030c9444a873a4d8a65353cb9d068cd644576e43ccbd1d4d22c37",
+  "points_sha256": "99cbe5507080942e708cc4ab7ccb007d21d250ffe00bb3e12aa8f1fc15289bdc",
+  "atact_commit": "b559a80c623d36357dd0736b887497a0cb789af5",
+  "numpy": "2.5.4",
+  "python": "3.13.12",
+  "platform": "Darwin arm64",
+  "git_commit": "763b76ac7600016d4fdd162aada1c079533fc428",
+  "git_dirty": false,
+  "started": "2026-10-27T16:03:07+00:00",
+  "finished": "2026-10-27T16:03:07+00:00"
+ },
+ "sentences": [
+  {
+   "i": 40,
+   "text": "“Well, I’ll take this pair.”",
+   "V": 0.44,
+   "A": -0.13775,
+   "s": 0.1272
+  },
+  {
+   "i": 103,
+   "text": "In truth, he saw nothing—unless he were wizard enough to detect a poignant wish, a powerful longing that the cable car would never stop anywhere, but go on and on with her forever.",
+   "V": 0.09922222222222221,
+   "A": -0.06255555555555556,
+   "s": 0.16809333333333332
+  },
+  {
+   "i": 43,
+   "text": "It seemed lost in the depths of her shabby old shopping-bag.",
+   "V": -0.29125,
+   "A": 0.02050000000000001,
+   "s": 0.21495
+  }
+ ],
+ "seeds": [
+  42,
+  43,
+  44
+ ],
+ "rows": [
+  "P0",
+  "P1",
+  "O0",
+  "O1"
+ ],
+ "measures": {
+  "P0": {
+   "mean_abs_corr_between_seeds": 0.24916050561839923,
+   "per_sentence_abs_corr": [
+    0.2563249710378178,
+    0.2460855106868698,
+    0.24507103513051012
+   ],
+   "sd_of_H_per_sentence": [
+    0.05483497241247425,
+    0.07644900804382462,
+    0.10345691524424934
+   ],
+   "affect_spread": 0.6213907809289516
+  },
+  "P1": {
+   "mean_abs_corr_between_seeds": 0.13067131678703575,
+   "per_sentence_abs_corr": [
+    0.13332446327821565,
+    0.13516331813915552,
+    0.1235261689437361
+   ],
+   "sd_of_H_per_sentence": [
+    0.049584616142587495,
+    0.06969972992022344,
+    0.0943040401777121
+   ],
+   "affect_spread": 0.6281159498733112
+  },
+  "O0": {
+   "mean_abs_corr_between_seeds": 0.0168241530760167,
+   "per_sentence_abs_corr": [
+    0.011978733354543794,
+    0.016171938071899667,
+    0.02232178780160664
+   ],
+   "sd_of_H_per_sentence": [
+    0.06910807412498522,
+    0.09472784101604166,
+    0.12613066586906285
+   ],
+   "affect_spread": 0.5899568654992017
+  },
+  "O1": {
+   "mean_abs_corr_between_seeds": 0.03214257980914475,
+   "per_sentence_abs_corr": [
+    0.029392590041950786,
+    0.034680973173277015,
+    0.032354176212206424
+   ],
+   "sd_of_H_per_sentence": [
+    0.06892476876520086,
+    0.09500418053907668,
+    0.12631907190493194
+   ],
+   "affect_spread": 0.5932268158172371
+  }
+ },
+ "figure": {
+  "file": "results/overall_inspection/content_channel.png",
+  "sha256": "a2989f4ce3f6f20da0ab13d9a3baabc2f01e5bb61f88a6a78d5c42c62785905c"
+ }
+}

@@ -1,0 +1,45 @@
+{
+ "meta": {
+  "conditions_sha256": "5e688e44188a88873d43ab030624f0ead59fbdccd34ca6c331a1ee88b92fb191",
+  "script_sha256": "aabbe35f796b20702aaa8a2cb3555cb2c9be797b7d10206ea36f50cb3f71b781",
+  "points_sha256": "99cbe5507080942e708cc4ab7ccb007d21d250ffe00bb3e12aa8f1fc15289bdc",
+  "paragraphs_sha256": "1a9b3cec31b608799f3a7e3c0244691fa394ceaa74b77e581e18d69121e98fde",
+  "numpy": "2.5.4",
+  "matplotlib": "3.11.2",
+  "python": "3.13.12",
+  "platform": "Darwin arm64",
+  "git_commit": "763b76ac7600016d4fdd162aada1c079533fc428",
+  "git_dirty": false,
+  "started": "2026-10-27T16:03:08+00:00",
+  "finished": "2026-10-27T16:03:11+00:00"
+ },
+ "permutations": 10000,
+ "seed": 20261028,
+ "stats": {
+  "V": {
+   "r1": -0.10261668886551777,
+   "r1_p": 0.8282171782821718,
+   "r1_null_95": 0.14675030715475967,
+   "eta2": 0.13168591029260324,
+   "eta2_p": 0.962903709629037,
+   "eta2_null_95": 0.3386199034799172
+  },
+  "A": {
+   "r1": -0.08712723872053259,
+   "r1_p": 0.7833216678332167,
+   "r1_null_95": 0.14764339945136645,
+   "eta2": 0.22484419639282802,
+   "eta2_p": 0.5108489151084892,
+   "eta2_null_95": 0.3454886748707535
+  }
+ },
+ "criteria": {
+  "F1": false,
+  "F2": false,
+  "F3": "by eye, recorded in the decisions"
+ },
+ "figure": {
+  "file": "results/overall_inspection/story_flow.png",
+  "sha256": "407de577af2b876b2ad7bff4c768e6ee80c04e63ca3f95a03adf5a75723afe81"
+ }
+}
