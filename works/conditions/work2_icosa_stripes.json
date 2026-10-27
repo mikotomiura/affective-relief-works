@@ -1,0 +1,28 @@
+{
+ "purpose": "Where the fine parallel stripes on oblique faces of the icosahedron of work 2 come from (decision 2 of .steering/20261028-icosa-redraw: they did not change with the rays per pixel, results/work2_icosa_v2/). Two causes are told apart on the two zoom regions of work2_icosa_v2.json: the sampling of the heights on the face grid (1600 per domain unit), and the form of the computed relief itself.",
+ "fixed_before_running": "Written on 2026-10-28 and committed before the script was run. Seen before: results/work2_icosa_v2/ (zoom.png: in the region 'oblique', fine parallel stripes nearly the same with k = 1 and k = 4; convergence numbers). Not seen before: any view with a face grid other than 1600, any map of the heights in the view.",
+ "version": 1,
+ "inputs": "results/work2_words/words.json, works/conditions/work2_words.json (as in work2_icosa_v2.json), works/conditions/work2_icosa_v2.json (the zoom regions, k and the sub-positions) and results/work2_icosa_v2/icosa_k4.png (the control); read as committed, their SHA-256 recorded",
+ "work2_icosa_v2_conditions_sha256": "2fb0539ea8f86914434af15a18865f09b67e680db19e85ab7ce95979b3d3ce2c",
+ "work2_icosa_v2_k4_sha256": "c77daf0ec98ec8f23a8b1888e9b9e5273a9a24592d0bad678ff8f5c590cb54e2",
+ "regions": "the two zoom regions of work2_icosa_v2.json (grazing: back view; oblique: front view), rows and columns within one view of 800 x 800, for both trial authors",
+ "k": 4,
+ "faces": "only the faces hit by a ray of the region (with k = 4) get heights; the others are never sampled",
+ "variants": {
+  "G1600": "shade() of work2_icosa_v2.py with the heights on the face grid 1600 (as icosa_k4.png)",
+  "G3200": "the same with the heights on a face grid of 3200 per domain unit (the field, the taper and the gradient computed on that grid)",
+  "H3200": "the high-pass of the heights: z (mm, after the taper) on the face grid of 3200 at every sub-position, averaged over the k x k of a pixel, minus its Gaussian blur with sigma = 3 px (over the solid pixels only, normalised by the blurred mask), shown with grey from the 1st to the 99th percentile over the single-face pixels of the region (each region of each author on its own scale); non-solid pixels are mid grey (the grey scale is not comparable between panels)"
+ },
+ "control": "G1600 must reproduce the crop of the region of results/work2_icosa_v2/icosa_k4.png pixel for pixel (the run stops otherwise)",
+ "reported": "per author and region: the mean and the 99th percentile of |G3200 - G1600| in grey levels over the single-face pixels (all k x k rays on one face, 3 x 3 neighbourhood on the same face: no outline, no ridge); the standard deviation and the 99th percentile of |high-pass z| in micrometres over the same pixels (the physical size of the fine relief seen in the view); the minimum and maximum of z (mm) over the solid pixels",
+ "figure": "stripes.png: rows the authors x regions (dazai grazing, dazai oblique, okamoto grazing, okamoto oblique), columns G1600, G3200, H3200, each 200 x 200 enlarged 3 times by repeating pixels, 16 px apart",
+ "criteria": [
+  "S0 (control): G1600 equals the crop of icosa_k4.png",
+  "S1 (by eye, and the numbers): if the fine stripes of 'oblique' (and the stripes of 'grazing') are the same in G3200 as in G1600, in place and direction, they do not come from the face grid 1600 (the gradients interpolated bilinearly have kinks at every line of the grid, which would move or change with the grid); if they weaken or change, they do. The numbers are reported beside the eye and have no threshold: they also respond to differences of the large pattern",
+  "S2 (by eye): if the same stripes appear in the high-pass H3200 at the same places, they are in the computed heights at that grid; if the high-pass H3200 shows no such stripes where the shading shows them, the stripes come from the shading and not from the heights. The size of the fine relief is read from the reported micrometres, and is not judged against any printer (none is chosen)"
+ ],
+ "outputs": "results/work2_icosa_stripes/stripes.png, stripes.json",
+ "not_claimed": "The heights are those computed at true scale on the undisplaced solid; whether a printed object shows the stripes, or whether a finger feels them, is not tested. A grid of 3200 can still alias detail finer than its own spacing.",
+ "expected_before": "Written before the run: the relief is band limited (base f of 3 to 7 cycles per domain unit, top octave 8 f <= 56, a wavelength of about 0.9 mm and more), and eps = 0.353 makes the folds of T_gamma_eps much wider than the grid; on oblique faces the projection compresses one direction, so a stripe of the relief can be 1 to 2 pixels wide in the view. The likely mechanism of a grid artefact would be the kinks of the bilinearly interpolated gradient at every grid line, beating with the rays.",
+ "code_review": "code-reviewer (opus) before the run. Changed after it: H3200 replaced by its high-pass and the micrometres reported (HIGH: a min-max map of the heights could not show stripes of small amplitude, so S2 could not tell the causes apart), work2_words.json checked against the hash named in work2_icosa_v2.json and recorded, the faces not needed carry NaN and the output is checked to have none, the number of words checked, the regions checked to lie inside the view, a zero range stops the run, the hashes of the inputs recorded"
+}
