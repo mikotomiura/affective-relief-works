@@ -1,0 +1,50 @@
+{
+ "purpose": "Work 1, the drawing (decision 4 of .steering/20261028-outline-v21-attack-me, and the researcher's choice of 2026-10-28 in .steering/20261028-seed-check): the same tiles of work 1 drawn four ways, as the height in grey (the figures of work 1), lit from the upper left, lit from the lower right, and lit from the upper left with every tile stretched to the full grey range, to show how the drawing, a quantity the makers give, changes what the same series shows. Nothing is recomputed from the text: the values are read from the committed result.",
+ "fixed_before_running": "Written on 2026-10-28 and committed before the script was run. Seen before: everything of results/work1 (commit 500c58f), among them common.png, minmax.png and common_eps.png and the values of every sentence (the s of the first twelve sentences lies between 0.137 and 0.181, seen while the inputs of this file were written); a smoke run before this file was written, on dummy values (V and A in -1, 0, 1, no sentence) and on a single Gaussian bump, which gave the slopes of the relief at true scale (median 0.03 to 0.43, largest 1.6) and the direction of the light. Not seen before: any tile of work 1 lit or stretched. The four drawings, the light, the elevation and the twelve tiles were decided before any of them was drawn; the viewpoint (an oblique view) is not tried.",
+ "version": 1,
+ "inputs": {
+  "work1": "results/work1/work1.json",
+  "work1_sha256": "99cbe5507080942e708cc4ab7ccb007d21d250ffe00bb3e12aa8f1fc15289bdc",
+  "work1_conditions_sha256": "e1d66fd796ad22622f15fb35abbb6e8173abf6674b6ac7315e850b71ae0f332e",
+  "common_eps": "results/work1/common_eps.png",
+  "use": "V and A of the sentences as recorded (f, s and gamma recomputed by params and required to equal the record); the relief, the seed and the figure of works/conditions/work1.json (eps recomputed and required to equal the record)"
+ },
+ "tiles": {
+  "n": 12,
+  "which": "the first 12 sentences in the order of the story (indices 0 to 11), the rule chosen by the researcher before any lit tile was drawn; not chosen by value",
+  "heights": "H_eps of src/relief.py (the heights of the STL) under the common scale, z = D H_eps / (2 s_max) in mm, on the tile of side L = 50 mm (true scale, no exaggeration)",
+  "field": "procedural_field_separable with the seed, octaves and normalisation of work 1 (as the figures of work 1)"
+ },
+ "drawings": {
+  "a_height": "the grey of common_eps.png: z / D + 1/2 on the tile grid of the figure of work 1 (tile_px of its layout, no supersampling); every tile must equal its place in common_eps.png byte for byte",
+  "b_light_upper_left": "Lambert shading max(0, n . l) of the surface z, the normal n from the gradient of z (central differences, mm per mm), the light l at elevation 45 degrees and azimuth 135 degrees (from the upper left of the figure, whose rows are flipped so that the origin is at the lower left), no ambient term; computed on a grid supersample times finer and averaged over blocks to tile_px",
+  "c_light_lower_right": "as b with the azimuth 315 degrees (from the lower right)",
+  "d_stretched": "b with every tile stretched to the full grey range: (g - min g) / (max g - min g) per tile",
+  "supersample": 4,
+  "elevation_deg": 45.0,
+  "azimuth_b_deg": 135.0,
+  "azimuth_c_deg": 315.0
+ },
+ "figure": {
+  "tile_px": "tile_px of the layout of work 1 (180)",
+  "gap_px": 12,
+  "row_label_px": 34,
+  "row_gap_px": 18,
+  "rows": ["height as grey (the figures of work 1)", "lit from the upper left", "lit from the lower right", "lit from the upper left, each tile stretched"],
+  "font_file": "/System/Library/Fonts/Hiragino Sans GB.ttc",
+  "file": "drawing.png"
+ },
+ "reported": {
+  "per_tile": "for every tile and drawing: the mean and the standard deviation of the grey (0 to 1)",
+  "per_drawing": "the Spearman rho over the 12 tiles between s and the standard deviation of the grey (whether the depth of the tiles is kept in the drawing)",
+  "G4": "written as G4_rho_d_lt_b (true or false)"
+ },
+ "criteria": [
+  "G1 (computed): the tiles of drawing a equal their places in common_eps.png byte for byte (the drawing of this run starts from the figure already seen)",
+  "G2 (by eye): the same twelve tiles read differently in the four drawings (the order of depth, the direction of the forms, the contrast)",
+  "G3 (by eye): with the light from the lower right, hills and hollows can be read the other way round (expected, as for a relief lit from below)",
+  "G4 (computed): the rho of d is lower than that of b (stretching removes the depth, as min-max does for the heights; expected)"
+ ],
+ "outputs": "results/work1_drawing/drawing.json and drawing.png",
+ "not_claimed": "Not a finding about the story: each tile is the mean of dictionary values of the matched terms. The lit drawings are images of the computed relief, not photographs of a printed one; the light, the elevation and the stretching are choices of the makers among many (the viewpoint is not tried). The tiles are not printed; touch is not tested."
+}

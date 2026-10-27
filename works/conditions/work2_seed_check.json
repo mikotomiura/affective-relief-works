@@ -1,0 +1,70 @@
+{
+ "purpose": "Work 2, the check of the seeds (decisions 1 and 2 of .steering/20261028-outline-v21-attack-me): the 20 words and the variant tiles of the two trial authors drawn again from their recorded values under five common seeds and under the seeds of the authors swapped, to decide whether the paper on the works keeps two claims (work 1: the scale decides the series; work 2: the authors differ in the choice of words) or one (the quantities given by the makers decide which differences of the data a series shows). Nothing is recomputed from the texts: the values are read from the committed results.",
+ "fixed_before_running": "Written on 2026-10-28 and committed before the script was run. Seen before: everything of results/work2_words and results/work2_variants (commits 75c967c and 907afc9), among them the tiles under the common seeds 100 and 200 and under the own seeds, where the two authors under a common seed were judged hardly distinguishable for the 20 words (finding D3c) and the variant rows differ visibly only where a spelling has a distant lexicon value; the review of the outline (round 1) and the decision to run this check. Not seen before: any tile under the seeds 300, 400 and 500, any tile under the swapped seeds, any value of the pixel differences below. The seeds 100 and 200 are kept among the five common seeds although they were seen; the decision rule below applies to all five alike.",
+ "version": 1,
+ "inputs": {
+  "words": "results/work2_words/words.json",
+  "words_sha256": "3f48ff8fd0233704a37042763680ab034e7dbc39fa33d2044c5858023d460cf9",
+  "variants": "results/work2_variants/variants.json",
+  "variants_sha256": "b02ec2fec08117dc2bb538a3c1c2354c52eb9717e25f627d084f039239304388",
+  "work2_words_conditions_sha256": "7978599bdeed5f2973cae03dfbd2f85f26fc25173ea022f68a0e0e6c9a671164",
+  "work2_variants_conditions_sha256": "44936e9d0e699aa381939f8ecc56d6ad501e26766792aa48cdfc947c6ff027b4",
+  "use": "per word of the two trial authors, its V and A as recorded (f, s and gamma recomputed by params and required to equal the record); per set and author, the tile counts by spelling as recorded (in the recorded order of the spellings) and the V and A of every spelling as recorded; the field, relief, tiles, figure and eps of the two conditions named (eps recomputed and required to equal both records)"
+ },
+ "authors": ["太宰治", "岡本かの子"],
+ "seeds": {
+  "common": [100, 200, 300, 400, 500],
+  "swapped": {"太宰治": 104, "岡本かの子": 106},
+  "own": {"太宰治": 106, "岡本かの子": 104},
+  "note": "the common seeds are round numbers chosen by the makers, away from the seeds of the six authors (101 to 106); the swapped seeds give each author the seed of the other"
+ },
+ "reproduction": {
+  "what": "with the same code and the recorded values, the figures of the earlier runs must come out byte for byte the same, or the run stops: results/work2_words/tiles_common_seed.png (common seed 100), results/work2_words/tiles.png (own seeds), results/work2_variants/tiles_seed100.png, tiles_seed200.png and tiles_own_seed.png",
+  "why": "a positive control: the drawing of this run is the drawing of the figures already seen"
+ },
+ "figures": {
+  "labelled": "for every common seed and for the swapped seeds: words_seed{S}.png and words_swapped.png (the figure of the 20 words, the same layout as tiles.png), variants_seed{S}.png and variants_swapped.png (the figure of the variant tiles, the same layout as tiles_seed100.png)",
+  "for_the_eye": "without any text (no titles, no words, no spellings, no row labels), the two authors always in the same order (the first author on the left): words_sheet.png, one line per version (the five common seeds, then the swapped seeds, then the own seeds), each line the 20 tiles of the first author then the 20 tiles of the second at 80 px; variants_sheet_{set}.png for every set drawn for both authors, one line per version in the same order, each line the 10 tiles of the first author then the 10 of the second at 120 px",
+  "note": "the judges know the order of the authors and the tiles they saw before; the sheets without text keep the judgement on the tiles, they do not make it blind"
+ },
+ "pixel_differences": {
+  "unit": "z in mm on the tile grid of the figure (before the grey is clipped), divided by D; the difference of two tiles is the mean over the grid of the absolute difference",
+  "between_authors": "for a version (a seed for both, or the swapped or own seeds): the mean over the positions of a row (the 20 words in z order; the 10 tiles of a set in the order of the spellings) of the difference between the tiles of the two authors at the same position",
+  "between_seeds": "for an author and two seeds S and S' among the common seeds: the same mean between its own row under S and under S'",
+  "ratio": "per row and common seed S: between_authors(S) divided by the median of between_seeds over both authors and all S' != S among the common seeds",
+  "tiles_differing": "per set: 10 minus the sum over spellings of the smaller of the two counts (how many tiles the compositions differ by)",
+  "reported_as": "all values written out; they support the judgement by eye, they do not replace it, and no threshold is set on them"
+ },
+ "rows": {
+  "pairs": ["L1_adversative", "L2_intensifier", "P1_first_person", "O1_iu"],
+  "pairs_note": "the sets drawn for both authors, in the order of the variant tiles (L5_always is not drawn for the second author, n < 10); the run stops if the record gives other sets",
+  "words_row": "the 20 words of the two authors are compared as one more row (words20)",
+  "note": "decision 2 named the set of frequency (始終) as an example of a visible row; it cannot be a pair here because the second author has no row in that set, so it is not eligible below"
+ },
+ "decision": {
+  "judges": "the researcher and the main agent look at the sheets without text, then at the labelled figures",
+  "question_per_row": "for every row of rows.pairs and rows.words_row and every common seed: are the two lines of tiles visibly different as tiles (yes / no)? For the 20 words: can the two sets of 20 be told apart side by side?",
+  "remains": "a row remains if the answer is yes under all five common seeds",
+  "two_claims": "if at least one row remains, the paper keeps two claims (the claim of work 2 then rests on the rows that remain and is stated as: under these drawing conditions, the composition of these rows differs visibly between the two authors under every common seed tried); if no row remains, one claim: the quantities given by the makers (scale, seed, mapping of the lexicon, drawing) decide which differences of the data a series shows",
+  "computed_as": "the script run with --figure6 writes rows_remaining (every row of rows.pairs and words20 that remains under the deciding answers) and two_claims (true if rows_remaining is not empty)",
+  "swapped": "reported, not part of the rule: whether, with the seeds swapped, the family of pattern that told the authors apart under their own seeds follows the seed (expected) or the author",
+  "disagreement": "if the two judges differ on a row, the researcher's answer decides, and both answers are recorded",
+  "computed_support": "the ratios and the counts of tiles_differing are read next to the answers; a row judged visible with a ratio near the smallest of all rows, or not visible with the largest, is recorded as a conflict and looked at again on the labelled figure before the decision"
+ },
+ "figure_6": {
+  "eligible": "the sets of rows.pairs (not the 20 words)",
+  "visible_example": "among the eligible sets that remain (decision.remains), the one with the largest median over the five common seeds of between_authors; if none remains, the eligible set with that largest median, and the caption says it was not judged visible under every seed",
+  "invisible_example": "among the eligible sets whose compositions differ by at least 3 tiles (tiles_differing >= 3), the sets answered false (not visibly different) under every one of the five common seeds; among them the one with the smallest median of between_authors; if no set was answered false under all five, the one with the smallest median among the sets with tiles_differing >= 3, and the caption says what was judged; if no set has tiles_differing >= 3, there is no invisible example and figure6.json says so",
+  "ties": "by the order of the sets in rows.pairs",
+  "how": "after the judgement, the answers are written to works/conditions/work2_seed_check_answers.json and committed (keys: researcher, main and deciding; each maps every row of rows.pairs and words20 to the common seeds as strings and true for visibly different, false otherwise; deciding is the researcher's answer where the two differ); the script run with --figure6 applies this rule to them and to seed_check.json and writes results/work2_seed_check/figure6.json (no other file is written)",
+  "seed": "the figure is drawn under the common seed 100 (the main seed of the variant tiles); the other seeds and the swapped version go to the supplement"
+ },
+ "criteria": [
+  "S1 (computed): the five earlier figures are reproduced byte for byte",
+  "S2 (computed): under every common seed, the tiles of the same word or spelling are the same for both authors (between_authors is 0 at every position where the two rows hold the same spelling)",
+  "S3 (by eye): the answers of decision.question_per_row for every row and seed",
+  "S4 (by eye): with the swapped seeds, which of the two families of pattern each author shows"
+ ],
+ "outputs": "results/work2_seed_check/seed_check.json, the labelled figures and the sheets for the eye",
+ "not_claimed": "Not a finding about the authors and not evidence that they can or cannot be told apart. If the rows look alike under a common seed, that does not show that the data have no difference between the authors: it shows that, under these drawing conditions (this rule, these seeds, this grey scale, these sizes), the seeds given by the makers dominated the visible separation. The pixel difference is a proxy chosen by the makers; tiles under different seeds differ in phase, so between_seeds is large by construction and the ratio is not a measure of what the eye sees. The sets were chosen after the values of check 6 were seen, and the words by a rule whose thresholds change them. The sketches are images; touch is not tested."
+}
