@@ -1,0 +1,94 @@
+{
+ "meta": {
+  "conditions_sha256": "3aacf50b0ccfedfe4c01d7cf993830e82ba36eafae817db03e1acc935d310b84",
+  "script_sha256": "22387c6adbf1ef92c476187a95c7da8485d85790a65fa75d11327318944c3193",
+  "work2_icosa_v2_conditions_sha256": "2fb0539ea8f86914434af15a18865f09b67e680db19e85ab7ce95979b3d3ce2c",
+  "work2_words_conditions_sha256": "7978599bdeed5f2973cae03dfbd2f85f26fc25173ea022f68a0e0e6c9a671164",
+  "icosa_k4_sha256": "c77daf0ec98ec8f23a8b1888e9b9e5273a9a24592d0bad678ff8f5c590cb54e2",
+  "work2_words_result_sha256": "3f48ff8fd0233704a37042763680ab034e7dbc39fa33d2044c5858023d460cf9",
+  "python": "3.13.12",
+  "platform": "Darwin arm64",
+  "atact_commit": "b559a80c623d36357dd0736b887497a0cb789af5",
+  "numpy": "2.5.4",
+  "scipy": "1.18.1",
+  "pillow": "13.0.0",
+  "git_commit": "dd46188937f20bf187e25cf62143829408f61891",
+  "git_dirty": false,
+  "started": "2026-10-27T17:16:00+00:00",
+  "finished": "2026-10-27T17:16:20+00:00"
+ },
+ "rows_of_figure": [
+  "太宰治 grazing",
+  "太宰治 oblique",
+  "岡本かの子 grazing",
+  "岡本かの子 oblique"
+ ],
+ "control_G1600_equals_icosa_k4": true,
+ "reported": [
+  {
+   "author": "太宰治",
+   "region": "grazing",
+   "faces": [
+    12,
+    14,
+    18
+   ],
+   "pixels_inner": 19805,
+   "G3200_vs_G1600_mean": 0.08053521837919718,
+   "G3200_vs_G1600_p99": 1.0,
+   "highpass_z_sd_um": 60.920324616501865,
+   "highpass_z_abs_p99_um": 204.46122546381986,
+   "z_min_mm": -0.29068081228058024,
+   "z_max_mm": 0.28940130577546946
+  },
+  {
+   "author": "太宰治",
+   "region": "oblique",
+   "faces": [
+    5,
+    11
+   ],
+   "pixels_inner": 38204,
+   "G3200_vs_G1600_mean": 0.1225526122919066,
+   "G3200_vs_G1600_p99": 1.0,
+   "highpass_z_sd_um": 36.90912269921289,
+   "highpass_z_abs_p99_um": 103.83654033432529,
+   "z_min_mm": -0.23687154490994644,
+   "z_max_mm": 0.23154808518660405
+  },
+  {
+   "author": "岡本かの子",
+   "region": "grazing",
+   "faces": [
+    12,
+    14,
+    18
+   ],
+   "pixels_inner": 19805,
+   "G3200_vs_G1600_mean": 0.09644029285533956,
+   "G3200_vs_G1600_p99": 1.0,
+   "highpass_z_sd_um": 48.57196004465188,
+   "highpass_z_abs_p99_um": 131.10167630483733,
+   "z_min_mm": -0.24670466403090685,
+   "z_max_mm": 0.2694633786575553
+  },
+  {
+   "author": "岡本かの子",
+   "region": "oblique",
+   "faces": [
+    5,
+    11
+   ],
+   "pixels_inner": 38204,
+   "G3200_vs_G1600_mean": 0.1369751858444142,
+   "G3200_vs_G1600_p99": 1.0,
+   "highpass_z_sd_um": 36.898142369492184,
+   "highpass_z_abs_p99_um": 94.35354162689745,
+   "z_min_mm": -0.2412023878382688,
+   "z_max_mm": 0.2603642855743194
+  }
+ ],
+ "figures": {
+  "stripes.png": "d0f450b050ed09454d1cc12b01e5d5ddd2b353f08c9465ce55cf287693e9a870"
+ }
+}
