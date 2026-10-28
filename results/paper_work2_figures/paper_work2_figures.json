@@ -1,0 +1,125 @@
+{
+ "meta": {
+  "conditions_sha256": "b7106f928a191ff445ab3d44006363c315338b1211feeb5c7f80e6f9df4ea803",
+  "script_sha256": "cdae81ca2be1ab81971031bd57812592b11053956bc680e114d7e1b933ad9ec3",
+  "inputs_sha256": {
+   "own_seeds": "f82b81e38f89453009ffc94ed9980352806e7d330c0d46555f15db4245d66430",
+   "common_seed": "9335f3b99aadfc93b12378dd86d303724c63ff2b2dcdf618d0b7b874f27b28c8",
+   "variants_image": "e48f96353b70bccad5a196f196dd5bb058cb731afbb8ed285b8b6d2110e43837",
+   "variants": "b02ec2fec08117dc2bb538a3c1c2354c52eb9717e25f627d084f039239304388",
+   "seed_check": "189d8c7b7db01604061070d05abb495837629768bbeb8eddff3300f4bb0b40c5",
+   "score": "d98dccf5662d49f4a8fec2c4fb062d28e60621fbabb0a382b8123897849fdd7f",
+   "score_conditions": "549313ca7a26495e99059e6d34031533ddb0bad79d16e4e20a6c3f03b009ec61",
+   "figure6": "d44624a3b04990e0cdae73566aabbc535fda40b1ffd1ff8054f72f4561e4cd19",
+   "seed_check_conditions": "d819b4ae01bf87154d7aad0f64dc968c3778942db18cc6e6b5d6f7c3aaf51ff0",
+   "variants_conditions": "44936e9d0e699aa381939f8ecc56d6ad501e26766792aa48cdfc947c6ff027b4",
+   "words_conditions": "7978599bdeed5f2973cae03dfbd2f85f26fc25173ea022f68a0e0e6c9a671164"
+  },
+  "font_sha256": "ca1e9bf621f13ddc4800bfb74d0124571dfc25a1678a28d6e7dbcf39fad2504a",
+  "python": "3.13.12",
+  "platform": "Darwin arm64",
+  "atact_commit": "b559a80c623d36357dd0736b887497a0cb789af5",
+  "numpy": "2.5.4",
+  "pillow": "13.0.0",
+  "git_commit": "7ac951d7cc25d10d2712dbe4e1ca9015079fc930",
+  "git_dirty": false,
+  "started": "2026-10-28T15:03:11+00:00",
+  "finished": "2026-10-28T15:03:14+00:00"
+ },
+ "rule": {
+  "judge": "harada",
+  "version": "G0",
+  "remains": {
+   "L1_adversative": true,
+   "L2_intensifier": true,
+   "P1_first_person": true,
+   "O1_iu": true
+  },
+  "judged_invisible": {
+   "L1_adversative": false,
+   "L2_intensifier": false,
+   "P1_first_person": false,
+   "O1_iu": false
+  },
+  "visible": "P1_first_person",
+  "visible_remains": true,
+  "invisible": "L2_intensifier",
+  "invisible_judged": false,
+  "invisible_eligible": [
+   "L1_adversative",
+   "L2_intensifier",
+   "P1_first_person",
+   "O1_iu"
+  ]
+ },
+ "rows": {
+  "太宰治/P1_first_person": {
+   "label": "first person: n 649 in 4 of 4 works",
+   "spellings": [
+    "私",
+    "私",
+    "私",
+    "私",
+    "私",
+    "私",
+    "私",
+    "私",
+    "私",
+    "私"
+   ],
+   "key": "私 watashi x10 (V 0.36, A -0.10)"
+  },
+  "太宰治/L2_intensifier": {
+   "label": "intensifiers: n 37 in 3 of 4 works",
+   "spellings": [
+    "とても",
+    "とても",
+    "とても",
+    "とても",
+    "たいへん",
+    "ずいぶん",
+    "ずいぶん",
+    "ずいぶん",
+    "ずいぶん",
+    "よほど"
+   ],
+   "key": "とても totemo x4 (V 0.54, A 0.07) / たいへん taihen x1 (V 0.15, A 0.25) / ずいぶん zuibun x4 (V 0.14, A 0.02) / よほど yohodo x1 (V 0.19, A 0.04)"
+  },
+  "岡本かの子/P1_first_person": {
+   "label": "first person: n 71 in 4 of 4 works",
+   "spellings": [
+    "私",
+    "私",
+    "わたし",
+    "僕",
+    "僕",
+    "おれ",
+    "あたし",
+    "あたし",
+    "あたし",
+    "われ"
+   ],
+   "key": "私 watashi x2 (V 0.36, A -0.10) / わたし watashi x1 (V 0.41, A -0.07) / 僕 boku x2 (V 0.53, A 0.04) / おれ ore x1 (V 0.10, A 0.00) / あたし atashi x3 (V 0.42, A 0.07) / われ ware x1 (V 0.01, A 0.02)"
+  },
+  "岡本かの子/L2_intensifier": {
+   "label": "intensifiers: n 18 in 2 of 4 works",
+   "spellings": [
+    "とても",
+    "とても",
+    "とても",
+    "とても",
+    "とても",
+    "とても",
+    "ずいぶん",
+    "よほど",
+    "非常に",
+    "非常に"
+   ],
+   "key": "とても totemo x6 (V 0.54, A 0.07) / ずいぶん zuibun x1 (V 0.14, A 0.02) / よほど yohodo x1 (V 0.19, A 0.04) / 非常に hijou ni x2 (V 0.27, A 0.01)"
+  }
+ },
+ "outputs_sha256": {
+  "seeds_two_rows.png": "d178dfd84957d5c6a80880afe71afa349badf33a3a1eb3e18eb48ec3d7beb394",
+  "variants_judged.png": "e43875a7a26c63f31fba3bf80cf301d87d731dba3eecf8c5fcedd899f20054c6"
+ }
+}
