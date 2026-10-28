@@ -1,0 +1,4489 @@
+{
+ "meta": {
+  "conditions_sha256": "59d9c9069df02d550d6b1934fd52a797f69eaa99c83e4ed678902a8cf7acc275",
+  "script_sha256": "67ba1640cecf12b2efdd5dfe951de98bd39234f5216262067ab151a7df68c1ec",
+  "words_sha256": "3f48ff8fd0233704a37042763680ab034e7dbc39fa33d2044c5858023d460cf9",
+  "sketch_values_sha256": "2a15808cef6cd5978acda504fb6d08b4c1df6fec736901d90c492e6e525db71e",
+  "font_sha256": "ca1e9bf621f13ddc4800bfb74d0124571dfc25a1678a28d6e7dbcf39fad2504a",
+  "lexicon_sha256": "537cf39afd50f89cc4c69842f9876df7ff48f9950da849d739bdde7fc00d9e83",
+  "dicdir_sha256": {
+   "COPYING": "fca02d9adb601d101eccdf3131119abfff2d9c825ef5c759d7a89ebbaa972099",
+   "char.bin": "81bba502ae48fa005a374819f15e44452eb68086a8b323ec20a044d514400832",
+   "dicrc": "add6bb131a75e69478961ea59712541ace3779f7c5daa4da80d281f097c9d4d1",
+   "matrix.bin": "ee44d7350cdcb680ebd699f83e121be1dc63310f8832d55bcb537a068177611a",
+   "mecabrc": "cf91ca4aec6bbf596eda5034aefb73ae90999678b59f20ce3deb35d91fddb009",
+   "sys.dic": "223af63996d5d9a104d8c8baaf32029fbbf6a370d7dff33fe19fda2e92ac0ac1",
+   "unk.dic": "f0bf15e3e28259f4470b9c1e775d98bef53207d4b09afcd6d8545209b7b53f88",
+   "version": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "sketch_record_sha256": "31609c71e1b34fc7e1fc412c720dc2220a1bc029a95e6befa741f82b1679437d",
+  "colorspacious_source": "uv run --with (outside uv.lock)",
+  "python": "3.13.12",
+  "platform": "Darwin arm64",
+  "atact_commit": "b559a80c623d36357dd0736b887497a0cb789af5",
+  "numpy": "2.5.4",
+  "scipy": "1.18.1",
+  "pillow": "13.0.0",
+  "fugashi": "1.5.2",
+  "ipadic": "1.0.0",
+  "colorspacious": "1.1.2",
+  "git_commit": "ac5f0324d832d16b64e2397119afe86b81f3c2d5",
+  "git_dirty": false,
+  "started": "2026-10-28T05:01:23+00:00",
+  "finished": "2026-10-28T05:02:31+00:00"
+ },
+ "eps": 0.3529079159926097,
+ "reference_words": 18301,
+ "reference_tokens": {
+  "夏目漱石": 37536,
+  "芥川竜之介": 37792,
+  "梶井基次郎": 29569,
+  "岡本かの子": 41967,
+  "中島敦": 45771,
+  "太宰治": 39216
+ },
+ "R1_words_shared_with_sketches": 41,
+ "K0_same_word_same_tile": {
+  "SP": true,
+  "SPC": true,
+  "SPC_reversed": true
+ },
+ "K0_words_compared": {
+  "SP": 117,
+  "SPC": 117,
+  "SPC_reversed": 117
+ },
+ "tiles": {
+  "夏目漱石": [
+   "云う",
+   "云っ",
+   "見る",
+   "女",
+   "白い",
+   "死ぬ",
+   "黒い",
+   "首",
+   "自分",
+   "何だか",
+   "例",
+   "立っ",
+   "心持",
+   "聞く",
+   "思う",
+   "大変",
+   "下",
+   "行く",
+   "答える",
+   "主人"
+  ],
+  "芥川竜之介": [
+   "こう",
+   "云う",
+   "前",
+   "いつか",
+   "感じ",
+   "違い",
+   "向う",
+   "近い",
+   "のみ",
+   "外",
+   "目",
+   "不快",
+   "話し",
+   "自身",
+   "光",
+   "もう一度",
+   "勿論",
+   "微笑",
+   "やっと",
+   "廊下"
+  ],
+  "梶井基次郎": [
+   "言っ",
+   "町",
+   "心",
+   "部屋",
+   "気持",
+   "風景",
+   "冬",
+   "変",
+   "空想",
+   "屋根",
+   "身体",
+   "燈",
+   "眺め",
+   "路",
+   "夜",
+   "思え",
+   "空気",
+   "姿",
+   "見え",
+   "先"
+  ],
+  "岡本かの子": [
+   "魚",
+   "客",
+   "体",
+   "店",
+   "いっ",
+   "現実",
+   "云っ",
+   "娘",
+   "気持ち",
+   "珍",
+   "池",
+   "時代",
+   "座敷",
+   "なっ",
+   "多少",
+   "意識",
+   "腕",
+   "ときどき",
+   "目的",
+   "女性"
+  ],
+  "中島敦": [
+   "もっ",
+   "師",
+   "南",
+   "弟子",
+   "死",
+   "我",
+   "都",
+   "地",
+   "矢",
+   "途",
+   "常に",
+   "知る",
+   "最も",
+   "ようやく",
+   "今",
+   "身",
+   "言",
+   "結局",
+   "かつて",
+   "いわ"
+  ],
+  "太宰治": [
+   "無い",
+   "いま",
+   "いい",
+   "ひとり",
+   "言い",
+   "もう",
+   "よい",
+   "なんだか",
+   "わから",
+   "気持",
+   "ばん",
+   "どんなに",
+   "きょう",
+   "いや",
+   "ちゃんと",
+   "これから",
+   "信じ",
+   "わかっ",
+   "申し",
+   "全部"
+  ]
+ },
+ "distinct_words": 117,
+ "shared_between_authors": [
+  "云う",
+  "云っ",
+  "気持"
+ ],
+ "K2b_note": "over the 120 tiles as laid out (a word of two authors counts twice); K2c is per distinct word",
+ "K2b_share_of_pixels_with_chroma_reduced": {
+  "SPC": 0.055949791666666665,
+  "SPC_reversed": 0.06833666666666667
+ },
+ "values_note": "V_ and A_recorded_map_B are the values of results/work2_words (checked); the relief is drawn from V = 2 p_valence - 1 and A = 2 p_arousal - 1",
+ "K2c_chroma_requested_and_realised": {
+  "SPC": {
+   "云う": {
+    "requested": 0.10069526469382917,
+    "share_reduced": 0.0,
+    "mean_realised": 0.10103924405845045
+   },
+   "云っ": {
+    "requested": 0.125720630300656,
+    "share_reduced": 0.08985,
+    "mean_realised": 0.12303557843376516
+   },
+   "見る": {
+    "requested": 0.03913791741703658,
+    "share_reduced": 0.0,
+    "mean_realised": 0.039158165233514876
+   },
+   "女": {
+    "requested": 0.14773234211502786,
+    "share_reduced": 0.268875,
+    "mean_realised": 0.138701547805774
+   },
+   "白い": {
+    "requested": 0.04467745423520217,
+    "share_reduced": 0.0,
+    "mean_realised": 0.044971466696129635
+   },
+   "死ぬ": {
+    "requested": 0.14898808501324656,
+    "share_reduced": 0.46855,
+    "mean_realised": 0.12667286325925603
+   },
+   "黒い": {
+    "requested": 0.10069526469382917,
+    "share_reduced": 0.09225,
+    "mean_realised": 0.09914841396160898
+   },
+   "首": {
+    "requested": 0.06401958886807702,
+    "share_reduced": 0.002975,
+    "mean_realised": 0.06391782895543331
+   },
+   "自分": {
+    "requested": 0.13746894275807342,
+    "share_reduced": 0.0,
+    "mean_realised": 0.137723701319569
+   },
+   "何だか": {
+    "requested": 0.13384143212268682,
+    "share_reduced": 0.28005,
+    "mean_realised": 0.12296015907554647
+   },
+   "例": {
+    "requested": 0.0502519776784027,
+    "share_reduced": 0.0,
+    "mean_realised": 0.05041746351183653
+   },
+   "立っ": {
+    "requested": 0.10623155686527522,
+    "share_reduced": 0.032,
+    "mean_realised": 0.10622770432243583
+   },
+   "心持": {
+    "requested": 0.04624307630215728,
+    "share_reduced": 0.0,
+    "mean_realised": 0.04606152688203357
+   },
+   "聞く": {
+    "requested": 0.10275549047522954,
+    "share_reduced": 0.0,
+    "mean_realised": 0.10275422809278847
+   },
+   "思う": {
+    "requested": 0.1093563187285859,
+    "share_reduced": 0.0,
+    "mean_realised": 0.10913236670255119
+   },
+   "大変": {
+    "requested": 0.1429476188040923,
+    "share_reduced": 0.590525,
+    "mean_realised": 0.11076590041604645
+   },
+   "下": {
+    "requested": 0.035300870834286256,
+    "share_reduced": 0.0,
+    "mean_realised": 0.03561285074662214
+   },
+   "行く": {
+    "requested": 0.12893337249410833,
+    "share_reduced": 0.0,
+    "mean_realised": 0.1288921453223033
+   },
+   "答える": {
+    "requested": 0.058068133502724315,
+    "share_reduced": 0.0,
+    "mean_realised": 0.05816014927737088
+   },
+   "主人": {
+    "requested": 0.13746894275807342,
+    "share_reduced": 0.0,
+    "mean_realised": 0.13738565697587543
+   },
+   "こう": {
+    "requested": 0.13581373673931985,
+    "share_reduced": 0.38705,
+    "mean_realised": 0.1256284569597786
+   },
+   "前": {
+    "requested": 0.071553506350885,
+    "share_reduced": 0.0,
+    "mean_realised": 0.07152294071672641
+   },
+   "いつか": {
+    "requested": 0.11500503206712326,
+    "share_reduced": 0.0,
+    "mean_realised": 0.11492252802417843
+   },
+   "感じ": {
+    "requested": 0.13526127841933167,
+    "share_reduced": 0.0,
+    "mean_realised": 0.13527445098428315
+   },
+   "違い": {
+    "requested": 0.06401958886807702,
+    "share_reduced": 0.0,
+    "mean_realised": 0.06395363436157167
+   },
+   "向う": {
+    "requested": 0.08090317887388679,
+    "share_reduced": 0.0,
+    "mean_realised": 0.08089454413052882
+   },
+   "近い": {
+    "requested": 0.054770013058931685,
+    "share_reduced": 0.0,
+    "mean_realised": 0.054586652318889324
+   },
+   "のみ": {
+    "requested": 0.047708478291975095,
+    "share_reduced": 0.0,
+    "mean_realised": 0.047930050216047786
+   },
+   "外": {
+    "requested": 0.11642989945780005,
+    "share_reduced": 0.07935,
+    "mean_realised": 0.11365810492928463
+   },
+   "目": {
+    "requested": 0.034360777646103735,
+    "share_reduced": 0.0,
+    "mean_realised": 0.034364207954740815
+   },
+   "不快": {
+    "requested": 0.14882100586638494,
+    "share_reduced": 0.54615,
+    "mean_realised": 0.12529685458493248
+   },
+   "話し": {
+    "requested": 0.11261646429290324,
+    "share_reduced": 0.0,
+    "mean_realised": 0.11243279887821572
+   },
+   "自身": {
+    "requested": 0.09071716654561238,
+    "share_reduced": 0.0,
+    "mean_realised": 0.09049812670590407
+   },
+   "光": {
+    "requested": 0.11500503206712326,
+    "share_reduced": 0.0,
+    "mean_realised": 0.11493308778493083
+   },
+   "もう一度": {
+    "requested": 0.11500503206712326,
+    "share_reduced": 0.0,
+    "mean_realised": 0.11514237953082938
+   },
+   "勿論": {
+    "requested": 0.08150890018718913,
+    "share_reduced": 0.0,
+    "mean_realised": 0.08135341006859796
+   },
+   "微笑": {
+    "requested": 0.134236332941784,
+    "share_reduced": 0.0,
+    "mean_realised": 0.13466566598303553
+   },
+   "やっと": {
+    "requested": 0.1316870566413036,
+    "share_reduced": 0.0,
+    "mean_realised": 0.13151696879171504
+   },
+   "廊下": {
+    "requested": 0.030562131539586077,
+    "share_reduced": 0.0,
+    "mean_realised": 0.030725480507115408
+   },
+   "言っ": {
+    "requested": 0.11788398982646513,
+    "share_reduced": 0.0,
+    "mean_realised": 0.11748910387229816
+   },
+   "町": {
+    "requested": 0.03340743192463709,
+    "share_reduced": 0.0,
+    "mean_realised": 0.032879770638875185
+   },
+   "心": {
+    "requested": 0.06401958886807702,
+    "share_reduced": 0.0,
+    "mean_realised": 0.0638529786169938
+   },
+   "部屋": {
+    "requested": 0.03697689849216385,
+    "share_reduced": 0.0,
+    "mean_realised": 0.036918890117165704
+   },
+   "気持": {
+    "requested": 0.1316870566413036,
+    "share_reduced": 0.0,
+    "mean_realised": 0.13169062147738406
+   },
+   "風景": {
+    "requested": 0.051297328536585966,
+    "share_reduced": 0.0,
+    "mean_realised": 0.05123718134068806
+   },
+   "冬": {
+    "requested": 0.12660138061488285,
+    "share_reduced": 0.0,
+    "mean_realised": 0.12655863653088784
+   },
+   "変": {
+    "requested": 0.1429476188040923,
+    "share_reduced": 0.2621,
+    "mean_realised": 0.12722602737797242
+   },
+   "空想": {
+    "requested": 0.071553506350885,
+    "share_reduced": 0.0,
+    "mean_realised": 0.07151908001262032
+   },
+   "屋根": {
+    "requested": 0.03340743192463709,
+    "share_reduced": 0.0,
+    "mean_realised": 0.033147082703820795
+   },
+   "身体": {
+    "requested": 0.14045242376055606,
+    "share_reduced": 0.0,
+    "mean_realised": 0.140566589045305
+   },
+   "燈": {
+    "requested": 0.125720630300656,
+    "share_reduced": 0.0,
+    "mean_realised": 0.12563139892682615
+   },
+   "眺め": {
+    "requested": 0.035300870834286256,
+    "share_reduced": 0.0,
+    "mean_realised": 0.03517262693782061
+   },
+   "路": {
+    "requested": 0.051297328536585966,
+    "share_reduced": 0.0,
+    "mean_realised": 0.051321764406359195
+   },
+   "夜": {
+    "requested": 0.14141474225106776,
+    "share_reduced": 0.125975,
+    "mean_realised": 0.14094693218798918
+   },
+   "思え": {
+    "requested": 0.10623155686527522,
+    "share_reduced": 0.0,
+    "mean_realised": 0.10618075810059172
+   },
+   "空気": {
+    "requested": 0.06401958886807702,
+    "share_reduced": 0.0,
+    "mean_realised": 0.06405174741654182
+   },
+   "姿": {
+    "requested": 0.1243907224424671,
+    "share_reduced": 0.011125,
+    "mean_realised": 0.12455842324464325
+   },
+   "見え": {
+    "requested": 0.10552745428251153,
+    "share_reduced": 0.0,
+    "mean_realised": 0.10550207874016701
+   },
+   "先": {
+    "requested": 0.047708478291975095,
+    "share_reduced": 0.0,
+    "mean_realised": 0.04746107749896391
+   },
+   "魚": {
+    "requested": 0.12893337249410833,
+    "share_reduced": 0.0,
+    "mean_realised": 0.1288264984756503
+   },
+   "客": {
+    "requested": 0.10275549047522954,
+    "share_reduced": 0.05155,
+    "mean_realised": 0.10202220995936724
+   },
+   "体": {
+    "requested": 0.08016692779241186,
+    "share_reduced": 0.0,
+    "mean_realised": 0.08001569322222017
+   },
+   "店": {
+    "requested": 0.07929750454751916,
+    "share_reduced": 0.0,
+    "mean_realised": 0.07957498194110033
+   },
+   "いっ": {
+    "requested": 0.11642989945780005,
+    "share_reduced": 0.1771,
+    "mean_realised": 0.110823109450822
+   },
+   "現実": {
+    "requested": 0.14429011555682167,
+    "share_reduced": 0.0,
+    "mean_realised": 0.14426805756028172
+   },
+   "娘": {
+    "requested": 0.11788398982646513,
+    "share_reduced": 0.0,
+    "mean_realised": 0.1178076014290772
+   },
+   "気持ち": {
+    "requested": 0.13868714520307007,
+    "share_reduced": 0.0,
+    "mean_realised": 0.13877158294330014
+   },
+   "珍": {
+    "requested": 0.144771131076031,
+    "share_reduced": 0.30025,
+    "mean_realised": 0.13192411874119603
+   },
+   "池": {
+    "requested": 0.034360777646103735,
+    "share_reduced": 0.0,
+    "mean_realised": 0.034455500734034084
+   },
+   "時代": {
+    "requested": 0.10460470932155333,
+    "share_reduced": 0.0,
+    "mean_realised": 0.10442295837358943
+   },
+   "座敷": {
+    "requested": 0.03496397033306,
+    "share_reduced": 0.0,
+    "mean_realised": 0.03522767860017386
+   },
+   "なっ": {
+    "requested": 0.058068133502724315,
+    "share_reduced": 0.0,
+    "mean_realised": 0.058059972100029014
+   },
+   "多少": {
+    "requested": 0.11261646429290324,
+    "share_reduced": 0.0,
+    "mean_realised": 0.11244879165325725
+   },
+   "意識": {
+    "requested": 0.12094847182420096,
+    "share_reduced": 0.0,
+    "mean_realised": 0.12098619008626442
+   },
+   "腕": {
+    "requested": 0.10677880291080265,
+    "share_reduced": 0.0,
+    "mean_realised": 0.10651957986139125
+   },
+   "ときどき": {
+    "requested": 0.10275549047522954,
+    "share_reduced": 0.0,
+    "mean_realised": 0.10301861370606502
+   },
+   "目的": {
+    "requested": 0.1243907224424671,
+    "share_reduced": 0.0,
+    "mean_realised": 0.12441886364844496
+   },
+   "女性": {
+    "requested": 0.1243907224424671,
+    "share_reduced": 0.0,
+    "mean_realised": 0.12470904179676649
+   },
+   "もっ": {
+    "requested": 0.11422401569383295,
+    "share_reduced": 0.028,
+    "mean_realised": 0.11338416064433404
+   },
+   "師": {
+    "requested": 0.04467745423520217,
+    "share_reduced": 0.0,
+    "mean_realised": 0.044764725065411674
+   },
+   "南": {
+    "requested": 0.03100705183744682,
+    "share_reduced": 0.0,
+    "mean_realised": 0.031000849532091354
+   },
+   "弟子": {
+    "requested": 0.041848739154092304,
+    "share_reduced": 0.0,
+    "mean_realised": 0.04252851082633547
+   },
+   "死": {
+    "requested": 0.14906157781011614,
+    "share_reduced": 0.501125,
+    "mean_realised": 0.12601048872956047
+   },
+   "我": {
+    "requested": 0.1243907224424671,
+    "share_reduced": 0.333625,
+    "mean_realised": 0.11324575849321208
+   },
+   "都": {
+    "requested": 0.07840492160435376,
+    "share_reduced": 0.020475,
+    "mean_realised": 0.07811065093378841
+   },
+   "地": {
+    "requested": 0.047708478291975095,
+    "share_reduced": 0.0,
+    "mean_realised": 0.047637859707306884
+   },
+   "矢": {
+    "requested": 0.03697689849216385,
+    "share_reduced": 0.0,
+    "mean_realised": 0.03738198108175742
+   },
+   "途": {
+    "requested": 0.0338394833671555,
+    "share_reduced": 0.0,
+    "mean_realised": 0.03348833921727101
+   },
+   "常に": {
+    "requested": 0.04624307630215728,
+    "share_reduced": 0.0,
+    "mean_realised": 0.04635845085689092
+   },
+   "知る": {
+    "requested": 0.09314738800243826,
+    "share_reduced": 0.0,
+    "mean_realised": 0.09317873743489596
+   },
+   "最も": {
+    "requested": 0.11046166674185415,
+    "share_reduced": 0.0,
+    "mean_realised": 0.1104719015590659
+   },
+   "ようやく": {
+    "requested": 0.12936207840344965,
+    "share_reduced": 0.0,
+    "mean_realised": 0.12914945054662436
+   },
+   "今": {
+    "requested": 0.1093563187285859,
+    "share_reduced": 0.0,
+    "mean_realised": 0.10947139491607627
+   },
+   "身": {
+    "requested": 0.1093563187285859,
+    "share_reduced": 0.0,
+    "mean_realised": 0.11001284080868799
+   },
+   "言": {
+    "requested": 0.12776323397778833,
+    "share_reduced": 0.277975,
+    "mean_realised": 0.11423967324027674
+   },
+   "結局": {
+    "requested": 0.08016692779241186,
+    "share_reduced": 0.046175,
+    "mean_realised": 0.07963061161225853
+   },
+   "かつて": {
+    "requested": 0.10552745428251153,
+    "share_reduced": 0.0,
+    "mean_realised": 0.10579600672660742
+   },
+   "いわ": {
+    "requested": 0.12660138061488285,
+    "share_reduced": 0.1412,
+    "mean_realised": 0.12430612091778447
+   },
+   "無い": {
+    "requested": 0.12776323397778833,
+    "share_reduced": 0.494525,
+    "mean_realised": 0.11231412582725847
+   },
+   "いま": {
+    "requested": 0.07840492160435376,
+    "share_reduced": 0.0,
+    "mean_realised": 0.07845151639526705
+   },
+   "いい": {
+    "requested": 0.13104885466558425,
+    "share_reduced": 0.0,
+    "mean_realised": 0.13102502682052494
+   },
+   "ひとり": {
+    "requested": 0.13236821698531664,
+    "share_reduced": 0.0,
+    "mean_realised": 0.1324011186221971
+   },
+   "言い": {
+    "requested": 0.13526127841933167,
+    "share_reduced": 0.2656,
+    "mean_realised": 0.12635238804619858
+   },
+   "もう": {
+    "requested": 0.11422401569383295,
+    "share_reduced": 0.0,
+    "mean_realised": 0.1143341428843171
+   },
+   "よい": {
+    "requested": 0.1093563187285859,
+    "share_reduced": 0.0,
+    "mean_realised": 0.10919142514550767
+   },
+   "なんだか": {
+    "requested": 0.13581373673931985,
+    "share_reduced": 0.005475,
+    "mean_realised": 0.1361029564669942
+   },
+   "わから": {
+    "requested": 0.1328234819826201,
+    "share_reduced": 0.29315,
+    "mean_realised": 0.11697196164079865
+   },
+   "ばん": {
+    "requested": 0.10275549047522954,
+    "share_reduced": 0.048575,
+    "mean_realised": 0.10162944793538349
+   },
+   "どんなに": {
+    "requested": 0.13104885466558425,
+    "share_reduced": 0.0,
+    "mean_realised": 0.13070648141350896
+   },
+   "きょう": {
+    "requested": 0.10623155686527522,
+    "share_reduced": 0.0,
+    "mean_realised": 0.10600501628317491
+   },
+   "いや": {
+    "requested": 0.1423307258343206,
+    "share_reduced": 0.0,
+    "mean_realised": 0.14229744735093644
+   },
+   "ちゃんと": {
+    "requested": 0.07708600133219487,
+    "share_reduced": 0.0,
+    "mean_realised": 0.0771134356076944
+   },
+   "これから": {
+    "requested": 0.13485358202970163,
+    "share_reduced": 0.0,
+    "mean_realised": 0.13479789320355623
+   },
+   "信じ": {
+    "requested": 0.13868714520307007,
+    "share_reduced": 0.0518,
+    "mean_realised": 0.13853738973095422
+   },
+   "わかっ": {
+    "requested": 0.12711956599945232,
+    "share_reduced": 0.0,
+    "mean_realised": 0.12701985482366068
+   },
+   "申し": {
+    "requested": 0.12094847182420096,
+    "share_reduced": 0.3507,
+    "mean_realised": 0.1065747970718451
+   },
+   "全部": {
+    "requested": 0.04467745423520217,
+    "share_reduced": 0.0,
+    "mean_realised": 0.04464798158592931
+   }
+  },
+  "SPC_reversed": {
+   "云う": {
+    "requested": 0.10069526469382917,
+    "share_reduced": 0.0,
+    "mean_realised": 0.10076080117471573
+   },
+   "云っ": {
+    "requested": 0.125720630300656,
+    "share_reduced": 0.083875,
+    "mean_realised": 0.12287095077582964
+   },
+   "見る": {
+    "requested": 0.03913791741703658,
+    "share_reduced": 0.0,
+    "mean_realised": 0.03885648938662508
+   },
+   "女": {
+    "requested": 0.14773234211502786,
+    "share_reduced": 0.3811,
+    "mean_realised": 0.1361926909766691
+   },
+   "白い": {
+    "requested": 0.04467745423520217,
+    "share_reduced": 0.0,
+    "mean_realised": 0.044875395432161624
+   },
+   "死ぬ": {
+    "requested": 0.14898808501324656,
+    "share_reduced": 0.722825,
+    "mean_realised": 0.1151249445974501
+   },
+   "黒い": {
+    "requested": 0.10069526469382917,
+    "share_reduced": 0.084575,
+    "mean_realised": 0.0994516496316292
+   },
+   "首": {
+    "requested": 0.06401958886807702,
+    "share_reduced": 0.0024,
+    "mean_realised": 0.06402936117074659
+   },
+   "自分": {
+    "requested": 0.13746894275807342,
+    "share_reduced": 0.0,
+    "mean_realised": 0.13728004311951011
+   },
+   "何だか": {
+    "requested": 0.13384143212268682,
+    "share_reduced": 0.2742,
+    "mean_realised": 0.12307004119249552
+   },
+   "例": {
+    "requested": 0.0502519776784027,
+    "share_reduced": 0.0,
+    "mean_realised": 0.05028230468883416
+   },
+   "立っ": {
+    "requested": 0.10623155686527522,
+    "share_reduced": 0.028875,
+    "mean_realised": 0.1057043691510021
+   },
+   "心持": {
+    "requested": 0.04624307630215728,
+    "share_reduced": 0.0,
+    "mean_realised": 0.046252694196809475
+   },
+   "聞く": {
+    "requested": 0.10275549047522954,
+    "share_reduced": 0.0,
+    "mean_realised": 0.10270685009049008
+   },
+   "思う": {
+    "requested": 0.1093563187285859,
+    "share_reduced": 0.0,
+    "mean_realised": 0.10918588587132506
+   },
+   "大変": {
+    "requested": 0.1429476188040923,
+    "share_reduced": 0.549525,
+    "mean_realised": 0.11526784044137178
+   },
+   "下": {
+    "requested": 0.035300870834286256,
+    "share_reduced": 0.0,
+    "mean_realised": 0.035331815048487134
+   },
+   "行く": {
+    "requested": 0.12893337249410833,
+    "share_reduced": 0.0,
+    "mean_realised": 0.1289655089099748
+   },
+   "答える": {
+    "requested": 0.058068133502724315,
+    "share_reduced": 0.0,
+    "mean_realised": 0.05810531605616543
+   },
+   "主人": {
+    "requested": 0.13746894275807342,
+    "share_reduced": 0.0,
+    "mean_realised": 0.13776383015520277
+   },
+   "こう": {
+    "requested": 0.13581373673931985,
+    "share_reduced": 0.361825,
+    "mean_realised": 0.1261459212877861
+   },
+   "前": {
+    "requested": 0.071553506350885,
+    "share_reduced": 0.002225,
+    "mean_realised": 0.07132260305827055
+   },
+   "いつか": {
+    "requested": 0.11500503206712326,
+    "share_reduced": 0.0,
+    "mean_realised": 0.11504039303589943
+   },
+   "感じ": {
+    "requested": 0.13526127841933167,
+    "share_reduced": 0.0,
+    "mean_realised": 0.135334867568266
+   },
+   "違い": {
+    "requested": 0.06401958886807702,
+    "share_reduced": 0.0,
+    "mean_realised": 0.06393751383976687
+   },
+   "向う": {
+    "requested": 0.08090317887388679,
+    "share_reduced": 0.0,
+    "mean_realised": 0.08071300917988584
+   },
+   "近い": {
+    "requested": 0.054770013058931685,
+    "share_reduced": 0.0,
+    "mean_realised": 0.054666790936757526
+   },
+   "のみ": {
+    "requested": 0.047708478291975095,
+    "share_reduced": 0.0,
+    "mean_realised": 0.048002581217496836
+   },
+   "外": {
+    "requested": 0.11642989945780005,
+    "share_reduced": 0.114925,
+    "mean_realised": 0.11389111672908461
+   },
+   "目": {
+    "requested": 0.034360777646103735,
+    "share_reduced": 0.0,
+    "mean_realised": 0.0345252278367415
+   },
+   "不快": {
+    "requested": 0.14882100586638494,
+    "share_reduced": 0.622725,
+    "mean_realised": 0.12052085379940818
+   },
+   "話し": {
+    "requested": 0.11261646429290324,
+    "share_reduced": 0.00015,
+    "mean_realised": 0.11279998710731083
+   },
+   "自身": {
+    "requested": 0.09071716654561238,
+    "share_reduced": 0.0,
+    "mean_realised": 0.09103399563208728
+   },
+   "光": {
+    "requested": 0.11500503206712326,
+    "share_reduced": 0.0,
+    "mean_realised": 0.11504959170176944
+   },
+   "もう一度": {
+    "requested": 0.11500503206712326,
+    "share_reduced": 0.0,
+    "mean_realised": 0.11498576810916832
+   },
+   "勿論": {
+    "requested": 0.08150890018718913,
+    "share_reduced": 0.0,
+    "mean_realised": 0.08174985591240215
+   },
+   "微笑": {
+    "requested": 0.134236332941784,
+    "share_reduced": 0.0,
+    "mean_realised": 0.13416184916951343
+   },
+   "やっと": {
+    "requested": 0.1316870566413036,
+    "share_reduced": 0.0,
+    "mean_realised": 0.13157116455914392
+   },
+   "廊下": {
+    "requested": 0.030562131539586077,
+    "share_reduced": 0.0,
+    "mean_realised": 0.03062319871512765
+   },
+   "言っ": {
+    "requested": 0.11788398982646513,
+    "share_reduced": 5e-05,
+    "mean_realised": 0.11809755430957639
+   },
+   "町": {
+    "requested": 0.03340743192463709,
+    "share_reduced": 0.0,
+    "mean_realised": 0.03354979820000557
+   },
+   "心": {
+    "requested": 0.06401958886807702,
+    "share_reduced": 0.0,
+    "mean_realised": 0.06351452189147858
+   },
+   "部屋": {
+    "requested": 0.03697689849216385,
+    "share_reduced": 0.0,
+    "mean_realised": 0.03671283297273201
+   },
+   "気持": {
+    "requested": 0.1316870566413036,
+    "share_reduced": 0.0,
+    "mean_realised": 0.1316686609946523
+   },
+   "風景": {
+    "requested": 0.051297328536585966,
+    "share_reduced": 0.0,
+    "mean_realised": 0.05154141612057972
+   },
+   "冬": {
+    "requested": 0.12660138061488285,
+    "share_reduced": 0.0,
+    "mean_realised": 0.12653440781525843
+   },
+   "変": {
+    "requested": 0.1429476188040923,
+    "share_reduced": 0.535525,
+    "mean_realised": 0.11760546786731163
+   },
+   "空想": {
+    "requested": 0.071553506350885,
+    "share_reduced": 0.0,
+    "mean_realised": 0.0713294238905285
+   },
+   "屋根": {
+    "requested": 0.03340743192463709,
+    "share_reduced": 0.0,
+    "mean_realised": 0.03283306295969276
+   },
+   "身体": {
+    "requested": 0.14045242376055606,
+    "share_reduced": 0.02435,
+    "mean_realised": 0.1398699011180145
+   },
+   "燈": {
+    "requested": 0.125720630300656,
+    "share_reduced": 0.0,
+    "mean_realised": 0.1260365670137966
+   },
+   "眺め": {
+    "requested": 0.035300870834286256,
+    "share_reduced": 0.0,
+    "mean_realised": 0.035458296320989735
+   },
+   "路": {
+    "requested": 0.051297328536585966,
+    "share_reduced": 0.0,
+    "mean_realised": 0.0514924592099416
+   },
+   "夜": {
+    "requested": 0.14141474225106776,
+    "share_reduced": 0.0,
+    "mean_realised": 0.14147884942329048
+   },
+   "思え": {
+    "requested": 0.10623155686527522,
+    "share_reduced": 0.0,
+    "mean_realised": 0.10635522774564121
+   },
+   "空気": {
+    "requested": 0.06401958886807702,
+    "share_reduced": 0.0,
+    "mean_realised": 0.0640716029957751
+   },
+   "姿": {
+    "requested": 0.1243907224424671,
+    "share_reduced": 0.0326,
+    "mean_realised": 0.12418221370608658
+   },
+   "見え": {
+    "requested": 0.10552745428251153,
+    "share_reduced": 0.0,
+    "mean_realised": 0.10534834067205605
+   },
+   "先": {
+    "requested": 0.047708478291975095,
+    "share_reduced": 0.0,
+    "mean_realised": 0.04805328817249691
+   },
+   "魚": {
+    "requested": 0.12893337249410833,
+    "share_reduced": 0.0,
+    "mean_realised": 0.12889645859861634
+   },
+   "客": {
+    "requested": 0.10275549047522954,
+    "share_reduced": 0.092925,
+    "mean_realised": 0.10158128827815426
+   },
+   "体": {
+    "requested": 0.08016692779241186,
+    "share_reduced": 0.0,
+    "mean_realised": 0.08017814071373718
+   },
+   "店": {
+    "requested": 0.07929750454751916,
+    "share_reduced": 0.0,
+    "mean_realised": 0.0794213070912242
+   },
+   "いっ": {
+    "requested": 0.11642989945780005,
+    "share_reduced": 0.1404,
+    "mean_realised": 0.11193123673786076
+   },
+   "現実": {
+    "requested": 0.14429011555682167,
+    "share_reduced": 0.0,
+    "mean_realised": 0.14423295022494162
+   },
+   "娘": {
+    "requested": 0.11788398982646513,
+    "share_reduced": 0.0,
+    "mean_realised": 0.11786796218067039
+   },
+   "気持ち": {
+    "requested": 0.13868714520307007,
+    "share_reduced": 0.0,
+    "mean_realised": 0.13860102187790144
+   },
+   "珍": {
+    "requested": 0.144771131076031,
+    "share_reduced": 0.314825,
+    "mean_realised": 0.1339232482510403
+   },
+   "池": {
+    "requested": 0.034360777646103735,
+    "share_reduced": 0.0,
+    "mean_realised": 0.03413648008131035
+   },
+   "時代": {
+    "requested": 0.10460470932155333,
+    "share_reduced": 0.0,
+    "mean_realised": 0.10420683148142562
+   },
+   "座敷": {
+    "requested": 0.03496397033306,
+    "share_reduced": 0.0,
+    "mean_realised": 0.035110289528409416
+   },
+   "なっ": {
+    "requested": 0.058068133502724315,
+    "share_reduced": 0.0,
+    "mean_realised": 0.057991340701158786
+   },
+   "多少": {
+    "requested": 0.11261646429290324,
+    "share_reduced": 0.0196,
+    "mean_realised": 0.11231522550443586
+   },
+   "意識": {
+    "requested": 0.12094847182420096,
+    "share_reduced": 0.0,
+    "mean_realised": 0.12087348917459521
+   },
+   "腕": {
+    "requested": 0.10677880291080265,
+    "share_reduced": 0.001525,
+    "mean_realised": 0.10694096292988106
+   },
+   "ときどき": {
+    "requested": 0.10275549047522954,
+    "share_reduced": 0.0,
+    "mean_realised": 0.10271004403514396
+   },
+   "目的": {
+    "requested": 0.1243907224424671,
+    "share_reduced": 0.0,
+    "mean_realised": 0.12441218605980553
+   },
+   "女性": {
+    "requested": 0.1243907224424671,
+    "share_reduced": 0.0,
+    "mean_realised": 0.12406911039184904
+   },
+   "もっ": {
+    "requested": 0.11422401569383295,
+    "share_reduced": 0.026575,
+    "mean_realised": 0.11335687924312082
+   },
+   "師": {
+    "requested": 0.04467745423520217,
+    "share_reduced": 0.0,
+    "mean_realised": 0.0446083810567384
+   },
+   "南": {
+    "requested": 0.03100705183744682,
+    "share_reduced": 0.0,
+    "mean_realised": 0.031719377053962446
+   },
+   "弟子": {
+    "requested": 0.041848739154092304,
+    "share_reduced": 0.0,
+    "mean_realised": 0.04183764293602383
+   },
+   "死": {
+    "requested": 0.14906157781011614,
+    "share_reduced": 0.7647,
+    "mean_realised": 0.11280937517533657
+   },
+   "我": {
+    "requested": 0.1243907224424671,
+    "share_reduced": 0.4073,
+    "mean_realised": 0.11372688317017232
+   },
+   "都": {
+    "requested": 0.07840492160435376,
+    "share_reduced": 0.017475,
+    "mean_realised": 0.07808474862973042
+   },
+   "地": {
+    "requested": 0.047708478291975095,
+    "share_reduced": 0.0,
+    "mean_realised": 0.04774878969790916
+   },
+   "矢": {
+    "requested": 0.03697689849216385,
+    "share_reduced": 0.0,
+    "mean_realised": 0.037135127105768745
+   },
+   "途": {
+    "requested": 0.0338394833671555,
+    "share_reduced": 0.0,
+    "mean_realised": 0.03378290945211264
+   },
+   "常に": {
+    "requested": 0.04624307630215728,
+    "share_reduced": 0.0,
+    "mean_realised": 0.046199763888137436
+   },
+   "知る": {
+    "requested": 0.09314738800243826,
+    "share_reduced": 0.0,
+    "mean_realised": 0.09236688105414352
+   },
+   "最も": {
+    "requested": 0.11046166674185415,
+    "share_reduced": 0.0,
+    "mean_realised": 0.11015023799166047
+   },
+   "ようやく": {
+    "requested": 0.12936207840344965,
+    "share_reduced": 0.0,
+    "mean_realised": 0.12908845152687187
+   },
+   "今": {
+    "requested": 0.1093563187285859,
+    "share_reduced": 0.0,
+    "mean_realised": 0.10918575457306133
+   },
+   "身": {
+    "requested": 0.1093563187285859,
+    "share_reduced": 0.0,
+    "mean_realised": 0.10959476728904399
+   },
+   "言": {
+    "requested": 0.12776323397778833,
+    "share_reduced": 0.40885,
+    "mean_realised": 0.1128371605191742
+   },
+   "結局": {
+    "requested": 0.08016692779241186,
+    "share_reduced": 0.0214,
+    "mean_realised": 0.0798050031118172
+   },
+   "かつて": {
+    "requested": 0.10552745428251153,
+    "share_reduced": 0.0,
+    "mean_realised": 0.1053337454627197
+   },
+   "いわ": {
+    "requested": 0.12660138061488285,
+    "share_reduced": 0.20975,
+    "mean_realised": 0.12191169454303454
+   },
+   "無い": {
+    "requested": 0.12776323397778833,
+    "share_reduced": 0.538325,
+    "mean_realised": 0.11318100698745925
+   },
+   "いま": {
+    "requested": 0.07840492160435376,
+    "share_reduced": 0.0,
+    "mean_realised": 0.07834205698908933
+   },
+   "いい": {
+    "requested": 0.13104885466558425,
+    "share_reduced": 0.0,
+    "mean_realised": 0.13111623443084813
+   },
+   "ひとり": {
+    "requested": 0.13236821698531664,
+    "share_reduced": 0.0,
+    "mean_realised": 0.13239286944728673
+   },
+   "言い": {
+    "requested": 0.13526127841933167,
+    "share_reduced": 0.2571,
+    "mean_realised": 0.12730432427146568
+   },
+   "もう": {
+    "requested": 0.11422401569383295,
+    "share_reduced": 0.0,
+    "mean_realised": 0.11405366864898674
+   },
+   "よい": {
+    "requested": 0.1093563187285859,
+    "share_reduced": 0.0,
+    "mean_realised": 0.10939270663320479
+   },
+   "なんだか": {
+    "requested": 0.13581373673931985,
+    "share_reduced": 0.0208,
+    "mean_realised": 0.13529752956127233
+   },
+   "わから": {
+    "requested": 0.1328234819826201,
+    "share_reduced": 0.580975,
+    "mean_realised": 0.10910079927752869
+   },
+   "ばん": {
+    "requested": 0.10275549047522954,
+    "share_reduced": 0.041325,
+    "mean_realised": 0.10168760281429792
+   },
+   "どんなに": {
+    "requested": 0.13104885466558425,
+    "share_reduced": 0.013325,
+    "mean_realised": 0.13080751041765773
+   },
+   "きょう": {
+    "requested": 0.10623155686527522,
+    "share_reduced": 0.0,
+    "mean_realised": 0.10611427661964978
+   },
+   "いや": {
+    "requested": 0.1423307258343206,
+    "share_reduced": 0.0,
+    "mean_realised": 0.1423124586141073
+   },
+   "ちゃんと": {
+    "requested": 0.07708600133219487,
+    "share_reduced": 0.0,
+    "mean_realised": 0.07721720463627715
+   },
+   "これから": {
+    "requested": 0.13485358202970163,
+    "share_reduced": 0.0,
+    "mean_realised": 0.1347508682792555
+   },
+   "信じ": {
+    "requested": 0.13868714520307007,
+    "share_reduced": 0.0,
+    "mean_realised": 0.13869130829395027
+   },
+   "わかっ": {
+    "requested": 0.12711956599945232,
+    "share_reduced": 0.0,
+    "mean_realised": 0.12710520481040807
+   },
+   "申し": {
+    "requested": 0.12094847182420096,
+    "share_reduced": 0.4176,
+    "mean_realised": 0.10707058321873501
+   },
+   "全部": {
+    "requested": 0.04467745423520217,
+    "share_reduced": 0.0,
+    "mean_realised": 0.04480732220236216
+   }
+  }
+ },
+ "K5_band": {
+  "SPC/grey64/C0.03/normal": {
+   "adjacent": [
+    2.55,
+    2.67,
+    2.79,
+    2.78,
+    2.62,
+    2.73,
+    2.02,
+    2.07,
+    2.03,
+    1.61
+   ],
+   "min_adjacent": 1.61,
+   "ends": 17.4,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC/grey64/C0.03/protanomaly": {
+   "adjacent": [
+    1.17,
+    0.41,
+    0.63,
+    1.28,
+    2.03,
+    2.99,
+    2.89,
+    2.74,
+    1.79,
+    1.57
+   ],
+   "min_adjacent": 0.41,
+   "ends": 15.1,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC/grey64/C0.03/deuteranomaly": {
+   "adjacent": [
+    0.0,
+    0.6,
+    1.39,
+    1.93,
+    2.4,
+    2.85,
+    3.09,
+    2.08,
+    1.56,
+    1.14
+   ],
+   "min_adjacent": 0.0,
+   "ends": 16.82,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC/grey64/C0.03/tritanomaly": {
+   "adjacent": [
+    2.56,
+    3.3,
+    4.88,
+    3.19,
+    2.1,
+    1.45,
+    1.32,
+    0.55,
+    0.52,
+    0.77
+   ],
+   "min_adjacent": 0.52,
+   "ends": 17.82,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC/grey64/C0.09/normal": {
+   "adjacent": [
+    5.12,
+    5.58,
+    5.98,
+    6.38,
+    5.65,
+    5.64,
+    5.09,
+    5.26,
+    5.4,
+    6.79
+   ],
+   "min_adjacent": 5.09,
+   "ends": 42.53,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC/grey64/C0.09/protanomaly": {
+   "adjacent": [
+    1.32,
+    0.88,
+    1.62,
+    2.43,
+    3.55,
+    4.98,
+    8.18,
+    7.35,
+    5.95,
+    6.26
+   ],
+   "min_adjacent": 0.88,
+   "ends": 38.57,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.030303030303030304
+  },
+  "SPC/grey64/C0.09/deuteranomaly": {
+   "adjacent": [
+    0.0,
+    1.33,
+    2.55,
+    3.59,
+    4.99,
+    7.7,
+    7.3,
+    5.57,
+    4.64,
+    4.34
+   ],
+   "min_adjacent": 0.0,
+   "ends": 40.8,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC/grey64/C0.09/tritanomaly": {
+   "adjacent": [
+    3.3,
+    7.95,
+    10.9,
+    7.57,
+    5.39,
+    4.25,
+    2.95,
+    1.42,
+    0.82,
+    2.64
+   ],
+   "min_adjacent": 0.82,
+   "ends": 39.41,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.030303030303030304
+  },
+  "SPC/grey64/C0.15/normal": {
+   "adjacent": [
+    6.58,
+    7.58,
+    8.6,
+    8.35,
+    8.55,
+    7.5,
+    7.54,
+    8.64,
+    10.91,
+    8.23
+   ],
+   "min_adjacent": 6.58,
+   "ends": 49.27,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    true,
+    false,
+    true,
+    true
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC/grey64/C0.15/protanomaly": {
+   "adjacent": [
+    1.05,
+    1.68,
+    2.14,
+    3.14,
+    4.15,
+    6.18,
+    10.62,
+    14.39,
+    7.67,
+    2.36
+   ],
+   "min_adjacent": 1.05,
+   "ends": 45.14,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    true,
+    false,
+    true,
+    true
+   ],
+   "share_clipped_by_simulation": 0.21212121212121213
+  },
+  "SPC/grey64/C0.15/deuteranomaly": {
+   "adjacent": [
+    0.32,
+    1.22,
+    2.28,
+    4.66,
+    7.4,
+    10.39,
+    12.0,
+    9.09,
+    2.28,
+    0.47
+   ],
+   "min_adjacent": 0.32,
+   "ends": 46.77,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    true,
+    false,
+    true,
+    true
+   ],
+   "share_clipped_by_simulation": 0.15151515151515152
+  },
+  "SPC/grey64/C0.15/tritanomaly": {
+   "adjacent": [
+    3.16,
+    8.21,
+    16.69,
+    10.67,
+    8.43,
+    6.02,
+    5.0,
+    4.32,
+    6.69,
+    8.34
+   ],
+   "min_adjacent": 3.16,
+   "ends": 40.45,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    true,
+    false,
+    true,
+    true
+   ],
+   "share_clipped_by_simulation": 0.15151515151515152
+  },
+  "SPC/grey128/C0.03/normal": {
+   "adjacent": [
+    2.65,
+    2.75,
+    2.58,
+    2.71,
+    2.58,
+    2.2,
+    2.55,
+    2.18,
+    1.68,
+    1.78
+   ],
+   "min_adjacent": 1.68,
+   "ends": 17.51,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC/grey128/C0.03/protanomaly": {
+   "adjacent": [
+    0.53,
+    0.57,
+    0.63,
+    1.47,
+    1.72,
+    2.6,
+    3.18,
+    2.96,
+    1.85,
+    1.42
+   ],
+   "min_adjacent": 0.53,
+   "ends": 15.5,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC/grey128/C0.03/deuteranomaly": {
+   "adjacent": [
+    0.37,
+    0.85,
+    1.33,
+    1.92,
+    1.95,
+    2.98,
+    2.98,
+    2.19,
+    1.34,
+    1.28
+   ],
+   "min_adjacent": 0.37,
+   "ends": 17.01,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC/grey128/C0.03/tritanomaly": {
+   "adjacent": [
+    3.02,
+    3.45,
+    4.38,
+    2.79,
+    2.07,
+    1.68,
+    1.16,
+    0.78,
+    0.0,
+    1.07
+   ],
+   "min_adjacent": 0.0,
+   "ends": 17.39,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC/grey128/C0.09/normal": {
+   "adjacent": [
+    5.65,
+    5.65,
+    6.05,
+    6.37,
+    5.78,
+    5.24,
+    5.22,
+    4.62,
+    4.92,
+    4.74
+   ],
+   "min_adjacent": 4.62,
+   "ends": 40.31,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC/grey128/C0.09/protanomaly": {
+   "adjacent": [
+    1.5,
+    0.98,
+    1.52,
+    2.59,
+    3.56,
+    5.07,
+    8.5,
+    6.28,
+    5.14,
+    4.01
+   ],
+   "min_adjacent": 0.98,
+   "ends": 35.72,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC/grey128/C0.09/deuteranomaly": {
+   "adjacent": [
+    0.0,
+    1.46,
+    2.37,
+    3.81,
+    5.26,
+    7.35,
+    7.2,
+    4.56,
+    4.24,
+    2.89
+   ],
+   "min_adjacent": 0.0,
+   "ends": 38.77,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC/grey128/C0.09/tritanomaly": {
+   "adjacent": [
+    5.44,
+    8.29,
+    10.77,
+    7.25,
+    4.95,
+    3.53,
+    2.6,
+    1.31,
+    0.82,
+    1.89
+   ],
+   "min_adjacent": 0.82,
+   "ends": 41.02,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC/grey128/C0.15/normal": {
+   "adjacent": [
+    7.12,
+    7.98,
+    8.3,
+    8.76,
+    8.25,
+    7.59,
+    7.35,
+    7.39,
+    8.23,
+    8.96
+   ],
+   "min_adjacent": 7.12,
+   "ends": 59.42,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    true
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC/grey128/C0.15/protanomaly": {
+   "adjacent": [
+    1.96,
+    1.74,
+    2.33,
+    3.34,
+    4.69,
+    6.67,
+    11.25,
+    11.8,
+    9.55,
+    6.76
+   ],
+   "min_adjacent": 1.74,
+   "ends": 53.73,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    true
+   ],
+   "share_clipped_by_simulation": 0.030303030303030304
+  },
+  "SPC/grey128/C0.15/deuteranomaly": {
+   "adjacent": [
+    0.0,
+    1.64,
+    3.29,
+    4.92,
+    7.06,
+    10.79,
+    11.33,
+    7.63,
+    6.61,
+    5.23
+   ],
+   "min_adjacent": 0.0,
+   "ends": 56.8,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    true
+   ],
+   "share_clipped_by_simulation": 0.030303030303030304
+  },
+  "SPC/grey128/C0.15/tritanomaly": {
+   "adjacent": [
+    4.27,
+    11.69,
+    16.02,
+    10.49,
+    7.58,
+    5.39,
+    3.95,
+    2.03,
+    1.35,
+    2.57
+   ],
+   "min_adjacent": 1.35,
+   "ends": 55.18,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    true
+   ],
+   "share_clipped_by_simulation": 0.030303030303030304
+  },
+  "SPC/grey192/C0.03/normal": {
+   "adjacent": [
+    2.45,
+    2.85,
+    2.51,
+    2.88,
+    2.67,
+    2.38,
+    2.34,
+    1.67,
+    1.91,
+    2.0
+   ],
+   "min_adjacent": 1.67,
+   "ends": 17.11,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC/grey192/C0.03/protanomaly": {
+   "adjacent": [
+    0.48,
+    0.34,
+    0.84,
+    1.21,
+    1.66,
+    2.79,
+    3.46,
+    2.13,
+    1.96,
+    1.62
+   ],
+   "min_adjacent": 0.34,
+   "ends": 15.05,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC/grey192/C0.03/deuteranomaly": {
+   "adjacent": [
+    0.35,
+    0.5,
+    1.55,
+    1.62,
+    2.33,
+    3.21,
+    2.72,
+    1.76,
+    1.52,
+    1.24
+   ],
+   "min_adjacent": 0.35,
+   "ends": 16.51,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC/grey192/C0.03/tritanomaly": {
+   "adjacent": [
+    2.21,
+    4.06,
+    4.04,
+    3.22,
+    2.13,
+    1.32,
+    1.27,
+    0.34,
+    0.71,
+    0.79
+   ],
+   "min_adjacent": 0.34,
+   "ends": 17.17,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC/grey192/C0.09/normal": {
+   "adjacent": [
+    5.49,
+    6.07,
+    6.05,
+    5.98,
+    5.89,
+    5.42,
+    4.84,
+    4.95,
+    4.5,
+    4.42
+   ],
+   "min_adjacent": 4.42,
+   "ends": 39.5,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC/grey192/C0.09/protanomaly": {
+   "adjacent": [
+    1.35,
+    1.16,
+    1.59,
+    2.61,
+    3.57,
+    5.31,
+    7.59,
+    7.02,
+    4.63,
+    3.63
+   ],
+   "min_adjacent": 1.16,
+   "ends": 35.07,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC/grey192/C0.09/deuteranomaly": {
+   "adjacent": [
+    0.21,
+    1.42,
+    2.23,
+    3.46,
+    5.33,
+    7.62,
+    6.75,
+    4.92,
+    3.39,
+    2.91
+   ],
+   "min_adjacent": 0.21,
+   "ends": 38.0,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC/grey192/C0.09/tritanomaly": {
+   "adjacent": [
+    5.39,
+    8.59,
+    10.65,
+    6.64,
+    5.01,
+    3.55,
+    1.83,
+    0.86,
+    0.76,
+    1.23
+   ],
+   "min_adjacent": 0.76,
+   "ends": 40.38,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.09090909090909091
+  },
+  "SPC/grey192/C0.15/normal": {
+   "adjacent": [
+    5.5,
+    6.02,
+    7.36,
+    8.68,
+    8.18,
+    7.65,
+    6.18,
+    5.65,
+    5.57,
+    6.08
+   ],
+   "min_adjacent": 5.5,
+   "ends": 46.37,
+   "chroma_reduced": [
+    true,
+    true,
+    true,
+    true,
+    false,
+    false,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC/grey192/C0.15/protanomaly": {
+   "adjacent": [
+    1.22,
+    1.33,
+    2.04,
+    1.92,
+    4.58,
+    8.81,
+    10.04,
+    8.1,
+    5.81,
+    6.63
+   ],
+   "min_adjacent": 1.22,
+   "ends": 40.66,
+   "chroma_reduced": [
+    true,
+    true,
+    true,
+    true,
+    false,
+    false,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "share_clipped_by_simulation": 0.12121212121212122
+  },
+  "SPC/grey192/C0.15/deuteranomaly": {
+   "adjacent": [
+    0.45,
+    0.35,
+    0.3,
+    1.96,
+    6.75,
+    11.0,
+    8.89,
+    5.23,
+    5.0,
+    5.16
+   ],
+   "min_adjacent": 0.3,
+   "ends": 44.44,
+   "chroma_reduced": [
+    true,
+    true,
+    true,
+    true,
+    false,
+    false,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC/grey192/C0.15/tritanomaly": {
+   "adjacent": [
+    5.4,
+    7.69,
+    13.42,
+    11.21,
+    5.66,
+    1.51,
+    1.24,
+    0.98,
+    0.98,
+    0.83
+   ],
+   "min_adjacent": 0.83,
+   "ends": 43.74,
+   "chroma_reduced": [
+    true,
+    true,
+    true,
+    true,
+    false,
+    false,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "share_clipped_by_simulation": 0.18181818181818182
+  },
+  "SPC_reversed/grey64/C0.03/normal": {
+   "adjacent": [
+    1.61,
+    2.03,
+    2.07,
+    2.02,
+    2.73,
+    2.62,
+    2.78,
+    2.79,
+    2.67,
+    2.55
+   ],
+   "min_adjacent": 1.61,
+   "ends": 17.4,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC_reversed/grey64/C0.03/protanomaly": {
+   "adjacent": [
+    1.57,
+    1.79,
+    2.74,
+    2.89,
+    2.99,
+    2.03,
+    1.28,
+    0.63,
+    0.41,
+    1.17
+   ],
+   "min_adjacent": 0.41,
+   "ends": 15.1,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC_reversed/grey64/C0.03/deuteranomaly": {
+   "adjacent": [
+    1.14,
+    1.56,
+    2.08,
+    3.09,
+    2.85,
+    2.4,
+    1.93,
+    1.39,
+    0.6,
+    0.0
+   ],
+   "min_adjacent": 0.0,
+   "ends": 16.82,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC_reversed/grey64/C0.03/tritanomaly": {
+   "adjacent": [
+    0.77,
+    0.52,
+    0.55,
+    1.32,
+    1.45,
+    2.1,
+    3.19,
+    4.88,
+    3.3,
+    2.56
+   ],
+   "min_adjacent": 0.52,
+   "ends": 17.82,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC_reversed/grey64/C0.09/normal": {
+   "adjacent": [
+    6.79,
+    5.4,
+    5.26,
+    5.09,
+    5.64,
+    5.65,
+    6.38,
+    5.98,
+    5.58,
+    5.12
+   ],
+   "min_adjacent": 5.09,
+   "ends": 42.53,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC_reversed/grey64/C0.09/protanomaly": {
+   "adjacent": [
+    6.26,
+    5.95,
+    7.35,
+    8.18,
+    4.98,
+    3.55,
+    2.43,
+    1.62,
+    0.88,
+    1.32
+   ],
+   "min_adjacent": 0.88,
+   "ends": 38.57,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.030303030303030304
+  },
+  "SPC_reversed/grey64/C0.09/deuteranomaly": {
+   "adjacent": [
+    4.34,
+    4.64,
+    5.57,
+    7.3,
+    7.7,
+    4.99,
+    3.59,
+    2.55,
+    1.33,
+    0.0
+   ],
+   "min_adjacent": 0.0,
+   "ends": 40.8,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC_reversed/grey64/C0.09/tritanomaly": {
+   "adjacent": [
+    2.64,
+    0.82,
+    1.42,
+    2.95,
+    4.25,
+    5.39,
+    7.57,
+    10.9,
+    7.95,
+    3.3
+   ],
+   "min_adjacent": 0.82,
+   "ends": 39.41,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.030303030303030304
+  },
+  "SPC_reversed/grey64/C0.15/normal": {
+   "adjacent": [
+    8.23,
+    10.91,
+    8.64,
+    7.54,
+    7.5,
+    8.55,
+    8.35,
+    8.6,
+    7.58,
+    6.58
+   ],
+   "min_adjacent": 6.58,
+   "ends": 49.27,
+   "chroma_reduced": [
+    true,
+    true,
+    false,
+    true,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC_reversed/grey64/C0.15/protanomaly": {
+   "adjacent": [
+    2.36,
+    7.67,
+    14.39,
+    10.62,
+    6.18,
+    4.15,
+    3.14,
+    2.14,
+    1.68,
+    1.05
+   ],
+   "min_adjacent": 1.05,
+   "ends": 45.14,
+   "chroma_reduced": [
+    true,
+    true,
+    false,
+    true,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.21212121212121213
+  },
+  "SPC_reversed/grey64/C0.15/deuteranomaly": {
+   "adjacent": [
+    0.47,
+    2.28,
+    9.09,
+    12.0,
+    10.39,
+    7.4,
+    4.66,
+    2.28,
+    1.22,
+    0.32
+   ],
+   "min_adjacent": 0.32,
+   "ends": 46.77,
+   "chroma_reduced": [
+    true,
+    true,
+    false,
+    true,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.15151515151515152
+  },
+  "SPC_reversed/grey64/C0.15/tritanomaly": {
+   "adjacent": [
+    8.34,
+    6.69,
+    4.32,
+    5.0,
+    6.02,
+    8.43,
+    10.67,
+    16.69,
+    8.21,
+    3.16
+   ],
+   "min_adjacent": 3.16,
+   "ends": 40.45,
+   "chroma_reduced": [
+    true,
+    true,
+    false,
+    true,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.15151515151515152
+  },
+  "SPC_reversed/grey128/C0.03/normal": {
+   "adjacent": [
+    1.78,
+    1.68,
+    2.18,
+    2.55,
+    2.2,
+    2.58,
+    2.71,
+    2.58,
+    2.75,
+    2.65
+   ],
+   "min_adjacent": 1.68,
+   "ends": 17.51,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC_reversed/grey128/C0.03/protanomaly": {
+   "adjacent": [
+    1.42,
+    1.85,
+    2.96,
+    3.18,
+    2.6,
+    1.72,
+    1.47,
+    0.63,
+    0.57,
+    0.53
+   ],
+   "min_adjacent": 0.53,
+   "ends": 15.5,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC_reversed/grey128/C0.03/deuteranomaly": {
+   "adjacent": [
+    1.28,
+    1.34,
+    2.19,
+    2.98,
+    2.98,
+    1.95,
+    1.92,
+    1.33,
+    0.85,
+    0.37
+   ],
+   "min_adjacent": 0.37,
+   "ends": 17.01,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC_reversed/grey128/C0.03/tritanomaly": {
+   "adjacent": [
+    1.07,
+    0.0,
+    0.78,
+    1.16,
+    1.68,
+    2.07,
+    2.79,
+    4.38,
+    3.45,
+    3.02
+   ],
+   "min_adjacent": 0.0,
+   "ends": 17.39,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC_reversed/grey128/C0.09/normal": {
+   "adjacent": [
+    4.74,
+    4.92,
+    4.62,
+    5.22,
+    5.24,
+    5.78,
+    6.37,
+    6.05,
+    5.65,
+    5.65
+   ],
+   "min_adjacent": 4.62,
+   "ends": 40.31,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC_reversed/grey128/C0.09/protanomaly": {
+   "adjacent": [
+    4.01,
+    5.14,
+    6.28,
+    8.5,
+    5.07,
+    3.56,
+    2.59,
+    1.52,
+    0.98,
+    1.5
+   ],
+   "min_adjacent": 0.98,
+   "ends": 35.72,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC_reversed/grey128/C0.09/deuteranomaly": {
+   "adjacent": [
+    2.89,
+    4.24,
+    4.56,
+    7.2,
+    7.35,
+    5.26,
+    3.81,
+    2.37,
+    1.46,
+    0.0
+   ],
+   "min_adjacent": 0.0,
+   "ends": 38.77,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC_reversed/grey128/C0.09/tritanomaly": {
+   "adjacent": [
+    1.89,
+    0.82,
+    1.31,
+    2.6,
+    3.53,
+    4.95,
+    7.25,
+    10.77,
+    8.29,
+    5.44
+   ],
+   "min_adjacent": 0.82,
+   "ends": 41.02,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC_reversed/grey128/C0.15/normal": {
+   "adjacent": [
+    8.96,
+    8.23,
+    7.39,
+    7.35,
+    7.59,
+    8.25,
+    8.76,
+    8.3,
+    7.98,
+    7.12
+   ],
+   "min_adjacent": 7.12,
+   "ends": 59.42,
+   "chroma_reduced": [
+    true,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC_reversed/grey128/C0.15/protanomaly": {
+   "adjacent": [
+    6.76,
+    9.55,
+    11.8,
+    11.25,
+    6.67,
+    4.69,
+    3.34,
+    2.33,
+    1.74,
+    1.96
+   ],
+   "min_adjacent": 1.74,
+   "ends": 53.73,
+   "chroma_reduced": [
+    true,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.030303030303030304
+  },
+  "SPC_reversed/grey128/C0.15/deuteranomaly": {
+   "adjacent": [
+    5.23,
+    6.61,
+    7.63,
+    11.33,
+    10.79,
+    7.06,
+    4.92,
+    3.29,
+    1.64,
+    0.0
+   ],
+   "min_adjacent": 0.0,
+   "ends": 56.8,
+   "chroma_reduced": [
+    true,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.030303030303030304
+  },
+  "SPC_reversed/grey128/C0.15/tritanomaly": {
+   "adjacent": [
+    2.57,
+    1.35,
+    2.03,
+    3.95,
+    5.39,
+    7.58,
+    10.49,
+    16.02,
+    11.69,
+    4.27
+   ],
+   "min_adjacent": 1.35,
+   "ends": 55.18,
+   "chroma_reduced": [
+    true,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.030303030303030304
+  },
+  "SPC_reversed/grey192/C0.03/normal": {
+   "adjacent": [
+    2.0,
+    1.91,
+    1.67,
+    2.34,
+    2.38,
+    2.67,
+    2.88,
+    2.51,
+    2.85,
+    2.45
+   ],
+   "min_adjacent": 1.67,
+   "ends": 17.11,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC_reversed/grey192/C0.03/protanomaly": {
+   "adjacent": [
+    1.62,
+    1.96,
+    2.13,
+    3.46,
+    2.79,
+    1.66,
+    1.21,
+    0.84,
+    0.34,
+    0.48
+   ],
+   "min_adjacent": 0.34,
+   "ends": 15.05,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC_reversed/grey192/C0.03/deuteranomaly": {
+   "adjacent": [
+    1.24,
+    1.52,
+    1.76,
+    2.72,
+    3.21,
+    2.33,
+    1.62,
+    1.55,
+    0.5,
+    0.35
+   ],
+   "min_adjacent": 0.35,
+   "ends": 16.51,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC_reversed/grey192/C0.03/tritanomaly": {
+   "adjacent": [
+    0.79,
+    0.71,
+    0.34,
+    1.27,
+    1.32,
+    2.13,
+    3.22,
+    4.04,
+    4.06,
+    2.21
+   ],
+   "min_adjacent": 0.34,
+   "ends": 17.17,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC_reversed/grey192/C0.09/normal": {
+   "adjacent": [
+    4.42,
+    4.5,
+    4.95,
+    4.84,
+    5.42,
+    5.89,
+    5.98,
+    6.05,
+    6.07,
+    5.49
+   ],
+   "min_adjacent": 4.42,
+   "ends": 39.5,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC_reversed/grey192/C0.09/protanomaly": {
+   "adjacent": [
+    3.63,
+    4.63,
+    7.02,
+    7.59,
+    5.31,
+    3.57,
+    2.61,
+    1.59,
+    1.16,
+    1.35
+   ],
+   "min_adjacent": 1.16,
+   "ends": 35.07,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC_reversed/grey192/C0.09/deuteranomaly": {
+   "adjacent": [
+    2.91,
+    3.39,
+    4.92,
+    6.75,
+    7.62,
+    5.33,
+    3.46,
+    2.23,
+    1.42,
+    0.21
+   ],
+   "min_adjacent": 0.21,
+   "ends": 38.0,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC_reversed/grey192/C0.09/tritanomaly": {
+   "adjacent": [
+    1.23,
+    0.76,
+    0.86,
+    1.83,
+    3.55,
+    5.01,
+    6.64,
+    10.65,
+    8.59,
+    5.39
+   ],
+   "min_adjacent": 0.76,
+   "ends": 40.38,
+   "chroma_reduced": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "share_clipped_by_simulation": 0.09090909090909091
+  },
+  "SPC_reversed/grey192/C0.15/normal": {
+   "adjacent": [
+    6.08,
+    5.57,
+    5.65,
+    6.18,
+    7.65,
+    8.18,
+    8.68,
+    7.36,
+    6.02,
+    5.5
+   ],
+   "min_adjacent": 5.5,
+   "ends": 46.37,
+   "chroma_reduced": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    false,
+    false,
+    true,
+    true,
+    true,
+    true
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC_reversed/grey192/C0.15/protanomaly": {
+   "adjacent": [
+    6.63,
+    5.81,
+    8.1,
+    10.04,
+    8.81,
+    4.58,
+    1.92,
+    2.04,
+    1.33,
+    1.22
+   ],
+   "min_adjacent": 1.22,
+   "ends": 40.66,
+   "chroma_reduced": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    false,
+    false,
+    true,
+    true,
+    true,
+    true
+   ],
+   "share_clipped_by_simulation": 0.12121212121212122
+  },
+  "SPC_reversed/grey192/C0.15/deuteranomaly": {
+   "adjacent": [
+    5.16,
+    5.0,
+    5.23,
+    8.89,
+    11.0,
+    6.75,
+    1.96,
+    0.3,
+    0.35,
+    0.45
+   ],
+   "min_adjacent": 0.3,
+   "ends": 44.44,
+   "chroma_reduced": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    false,
+    false,
+    true,
+    true,
+    true,
+    true
+   ],
+   "share_clipped_by_simulation": 0.0
+  },
+  "SPC_reversed/grey192/C0.15/tritanomaly": {
+   "adjacent": [
+    0.83,
+    0.98,
+    0.98,
+    1.24,
+    1.51,
+    5.66,
+    11.21,
+    13.42,
+    7.69,
+    5.4
+   ],
+   "min_adjacent": 0.83,
+   "ends": 43.74,
+   "chroma_reduced": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    false,
+    false,
+    true,
+    true,
+    true,
+    true
+   ],
+   "share_clipped_by_simulation": 0.18181818181818182
+  }
+ },
+ "values": {
+  "云う": {
+   "count": 280.0,
+   "V_recorded_map_B": 0.22242471965900767,
+   "A_recorded_map_B": -0.08681491688062226,
+   "p_valence": 0.4237241702060263,
+   "p_arousal": 0.5891272057819098,
+   "seed": 413210525
+  },
+  "云っ": {
+   "count": 160.0,
+   "V_recorded_map_B": 0.10357666561816892,
+   "A_recorded_map_B": -0.010872690256428896,
+   "p_valence": 0.2249149777683652,
+   "p_arousal": 0.7976719191721332,
+   "seed": 1828330109
+  },
+  "見る": {
+   "count": 213.0,
+   "V_recorded_map_B": 0.44372799270056973,
+   "A_recorded_map_B": -0.19229023163644632,
+   "p_valence": 0.9509896106571122,
+   "p_arousal": 0.07614931180863821,
+   "seed": 1424614384
+  },
+  "女": {
+   "count": 312.0,
+   "V_recorded_map_B": -0.1587086950236829,
+   "A_recorded_map_B": 0.32664831696220786,
+   "p_valence": 0.07561391470798207,
+   "p_arousal": 0.9811028509585656,
+   "seed": 307741436
+  },
+  "白い": {
+   "count": 82.0,
+   "V_recorded_map_B": 0.2838978510594412,
+   "A_recorded_map_B": -0.18385220645598044,
+   "p_valence": 0.6978416730517684,
+   "p_arousal": 0.12231211862668473,
+   "seed": 187298461
+  },
+  "死ぬ": {
+   "count": 60.0,
+   "V_recorded_map_B": -0.777538217788051,
+   "A_recorded_map_B": 0.41946659394733277,
+   "p_valence": 0.00439608999811036,
+   "p_arousal": 0.991567375110388,
+   "seed": 1419331804
+  },
+  "黒い": {
+   "count": 36.0,
+   "V_recorded_map_B": 0.09947845685813972,
+   "A_recorded_map_B": -0.08681491688062226,
+   "p_valence": 0.22219013028131182,
+   "p_arousal": 0.5891272057819098,
+   "seed": 2065471800
+  },
+  "首": {
+   "count": 60.0,
+   "V_recorded_map_B": 0.054398160497821646,
+   "A_recorded_map_B": -0.14166208055365082,
+   "p_valence": 0.17562687798689927,
+   "p_arousal": 0.2834965739006418,
+   "seed": 1373962045
+  },
+  "自分": {
+   "count": 622.0,
+   "V_recorded_map_B": 0.34127277369984643,
+   "A_recorded_map_B": 0.08616459931892906,
+   "p_valence": 0.8192362345142007,
+   "p_arousal": 0.8955745229839452,
+   "seed": 87734123
+  },
+  "何だか": {
+   "count": 36.0,
+   "V_recorded_map_B": 0.09538024809811052,
+   "A_recorded_map_B": 0.04819348600683249,
+   "p_valence": 0.2184328580207906,
+   "p_arousal": 0.8653452676890568,
+   "seed": 1313682297
+  },
+  "例": {
+   "count": 39.0,
+   "V_recorded_map_B": 0.21013009337892097,
+   "A_recorded_map_B": -0.16275714350481563,
+   "p_valence": 0.40930363157495586,
+   "p_arousal": 0.16876648065335584,
+   "seed": 1768151109
+  },
+  "立っ": {
+   "count": 97.0,
+   "V_recorded_map_B": 0.08718383057805301,
+   "A_recorded_map_B": -0.06571985392945767,
+   "p_valence": 0.21180820709909917,
+   "p_arousal": 0.6352629738772935,
+   "seed": 255390097
+  },
+  "心持": {
+   "count": 22.0,
+   "V_recorded_map_B": 0.1609515882585737,
+   "A_recorded_map_B": -0.1796331938657476,
+   "p_valence": 0.36740028997350366,
+   "p_arousal": 0.135358969184644,
+   "seed": 1975332680
+  },
+  "聞く": {
+   "count": 43.0,
+   "V_recorded_map_B": 0.263406807259297,
+   "A_recorded_map_B": -0.08259590429038943,
+   "p_valence": 0.5070705077623943,
+   "p_arousal": 0.6062957539602462,
+   "seed": 604035988
+  },
+  "思う": {
+   "count": 171.0,
+   "V_recorded_map_B": 0.42733515766045427,
+   "A_recorded_map_B": -0.05306281615875852,
+   "p_valence": 0.9010641141575113,
+   "p_arousal": 0.6613026560715491,
+   "seed": 18786809
+  },
+  "大変": {
+   "count": 22.0,
+   "V_recorded_map_B": 0.02161249041759028,
+   "A_recorded_map_B": 0.15788781335288937,
+   "p_valence": 0.14872968234745826,
+   "p_arousal": 0.9412301567007693,
+   "seed": 1932586279
+  },
+  "下": {
+   "count": 118.0,
+   "V_recorded_map_B": 0.042103534217734495,
+   "A_recorded_map_B": -0.221823319768077,
+   "p_valence": 0.16834720595113062,
+   "p_arousal": 0.04417392361905217,
+   "seed": 1264803434
+  },
+  "行く": {
+   "count": 158.0,
+   "V_recorded_map_B": 0.39454948758022246,
+   "A_recorded_map_B": 0.010222372694735693,
+   "p_valence": 0.884912177380488,
+   "p_arousal": 0.8244447707842361,
+   "seed": 2058674043
+  },
+  "答える": {
+   "count": 18.0,
+   "V_recorded_map_B": 0.19783546709883382,
+   "A_recorded_map_B": -0.14588109314388387,
+   "p_valence": 0.397369605180445,
+   "p_arousal": 0.23390111252270263,
+   "seed": 305481729
+  },
+  "主人": {
+   "count": 46.0,
+   "V_recorded_map_B": 0.2879960598194704,
+   "A_recorded_map_B": 0.08616459931892906,
+   "p_valence": 0.7224160609888046,
+   "p_arousal": 0.8955745229839452,
+   "seed": 768075908
+  },
+  "こう": {
+   "count": 152.0,
+   "V_recorded_map_B": 0.09538024809811052,
+   "A_recorded_map_B": 0.06928854895799708,
+   "p_valence": 0.2184328580207906,
+   "p_arousal": 0.8817811394943322,
+   "seed": 1395422341
+  },
+  "前": {
+   "count": 315.0,
+   "V_recorded_map_B": 0.12406770941831313,
+   "A_recorded_map_B": -0.137443067963418,
+   "p_valence": 0.29363418782118916,
+   "p_arousal": 0.34627921959070845,
+   "seed": 367048264
+  },
+  "いつか": {
+   "count": 53.0,
+   "V_recorded_map_B": 0.49700470658094575,
+   "A_recorded_map_B": -0.03196775320759393,
+   "p_valence": 0.9677695270998364,
+   "p_arousal": 0.7083752672260272,
+   "seed": 1727410626
+  },
+  "感じ": {
+   "count": 281.0,
+   "V_recorded_map_B": 0.5215939591411192,
+   "A_recorded_map_B": 0.06506953636776425,
+   "p_valence": 0.9742692473533373,
+   "p_arousal": 0.8771773201610974,
+   "seed": 1007815131
+  },
+  "違い": {
+   "count": 86.0,
+   "V_recorded_map_B": 0.22242471965900767,
+   "A_recorded_map_B": -0.14166208055365082,
+   "p_valence": 0.4237241702060263,
+   "p_arousal": 0.2834965739006418,
+   "seed": 1918013020
+  },
+  "向う": {
+   "count": 47.0,
+   "V_recorded_map_B": 0.23471934593909438,
+   "A_recorded_map_B": -0.11634800501225295,
+   "p_valence": 0.448849684157889,
+   "p_arousal": 0.42419315728239,
+   "seed": 1887885152
+  },
+  "近い": {
+   "count": 54.0,
+   "V_recorded_map_B": 0.22242471965900767,
+   "A_recorded_map_B": -0.1501001057341167,
+   "p_valence": 0.4237241702060263,
+   "p_arousal": 0.2064167754910974,
+   "seed": 1991417456
+  },
+  "のみ": {
+   "count": 61.0,
+   "V_recorded_map_B": 0.20603188461889177,
+   "A_recorded_map_B": -0.17119516868528173,
+   "p_valence": 0.4047343848670148,
+   "p_arousal": 0.1475706524331258,
+   "seed": 664239229
+  },
+  "外": {
+   "count": 97.0,
+   "V_recorded_map_B": -0.01936959718269904,
+   "A_recorded_map_B": -0.02774874061736088,
+   "p_valence": 0.1260420338510649,
+   "p_arousal": 0.7202491621483338,
+   "seed": 906809191
+  },
+  "目": {
+   "count": 168.0,
+   "V_recorded_map_B": 0.4806118715408303,
+   "A_recorded_map_B": -0.2302613449485429,
+   "p_valence": 0.964867550727138,
+   "p_arousal": 0.036339813717531165,
+   "seed": 1475628064
+  },
+  "不快": {
+   "count": 26.0,
+   "V_recorded_map_B": -0.941466568189208,
+   "A_recorded_map_B": 0.402590543586401,
+   "p_valence": 0.0005796247457553669,
+   "p_arousal": 0.9901750488865412,
+   "seed": 1682178581
+  },
+  "話し": {
+   "count": 51.0,
+   "V_recorded_map_B": 0.21422830213894972,
+   "A_recorded_map_B": -0.04040577838805981,
+   "p_valence": 0.4134621629141308,
+   "p_arousal": 0.6884705357741937,
+   "seed": 1576873972
+  },
+  "自身": {
+   "count": 95.0,
+   "V_recorded_map_B": 0.41913874014039587,
+   "A_recorded_map_B": -0.09947195465132141,
+   "p_valence": 0.8978516599358838,
+   "p_arousal": 0.5059763878801032,
+   "seed": 270963440
+  },
+  "光": {
+   "count": 74.0,
+   "V_recorded_map_B": 0.5420850029412643,
+   "A_recorded_map_B": -0.03196775320759393,
+   "p_valence": 0.9823925135200454,
+   "p_arousal": 0.7083752672260272,
+   "seed": 1527510752
+  },
+  "もう一度": {
+   "count": 20.0,
+   "V_recorded_map_B": 0.316683521139673,
+   "A_recorded_map_B": -0.03196775320759393,
+   "p_valence": 0.7987342034620427,
+   "p_arousal": 0.7083752672260272,
+   "seed": 48835150
+  },
+  "勿論": {
+   "count": 31.0,
+   "V_recorded_map_B": 0.3371745649398177,
+   "A_recorded_map_B": -0.11212899242202012,
+   "p_valence": 0.8140054604882883,
+   "p_arousal": 0.42924083489324283,
+   "seed": 2142209473
+  },
+  "微笑": {
+   "count": 33.0,
+   "V_recorded_map_B": 0.26750501601932575,
+   "A_recorded_map_B": 0.052412498597065316,
+   "p_valence": 0.5333077384486855,
+   "p_arousal": 0.8686361078482001,
+   "seed": 751452618
+  },
+  "やっと": {
+   "count": 52.0,
+   "V_recorded_map_B": 0.38225486130013575,
+   "A_recorded_map_B": 0.031317435645900504,
+   "p_valence": 0.8755475768655837,
+   "p_arousal": 0.8473921386775299,
+   "seed": 1269793183
+  },
+  "廊下": {
+   "count": 18.0,
+   "V_recorded_map_B": -0.007074970902612332,
+   "A_recorded_map_B": -0.2977655463922704,
+   "p_valence": 0.13234607766111464,
+   "p_arousal": 0.004684429496550656,
+   "seed": 671901826
+  },
+  "言っ": {
+   "count": 223.0,
+   "V_recorded_map_B": 0.23471934593909438,
+   "A_recorded_map_B": -0.023529728027127828,
+   "p_valence": 0.448849684157889,
+   "p_arousal": 0.7323665818872094,
+   "seed": 1653282390
+  },
+  "町": {
+   "count": 58.0,
+   "V_recorded_map_B": 0.09538024809811052,
+   "A_recorded_map_B": -0.24291838271924204,
+   "p_valence": 0.2184328580207906,
+   "p_arousal": 0.028395266038642442,
+   "seed": 1552399373
+  },
+  "心": {
+   "count": 211.0,
+   "V_recorded_map_B": 0.3904512788201937,
+   "A_recorded_map_B": -0.14166208055365082,
+   "p_valence": 0.8811731937270647,
+   "p_arousal": 0.2834965739006418,
+   "seed": 1115126258
+  },
+  "部屋": {
+   "count": 97.0,
+   "V_recorded_map_B": 0.36586202626001985,
+   "A_recorded_map_B": -0.20494726940714525,
+   "p_valence": 0.8538328376506992,
+   "p_arousal": 0.0581408207680321,
+   "seed": 223923199
+  },
+  "気持": {
+   "count": 125.0,
+   "V_recorded_map_B": 0.5052011241010037,
+   "A_recorded_map_B": 0.031317435645900504,
+   "p_valence": 0.9700359710701889,
+   "p_arousal": 0.8473921386775299,
+   "seed": 1161945217
+  },
+  "風景": {
+   "count": 30.0,
+   "V_recorded_map_B": 0.5215939591411192,
+   "A_recorded_map_B": -0.15853813091458258,
+   "p_valence": 0.9742692473533373,
+   "p_arousal": 0.17747773780488307,
+   "seed": 399959703
+  },
+  "冬": {
+   "count": 38.0,
+   "V_recorded_map_B": 0.5092993328610329,
+   "A_recorded_map_B": -0.006653677666196067,
+   "p_valence": 0.9713940049022595,
+   "p_arousal": 0.8050115051240238,
+   "seed": 1086160647
+  },
+  "変": {
+   "count": 34.0,
+   "V_recorded_map_B": -0.36771734178515825,
+   "A_recorded_map_B": 0.15788781335288937,
+   "p_valence": 0.03318589599200108,
+   "p_arousal": 0.9412301567007693,
+   "seed": 2113848702
+  },
+  "空想": {
+   "count": 30.0,
+   "V_recorded_map_B": 0.7920757373030285,
+   "A_recorded_map_B": -0.137443067963418,
+   "p_valence": 0.9984047200670242,
+   "p_arousal": 0.34627921959070845,
+   "seed": 1385003763
+  },
+  "屋根": {
+   "count": 22.0,
+   "V_recorded_map_B": 0.3043888948595863,
+   "A_recorded_map_B": -0.24291838271924204,
+   "p_valence": 0.781180534641471,
+   "p_arousal": 0.028395266038642442,
+   "seed": 678162740
+  },
+  "身体": {
+   "count": 60.0,
+   "V_recorded_map_B": 0.21013009337892097,
+   "A_recorded_map_B": 0.1199167000407928,
+   "p_valence": 0.40930363157495586,
+   "p_arousal": 0.9204368646713004,
+   "seed": 1579812724
+  },
+  "燈": {
+   "count": 43.0,
+   "V_recorded_map_B": 0.2838978510594412,
+   "A_recorded_map_B": -0.010872690256428896,
+   "p_valence": 0.6978416730517684,
+   "p_arousal": 0.7976719191721332,
+   "seed": 32656344
+  },
+  "眺め": {
+   "count": 124.0,
+   "V_recorded_map_B": 0.6814241007822477,
+   "A_recorded_map_B": -0.221823319768077,
+   "p_valence": 0.994802169118318,
+   "p_arousal": 0.04417392361905217,
+   "seed": 1448561731
+  },
+  "路": {
+   "count": 234.0,
+   "V_recorded_map_B": 0.263406807259297,
+   "A_recorded_map_B": -0.15853813091458258,
+   "p_valence": 0.5070705077623943,
+   "p_arousal": 0.17747773780488307,
+   "seed": 1341656499
+  },
+  "夜": {
+   "count": 123.0,
+   "V_recorded_map_B": 0.501102915340975,
+   "A_recorded_map_B": 0.13257373781149173,
+   "p_valence": 0.9688076082425471,
+   "p_arousal": 0.9284561854255649,
+   "seed": 1605637785
+  },
+  "思え": {
+   "count": 47.0,
+   "V_recorded_map_B": 0.263406807259297,
+   "A_recorded_map_B": -0.06571985392945767,
+   "p_valence": 0.5070705077623943,
+   "p_arousal": 0.6352629738772935,
+   "seed": 2122462462
+  },
+  "空気": {
+   "count": 28.0,
+   "V_recorded_map_B": 0.1445587532184578,
+   "A_recorded_map_B": -0.14166208055365082,
+   "p_valence": 0.34729392633789563,
+   "p_arousal": 0.2834965739006418,
+   "seed": 1453611254
+  },
+  "姿": {
+   "count": 89.0,
+   "V_recorded_map_B": 0.13636233569840028,
+   "A_recorded_map_B": -0.015091702846661947,
+   "p_valence": 0.34079729713728774,
+   "p_arousal": 0.7865893536872258,
+   "seed": 1753223698
+  },
+  "見え": {
+   "count": 187.0,
+   "V_recorded_map_B": 0.22242471965900767,
+   "A_recorded_map_B": -0.0699388665196905,
+   "p_valence": 0.4237241702060263,
+   "p_arousal": 0.6293954523542629,
+   "seed": 1880160245
+  },
+  "先": {
+   "count": 81.0,
+   "V_recorded_map_B": 0.34537098245987563,
+   "A_recorded_map_B": -0.17119516868528173,
+   "p_valence": 0.8238908101641501,
+   "p_arousal": 0.1475706524331258,
+   "seed": 470447774
+  },
+  "魚": {
+   "count": 96.0,
+   "V_recorded_map_B": 0.3289781474197597,
+   "A_recorded_map_B": 0.010222372694735693,
+   "p_valence": 0.8068283412563347,
+   "p_arousal": 0.8244447707842361,
+   "seed": 1262426398
+  },
+  "客": {
+   "count": 64.0,
+   "V_recorded_map_B": 0.11996950065828438,
+   "A_recorded_map_B": -0.08259590429038943,
+   "p_valence": 0.28870813551086216,
+   "p_arousal": 0.6062957539602462,
+   "seed": 1518673828
+  },
+  "体": {
+   "count": 52.0,
+   "V_recorded_map_B": 0.11996950065828438,
+   "A_recorded_map_B": -0.120567017602486,
+   "p_valence": 0.28870813551086216,
+   "p_arousal": 0.41805773160343224,
+   "seed": 2112152213
+  },
+  "店": {
+   "count": 102.0,
+   "V_recorded_map_B": 0.11996950065828438,
+   "A_recorded_map_B": -0.12478603019271883,
+   "p_valence": 0.28870813551086216,
+   "p_arousal": 0.410812537895993,
+   "seed": 50474837
+  },
+  "いっ": {
+   "count": 103.0,
+   "V_recorded_map_B": 0.06259457801787915,
+   "A_recorded_map_B": -0.02774874061736088,
+   "p_valence": 0.1844980231709051,
+   "p_arousal": 0.7202491621483338,
+   "seed": 1027901394
+  },
+  "現実": {
+   "count": 39.0,
+   "V_recorded_map_B": 0.26750501601932575,
+   "A_recorded_map_B": 0.19163991407475311,
+   "p_valence": 0.5333077384486855,
+   "p_arousal": 0.9524176296401806,
+   "seed": 865414909
+  },
+  "娘": {
+   "count": 83.0,
+   "V_recorded_map_B": 0.5338885854212063,
+   "A_recorded_map_B": -0.023529728027127828,
+   "p_valence": 0.98027663823878,
+   "p_arousal": 0.7323665818872094,
+   "seed": 1030420941
+  },
+  "気持ち": {
+   "count": 24.0,
+   "V_recorded_map_B": 0.39864769634025166,
+   "A_recorded_map_B": 0.09882163708962799,
+   "p_valence": 0.8884333101630904,
+   "p_arousal": 0.9057262100255841,
+   "seed": 1613410186
+  },
+  "珍": {
+   "count": 24.0,
+   "V_recorded_map_B": -0.023467805942728237,
+   "A_recorded_map_B": 0.20851596443568488,
+   "p_valence": 0.12225888342179718,
+   "p_arousal": 0.9564260923002585,
+   "seed": 1127121032
+  },
+  "池": {
+   "count": 31.0,
+   "V_recorded_map_B": 0.1609515882585737,
+   "A_recorded_map_B": -0.2302613449485429,
+   "p_valence": 0.36740028997350366,
+   "p_arousal": 0.036339813717531165,
+   "seed": 1132430092
+  },
+  "時代": {
+   "count": 40.0,
+   "V_recorded_map_B": 0.3330763561797885,
+   "A_recorded_map_B": -0.07415787910992355,
+   "p_valence": 0.8101298466002637,
+   "p_arousal": 0.6217059110129445,
+   "seed": 583290037
+  },
+  "座敷": {
+   "count": 19.0,
+   "V_recorded_map_B": 0.23471934593909438,
+   "A_recorded_map_B": -0.22604233235831006,
+   "p_valence": 0.448849684157889,
+   "p_arousal": 0.04136641944216668,
+   "seed": 1855568612
+  },
+  "なっ": {
+   "count": 628.0,
+   "V_recorded_map_B": 0.24291576345915233,
+   "A_recorded_map_B": -0.14588109314388387,
+   "p_valence": 0.45981265383746606,
+   "p_arousal": 0.23390111252270263,
+   "seed": 1949165504
+  },
+  "多少": {
+   "count": 23.0,
+   "V_recorded_map_B": 0.20603188461889177,
+   "A_recorded_map_B": -0.04040577838805981,
+   "p_valence": 0.4047343848670148,
+   "p_arousal": 0.6884705357741937,
+   "seed": 1833689839
+  },
+  "意識": {
+   "count": 40.0,
+   "V_recorded_map_B": 0.546183211701293,
+   "A_recorded_map_B": -0.019310715436894776,
+   "p_valence": 0.9832742467821222,
+   "p_arousal": 0.7579039318683414,
+   "seed": 925126278
+  },
+  "腕": {
+   "count": 31.0,
+   "V_recorded_map_B": 0.22242471965900767,
+   "A_recorded_map_B": -0.06150084133922462,
+   "p_valence": 0.4237241702060263,
+   "p_arousal": 0.6398233575900221,
+   "seed": 265713052
+  },
+  "ときどき": {
+   "count": 25.0,
+   "V_recorded_map_B": 0.23062113717906518,
+   "A_recorded_map_B": -0.08259590429038943,
+   "p_valence": 0.438424506761891,
+   "p_arousal": 0.6062957539602462,
+   "seed": 1622277664
+  },
+  "目的": {
+   "count": 19.0,
+   "V_recorded_map_B": 0.41913874014039587,
+   "A_recorded_map_B": -0.015091702846661947,
+   "p_valence": 0.8978516599358838,
+   "p_arousal": 0.7865893536872258,
+   "seed": 910762146
+  },
+  "女性": {
+   "count": 13.0,
+   "V_recorded_map_B": 0.2838978510594412,
+   "A_recorded_map_B": -0.015091702846661947,
+   "p_valence": 0.6978416730517684,
+   "p_arousal": 0.7865893536872258,
+   "seed": 956291386
+  },
+  "もっ": {
+   "count": 87.0,
+   "V_recorded_map_B": 0.09947845685813972,
+   "A_recorded_map_B": -0.03618676579782676,
+   "p_valence": 0.22219013028131182,
+   "p_arousal": 0.7018667974486079,
+   "seed": 999394135
+  },
+  "師": {
+   "count": 52.0,
+   "V_recorded_map_B": 0.16504979701860245,
+   "A_recorded_map_B": -0.18385220645598044,
+   "p_valence": 0.36979588265240343,
+   "p_arousal": 0.12231211862668473,
+   "seed": 734574146
+  },
+  "南": {
+   "count": 41.0,
+   "V_recorded_map_B": 0.37405844378007824,
+   "A_recorded_map_B": -0.28510850862157167,
+   "p_valence": 0.865358101366389,
+   "p_arousal": 0.008392098645390195,
+   "seed": 877686683
+  },
+  "弟子": {
+   "count": 54.0,
+   "V_recorded_map_B": 0.01751428165756108,
+   "A_recorded_map_B": -0.1880712190462135,
+   "p_valence": 0.14614872757773492,
+   "p_arousal": 0.09873949295076921,
+   "seed": 915384896
+  },
+  "死": {
+   "count": 49.0,
+   "V_recorded_map_B": -0.8963862718288897,
+   "A_recorded_map_B": 0.42368560653756604,
+   "p_valence": 0.0012907593438971656,
+   "p_arousal": 0.9921798150843012,
+   "seed": 153910076
+  },
+  "我": {
+   "count": 43.0,
+   "V_recorded_map_B": -0.19559257386394324,
+   "A_recorded_map_B": -0.015091702846661947,
+   "p_valence": 0.06567561631204585,
+   "p_arousal": 0.7865893536872258,
+   "seed": 1078480212
+  },
+  "都": {
+   "count": 35.0,
+   "V_recorded_map_B": 0.06259457801787915,
+   "A_recorded_map_B": -0.12900504278295188,
+   "p_valence": 0.1844980231709051,
+   "p_arousal": 0.4033743467029481,
+   "seed": 564876991
+  },
+  "地": {
+   "count": 45.0,
+   "V_recorded_map_B": 0.17734442329868916,
+   "A_recorded_map_B": -0.17119516868528173,
+   "p_valence": 0.37813529575459576,
+   "p_arousal": 0.1475706524331258,
+   "seed": 283304500
+  },
+  "矢": {
+   "count": 21.0,
+   "V_recorded_map_B": 0.09538024809811052,
+   "A_recorded_map_B": -0.20494726940714525,
+   "p_valence": 0.2184328580207906,
+   "p_arousal": 0.0581408207680321,
+   "seed": 10974298
+  },
+  "途": {
+   "count": 21.0,
+   "V_recorded_map_B": 0.09947845685813972,
+   "A_recorded_map_B": -0.23448035753877594,
+   "p_valence": 0.22219013028131182,
+   "p_arousal": 0.031995694726295834,
+   "seed": 1733945065
+  },
+  "常に": {
+   "count": 23.0,
+   "V_recorded_map_B": 0.12816591817834233,
+   "A_recorded_map_B": -0.1796331938657476,
+   "p_valence": 0.2971548697181424,
+   "p_arousal": 0.135358969184644,
+   "seed": 913794656
+  },
+  "知る": {
+   "count": 23.0,
+   "V_recorded_map_B": 0.2920942685794996,
+   "A_recorded_map_B": -0.09525294206108814,
+   "p_valence": 0.7316410831649743,
+   "p_arousal": 0.5262282333536522,
+   "seed": 258970753
+  },
+  "最も": {
+   "count": 25.0,
+   "V_recorded_map_B": 0.27160322477935495,
+   "A_recorded_map_B": -0.04884380356852569,
+   "p_valence": 0.5781405993664522,
+   "p_arousal": 0.6705138895154512,
+   "seed": 885448899
+  },
+  "ようやく": {
+   "count": 43.0,
+   "V_recorded_map_B": 0.27160322477935495,
+   "A_recorded_map_B": 0.014441385284968744,
+   "p_valence": 0.5781405993664522,
+   "p_arousal": 0.8280173200287472,
+   "seed": 300319168
+  },
+  "今": {
+   "count": 232.0,
+   "V_recorded_map_B": 0.32487993865973097,
+   "A_recorded_map_B": -0.05306281615875852,
+   "p_valence": 0.8034906598279319,
+   "p_arousal": 0.6613026560715491,
+   "seed": 1927045857
+  },
+  "身": {
+   "count": 82.0,
+   "V_recorded_map_B": 0.26750501601932575,
+   "A_recorded_map_B": -0.05306281615875852,
+   "p_valence": 0.5333077384486855,
+   "p_arousal": 0.6613026560715491,
+   "seed": 478418494
+  },
+  "言": {
+   "count": 20.0,
+   "V_recorded_map_B": 0.005219655377474375,
+   "A_recorded_map_B": 0.0017843475142695908,
+   "p_valence": 0.13816406989099755,
+   "p_arousal": 0.8146936164815696,
+   "seed": 1362147613
+  },
+  "結局": {
+   "count": 36.0,
+   "V_recorded_map_B": -0.06035168478298858,
+   "A_recorded_map_B": -0.120567017602486,
+   "p_valence": 0.10733537284594992,
+   "p_arousal": 0.41805773160343224,
+   "seed": 788064710
+  },
+  "かつて": {
+   "count": 21.0,
+   "V_recorded_map_B": 0.2470139722191811,
+   "A_recorded_map_B": -0.0699388665196905,
+   "p_valence": 0.46994764012401663,
+   "p_arousal": 0.6293954523542629,
+   "seed": 1304609720
+  },
+  "いわ": {
+   "count": 18.0,
+   "V_recorded_map_B": 0.12816591817834233,
+   "A_recorded_map_B": -0.006653677666196067,
+   "p_valence": 0.2971548697181424,
+   "p_arousal": 0.8050115051240238,
+   "seed": 1650680856
+  },
+  "無い": {
+   "count": 127.0,
+   "V_recorded_map_B": -0.23247645270420358,
+   "A_recorded_map_B": 0.0017843475142695908,
+   "p_valence": 0.056725035380918554,
+   "p_arousal": 0.8146936164815696,
+   "seed": 1483942543
+  },
+  "いま": {
+   "count": 85.0,
+   "V_recorded_map_B": 0.21422830213894972,
+   "A_recorded_map_B": -0.12900504278295188,
+   "p_valence": 0.4134621629141308,
+   "p_arousal": 0.4033743467029481,
+   "seed": 1674430841
+  },
+  "いい": {
+   "count": 191.0,
+   "V_recorded_map_B": 0.615852760621785,
+   "A_recorded_map_B": 0.027098423055667675,
+   "p_valence": 0.9913858134260853,
+   "p_arousal": 0.8420737888798686,
+   "seed": 696624193
+  },
+  "ひとり": {
+   "count": 55.0,
+   "V_recorded_map_B": 0.3002906860995571,
+   "A_recorded_map_B": 0.03553644823613333,
+   "p_valence": 0.7754688245188062,
+   "p_arousal": 0.8530684748776386,
+   "seed": 755433807
+  },
+  "言い": {
+   "count": 70.0,
+   "V_recorded_map_B": 0.0748892042979663,
+   "A_recorded_map_B": 0.06506953636776425,
+   "p_valence": 0.19697503248979767,
+   "p_arousal": 0.8771773201610974,
+   "seed": 1672687015
+  },
+  "もう": {
+   "count": 223.0,
+   "V_recorded_map_B": 0.38225486130013575,
+   "A_recorded_map_B": -0.03618676579782676,
+   "p_valence": 0.8755475768655837,
+   "p_arousal": 0.7018667974486079,
+   "seed": 988269387
+  },
+  "よい": {
+   "count": 50.0,
+   "V_recorded_map_B": 0.6773258920222185,
+   "A_recorded_map_B": -0.05306281615875852,
+   "p_valence": 0.9943752427017473,
+   "p_arousal": 0.6613026560715491,
+   "seed": 727567611
+  },
+  "なんだか": {
+   "count": 31.0,
+   "V_recorded_map_B": 0.1896390495787763,
+   "A_recorded_map_B": 0.06928854895799708,
+   "p_valence": 0.391864155663114,
+   "p_arousal": 0.8817811394943322,
+   "seed": 1935924286
+  },
+  "わから": {
+   "count": 43.0,
+   "V_recorded_map_B": -0.17100332130376938,
+   "A_recorded_map_B": 0.039755460826366606,
+   "p_valence": 0.07242966256444373,
+   "p_arousal": 0.8568623498551674,
+   "seed": 700189354
+  },
+  "ばん": {
+   "count": 29.0,
+   "V_recorded_map_B": 0.025710699177619034,
+   "A_recorded_map_B": -0.08259590429038943,
+   "p_valence": 0.15156828220222618,
+   "p_arousal": 0.6062957539602462,
+   "seed": 1995609074
+  },
+  "どんなに": {
+   "count": 36.0,
+   "V_recorded_map_B": 0.21013009337892097,
+   "A_recorded_map_B": 0.027098423055667675,
+   "p_valence": 0.40930363157495586,
+   "p_arousal": 0.8420737888798686,
+   "seed": 1508788070
+  },
+  "きょう": {
+   "count": 29.0,
+   "V_recorded_map_B": 0.23881755469912358,
+   "A_recorded_map_B": -0.06571985392945767,
+   "p_valence": 0.45419596596355544,
+   "p_arousal": 0.6352629738772935,
+   "seed": 1116478968
+  },
+  "いや": {
+   "count": 125.0,
+   "V_recorded_map_B": 0.439629783940541,
+   "A_recorded_map_B": 0.1494497881724235,
+   "p_valence": 0.9489032389355074,
+   "p_arousal": 0.9360893819526718,
+   "seed": 2053594556
+  },
+  "ちゃんと": {
+   "count": 30.0,
+   "V_recorded_map_B": 0.4068441138603096,
+   "A_recorded_map_B": -0.13322405537318494,
+   "p_valence": 0.8932507784854979,
+   "p_arousal": 0.3923833444349572,
+   "seed": 516484852
+  },
+  "これから": {
+   "count": 34.0,
+   "V_recorded_map_B": 0.3289781474197597,
+   "A_recorded_map_B": 0.06085052377753142,
+   "p_valence": 0.8068283412563347,
+   "p_arousal": 0.8737798502475136,
+   "seed": 359485943
+  },
+  "信じ": {
+   "count": 55.0,
+   "V_recorded_map_B": 0.6363438044219296,
+   "A_recorded_map_B": 0.09882163708962799,
+   "p_valence": 0.9928502128291724,
+   "p_arousal": 0.9057262100255841,
+   "seed": 1035402540
+  },
+  "わかっ": {
+   "count": 26.0,
+   "V_recorded_map_B": 0.27979964229941245,
+   "A_recorded_map_B": -0.0024346650759632382,
+   "p_valence": 0.6397564736943028,
+   "p_arousal": 0.8093297166621026,
+   "seed": 242361655
+  },
+  "申し": {
+   "count": 26.0,
+   "V_recorded_map_B": -0.10953018990333563,
+   "A_recorded_map_B": -0.019310715436894776,
+   "p_valence": 0.08990053052586382,
+   "p_arousal": 0.7579039318683414,
+   "seed": 66200126
+  },
+  "全部": {
+   "count": 20.0,
+   "V_recorded_map_B": 0.23471934593909438,
+   "A_recorded_map_B": -0.18385220645598044,
+   "p_valence": 0.448849684157889,
+   "p_arousal": 0.12231211862668473,
+   "seed": 900698025
+  }
+ },
+ "figures": {
+  "SP.png": "c18a785edc5aa7debdbd03746e279f1c499a719f465d295a2b0d95874cbe812d",
+  "SPC.png": "84f4a091e512c0ebf822de381566e0678b3108b592e150684258c41c64162c44",
+  "SPC_protanomaly.png": "44a069b34fcd80e835b65786a490ec9e885233681dd335d990bfe0a92501dcb0",
+  "SPC_deuteranomaly.png": "7c90ce0269345e718ce5a68becd1a3098f51f27e9327e4cc98715fb3cb6c6427",
+  "SPC_tritanomaly.png": "3ec92db4a3fe3a0bcf599b07186e070fd34a94bd3f7dd81b103cb6e5aa955630",
+  "SPC_reversed.png": "3734cb7d48b0eeb377ed271cf6e798401bc4e0e290d6e55cd86382b729bc9c21",
+  "SPC_reversed_protanomaly.png": "2b1cc1975b7487a95ca7a7ec3d0484e94043ef5494bd0fe2d63fda2f17f69ae0",
+  "SPC_reversed_deuteranomaly.png": "6bc4cf057fbeba587dab0b6272877dd1bfaf9523d140b13a665550a99c1a060c",
+  "SPC_reversed_tritanomaly.png": "75db1872131933373a8696b450b64060c9a262efd421a8552b90a34240f6f416"
+ }
+}
