@@ -1,0 +1,30 @@
+{
+ "meta": {
+  "conditions_sha256": "9bebf2dada90405580800416e107db6da1cf67f698429b2d9bb2f0caf9047383",
+  "script_sha256": "cdb776e46cfedfb37aa123963f7e7a01bd50d43e0ed9f69c6c7b87545e953104",
+  "python": "3.13.12",
+  "platform": "Darwin arm64",
+  "atact_commit": "b559a80c623d36357dd0736b887497a0cb789af5",
+  "numpy": "2.5.4",
+  "scipy": "1.18.1",
+  "pillow": "13.0.0",
+  "openpyxl": "3.1.5",
+  "git_commit": "0fad53919aa3803853d48f556647f60bf5b9a1c2",
+  "git_dirty": false,
+  "finished": "2026-10-28T03:52:27+00:00"
+ },
+ "spreadsheet_sha256": "eb48ba69680d71a2605f12e28cd975363a15b6b9eac3ed16468cdbb4eff8919a",
+ "key_sha256": "cd9082351f7a7d736fea79563ba1a11c2c152704f3df81b4a5d1227ec3d6989f",
+ "n_items": 95,
+ "canvas": [
+  1676,
+  264
+ ],
+ "checks": {
+  "B1": true,
+  "B3": true,
+  "B4": true,
+  "B5": true,
+  "B6": true
+ }
+}
