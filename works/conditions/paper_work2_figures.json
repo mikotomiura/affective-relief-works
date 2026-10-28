@@ -1,0 +1,44 @@
+{
+ "purpose": "Two figures of work 2 for the paper on the two works (.steering/20261028-outline-v25, decision 1): (a) the 20 words of the two trial authors under their own seeds above the same words under the common seed 100, made by stacking the two committed images; (b) two rows of variant tiles of the two trial authors under the common seed 100 in the grey of the check of the seeds (version G0 of the blind judgement), the rows chosen by the rule of figure_6 of works/conditions/work2_seed_check.json applied to the answers of the deciding judge of the blind judgement (Harada) for G0. Nothing new is computed from the texts: the values are read from the committed results.",
+ "fixed_before_running": "Written on 2026-10-28 and committed before the script was run. Seen before: every image and record named below, the scoring of the blind judgement (results/blind_judgement/score.json) and its supplement. The main read the rule against score.json and seed_check.json before writing this: it gives P1_first_person (visible, remains) and L2_intensifier (invisible example by the fallback: no set was answered 同じに見える under all five seeds, so the set with the smallest median among the sets with tiles_differing >= 3), the same two rows as figure6.json of the check of the seeds; the script stops if the rule gives other rows, if the rows that remain differ from score.json, or if the rows differ from figure6.json. Under these answers the invisible example comes from the fallback (invisible_judged false); the caption must say so.",
+ "version": 1,
+ "inputs": {
+  "own_seeds": {"path": "results/work2_words/tiles.png", "sha256": "f82b81e38f89453009ffc94ed9980352806e7d330c0d46555f15db4245d66430"},
+  "common_seed": {"path": "results/work2_words/tiles_common_seed.png", "sha256": "9335f3b99aadfc93b12378dd86d303724c63ff2b2dcdf618d0b7b874f27b28c8"},
+  "variants_image": {"path": "results/work2_variants/tiles_seed100.png", "sha256": "e48f96353b70bccad5a196f196dd5bb058cb731afbb8ed285b8b6d2110e43837"},
+  "variants": {"path": "results/work2_variants/variants.json"},
+  "seed_check": {"path": "results/work2_seed_check/seed_check.json"},
+  "score": {"path": "results/blind_judgement/score.json"},
+  "score_conditions": {"path": "works/conditions/blind_judgement_score.json"},
+  "figure6": {"path": "results/work2_seed_check/figure6.json"},
+  "seed_check_conditions": {"path": "works/conditions/work2_seed_check.json"},
+  "variants_conditions": {"path": "works/conditions/work2_variants.json"},
+  "words_conditions": {"path": "works/conditions/work2_words.json"},
+  "hashes": "the three images are checked against the SHA-256 above, which are those of seed_check.json 'reproduced'; the JSON inputs are checked to be the committed bytes, to be computed on the conditions named in their meta and on a clean tree (git_dirty false); the conditions of the variants name the conditions of the 20 words given here; the sets and authors agree between the records"
+ },
+ "stack": {
+  "file": "seeds_two_rows.png",
+  "how": "own_seeds above common_seed, the same width (checked), 24 px of white between them, greyscale L as the inputs; nothing else is drawn"
+ },
+ "judged_rows": {
+  "file": "variants_judged.png",
+  "judge": "harada",
+  "version": "G0",
+  "rule": "figure_6 of works/conditions/work2_seed_check.json (the function figure6 of works/work2_seed_check.py) with: remains = the five answers of the judge for the set in G0 are all 違って見える; judged_invisible = none of the five is 違って見える (as in figure_6: true for visibly different, false otherwise, so わからない counts as not visible); median_ba and tiles_differing from seed_check.json",
+  "expected": ["P1_first_person", "L2_intensifier"],
+  "seed": 100,
+  "tiles": "every tile cut from variants_image at its place in the layout of the figure function of works/work2_variants.py (no resampling) and, as a check, computed again from its recorded V and A as in works/work2_seed_check.py; the run stops unless the two are equal pixel for pixel",
+  "layout": "one block per author (the first author on the left, as in the inputs), the visible row above the invisible row; the tiles at 160 px with 6 px between them; above each row its label, below each tile its spelling, below the tiles a key line; the title of a block is the slug of the author and the seed",
+  "row_names": {"P1_first_person": "first person", "L2_intensifier": "intensifiers"},
+  "row_label": "'{name}: n {n} in {k} of {m} works' from variants.json",
+  "key_line": "per spelling with tiles, in the order of the row: '{spelling} {romanization} x{tiles} (V {V:.2f}, A {A:.2f})' joined by ' / ', V and A as recorded in variants.json (map B)",
+  "romanization": {"私": "watashi", "わたし": "watashi", "僕": "boku", "おれ": "ore", "あたし": "atashi", "われ": "ware", "とても": "totemo", "たいへん": "taihen", "ずいぶん": "zuibun", "よほど": "yohodo", "非常に": "hijou ni"},
+  "font_file": "/System/Library/Fonts/Hiragino Sans GB.ttc",
+  "note": "the blind judgement showed these rows at 120 px; the figure uses the 160 px of the earlier variant figures, cut from them, so that no tile is drawn anew"
+ },
+ "outputs": {
+  "dir": "results/paper_work2_figures (refused if it exists)",
+  "record": "paper_work2_figures.json: the SHA-256 of the conditions, the script, every input and output, the rule's inputs and result, the versions and the git state"
+ },
+ "not_claimed": "The figures show images already made; they add no judgement. The rows of (b) are chosen by a rule fixed before the check of the seeds, so the rows carry no special meaning. That the deciding judge answered 違って見える for both rows under all five common seeds holds for this judge and these drawing conditions; the researcher's earlier look (not blind) answered neither row as visibly different under all five, and both are reported. A row seen as different is not evidence that readers perceive the authors as different."
+}
