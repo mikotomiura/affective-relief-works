@@ -1,0 +1,49 @@
+{
+ "purpose": "Sketch of a series of translators, version 3 (decision 7 of .steering/20261028-multilingual-survey, decisions of .steering/20261028-harada-reply-and-translators): for each of the three translations, the 20 dictionary-matched words it uses more than the other two, by the statistic of work 2, one tile per word drawn with the word's own dictionary V and A (no averaging) under the rule, common scale and seed of work 1. A permutation of the translation labels in blocks of runs gives a reference for whether the selected set can be told from label noise. Images only.",
+ "fixed_before_running": "Written on 2026-10-28 and committed before the script was run. Changed after the review before running (no high finding): the words selected for two translations described as possible, the symmetry of the slots stated, the tile size of version 1 named, the three comparisons named. Seen before: the records of version 1 (4267d46) and version 2 (04724b6), the review of both (the independence assumed by the noise reference of version 2 fails: its squared ratio is V 0.38 and A 0.50), and the count of matches (decision 3 of .steering/20261028-multilingual-survey). Not seen before: any word count or word list of these texts, any z, any tile of this version. The design (proposal C), the block permutation, the reading and the labels were chosen by the researcher on 2026-10-28 (AskUserQuestion) after a second opinion (codex-consult, names and texts withheld).",
+ "version": 1,
+ "base_conditions": "works/conditions/sketch_translations.json (texts, extraction, tokenize, the cut into N = 60 runs at k T // N, lexicon, generator, relief: all taken from it unchanged)",
+ "base_conditions_sha256": "7008a5b5be06df26f3723ee7a1a1b66bd5f0a93ed8dc4ebf06200ed5d1c9b565",
+ "counting": "the body of each translation is matched once as a whole with the greedy longest match of atact.lexicon.match_terms (a multiword entry is matched across run boundaries); the script repeats the same greedy loop to keep the position of the first token of every matched term, checks that its list of terms equals match_terms of the whole body, and assigns every term to the run that holds its first token",
+ "selection": {
+  "statistic": "for each translation against the other two pooled: z of the weighted log-odds ratio with an informative Dirichlet prior (Monroe, Colaresi and Quinn 2008, eqs 16, 20, 22, 23; [W34]), the function log_odds of checks/author_texture.py (the statistic of work 2), the prior being the pooled counts of the three translations scaled to a total of alpha_0",
+  "alpha_0": 1000.0,
+  "min_count": 2,
+  "min_runs": 2,
+  "candidate": "a word (matched term) with count >= min_count in the translation, present in >= min_runs of its runs, and z > 0",
+  "n_words": 20,
+  "order": "z descending, ties by the word (Unicode order)",
+  "shortfall": "fewer than n_words candidates for a translation stops the run (the filter is not loosened)",
+  "audit": "no word is removed by hand; the list with count, runs, log-odds and z is written out and read for proper names, spelling or naming variants, function words and pronouns ([W17]); what is found is recorded in the decisions"
+ },
+ "permutation": {
+  "block_runs": 6,
+  "n_permutations": 1000,
+  "seed": 20261028,
+  "rng": "numpy.random.default_rng(seed); for each permutation and each block, rng.permutation(3)",
+  "scheme": "the 60 runs are cut into consecutive blocks of block_runs runs; in each block the three translation labels are permuted, the same permutation for every run of the block, independently between blocks; slot t of a permutation is the concatenation, block by block, of the runs of the translation that the permutation puts in slot t",
+  "recomputed": "for every permutation and slot: counts and runs per word from the per-run counts, z against the other two slots pooled, the candidates with the same filter (min_count, min_runs, z > 0); the prior is unchanged (the pooled counts do not depend on the labels)",
+  "statistics": "per slot: z20, the 20th largest candidate z, and m20, the mean of the 20 largest candidate z; if a slot has fewer than 20 candidates, the missing values count as 0 (z20 = 0, m20 = the sum of the candidate z over 20) and the number of such slots is reported",
+  "reference": "per translation t: the 95th percentile (numpy.percentile, linear) of z20 and of m20 over the permutations, slot t; the three slots have the same distribution by symmetry (each block draws its translation uniformly), slot t is used only to pair a reference with each translation, and differences between the three percentiles are the variation of 1000 draws",
+  "sensitivity": "the same with block_runs 1 and 12 (1000 permutations each, seeds seed + 1 and seed + 12) and the observed selection with alpha_0 500 and 2000 (overlap with the selected 20); reported only, not used to choose or to read anything"
+ },
+ "reading": "per translation, written before running: if both the observed z20 and the observed m20 exceed their 95th percentiles under block_runs 6, the selected set is reported as 'distinguishable from the relabelling of blocks'; otherwise as 'insufficient evidence under this null' (not 'noise', not 'no difference'). The reading is about the set of 20, not about any single word. The tiles are drawn in both cases.",
+ "tiles": {
+  "tile_px": 200,
+  "gap_px": 8,
+  "label_px": 30,
+  "columns": 5,
+  "rows": 4,
+  "block_gap_px": 48,
+  "field": "atact.field.procedural_field_separable(f, tile_px, seed, octaves, normalize) with the seed, octaves and normalize of the base conditions (the field of version 1, on a grid of tile_px; version 1 drew tiles of about 106 px, this version 200 px without supersampling, so the same word can look finer here than in version 1)",
+  "height": "relief.tile(V, A, field, eps).H of the word's dictionary V and A, relief.grey under the common scale, rows flipped so that the origin is at the lower left",
+  "order": "z order, row by row from the upper left",
+  "labels": "under each tile the rank and the word; above each block the name of the translation",
+  "font_file": "/System/Library/Fonts/Helvetica.ttc",
+  "font_size": 18,
+  "font_use": "labels only (its SHA-256 is recorded)"
+ },
+ "outputs": "results/sketch_translations_words/sketch_translations_words.json and results/sketch_translations_words/words.png (the three blocks side by side)",
+ "reported": "per translation: the matched tokens, the number of candidates, the 20 words with count, runs, log-odds, z, V and A, the standard deviation (ddof 0) of V and A over the 20; the observed z20 and m20, their 95th percentiles and the reading; the number of slots with fewer than 20 candidates; the sensitivity; the words selected for more than one translation, listed and counted (possible: a word that the third translation rarely uses can have z > 0 for each of the other two)",
+ "not_claimed": "Not a signature of a translator: one story per translator, so the words mix the translator's choices, the edition (captions dropped, spelling, editing) and chance phrasing of this one text; the filter of two works of work 2 has no counterpart here. Only words of the lexicon can be selected (names outside it cannot). The prior uses the data analysed (footnote 18 of [W34]). The block permutation keeps the dependence inside a block of six runs but breaks the consistency of a translator across blocks, and runs at the same index stand only approximately at the same place of the story; the reference rests on that exchangeability. A distinctive word need not differ in V and A from the word it replaces; the dictionary value of a word is without context. The three readings are made at 5 % each, without correction for three comparisons. The labels, the lexicon, the statistic and the scale are the makers' choices."
+}
