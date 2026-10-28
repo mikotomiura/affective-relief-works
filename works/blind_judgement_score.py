@@ -68,7 +68,8 @@ def anchored_pixels(path: Path) -> dict[int, str]:
             rels = z.read(d.replace("drawings/", "drawings/_rels/") + ".rels").decode("utf-8")
             target = {}
             for rel in re.findall(r"<Relationship\b[^>]*>", rels):
-                rid, tgt = re.search(r'Id="(rId\d+)"', rel).group(1), re.search(r'Target="([^"]+)"', rel).group(1)
+                # any id: Excel writes rId1, other applications write ids such as R05dbda31c4d241ab
+                rid, tgt = re.search(r'\bId="([^"]+)"', rel).group(1), re.search(r'Target="([^"]+)"', rel).group(1)
                 target[rid] = "xl/media/" + tgt.rsplit("/media/", 1)[1]
             xml = z.read(d).decode("utf-8")
             for anchor in re.findall(r"<(?:xdr:)?(?:one|two)CellAnchor\b.*?</(?:xdr:)?(?:one|two)CellAnchor>", xml,
@@ -76,7 +77,7 @@ def anchored_pixels(path: Path) -> dict[int, str]:
                 frm = re.search(r"<(?:xdr:)?from>(.*?)</(?:xdr:)?from>", anchor, flags=re.S).group(1)
                 col = int(re.search(r"<(?:xdr:)?col>(\d+)</(?:xdr:)?col>", frm).group(1))
                 row = int(re.search(r"<(?:xdr:)?row>(\d+)</(?:xdr:)?row>", frm).group(1)) + 1
-                m = re.search(r'r:embed="(rId\d+)"', anchor)
+                m = re.search(r'r:embed="([^"]+)"', anchor)
                 if col != 1 or m is None:
                     continue
                 if row in out:

@@ -112,3 +112,28 @@ def test_reply_checks_find_changed_cells_and_lost_images(tmp_path):
             zo.writestr(n, png_bytes(np.full((size[1], size[0], 3), 9, dtype=np.uint8)) if n == "xl/media/image2.png"
                         else zi.read(n))
     assert any("images" in p for p in check_reply(sent, tmp_path / "image.xlsx", 3))
+
+
+def test_reply_checks_read_relationship_ids_of_any_form(tmp_path):
+    """Other applications than Excel write relationship ids such as R05dbda31c4d241ab instead of rId1."""
+    pytest.importorskip("openpyxl")
+    import re
+    import zipfile
+    from blind_judgement import build_xlsx, canvas_size, png_bytes
+    from blind_judgement_score import anchored_pixels, check_reply
+
+    t = {"sets_px": 12, "words20_px": 8, "supersample": 1, "gap": 4}
+    size = canvas_size(t)
+    imgs = [png_bytes(np.full((size[1], size[0], 3), k, dtype=np.uint8)) for k in range(3)]
+    sent = tmp_path / "sent.xlsx"
+    build_xlsx(imgs, {"text": "a", "choices": [DIFFERENT, SAME, UNSURE], "comment": "c", "how": "h"}, size, sent)
+    other = tmp_path / "other.xlsx"
+    rename = lambda b: re.sub(rb'"rId(\d+)"', lambda m: b'"R0a1b2c3d' + m.group(1) + b'"', b)  # noqa: E731
+    with zipfile.ZipFile(sent) as zi, zipfile.ZipFile(other, "w") as zo:
+        for n in zi.namelist():
+            zo.writestr(n, rename(zi.read(n)) if n.startswith("xl/drawings/") else zi.read(n))
+    with zipfile.ZipFile(other) as z:
+        assert b'"R0a1b2c3d1"' in z.read("xl/drawings/_rels/drawing1.xml.rels")
+    assert len(anchored_pixels(other)) == 3
+    assert anchored_pixels(other) == anchored_pixels(sent)
+    assert check_reply(sent, other, 3) == []
