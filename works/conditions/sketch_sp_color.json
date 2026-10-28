@@ -1,0 +1,53 @@
+{
+ "purpose": "Work 2, the refined sketches (decision 1 of .steering/20261028-color-features): the relief SP (V and A as percentiles instead of map B, the seed of a tile from its word or spelling) and the colour C1 refined (percentiles taken among the words of the works of the six authors instead of the whole lexicon, and a hue path that does not pass through green), drawn for the rows of the check of the seeds under two common seeds. Images only; they show the direction chosen, the works are made afterwards on conditions of their own.",
+ "fixed_before_running": "Written on 2026-10-28 and committed before the script was run. Seen before: everything of results/sketch_color_features (b3739ba), among them the percentiles over the whole lexicon of fifteen spellings and that most of them lie at the pleasant end, and the tiles of every candidate there. Not seen before: any percentile among the words of the works, any tile drawn below. The design was put to Codex (the design in English, no names, no words) before it was committed; its points 1, 2 and 4 changed the weighting, the colour space and the candidates drawn (.steering/20261028-color-features, codex-consult-sp.md).",
+ "version": 1,
+ "inputs": {
+  "work2_conditions": "works/conditions/work2.json",
+  "words": "results/work2_words/words.json",
+  "variants": "results/work2_variants/variants.json",
+  "use": "the 23 works of work 2 read and cut as in works/work2_words.py (the same checks against results/work2), their matched words counted over all six authors; the raw valence and arousal of the lexicon of work 2 (japanese_text.load_memolon); the words and spellings of the two trial authors, their tile counts and their recorded V and A; the field, relief, eps and sampling of works/conditions/work2_words.json"
+ },
+ "authors": [
+  "太宰治",
+  "岡本かの子"
+ ],
+ "seeds": [
+  100,
+  300
+ ],
+ "rows": [
+  "L1_adversative",
+  "L2_intensifier",
+  "P1_first_person",
+  "O1_iu",
+  "words20"
+ ],
+ "drawing": {
+  "tile_px": 72,
+  "supersample": 4,
+  "grey": "z / D + 1/2 (common scale)"
+ },
+ "reference": {
+  "what": "the matched tokens of the 23 works of work 2; each author weighs 1 in total and its tokens share that weight equally (a token of an author with T tokens weighs 1/T), so that no author dominates by the length of its works; the percentile of a word is the weight of tokens whose raw value is below it plus half the weight of those equal to it, over the total weight (6)",
+  "why": "the words a reader of these texts meets; over the whole lexicon most frequent words lay at the pleasant end (results/sketch_color_features). The percentile by types and by tokens without the per-author weight are computed and recorded next to it, not drawn. A percentile of 0.5 is not affective neutrality; it is the middle of these texts",
+  "lookup": "a spelling by its entry in variants.json (非常に by 非常), a word by itself; every word and spelling drawn must occur in the reference (else the run stops)"
+ },
+ "candidates": {
+  "G0": "grey relief as before, recorded V and A (map B), the common seed (the baseline)",
+  "P": "grey relief, V = 2 p_valence - 1, A = 2 p_arousal - 1 (the weighted percentiles of the reference), the common seed (the percentiles alone)",
+  "S": "grey relief, recorded V and A (map B), seed = (the first eight bytes of the SHA-256 of the UTF-8 word or spelling, read big-endian as an integer, + the common seed) mod 2**31 (the seed per spelling alone; no Unicode normalisation, the strings as recorded)",
+  "SP": "P and S together (the relief chosen)",
+  "C1": "the relief of G0 coloured in OKLCH: L = the OKLab lightness of the grey of the relief (so the relief keeps its lightness), hue = 260 + 155 p_valence degrees modulo 360 (blue at 0, through violet and magenta, to orange at 1), chroma = 0.03 + 0.12 p_arousal, reduced in steps of 0.002 until the colour lies in sRGB (near black and white the chroma, and with it the arousal, is lost)",
+  "SPC": "the relief of SP coloured as C1"
+ },
+ "checks": [
+  "K0 (computed): in every candidate, under one seed, every tile of a word or spelling shared by both rows equals that tile drawn afresh from the word alone",
+  "K1 (by eye, main first): under both common seeds, which rows look different between the two authors in SP and in SPC, compared with G0",
+  "K2 (by eye): whether the colour no longer turns muddy in the middle of the scale and whether the relief still reads under the colour",
+  "K2b (computed): the share of pixels whose chroma had to be reduced, per candidate with colour",
+  "K3 (computed): per row and author, the range and the interquartile range of the author-equal percentiles of its tiles (the ones drawn), next to those of the earlier whole-lexicon percentiles"
+ ],
+ "outputs": "results/sketch_sp_color/sketch_{candidate}.png (labelled), values.json (per word and spelling: count in the reference, token and type percentiles of valence and arousal, the seed of SP), sketch.json (provenance, K0, K3)",
+ "not_claimed": "Sketches of a direction chosen after the values were seen; no finding about the authors. A difference that shows here shows the composition and the values recorded, through a mapping the makers chose. The percentiles depend on the 23 works chosen; the values of the lexicon for Japanese are predicted, not rated by people. The hash of SP encodes the identity of a spelling, not a distance of meaning: two spellings may by chance get patterns that look alike; V and A encode the affect values."
+}
