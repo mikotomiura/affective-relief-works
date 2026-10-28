@@ -17,6 +17,7 @@ import hashlib
 import io
 import json
 import random
+import re
 import secrets
 import shutil
 import struct
@@ -272,8 +273,9 @@ def xlsx_leaks(path: Path, forbidden: list[str], forbidden_in_text: list[str], f
                         x.split("</v>")[0] for x in text.split("<v>")[1:])
                 else:
                     strings = text
-                for f in forbidden_in_text:
-                    if f in strings:
+                for f in forbidden_in_text:  # a number only as a whole number (2006 of the namespaces holds 200)
+                    pat = rf"(?<!\d){re.escape(f)}(?!\d)" if f.isdigit() else re.escape(f)
+                    if re.search(pat, strings):
                         hits.append(f"{name}: {f}")
     return hits
 

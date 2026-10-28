@@ -124,3 +124,17 @@ def test_leak_check_masks_the_fixed_strings_and_maps_rows_to_images(tmp_path):
     assert xlsx_leaks(p, ["わから", "全部"], [], fixed) == []
     import hashlib
     assert anchored_images(p) == {n + 1: hashlib.sha256(b).hexdigest() for n, b in enumerate(imgs, 1)}
+
+
+def test_numbers_are_matched_as_whole_numbers(tmp_path):
+    pytest.importorskip("openpyxl")
+    from blind_judgement import build_xlsx, xlsx_leaks
+
+    size = canvas_size(T)
+    imgs = [png_bytes(np.full((size[1], size[0], 3), 1, dtype=np.uint8))]
+    q = {"text": "a", "choices": ["x"], "comment": "c", "how": "h 2006 1000"}
+    p = tmp_path / "a.xlsx"
+    build_xlsx(imgs, q, size, p)
+    assert xlsx_leaks(p, [], ["200", "100"]) == []
+    build_xlsx(imgs, {**q, "how": "h 200"}, size, p)
+    assert xlsx_leaks(p, [], ["200"]) != []
