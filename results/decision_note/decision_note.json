@@ -1,0 +1,196 @@
+{
+ "meta": {
+  "conditions_sha256": "5d84752bbb6408899dc11739ad231dced1551ed3ce5e6c89918b4fea2a6dad7e",
+  "script_sha256": "d5beefb71b605740d32ff048aafeb57722f3dab87fb147f306e118ecc7977803",
+  "common_sha256": "54a3e6156b16cbdcd90772a0b980aefa3fb17ebe1c40217b297848d2baf710cc",
+  "font_sha256": "658718d77497145281cb0ec45ff2fe7c6e18062b2a38f837d0d792d9be3a9ba3",
+  "python": "3.13.12",
+  "platform": "Darwin arm64",
+  "atact_commit": "b559a80c623d36357dd0736b887497a0cb789af5",
+  "pillow": "13.0.0",
+  "git_commit": "e742a7993c536c3549590d5fd03d5e4569ed4e9f",
+  "git_dirty": false,
+  "started": "2026-10-28T05:23:08+00:00",
+  "finished": "2026-10-28T05:23:09+00:00"
+ },
+ "files_named_sha256": {
+  "results/work1/common.png": "479f1be16edc6f6e96028cb90161a98567bfe867e7ed2543590664035f57451d",
+  "results/work1/common_eps.png": "2ec68492d5c01cdfee492d36a1b67e2d53aa53c365b5ee62820065af699abf51",
+  "results/work1/minmax.png": "44424f5e007e89cb69b8cf906c1103995db8a95c60941597587c5f625b9b37cb",
+  "results/work1_drawing/drawing.png": "fc0e11ef84aa8d9ffda19c2e6fe1fd8a383788a21ded5ba10f1a48b3f8b20a8d",
+  "works/conditions/work1.json": "e1d66fd796ad22622f15fb35abbb6e8173abf6674b6ac7315e850b71ae0f332e",
+  "works/conditions/work1_drawing.json": "42cf0123a42fabfac2a4382907a0d32125c342bf6b6392fdd61f2e78c401967f"
+ },
+ "rows_work1": [
+  {
+   "quantity": "text",
+   "value": "A Pair of Silk Stockings, 104 sentences",
+   "acted_on": [
+    "results/work1/common.png",
+    "results/work1/minmax.png",
+    "results/work1/common_eps.png",
+    "results/work1_drawing/drawing.png"
+   ],
+   "when": "before: counts without a lexicon only",
+   "read": {
+    "file": "works/conditions/work1.json",
+    "read": {
+     "text.heading": "A PAIR OF SILK STOCKINGS",
+     "text.sentences": 104
+    }
+   }
+  },
+  {
+   "quantity": "lexicon",
+   "value": "NRC VAD Lexicon v2.1, V and A",
+   "acted_on": [
+    "results/work1/common.png",
+    "results/work1/minmax.png",
+    "results/work1/common_eps.png",
+    "results/work1_drawing/drawing.png"
+   ],
+   "when": "before: none",
+   "read": {
+    "file": "works/conditions/work1.json",
+    "read": {
+     "lexicon.name": "NRC VAD Lexicon v2.1"
+    }
+   }
+  },
+  {
+   "quantity": "height scale",
+   "value": "common to the series, D = 1.2 mm (per-tile min-max shown next to it)",
+   "acted_on": [
+    "results/work1/common.png",
+    "results/work1/minmax.png",
+    "results/work1/common_eps.png",
+    "results/work1_drawing/drawing.png"
+   ],
+   "when": "before: none",
+   "read": {
+    "file": "works/conditions/work1.json",
+    "read": {
+     "relief.D_mm": 1.2
+    }
+   }
+  },
+  {
+   "quantity": "band",
+   "value": "4 octaves of the generator",
+   "acted_on": [
+    "results/work1/common.png",
+    "results/work1/minmax.png",
+    "results/work1/common_eps.png",
+    "results/work1_drawing/drawing.png"
+   ],
+   "when": "before: fixed before the works",
+   "read": {
+    "file": "works/conditions/work1.json",
+    "read": {
+     "relief.octaves": 4
+    }
+   }
+  },
+  {
+   "quantity": "seed",
+   "value": "42, one for every tile",
+   "acted_on": [
+    "results/work1/common.png",
+    "results/work1/minmax.png",
+    "results/work1/common_eps.png",
+    "results/work1_drawing/drawing.png"
+   ],
+   "when": "before: none",
+   "read": {
+    "file": "works/conditions/work1.json",
+    "read": {
+     "relief.seed": 42
+    }
+   }
+  },
+  {
+   "quantity": "eps",
+   "value": "0.3529079159926097 from e_min = 0.4 mm (provisional)",
+   "acted_on": [
+    "results/work1/common_eps.png"
+   ],
+   "when": "before: none",
+   "read": {
+    "file": "works/conditions/work1.json",
+    "read": {
+     "relief.eps": 0.3529079159926097,
+     "relief.e_min_mm": 0.4
+    }
+   }
+  },
+  {
+   "quantity": "drawing",
+   "value": "grey; light from the upper left and from the lower right at 45 degrees; stretched per tile",
+   "acted_on": [
+    "results/work1_drawing/drawing.png"
+   ],
+   "when": "after: every image and value of work 1 (the way of drawing and the twelve tiles were committed before drawing)",
+   "read": {
+    "literal": true,
+    "check": {
+     "file": "works/conditions/work1_drawing.json",
+     "read": {
+      "drawings.b_light_upper_left": "Lambert shading max(0, n . l) of the surface z, the normal n from the gradient of z (central differences, mm per mm), the light l at elevation 45 degrees and azimuth 135 degrees (from the upper left of the figure, whose rows are flipped so that the origin is at the lower left), no ambient term; computed on a grid supersample times finer and averaged over blocks to tile_px",
+      "drawings.c_light_lower_right": "as b with the azimuth 315 degrees (from the lower right)"
+     },
+     "found": [
+      "elevation 45 degrees",
+      "azimuth 135 degrees",
+      "azimuth 315 degrees"
+     ]
+    }
+   }
+  },
+  {
+   "quantity": "how the series is shown",
+   "value": "as a whole set of tiles",
+   "acted_on": [
+    "results/work1/common.png",
+    "results/work1/minmax.png"
+   ],
+   "when": "after: the check of the flow of the story",
+   "read": {
+    "literal": true
+   }
+  }
+ ],
+ "drawing": {
+  "width_px": 2100,
+  "dpi": 300,
+  "font_pt": 8.0,
+  "column_share": {
+   "quantity": 0.15,
+   "value": 0.29,
+   "acted_on": 0.3,
+   "when": 0.26
+  },
+  "empty_rows": 3,
+  "empty_row_lines": 2,
+  "minor_words": [
+   "a",
+   "an",
+   "and",
+   "as",
+   "at",
+   "but",
+   "by",
+   "for",
+   "in",
+   "nor",
+   "of",
+   "on",
+   "or",
+   "the",
+   "to"
+  ]
+ },
+ "outputs": {
+  "decision_note.png": "2906e2e097ee5caea38cdcdfa1d4b98ceb76f9ea35177f7c8a6e7776429fc64f",
+  "decision_note.md": "8035c369bb67a86f5ac2f60c682ee8c314b40c70bf5626e1a0851dfb4e8bf74d"
+ }
+}
