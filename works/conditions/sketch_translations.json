@@ -1,0 +1,95 @@
+{
+ "purpose": "Sketch of a series of translators (decision 2 of .steering/20261028-multilingual-survey): three English translations of 'The Little Mermaid' by Andersen, each cut into the same number of equal runs of tokens so that tile k of every translation stands at the same place in the story, every tile under the common height scale and one seed (the same lens for every translator). Images only; whether this replaces or joins work 2 is decided after the researcher has seen them.",
+ "fixed_before_running": "Written on 2026-10-28 and committed before the script was run. Seen before: the three texts (their openings and endings), the count of NRC matches only (sentences 331, 407, 360; paragraphs 61, 104, 103; matched share of tokens 0.66 in all three; scratchpad coverage.py, decision 3 of .steering/20261028-multilingual-survey). Not seen before: any valence or arousal value of these texts, any tile. The unit (equal runs of tokens, N = 60) was chosen by the researcher on 2026-10-28 (AskUserQuestion) because sentences and paragraphs differ between the translators. Changed after the review before running (no high finding): ties in the ranks, the dropped captions as strings and the last line fixed, the matching inside a run stated.",
+ "version": 1,
+ "runs": 60,
+ "translations": [
+  {
+   "name": "paull",
+   "translator": "Mrs. H. B. Paull (1888)",
+   "source": "https://en.wikisource.org/wiki/Hans_Andersen%27s_Fairy_Tales/The_Little_Mermaid (rev 12188521, external/translations-20261028/little-mermaid/FETCH.md)",
+   "file": "external/translations-20261028/little-mermaid/paull-mermaid.txt",
+   "sha256": "a38ca9d218c1aa26c8b3b4090a5ebb431bec29cec5c396eec75cb541feb1a529",
+   "heading": "THE LITTLE MERMAID",
+   "heading_line": 27,
+   "body_sha256": "e51fd0daa882203e96016762533979933085c3d13eaca640e4e5ec8220e00e7e",
+   "tokens": 9181,
+   "dropped_captions": [
+    "THE MERMAID AND THE PRINCE.",
+    "THE PRINCE ON THE BEACH."
+   ],
+   "last_line_sha256": "0c6c23b9b6d1bc6e241676fc65202dc4058e4aaed2a1816d625bdd8a80f47d09"
+  },
+  {
+   "name": "braekstad",
+   "translator": "H. L. Brækstad (1900)",
+   "source": "https://en.wikisource.org/wiki/Fairy_tales_and_stories_(Andersen,_Tegner)/The_Little_Mermaid (rev 10420654)",
+   "file": "external/translations-20261028/little-mermaid/braekstad-mermaid.txt",
+   "sha256": "75c09669f715c5c696c947b9b0e77058e5aa459f9ba6a400a7353433479319ad",
+   "heading": "THE LITTLE MERMAID",
+   "heading_line": 27,
+   "body_sha256": "af7f27eac0ae9d37da275fc99701fa94c06ef2081649c25fbb0f52362c60348a",
+   "tokens": 9238,
+   "dropped_captions": [
+    "THE SHIP WAS BEGINNING TO MAKE GREATER HEADWAY; LARGE CLOUDS WERE GATHERING AND FLASHES OF LIGHTNING WERE SEEN. THE LITTLE MERMAID NOW UNDERSTOOD THAT THE SHIP WAS IN DANGER.",
+    "THERE THE SEA WITCH WAS SITTING, WHILE A TOAD WAS EATING OUT OF HER MOUTH AND THE WATER-SNAKES WERE CRAWLING OVER HER BOSOM."
+   ],
+   "last_line_sha256": "085cfe208cf948e1581a139ff4fcfd2526af254abc2b3a957bb88877159edcb2"
+  },
+  {
+   "name": "craigie",
+   "translator": "W. A. and J. K. Craigie (1914)",
+   "source": "https://en.wikisource.org/wiki/Fairy_Tales_and_Other_Stories_(Andersen,_Craigie)/The_Little_Sea_Maid (rev 11193950)",
+   "file": "external/translations-20261028/little-mermaid/craigie-mermaid.txt",
+   "sha256": "2086974759cfbc4469eba0dbc1d06569a383ecb25d02f2afa684605bdc29a892",
+   "heading": "THE LITTLE SEA MAID",
+   "heading_line": 15,
+   "body_sha256": "78d373e693efd3acb00057d66080e3a8257d79c6c6cc97f988c02aa317c7c0b1",
+   "tokens": 9012,
+   "dropped_captions": [],
+   "last_line_sha256": "f1f7519ad20eed94c8332cbc3e7dc37c2f8aaf75de365a5b086acbd3ab623134"
+  }
+ ],
+ "steps": "works/sketch_translations.extract_body (non-empty stripped lines after the last line equal to the heading; a line whose letters are all upper case is an illustration caption, dropped and listed), atact.lexicon.tokenize of the kept lines joined by one space, cut into N runs at k T // N, atact.lexicon.match_terms per run and the mean of V and A of the matched terms (a run with no match is (0, 0) and flagged), src/relief.tile and relief.grey of H under the common scale. A multiword entry of the lexicon is matched only inside a run (sentence boundaries are not seen). Checked before running without the lexicon: no kept line ends with a hyphen in any translation; the last kept line of each is the closing sentence of the story (its SHA-256 is fixed below).",
+ "lexicon": {
+  "name": "NRC VAD Lexicon v2.1",
+  "file": "external/nrc-vad-v2.1-20261026/NRC-VAD-Lexicon-v2.1/NRC-VAD-Lexicon-v2.1.txt",
+  "sha256": "42c718817fc91d5c133581b24b0bb31d2b14a0b16edb19bc6ce6ab70343e5a45",
+  "terms": "non-commercial research and education only; not redistributed"
+ },
+ "generator": {
+  "requirement": "atact @ git+https://github.com/mikotomiura/affective-relief-audit@b559a80c623d36357dd0736b887497a0cb789af5",
+  "commit": "b559a80c623d36357dd0736b887497a0cb789af5",
+  "library_sha256": {
+   "__init__.py": "d5980876e37cb7a1f5dc379028ab50f7a0c1d77d84c7651ee5d1beefd623b6ab",
+   "field.py": "4162e8faa60ca78257fd0777a3a7dceaaa7bbab6bfe6691de46f49a339b641c5",
+   "lexicon.py": "36cad1e49a25b352a7ae04868c6693ef349e8276d51909061eeb378085065e81",
+   "mapping.py": "83a50faaa664ddcb99004392e13a73fb096a85588a8b3c423b2c8b71ce626d26",
+   "transform.py": "5d35c9c10dfa6c8d5d3b2a9e8126ab45b895a1be14e05650c3ef60ffd3431bd1"
+  }
+ },
+ "relief": {
+  "L_mm": 50.0,
+  "D_mm": 1.2,
+  "s_max": 0.3,
+  "base_mm": 2.0,
+  "e_min_mm": 0.4,
+  "G_star": 88.22697899815242,
+  "eps": 0.3529079159926097,
+  "seed": 42,
+  "octaves": 4,
+  "normalize": "ampsum"
+ },
+ "relief_source": "the values of work 1 (works/conditions/work1.json): the same rule, scale, eps and seed",
+ "figure": {
+  "panel_width_mm": 56.6,
+  "columns": 6,
+  "gap_mm": 0.5,
+  "panel_gap_mm": 4.0,
+  "dpi": 300,
+  "order": "panels left to right in the order of translations; tiles in reading order, six to a row (ten rows), origin of each tile lower left; no labels in the images"
+ },
+ "outputs": "results/sketch_translations/sketch_translations.json and results/sketch_translations/{paull,braekstad,craigie,side_by_side}.png",
+ "reported": "per translation the dropped captions, the unmatched runs and the number of matched terms per run (minimum and median); the Spearman correlation (tied values given the mean of their ranks) by position of V and of A between each pair of translations, as a description only",
+ "not_claimed": "Nothing about the emotion of the story or of a translation: each point is the mean of dictionary values of the matched terms of a run. The correlations are not a test and are not used to choose anything. Differences between the panels come from the words of the translations under one lexicon and one rule; the lexicon, the unit and the scale are the makers' quantities."
+}
