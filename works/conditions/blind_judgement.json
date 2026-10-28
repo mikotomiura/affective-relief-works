@@ -1,0 +1,98 @@
+{
+ "purpose": "Work 2, the blind judgement (decision 1 of .steering/20261028-outline-v22, decisions 1 of .steering/20261028-blind-judgement and 1 of .steering/20261028-color-features, and the choice of versions of 2026-10-28): pairs of rows of tiles of the two trial authors under five common seeds, drawn in three versions (G0: the grey relief as before; P: the grey relief from percentiles among the words of the works; SPC: the relief from percentiles with a seed per spelling, coloured from the percentiles), shown in random order with top and bottom drawn at random and the authors not named, to a judge who has not seen the sheets. The earlier answers (check of the seeds) are not replaced.",
+ "fixed_before_running": "Written on 2026-10-28 and committed before the script was run. Seen before: every sheet and figure of results/work2_seed_check and the answers there; the sketches of results/sketch_color_features and results/sketch_sp_color (the versions G0, P and SPC under the common seeds 100 and 300, labelled). Not seen before: any tile under the seeds 200, 400 and 500 in the versions P and SPC, the order of the items, the top and bottom, the draws of the controls, any answer.",
+ "version": 1,
+ "inputs": {
+  "values": "results/sketch_sp_color/values.json",
+  "values_sha256": "2a15808cef6cd5978acda504fb6d08b4c1df6fec736901d90c492e6e525db71e",
+  "sketch_conditions": "works/conditions/sketch_sp_color.json",
+  "words": "results/work2_words/words.json",
+  "variants": "results/work2_variants/variants.json",
+  "use": "the rows (words and spellings in recorded order and tile counts) of the two trial authors; per word or spelling, its recorded V and A (map B) and its author-equal percentiles of valence and arousal as recorded in values.json; the drawing of works/sketch_sp_color.py (z_mm of works/work2_words.py, the grey, the seed per spelling, the OKLCH colour) at the tile sizes below"
+ },
+ "authors": [
+  "太宰治",
+  "岡本かの子"
+ ],
+ "versions": {
+  "G0": "grey relief, recorded V and A, the common seed",
+  "P": "grey relief, V and A from the author-equal percentiles, the common seed",
+  "SPC": "relief from the percentiles with the seed per spelling, coloured in OKLCH from the percentiles (as SPC of works/conditions/sketch_sp_color.json)"
+ },
+ "rows": [
+  "L1_adversative",
+  "L2_intensifier",
+  "P1_first_person",
+  "O1_iu",
+  "words20"
+ ],
+ "sets": [
+  "L1_adversative",
+  "L2_intensifier",
+  "P1_first_person",
+  "O1_iu"
+ ],
+ "common_seeds": [
+  100,
+  200,
+  300,
+  400,
+  500
+ ],
+ "tiles": {
+  "sets_px": 120,
+  "words20_px": 80,
+  "supersample": 4,
+  "gap": 4
+ },
+ "items": {
+  "test": "75: for every version, row and common seed, the row of the first author and the row of the second under that seed",
+  "same_image": "5, one per row: one row (version, author and common seed drawn at random) shown twice; expected answer: same",
+  "seed_differs": "5, one per row: the rows of one author under two different common seeds (drawn at random), in G0 or P (drawn at random; not SPC, whose colours do not change with the seed); expected answer: different",
+  "set_differs": "5: five different pairs of sets (drawn at random among the six pairs of the four sets), each the rows of one author under one common seed in one version (all drawn at random); reported only",
+  "repeat": "5, one per row: a test item of that row (version and seed drawn at random) shown again with top and bottom the other way round, at least 10 items after its first showing; reported only",
+  "order": "all 95 items in one random order; the draws until the repeats are at least 10 items after their first showing",
+  "top_bottom": "drawn at random for every item except the repeats (always the other way round)",
+  "randomness": "a 64-bit number from the secrets module, written only to the sealed key"
+ },
+ "image": {
+  "canvas": "every item is one PNG of the same size: width of the widest row (20 tiles of 80 px), height two rows of 120 px with 24 px between them, white; each row at the left of its half, centred in height; RGB for every version",
+  "names": "item_01.png and so on in the order shown (only in the spreadsheet as xl/media names)"
+ },
+ "question": {
+  "text": "上下 2 つの並びは、タイルの並びとして違って見えるか。",
+  "choices": [
+   "違って見える",
+   "同じに見える",
+   "わからない"
+  ],
+  "comment": "任意で一言",
+  "how": "時間の区切りはない。拡大してかまわない。前の項目に戻ってかまわない。色のある項目とない項目がある。"
+ },
+ "judges": {
+  "deciding": "the co-author (Harada), who has not seen the sheets (the researcher confirms this before sending); the rule below is applied to these answers only",
+  "also": "the researcher answers the same spreadsheet; reported as the second look of a judge who saw the sheets and the sketches, not as a blind judgement, and it does not decide",
+  "not": "no generative AI judges"
+ },
+ "rule": {
+  "controls_pass": "all 5 same_image items answered 同じに見える and at least 4 of the 5 seed_differs items answered 違って見える; if not, the rule is not applied and the result is written as: this judgement cannot decide (the answers of the researcher are not used in its place)",
+  "remains": "per version: a row remains if the deciding judge answers 違って見える for its test item under all five common seeds (the rule of the check of the seeds)",
+  "unsure": "わからない counts neither as 違って見える nor as 同じに見える; the counts are reported",
+  "claims": "the rule applied to G0 is the blind repetition of the check of the seeds (two claims or one); P and SPC report which rows the makers' quantities make visible; the conclusion is limited to: under these drawing conditions and this judge",
+  "reported": "every answer of both judges, item by item, in the supplement; the agreement of the repeats; the answers to set_differs"
+ },
+ "outputs": {
+  "spreadsheet": "advice/blind-judgement/judgement.xlsx (outside git): sheets 説明 and 判定 (one row per item: number, image, answer from the list, comment; the cells to fill in yellow)",
+  "key": "advice/blind-judgement/sealed/key.json (outside git): per item its kind, version, row, authors, seeds and top and bottom, the random number, the SHA-256 of every image and of the spreadsheet; its SHA-256 is written to .steering/20261028-blind-judgement/decisions.md before the spreadsheet is sent",
+  "record": "results/blind_judgement/record.json (in git): the SHA-256 of the key and of the spreadsheet, the checks below and the provenance, nothing that reveals the key"
+ },
+ "checks": [
+  "B1: the values read equal the record (SHA-256), and the G0, P and SPC tiles at the tile size and seeds of the sketches equal those of results/sketch_sp_color when drawn the same way (the first and last tile of every line)",
+  "B3: the same_image items show two equal rows; no other item does",
+  "B4: every image has the same size and only the chunks IHDR, IDAT and IEND; no two items have the same image",
+  "B4b: the image anchored on the row of every item is the image of that item (read from the drawing and its relations)",
+  "B5: the spreadsheet, unpacked, contains none of: the names and slugs of the six authors, the words of the two authors, the spellings of the four sets, the names of the rows, versions and kinds of items, the seeds, the words seed, swapped, author; the fixed strings written by the script (instructions, headers and choices, the same for every key) are removed before searching, so that a forbidden word inside them (わから in わからない) does not stop the run",
+  "B6: the repeats are at least 10 items after their first showing and the other way round; the counts of the items are as above"
+ ],
+ "not_claimed": "Not a finding about the authors. If no row remains in G0, this shows that under these drawing conditions and this judge no row was seen as different under all five common seeds; it does not show that the data hold no difference between the authors. A row seen as different in P or SPC shows what the makers' quantities make visible (percentiles, a seed per spelling, colour), not that readers perceive the authors as different; in SPC a difference can come from the identity of the spellings alone. The researcher's answers are not blind. The controls check attention and the display, not the sensitivity to small differences."
+}
