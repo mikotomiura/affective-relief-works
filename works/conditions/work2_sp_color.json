@@ -1,0 +1,78 @@
+{
+ "purpose": "Work 2, the main images on the direction chosen (decision 1 of .steering/20261028-color-features): the 20 words of each of the six authors as tiles of the relief SP (V and A as author-equal percentiles among the words of the works, a seed per word), in grey (SP) and coloured in OKLCH (SPC); the same with the hue band reversed (SPC_reversed, for the supplement: the direction of the hue is a quantity the makers set, decision 1 of .steering/20261028-while-blind-judgement); and the coloured sheets as seen with simulated colour vision deficiencies.",
+ "fixed_before_running": "Written on 2026-10-28 and committed before the script was run. Seen before: everything of results/sketch_sp_color (6bca60c), among them the author-equal percentiles of the words of the two trial authors and every sketch; results/work2_words (the 20 words of the six authors, their recorded V and A and the tiles under the authors' seeds and the common seed 100); the literature on colour and affect read on 2026-10-28 (cards W18 to W32) and a rough simulation of the hue band with colour vision deficiencies (no word, only the band). Not seen before: the percentiles of the words of the four other authors, any tile below. The second author has not seen and will not be shown these images until the blind judgement is answered.",
+ "version": 1,
+ "inputs": {
+  "words": "results/work2_words/words.json",
+  "use": "the 23 works of work 2 read and cut as in works/work2_words.py (the same checks against results/work2), their tokens counted over all six authors as in works/sketch_sp_color.py; the raw valence and arousal of the lexicon of work 2; the 20 words of each author in the order of words.json (the z order of their selection) with their recorded V and A; the field, relief, eps and sampling of works/conditions/work2_words.json"
+ },
+ "reference": {
+  "what": "as works/conditions/sketch_sp_color.json version 2: the tokens of the 23 works found in the lexicon under the form all (every part of speech except symbols), each author weighing 1 in total; the percentile of a word is the weight below its raw value plus half the weight equal to it, over the total weight",
+  "select": "all",
+  "R1": "every word shared with results/sketch_sp_color/values.json (keys whose entry is the word itself) has the same author-equal percentiles there, and the reference has the same number of words and the same tokens per author (else the run stops); that values.json must be the one recorded in sketch.json on works/conditions/sketch_sp_color.json"
+ },
+ "common_seed": 100,
+ "seed": "per word: (the first eight bytes of the SHA-256 of the UTF-8 word, read big-endian, + the common seed) mod 2**31, the words as recorded (no Unicode normalisation)",
+ "versions": {
+  "SP": "grey relief, V = 2 p_valence - 1, A = 2 p_arousal - 1, the seed per word (the main grey images)",
+  "SPC": "the relief of SP coloured in OKLCH: L = the OKLab lightness of its grey, hue and chroma below (the main coloured images)",
+  "SPC_reversed": "as SPC with the hue band reversed (supplement)"
+ },
+ "colour": {
+  "hue": {
+   "SPC": {
+    "hue0": 260.0,
+    "hue_span": 155.0,
+    "reads": "blue at p_valence 0, through violet, magenta and red, to orange at 1 (as the sketches)"
+   },
+   "SPC_reversed": {
+    "hue0": 415.0,
+    "hue_span": -155.0,
+    "reads": "orange at p_valence 0, through red, magenta and violet, to blue at 1"
+   }
+  },
+  "chroma0": 0.03,
+  "chroma_span": 0.12,
+  "gamut": "chroma reduced in steps of 0.002 until the colour lies in sRGB (oklch_tint of works/sketch_sp_color.py)",
+  "status": "the direction of the hue is the makers' convention: no evidence was found that blue reads as unpleasant and some reports place blue on the pleasant side (cards W19, W23, W24); the direction of the chroma follows reports that saturation raises arousal (W20, W21, W23), not a test of this mapping"
+ },
+ "tiles": {
+  "tile_px": 200,
+  "gap_px": 8,
+  "label_px": 30,
+  "columns": 5,
+  "rows": 4,
+  "blocks_per_row": 3,
+  "block_gap_px": 48,
+  "labels": "the slug of the author above each block, the rank and the word under each tile; font and supersampling of works/conditions/work2_words.json"
+ },
+ "cvd": {
+  "colorspacious": "1.1.2",
+  "method": "colorspacious sRGB1+CVD (Machado, Oliveira and Fernandes 2009), cvd types protanomaly, deuteranomaly and tritanomaly",
+  "severity": 100,
+  "band": {
+   "grey_levels": [
+    64,
+    128,
+    192
+   ],
+   "chroma": [
+    0.03,
+    0.09,
+    0.15
+   ],
+   "steps": 11
+  },
+  "source": "colorspacious is added with uv run --with, outside uv.lock; its version is checked and recorded"
+ },
+ "checks": [
+  "R1 (computed): as above",
+  "K0 (computed): per version, every distinct word drawn again without any cache gives the same tile; the number compared is recorded",
+  "K2b (computed): per coloured version, the share of pixels whose chroma had to be reduced, averaged over the 120 tiles as laid out (a word of two authors counts twice)",
+  "K2c (computed): per coloured version and distinct word, the chroma requested and the mean chroma realised over its pixels and the share reduced (Codex: words of equal arousal can differ in vividness, words of different arousal can meet)",
+  "K4 (by eye, main): whether the relief reads the same under the colour as in grey (L kept is not shape kept); whether the coloured and the reversed sheets look as different as the band implies",
+  "K5 (computed): the coloured sheets as seen with each simulated deficiency (images), and for the band at three grey levels and three chromas, the adjacent and end-to-end CAM02-UCS distances of eleven equal steps, for normal vision and each deficiency, with the steps whose chroma was reduced to lie in sRGB and the share of values clipped by the simulation"
+ ],
+ "outputs": "results/work2_sp_color/{SP,SPC,SPC_reversed}.png, {SPC,SPC_reversed}_{protanomaly,deuteranomaly,tritanomaly}.png and work2_sp_color.json (provenance; the words of each author in order; percentiles and seeds per distinct word; the words shared between authors; R1, K0, K2b, K2c, K5)",
+ "not_claimed": "Images of a direction chosen after the values were seen. A difference between the blocks shows the composition and the recorded values through a mapping the makers chose; the seed per word makes words differ by their spelling alone (a hash, not a distance of meaning), so differences between authors may come from the identity of the spellings alone, and not seeing a difference is no evidence that the data hold none. A percentile of 0.5 is the middle of these texts, not affective neutrality; in texts that are pleasant overall the lower words still take the unpleasant end. The colours are not shown to be read as the affects (no study with people); the simulation of colour vision is a model, not a check with viewers."
+}
