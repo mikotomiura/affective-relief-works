@@ -1,0 +1,1165 @@
+{
+ "reference_words": 18301,
+ "reference_tokens": {
+  "夏目漱石": 37536,
+  "芥川竜之介": 37792,
+  "梶井基次郎": 29569,
+  "岡本かの子": 41967,
+  "中島敦": 45771,
+  "太宰治": 39216
+ },
+ "values": {
+  "しかし": {
+   "entry": "しかし",
+   "count": 286.0,
+   "V": 0.09538024809811052,
+   "A": 0.018660397875201573,
+   "p_valence_author_equal": 0.2184328580207906,
+   "p_valence_tokens": 0.22019745439959285,
+   "p_valence_types": 0.570515272389487,
+   "p_arousal_author_equal": 0.8323116377822756,
+   "p_arousal_tokens": 0.8320645587036501,
+   "p_arousal_types": 0.5832741380252445,
+   "p_valence_lexicon": 0.664578451819143,
+   "p_arousal_lexicon": 0.4035554228859695,
+   "seed_SP": {
+    "100": 1247846152,
+    "300": 1247846352
+   }
+  },
+  "だが": {
+   "entry": "だが",
+   "count": 38.0,
+   "V": -0.0029767621425831337,
+   "A": -0.137443067963418,
+   "p_valence_author_equal": 0.13421933258785168,
+   "p_valence_tokens": 0.13576176078602206,
+   "p_valence_types": 0.4392109720780285,
+   "p_arousal_author_equal": 0.34627921959070845,
+   "p_arousal_tokens": 0.3467054271924641,
+   "p_arousal_types": 0.1959455767444402,
+   "p_valence_lexicon": 0.4176034514946793,
+   "p_arousal_lexicon": 0.027163099396697258,
+   "seed_SP": {
+    "100": 619645960,
+    "300": 619646160
+   }
+  },
+  "けれども": {
+   "entry": "けれども",
+   "count": 129.0,
+   "V": 0.14865696197848655,
+   "A": -0.04884380356852569,
+   "p_valence_author_equal": 0.35167277109782696,
+   "p_valence_tokens": 0.35309962001457834,
+   "p_valence_types": 0.6473416753182886,
+   "p_arousal_author_equal": 0.6705138895154512,
+   "p_arousal_tokens": 0.6703184372722136,
+   "p_arousal_types": 0.4222446860827277,
+   "p_valence_lexicon": 0.7840282513006,
+   "p_arousal_lexicon": 0.16870388248225682,
+   "seed_SP": {
+    "100": 348448546,
+    "300": 348448746
+   }
+  },
+  "けれど": {
+   "entry": "けれど",
+   "count": 59.0,
+   "V": 0.24291576345915233,
+   "A": -0.10369096724155424,
+   "p_valence_author_equal": 0.45981265383746606,
+   "p_valence_tokens": 0.4612466627273551,
+   "p_valence_types": 0.7713239713676848,
+   "p_arousal_author_equal": 0.48500250436098574,
+   "p_arousal_tokens": 0.4854195151196242,
+   "p_arousal_types": 0.2784274083383422,
+   "p_valence_lexicon": 0.9163420366134779,
+   "p_arousal_lexicon": 0.05900097139428525,
+   "seed_SP": {
+    "100": 1121886839,
+    "300": 1121887039
+   }
+  },
+  "でも": {
+   "entry": "でも",
+   "count": 313.0,
+   "V": 0.25521038973923904,
+   "A": -0.14588109314388387,
+   "p_valence_author_equal": 0.4905556884767774,
+   "p_valence_tokens": 0.49211778254137356,
+   "p_valence_types": 0.7855854871318507,
+   "p_arousal_author_equal": 0.23390111252270263,
+   "p_arousal_tokens": 0.23405333597871048,
+   "p_arousal_types": 0.17723075241790065,
+   "p_valence_lexicon": 0.9269447603112055,
+   "p_arousal_lexicon": 0.022181084667045374,
+   "seed_SP": {
+    "100": 976865621,
+    "300": 976865821
+   }
+  },
+  "ところが": {
+   "entry": "ところが",
+   "count": 18.0,
+   "V": 0.013416072897532327,
+   "A": -0.019310715436894776,
+   "p_valence_author_equal": 0.14421866372181655,
+   "p_valence_tokens": 0.1458975807738591,
+   "p_valence_types": 0.4598109392929348,
+   "p_arousal_author_equal": 0.7579039318683414,
+   "p_arousal_tokens": 0.7573484694911818,
+   "p_arousal_types": 0.4962570351346921,
+   "p_valence_lexicon": 0.4553705225262641,
+   "p_arousal_lexicon": 0.2603334188586267,
+   "seed_SP": {
+    "100": 1551206503,
+    "300": 1551206703
+   }
+  },
+  "とても": {
+   "entry": "とても",
+   "count": 33.0,
+   "V": 0.5420850029412643,
+   "A": 0.06928854895799708,
+   "p_valence_author_equal": 0.9823925135200454,
+   "p_valence_tokens": 0.982553450276255,
+   "p_valence_types": 0.9694005792033222,
+   "p_arousal_author_equal": 0.8817811394943322,
+   "p_arousal_tokens": 0.8816869454951671,
+   "p_arousal_types": 0.6794437462433747,
+   "p_valence_lexicon": 0.9969365638599396,
+   "p_arousal_lexicon": 0.6100760442987742,
+   "seed_SP": {
+    "100": 91738100,
+    "300": 91738300
+   }
+  },
+  "たいへん": {
+   "entry": "たいへん",
+   "count": 9.0,
+   "V": 0.15275517073851574,
+   "A": 0.24648707774778145,
+   "p_valence_author_equal": 0.3554752021450882,
+   "p_valence_tokens": 0.35693397915040265,
+   "p_valence_types": 0.6531337085405169,
+   "p_arousal_author_equal": 0.9698889250772221,
+   "p_arousal_tokens": 0.969553722002493,
+   "p_arousal_types": 0.8868914266979947,
+   "p_valence_lexicon": 0.7918805214979638,
+   "p_arousal_lexicon": 0.9530815561876219,
+   "seed_SP": {
+    "100": 1413425571,
+    "300": 1413425771
+   }
+  },
+  "甚だ": {
+   "entry": "甚だ",
+   "count": 2.0,
+   "V": -0.3431280892249844,
+   "A": -0.04884380356852569,
+   "p_valence_author_equal": 0.04117774121123873,
+   "p_valence_tokens": 0.041796239826440255,
+   "p_valence_types": 0.14236926943882847,
+   "p_arousal_author_equal": 0.6705138895154512,
+   "p_arousal_tokens": 0.6703184372722136,
+   "p_arousal_types": 0.4222446860827277,
+   "p_valence_lexicon": 0.02324532547698654,
+   "p_arousal_lexicon": 0.16870388248225682,
+   "seed_SP": {
+    "100": 737718317,
+    "300": 737718517
+   }
+  },
+  "はなはだ": {
+   "entry": "はなはだ",
+   "count": 9.0,
+   "V": -0.2283782439441746,
+   "A": 0.03553644823613333,
+   "p_valence_author_equal": 0.058072330264107075,
+   "p_valence_tokens": 0.05901635101854208,
+   "p_valence_types": 0.217201245833561,
+   "p_arousal_author_equal": 0.8530684748776386,
+   "p_arousal_tokens": 0.8528451462361603,
+   "p_arousal_types": 0.6189279274356593,
+   "p_valence_lexicon": 0.10740795465096196,
+   "p_arousal_lexicon": 0.47245852605642874,
+   "seed_SP": {
+    "100": 1708303683,
+    "300": 1708303883
+   }
+  },
+  "随分": {
+   "entry": "随分",
+   "count": 6.0,
+   "V": 0.10767487437819767,
+   "A": -0.015091702846661947,
+   "p_valence_author_equal": 0.2282299566934052,
+   "p_valence_tokens": 0.23015428011955955,
+   "p_valence_types": 0.58690781924485,
+   "p_arousal_author_equal": 0.7865893536872258,
+   "p_arousal_tokens": 0.7858538457888903,
+   "p_arousal_types": 0.5067755860335501,
+   "p_valence_lexicon": 0.6943976606669175,
+   "p_arousal_lexicon": 0.2750845352632099,
+   "seed_SP": {
+    "100": 1362261316,
+    "300": 1362261516
+   }
+  },
+  "ずいぶん": {
+   "entry": "ずいぶん",
+   "count": 20.0,
+   "V": 0.14046054445842904,
+   "A": 0.022879410465434846,
+   "p_valence_author_equal": 0.34340199551143047,
+   "p_valence_tokens": 0.3448615705776555,
+   "p_valence_types": 0.634582809682531,
+   "p_arousal_author_equal": 0.8374400734797803,
+   "p_arousal_tokens": 0.8372553924718893,
+   "p_arousal_types": 0.5921534342385661,
+   "p_valence_lexicon": 0.7676191255854073,
+   "p_arousal_lexicon": 0.4205870196565078,
+   "seed_SP": {
+    "100": 1538061856,
+    "300": 1538062056
+   }
+  },
+  "よほど": {
+   "entry": "よほど",
+   "count": 19.0,
+   "V": 0.19373725833880506,
+   "A": 0.03553644823613333,
+   "p_valence_author_equal": 0.3942553224061645,
+   "p_valence_tokens": 0.3956851598656033,
+   "p_valence_types": 0.7073383968089175,
+   "p_arousal_author_equal": 0.8530684748776386,
+   "p_arousal_tokens": 0.8528451462361603,
+   "p_arousal_types": 0.6189279274356593,
+   "p_valence_lexicon": 0.8599208009160857,
+   "p_arousal_lexicon": 0.47245852605642874,
+   "seed_SP": {
+    "100": 390195922,
+    "300": 390196122
+   }
+  },
+  "非常に": {
+   "entry": "非常",
+   "count": 19.0,
+   "V": 0.26750501601932575,
+   "A": 0.006003360104502864,
+   "p_valence_author_equal": 0.5333077384486855,
+   "p_valence_tokens": 0.5348111502646096,
+   "p_valence_types": 0.8008851975301896,
+   "p_arousal_author_equal": 0.820275717952495,
+   "p_arousal_tokens": 0.819845504224696,
+   "p_arousal_types": 0.5566908912081308,
+   "p_valence_lexicon": 0.9363087815840416,
+   "p_arousal_lexicon": 0.35356405861111584,
+   "seed_SP": {
+    "100": 650085149,
+    "300": 650085349
+   }
+  },
+  "私": {
+   "entry": "私",
+   "count": 849.0,
+   "V": 0.3617638174999911,
+   "A": -0.10369096724155424,
+   "p_valence_author_equal": 0.8451572201761143,
+   "p_valence_tokens": 0.8463690042311657,
+   "p_valence_types": 0.886590896672313,
+   "p_arousal_author_equal": 0.48500250436098574,
+   "p_arousal_tokens": 0.4854195151196242,
+   "p_arousal_types": 0.2784274083383422,
+   "p_valence_lexicon": 0.9785339833255629,
+   "p_arousal_lexicon": 0.05900097139428525,
+   "seed_SP": {
+    "100": 970611566,
+    "300": 970611766
+   }
+  },
+  "わたし": {
+   "entry": "わたし",
+   "count": 96.0,
+   "V": 0.4068441138603096,
+   "A": -0.0699388665196905,
+   "p_valence_author_equal": 0.8932507784854979,
+   "p_valence_tokens": 0.8940030450591112,
+   "p_valence_types": 0.9168897874433091,
+   "p_arousal_author_equal": 0.6293954523542629,
+   "p_arousal_tokens": 0.6292187655002567,
+   "p_arousal_types": 0.36746625867438937,
+   "p_valence_lexicon": 0.9871959151522534,
+   "p_arousal_lexicon": 0.11684710174082243,
+   "seed_SP": {
+    "100": 1315996742,
+    "300": 1315996942
+   }
+  },
+  "わたくし": {
+   "entry": "わたくし",
+   "count": 2.0,
+   "V": 0.06259457801787915,
+   "A": 0.052412498597065316,
+   "p_valence_author_equal": 0.1844980231709051,
+   "p_valence_tokens": 0.18629421481900013,
+   "p_valence_types": 0.524561499371619,
+   "p_arousal_author_equal": 0.8686361078482001,
+   "p_arousal_tokens": 0.868432743442987,
+   "p_arousal_types": 0.6486257581552921,
+   "p_valence_lexicon": 0.5807173242629933,
+   "p_arousal_lexicon": 0.5420175449981182,
+   "seed_SP": {
+    "100": 162748536,
+    "300": 162748736
+   }
+  },
+  "僕": {
+   "entry": "僕",
+   "count": 592.0,
+   "V": 0.5297903766611776,
+   "A": 0.043974473416599436,
+   "p_valence_author_equal": 0.9775732742360973,
+   "p_valence_tokens": 0.9777982411117485,
+   "p_valence_types": 0.9657395770722911,
+   "p_arousal_author_equal": 0.8608355665136204,
+   "p_arousal_tokens": 0.8605526825418048,
+   "p_arousal_types": 0.6335719359597837,
+   "p_valence_lexicon": 0.9965424653048511,
+   "p_arousal_lexicon": 0.5072560058223756,
+   "seed_SP": {
+    "100": 775452795,
+    "300": 775452995
+   }
+  },
+  "俺": {
+   "entry": "俺",
+   "count": 64.0,
+   "V": 0.17734442329868916,
+   "A": 0.13679275040172456,
+   "p_valence_author_equal": 0.37813529575459576,
+   "p_valence_tokens": 0.3795907716593847,
+   "p_valence_types": 0.6854270258455822,
+   "p_arousal_author_equal": 0.9303710428836663,
+   "p_arousal_tokens": 0.9300477461818151,
+   "p_arousal_types": 0.7801486257581552,
+   "p_valence_lexicon": 0.8350192132405134,
+   "p_arousal_lexicon": 0.8174859457317055,
+   "seed_SP": {
+    "100": 1523370327,
+    "300": 1523370527
+   }
+  },
+  "おれ": {
+   "entry": "おれ",
+   "count": 49.0,
+   "V": 0.09947845685813972,
+   "A": 0.0017843475142695908,
+   "p_valence_author_equal": 0.22219013028131182,
+   "p_valence_tokens": 0.22408357091407843,
+   "p_valence_types": 0.5762799847002896,
+   "p_arousal_author_equal": 0.8146936164815696,
+   "p_arousal_tokens": 0.814206106508059,
+   "p_arousal_types": 0.5475110649691274,
+   "p_valence_lexicon": 0.6746552947976994,
+   "p_arousal_lexicon": 0.33730418618024405,
+   "seed_SP": {
+    "100": 313256137,
+    "300": 313256337
+   }
+  },
+  "あたし": {
+   "entry": "あたし",
+   "count": 34.0,
+   "V": 0.4150405313803671,
+   "A": 0.06928854895799708,
+   "p_valence_author_equal": 0.8958910344124892,
+   "p_valence_tokens": 0.896629732026172,
+   "p_valence_types": 0.9212884541828316,
+   "p_arousal_author_equal": 0.8817811394943322,
+   "p_arousal_tokens": 0.8816869454951671,
+   "p_arousal_types": 0.6794437462433747,
+   "p_valence_lexicon": 0.9883075775742697,
+   "p_arousal_lexicon": 0.6100760442987742,
+   "seed_SP": {
+    "100": 1253323660,
+    "300": 1253323860
+   }
+  },
+  "われ": {
+   "entry": "われ",
+   "count": 18.0,
+   "V": 0.005219655377474375,
+   "A": 0.022879410465434846,
+   "p_valence_author_equal": 0.13816406989099755,
+   "p_valence_tokens": 0.13976001828760712,
+   "p_valence_types": 0.44951095568548166,
+   "p_arousal_author_equal": 0.8374400734797803,
+   "p_arousal_tokens": 0.8372553924718893,
+   "p_arousal_types": 0.5921534342385661,
+   "p_valence_lexicon": 0.4361977151768127,
+   "p_arousal_lexicon": 0.4205870196565078,
+   "seed_SP": {
+    "100": 1439543955,
+    "300": 1439544155
+   }
+  },
+  "言う": {
+   "entry": "言う",
+   "count": 91.0,
+   "V": 0.2757014335393837,
+   "A": -0.04462479097829264,
+   "p_valence_author_equal": 0.6035108795930022,
+   "p_valence_tokens": 0.6049941557293261,
+   "p_valence_types": 0.8102289492377466,
+   "p_arousal_author_equal": 0.676721338458726,
+   "p_arousal_tokens": 0.6766177415667821,
+   "p_arousal_types": 0.4326266324244577,
+   "p_valence_lexicon": 0.9419966295713186,
+   "p_arousal_lexicon": 0.18049813658023287,
+   "seed_SP": {
+    "100": 852214315,
+    "300": 852214515
+   }
+  },
+  "云う": {
+   "entry": "云う",
+   "count": 280.0,
+   "V": 0.22242471965900767,
+   "A": -0.08681491688062226,
+   "p_valence_author_equal": 0.4237241702060263,
+   "p_valence_tokens": 0.4252990066896412,
+   "p_valence_types": 0.7451232173105294,
+   "p_arousal_author_equal": 0.5891272057819098,
+   "p_arousal_tokens": 0.5890981708079758,
+   "p_arousal_types": 0.3239986885962516,
+   "p_valence_lexicon": 0.895869377918301,
+   "p_arousal_lexicon": 0.0842155417095541,
+   "seed_SP": {
+    "100": 413210525,
+    "300": 413210725
+   }
+  },
+  "無い": {
+   "entry": "無い",
+   "count": 127.0,
+   "V": -0.23247645270420358,
+   "A": 0.0017843475142695908,
+   "p_valence_author_equal": 0.056725035380918554,
+   "p_valence_tokens": 0.057644780484017756,
+   "p_valence_types": 0.21433255013387248,
+   "p_arousal_author_equal": 0.8146936164815696,
+   "p_arousal_tokens": 0.814206106508059,
+   "p_arousal_types": 0.5475110649691274,
+   "p_valence_lexicon": 0.1038680561032613,
+   "p_arousal_lexicon": 0.33730418618024405,
+   "seed_SP": {
+    "100": 1483942543,
+    "300": 1483942743
+   }
+  },
+  "いま": {
+   "entry": "いま",
+   "count": 85.0,
+   "V": 0.21422830213894972,
+   "A": -0.12900504278295188,
+   "p_valence_author_equal": 0.4134621629141308,
+   "p_valence_tokens": 0.4151135858805871,
+   "p_valence_types": 0.7349871591716299,
+   "p_arousal_author_equal": 0.4033743467029481,
+   "p_arousal_tokens": 0.40394908799185686,
+   "p_arousal_types": 0.2155073493251735,
+   "p_valence_lexicon": 0.8865313137383904,
+   "p_arousal_lexicon": 0.03319088546632416,
+   "seed_SP": {
+    "100": 1674430841,
+    "300": 1674431041
+   }
+  },
+  "いい": {
+   "entry": "いい",
+   "count": 191.0,
+   "V": 0.615852760621785,
+   "A": 0.027098423055667675,
+   "p_valence_author_equal": 0.9913858134260853,
+   "p_valence_tokens": 0.9915333554739898,
+   "p_valence_types": 0.982979072181848,
+   "p_arousal_author_equal": 0.8420737888798686,
+   "p_arousal_tokens": 0.8419480614705134,
+   "p_arousal_types": 0.6010873722747391,
+   "p_valence_lexicon": 0.9984445711239321,
+   "p_arousal_lexicon": 0.4378627129355176,
+   "seed_SP": {
+    "100": 696624193,
+    "300": 696624393
+   }
+  },
+  "ひとり": {
+   "entry": "ひとり",
+   "count": 55.0,
+   "V": 0.3002906860995571,
+   "A": 0.03553644823613333,
+   "p_valence_author_equal": 0.7754688245188062,
+   "p_valence_tokens": 0.7769688291187012,
+   "p_valence_types": 0.8353641877493033,
+   "p_arousal_author_equal": 0.8530684748776386,
+   "p_arousal_tokens": 0.8528451462361603,
+   "p_arousal_types": 0.6189279274356593,
+   "p_valence_lexicon": 0.9562291032922579,
+   "p_arousal_lexicon": 0.47245852605642874,
+   "seed_SP": {
+    "100": 755433807,
+    "300": 755434007
+   }
+  },
+  "言い": {
+   "entry": "言い",
+   "count": 70.0,
+   "V": 0.0748892042979663,
+   "A": 0.06506953636776425,
+   "p_valence_author_equal": 0.19697503248979767,
+   "p_valence_tokens": 0.19873970782959746,
+   "p_valence_types": 0.541582427189771,
+   "p_arousal_author_equal": 0.8771773201610974,
+   "p_arousal_tokens": 0.8770223117433179,
+   "p_arousal_types": 0.6715753237528004,
+   "p_valence_lexicon": 0.6125394722523668,
+   "p_arousal_lexicon": 0.5927906171099173,
+   "seed_SP": {
+    "100": 1672687015,
+    "300": 1672687215
+   }
+  },
+  "もう": {
+   "entry": "もう",
+   "count": 223.0,
+   "V": 0.38225486130013575,
+   "A": -0.03618676579782676,
+   "p_valence_author_equal": 0.8755475768655837,
+   "p_valence_tokens": 0.8762179158166236,
+   "p_valence_types": 0.9015081143106934,
+   "p_arousal_author_equal": 0.7018667974486079,
+   "p_arousal_tokens": 0.7015669546389707,
+   "p_arousal_types": 0.4533358832850664,
+   "p_valence_lexicon": 0.9830263075136799,
+   "p_arousal_lexicon": 0.20544290288153683,
+   "seed_SP": {
+    "100": 988269387,
+    "300": 988269587
+   }
+  },
+  "よい": {
+   "entry": "よい",
+   "count": 50.0,
+   "V": 0.6773258920222185,
+   "A": -0.05306281615875852,
+   "p_valence_author_equal": 0.9943752427017473,
+   "p_valence_tokens": 0.9945482227810102,
+   "p_valence_types": 0.98961805365827,
+   "p_arousal_author_equal": 0.6613026560715491,
+   "p_arousal_tokens": 0.6610258312450669,
+   "p_arousal_types": 0.411015791486804,
+   "p_valence_lexicon": 0.9990680405290056,
+   "p_arousal_lexicon": 0.15733367743120621,
+   "seed_SP": {
+    "100": 727567611,
+    "300": 727567811
+   }
+  },
+  "なんだか": {
+   "entry": "なんだか",
+   "count": 31.0,
+   "V": 0.1896390495787763,
+   "A": 0.06928854895799708,
+   "p_valence_author_equal": 0.391864155663114,
+   "p_valence_tokens": 0.39327628520040886,
+   "p_valence_types": 0.702120102726627,
+   "p_arousal_author_equal": 0.8817811394943322,
+   "p_arousal_tokens": 0.8816869454951671,
+   "p_arousal_types": 0.6794437462433747,
+   "p_valence_lexicon": 0.8540335325706607,
+   "p_arousal_lexicon": 0.6100760442987742,
+   "seed_SP": {
+    "100": 1935924286,
+    "300": 1935924486
+   }
+  },
+  "わから": {
+   "entry": "わから",
+   "count": 43.0,
+   "V": -0.17100332130376938,
+   "A": 0.039755460826366606,
+   "p_valence_author_equal": 0.07242966256444373,
+   "p_valence_tokens": 0.07347606868204148,
+   "p_valence_types": 0.2658051472597126,
+   "p_arousal_author_equal": 0.8568623498551674,
+   "p_arousal_tokens": 0.8565997127465484,
+   "p_arousal_types": 0.6269329544833616,
+   "p_valence_lexicon": 0.1600504366282535,
+   "p_arousal_lexicon": 0.48986550232465736,
+   "seed_SP": {
+    "100": 700189354,
+    "300": 700189554
+   }
+  },
+  "気持": {
+   "entry": "気持",
+   "count": 125.0,
+   "V": 0.5052011241010037,
+   "A": 0.031317435645900504,
+   "p_valence_author_equal": 0.9700359710701889,
+   "p_valence_tokens": 0.9703624310440757,
+   "p_valence_types": 0.9576799082017377,
+   "p_arousal_author_equal": 0.8473921386775299,
+   "p_arousal_tokens": 0.8472467231109635,
+   "p_arousal_types": 0.6098573848423583,
+   "p_valence_lexicon": 0.9955620858720535,
+   "p_arousal_lexicon": 0.45515462939760576,
+   "seed_SP": {
+    "100": 1161945217,
+    "300": 1161945417
+   }
+  },
+  "ばん": {
+   "entry": "ばん",
+   "count": 29.0,
+   "V": 0.025710699177619034,
+   "A": -0.08259590429038943,
+   "p_valence_author_equal": 0.15156828220222618,
+   "p_valence_tokens": 0.15338514822019314,
+   "p_valence_types": 0.47445494781705916,
+   "p_arousal_author_equal": 0.6062957539602462,
+   "p_arousal_tokens": 0.606184575438536,
+   "p_arousal_types": 0.33481776952079123,
+   "p_valence_lexicon": 0.4857585411315096,
+   "p_arousal_lexicon": 0.09163278101298554,
+   "seed_SP": {
+    "100": 1995609074,
+    "300": 1995609274
+   }
+  },
+  "どんなに": {
+   "entry": "どんなに",
+   "count": 36.0,
+   "V": 0.21013009337892097,
+   "A": 0.027098423055667675,
+   "p_valence_author_equal": 0.40930363157495586,
+   "p_valence_tokens": 0.4108932029622473,
+   "p_valence_types": 0.7295502977979346,
+   "p_arousal_author_equal": 0.8420737888798686,
+   "p_arousal_tokens": 0.8419480614705134,
+   "p_arousal_types": 0.6010873722747391,
+   "p_valence_lexicon": 0.8815914792847424,
+   "p_arousal_lexicon": 0.4378627129355176,
+   "seed_SP": {
+    "100": 1508788070,
+    "300": 1508788270
+   }
+  },
+  "きょう": {
+   "entry": "きょう",
+   "count": 29.0,
+   "V": 0.23881755469912358,
+   "A": -0.06571985392945767,
+   "p_valence_author_equal": 0.45419596596355544,
+   "p_valence_tokens": 0.45567196173404473,
+   "p_valence_types": 0.7666520955139063,
+   "p_arousal_author_equal": 0.6352629738772935,
+   "p_arousal_tokens": 0.6350522533868734,
+   "p_arousal_types": 0.37839462324463147,
+   "p_valence_lexicon": 0.912575512677544,
+   "p_arousal_lexicon": 0.12620363539069918,
+   "seed_SP": {
+    "100": 1116478968,
+    "300": 1116479168
+   }
+  },
+  "いや": {
+   "entry": "いや",
+   "count": 125.0,
+   "V": 0.439629783940541,
+   "A": 0.1494497881724235,
+   "p_valence_author_equal": 0.9489032389355074,
+   "p_valence_tokens": 0.9491397492355004,
+   "p_valence_types": 0.9342385661985684,
+   "p_arousal_author_equal": 0.9360893819526718,
+   "p_arousal_tokens": 0.9357690930813324,
+   "p_arousal_types": 0.7954210152450686,
+   "p_valence_lexicon": 0.9911116923725083,
+   "p_arousal_lexicon": 0.843272071266197,
+   "seed_SP": {
+    "100": 2053594556,
+    "300": 2053594756
+   }
+  },
+  "ちゃんと": {
+   "entry": "ちゃんと",
+   "count": 30.0,
+   "V": 0.4068441138603096,
+   "A": -0.13322405537318494,
+   "p_valence_author_equal": 0.8932507784854979,
+   "p_valence_tokens": 0.8940030450591112,
+   "p_valence_types": 0.9168897874433091,
+   "p_arousal_author_equal": 0.3923833444349572,
+   "p_arousal_tokens": 0.3929096704348914,
+   "p_arousal_types": 0.2055352166548276,
+   "p_valence_lexicon": 0.9871959151522534,
+   "p_arousal_lexicon": 0.03003834661304863,
+   "seed_SP": {
+    "100": 516484852,
+    "300": 516485052
+   }
+  },
+  "これから": {
+   "entry": "これから",
+   "count": 34.0,
+   "V": 0.3289781474197597,
+   "A": 0.06085052377753142,
+   "p_valence_author_equal": 0.8068283412563347,
+   "p_valence_tokens": 0.8084006538682171,
+   "p_valence_types": 0.862575815529206,
+   "p_arousal_author_equal": 0.8737798502475136,
+   "p_arousal_tokens": 0.8736063247516724,
+   "p_arousal_types": 0.6637888639965029,
+   "p_valence_lexicon": 0.9686163771286064,
+   "p_arousal_lexicon": 0.5760897236867458,
+   "seed_SP": {
+    "100": 359485943,
+    "300": 359486143
+   }
+  },
+  "信じ": {
+   "entry": "信じ",
+   "count": 55.0,
+   "V": 0.6363438044219296,
+   "A": 0.09882163708962799,
+   "p_valence_author_equal": 0.9928502128291724,
+   "p_valence_tokens": 0.9930170669956135,
+   "p_valence_types": 0.985601879678706,
+   "p_arousal_author_equal": 0.9057262100255841,
+   "p_arousal_tokens": 0.9055643495175781,
+   "p_arousal_types": 0.7275285503524398,
+   "p_valence_lexicon": 0.9986871701078118,
+   "p_arousal_lexicon": 0.7153407916713672,
+   "seed_SP": {
+    "100": 1035402540,
+    "300": 1035402740
+   }
+  },
+  "わかっ": {
+   "entry": "わかっ",
+   "count": 26.0,
+   "V": 0.27979964229941245,
+   "A": -0.0024346650759632382,
+   "p_valence_author_equal": 0.6397564736943028,
+   "p_valence_tokens": 0.6413084265325576,
+   "p_valence_types": 0.8145456532429922,
+   "p_arousal_author_equal": 0.8093297166621026,
+   "p_arousal_tokens": 0.8087715817486231,
+   "p_arousal_types": 0.5378667832358888,
+   "p_valence_lexicon": 0.9446432546999809,
+   "p_arousal_lexicon": 0.3212941507687792,
+   "seed_SP": {
+    "100": 242361655,
+    "300": 242361855
+   }
+  },
+  "申し": {
+   "entry": "申し",
+   "count": 26.0,
+   "V": -0.10953018990333563,
+   "A": -0.019310715436894776,
+   "p_valence_author_equal": 0.08990053052586382,
+   "p_valence_tokens": 0.09106495119710503,
+   "p_valence_types": 0.32140320201081907,
+   "p_arousal_author_equal": 0.7579039318683414,
+   "p_arousal_tokens": 0.7573484694911818,
+   "p_arousal_types": 0.4962570351346921,
+   "p_valence_lexicon": 0.231381526336965,
+   "p_arousal_lexicon": 0.2603334188586267,
+   "seed_SP": {
+    "100": 66200126,
+    "300": 66200326
+   }
+  },
+  "全部": {
+   "entry": "全部",
+   "count": 20.0,
+   "V": 0.23471934593909438,
+   "A": -0.18385220645598044,
+   "p_valence_author_equal": 0.448849684157889,
+   "p_valence_tokens": 0.45034957796170816,
+   "p_valence_types": 0.7612425550516365,
+   "p_arousal_author_equal": 0.12231211862668473,
+   "p_arousal_tokens": 0.12219485790443001,
+   "p_arousal_types": 0.10502158352002623,
+   "p_valence_lexicon": 0.9086841950256227,
+   "p_arousal_lexicon": 0.008677905422336877,
+   "seed_SP": {
+    "100": 900698025,
+    "300": 900698225
+   }
+  },
+  "魚": {
+   "entry": "魚",
+   "count": 96.0,
+   "V": 0.3289781474197597,
+   "A": 0.010222372694735693,
+   "p_valence_author_equal": 0.8068283412563347,
+   "p_valence_tokens": 0.8084006538682171,
+   "p_valence_types": 0.862575815529206,
+   "p_arousal_author_equal": 0.8244447707842361,
+   "p_arousal_tokens": 0.8240874527174781,
+   "p_arousal_types": 0.5656794710671548,
+   "p_valence_lexicon": 0.9686163771286064,
+   "p_arousal_lexicon": 0.37009448381824844,
+   "seed_SP": {
+    "100": 1262426398,
+    "300": 1262426598
+   }
+  },
+  "客": {
+   "entry": "客",
+   "count": 64.0,
+   "V": 0.11996950065828438,
+   "A": -0.08259590429038943,
+   "p_valence_author_equal": 0.28870813551086216,
+   "p_valence_tokens": 0.28996640083501907,
+   "p_valence_types": 0.604966941697175,
+   "p_arousal_author_equal": 0.6062957539602462,
+   "p_arousal_tokens": 0.606184575438536,
+   "p_arousal_types": 0.33481776952079123,
+   "p_valence_lexicon": 0.7231543758167749,
+   "p_arousal_lexicon": 0.09163278101298554,
+   "seed_SP": {
+    "100": 1518673828,
+    "300": 1518674028
+   }
+  },
+  "体": {
+   "entry": "体",
+   "count": 52.0,
+   "V": 0.11996950065828438,
+   "A": -0.120567017602486,
+   "p_valence_author_equal": 0.28870813551086216,
+   "p_valence_tokens": 0.28996640083501907,
+   "p_valence_types": 0.604966941697175,
+   "p_arousal_author_equal": 0.41805773160343224,
+   "p_arousal_tokens": 0.41875816796132,
+   "p_arousal_types": 0.23662641385716626,
+   "p_valence_lexicon": 0.7231543758167749,
+   "p_arousal_lexicon": 0.04037026794708347,
+   "seed_SP": {
+    "100": 2112152213,
+    "300": 2112152413
+   }
+  },
+  "店": {
+   "entry": "店",
+   "count": 102.0,
+   "V": 0.11996950065828438,
+   "A": -0.12478603019271883,
+   "p_valence_author_equal": 0.28870813551086216,
+   "p_valence_tokens": 0.28996640083501907,
+   "p_valence_types": 0.604966941697175,
+   "p_arousal_author_equal": 0.410812537895993,
+   "p_arousal_tokens": 0.4114646906849658,
+   "p_arousal_types": 0.2261625047811595,
+   "p_valence_lexicon": 0.7231543758167749,
+   "p_arousal_lexicon": 0.03662396059313954,
+   "seed_SP": {
+    "100": 50474837,
+    "300": 50475037
+   }
+  },
+  "いっ": {
+   "entry": "いっ",
+   "count": 103.0,
+   "V": 0.06259457801787915,
+   "A": -0.02774874061736088,
+   "p_valence_author_equal": 0.1844980231709051,
+   "p_valence_tokens": 0.18629421481900013,
+   "p_valence_types": 0.524561499371619,
+   "p_arousal_author_equal": 0.7202491621483338,
+   "p_arousal_tokens": 0.7199861117700592,
+   "p_arousal_types": 0.4745642314627616,
+   "p_valence_lexicon": 0.5807173242629933,
+   "p_arousal_lexicon": 0.23204842395520206,
+   "seed_SP": {
+    "100": 1027901394,
+    "300": 1027901594
+   }
+  },
+  "現実": {
+   "entry": "現実",
+   "count": 39.0,
+   "V": 0.26750501601932575,
+   "A": 0.19163991407475311,
+   "p_valence_author_equal": 0.5333077384486855,
+   "p_valence_tokens": 0.5348111502646096,
+   "p_valence_types": 0.8008851975301896,
+   "p_arousal_author_equal": 0.9524176296401806,
+   "p_arousal_tokens": 0.9520489452277541,
+   "p_arousal_types": 0.8406371236544451,
+   "p_valence_lexicon": 0.9363087815840416,
+   "p_arousal_lexicon": 0.906370020356351,
+   "seed_SP": {
+    "100": 865414909,
+    "300": 865415109
+   }
+  },
+  "云っ": {
+   "entry": "云っ",
+   "count": 160.0,
+   "V": 0.10357666561816892,
+   "A": -0.010872690256428896,
+   "p_valence_author_equal": 0.2249149777683652,
+   "p_valence_tokens": 0.22685259067245775,
+   "p_valence_types": 0.5813889951368778,
+   "p_arousal_author_equal": 0.7976719191721332,
+   "p_arousal_tokens": 0.797072257613726,
+   "p_arousal_types": 0.5168023605267472,
+   "p_valence_lexicon": 0.6845801390301831,
+   "p_arousal_lexicon": 0.29018507407255806,
+   "seed_SP": {
+    "100": 1828330109,
+    "300": 1828330309
+   }
+  },
+  "娘": {
+   "entry": "娘",
+   "count": 83.0,
+   "V": 0.5338885854212063,
+   "A": -0.023529728027127828,
+   "p_valence_author_equal": 0.98027663823878,
+   "p_valence_tokens": 0.9804551198830284,
+   "p_valence_types": 0.9668870553521666,
+   "p_arousal_author_equal": 0.7323665818872094,
+   "p_arousal_tokens": 0.732073616244916,
+   "p_arousal_types": 0.48532867056445,
+   "p_valence_lexicon": 0.9966752458186617,
+   "p_arousal_lexicon": 0.24600385562664914,
+   "seed_SP": {
+    "100": 1030420941,
+    "300": 1030421141
+   }
+  },
+  "気持ち": {
+   "entry": "気持ち",
+   "count": 24.0,
+   "V": 0.39864769634025166,
+   "A": 0.09882163708962799,
+   "p_valence_author_equal": 0.8884333101630904,
+   "p_valence_tokens": 0.8891507908096148,
+   "p_valence_types": 0.9117534560952953,
+   "p_arousal_author_equal": 0.9057262100255841,
+   "p_arousal_tokens": 0.9055643495175781,
+   "p_arousal_types": 0.7275285503524398,
+   "p_valence_lexicon": 0.9859195250251335,
+   "p_arousal_lexicon": 0.7153407916713672,
+   "seed_SP": {
+    "100": 1613410186,
+    "300": 1613410386
+   }
+  },
+  "珍": {
+   "entry": "珍",
+   "count": 24.0,
+   "V": -0.023467805942728237,
+   "A": 0.20851596443568488,
+   "p_valence_author_equal": 0.12225888342179718,
+   "p_valence_tokens": 0.12385972025136834,
+   "p_valence_types": 0.4130102180208732,
+   "p_arousal_author_equal": 0.9564260923002585,
+   "p_arousal_tokens": 0.9561377781419964,
+   "p_arousal_types": 0.8560187967870608,
+   "p_valence_lexicon": 0.374023239584966,
+   "p_arousal_lexicon": 0.9240670172205344,
+   "seed_SP": {
+    "100": 1127121032,
+    "300": 1127121232
+   }
+  },
+  "池": {
+   "entry": "池",
+   "count": 31.0,
+   "V": 0.1609515882585737,
+   "A": -0.2302613449485429,
+   "p_valence_author_equal": 0.36740028997350366,
+   "p_valence_tokens": 0.3688166106680584,
+   "p_valence_types": 0.6643079613135894,
+   "p_arousal_author_equal": 0.036339813717531165,
+   "p_arousal_tokens": 0.03652561343276501,
+   "p_arousal_types": 0.045516638435058196,
+   "p_valence_lexicon": 0.807041710053282,
+   "p_arousal_lexicon": 0.0025128462651237506,
+   "seed_SP": {
+    "100": 1132430092,
+    "300": 1132430292
+   }
+  },
+  "時代": {
+   "entry": "時代",
+   "count": 40.0,
+   "V": 0.3330763561797885,
+   "A": -0.07415787910992355,
+   "p_valence_author_equal": 0.8101298466002637,
+   "p_valence_tokens": 0.8116807777408767,
+   "p_valence_types": 0.8659089667231299,
+   "p_arousal_author_equal": 0.6217059110129445,
+   "p_arousal_tokens": 0.6215198554243889,
+   "p_arousal_types": 0.35678378230697777,
+   "p_valence_lexicon": 0.9700592420728535,
+   "p_arousal_lexicon": 0.10796802884831373,
+   "seed_SP": {
+    "100": 583290037,
+    "300": 583290237
+   }
+  },
+  "座敷": {
+   "entry": "座敷",
+   "count": 19.0,
+   "V": 0.23471934593909438,
+   "A": -0.22604233235831006,
+   "p_valence_author_equal": 0.448849684157889,
+   "p_valence_tokens": 0.45034957796170816,
+   "p_valence_types": 0.7612425550516365,
+   "p_arousal_author_equal": 0.04136641944216668,
+   "p_arousal_tokens": 0.04158705375435085,
+   "p_arousal_types": 0.04958745423747336,
+   "p_valence_lexicon": 0.9086841950256227,
+   "p_arousal_lexicon": 0.002830571066027856,
+   "seed_SP": {
+    "100": 1855568612,
+    "300": 1855568812
+   }
+  },
+  "なっ": {
+   "entry": "なっ",
+   "count": 628.0,
+   "V": 0.24291576345915233,
+   "A": -0.14588109314388387,
+   "p_valence_author_equal": 0.45981265383746606,
+   "p_valence_tokens": 0.4612466627273551,
+   "p_valence_types": 0.7713239713676848,
+   "p_arousal_author_equal": 0.23390111252270263,
+   "p_arousal_tokens": 0.23405333597871048,
+   "p_arousal_types": 0.17723075241790065,
+   "p_valence_lexicon": 0.9163420366134779,
+   "p_arousal_lexicon": 0.022181084667045374,
+   "seed_SP": {
+    "100": 1949165504,
+    "300": 1949165704
+   }
+  },
+  "多少": {
+   "entry": "多少",
+   "count": 23.0,
+   "V": 0.20603188461889177,
+   "A": -0.04040577838805981,
+   "p_valence_author_equal": 0.4047343848670148,
+   "p_valence_tokens": 0.4062393519976192,
+   "p_valence_types": 0.7236763018414294,
+   "p_arousal_author_equal": 0.6884705357741937,
+   "p_arousal_tokens": 0.68828687389746,
+   "p_arousal_types": 0.44248948144910116,
+   "p_valence_lexicon": 0.8764771832161438,
+   "p_arousal_lexicon": 0.19274314558035568,
+   "seed_SP": {
+    "100": 1833689839,
+    "300": 1833690039
+   }
+  },
+  "意識": {
+   "entry": "意識",
+   "count": 40.0,
+   "V": 0.546183211701293,
+   "A": -0.019310715436894776,
+   "p_valence_author_equal": 0.9832742467821222,
+   "p_valence_tokens": 0.9834246994837201,
+   "p_valence_types": 0.9704934156603464,
+   "p_arousal_author_equal": 0.7579039318683414,
+   "p_arousal_tokens": 0.7573484694911818,
+   "p_arousal_types": 0.4962570351346921,
+   "p_valence_lexicon": 0.9970598600513352,
+   "p_arousal_lexicon": 0.2603334188586267,
+   "seed_SP": {
+    "100": 925126278,
+    "300": 925126478
+   }
+  },
+  "腕": {
+   "entry": "腕",
+   "count": 31.0,
+   "V": 0.22242471965900767,
+   "A": -0.06150084133922462,
+   "p_valence_author_equal": 0.4237241702060263,
+   "p_valence_tokens": 0.4252990066896412,
+   "p_valence_types": 0.7451232173105294,
+   "p_arousal_author_equal": 0.6398233575900221,
+   "p_arousal_tokens": 0.6395918068069579,
+   "p_arousal_types": 0.3892956669034479,
+   "p_valence_lexicon": 0.895869377918301,
+   "p_arousal_lexicon": 0.1360506083444067,
+   "seed_SP": {
+    "100": 265713052,
+    "300": 265713252
+   }
+  },
+  "ときどき": {
+   "entry": "ときどき",
+   "count": 25.0,
+   "V": 0.23062113717906518,
+   "A": -0.08259590429038943,
+   "p_valence_author_equal": 0.438424506761891,
+   "p_valence_tokens": 0.4399032137019034,
+   "p_valence_types": 0.7561062237036228,
+   "p_arousal_author_equal": 0.6062957539602462,
+   "p_arousal_tokens": 0.606184575438536,
+   "p_arousal_types": 0.33481776952079123,
+   "p_valence_lexicon": 0.9046131744226793,
+   "p_arousal_lexicon": 0.09163278101298554,
+   "seed_SP": {
+    "100": 1622277664,
+    "300": 1622277864
+   }
+  },
+  "目的": {
+   "entry": "目的",
+   "count": 19.0,
+   "V": 0.41913874014039587,
+   "A": -0.015091702846661947,
+   "p_valence_author_equal": 0.8978516599358838,
+   "p_valence_tokens": 0.8986180779897434,
+   "p_valence_types": 0.923747336211136,
+   "p_arousal_author_equal": 0.7865893536872258,
+   "p_arousal_tokens": 0.7858538457888903,
+   "p_arousal_types": 0.5067755860335501,
+   "p_valence_lexicon": 0.9888124929491551,
+   "p_arousal_lexicon": 0.2750845352632099,
+   "seed_SP": {
+    "100": 910762146,
+    "300": 910762346
+   }
+  },
+  "女性": {
+   "entry": "女性",
+   "count": 13.0,
+   "V": 0.2838978510594412,
+   "A": -0.015091702846661947,
+   "p_valence_author_equal": 0.6978416730517684,
+   "p_valence_tokens": 0.6995117553946284,
+   "p_valence_types": 0.819053603628217,
+   "p_arousal_author_equal": 0.7865893536872258,
+   "p_arousal_tokens": 0.7858538457888903,
+   "p_arousal_types": 0.5067755860335501,
+   "p_valence_lexicon": 0.9471935390799009,
+   "p_arousal_lexicon": 0.2750845352632099,
+   "seed_SP": {
+    "100": 956291386,
+    "300": 956291586
+   }
+  }
+ }
+}

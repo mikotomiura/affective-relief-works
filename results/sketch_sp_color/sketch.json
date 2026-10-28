@@ -1,0 +1,244 @@
+{
+ "meta": {
+  "conditions_sha256": "e58d15b15fa08072c5914a5fe7509f7f3372a750c7a8c3bfbb0dfdd9e0cbc4e2",
+  "script_sha256": "1043b9e0112ff0c91178b958ac7e4db69cb4811a4e248f143295b84d3de6c05c",
+  "font_sha256": "ca1e9bf621f13ddc4800bfb74d0124571dfc25a1678a28d6e7dbcf39fad2504a",
+  "lexicon_sha256": "537cf39afd50f89cc4c69842f9876df7ff48f9950da849d739bdde7fc00d9e83",
+  "dicdir_sha256": {
+   "COPYING": "fca02d9adb601d101eccdf3131119abfff2d9c825ef5c759d7a89ebbaa972099",
+   "char.bin": "81bba502ae48fa005a374819f15e44452eb68086a8b323ec20a044d514400832",
+   "dicrc": "add6bb131a75e69478961ea59712541ace3779f7c5daa4da80d281f097c9d4d1",
+   "matrix.bin": "ee44d7350cdcb680ebd699f83e121be1dc63310f8832d55bcb537a068177611a",
+   "mecabrc": "cf91ca4aec6bbf596eda5034aefb73ae90999678b59f20ce3deb35d91fddb009",
+   "sys.dic": "223af63996d5d9a104d8c8baaf32029fbbf6a370d7dff33fe19fda2e92ac0ac1",
+   "unk.dic": "f0bf15e3e28259f4470b9c1e775d98bef53207d4b09afcd6d8545209b7b53f88",
+   "version": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "python": "3.13.12",
+  "platform": "Darwin arm64",
+  "atact_commit": "b559a80c623d36357dd0736b887497a0cb789af5",
+  "numpy": "2.5.4",
+  "scipy": "1.18.1",
+  "pillow": "13.0.0",
+  "fugashi": "1.5.2",
+  "ipadic": "1.0.0",
+  "git_commit": "5ecf3d5ff7f0916e63e2d50c5ec28a7816a28745",
+  "git_dirty": false,
+  "started": "2026-10-28T03:38:12+00:00",
+  "finished": "2026-10-28T03:38:21+00:00"
+ },
+ "eps": 0.3529079159926097,
+ "K0_note": "the tile of a shared key drawn again without any cache equals every occurrence in both rows; tile() takes no author, so this checks that drawing is repeatable, the author-free construction is by the code",
+ "K3_note": "the spread of the author-equal percentiles (the ones drawn) and of the whole-lexicon ones; the token and type percentiles are in values.json",
+ "K0_same_key_same_tile": {
+  "G0": true,
+  "P": true,
+  "S": true,
+  "SP": true,
+  "C1": true,
+  "SPC": true
+ },
+ "K0_keys_compared": {
+  "G0": 16,
+  "P": 16,
+  "S": 16,
+  "SP": 16,
+  "C1": 16,
+  "SPC": 16
+ },
+ "K2b_share_of_pixels_with_chroma_reduced": {
+  "C1": 0.019149466306584366,
+  "SPC": 0.026053722993827164
+ },
+ "K3_spread_of_percentiles": {
+  "L1_adversative/太宰治": {
+   "p_valence_author_equal": {
+    "range": 0.2721228304559868,
+    "iqr": 0.0
+   },
+   "p_arousal_author_equal": {
+    "range": 0.598410525259573,
+    "iqr": 0.0
+   },
+   "p_valence_lexicon": {
+    "range": 0.26236630849206255,
+    "iqr": 0.0
+   },
+   "p_arousal_lexicon": {
+    "range": 0.38137433821892414,
+    "iqr": 0.0
+   }
+  },
+  "L1_adversative/岡本かの子": {
+   "p_valence_author_equal": {
+    "range": 0.3563363558889257,
+    "iqr": 0.08421352543293892
+   },
+   "p_arousal_author_equal": {
+    "range": 0.598410525259573,
+    "iqr": 0.4860324181915671
+   },
+   "p_valence_lexicon": {
+    "range": 0.5093413088165262,
+    "iqr": 0.24697500032446368
+   },
+   "p_arousal_lexicon": {
+    "range": 0.38137433821892414,
+    "iqr": 0.37639232348927226
+   }
+  },
+  "L2_intensifier/太宰治": {
+   "p_valence_author_equal": {
+    "range": 0.638990518008615,
+    "iqr": 0.638990518008615
+   },
+   "p_arousal_author_equal": {
+    "range": 0.1324488515974418,
+    "iqr": 0.0443410660145519
+   },
+   "p_valence_lexicon": {
+    "range": 0.22931743827453221,
+    "iqr": 0.22931743827453221
+   },
+   "p_arousal_lexicon": {
+    "range": 0.5324945365311141,
+    "iqr": 0.18948902464226636
+   }
+  },
+  "L2_intensifier/岡本かの子": {
+   "p_valence_author_equal": {
+    "range": 0.638990518008615,
+    "iqr": 0.4490847750713599
+   },
+   "p_arousal_author_equal": {
+    "range": 0.061505421541837246,
+    "iqr": 0.04043396566508739
+   },
+   "p_valence_lexicon": {
+    "range": 0.22931743827453221,
+    "iqr": 0.060627782275897935
+   },
+   "p_arousal_lexicon": {
+    "range": 0.2565119856876583,
+    "iqr": 0.17652114804228614
+   }
+  },
+  "P1_first_person/太宰治": {
+   "p_valence_author_equal": {
+    "range": 0.0,
+    "iqr": 0.0
+   },
+   "p_arousal_author_equal": {
+    "range": 0.0,
+    "iqr": 0.0
+   },
+   "p_valence_lexicon": {
+    "range": 0.0,
+    "iqr": 0.0
+   },
+   "p_arousal_lexicon": {
+    "range": 0.0,
+    "iqr": 0.0
+   }
+  },
+  "P1_first_person/岡本かの子": {
+   "p_valence_author_equal": {
+    "range": 0.8394092043450998,
+    "iqr": 0.05073381423637491
+   },
+   "p_arousal_author_equal": {
+    "range": 0.3967786351333465,
+    "iqr": 0.20082475286306467
+   },
+   "p_valence_lexicon": {
+    "range": 0.5603447501280384,
+    "iqr": 0.00977359424870683
+   },
+   "p_arousal_lexicon": {
+    "range": 0.5510750729044889,
+    "iqr": 0.41240966182899674
+   }
+  },
+  "O1_iu/太宰治": {
+   "p_valence_author_equal": {
+    "range": 0.0,
+    "iqr": 0.0
+   },
+   "p_arousal_author_equal": {
+    "range": 0.0,
+    "iqr": 0.0
+   },
+   "p_valence_lexicon": {
+    "range": 0.0,
+    "iqr": 0.0
+   },
+   "p_arousal_lexicon": {
+    "range": 0.0,
+    "iqr": 0.0
+   }
+  },
+  "O1_iu/岡本かの子": {
+   "p_valence_author_equal": {
+    "range": 0.17978670938697588,
+    "iqr": 0.0
+   },
+   "p_arousal_author_equal": {
+    "range": 0.08759413267681615,
+    "iqr": 0.0
+   },
+   "p_valence_lexicon": {
+    "range": 0.046127251653017565,
+    "iqr": 0.0
+   },
+   "p_arousal_lexicon": {
+    "range": 0.09628259487067876,
+    "iqr": 0.0
+   }
+  },
+  "words20/太宰治": {
+   "p_valence_author_equal": {
+    "range": 0.9376502073208287,
+    "iqr": 0.5640220187282154
+   },
+   "p_arousal_author_equal": {
+    "range": 0.813777263325987,
+    "iqr": 0.2062989894302687
+   },
+   "p_valence_lexicon": {
+    "range": 0.8951999844257442,
+    "iqr": 0.1945148419662298
+   },
+   "p_arousal_lexicon": {
+    "range": 0.83459416584386,
+    "iqr": 0.36187039074410005
+   }
+  },
+  "words20/岡本かの子": {
+   "p_valence_author_equal": {
+    "range": 0.861015363360325,
+    "iqr": 0.5189455820814548
+   },
+   "p_arousal_author_equal": {
+    "range": 0.9200862785827274,
+    "iqr": 0.23012374668740998
+   },
+   "p_valence_lexicon": {
+    "range": 0.6230366204663691,
+    "iqr": 0.2458227175478933
+   },
+   "p_arousal_lexicon": {
+    "range": 0.9215541709554107,
+    "iqr": 0.20004251721903693
+   }
+  }
+ },
+ "figures": {
+  "sketch_G0.png": "850906f037e05ac3a9cbbf9532b72de6f81abb47f6a318e599678e91097e3348",
+  "sketch_P.png": "a68e61cc51e5912b262b0586e64730413634e0b34e15fe5835451a14d6d0310b",
+  "sketch_S.png": "46998b559aa13f4f19d45401ccaeca6a0072552f2322da65436c39ceee366a53",
+  "sketch_SP.png": "cc865536c62fa18defa2d8d3a3da0d8d9c957e079a55d62fcd8fae58e5d72823",
+  "sketch_C1.png": "20f7c65404ddfc00dd6966e6371f7f1652158c23eaa6839e600d3607b0d9380d",
+  "sketch_SPC.png": "b229e0ae675b7f8c3501380038c8037a93811872c4225317940bf07085207ee6"
+ },
+ "values_sha256": "2a15808cef6cd5978acda504fb6d08b4c1df6fec736901d90c492e6e525db71e"
+}
