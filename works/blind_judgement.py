@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import datetime as dt
 import hashlib
+import html
 import io
 import json
 import random
@@ -227,6 +228,8 @@ def build_xlsx(images: list[bytes], q: dict, size: tuple[int, int], path: Path) 
     js = wb.create_sheet("判定")
     W, H = size
     js.column_dimensions["A"].width = 6
+    if round(W / 7) + 2 > 255:  # the widest column Excel keeps; a wider image would cover the answers
+        raise ValueError(f"an image of {W} px is too wide for one column")
     js.column_dimensions["B"].width = round(W / 7) + 2
     js.column_dimensions["C"].width = 16
     js.column_dimensions["D"].width = 40
@@ -257,19 +260,36 @@ def build_xlsx(images: list[bytes], q: dict, size: tuple[int, int], path: Path) 
     return [text for text, _ in lines if text] + ["番号", "上下の並び", "答え", "一言", "説明", "判定", *q["choices"]]
 
 
+THEME_PART = "xl/theme/theme1.xml"
+FIXED_PARTS = ("xl/sharedStrings", "xl/worksheets/sheet")  # the only parts where the fixed strings may be removed
+
+
+def default_theme() -> bytes:
+    from openpyxl.writer.theme import theme_xml
+
+    return theme_xml.encode("utf-8")
+
+
 def xlsx_leaks(path: Path, forbidden: list[str], forbidden_in_text: list[str], fixed: list[str] = ()) -> list[str]:
-    """The forbidden strings found in the unpacked spreadsheet: `forbidden` anywhere in any part, `forbidden_in_text`
-    (short tokens such as seeds) only in the strings, the properties, the workbook and the text and values of the cells
-    (the drawings hold offsets in which such tokens occur by chance). The `fixed` strings (instructions and choices,
-    the same whatever the key) are removed before searching: a forbidden word inside them (わから in わからない) tells
-    nothing about an item."""
+    """The forbidden strings found in the unpacked spreadsheet, after character references are resolved: `forbidden`
+    anywhere in any part, `forbidden_in_text` (short tokens such as seeds) only in the strings, the properties, the
+    workbook and the text and values of the cells (the drawings hold offsets in which such tokens occur by chance).
+    The `fixed` strings (instructions, headers and choices, the same whatever the key) are removed only from the
+    strings and the sheets before searching: a forbidden word inside them (わから in わからない) tells nothing about an
+    item. The theme must be the default theme of openpyxl byte for byte (its font names hold 体 as a character
+    reference) and is not searched."""
     hits = []
     with zipfile.ZipFile(path) as z:
         for name in z.namelist():
             raw = z.read(name)
-            text = raw.decode("utf-8", errors="ignore") if not name.startswith("xl/media/") else ""
-            for f in sorted(fixed, key=len, reverse=True):
-                text = text.replace(f, "")
+            if name == THEME_PART:
+                if raw != default_theme():
+                    hits.append(f"{name}: not the default theme")
+                continue
+            text = html.unescape(raw.decode("utf-8", errors="strict")) if not name.startswith("xl/media/") else ""
+            if name.startswith(FIXED_PARTS):
+                for f in sorted(fixed, key=len, reverse=True):
+                    text = text.replace(html.unescape(f), "")
             for f in forbidden:
                 if f in name or f in text:
                     hits.append(f"{name}: {f}")
@@ -284,6 +304,16 @@ def xlsx_leaks(path: Path, forbidden: list[str], forbidden_in_text: list[str], f
                     if re.search(pat, strings):
                         hits.append(f"{name}: {f}")
     return hits
+
+
+def shown_strings(path: Path) -> set[str]:
+    """Every string a cell shows, and every list of a data validation, read back with openpyxl."""
+    from openpyxl import load_workbook
+
+    wb = load_workbook(path)
+    out = {cell.value for ws in wb for row in ws.iter_rows() for cell in row if isinstance(cell.value, str)}
+    out |= {dv.formula1 for ws in wb for dv in ws.data_validations.dataValidation}
+    return out
 
 
 def anchored_images(path: Path) -> dict[int, str]:
@@ -305,13 +335,64 @@ def anchored_images(path: Path) -> dict[int, str]:
         anchors = re.findall(r"<(?:xdr:)?oneCellAnchor>.*?</(?:xdr:)?oneCellAnchor>", xml, flags=re.S)
         if not anchors:
             raise ValueError("no image anchor found")
+        if re.search(r"<(?:xdr:)?(?:twoCellAnchor|absoluteAnchor)\b", xml):
+            raise ValueError("an anchor of another kind")
+        linked = [n for n in z.namelist() if n.startswith("xl/worksheets/_rels/")
+                  and d.rsplit("/", 1)[1] in z.read(n).decode("utf-8")]
+        if linked != ["xl/worksheets/_rels/sheet2.xml.rels"]:
+            raise ValueError(f"the drawing is linked from {linked}, not from the second sheet only")
         for anchor in anchors:
-            row = int(re.search(r"<(?:xdr:)?from>.*?<(?:xdr:)?row>(\d+)</(?:xdr:)?row>", anchor, flags=re.S).group(1)) + 1
+            frm = re.search(r"<(?:xdr:)?from>(.*?)</(?:xdr:)?from>", anchor, flags=re.S).group(1)
+            pos = {k: int(re.search(rf"<(?:xdr:)?{k}>(\d+)</(?:xdr:)?{k}>", frm).group(1))
+                   for k in ("col", "colOff", "row", "rowOff")}
+            if (pos["col"], pos["colOff"], pos["rowOff"]) != (1, 0, 0):
+                raise ValueError(f"an image is not at the top left of column B: {pos}")
+            row = pos["row"] + 1
             rid = re.search(r'r:embed="(rId\d+)"', anchor).group(1)
             if row in out:
                 raise ValueError(f"two images on row {row}")
             out[row] = hashlib.sha256(z.read(target[rid])).hexdigest()
     return out
+
+
+def forbidden_lists(words: dict, variants: dict, authors: list[str], sets: list[str], rows: list[str],
+                    versions: list[str], seeds: list[int]) -> tuple[list[str], list[str]]:
+    forbidden = sorted({*words["authors"], *(a["slug"] for a in words["authors"].values()),
+                        *(w["word"] for a in authors for w in words["authors"][a]["words"]),
+                        *(k for k, v in variants["values"].items() if v["set"] in sets), *rows, *versions,
+                        *KINDS, "seed", "swapped", "author", "own_seed"} - {"P"})
+    return forbidden, sorted({str(s) for s in seeds} | {"G0", "SPC"})
+
+
+def expected_shown(fixed: list[str], q: dict) -> set[str]:
+    """What the cells and the list may show: the fixed strings but the sheet names, and the list of choices."""
+    return (set(fixed) - {"説明", "判定"} - set(q["choices"])) | {'"' + ",".join(q["choices"]) + '"'}
+
+
+def verify(path: Path) -> None:
+    """The checks B4b, B5 and B5b applied again to a spreadsheet already made (nothing is written, the key is not read)."""
+    c = json.loads(COND.read_bytes())
+    words = json.loads((ROOT / c["inputs"]["words"]).read_bytes())
+    variants = json.loads((ROOT / c["inputs"]["variants"]).read_bytes())
+    forbidden, in_text = forbidden_lists(words, variants, c["authors"], c["sets"], c["rows"], list(c["versions"]),
+                                         c["common_seeds"])
+    from openpyxl import load_workbook
+
+    t = c["tiles"]
+    size = canvas_size(t)
+    with tempfile.TemporaryDirectory() as d:  # the fixed strings as the script writes them (they do not depend on the key)
+        fixed = build_xlsx([png_bytes(np.full((size[1], size[0], 3), WHITE, dtype=np.uint8))] * len(anchored_images(path)),
+                           c["question"], size, Path(d) / "fixed.xlsx")
+    if load_workbook(path).sheetnames != ["説明", "判定"]:
+        raise SystemExit("unexpected sheets")
+    leaks = xlsx_leaks(path, forbidden, in_text, fixed)
+    rows = anchored_images(path)
+    shown = shown_strings(path)
+    if shown != expected_shown(fixed, c["question"]):
+        leaks.append(f"B5b: shown strings differ: {sorted(shown ^ expected_shown(fixed, c['question']))}")
+    print(json.dumps({"B5_leaks": leaks, "B5b_shown": sorted(shown), "B4b_rows": [min(rows), max(rows), len(rows),
+                                                                                 len(set(rows.values()))]},
+                     ensure_ascii=False, indent=1))
 
 
 # ---------------------------------------------------------------- main
@@ -416,11 +497,7 @@ def main() -> None:
     if len(set(images)) != len(images):
         raise SystemExit("two items have the same image")
 
-    forbidden = sorted({*words["authors"], *(a["slug"] for a in words["authors"].values()),
-                        *(w["word"] for a in authors for w in words["authors"][a]["words"]),
-                        *(k for k, v in variants["values"].items() if v["set"] in sets), *rows, *versions,
-                        *KINDS, "seed", "swapped", "author", "own_seed"} - {"P"})
-    forbidden_in_text = sorted({str(s) for s in seeds} | {"G0", "SPC"})
+    forbidden, forbidden_in_text = forbidden_lists(words, variants, authors, sets, rows, versions, seeds)
 
     tmp = Path(tempfile.mkdtemp(prefix=".blind-", dir=ROOT / "advice"))
     rtmp = Path(tempfile.mkdtemp(prefix=".blind_judgement-", dir=ROOT / "results"))
@@ -430,7 +507,9 @@ def main() -> None:
         leaks = xlsx_leaks(xlsx, forbidden, forbidden_in_text, fixed)  # B5
         if leaks:
             raise SystemExit(f"the spreadsheet reveals: {leaks}")
-        if anchored_images(xlsx) != {n + 1: hashlib.sha256(b).hexdigest() for n, b in enumerate(images, 1)}:
+        if shown_strings(xlsx) != expected_shown(fixed, c["question"]):  # B5b
+            raise SystemExit("the spreadsheet shows strings other than the fixed ones")
+        if anchored_images(xlsx) != {n + 1: hashlib.sha256(b).hexdigest() for n, b in enumerate(images, 1)}:  # B4b
             raise SystemExit("the image on the row of an item is not the image of that item")
         (tmp / "sealed").mkdir()
         key = {"conditions_sha256": hashlib.sha256(raw).hexdigest(), "random_number": number,
@@ -444,7 +523,7 @@ def main() -> None:
                            "finished": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")},
                   "spreadsheet_sha256": key["spreadsheet_sha256"], "key_sha256": cm.sha256(tmp / "sealed" / "key.json"),
                   "n_items": len(items), "canvas": list(size),
-                  "checks": {"B1": True, "B3": True, "B4": True, "B5": True, "B6": True}}
+                  "checks": {"B1": True, "B3": True, "B4": True, "B4b": True, "B5": True, "B5b": True, "B6": True}}
         with (rtmp / "record.json").open("x") as fh:
             fh.write(json.dumps(record, indent=1) + "\n")
     except BaseException:
@@ -459,4 +538,9 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    if sys.argv[1:2] == ["--verify"] and len(sys.argv) == 3:
+        verify(Path(sys.argv[2]))
+    elif sys.argv[1:]:
+        raise SystemExit(f"unknown arguments {sys.argv[1:]}")
+    else:
+        main()

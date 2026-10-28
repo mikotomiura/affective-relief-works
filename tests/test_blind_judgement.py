@@ -138,3 +138,50 @@ def test_numbers_are_matched_as_whole_numbers(tmp_path):
     assert xlsx_leaks(p, [], ["200", "100"]) == []
     build_xlsx(imgs, {**q, "how": "h 200"}, size, p)
     assert xlsx_leaks(p, [], ["200"]) != []
+
+
+def _rewrite(src: Path, dst: Path, part: str, change) -> None:
+    import zipfile
+
+    with zipfile.ZipFile(src) as zi, zipfile.ZipFile(dst, "w") as zo:
+        for n in zi.namelist():
+            b = zi.read(n)
+            zo.writestr(n, change(b) if n == part else b)
+
+
+def test_leak_check_resolves_character_references_and_guards_the_theme(tmp_path):
+    pytest.importorskip("openpyxl")
+    from blind_judgement import THEME_PART, build_xlsx, expected_shown, shown_strings, xlsx_leaks
+
+    size = canvas_size(T)
+    imgs = [png_bytes(np.full((size[1], size[0], 3), 1, dtype=np.uint8))]
+    q = {"text": "a", "choices": ["x", "y"], "comment": "c", "how": "h"}
+    p = tmp_path / "a.xlsx"
+    fixed = build_xlsx(imgs, q, size, p)
+    assert shown_strings(p) == expected_shown(fixed, q)
+    assert xlsx_leaks(p, ["体"], [], fixed) == []  # 体 is in the default theme only, as a character reference
+    hidden = tmp_path / "b.xlsx"  # 作家 written as character references in the properties
+    _rewrite(p, hidden, "docProps/core.xml", lambda b: b.replace(b"</cp:coreProperties>",
+                                                                  b"<dc:subject>&#x4F5C;&#x5BB6;</dc:subject></cp:coreProperties>"))
+    assert any("作家" in h for h in xlsx_leaks(hidden, ["作家"], [], fixed))
+    theme = tmp_path / "c.xlsx"
+    _rewrite(p, theme, THEME_PART, lambda b: b.replace(b"Calibri", b"Calibra", 1))
+    assert any("theme" in h for h in xlsx_leaks(theme, [], [], fixed))
+
+
+def test_image_check_rejects_an_image_out_of_column_b(tmp_path):
+    pytest.importorskip("openpyxl")
+    from blind_judgement import anchored_images, build_xlsx
+
+    size = canvas_size(T)
+    imgs = [png_bytes(np.full((size[1], size[0], 3), k, dtype=np.uint8)) for k in range(2)]
+    p = tmp_path / "a.xlsx"
+    build_xlsx(imgs, {"text": "a", "choices": ["x"], "comment": "c", "how": "h"}, size, p)
+    moved = tmp_path / "b.xlsx"
+    _rewrite(p, moved, "xl/drawings/drawing1.xml", lambda b: b.replace(b"<col>1</col>", b"<col>2</col>", 1))
+    with pytest.raises(ValueError):
+        anchored_images(moved)
+    shifted = tmp_path / "c.xlsx"
+    _rewrite(p, shifted, "xl/drawings/drawing1.xml", lambda b: b.replace(b"<rowOff>0</rowOff>", b"<rowOff>9</rowOff>", 1))
+    with pytest.raises(ValueError):
+        anchored_images(shifted)
