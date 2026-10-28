@@ -1,0 +1,42 @@
+{
+ "purpose": "Work 2, the scoring of the blind judgement: the rule of works/conditions/blind_judgement.json applied to the answers of the two judges, written and committed before any answer was seen.",
+ "fixed_before_running": "Written on 2026-10-28, after the spreadsheet was made (record 0a85cf6, checks d5ead48) and before it was sent; no answer exists yet. The main agent has seen the first 12 item images and the rendered sheet, not the key.",
+ "version": 1,
+ "inputs": {
+  "conditions": "works/conditions/blind_judgement.json",
+  "record": "results/blind_judgement/record.json",
+  "sent": "advice/blind-judgement/judgement.xlsx",
+  "key": "advice/blind-judgement/sealed/key.json",
+  "replies": {
+   "harada": "advice/blind-judgement/reply-harada.xlsx",
+   "researcher": "advice/blind-judgement/reply-researcher.xlsx"
+  },
+  "use": "the SHA-256 of the sent spreadsheet and of the key must equal the record; each reply is read with openpyxl (sheet 判定, rows 2 to 96: column A the number, column C the answer, column D the comment)"
+ },
+ "reply_checks": {
+  "R1": "the sheets, and every cell outside C2:D96, hold the same values as the sent spreadsheet (a change is reported and the run stops: the judge may have changed the items)",
+  "R2": "the image on every row equals, pixel for pixel, the image of the sent spreadsheet on that row (Excel may store the images again, so the pixels are compared, not the bytes)",
+  "R3": "every answer is one of the three choices or empty; an answer with spaces around it is taken without them; any other text stops the run",
+  "on_failure": "if the reply of the deciding judge fails R1 or R2, the run stops; if the reply of the other judge fails them, it is reported as excluded (with the differences) and not scored, so that it cannot block the decision",
+  "R0": "before the replies are read: the key, the record and the conditions of the judgement agree (SHA-256), and the image anchored on every row of the sent spreadsheet is the image of that item in the key"
+ },
+ "rule": {
+  "empty": "an empty answer counts as neither 違って見える nor 同じに見える; the empty answers are counted and reported per judge",
+  "controls_pass": "all 5 same_image items answered 同じに見える and at least 4 of the 5 seed_differs items answered 違って見える (an empty or わからない answer does not count towards either)",
+  "remains": "per judge, version and row: the row remains if its five test items (one per common seed) are all answered 違って見える",
+  "deciding": "the rule decides on the answers of harada only; if harada's controls do not pass, the result is: this judgement cannot decide, and nothing of the researcher's answers is used in its place",
+  "G0": "harada's rows remaining in G0: if at least one, the work 2 claim of the check of the seeds can be kept for those rows (two claims); if none, one claim, now from a blind judge",
+  "P_SPC": "harada's rows remaining in P and in SPC are reported as what the makers' quantities make visible; no claim about the authors"
+ },
+ "reported": [
+  "per judge: controls (each item and the pass), counts of 違って見える, 同じに見える, わからない and empty per version",
+  "per judge, version and row: the five answers by seed and whether the row remains",
+  "per judge: the repeats (the answer of the first showing and of the repeat, and whether they agree)",
+  "per judge: the set_differs answers",
+  "the agreement of the two judges on the test items (count of items answered alike), descriptive only",
+  "the comments, item by item, as written"
+ ],
+ "outputs": "results/blind_judgement/score.json (in git; it holds the key's assignment of every item, written after both answers were received)",
+ "not_claimed": "As in works/conditions/blind_judgement.json: not a finding about the authors; the researcher's answers are not blind; one deciding judge; the repeats always come later and the other way round, so memory, fatigue and position are not separated. R2 compares the pixels of the images, not their crop or displayed size.",
+ "deciding_judge": "harada"
+}
