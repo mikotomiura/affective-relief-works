@@ -1,0 +1,37 @@
+{
+ "purpose": "Work 2, sketches of colour and of features outside the rule (decision 0 of .steering/20261028-color-features): the rows of the check of the seeds (four sets of variants and the 20 words of the two trial authors) drawn again under two common seeds with each candidate below, to see which candidate lets the difference of the recorded data between the two authors show under a common seed, and how. Images only; not a part of the works until the researcher decides.",
+ "fixed_before_running": "Written on 2026-10-28 and committed before the script was run. Seen before: every result of the check of the seeds (8c1d2e2, 608d15c), the V and A of the 20 words and of the spellings of the four sets and the tile counts by spelling of the two authors, the columns of the Japanese lexicon and the values of dominance and of the five basic emotions of eleven entries (私 僕 あたし 言う 云う しかし だが とても 魚 無い and the header). Not seen before: any tile drawn with the candidates below, any percentile or z value of the lexicon.",
+ "version": 1,
+ "inputs": {
+  "words": "results/work2_words/words.json",
+  "variants": "results/work2_variants/variants.json",
+   "lexicon": "external/memolon-20261027/MTL_grouped-ja.tsv",
+  "lexicon_sha256": "537cf39afd50f89cc4c69842f9876df7ff48f9950da849d739bdde7fc00d9e83",
+  "use": "the words and spellings and their tile counts as recorded; V and A as recorded (map B) for the candidates that keep them; the raw columns of the lexicon (looked up by the surface form, the entry of variants.json for a spelling, the word itself for the 20 words; looked up values must give the recorded V and A back through map B) for the candidates that use percentiles, dominance or the basic emotions. The field, relief, eps and sampling of works/conditions/work2_words.json."
+ },
+ "map_b": {"V": [0.40982, -2.0111], "A": [0.4219, -1.69426], "tolerance": 0.001, "source": "works/conditions/work2.json (map B, clipped to [-1, 1]); used only to check that the lexicon is looked up by the entry that gave the recorded values (the spelling 非常に has the entry 非常)"},
+ "authors": ["太宰治", "岡本かの子"],
+ "seeds": [100, 300],
+ "rows": ["L1_adversative", "L2_intensifier", "P1_first_person", "O1_iu", "words20"],
+ "drawing": {"tile_px": 72, "supersample": 4, "grey": "z / D + 1/2 (common scale), as the sheets of the check of the seeds"},
+ "candidates": {
+  "G0": "grey relief as before (the baseline)",
+  "C1": "colour from the values: hue from the percentile of the raw valence of the entry among all entries of the lexicon (0: hue 220, blue; 1: hue 25, orange; linear in between), saturation from the percentile of the raw arousal (0: 0.15; 1: 0.85); lightness from the grey of the relief, so the relief still reads",
+  "C2": "one colour per spelling within a set (a fixed palette of eight hues in the order of the spellings of the set in variants.json: 0, 210, 120, 45, 285, 175, 330, 90; saturation 0.7); the 20 words stay grey (they have no shared spellings)",
+  "E5": "colour from the five basic emotions: each column turned into a z value against the mean and the standard deviation over all entries of the lexicon; the hue of the largest (joy 50, anger 0, sadness 220, fear 280, disgust 120); saturation from that z (z <= 0: 0.05; z >= 3: 0.85; linear in between)",
+  "S1": "the seed of a tile from its spelling or word: seed = (the first eight bytes of the SHA-256 of the UTF-8 spelling, as an integer, + the common seed) mod 2**31; grey relief, V and A as recorded",
+  "P1": "V and A from percentiles: V = 2 p_valence - 1 and A = 2 p_arousal - 1 (percentiles among all entries of the lexicon) instead of map B; grey relief, common seed",
+  "SP": "S1 and P1 together (relief only)",
+  "SPC": "S1, P1 and C1 together"
+ },
+ "percentile": "the fraction of entries of the lexicon with a smaller value plus half of those with an equal value",
+ "checks": [
+  "K0 (computed): in every candidate, under one seed, two tiles of the same spelling or word are the same for both authors (the difference between the rows comes from the recorded composition and values, not from the author)",
+  "K1 (by eye, main first, then the researcher): under both common seeds, which rows look different between the two authors",
+  "K2 (by eye): whether what differs reads as the composition of the row (which spellings, how many) or only as a change of colour or pattern; the tint keeps the HLS lightness, so at one lightness a yellow looks brighter than a blue and the brightness of a coloured tile mixes the relief with the hue",
+  "K3 (property): whether the candidate carries over to a relief (S1, P1 and SP do; C1, C2, E5 do not)",
+  "K4 (property): how much of the candidate is chosen by the makers per item (C2: a palette per spelling; C1, E5, S1, P1: one rule for every entry)"
+ ],
+ "outputs": "results/sketch_color_features/sketch_{candidate}.png (labelled: rows, authors by slug, seeds), values.json (per spelling and word: percentiles, z of the basic emotions, the seed of S1), sketch.json (provenance, K0)",
+ "not_claimed": "Sketches to choose a direction; no finding about the authors. A colour that separates the rows shows what the colour was given (the recorded composition or values), not that readers of the works perceive the authors as different. The percentiles are taken over the whole lexicon, mostly rare entries; the values of the lexicon for Japanese are predicted, not rated by people."
+}
