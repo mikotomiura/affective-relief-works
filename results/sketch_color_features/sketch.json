@@ -1,0 +1,49 @@
+{
+ "meta": {
+  "conditions_sha256": "2e1a55b26fc371fa1549225496d59f01799184840f4769c47e692bc600124aaa",
+  "script_sha256": "9e1b0611af3a8662f2832f8f0c585c90561b1be2ee7b79181e4343eecd8594ac",
+  "font_sha256": "ca1e9bf621f13ddc4800bfb74d0124571dfc25a1678a28d6e7dbcf39fad2504a",
+  "python": "3.13.12",
+  "platform": "Darwin arm64",
+  "atact_commit": "b559a80c623d36357dd0736b887497a0cb789af5",
+  "numpy": "2.5.4",
+  "scipy": "1.18.1",
+  "pillow": "13.0.0",
+  "git_commit": "cae81434a610ea7ca8e863e46e598c8984a1501a",
+  "git_dirty": false,
+  "started": "2026-10-28T03:28:30+00:00",
+  "finished": "2026-10-28T03:28:39+00:00"
+ },
+ "eps": 0.3529079159926097,
+ "K0_same_key_same_tile": {
+  "G0": true,
+  "C1": true,
+  "C2": true,
+  "E5": true,
+  "S1": true,
+  "P1": true,
+  "SP": true,
+  "SPC": true
+ },
+ "K0_keys_compared": {
+  "G0": 16,
+  "C1": 16,
+  "C2": 16,
+  "E5": 16,
+  "S1": 16,
+  "P1": 16,
+  "SP": 16,
+  "SPC": 16
+ },
+ "figures": {
+  "sketch_G0.png": "850906f037e05ac3a9cbbf9532b72de6f81abb47f6a318e599678e91097e3348",
+  "sketch_C1.png": "01d2b535eb43835f3be7be0047304d849813971779d8d1ef200b574d6d493d29",
+  "sketch_C2.png": "ed0066bbb5336d5ba7ecafe0ec0cc48f0d87f347876c48511c678a340a43f178",
+  "sketch_E5.png": "1cc80e45974768b8563a1012f46f8783a62ea5826525662f65d70ec5cdbaea93",
+  "sketch_S1.png": "06f150d50e4f388913bbb983cc4468440ca85e1e23be4de03b08d0cba657f369",
+  "sketch_P1.png": "9b2ddf5fe44a0a6dc3548afc389733976dd362fb14705fdf685a7638c1f2f8e6",
+  "sketch_SP.png": "d547dd5cf320160504a642e3d1f9a268c4cb5c466db11e423c20957226858104",
+  "sketch_SPC.png": "49ef876960c363b0012dec19299f6f7b3178a84a97260c229317a98230ba0977"
+ },
+ "values_sha256": "4b144e0bf6369b105ff2c8a2cbe7f5c1edf7d844931ec4be3f5d1cc8c1e1df23"
+}
