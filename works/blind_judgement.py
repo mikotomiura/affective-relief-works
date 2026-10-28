@@ -214,12 +214,12 @@ def build_xlsx(images: list[bytes], q: dict, size: tuple[int, int], path: Path) 
         ("", False),
         (f"シート「判定」の各行に、タイルの並びが上下 2 つある。{q['text']}", False),
         (f"答えは「答え」の欄の一覧から 1 つ選ぶ: {'／'.join(q['choices'])}。", False),
-        (f"「一言」の欄は{q['comment']}（記入は任意）。", False),
+        (f"「一言」の欄には気づいたことを書ける（{q['comment']}）。", False),
         (q["how"], False),
         ("項目の数は {n}。記入する欄は黄色。".format(n=len(images)), False),
         ("記入例: 答え「同じに見える」、一言「明るさは違うが模様は同じ」", False),
     ]
-    ws.column_dimensions["A"].width = 110
+    ws.column_dimensions["A"].width = 90
     for r, (text, b) in enumerate(lines, 1):
         c = ws.cell(row=r, column=1, value=text)
         c.font, c.alignment = (bold if b else font), wrap
@@ -238,15 +238,21 @@ def build_xlsx(images: list[bytes], q: dict, size: tuple[int, int], path: Path) 
     for i, b in enumerate(images, 1):
         r = i + 1
         js.row_dimensions[r].height = H * 0.75 + 6
-        js.cell(row=r, column=1, value=i).font = font
+        num = js.cell(row=r, column=1, value=i)
+        num.font, num.alignment = font, Alignment(horizontal="center", vertical="center")
         img = XImage(io.BytesIO(b))
         img.width, img.height = W, H
         js.add_image(img, f"B{r}")
         for col in "CD":
             c = js[f"{col}{r}"]
-            c.fill, c.font, c.alignment = fill, font, wrap
+            c.fill, c.font, c.alignment = fill, font, Alignment(wrap_text=True, vertical="center")
         dv.add(f"C{r}")
     js.freeze_panes = "A2"
+    for sh in (ws, js):  # printed: landscape, one page wide
+        sh.page_setup.orientation = "landscape"
+        sh.page_setup.fitToWidth, sh.page_setup.fitToHeight = 1, 0
+        sh.sheet_properties.pageSetUpPr.fitToPage = True
+    js.print_title_rows = "1:1"
     wb.save(path)
     return [text for text, _ in lines if text] + ["番号", "上下の並び", "答え", "一言", "説明", "判定", *q["choices"]]
 
