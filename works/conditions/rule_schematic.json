@@ -1,0 +1,38 @@
+{
+ "purpose": "A schematic of the rule and of the quantities it leaves open, for the paper on the two works. Text and arrows only, plus one tile of work 1 cut from an existing image; it shows no value that has not been shown before.",
+ "fixed_before_running": "Written on 2026-10-28 and committed before any script for it exists and before anything is drawn. Seen before: everything of results/work1, results/work1_drawing, results/work2_words, results/sketch_sp_color and the conditions they were made on.",
+ "version": 1,
+ "layout": {
+  "width_mm": 177.8,
+  "dpi": 300,
+  "colour": "black, white and greys only (the figure must read in print without colour)",
+  "font_file": "/System/Library/Fonts/Helvetica.ttc",
+  "direction": "left to right, one row of boxes joined by arrows"
+ },
+ "boxes": [
+  {"id": "unit", "text": "a unit of text (a sentence in work 1, a word or spelling in work 2)"},
+  {"id": "values", "text": "valence V and arousal A from a lexicon"},
+  {"id": "rule", "text": "the rule: V and A give fineness f, depth s and sharpness gamma"},
+  {"id": "field", "text": "the field of the generator (a seed, four octaves)"},
+  {"id": "relief", "text": "the relief: height under a scale"},
+  {"id": "image", "text": "the image of the relief (how it is drawn)"}
+ ],
+ "open_quantities": {
+  "how": "labels in a second row under the box they act on, each with the value taken in work 1 and in work 2 read from the conditions at drawing time, written as 'name: work 1 value / work 2 value'; a quantity that does not apply to a work is written as a dash",
+  "list": [
+   {"name": "lexicon and its map", "under": "values", "work1": "works/conditions/work1.json lexicon.name", "work2": "the lexicon of work 2 and the map chosen for the main images (left as FILL until the blind judgement is scored; the schematic is drawn after that)"},
+   {"name": "which units", "under": "unit", "work1": "every sentence", "work2": "works/conditions/work2_words.json (the selection of the words)"},
+   {"name": "seed", "under": "field", "work1": "works/conditions/work1.json relief.seed", "work2": "FILL as above"},
+   {"name": "band", "under": "field", "work1": "relief.octaves", "work2": "the octaves of work2_words.json"},
+   {"name": "height scale", "under": "relief", "work1": "common to the series (per-tile min-max shown next to it)", "work2": "common"},
+   {"name": "eps (for a solid only)", "under": "relief", "work1": "relief.eps", "work2": "-"},
+   {"name": "drawing", "under": "image", "work1": "grey; light from two directions; stretched", "work2": "grey, and grey with colour (FILL as above)"}
+  ]
+ },
+ "tile": {
+  "what": "the tile of the first sentence of work 1 under the common scale, cut from results/work1/common.png at its place in the layout of work 1 (no resampling), shown under the box 'image'",
+  "check": "the cut equals the tile drawn afresh by works/work1.py for sentence 1 byte for byte (else the run stops)"
+ },
+ "outputs": "results/rule_schematic/rule_schematic.png and rule_schematic.json (provenance: the conditions read and their SHA-256)",
+ "not_claimed": "A schematic of the steps; it makes no claim about the effect of any quantity. The values of work 2 marked FILL are written after the blind judgement is scored and committed before the schematic is drawn."
+}

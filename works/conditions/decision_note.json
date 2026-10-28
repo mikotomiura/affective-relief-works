@@ -1,0 +1,31 @@
+{
+ "purpose": "A template for noting the quantities a rule leaves open and the decisions changed after the values were seen, with the image each one acted on, filled in for work 1 as the worked example. It is the table readers copy for their own series.",
+ "fixed_before_running": "Written on 2026-10-28 and committed before any script for it exists and before anything is drawn. Seen before: everything of results/work1 and results/work1_drawing and the record of the decisions in the working notes.",
+ "version": 1,
+ "columns": [
+  {"id": "quantity", "header": "Quantity"},
+  {"id": "value", "header": "Value"},
+  {"id": "acted_on", "header": "Image it acted on"},
+  {"id": "when", "header": "Before or after the values were seen (if after: what was seen)"}
+ ],
+ "rows_work1": [
+  {"quantity": "text", "value": "works/conditions/work1.json text.heading (title case) and text.sentences sentences", "acted_on": ["results/work1/common.png", "results/work1/minmax.png", "results/work1_drawing/drawing.png"], "when": "before: counts without a lexicon only"},
+  {"quantity": "lexicon", "value": "lexicon.name, V and A", "acted_on": ["results/work1/common.png", "results/work1/minmax.png", "results/work1_drawing/drawing.png"], "when": "before: none"},
+  {"quantity": "height scale", "value": "common to the series, D = relief.D_mm mm (per-tile min-max shown next to it)", "acted_on": ["results/work1/common.png", "results/work1/minmax.png"], "when": "before: none"},
+  {"quantity": "band", "value": "relief.octaves octaves of the generator", "acted_on": ["all"], "when": "before: fixed before the works"},
+  {"quantity": "seed", "value": "relief.seed, one for every tile", "acted_on": ["all"], "when": "before: none"},
+  {"quantity": "eps (for a solid only)", "value": "relief.eps from e_min = relief.e_min_mm mm (provisional)", "acted_on": ["results/work1/common_eps.png (supplement)"], "when": "before: none"},
+  {"quantity": "drawing", "value": "grey; light from the upper left and from the lower right at 45 degrees; stretched per tile", "acted_on": ["results/work1_drawing/drawing.png"], "when": "after: every image and value of work 1 (the way of drawing and the twelve tiles were committed before drawing)"},
+  {"quantity": "how the series is shown", "value": "as a whole set of tiles", "acted_on": ["results/work1/common.png", "results/work1/minmax.png"], "when": "after: the check of the flow of the story"}
+ ],
+ "acted_on_labels": "in the repository the column holds the image files; the numbers of the figures of the paper are put in when the manuscript is made, outside the repository",
+ "layout": {
+  "width_mm": 177.8,
+  "dpi": 300,
+  "colour": "black and white",
+  "font_file": "/System/Library/Fonts/Helvetica.ttc",
+  "empty_template": "the same table with the four headers and three empty rows is drawn next to it"
+ },
+ "outputs": "results/decision_note/decision_note.png, decision_note.md (the same table as text) and decision_note.json (the values read and the SHA-256 of the conditions)",
+ "not_claimed": "A way of noting decisions; it does not show that noting them helps a reader (no study with people). Disclosure helps a reader repeat the work but does not by itself settle whether a reading is valid or a choice biased."
+}
