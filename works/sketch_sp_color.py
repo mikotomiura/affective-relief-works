@@ -190,7 +190,8 @@ def main() -> None:
         ref = done[w["work_id"]]
         if len(t.points) != ref["sentences"] or sum(p.Z for p in t.points) != ref["matched_tokens"]:
             raise SystemExit(f"{w['work_id']}: the text step gives another result than results/work2")
-        counts.setdefault(w["author"], Counter()).update(x for p in t.points for x in p.matched)
+        everything = japanese_text.text_path(t.sentences, lex, tagger, vmap, select=c["reference"]["select"], order="word")
+        counts.setdefault(w["author"], Counter()).update(x for p in everything for x in p.matched)
     if len(counts) != 6:
         raise SystemExit(f"expected six authors, got {len(counts)}")
     wts = reference_weights(counts)

@@ -1,7 +1,7 @@
 {
  "purpose": "Work 2, the refined sketches (decision 1 of .steering/20261028-color-features): the relief SP (V and A as percentiles instead of map B, the seed of a tile from its word or spelling) and the colour C1 refined (percentiles taken among the words of the works of the six authors instead of the whole lexicon, and a hue path that does not pass through green), drawn for the rows of the check of the seeds under two common seeds. Images only; they show the direction chosen, the works are made afterwards on conditions of their own.",
- "fixed_before_running": "Written on 2026-10-28 and committed before the script was run. Seen before: everything of results/sketch_color_features (b3739ba), among them the percentiles over the whole lexicon of fifteen spellings and that most of them lie at the pleasant end, and the tiles of every candidate there. Not seen before: any percentile among the words of the works, any tile drawn below. The design was put to Codex (the design in English, no names, no words) before it was committed; its points 1, 2 and 4 changed the weighting, the colour space and the candidates drawn (.steering/20261028-color-features, codex-consult-sp.md).",
- "version": 1,
+ "fixed_before_running": "Written on 2026-10-28 and committed before the script was run. Seen before: everything of results/sketch_color_features (b3739ba), among them the percentiles over the whole lexicon of fifteen spellings and that most of them lie at the pleasant end, and the tiles of every candidate there. Not seen before: any percentile among the words of the works, any tile drawn below. The design was put to Codex (the design in English, no names, no words) before it was committed; its points 1, 2 and 4 changed the weighting, the colour space and the candidates drawn (.steering/20261028-color-features, codex-consult-sp.md). Version 2: the first run of version 1 (commit 7f29a14) stopped before any percentile was computed or any tile drawn, because the matched words of work 2 keep only the parts of speech of POS_ALLOWED, so the conjunctions of the set of adversatives (しかし) are not in them; nothing of that run was seen but the message naming しかし. The reference now counts every token of the lexicon in the sentences of work 2 (the form all of japanese_text, symbols left out); the matched words of work 2 are still recomputed to check the text step against results/work2.",
+ "version": 2,
  "inputs": {
   "work2_conditions": "works/conditions/work2.json",
   "words": "results/work2_words/words.json",
@@ -29,9 +29,10 @@
   "grey": "z / D + 1/2 (common scale)"
  },
  "reference": {
-  "what": "the matched tokens of the 23 works of work 2; each author weighs 1 in total and its tokens share that weight equally (a token of an author with T tokens weighs 1/T), so that no author dominates by the length of its works; the percentile of a word is the weight of tokens whose raw value is below it plus half the weight of those equal to it, over the total weight (6)",
+  "what": "the tokens of the 23 works of work 2 (the kept sentences, as cut for work 2) found in the lexicon under the form all of japanese_text (every part of speech except symbols); each author weighs 1 in total and its tokens share that weight equally (a token of an author with T tokens weighs 1/T), so that no author dominates by the length of its works; the percentile of a word is the weight of tokens whose raw value is below it plus half the weight of those equal to it, over the total weight (6)",
   "why": "the words a reader of these texts meets; over the whole lexicon most frequent words lay at the pleasant end (results/sketch_color_features). The percentile by types and by tokens without the per-author weight are computed and recorded next to it, not drawn. A percentile of 0.5 is not affective neutrality; it is the middle of these texts",
-  "lookup": "a spelling by its entry in variants.json (非常に by 非常), a word by itself; every word and spelling drawn must occur in the reference (else the run stops)"
+  "lookup": "a spelling by its entry in variants.json (非常に by 非常), a word by itself; every word and spelling drawn must occur in the reference (else the run stops)",
+  "select": "all"
  },
  "candidates": {
   "G0": "grey relief as before, recorded V and A (map B), the common seed (the baseline)",
