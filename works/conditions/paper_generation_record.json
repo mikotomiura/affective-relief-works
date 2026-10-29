@@ -1,0 +1,45 @@
+{
+ "purpose": "The record of the quantities of generation of figure 6 of the paper (question 1 of the verdict of round 5 of the pre-review): for the 20 words of the two trial authors, under map B (version G0 of the blind judgement, the upper half of figure 6) and under the author-equal percentiles (version P, the lower half), the V and A given to the rule and the f, s and gamma of atact.mapping.params, per word, and their minimum, maximum, median and quartiles per version and author. It replaces the ranges of f and s computed by hand by the main agent (decision 4 of .steering/20261029-figure6-outline-v27), which are not used. It also records, from committed records only, why map B narrows the values: the fit of map B (slope, intercept and r of results/calibrate_memolon.json) and the Jacobian of the rule (f depends on A only, s on V only).",
+ "fixed_before_running": "Written on 2026-10-29 and committed before the script was run. Seen before: figure 6 (results/paper_figure6_scale); the V, A, f, s and gamma of map B of every word in words.json, so every statistic of version G0 follows from what was seen; the minimum and maximum of f and s per version and author computed by hand by the main agent (map B: f 4.63-5.30 and 4.54-5.42, s 0.099-0.208 and 0.114-0.183; percentiles: f 3.49-6.74 and 3.15-6.83, s 0.061-0.286 and 0.064-0.271), from which the minimum and maximum of A and V of both versions follow through the rule; results/calibrate_memolon.json and the code of atact.mapping. Not seen before: for version P only, the range of gamma and the medians and quartiles of every quantity. The choice of the quantities (V, A, f, s, gamma; minimum, maximum, median, quartiles) is made before any of these was computed by a script.",
+ "version": 1,
+ "inputs": {
+  "values": {"path": "results/sketch_sp_color/values.json", "sha256": "2a15808cef6cd5978acda504fb6d08b4c1df6fec736901d90c492e6e525db71e"},
+  "words": {"path": "results/work2_words/words.json"},
+  "words_conditions": {"path": "works/conditions/work2_words.json"},
+  "judgement_conditions": {"path": "works/conditions/blind_judgement.json"},
+  "figure6_conditions": {"path": "works/conditions/paper_figure6_scale.json"},
+  "figure6_record": {"path": "results/paper_figure6_scale/figure6_scale.json"},
+  "calibration": {"path": "results/calibrate_memolon.json"},
+  "work2_conditions": {"path": "works/conditions/work2.json"},
+  "hashes": "values.json is checked against the SHA-256 above, which is the one of the conditions of figure 6 and of the blind judgement; the other JSON inputs are checked to be the committed bytes; words.json to be computed on the conditions named in its meta on a clean tree; the record of figure 6 to name the same conditions, the same values.json and words, on a clean tree; work2.json to be the one named in the meta of words.json, and calibrate_memolon.json to have the SHA-256 of the map of work2.json (the map B that made the V and A of words.json)"
+ },
+ "values": {
+  "G0": "V and A as recorded in values.json (map B)",
+  "P": "V = 2 p_valence_author_equal - 1, A = 2 p_arousal_author_equal - 1 from values.json, the same formula as the function va of works/paper_figure6_scale.py (copied into the script, so that nothing of the drawing is imported)",
+  "shape": "f, s and gamma = atact.mapping.params(V, A), the call of works/work2_words.py (V and A clipped to [-1, 1] inside params)"
+ },
+ "summary": {
+  "per": "version (G0, P) and author (the two trial authors), over the 20 words of the author in words.json",
+  "statistics": "minimum, maximum, median, first and third quartile (numpy.quantile, method 'linear', on the 20 values) of V, A, f, s and gamma",
+  "also": "minimum and maximum of each quantity over the 40 words of both authors per version"
+ },
+ "constants": {
+  "authors": 2,
+  "words_per_author": 20,
+  "versions": ["G0", "P"],
+  "note": "checked as constants and against the records (point 1 of Codex on figure 6, section 8 of the verdict of round 5): the trial authors of work2_words.json and of the blind judgement, 20 words per author in words.json and in the record of figure 6"
+ },
+ "checks": [
+  "C1: the constants above hold: 2 trial authors, the same in work2_words.json, blind_judgement.json and the record of figure 6; 20 words per author, the same sequence in words.json and in the record of figure 6",
+  "C2: for G0, the V and A of values.json equal those of words.json, and params(V, A) gives exactly the f, s and gamma recorded in words.json for every one of the 40 words (counted, 40)",
+  "C3: for P, every percentile read lies in [0, 1], and for both versions V and A lie in [-1, 1], so params clips nothing and the V and A recorded are those of the shape (counted, 80)",
+  "C4: the Jacobian of atact.mapping (jacobian()) has a zero derivative of f in V and of s in A, and nonzero others, and equals the finite differences of params at V = A = 0 with steps of 0.5; the matrix is recorded; the installed atact is the generator named in work2_words.json (commit and SHA-256 of the library files)",
+  "C5: the fit of map B (b, a, r per dimension) and the quartiles of the mapped and clipped Japanese values (japanese_mapped_clipped_percentiles 25 and 75) are copied from calibrate_memolon.json, which is checked to have been computed on a clean tree and to be the map of work2.json"
+ ],
+ "not_counted": "The parts of speech of the 40 words are not counted: words.json does not record them, and counting them would mean running the tagger on the texts again, which this record does not do (finding R1-m2 of round 5 stays a remark, not a count).",
+ "outputs": {
+  "dir": "results/paper_generation_record (refused if it exists)",
+  "record": "generation_record.json: per word and per version V, A, f, s and gamma; the summaries; the Jacobian; the copied fit of map B; the checks C1 to C5; the SHA-256 of the conditions, the script and every input; the versions and the git state"
+ },
+ "not_claimed": "These are quantities of the generation of the tiles, not of how the tiles look. The ranges of the two authors overlap under both versions, so they are not evidence of a difference between the authors. A narrower range under map B is expected from the rule and the fit (in the sample it was fitted on, a least-squares fit gives fitted values whose standard deviation is r times that of the target, so it is expected to narrow the Japanese values too; and f depends on A only); it is reported as a mechanism of the generation, not as the cause of any answer of the judges and not as a finding. The percentiles stretch small differences between predicted values, so a wider range under P is partly the effect of the scale."
+}
