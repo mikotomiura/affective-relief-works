@@ -3,10 +3,12 @@ seen, with the reason, the alternatives tried, the images that used each one and
 and 2 and for one decision of the paper, with the same table empty below it, from the conditions and the files they name.
 
 Usage:  uv run python works/decision_note.py        (refuses to overwrite)
-Conditions: works/conditions/decision_note.json, version 4 (committed before this version of the script was written)
+Conditions: works/conditions/decision_note.json, version 5 (committed before this version of the script was written)
 Input:  the files named in the rows (conditions of works 1 and 2, of the drawing, of the blind judgement and of the record
-        of generation, and the images each quantity acted on); every one must be the committed bytes at HEAD
-Output: results/decision_note_v4/decision_note.png, decision_note.md and decision_note.json
+        of generation, the scoring of the blind judgement and its supplement, and the images each quantity acted on); every
+        one must be the committed bytes at HEAD. The range of f and s is read from the installed atact.mapping, which must be
+        the library of the record of generation
+Output: results/decision_note_v5/decision_note.png, decision_note.md and decision_note.json
 """
 
 from __future__ import annotations
@@ -14,6 +16,7 @@ from __future__ import annotations
 import datetime as dt
 import hashlib
 import json
+import math
 import re
 import shutil
 import subprocess
@@ -30,14 +33,31 @@ from PIL import Image, ImageDraw, ImageFont  # noqa: E402
 import _common as cm  # noqa: E402
 
 COND = ROOT / "works" / "conditions" / "decision_note.json"
-OUT_DIR = ROOT / "results" / "decision_note_v4"
+OUT_DIR = ROOT / "results" / "decision_note_v5"
 CODE = ["works/decision_note.py", "works/_common.py"]
 MM_PER_INCH = 25.4
-VERSION = 4
+VERSION = 5
 ROW_SETS = {"rows_work1": ("Work 1", 2), "rows_work2": ("Work 2", 2), "rows_paper": ("Record of the paper", 1)}
 COLUMNS = ["quantity", "value", "reason", "acted_on", "when", "judged"]
 ROW_FIELDS = {"quantity", "value", "reason", "acted_on", "compared", "when", "judged", "dagger"}
 NONE_RECORDED = "none recorded"
+# answers_rule of the conditions: the phrase of each outcome and of each row is fixed here, not in the rows
+OUTCOME_PHRASE = {"both differ": "both said the rows differ", "neither": "neither said the rows differ", "split": "they split"}
+ROW_PHRASE = {"words20": "the 20 words"}
+JUDGEMENT = "works/conditions/blind_judgement.json"  # its rows are the rows an answer may name
+SHARE = re.compile(r"(over )?(\d+)%")
+PERCENT = re.compile(r"(?<![\d.])(?:over )?\d+(?:\.\d+)?%")
+
+
+def has(text: str, s: str) -> bool:
+    """s occurs in text with no digit or point just before it (22% is not found in 122%)."""
+    return re.search(r"(?<![\d.])" + re.escape(s), text) is not None
+
+
+def number(x, where: str) -> float:
+    if isinstance(x, bool) or not isinstance(x, (int, float)) or not math.isfinite(x):
+        raise SystemExit(f"{where}: {x!r} is not a finite number")
+    return float(x)
 MIN_FONT_PT = 7.0  # the check of the conditions
 # Drawing choices the conditions leave open (decision 1 of .steering/20261028-decision-note)
 FONT_PT = 8.0
@@ -129,12 +149,17 @@ def resolve_value(v: dict, cache: dict, where: str) -> tuple[str, dict]:
         if "{" in text or "}" in text:
             raise SystemExit(f"{where}: an unmatched brace is left in {text!r}")
         return text, {"file": v["file"], "read": read}
-    if set(v) in ({"literal"}, {"literal", "check"}):
+    if set(v) in ({"literal"}, {"literal", "check"}, {"literal", "check", "used_range"}, {"literal", "check", "answers"}):
         text = v["literal"]
         if not isinstance(text, str) or not text:
             raise SystemExit(f"{where}: the literal is not a non-empty string")
+        extra = {}
+        if "used_range" in v:
+            extra["used_range"] = check_used_range(v["used_range"], text, cache, where)
+        if "answers" in v:
+            extra["answers"] = check_answers(v["answers"], text, cache, where)
         if "check" not in v:
-            return text, {"literal": True}
+            return text, {"literal": True, **extra}
         ch = v["check"]
         if not isinstance(ch, dict) or set(ch) != {"file", "keys", "must_contain"}:
             raise SystemExit(f"{where}: the check needs a file, keys and must_contain")
@@ -144,8 +169,98 @@ def resolve_value(v: dict, cache: dict, where: str) -> tuple[str, dict]:
         missing = [s for s in must if not any(s in x for x in read.values())]
         if missing:
             raise SystemExit(f"{where}: not found in {ch['keys']} of {ch['file']}: {missing}")
-        return text, {"literal": True, "check": {"file": ch["file"], "read": read, "found": ch["must_contain"]}}
+        return text, {"literal": True, "check": {"file": ch["file"], "read": read, "found": ch["must_contain"]}, **extra}
     raise SystemExit(f"{where}: the value is neither a file with keys and format nor a literal")
+
+
+def rule_ranges() -> dict[str, tuple[float, float]]:
+    """The values the rule can give to f and s, with p and q at the ends of [0, 1] (used_range_rule)."""
+    from atact import mapping as m
+
+    return {"f": (m.F0, m.F0 + m.F1), "s": (m.S0, m.S0 + m.S1)}
+
+
+def check_used_range(u: dict, text: str, cache: dict, where: str) -> dict:
+    """The share of the range of each quantity used by the words of the record, against the string shown (used_range_rule)."""
+    if not isinstance(u, dict) or set(u) != {"file", "version", "quantities", "words_key", "words", "shown"}:
+        raise SystemExit(f"{where}: used_range needs file, version, quantities, words_key, words and shown")
+    rec = load_json(u["file"], cache)
+    meta = read_key(rec, "meta", where)
+    if not isinstance(meta, dict):
+        raise SystemExit(f"{where}: the meta of {u['file']} is not an object")
+    if cm.installed_commit() != meta.get("atact_commit") or cm.library_sha256() != meta.get("library_sha256"):
+        raise SystemExit(f"{where}: the installed atact is not the library of {u['file']}")
+    per = read_key(rec, u["words_key"], where)
+    n = u["words"]
+    if (isinstance(n, bool) or not isinstance(n, int) or not isinstance(per, list)
+            or not all(isinstance(x, int) and not isinstance(x, bool) for x in per) or sum(per) != n):
+        raise SystemExit(f"{where}: the words per author {per!r} of the record do not sum to {n!r}")
+    if not isinstance(u["version"], str) or not u["version"]:
+        raise SystemExit(f"{where}: used_range.version is not a non-empty string")
+    m = SHARE.fullmatch(u["shown"]) if isinstance(u["shown"], str) else None
+    if m is None:
+        raise SystemExit(f"{where}: shown {u['shown']!r} is neither 'N%' nor 'over N%'")
+    over, bound = bool(m.group(1)), int(m.group(2))
+    ranges = rule_ranges()
+    shares = {}
+    for q in strings(u["quantities"], where, "quantities"):
+        if q not in ranges:
+            raise SystemExit(f"{where}: no range of the rule is known for {q}")
+        lo, hi = ranges[q]
+        pooled = read_key(rec, f"pooled.{u['version']}.{q}", where)
+        if not isinstance(pooled, dict):
+            raise SystemExit(f"{where}: pooled.{u['version']}.{q} is not an object")
+        top, bottom = (number(read_key(pooled, k, where), where) for k in ("max", "min"))
+        shares[q] = 100 * (top - bottom) / (hi - lo)
+        if not (shares[q] > bound if over else round(shares[q]) == bound):
+            raise SystemExit(f"{where}: {q} uses {shares[q]:.2f}% of its range, which is not {u['shown']}")
+    for s in (u["shown"], f"{n} words"):
+        if not has(text, s):
+            raise SystemExit(f"{where}: the literal does not contain {s!r}")
+    others = [x for x in PERCENT.findall(text) if x != u["shown"]]
+    if others:
+        raise SystemExit(f"{where}: the percentages {others} of the literal are not the one shown, {u['shown']!r}")
+    return {"file": u["file"], "version": u["version"], "ranges": ranges, "shares_percent": shares, "shown": u["shown"]}
+
+
+def check_answers(a: dict, text: str, cache: dict, where: str) -> dict:
+    """The outcome of one row of one version under the two judges, against the one written (answers_rule)."""
+    if not isinstance(a, dict) or set(a) != {"main", "also", "row", "row_phrase", "version", "outcome", "phrase"}:
+        raise SystemExit(f"{where}: answers needs main, also, row, row_phrase, version, outcome and phrase")
+    for k in ("row", "row_phrase", "version", "outcome", "phrase"):
+        if not isinstance(a[k], str) or not a[k]:
+            raise SystemExit(f"{where}: answers.{k} is not a non-empty string")
+    if a["row"] not in strings(read_key(load_json(JUDGEMENT, cache), "rows", where), where, "rows"):
+        raise SystemExit(f"{where}: {a['row']!r} is not a row of {JUDGEMENT}")
+    if ROW_PHRASE.get(a["row"]) != a["row_phrase"]:
+        raise SystemExit(f"{where}: the phrase of the row {a['row']} is {ROW_PHRASE.get(a['row'])!r}, not {a['row_phrase']!r}")
+    if OUTCOME_PHRASE.get(a["outcome"]) != a["phrase"]:
+        raise SystemExit(f"{where}: the phrase of {a['outcome']!r} is {OUTCOME_PHRASE.get(a['outcome'])!r}, not {a['phrase']!r}")
+    main, also = a["main"], a["also"]
+    if not isinstance(main, dict) or set(main) != {"file", "key", "decided_key"}:
+        raise SystemExit(f"{where}: answers.main needs file, key and decided_key")
+    if not isinstance(also, dict) or set(also) != {"file", "key", "pass_key"}:
+        raise SystemExit(f"{where}: answers.also needs file, key and pass_key")
+    cm_ = load_json(main["file"], cache)
+    ca = load_json(also["file"], cache)
+    if read_key(cm_, main["decided_key"], where) is not True:
+        raise SystemExit(f"{where}: {main['decided_key']} of {main['file']} is not true")
+    if read_key(ca, also["pass_key"], where) is not True:
+        raise SystemExit(f"{where}: {also['pass_key']} of {also['file']} is not true")
+    kept = {}
+    for name, c, d in (("main", cm_, main), ("also", ca, also)):
+        lists = read_key(c, d["key"], where)
+        rows = lists.get(a["version"]) if isinstance(lists, dict) else None
+        if not isinstance(rows, list):
+            raise SystemExit(f"{where}: {d['key']} of {d['file']} has no list for {a['version']}")
+        kept[name] = a["row"] in rows
+    outcome = "both differ" if all(kept.values()) else "neither" if not any(kept.values()) else "split"
+    if outcome != a["outcome"]:
+        raise SystemExit(f"{where}: the row {a['row']} of {a['version']} is {outcome!r} by the lists, not {a['outcome']!r}")
+    for s in (a["phrase"], a["row_phrase"]):
+        if not has(text, s):
+            raise SystemExit(f"{where}: the literal does not contain {s!r}")
+    return {"version": a["version"], "row": a["row"], "kept": kept, "outcome": outcome}
 
 
 def wrap(draw: ImageDraw.ImageDraw, text: str, font: ImageFont.FreeTypeFont, width: int) -> list[str]:
@@ -344,8 +459,12 @@ def main() -> None:
             for v, what in ((row["value"], "value"), (row["judged"], "judged")):
                 if not isinstance(v, dict):
                     continue
-                ch = v.get("check", {})
-                for f in (v.get("file"), ch.get("file") if isinstance(ch, dict) else None):
+                ch, u, a = v.get("check", {}), v.get("used_range", {}), v.get("answers", {})
+                more = [d.get("file") if isinstance(d, dict) else None
+                        for d in (ch, u, *((a.get("main"), a.get("also")) if isinstance(a, dict) else ()))]
+                if isinstance(a, dict) and a:
+                    more.append(JUDGEMENT)
+                for f in (v.get("file"), *more):
                     if f is not None:
                         if not isinstance(f, str) or not (ROOT / f).is_file():
                             raise SystemExit(f"{where}.{what}: {f} does not exist")
@@ -353,13 +472,32 @@ def main() -> None:
             named.update(row["acted_on"])
             if not isinstance(row["value"], dict):
                 raise SystemExit(f"{where}.value is not an object")
+            if "answers" in row["value"]:
+                raise SystemExit(f"{where}.value: answers belong to judged")
+            if isinstance(row["judged"], dict) and "used_range" in row["judged"]:
+                raise SystemExit(f"{where}.judged: used_range belongs to the value")
             text, read = resolve_value(row["value"], cache, where + ".value")
             if isinstance(row["judged"], dict):
-                if set(row["judged"]) not in ({"literal"}, {"literal", "check"}):
+                if set(row["judged"]) not in ({"literal"}, {"literal", "check"}, {"literal", "check", "answers"}):
                     raise SystemExit(f"{where}.judged is not a literal")
                 judged, judged_read = resolve_value(row["judged"], cache, where + ".judged")
             else:
                 judged, judged_read = row["judged"], {"literal": True}
+            reserved = [mk.strip() for mk in (mark_c, mark_d)]
+            plain = [row["quantity"], text, reason_text(row["reason"]), *row["acted_on"], row["when"], judged]
+            bad = [t for t in plain if any(mk in t for mk in reserved)]
+            if bad:
+                raise SystemExit(f"{where}: a reserved mark {reserved} is in {bad}")
+            v_lit = row["value"].get("literal", "")
+            if isinstance(v_lit, str) and PERCENT.search(v_lit) and "used_range" not in row["value"]:
+                raise SystemExit(f"{where}.value: a percentage without used_range")
+            j = row["judged"]
+            if key == "rows_work2" and isinstance(j, dict) and "words" in j["literal"].split() and "answers" not in j:
+                raise SystemExit(f"{where}.judged: names words without answers")
+            if isinstance(j, dict) and "answers" in j:
+                u = row["value"].get("used_range")
+                if not isinstance(u, dict) or u.get("version") != j["answers"].get("version"):
+                    raise SystemExit(f"{where}: the version of the answers is not the version of the used_range of the row")
             resolved[key].append({
                 "quantity": row["quantity"], "dagger": row["dagger"], "value": text, "reason": reason_text(row["reason"]),
                 "acted_on": [p + (mark_c if p in row["compared"] else "") for p in row["acted_on"]],
@@ -426,6 +564,7 @@ def main() -> None:
         res = {"meta": {"conditions_sha256": hashlib.sha256(raw).hexdigest(),
                         "script_sha256": cm.sha256(Path(__file__)),
                         "common_sha256": cm.sha256(ROOT / "works" / "_common.py"), "font_sha256": cm.sha256(font_file),
+                        "library_sha256": cm.library_sha256(),
                         **cm.versions("pillow"), **state, "started": started,
                         "finished": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")},
                "files_named_sha256": {p: cm.sha256(ROOT / p) for p in files},
