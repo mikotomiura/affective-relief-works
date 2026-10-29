@@ -4,7 +4,7 @@ and 2, and the same table empty as its own image (for supplement S1, version 11;
 general lines, version 13), from the conditions and the files they name.
 
 Usage:  uv run python works/decision_note.py        (refuses to overwrite)
-Conditions: works/conditions/decision_note.json, version 18 (committed before this version of the script was written)
+Conditions: works/conditions/decision_note.json, version 19 (committed before this version of the script was written)
 Input:  the files named in the rows (conditions of works 1 and 2, of the drawing, of the blind judgement and of the records
         of the share used, the scoring of the blind judgement and its supplement, and the images each quantity acted on) and
         the values every share is computed again from (results/work1/work1.json, results/work2_words/words.json,
@@ -13,7 +13,7 @@ Input:  the files named in the rows (conditions of works 1 and 2, of the drawing
         version 13, and results/paper_distinct_range, version 14, read and checked by their provenance); every one
         must be the committed bytes at HEAD. The range of f and s
         is read from the installed atact.mapping, which must be the library of every record of the share used
-Output: results/decision_note_v18/decision_note.png (figure 8), decision_note_empty.png (S1), decision_note.md and
+Output: results/decision_note_v19/decision_note.png (figure 8), decision_note_empty.png (S1), decision_note.md and
         decision_note.json
 """
 
@@ -28,6 +28,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import unicodedata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -39,10 +40,10 @@ from PIL import Image, ImageDraw, ImageFont  # noqa: E402
 import _common as cm  # noqa: E402
 
 COND = ROOT / "works" / "conditions" / "decision_note.json"
-OUT_DIR = ROOT / "results" / "decision_note_v18"
+OUT_DIR = ROOT / "results" / "decision_note_v19"
 CODE = ["works/decision_note.py", "works/_common.py"]
 MM_PER_INCH = 25.4
-VERSION = 18
+VERSION = 19
 ROW_SETS = {"rows_work1": "Work 1", "rows_work2": "Work 2"}
 # the ids of the rows, in order (checks of the conditions); the number of rows follows from them
 ROW_IDS = {"rows_work1": ["w1_lexicon", "w1_height_scale", "w1_drawing"], "rows_work2": ["w2_map_b", "w2_percentiles", "w2_seed"]}
@@ -302,8 +303,9 @@ APPROVED_FRAME = {'headers': ['Quantity',
                             "values, break the choice of words);",
                             # the same-size draws of the main comparison of work 2, and what the percentiles and
                             # the other maps keep, in the words of the reason of map B (version 17); the pools of the
-                            # draws named, each writer's own words (version 18)
-                            "same-size draws, 20 from each writer's own words, 10,000 times (S1); percentiles keep the words; "
+                            # draws named, each writer's own words (version 18), with their weighting, each author's
+                            # distinct words (version 19)
+                            "same-size draws, 20 from each author's distinct words, 10,000 times (S1); percentiles keep the words; "
                             "other maps: check sentences."],
                            # the time, by the standard of the line on the time of note_empty (version 15), its words
                            # read and pointing to S1 for the full standard (version 16), and its one exception with its
@@ -393,9 +395,17 @@ REPLICATES_OF = [(SHUF_CONDITIONS, "random.replicates"), (SAME_FILE, "checks.W1_
 DRAWS_CONSTANTS = {"per_writer": "checks.D1_constants.words_per_author", "times": "checks.D1_constants.replicates",
                    "authors": "checks.D1_constants.authors", "tiles": "checks.D1_constants.tiles"}
 DRAWS_SETS = ["sets.draws_B.replicates", "sets.draws_P.replicates"]
-DRAWS_PHRASES = {"per_writer": "{} from each writer's own words", "times": "{:,} times"}  # per writer: version 18
+DRAWS_PHRASES = {"per_writer": "{} from each author's distinct words", "times": "{:,} times"}  # per writer: version 19
 # the pools of the draws as written in the conditions of the record of the distinct words (version 18)
 DRAWS_POOLS = (DIST_CONDITIONS, "sets.draws_B", "from the distinct words of the author")
+# the weighting of the draws, in the text on work 2 and in the pools of their conditions (version 19): distinct words,
+# drawn uniformly without replacement, nothing weighted by frequency (after the review of version 19)
+DRAWS_WEIGHT = "distinct words"
+DRAWS_UNIFORM = "drawn uniformly without replacement"
+DRAWS_NOT_WEIGHTED = r"\bweight|\bfrequen|\bwith replacement"
+# one name for the writers of work 2 in the figure: this word in no text of the note, of note_empty or of the cells
+# (version 19; any case, after NFKC and without format characters, at the start of a word or after '_', after the review)
+NOT_NAMED = r"(?<![^\W_])writer"
 COMPARED_W2_KEEP = ["percentiles keep the words", "other maps: check sentences"]
 MAP_B_REASON = ("w2_map_b", "two other maps, on check sentences")
 NOT_SAID = "other maps keep the words"  # the phrase of version 16 that contradicted the reason of map B, any case
@@ -1342,6 +1352,28 @@ def main() -> None:
         raise SystemExit(f"the text on work 2 does not name {list(drawn_phrases.values())} once and in no other text, "
                          f"or {COMPARED_W2_KEEP} against the reason of {MAP_B_REASON[0]} {MAP_B_REASON[1]!r}, or holds "
                          f"{NOT_SAID!r} (version 17)")
+    # the weighting of the draws (version 19): once in the text on work 2 itself, and the pools of their conditions
+    # drawn uniformly without replacement, nothing weighted by frequency (after the review of version 19)
+    weight_in_w2 = w2_text.count(DRAWS_WEIGHT)
+    not_weighted = re.findall(DRAWS_NOT_WEIGHTED, pools_text, re.IGNORECASE)
+    if weight_in_w2 != 1 or pools_text.count(DRAWS_UNIFORM) != 1 or not_weighted:
+        raise SystemExit(f"the text on work 2 does not name the draws {DRAWS_WEIGHT!r} once ({weight_in_w2}), or "
+                         f"{DRAWS_POOLS[0]} {DRAWS_POOLS[1]} does not hold {DRAWS_UNIFORM!r} once or holds "
+                         f"{not_weighted} (version 19)")
+    # one name, 'author', in the note, note_empty and every cell of the filled rows (version 19)
+    # every element of a cell on its own (a list of images is not one text, after the review of version 19)
+    cell_texts = [t for key in ROW_SETS for r in resolved[key]
+                  for k in ("quantity", "value", "reason", "acted_on", "when", "judged")
+                  for t in ([r[k]] if isinstance(r[k], str) else r[k])]
+
+    def plain(x: str) -> str:
+        return "".join(c for c in unicodedata.normalize("NFKC", x) if unicodedata.category(c) != "Cf")
+
+    sought = (*texts, *texts_empty, *cell_texts)
+    named_writer = [x for x in sought if re.search(NOT_NAMED, plain(x), re.IGNORECASE)]
+    if named_writer:
+        raise SystemExit(f"{NOT_NAMED!r} is written in {len(named_writer)} text(s) of the figure, e.g. "
+                         f"{named_writer[0][:80]!r} (version 19)")
     named.add(DIST_FILE)
     named.add(DRAWS_POOLS[0])  # version 18
 
@@ -1436,6 +1468,12 @@ def main() -> None:
                                                     "loose": dict(zip(loose, loose_in_w2))},  # version 18
                                   "pools": {"file": DRAWS_POOLS[0], "key": DRAWS_POOLS[1], "holds": DRAWS_POOLS[2],
                                             "value": pools_text},  # version 18
+                                  "weighting": {"phrase": DRAWS_WEIGHT, "in_text_on_work2": weight_in_w2,
+                                                "pools_hold": DRAWS_UNIFORM, "pools_not": DRAWS_NOT_WEIGHTED},  # version 19
+                                  "not_named": {"pattern": NOT_NAMED, "flags": "IGNORECASE, after NFKC and without format "
+                                                "characters", "in": ["note", "note_empty", "every element of the cells"],
+                                                "not_in": "titles, headers, band labels (fixed in the script)",
+                                                "texts": len(sought), "found": len(named_writer)},  # version 19
                                   "not_elsewhere": {"patterns": loose, "texts": "the other texts of note and all of note_empty"},
                                   "keep": COMPARED_W2_KEEP,
                                   "map_b_reason": {"row": MAP_B_REASON[0], "holds": MAP_B_REASON[1]},
