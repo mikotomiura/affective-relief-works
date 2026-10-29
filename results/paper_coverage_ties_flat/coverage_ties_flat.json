@@ -1,0 +1,312 @@
+{
+ "meta": {
+  "conditions_sha256": "c85a87711c1257832c963f986786292409472fe105b0b87397e774ccda88c9da",
+  "script_sha256": "55ee73d30c73803cb358871493369e217abec4d5ab1187515f03db9c12b67628",
+  "inputs_sha256": {
+   "work1_conditions": "e1d66fd796ad22622f15fb35abbb6e8173abf6674b6ac7315e850b71ae0f332e",
+   "work1_result": "99cbe5507080942e708cc4ab7ccb007d21d250ffe00bb3e12aa8f1fc15289bdc",
+   "drawing_conditions": "42cf0123a42fabfac2a4382907a0d32125c342bf6b6392fdd61f2e78c401967f",
+   "drawing_result": "a262e16db72f7964b030035c4b27b5aa4d097b687adf6f3a6be4f5f97ed336d0",
+   "drawing_figure": "fc0e11ef84aa8d9ffda19c2e6fe1fd8a383788a21ded5ba10f1a48b3f8b20a8d",
+   "work2_conditions": "a56209998d026485c156f2d2d51539724dca50ad6c1dfad17af2fb2a06631859",
+   "work2_result": "5d6cce58ea564a77535d6c6f18c48e396ce6c570b151aa5d40c348a9dc9f7356",
+   "words_conditions": "7978599bdeed5f2973cae03dfbd2f85f26fc25173ea022f68a0e0e6c9a671164",
+   "words": "3f48ff8fd0233704a37042763680ab034e7dbc39fa33d2044c5858023d460cf9",
+   "reference_conditions": "e58d15b15fa08072c5914a5fe7509f7f3372a750c7a8c3bfbb0dfdd9e0cbc4e2",
+   "values": "2a15808cef6cd5978acda504fb6d08b4c1df6fec736901d90c492e6e525db71e",
+   "calibration": "a84da6f57fd37091fe69f9f931d061c687e76c404ce900c5b342be1e37065989",
+   "reference_range": "f9bad5a4508ad318d5113855ba11e3b2f5ee37688f89d2a66530d8f9564c0cc1",
+   "filtered_draws": "cd4beef489e118441d8cd4dd816c8d8e099b45b80996dc09ec7938b67acb38f3",
+   "work1_figure_common": "479f1be16edc6f6e96028cb90161a98567bfe867e7ed2543590664035f57451d",
+   "work1_figure_minmax": "44424f5e007e89cb69b8cf906c1103995db8a95c60941597587c5f625b9b37cb",
+   "work1_figure_common_eps": "2ec68492d5c01cdfee492d36a1b67e2d53aa53c365b5ee62820065af699abf51"
+  },
+  "code_sha256": {
+   "works/paper_coverage_ties_flat.py": "55ee73d30c73803cb358871493369e217abec4d5ab1187515f03db9c12b67628",
+   "works/work1.py": "6f349f3d4e9eefb62137199fea068b69c687172c50d7af61e6e326be02a85b65",
+   "works/work1_drawing.py": "c751f792837f027b27c966ba482cc22a7f68c03412950709957a87a4345ddb52",
+   "works/work2_words.py": "7ab640e60235bc0ea38b11cadf7bc3bf48706b36cc33948aaac88025cdd78c80",
+   "works/paper_reference_range.py": "0c798e9cf53e3e328f7879c505e333857e76d94e59336a924efe130b2c737368",
+   "checks/author_texture.py": "b8efcd45bfefa7d06697258117302f4a091d0870f488191784b333df9c706fb8",
+   "works/_common.py": "54a3e6156b16cbdcd90772a0b980aefa3fb17ebe1c40217b297848d2baf710cc",
+   "src/relief.py": "6e61435c4106cbe20e1b6125c5a311ff3dac39be930ada58239327ae2dca7122",
+   "src/pipeline.py": "0f761691565098a0ee214aeddf6b77d17465a4385e8c4cd27af4211bb0c84e1b",
+   "src/japanese_text.py": "2d3e00aa2d9cd6d6f9051c29e18861df9ba73cebb1682f3ff0fd586f977b69a5",
+   "src/english_text.py": "aef91e6a6af84cedaf9cbbcd1dc884f133c9c6b5a98a2e3f0d0c0849267a8c28",
+   "src/window.py": "af6fd7df10062b378f763e57b6530deb331d9219076cf21aab5d37d0130ba6ec",
+   "src/stretch.py": "0818f1d685a79839dbf3b9a189598f167d0e31ee20d41eb4e15e6e5976636b3c"
+  },
+  "conditions_of_records_read_sha256": {
+   "works/conditions/paper_reference_range.json": "09e2b172504857fa8a45f866518e3cb2b6c265fdef845f31fa81601ea70524fe",
+   "works/conditions/paper_filtered_draws.json": "2992bc05ab9dafd03ad29bff42fa68268110d175c36427cf95aaef40f3aadcc0"
+  },
+  "english_lexicon_sha256": "42c718817fc91d5c133581b24b0bb31d2b14a0b16edb19bc6ce6ab70343e5a45",
+  "japanese_lexicon_sha256": "537cf39afd50f89cc4c69842f9876df7ff48f9950da849d739bdde7fc00d9e83",
+  "dicdir_sha256": {
+   "COPYING": "fca02d9adb601d101eccdf3131119abfff2d9c825ef5c759d7a89ebbaa972099",
+   "char.bin": "81bba502ae48fa005a374819f15e44452eb68086a8b323ec20a044d514400832",
+   "dicrc": "add6bb131a75e69478961ea59712541ace3779f7c5daa4da80d281f097c9d4d1",
+   "matrix.bin": "ee44d7350cdcb680ebd699f83e121be1dc63310f8832d55bcb537a068177611a",
+   "mecabrc": "cf91ca4aec6bbf596eda5034aefb73ae90999678b59f20ce3deb35d91fddb009",
+   "sys.dic": "223af63996d5d9a104d8c8baaf32029fbbf6a370d7dff33fe19fda2e92ac0ac1",
+   "unk.dic": "f0bf15e3e28259f4470b9c1e775d98bef53207d4b09afcd6d8545209b7b53f88",
+   "version": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "library_sha256": {
+   "__init__.py": "d5980876e37cb7a1f5dc379028ab50f7a0c1d77d84c7651ee5d1beefd623b6ab",
+   "field.py": "4162e8faa60ca78257fd0777a3a7dceaaa7bbab6bfe6691de46f49a339b641c5",
+   "lexicon.py": "36cad1e49a25b352a7ae04868c6693ef349e8276d51909061eeb378085065e81",
+   "mapping.py": "83a50faaa664ddcb99004392e13a73fb096a85588a8b3c423b2c8b71ce626d26",
+   "transform.py": "5d35c9c10dfa6c8d5d3b2a9e8126ab45b895a1be14e05650c3ef60ffd3431bd1"
+  },
+  "python": "3.13.12",
+  "platform": "Darwin arm64",
+  "atact_commit": "b559a80c623d36357dd0736b887497a0cb789af5",
+  "numpy": "2.5.4",
+  "pillow": "13.0.0",
+  "fugashi": "1.5.2",
+  "ipadic": "1.0.0",
+  "git_commit": "3464e67351eac1fc3ce82045d08dfc528ceb4132",
+  "git_dirty": false,
+  "started": "2026-10-29T17:58:44+00:00",
+  "finished": "2026-10-29T17:58:52+00:00"
+ },
+ "checks": {
+  "K1_constants": {
+   "work1_sentences": 104,
+   "work1_terms": 1227,
+   "figure4_tiles": 12,
+   "figure4_rows": 4,
+   "authors": 6,
+   "works": 23,
+   "reference_words": 18301,
+   "candidate_tokens": 89336,
+   "matched_tokens": 88591
+  },
+  "K2_tiles_compared_with_the_records": 464,
+  "K3_sentences_of_work1_matched_again": 104,
+  "K4_works_counted_again": 23,
+  "K5_reference_and_tokens_P_again": true,
+  "D_groups_tie_as_weighted_percentile_added_after_review": true
+ },
+ "A_flat_tiles": {
+  "work1": {
+   "H_figure": {
+    "tiles": 104,
+    "zero": 0,
+    "smallest": 0.20909121918663415,
+    "smallest_sentence": 40,
+    "largest": 0.36505369563560836
+   },
+   "H_eps_figure": {
+    "tiles": 104,
+    "zero": 0,
+    "smallest": 0.2057929055258254,
+    "smallest_sentence": 40,
+    "largest": 0.35756031094029606
+   },
+   "H_eps_print": {
+    "tiles": 104,
+    "zero": 0,
+    "smallest": 0.2059733231245843,
+    "smallest_sentence": 40,
+    "largest": 0.3576865068015083
+   },
+   "image_common": {
+    "tiles": 104,
+    "zero": 0,
+    "smallest": 89.0,
+    "smallest_sentence": 40,
+    "largest": 155.0
+   },
+   "image_minmax": {
+    "tiles": 104,
+    "zero": 0,
+    "smallest": 255.0,
+    "smallest_sentence": 0,
+    "largest": 255.0
+   },
+   "image_common_eps": {
+    "tiles": 104,
+    "zero": 0,
+    "smallest": 88.0,
+    "smallest_sentence": 40,
+    "largest": 152.0
+   },
+   "stl_common_z_mm": {
+    "tiles": 104,
+    "zero": 0,
+    "smallest": 0.4119466462491683,
+    "smallest_sentence": 40,
+    "largest": 0.7153730136030165
+   }
+  },
+  "figure4": {
+   "image_row_a": {
+    "tiles": 12,
+    "zero": 0,
+    "smallest": 96.0,
+    "smallest_sentence": 10,
+    "largest": 128.0
+   },
+   "image_row_b": {
+    "tiles": 12,
+    "zero": 0,
+    "smallest": 109.0,
+    "smallest_sentence": 9,
+    "largest": 156.0
+   },
+   "image_row_c": {
+    "tiles": 12,
+    "zero": 0,
+    "smallest": 101.0,
+    "smallest_sentence": 9,
+    "largest": 142.0
+   },
+   "image_row_d": {
+    "tiles": 12,
+    "zero": 0,
+    "smallest": 255.0,
+    "smallest_sentence": 0,
+    "largest": 255.0
+   },
+   "shading_b": {
+    "tiles": 12,
+    "zero": 0,
+    "smallest": 0.42881024325204864,
+    "smallest_sentence": 9,
+    "largest": 0.6142084433232543
+   },
+   "shading_c": {
+    "tiles": 12,
+    "zero": 0,
+    "smallest": 0.3968346369985454,
+    "smallest_sentence": 9,
+    "largest": 0.5571239585583581
+   },
+   "recorded_sd_zero": {
+    "a": 0,
+    "b": 0,
+    "c": 0,
+    "d": 0
+   },
+   "recorded_sd_smallest": {
+    "a": 0.09061721770346422,
+    "b": 0.08107202136237181,
+    "c": 0.07664003433177445,
+    "d": 0.18721531414131357
+   }
+  }
+ },
+ "B_work1_coverage": {
+  "running_tokens": 1897,
+  "covered_tokens": 1299,
+  "share_covered": 0.6847654190827622,
+  "terms": 1227,
+  "terms_of_more_than_one_word": 72,
+  "per_sentence_share": {
+   "min": 0.3333333333333333,
+   "q1": 0.6225961538461539,
+   "median": 0.6881944444444444,
+   "q3": 0.773989898989899,
+   "max": 1.0
+  },
+  "dropped_pieces": 0,
+  "tokens_in_dropped_pieces": 0
+ },
+ "C_work2_coverage": {
+  "authors": {
+   "夏目漱石": {
+    "distinct": 4818,
+    "distinct_in_lexicon": 4730,
+    "share_distinct": 0.9817351598173516,
+    "passing_filter": 401,
+    "passing_filter_in_lexicon": 401,
+    "share_passing_filter": 1.0,
+    "candidate_tokens": 15320,
+    "matched_tokens": 15215,
+    "share_running": 0.9931462140992167
+   },
+   "芥川竜之介": {
+    "distinct": 4384,
+    "distinct_in_lexicon": 4274,
+    "share_distinct": 0.9749087591240876,
+    "passing_filter": 325,
+    "passing_filter_in_lexicon": 325,
+    "share_passing_filter": 1.0,
+    "candidate_tokens": 13614,
+    "matched_tokens": 13453,
+    "share_running": 0.9881739385926253
+   },
+   "梶井基次郎": {
+    "distinct": 3818,
+    "distinct_in_lexicon": 3750,
+    "share_distinct": 0.9821896280775275,
+    "passing_filter": 288,
+    "passing_filter_in_lexicon": 288,
+    "share_passing_filter": 1.0,
+    "candidate_tokens": 10772,
+    "matched_tokens": 10692,
+    "share_running": 0.9925733382844412
+   },
+   "岡本かの子": {
+    "distinct": 6074,
+    "distinct_in_lexicon": 5986,
+    "share_distinct": 0.9855120184392493,
+    "passing_filter": 383,
+    "passing_filter_in_lexicon": 383,
+    "share_passing_filter": 1.0,
+    "candidate_tokens": 16960,
+    "matched_tokens": 16849,
+    "share_running": 0.9934551886792453
+   },
+   "中島敦": {
+    "distinct": 6269,
+    "distinct_in_lexicon": 6095,
+    "share_distinct": 0.9722443770936353,
+    "passing_filter": 394,
+    "passing_filter_in_lexicon": 394,
+    "share_passing_filter": 1.0,
+    "candidate_tokens": 17742,
+    "matched_tokens": 17543,
+    "share_running": 0.9887836771502649
+   },
+   "太宰治": {
+    "distinct": 4708,
+    "distinct_in_lexicon": 4658,
+    "share_distinct": 0.9893797790994052,
+    "passing_filter": 344,
+    "passing_filter_in_lexicon": 342,
+    "share_passing_filter": 0.9941860465116279,
+    "candidate_tokens": 14928,
+    "matched_tokens": 14839,
+    "share_running": 0.9940380493033226
+   }
+  },
+  "six_authors_together": {
+   "distinct": 17509,
+   "distinct_in_lexicon": 16958,
+   "share_distinct": 0.9685304700439774
+  }
+ },
+ "D_ties_of_the_percentiles": {
+  "total_weight": 6.0,
+  "valence": {
+   "distinct_values": 480,
+   "groups_of_more_than_one_word": 442,
+   "largest_group_share": 0.06866888173003906,
+   "largest_group_words": 86,
+   "largest_single_word_share": 0.06369310175739959,
+   "share_in_groups_of_more_than_one_word": 0.9993172436622695
+  },
+  "arousal": {
+   "distinct_values": 286,
+   "groups_of_more_than_one_word": 256,
+   "largest_group_share": 0.07578963937865878,
+   "largest_group_words": 186,
+   "largest_single_word_share": 0.06369310175739959,
+   "share_in_groups_of_more_than_one_word": 0.9996028947087351
+  },
+  "tokens_P_recomputed_equals_record": true
+ }
+}
