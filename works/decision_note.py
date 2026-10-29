@@ -1,17 +1,17 @@
 """The template for noting decisions: the quantities a rule leaves open and the decisions changed after the values were
 seen, with the reason, the alternatives tried, the images that used each one and who judged the look, filled in for works 1
-and 2, and the same table empty as its own image (for supplement S1, version 11), from the conditions and the files
+and 2, and the same table empty as its own image (for supplement S1, version 11; the note under it, version 12), from the conditions and the files
 they name.
 
 Usage:  uv run python works/decision_note.py        (refuses to overwrite)
-Conditions: works/conditions/decision_note.json, version 11 (committed before this version of the script was written)
+Conditions: works/conditions/decision_note.json, version 12 (committed before this version of the script was written)
 Input:  the files named in the rows (conditions of works 1 and 2, of the drawing, of the blind judgement and of the records
         of the share used, the scoring of the blind judgement and its supplement, and the images each quantity acted on) and
         the values every share is computed again from (results/work1/work1.json, results/work2_words/words.json,
         results/paper_words_values/words_values.json, and the shuffled sentences of results/paper_work1_shuffled
         shuffled again); every one must be the committed bytes at HEAD. The range of f and s
         is read from the installed atact.mapping, which must be the library of every record of the share used
-Output: results/decision_note_v11/decision_note.png (figure 8), decision_note_empty.png (S1), decision_note.md and
+Output: results/decision_note_v12/decision_note.png (figure 8), decision_note_empty.png (S1), decision_note.md and
         decision_note.json
 """
 
@@ -37,10 +37,10 @@ from PIL import Image, ImageDraw, ImageFont  # noqa: E402
 import _common as cm  # noqa: E402
 
 COND = ROOT / "works" / "conditions" / "decision_note.json"
-OUT_DIR = ROOT / "results" / "decision_note_v11"
+OUT_DIR = ROOT / "results" / "decision_note_v12"
 CODE = ["works/decision_note.py", "works/_common.py"]
 MM_PER_INCH = 25.4
-VERSION = 11
+VERSION = 12
 ROW_SETS = {"rows_work1": "Work 1", "rows_work2": "Work 2"}
 # the ids of the rows, in order (checks of the conditions); the number of rows follows from them
 ROW_IDS = {"rows_work1": ["w1_lexicon", "w1_height_scale", "w1_drawing"], "rows_work2": ["w2_map_b", "w2_percentiles", "w2_seed"]}
@@ -93,12 +93,12 @@ APPROVED_CELLS = {
         "quantity": "seed",
         "value": ("literal", "per word: SHA-256 of the word plus a common seed"),
         "reason": "Varies the pattern by word; rows can differ by spelling alone. Tried: per-author seeds; a common seed.",
-        "when": "after; seen: sketches with these seeds",
+        "when": "after; seen: sketches with this per-word rule",
         "judged": ("none", NONE_RECORDED)},
 }
 APPROVED_TEXT = {(rid, f): cells[f][1] for rid, cells in APPROVED_CELLS.items() for f in ("value", "judged")
                  if cells[f][0] == "text"}
-# approved_text_rule of the conditions (version 11): every row as written in the conditions, and the frame of the table
+# approved_text_rule of the conditions (version 12): every row as written in the conditions, and the frame of the table
 APPROVED_ROWS = {'w1_lexicon': {'id': 'w1_lexicon',
                 'quantity': 'lexicon',
                 'value': {'text': 'NRC VAD v2.1, a sentence the mean of its terms',
@@ -255,7 +255,7 @@ APPROVED_ROWS = {'w1_lexicon': {'id': 'w1_lexicon',
                         'not_tried': []},
              'acted_on': ['results/work2_sp_color/SPC.png'],
              'compared': [],
-             'when': 'after; seen: sketches with these seeds',
+             'when': 'after; seen: sketches with this per-word rule',
              'judged': 'none recorded',
              'dagger': False}}
 APPROVED_FRAME = {'headers': ['Quantity',
@@ -534,6 +534,17 @@ def recheck(rec: dict, set_name: str, cache: dict, where: str) -> None:
                 raise SystemExit(f"{where}: sets.{set_name}.{q} of the record is not computed from the values: {got} {want}")
 
 
+def sentences_z(cache: dict, where: str) -> list[dict]:
+    """The sentences of work 1, each with a positive number of matched terms Z equal to its matched terms (checks of the
+    conditions, version 12), before any of them is drawn or shuffled again."""
+    sents = read_key(load_json(WORK1_FILE, cache), "sentences", where)
+    if not isinstance(sents, list) or not sents or any(
+            not isinstance(p, dict) or not isinstance(p.get("matched"), list) or isinstance(p.get("Z"), bool)
+            or not isinstance(p.get("Z"), int) or p["Z"] < 1 or p["Z"] != len(p["matched"]) for p in sents):
+        raise SystemExit(f"{where}: a sentence of {WORK1_FILE} has no matched terms or a Z other than their number")
+    return sents
+
+
 def redraw(rec: dict, cache: dict, where: str) -> None:
     """Every replicate of the random sentences drawn again by the committed function of the record, with the seed and the
     number of replicates of its conditions, and compared with the record exactly (used_range_rule, version 10)."""
@@ -554,7 +565,7 @@ def redraw(rec: dict, cache: dict, where: str) -> None:
     if nrc.sha256 != lexc["sha256"] or nrc.sha256 != read_key(rec, "meta.nrc_sha256", where):
         raise SystemExit(f"{where}: the lexicon of work 1 is not the one of {SAME_FILE}")
     terms = sorted(nrc.entries)
-    Z = [p["Z"] for p in read_key(load_json(WORK1_FILE, cache), "sentences", where)]
+    Z = [p["Z"] for p in sentences_z(cache, where)]
     width = {q: b - a for q, (a, b) in rule_ranges().items()}
     su = importlib.import_module("paper_work1_same_unit")
     if Path(su.__file__).resolve() != (ROOT / SAME_SCRIPT).resolve():
@@ -621,7 +632,7 @@ def shuffled_share(n: int, cache: dict, where: str) -> dict[str, float]:
     nrc = load_lexicon(ROOT / lexc["file"])
     if nrc.sha256 != lexc["sha256"] or nrc.sha256 != read_key(meta, "nrc_sha256", where):
         raise SystemExit(f"{where}: the lexicon of work 1 is not the one of {SHUF_FILE}")
-    sents = read_key(load_json(WORK1_FILE, cache), "sentences", where)
+    sents = sentences_z(cache, where)
     tokens = [t for p in sents for t in p["matched"]]
     Z = [p["Z"] for p in sents]
     width = {q: b - a for q, (a, b) in rule_ranges().items()}
@@ -1045,7 +1056,7 @@ def main() -> None:
         raise SystemExit("a text fixed in the script names a row that is not drawn")
     daggered = [r["quantity"] for rs in resolved.values() for r in rs if r["dagger"]]
     if daggered:
-        raise SystemExit(f"rows {daggered} carry the dagger; version 11 has none in the main table")
+        raise SystemExit(f"rows {daggered} carry the dagger; version 12 has none in the main table")
 
     files = sorted(named)
     cm.same_as_head([COND, *(ROOT / p for p in CODE), *(ROOT / p for p in files)])
@@ -1069,9 +1080,11 @@ def main() -> None:
     parts = [title_image(titles[0], width, fonts, dpi), table(headers, filled_rows, shares, width, fonts, dpi)]
     parts += [Image.new("L", (width, round(TITLE_GAP_PT * dpi / 72)), 255),
               *(title_image(x, width, {"bold": fonts["regular"]}, dpi, one_line=True) for x in note)]
-    # the empty template is its own image, for supplement S1 (version 11)
+    # the empty template is its own image, for supplement S1 (version 11), with the note under it (version 12)
     empty_parts = [title_image(titles[1], width, fonts, dpi),
-                   table(headers, [[[""]] * len(headers)] * EMPTY_ROWS, shares, width, fonts, dpi, min_lines=EMPTY_ROW_LINES)]
+                   table(headers, [[[""]] * len(headers)] * EMPTY_ROWS, shares, width, fonts, dpi, min_lines=EMPTY_ROW_LINES),
+                   Image.new("L", (width, round(TITLE_GAP_PT * dpi / 72)), 255),
+                   *(title_image(x, width, {"bold": fonts["regular"]}, dpi, one_line=True) for x in note)]
 
     def stack(ps: list) -> Image.Image:
         out = Image.new("L", (width, sum(p.height for p in ps)), 255)
@@ -1084,7 +1097,7 @@ def main() -> None:
     fig, empty = stack(parts), stack(empty_parts)
     drawn_filled = [titles[0], *headers, *ROW_SETS.values(), *note,
                     *(t for rs in resolved.values() for r in rs for x in cells(r) for t in ([x] if isinstance(x, str) else x))]
-    words = {"figure_8": count_words(drawn_filled), "empty_template_s1": count_words([titles[1], *headers])}
+    words = {"figure_8": count_words(drawn_filled), "empty_template_s1": count_words([titles[1], *headers, *note])}
     if words["figure_8"] > max_words:
         raise SystemExit(f"figure 8 has {words['figure_8']} words, more than {max_words}")
 
@@ -1094,7 +1107,8 @@ def main() -> None:
         md_rows += [[x if isinstance(x, str) else ", ".join(x) for x in cells(r)] for r in resolved[key]]
     md = (f"# {titles[0]}\n\n" + md_table(headers, md_rows) + "".join(f"\n{x}\n" for x in note)
           + "\n" + label[0].upper() + label[1:] + ".\n"
-          + f"\n# {titles[1]}\n\n" + md_table(headers, [[""] * len(headers)] * EMPTY_ROWS))
+          + f"\n# {titles[1]}\n\n" + md_table(headers, [[""] * len(headers)] * EMPTY_ROWS)
+          + "".join(f"\n{x}\n" for x in note))
 
     OUT_DIR.parent.mkdir(exist_ok=True)
     tmp = Path(tempfile.mkdtemp(prefix=".decision_note-", dir=OUT_DIR.parent))
