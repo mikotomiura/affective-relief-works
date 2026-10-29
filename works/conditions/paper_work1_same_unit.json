@@ -1,0 +1,56 @@
+{
+ "purpose": "The share of the range of f and s used by the 104 sentences of work 1, set next to what they are compared with in the same unit (point 1 of the decisions of the researcher after round 11 of the pre-review, verdict section 7). The record of results/paper_used_range set the sentences (a sentence value is the mean of the values of its matched terms) next to the terms of the whole NRC lexicon (each term once), which are not of the same unit, so the reader could not tell whether the narrowness came from the text or from averaging. Here two comparisons of one unit each: words with words, the terms matched in the 104 sentences (each occurrence, and each distinct term once) next to the whole lexicon (each term once); sentences with sentences, the 104 sentences next to sentences drawn at random from the lexicon with the same numbers of matched terms, averaged as work 1 averages. Work 1 has no other map of the values, and its height scale leaves f and s unchanged (results/paper_used_range, conditions works/conditions/paper_used_range.json), so these are the comparisons it has.",
+ "fixed_before_running": "Written on 2026-10-29 and committed before the script was written or run. Seen before: results/work1/work1.json (V, A, Z, the matched terms, f, s and gamma of every one of the 104 sentences, so 1227 matched tokens of 583 distinct terms), the figures of the 104 tiles, and results/paper_used_range/used_range.json with the minimum, quartiles, maximum and shares of f and s of the 104 sentences (quartiles 6.6% and 6.0%, minimum to maximum 50.2% and 36.6%) and of the whole NRC lexicon (quartiles 32.7% and 33.4%, minimum to maximum 100% for both). Not seen before: f and s of the matched terms as a set (no record of them was found under results/ or in the decisions of the steering records), and any sentence drawn at random. The researcher chose the quartiles over the minimum to maximum after the record of the 120 words of work 2 was seen (decision 3 of .steering/20261029-used-range-v8-outline-v213), and chose these comparisons after the record of the sentences and the lexicon was seen, so every count of this record is counted later.",
+ "version": 1,
+ "inputs": {
+  "work1_conditions": {"path": "works/conditions/work1.json"},
+  "work1": {"path": "results/work1/work1.json"},
+  "used_range_conditions": {"path": "works/conditions/paper_used_range.json"},
+  "used_range": {"path": "results/paper_used_range/used_range.json"},
+  "hashes": "the JSON inputs are checked to be the committed bytes; work1.json and used_range.json to be made on their conditions on a clean tree; the NRC lexicon against the SHA-256 of works/conditions/work1.json (external/, not in the repository) and against the nrc_sha256 of used_range.json"
+ },
+ "sets": {
+  "sentences": "the 104 sentences of work 1, f and s as recorded in work1.json (unit: sentence, the mean of its matched terms)",
+  "terms_tokens": "every matched term of the 104 sentences, each occurrence once (1227 values), f and s = params(V, A) of its values in the lexicon (unit: word)",
+  "terms_types": "every distinct matched term of the 104 sentences once (583 values), f and s = params(V, A) of its values in the lexicon (unit: word)",
+  "lexicon": "every term of the NRC VAD lexicon v2.1 of work 1 once (atact.lexicon.load_lexicon of the file of works/conditions/work1.json), f and s = params(V, A) (unit: word)",
+  "random_sentences": "R replicates; in each, for every one of the 104 sentences in their order, Z draws from the terms of the lexicon (sorted, each term once), uniform and independent, with replacement, Z the number of matched tokens of that sentence; V and A the mean of the values of the drawn terms, as work 1 averages its matched terms; f and s = params(V, A); so each replicate is 104 sentences with the numbers of terms of work 1 (unit: sentence)"
+ },
+ "comparisons": {
+  "words": "terms_types and terms_tokens next to lexicon",
+  "sentences": "sentences next to random_sentences"
+ },
+ "random": {
+  "replicates": 1000,
+  "generator": "numpy.random.default_rng(seed) (PCG64), one generator for all replicates, the draws of a replicate as one call of integers(0, number of terms, size = total of Z), split by sentence in their order",
+  "seed": 20261029,
+  "summary": "per quantity and share (quartiles and minimum to maximum): the mean, the median and the quantiles 0.025 and 0.975 (numpy.quantile, linear) of the share over the replicates, and the number of replicates whose share is at most that of the 104 sentences"
+ },
+ "statistics": {
+  "quantities": ["f", "s"],
+  "shape": "f, s = atact.mapping.params(V, A); the range of the rule is f in [F0, F0 + F1] = [3, 7] and s in [S0, S0 + S1] = [0.06, 0.30]",
+  "share": "100 (maximum - minimum) / (width of the range of the rule), and 100 (third quartile - first quartile) / (width), per set and quantity, as works/paper_used_range.py",
+  "quantiles": "minimum, maximum and numpy.quantile at 0.25 and 0.75 with method 'linear', unweighted, for every set and every replicate",
+  "main": "the quartiles (the decision of the researcher after round 10); the minimum to maximum is recorded next to them"
+ },
+ "constants": {
+  "sentences": 104,
+  "matched_tokens": 1227,
+  "distinct_terms": 583,
+  "lexicon_terms": 54800,
+  "replicates": 1000,
+  "seed": 20261029
+ },
+ "checks": [
+  "W1: the constants hold: 104 sentences in work1.json with no unmatched sentence, Z of every sentence equal to the number of its matched terms, 1227 matched tokens, 583 distinct terms, 54800 terms of the lexicon",
+  "W2: every matched term is an entry of the lexicon; for every sentence V and A equal the mean of the lexicon values of its matched terms and f and s equal params(V, A), exactly (as U5 of paper_used_range)",
+  "W3: the minimum, quartiles, maximum and shares of the sentences and of the lexicon computed here equal those of work1_sentences and work1_lexicon in used_range.json, exactly",
+  "W4: every V and A of every set and every replicate lies in [-1, 1], so params clips nothing; the installed atact is the generator of works/conditions/work1.json, and the range of the rule is read from atact.mapping",
+  "W5: the draws are made again from a new generator with the same seed and give the same shares in every replicate, and the number of replicates is the constant"
+ ],
+ "outputs": {
+  "dir": "results/paper_work1_same_unit (refused if it exists)",
+  "record": "same_unit.json: per set and quantity the minimum, first quartile, third quartile, maximum, the two shares and the number of values; for random_sentences the summary over the replicates and the shares of every replicate; the range of the rule; the checks W1 to W5 with their counts; the SHA-256 of the conditions, the script and every input; the versions and the git state"
+ },
+ "not_claimed": "These are quantities of the generation of the tiles, not of how any tile looks. The random sentences draw every term of the lexicon with the same chance, which no English text does (function words and frequent words are matched far more often than rare ones), so they show how narrow sentences of the same lengths become by averaging alone, not what a typical text would give; the matched terms of the text show which part of the lexicon the text uses. Neither comparison is a test, and the number of replicates at or below the sentences is a description, not a p-value. Every count here was made after the values of the sentences and the record of paper_used_range were seen."
+}
