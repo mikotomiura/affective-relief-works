@@ -1,0 +1,22 @@
+{
+ "purpose": "The f and s of each of the 120 words of the main images of work 2 under both versions, map B (as recorded in results/work2_words/words.json) and the author-equal percentiles (recomputed as works/paper_used_range.py recomputes them), kept word by word, so that the script of figure 8 can compute again the middle half of f and s it shows and check it against results/paper_used_range/used_range.json (decision of the researcher on 2026-10-29 after the review of Codex on version 8 of figure 8: the percentiles of the 120 words were computed and checked in paper_used_range.py but not recorded per word, so the figure could not compute them again). Nothing new is counted: the quartiles and shares computed here from the words must equal those of main_G0 and main_P in used_range.json, exactly.",
+ "fixed_before_running": "Written on 2026-10-29 and committed before the script was written or run. Seen before: everything listed in works/conditions/paper_used_range.json as seen, and results/paper_used_range/used_range.json with the minimum, quartiles, maximum and shares of f and s of the 120 words under both versions, per author and pooled; figure 8 of version 8 (results/decision_note_v8). Not seen before: the percentile, V, A, f and s of any single word under the percentiles (no record holds them). The record holds no new statistic; it is made after the shares were seen.",
+ "version": 1,
+ "inputs": {
+  "used_range_conditions": {"path": "works/conditions/paper_used_range.json"},
+  "used_range": {"path": "results/paper_used_range/used_range.json"},
+  "used_range_script": {"path": "works/paper_used_range.py"},
+  "hashes": "every input of works/conditions/paper_used_range.json is read and checked as that script checks it; the conditions and the script of paper_used_range are checked to be the committed bytes and to be those named by the SHA-256 in the meta of used_range.json, which must be made on a clean tree"
+ },
+ "method": "the reconstruction of the reference of the 23 works and the percentiles of the 120 words are taken from works/paper_used_range.py: its functions weighted_percentile, reference_weights, spread and shapes are imported from it, and its steps U1 to U4 (the reconstruction and its checks, inside its main) are copied into the script, so the values are those the record of used_range was made from, which V2 checks; for each author in the order of words.json and each of its 20 words in that order: the word, its V, A, f and s under map B as recorded in words.json, its percentiles of valence and arousal, and its V = 2 p - 1, A = 2 p - 1, f and s under the percentiles",
+ "checks": [
+  "V1: 6 authors, 20 words each, 120 rows, in the order of the tiles of results/work2_sp_color/work2_sp_color.json",
+  "V2: the minimum, first quartile, third quartile, maximum, the two shares and n of f and s computed from the rows, per author and pooled, equal main_G0 and main_P of used_range.json, exactly (the same function spread, numpy.quantile linear)",
+  "V3: the steps U1 to U4 of paper_used_range pass with their recorded counts (U2 120, U3 64 keys and 44 words, U4 2)"
+ ],
+ "outputs": {
+  "dir": "results/paper_words_values (refused if it exists)",
+  "record": "words_values.json: the 120 rows; the checks V1 to V3 with their counts; the SHA-256 of the conditions, the script and every input; the versions and the git state"
+ },
+ "not_claimed": "No new count: the record keeps the values the record of used_range was made from, word by word, so that another script can compute its shares again. The percentiles of a word depend on the reference of the 23 works and on the weights of the authors, as in paper_used_range."
+}
