@@ -4,7 +4,7 @@ and 2, and the same table empty as its own image (for supplement S1, version 11;
 general lines, version 13), from the conditions and the files they name.
 
 Usage:  uv run python works/decision_note.py        (refuses to overwrite)
-Conditions: works/conditions/decision_note.json, version 15 (committed before this version of the script was written)
+Conditions: works/conditions/decision_note.json, version 16 (committed before this version of the script was written)
 Input:  the files named in the rows (conditions of works 1 and 2, of the drawing, of the blind judgement and of the records
         of the share used, the scoring of the blind judgement and its supplement, and the images each quantity acted on) and
         the values every share is computed again from (results/work1/work1.json, results/work2_words/words.json,
@@ -13,7 +13,7 @@ Input:  the files named in the rows (conditions of works 1 and 2, of the drawing
         version 13, and results/paper_distinct_range, version 14, read and checked by their provenance); every one
         must be the committed bytes at HEAD. The range of f and s
         is read from the installed atact.mapping, which must be the library of every record of the share used
-Output: results/decision_note_v15/decision_note.png (figure 8), decision_note_empty.png (S1), decision_note.md and
+Output: results/decision_note_v16/decision_note.png (figure 8), decision_note_empty.png (S1), decision_note.md and
         decision_note.json
 """
 
@@ -39,10 +39,10 @@ from PIL import Image, ImageDraw, ImageFont  # noqa: E402
 import _common as cm  # noqa: E402
 
 COND = ROOT / "works" / "conditions" / "decision_note.json"
-OUT_DIR = ROOT / "results" / "decision_note_v15"
+OUT_DIR = ROOT / "results" / "decision_note_v16"
 CODE = ["works/decision_note.py", "works/_common.py"]
 MM_PER_INCH = 25.4
-VERSION = 15
+VERSION = 16
 ROW_SETS = {"rows_work1": "Work 1", "rows_work2": "Work 2"}
 # the ids of the rows, in order (checks of the conditions); the number of rows follows from them
 ROW_IDS = {"rows_work1": ["w1_lexicon", "w1_height_scale", "w1_drawing"], "rows_work2": ["w2_map_b", "w2_percentiles", "w2_seed"]}
@@ -61,7 +61,7 @@ APPROVED_CELLS = {
     "w1_lexicon": {
         "quantity": "lexicon; sentence as mean",
         "value": ("text", "NRC VAD v2.1"),
-        "reason": "Human ratings of English words. Tried: none. Later compared with: how terms form sentences.",
+        "reason": "Human ratings of English words. Tried: none. Later compared with: shuffled and drawn sentences.",
         "when": "before; seen: none",
         "judged": ("none", NONE_RECORDED)},
     "w1_height_scale": {
@@ -124,7 +124,7 @@ APPROVED_ROWS = {'w1_lexicon': {'id': 'w1_lexicon',
                 'reason': {'why': 'human ratings of English words',
                            'tried': [],
                            'shown_beside': [],
-                           'later_compared': ['how terms form sentences'],
+                           'later_compared': ['shuffled and drawn sentences'],
                            'not_tried': []},
                 'acted_on': ['results/work1/common.png',
                              'results/work1/minmax.png',
@@ -292,22 +292,34 @@ APPROVED_FRAME = {'headers': ['Quantity',
                               'When: before or after its output; seen then',
                               'Who judged the look (sheet used)'],
                   'titles': ['Decision note for works 1 and 2', 'Decision note, empty'],
+                  # a text of the note is one line or a list of lines, the lines drawn one under the other (version 16)
                   'note': ["Middle half: Q3 − Q1 as % of the rule's range, counted and compared after seeing the records.",
-                           # the time, by the standard of the line on the time of note_empty, and its one exception, in
-                           # two lines because the sentence does not fit in one (version 15)
-                           "When: after if, by the time the quantity was last fixed for the work, the maker who decided "
-                           "had seen its outputs or been told of them.",
-                           "Drawing: before, though its series' gray had been seen.",
+                           # what each share is compared with, moved from the caption of figure 8 (version 16)
+                           ["Compared with, work 1: the story's terms shuffled among its sentences (keep the terms, break "
+                            "the sentences) and uniform draws (break both);",
+                            "each keeps every sentence's term count; mean of 1,000."],
+                           ["Compared with, work 2: the whole lexicon and the 23 works' words, each once (keep the row's "
+                            "values, break the choice of words);",
+                            "percentiles and other maps keep the words."],
+                           # the time, by the standard of the line on the time of note_empty (version 15), its words
+                           # read and pointing to S1 for the full standard (version 16), and its one exception with its
+                           # ground (version 16)
+                           ["When: “after” means the maker who decided had seen the chosen value's outputs, or been told "
+                            "of them,",
+                            "by the time the quantity was last fixed for the work (full standard in S1)."],
+                           "Drawing: read as before; of its four drawings, only the series' gray had been seen.",
                            "Judged: whether the two authors' rows differ within one version, on the 80 px judging sheets; "
                            "versions not compared."],
                   # the lines under the empty template of S1, which leave the time and the judgement open (version 13)
                   'note_empty': ["Middle half: Q3 − Q1 as % of the rule's range; counted and compared before or after "
                                  "seeing the values: …",
-                                 # what each share is compared with (version 15)
-                                 "Compared with: set, unit, what it keeps / breaks: …",
-                                 # the time and the mark of the outline (version 14)
-                                 "When: by the time the quantity was last fixed for the work, had the maker who decided "
-                                 "seen its outputs, or been told of them: …",
+                                 # what each share is compared with (version 15), with its weighting (version 16)
+                                 "Compared with: set, unit, weighting (each once or by frequency), what it keeps / breaks: …",
+                                 # the time and the mark of the outline (version 14); the outputs of the chosen value, in
+                                 # two lines (version 16)
+                                 ["When: by the time the quantity was last fixed for the work, had the maker who decided "
+                                  "seen the chosen value's outputs,",
+                                  "or been told of them: …"],
                                  "‡: before, but after seeing outputs of alternatives: …",
                                  "Judged: what the judges compared, and what they did not: …"],
                   'acted_on_labels': 'in the repository the column holds the image files; the numbers of the figures of the paper are '
@@ -319,7 +331,7 @@ APPROVED_LAYOUT = {'width_mm': 177.8,
  'colour': 'black and white',
  'font_file': '/System/Library/Fonts/Helvetica.ttc',
  'column_share': {'quantity': 0.1, 'value': 0.19, 'reason': 0.19, 'acted_on': 0.19, 'when': 0.17, 'judged': 0.16},
- 'max_words': 449}
+ 'max_words': 522}
 # the files of the two judges (checks of the conditions)
 MAIN_FILE = "results/blind_judgement/score.json"
 ALSO_FILE = "results/blind_judgement/score-researcher-supplement.json"
@@ -356,11 +368,22 @@ BESIDE_RECORDS = {REF_FILE: (REF_CONDITIONS, REF_SCRIPT, "R1_constants", REF_N),
                   DIST_FILE: (DIST_CONDITIONS, DIST_SCRIPT, "D1_constants", DIST_N)}
 # the number of the tiles of the row of the 20 words of the blind judgement, named in the last line of the note (the second up to version 14)
 JUDGING_PX_KEY = "tiles.words20_px"
-# the lines of the note (version 15): their heads in order, the words of the standard of the time shared with note_empty,
-# and the record of the drawing of work 1 that names what had been seen and what had not
-NOTE_HEADS = ["Middle half", "When", "Drawing", "Judged"]
-WHEN_STANDARD = ["by the time the quantity was last fixed for the work", "the maker who decided", "seen its outputs",
-                 "been told of them"]
+# the texts of the note (version 15; version 16): their heads in order, the heads of the texts of note_empty, the words of
+# the standard of the time shared with note_empty, and the record of the drawing of work 1 that names what had been seen
+# and what had not
+NOTE_HEADS = ["Middle half", "Compared with, work 1", "Compared with, work 2", "When", "Drawing", "Judged"]
+EMPTY_HEADS = ["Middle half", "Compared with", "When", "‡", "Judged"]
+WHEN_STANDARD = ["by the time the quantity was last fixed for the work", "the maker who decided",
+                 "seen the chosen value's outputs", "been told of them"]
+ALL_HEADS = {*NOTE_HEADS, *EMPTY_HEADS}  # no line after the first of a text begins with any of these (version 16)
+WHEN_POINTER = "full standard in S1"  # version 16
+DRAWING_WORDS = ["read as before", "only the series' gray had been seen"]  # the ground of the exception (version 16)
+EMPTY_WEIGHTING = "weighting (each once or by frequency)"  # version 16
+# what the texts on works 1 and 2 must name of the sets beside (version 16): the words of the labels of work 1, the
+# labels of work 2, and the records of the number of replicates of both sets beside of work 1
+COMPARED_W1_WORDS = ["shuffled", "uniform draws"]
+COMPARED_W2_WORDS = ["each once"]
+REPLICATES_OF = [(SHUF_CONDITIONS, "random.replicates"), (SAME_FILE, "checks.W1_constants.replicates")]
 DRAWING_COND = "works/conditions/work1_drawing.json"
 # what was seen comes between SEEN_HEAD and NOT_SEEN_HEAD, what was not after NOT_SEEN_HEAD (case kept: "Not seen
 # before:" holds "seen before:")
@@ -387,6 +410,21 @@ RECHECK_FILES = [WORK1_FILE, WORDS_FILE, VALUES_FILE, VALUES_CONDITIONS, USED_CO
 PERCENT = re.compile(r"(?<![\d.])(?:over )?\d+(?:\.\d+)?%")
 # any way of writing a share outside the built phrases (checks of the conditions)
 ANY_SHARE = re.compile(r"[%％]|\bper\s*cent\b|\bpercent(?:age)?s?\b", re.IGNORECASE)
+
+
+def note_texts(x: list, heads: list[str], where: str) -> tuple[list[str], list[str]]:
+    """The texts of a note, each one line or a list of lines (version 16), joined by single spaces, and its lines in
+    order; no line after the first of a text begins with a head."""
+    texts, lines = [], []
+    for t in x:
+        ls = [t] if isinstance(t, str) else t
+        if (not isinstance(ls, list) or not ls
+                or not all(isinstance(ln, str) and ln and ln == ln.strip() for ln in ls)
+                or any(ln.split(":", 1)[0] in ALL_HEADS or ln.startswith(tuple(heads)) for ln in ls[1:])):
+            raise SystemExit(f"{where}: a text is not one line or a list of lines, or a line after its first has a head")
+        texts.append(" ".join(ls))
+        lines.extend(ls)
+    return texts, lines
 
 
 def number(x, where: str) -> float:
@@ -1075,28 +1113,39 @@ def main() -> None:
     dag = cm.need(c, "dagger", dict)
     mark_d = cm.need(dag, "mark", str, "dagger.")
     note = cm.need(c, "note", list)
-    if not note or not all(isinstance(x, str) and x for x in note) or any(mk.strip() in x for x in note for mk in (mark_c, mark_d)):
-        raise SystemExit("the note is not a list of lines, or a line is empty or holds a reserved mark")
+    texts, note_lines = note_texts(note, NOTE_HEADS, "note")  # version 16
+    if not texts or any(mk.strip() in x for x in texts for mk in (mark_c, mark_d)):
+        raise SystemExit("the note is not a list of texts, or a text holds a reserved mark")
     # the lines under the empty template (version 13): none a line of the note, and none naming a value or an outcome
     note_empty = cm.need(c, "note_empty", list)
-    if (not note_empty or not all(isinstance(x, str) and x for x in note_empty)
-            or any(mk.strip() in x for x in note_empty for mk in (mark_c, mark_d))
-            or set(note_empty) & set(note) or any(PERCENT.search(x) for x in note_empty)
-            or any(p in x.casefold() for x in note_empty
+    texts_empty, empty_lines = note_texts(note_empty, EMPTY_HEADS, "note_empty")  # version 16
+    if (not texts_empty
+            or any(mk.strip() in x for x in texts_empty for mk in (mark_c, mark_d))
+            or set(texts_empty) & set(texts) or set(empty_lines) & set(note_lines)
+            or any(PERCENT.search(x) for x in texts_empty)
+            or any(p in x.casefold() for x in texts_empty
                    for p in (*OUTCOME_PHRASE.values(), *ROW_PHRASE.values(), "later", "after seeing the records",
                              "versions not compared"))):
         raise SystemExit("note_empty is not a list of lines of its own, or a line holds a mark, a value or an outcome")
-    if not (any(x.startswith("When:") for x in note_empty) and any(x.startswith("‡") for x in note_empty)):
+    if not (any(x.startswith("When:") for x in texts_empty) and any(x.startswith("‡") for x in texts_empty)):
         raise SystemExit("note_empty has no line on the time or none on the mark ‡ (version 14)")
-    if not any(x.startswith("Compared with:") for x in note_empty):
-        raise SystemExit("note_empty has no line on what each share is compared with (version 15)")
-    # the lines of the note in order, the line on the time holding the words of the standard of note_empty (version 15)
-    if len(note) != len(NOTE_HEADS) or not all(x.startswith(h + ":") for x, h in zip(note, NOTE_HEADS)):
-        raise SystemExit(f"the lines of the note do not begin, in order, with {NOTE_HEADS}")
-    when_empty = [x for x in note_empty if x.startswith("When:")]
-    missing = [w for w in WHEN_STANDARD if w not in note[1] or not all(w in x for x in when_empty)]
-    if len(when_empty) != 1 or missing:
-        raise SystemExit(f"the line on the time of the note and that of note_empty do not both hold {missing}")
+    compared_empty = [x for x in texts_empty if x.startswith("Compared with:")]
+    if len(compared_empty) != 1 or EMPTY_WEIGHTING not in compared_empty[0]:
+        raise SystemExit(f"note_empty has not one line on what each share is compared with naming {EMPTY_WEIGHTING!r} "
+                         "(versions 15 and 16)")
+    # the texts of the note in order (version 16), the text on the time holding the words of the standard of note_empty
+    # (version 15) and pointing to S1 (version 16), the text on the exception holding its ground (version 16)
+    if len(texts) != len(NOTE_HEADS) or not all(x.startswith(h + ":") for x, h in zip(texts, NOTE_HEADS)):
+        raise SystemExit(f"the texts of the note do not begin, in order, with {NOTE_HEADS}")
+    when_empty = [x for x in texts_empty if x.startswith("When:")]
+    when_text = texts[NOTE_HEADS.index("When")]
+    missing = [w for w in WHEN_STANDARD if w not in when_text or not all(w in x for x in when_empty)]
+    if len(when_empty) != 1 or missing or WHEN_POINTER not in when_text:
+        raise SystemExit(f"the text on the time of the note and that of note_empty do not both hold {missing}, or the "
+                         f"note does not point to S1 ({WHEN_POINTER!r})")
+    drawing_text = texts[NOTE_HEADS.index("Drawing")]
+    if not all(w in drawing_text for w in DRAWING_WORDS):
+        raise SystemExit(f"the text on the exception of the drawing does not hold {DRAWING_WORDS} (version 16)")
     max_words = cm.need(c, "max_words", int)
     frame = {"headers": headers, "titles": titles, "note": note, "note_empty": note_empty, "acted_on_labels": label,
              "compared_mark": mark_c, "dagger": dag}
@@ -1200,8 +1249,8 @@ def main() -> None:
     if daggered:
         raise SystemExit(f"rows {daggered} carry the dagger; version 15 has none in the main table")
     px = read_key(load_json(JUDGEMENT, cache), JUDGING_PX_KEY, "note")  # the images judged, named in the note (version 14)
-    if (isinstance(px, bool) or not isinstance(px, int) or note[-1].count(f" {px} px judging sheets") != 1
-            or any(f" {px} px judging sheets" in x for x in note[:-1])):
+    if (isinstance(px, bool) or not isinstance(px, int) or texts[-1].count(f" {px} px judging sheets") != 1
+            or any(f" {px} px judging sheets" in x for x in texts[:-1])):
         raise SystemExit(f"the note does not name the {JUDGING_PX_KEY} of {JUDGEMENT} once")
     named.add(JUDGEMENT)
     # the 'only' of the judged of the seed: SPC is the one version naming the seed per spelling (version 14)
@@ -1225,6 +1274,23 @@ def main() -> None:
         raise SystemExit(f"{DRAWING_COND} does not name {DRAWING_SEEN['seen']!r} as seen and "
                          f"{DRAWING_SEEN['not_seen']!r} as not seen in its fixed_before_running")
     named.add(DRAWING_COND)
+    # the texts on what each share is compared with (version 16): work 1 names its sets beside and their number of
+    # replicates, read from both records; work 2 names the labels of the sets beside of its rows
+    reps = [read_key(load_json(f, cache), k, "note") for f, k in REPLICATES_OF]
+    w1_text, w2_text = texts[NOTE_HEADS.index("Compared with, work 1")], texts[NOTE_HEADS.index("Compared with, work 2")]
+    w1_labels = [lab for _, _, lab in USED_SETS["w1_lexicon"][3]]
+    w2_labels = sorted({lab for rid in ("w2_map_b", "w2_percentiles") for _, _, lab in USED_SETS[rid][3]})
+    # the number of replicates as written, not followed by more digits (after the review of version 16)
+    mean_of = (f"mean of {reps[0]:,}" if reps and not isinstance(reps[0], bool) and isinstance(reps[0], int) else "")
+    mean_hits = len(re.findall(rf"(?<![\d,.])mean of {re.escape(mean_of[8:])}(?![\d,.]*\d)", w1_text)) if mean_of else 0
+    if (any(isinstance(n, bool) or not isinstance(n, int) for n in reps) or len(set(reps)) != 1 or mean_hits != 1
+            or any("mean of" in x for i, x in enumerate(texts) if i != NOTE_HEADS.index("Compared with, work 1"))
+            or len(w1_labels) != len(COMPARED_W1_WORDS) or len(w2_labels) != 2
+            or not all(w in lab and w in w1_text for w, lab in zip(COMPARED_W1_WORDS, w1_labels))
+            or not all(lab in w2_text for lab in w2_labels) or not all(w in w2_text for w in COMPARED_W2_WORDS)):
+        raise SystemExit(f"the texts on what each share is compared with do not name the sets beside {w1_labels}, "
+                         f"{w2_labels} or the replicates {reps} (version 16)")
+    named.update(f for f, _ in REPLICATES_OF)
 
     files = sorted(named)
     cm.same_as_head([COND, *(ROOT / p for p in CODE), *(ROOT / p for p in files)])
@@ -1247,13 +1313,13 @@ def main() -> None:
     shares = [share[k] for k in COLUMNS]
     parts = [title_image(titles[0], width, fonts, dpi), table(headers, filled_rows, shares, width, fonts, dpi)]
     parts += [Image.new("L", (width, round(TITLE_GAP_PT * dpi / 72)), 255),
-              *(title_image(x, width, {"bold": fonts["regular"]}, dpi, one_line=True) for x in note)]
+              *(title_image(x, width, {"bold": fonts["regular"]}, dpi, one_line=True) for x in note_lines)]
     # the empty template is its own image, for supplement S1 (version 11), with lines of note under it (version 12), its
     # own general lines (version 13)
     empty_parts = [title_image(titles[1], width, fonts, dpi),
                    table(headers, [[[""]] * len(headers)] * EMPTY_ROWS, shares, width, fonts, dpi, min_lines=EMPTY_ROW_LINES),
                    Image.new("L", (width, round(TITLE_GAP_PT * dpi / 72)), 255),
-                   *(title_image(x, width, {"bold": fonts["regular"]}, dpi, one_line=True) for x in note_empty)]
+                   *(title_image(x, width, {"bold": fonts["regular"]}, dpi, one_line=True) for x in empty_lines)]
 
     def stack(ps: list) -> Image.Image:
         out = Image.new("L", (width, sum(p.height for p in ps)), 255)
@@ -1264,9 +1330,9 @@ def main() -> None:
         return out
 
     fig, empty = stack(parts), stack(empty_parts)
-    drawn_filled = [titles[0], *headers, *ROW_SETS.values(), *note,
+    drawn_filled = [titles[0], *headers, *ROW_SETS.values(), *note_lines,
                     *(t for rs in resolved.values() for r in rs for x in cells(r) for t in ([x] if isinstance(x, str) else x))]
-    words = {"figure_8": count_words(drawn_filled), "empty_template_s1": count_words([titles[1], *headers, *note_empty])}
+    words = {"figure_8": count_words(drawn_filled), "empty_template_s1": count_words([titles[1], *headers, *empty_lines])}
     if words["figure_8"] > max_words:
         raise SystemExit(f"figure 8 has {words['figure_8']} words, more than {max_words}")
 
@@ -1274,10 +1340,10 @@ def main() -> None:
     for key, band in ROW_SETS.items():
         md_rows.append(band)
         md_rows += [[x if isinstance(x, str) else ", ".join(x) for x in cells(r)] for r in resolved[key]]
-    md = (f"# {titles[0]}\n\n" + md_table(headers, md_rows) + "".join(f"\n{x}\n" for x in note)
+    md = (f"# {titles[0]}\n\n" + md_table(headers, md_rows) + "".join(f"\n{x}\n" for x in texts)
           + "\n" + label[0].upper() + label[1:] + ".\n"
           + f"\n# {titles[1]}\n\n" + md_table(headers, [[""] * len(headers)] * EMPTY_ROWS)
-          + "".join(f"\n{x}\n" for x in note_empty))
+          + "".join(f"\n{x}\n" for x in texts_empty))
 
     OUT_DIR.parent.mkdir(exist_ok=True)
     tmp = Path(tempfile.mkdtemp(prefix=".decision_note-", dir=OUT_DIR.parent))
@@ -1302,6 +1368,14 @@ def main() -> None:
                "when_exception": {"row": drawn[0]["id"], "when": drawn[0]["when"], "file": DRAWING_COND,
                                   "key": "fixed_before_running", "names": DRAWING_SEEN,
                                   "seen_part": seen_part, "not_seen_part": not_seen_part},  # version 15
+               "note_texts": {"note": texts, "note_empty": texts_empty, "lines_drawn": note_lines,
+                              "empty_lines_drawn": empty_lines,
+                              "checked": {"when_standard": WHEN_STANDARD, "when_pointer": WHEN_POINTER,
+                                          "drawing_words": DRAWING_WORDS, "empty_weighting": EMPTY_WEIGHTING,
+                                          "compared_w1_words": COMPARED_W1_WORDS, "w1_labels": w1_labels,
+                                          "compared_w2_words": COMPARED_W2_WORDS, "w2_labels": w2_labels}},  # version 16
+               "compared_replicates": {"records": [{"file": f, "key": k, "value": n} for (f, k), n in zip(REPLICATES_OF, reps)],
+                                       "drawn": mean_of},  # version 16
                "words": {**words, "max_words": max_words, "how": "whitespace-separated tokens, a path one word, "
                          "a mark standing alone one word; titles, headers, band labels, the note and the cells"},
                "drawing": {"width_px": width, "height_px": fig.height, "empty_height_px": empty.height, "mode": fig.mode,
