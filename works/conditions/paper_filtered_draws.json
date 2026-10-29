@@ -1,0 +1,61 @@
+{
+ "purpose": "To tell where the narrower spread of the 120 words under map B comes from (decision of the researcher on 2026-10-29, after results/paper_distinct_range: under map B the 120 words are narrower than the distinct words of the 23 works and than sets of 120 drawn from them, 20 per author, while those draws apply neither the filter on counts and works of the selection nor the choice by distinctiveness). The selection of works/conditions/work2_words.json has three steps after the words of an author: a filter on counts and works (a count of at least min_count in at least min_works works of the author, and the share of one work at most max_share), a sign (z > 0, the word more frequent in the author than the prior expects), and an order (the 20 of largest z). Here sets of 120 are drawn, 20 words of each author, from two pools per author: the words that pass the filter alone (filtered), and the candidates, which pass the filter and have z > 0 (candidates); beside them the 120 words (the 20 of largest z) and the draws from all distinct words of results/paper_distinct_range. So the steps all distinct -> filtered -> candidates -> largest z can be read one after the other.",
+ "fixed_before_running": "Written on 2026-10-29 and committed before the script was written or run. Seen before: everything of results/paper_distinct_range/distinct_range.json (under map B the middle half of the distinct words f 11.6% and s 20.9%, of the draws from all distinct words median f 11.0% and s 19.4%, of the 120 words f 7.6% and s 12.0%; under the percentiles f 49.2% and s 36.3%, median f 49.4% and s 41.8%, and f 54.2% and s 59.6%), everything seen before its conditions (eae5304), and results/work2_words/words.json (the 20 words of each author with z, share and counts per work, and the number of candidates of each author, 325 for 夏目漱石). Not seen before: the number of words passing the filter alone, any value of the words of either pool other than the 120 words, and any set drawn from them. The order of the steps (the filter before the sign) is the order in which work2_words.py applies them to the candidates; the sign and the filter commute, so filtered and candidates differ by the sign alone and candidates and the 120 words by the order alone.",
+ "version": 1,
+ "inputs": {
+  "work2_conditions": {"path": "works/conditions/work2.json"},
+  "work2_result": {"path": "results/work2/work2.json"},
+  "words_conditions": {"path": "works/conditions/work2_words.json"},
+  "words": {"path": "results/work2_words/words.json"},
+  "words_script": {"path": "works/work2_words.py"},
+  "reference_conditions": {"path": "works/conditions/sketch_sp_color.json"},
+  "values": {"path": "results/sketch_sp_color/values.json", "sha256": "2a15808cef6cd5978acda504fb6d08b4c1df6fec736901d90c492e6e525db71e"},
+  "calibration": {"path": "results/calibrate_memolon.json"},
+  "distinct_conditions": {"path": "works/conditions/paper_distinct_range.json"},
+  "distinct_range": {"path": "results/paper_distinct_range/distinct_range.json"},
+  "distinct_script": {"path": "works/paper_distinct_range.py"},
+  "reference_range_script": {"path": "works/paper_reference_range.py"},
+  "hashes": "values.json is checked against the SHA-256 above; the other inputs are checked to be the committed bytes; the lexicon, the map, the tagger and the zips of the 23 works against work2.json; distinct_range.json to be made on its conditions on a clean tree by the script named here, from the same inputs where they are shared, with the same lexicon, dictionary and generator; words.json to be the input of the record of distinct_range.json; the functions select of works/work2_words.py (and log_odds through it), draw and summary of works/paper_distinct_range.py, and weighted_percentile, reference_weights, spread and shapes of works/paper_reference_range.py imported from the committed files, not copied"
+ },
+ "sets": {
+  "words_of_an_author": "the matched words of the kept sentences of the works of the author, counted per work, as work2_words.py counts them (the matched words of the points of the Japanese text step of work 2)",
+  "filtered": "for each author, the words of the author with a count of at least min_count in at least min_works of its works and the share of one work at most max_share (+ 1e-12), as in select of work2_words.py, without the sign of z",
+  "candidates": "for each author, the words of filtered with z > 0, z the weighted log-odds of select of work2_words.py (the candidates of select)",
+  "words_120": "the 20 words of each author of words.json (the candidates of largest z), read and checked to be the first 20 of candidates in the order of select",
+  "values": "V and A of every word under map B and under the percentiles, as distinct_B and distinct_P of results/paper_distinct_range (every word of a pool must be one of its 18301 reference words); f and s = params(V, A)",
+  "draws_filtered_B, draws_filtered_P, draws_candidates_B, draws_candidates_P": "R replicates; in each, for every author in the order of words.json, 20 words drawn uniformly without replacement from the pool of the author (sorted by Unicode code point), by the function draw of works/paper_distinct_range.py, called once for each pool with the seed (so each pool has its own generator, started from the same seed), pooled to 120 values, a word drawn for two authors counted once for each; the same drawn words under map B and the percentiles",
+  "draws_all": "draws_B and draws_P of distinct_range.json, read as recorded (the draws from all distinct words)"
+ },
+ "random": {
+  "replicates": 10000,
+  "seed": 20261029,
+  "summary": "per pool, version, quantity and share (quartiles and minimum to maximum): the summary of works/paper_distinct_range.py (mean, median, quantiles 0.025 and 0.975, linear, and the number of replicates at most the 120 words)"
+ },
+ "statistics": {
+  "quantities": ["f", "s"],
+  "share": "100 (third quartile - first quartile) / (width of the range of the rule) and 100 (maximum - minimum) / width, by spread of works/paper_reference_range.py without weights (numpy.quantile, linear), as distinct_range.json",
+  "main": "the quartiles (the middle half, as figure 8)"
+ },
+ "constants": {
+  "authors": 6,
+  "words_per_author": 20,
+  "tiles": 120,
+  "reference_words": 18301,
+  "replicates": 10000,
+  "seed": 20261029,
+  "candidates": {"夏目漱石": 325}
+ },
+ "checks": [
+  "F1: the constants hold: 6 authors in the order of words.json, 20 words each; the number of candidates of every author equals that recorded in words.json (the one named above among them); every pool holds at least 20 words",
+  "F2: the selection again: select of work2_words.py on the counts counted here gives, for every author, the number of candidates and the 20 words with their z, share and counts of words.json, exactly; the candidates computed here (filtered with z > 0, sorted as select) are that many and begin with those 20",
+  "F3: the values again: for every word of the pools, V and A under both versions are those of the reference reconstructed as in paper_distinct_range.py; the SHA-256 of the reference words and of the f and s of distinct_B and distinct_P recomputed equal those recorded in distinct_range.json (added_after_review); the 120 words computed here equal words_120 of distinct_range.json",
+  "F4: candidates is a subset of filtered for every author, and every word of a pool is a reference word",
+  "F5: the draws are made again from new generators with the same seed and give the same words in every replicate; every replicate holds 120 values, 20 distinct words of each author from its pool",
+  "F6: every V and A lies in [-1, 1], so params clips nothing; the installed atact is the generator of work2_words.json and of distinct_range.json; the range of the rule is read from atact.mapping"
+ ],
+ "outputs": {
+  "dir": "results/paper_filtered_draws (refused if it exists)",
+  "record": "filtered_draws.json: the size of the pools per author; per pool the summary over the replicates and the shares of every replicate; per pool and author the middle half of the pool itself (each word once); words_120 and draws_all as read; the checks F1 to F6 with their counts; the SHA-256 of the conditions, the script and every input; the versions and the git state"
+ },
+ "not_claimed": "These are quantities of the generation of the tiles on sets of words, not of how any tile looks. Each step is compared with the next by sets drawn at random, so a difference between steps is read from where the 120 words and the medians of the draws fall, not tested; the number of replicates at or below the 120 words is a description, not a p-value. The steps are those of this selection and in its order; another filter or statistic could narrow or widen otherwise. A word frequent enough to pass the filter is a word whose value in the lexicon may differ in kind from that of rare words, so a narrowing at the filter says where in the selection the spread was lost, not why. Every count here was made after the values and the images of the 120 words, the records of the 23 works and the draws from all distinct words were seen."
+}
