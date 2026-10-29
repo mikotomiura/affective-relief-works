@@ -4,7 +4,7 @@ and 2, and the same table empty as its own image (for supplement S1, version 11;
 general lines, version 13), from the conditions and the files they name.
 
 Usage:  uv run python works/decision_note.py        (refuses to overwrite)
-Conditions: works/conditions/decision_note.json, version 14 (committed before this version of the script was written)
+Conditions: works/conditions/decision_note.json, version 15 (committed before this version of the script was written)
 Input:  the files named in the rows (conditions of works 1 and 2, of the drawing, of the blind judgement and of the records
         of the share used, the scoring of the blind judgement and its supplement, and the images each quantity acted on) and
         the values every share is computed again from (results/work1/work1.json, results/work2_words/words.json,
@@ -13,7 +13,7 @@ Input:  the files named in the rows (conditions of works 1 and 2, of the drawing
         version 13, and results/paper_distinct_range, version 14, read and checked by their provenance); every one
         must be the committed bytes at HEAD. The range of f and s
         is read from the installed atact.mapping, which must be the library of every record of the share used
-Output: results/decision_note_v14/decision_note.png (figure 8), decision_note_empty.png (S1), decision_note.md and
+Output: results/decision_note_v15/decision_note.png (figure 8), decision_note_empty.png (S1), decision_note.md and
         decision_note.json
 """
 
@@ -39,10 +39,10 @@ from PIL import Image, ImageDraw, ImageFont  # noqa: E402
 import _common as cm  # noqa: E402
 
 COND = ROOT / "works" / "conditions" / "decision_note.json"
-OUT_DIR = ROOT / "results" / "decision_note_v14"
+OUT_DIR = ROOT / "results" / "decision_note_v15"
 CODE = ["works/decision_note.py", "works/_common.py"]
 MM_PER_INCH = 25.4
-VERSION = 14
+VERSION = 15
 ROW_SETS = {"rows_work1": "Work 1", "rows_work2": "Work 2"}
 # the ids of the rows, in order (checks of the conditions); the number of rows follows from them
 ROW_IDS = {"rows_work1": ["w1_lexicon", "w1_height_scale", "w1_drawing"], "rows_work2": ["w2_map_b", "w2_percentiles", "w2_seed"]}
@@ -61,7 +61,7 @@ APPROVED_CELLS = {
     "w1_lexicon": {
         "quantity": "lexicon; sentence as mean",
         "value": ("text", "NRC VAD v2.1"),
-        "reason": "Human ratings of English words. Tried: none. Later compared with: those beside.",
+        "reason": "Human ratings of English words. Tried: none. Later compared with: how terms form sentences.",
         "when": "before; seen: none",
         "judged": ("none", NONE_RECORDED)},
     "w1_height_scale": {
@@ -97,7 +97,7 @@ APPROVED_CELLS = {
         "value": ("literal", "per word: SHA-256 of the word plus a common seed"),
         "reason": "Varies the pattern by word; rows can differ by spelling alone. Tried: per-author seeds; a common seed.",
         "when": "after; seen: sketches with this per-word rule",
-        "judged": ("text", "judged only with color")},
+        "judged": ("text", "judged only in the version with color")},
 }
 APPROVED_TEXT = {(rid, f): cells[f][1] for rid, cells in APPROVED_CELLS.items() for f in ("value", "judged")
                  if cells[f][0] == "text"}
@@ -124,7 +124,7 @@ APPROVED_ROWS = {'w1_lexicon': {'id': 'w1_lexicon',
                 'reason': {'why': 'human ratings of English words',
                            'tried': [],
                            'shown_beside': [],
-                           'later_compared': ['those beside'],
+                           'later_compared': ['how terms form sentences'],
                            'not_tried': []},
                 'acted_on': ['results/work1/common.png',
                              'results/work1/minmax.png',
@@ -268,7 +268,7 @@ APPROVED_ROWS = {'w1_lexicon': {'id': 'w1_lexicon',
              'acted_on': ['results/work2_sp_color/SPC.png'],
              'compared': [],
              'when': 'after; seen: sketches with this per-word rule',
-             'judged': {'text': 'judged only with color',
+             'judged': {'text': 'judged only in the version with color',
                         'check': {'file': 'works/conditions/blind_judgement.json',
                                   'keys': ['judges.deciding', 'judges.also', 'versions.SPC'],
                                   'must_contain': ['has not seen the sheets',
@@ -293,11 +293,18 @@ APPROVED_FRAME = {'headers': ['Quantity',
                               'Who judged the look (sheet used)'],
                   'titles': ['Decision note for works 1 and 2', 'Decision note, empty'],
                   'note': ["Middle half: Q3 − Q1 as % of the rule's range, counted and compared after seeing the records.",
+                           # the time, by the standard of the line on the time of note_empty, and its one exception, in
+                           # two lines because the sentence does not fit in one (version 15)
+                           "When: after if, by the time the quantity was last fixed for the work, the maker who decided "
+                           "had seen its outputs or been told of them.",
+                           "Drawing: before, though its series' gray had been seen.",
                            "Judged: whether the two authors' rows differ within one version, on the 80 px judging sheets; "
                            "versions not compared."],
                   # the lines under the empty template of S1, which leave the time and the judgement open (version 13)
                   'note_empty': ["Middle half: Q3 − Q1 as % of the rule's range; counted and compared before or after "
                                  "seeing the values: …",
+                                 # what each share is compared with (version 15)
+                                 "Compared with: set, unit, what it keeps / breaks: …",
                                  # the time and the mark of the outline (version 14)
                                  "When: by the time the quantity was last fixed for the work, had the maker who decided "
                                  "seen its outputs, or been told of them: …",
@@ -312,7 +319,7 @@ APPROVED_LAYOUT = {'width_mm': 177.8,
  'colour': 'black and white',
  'font_file': '/System/Library/Fonts/Helvetica.ttc',
  'column_share': {'quantity': 0.1, 'value': 0.19, 'reason': 0.19, 'acted_on': 0.19, 'when': 0.17, 'judged': 0.16},
- 'max_words': 408}
+ 'max_words': 449}
 # the files of the two judges (checks of the conditions)
 MAIN_FILE = "results/blind_judgement/score.json"
 ALSO_FILE = "results/blind_judgement/score-researcher-supplement.json"
@@ -347,8 +354,18 @@ DIST_N = {"distinct_B": "reference_words", "distinct_P": "reference_words"}  # t
 # per record beside: its conditions, its script, the key of its constants in its checks and the key of the n of each set
 BESIDE_RECORDS = {REF_FILE: (REF_CONDITIONS, REF_SCRIPT, "R1_constants", REF_N),
                   DIST_FILE: (DIST_CONDITIONS, DIST_SCRIPT, "D1_constants", DIST_N)}
-# the number of the tiles of the row of the 20 words of the blind judgement, named in the second line of the note
+# the number of the tiles of the row of the 20 words of the blind judgement, named in the last line of the note (the second up to version 14)
 JUDGING_PX_KEY = "tiles.words20_px"
+# the lines of the note (version 15): their heads in order, the words of the standard of the time shared with note_empty,
+# and the record of the drawing of work 1 that names what had been seen and what had not
+NOTE_HEADS = ["Middle half", "When", "Drawing", "Judged"]
+WHEN_STANDARD = ["by the time the quantity was last fixed for the work", "the maker who decided", "seen its outputs",
+                 "been told of them"]
+DRAWING_COND = "works/conditions/work1_drawing.json"
+# what was seen comes between SEEN_HEAD and NOT_SEEN_HEAD, what was not after NOT_SEEN_HEAD (case kept: "Not seen
+# before:" holds "seen before:")
+SEEN_HEAD, NOT_SEEN_HEAD = "Seen before:", "Not seen before:"
+DRAWING_SEEN = {"seen": "common.png", "not_seen": "any tile of work 1 lit or stretched"}
 # the shares beside, in order: (record, set, label); a share beside in the record of the row has no file in the conditions
 # (the form of version 12 and before; from version 13 no row uses it)
 USED_SETS = {"w1_lexicon": (SAME_FILE, SAME_CONDITIONS, "sentences",
@@ -1071,6 +1088,15 @@ def main() -> None:
         raise SystemExit("note_empty is not a list of lines of its own, or a line holds a mark, a value or an outcome")
     if not (any(x.startswith("When:") for x in note_empty) and any(x.startswith("‡") for x in note_empty)):
         raise SystemExit("note_empty has no line on the time or none on the mark ‡ (version 14)")
+    if not any(x.startswith("Compared with:") for x in note_empty):
+        raise SystemExit("note_empty has no line on what each share is compared with (version 15)")
+    # the lines of the note in order, the line on the time holding the words of the standard of note_empty (version 15)
+    if len(note) != len(NOTE_HEADS) or not all(x.startswith(h + ":") for x, h in zip(note, NOTE_HEADS)):
+        raise SystemExit(f"the lines of the note do not begin, in order, with {NOTE_HEADS}")
+    when_empty = [x for x in note_empty if x.startswith("When:")]
+    missing = [w for w in WHEN_STANDARD if w not in note[1] or not all(w in x for x in when_empty)]
+    if len(when_empty) != 1 or missing:
+        raise SystemExit(f"the line on the time of the note and that of note_empty do not both hold {missing}")
     max_words = cm.need(c, "max_words", int)
     frame = {"headers": headers, "titles": titles, "note": note, "note_empty": note_empty, "acted_on_labels": label,
              "compared_mark": mark_c, "dagger": dag}
@@ -1172,9 +1198,10 @@ def main() -> None:
         raise SystemExit("a text fixed in the script names a row that is not drawn")
     daggered = [r["quantity"] for rs in resolved.values() for r in rs if r["dagger"]]
     if daggered:
-        raise SystemExit(f"rows {daggered} carry the dagger; version 14 has none in the main table")
+        raise SystemExit(f"rows {daggered} carry the dagger; version 15 has none in the main table")
     px = read_key(load_json(JUDGEMENT, cache), JUDGING_PX_KEY, "note")  # the images judged, named in the note (version 14)
-    if isinstance(px, bool) or not isinstance(px, int) or sum(f" {px} px judging sheets" in x for x in note) != 1:
+    if (isinstance(px, bool) or not isinstance(px, int) or note[-1].count(f" {px} px judging sheets") != 1
+            or any(f" {px} px judging sheets" in x for x in note[:-1])):
         raise SystemExit(f"the note does not name the {JUDGING_PX_KEY} of {JUDGEMENT} once")
     named.add(JUDGEMENT)
     # the 'only' of the judged of the seed: SPC is the one version naming the seed per spelling (version 14)
@@ -1182,6 +1209,22 @@ def main() -> None:
     if (not isinstance(vers, dict) or "seed per spelling" not in vers.get(VERSION_OF["w2_seed"], "")
             or any("seed per spelling" in v for k, v in vers.items() if k != VERSION_OF["w2_seed"])):
         raise SystemExit("w2_seed: the seed per spelling is not judged only in the version with the color")
+    # the one exception to the line on the time: the drawing of work 1, before though one of its images had been seen
+    # (version 15)
+    drawn = [r for r in resolved["rows_work1"] if r["quantity"] == "drawing"]
+    seen = drawn[0]["when"].removeprefix("before; seen: ") if len(drawn) == 1 else ""
+    if len(drawn) != 1 or not drawn[0]["when"].startswith("before; seen: ") or not seen or seen == "none":
+        raise SystemExit("work 1 has not one row of the drawing read as before with something seen (version 15)")
+    told = read_key(load_json(DRAWING_COND, cache), "fixed_before_running", "note")
+    a = told.find(SEEN_HEAD) if isinstance(told, str) else -1
+    b = told.find(NOT_SEEN_HEAD, a) if a >= 0 else -1
+    seen_part = told[a:b] if 0 <= a < b else ""
+    not_seen_part = told[b:] if b >= 0 else ""
+    if (not seen_part or DRAWING_SEEN["seen"] not in seen_part or DRAWING_SEEN["not_seen"] not in not_seen_part
+            or DRAWING_SEEN["not_seen"] in seen_part or DRAWING_SEEN["seen"] in not_seen_part):
+        raise SystemExit(f"{DRAWING_COND} does not name {DRAWING_SEEN['seen']!r} as seen and "
+                         f"{DRAWING_SEEN['not_seen']!r} as not seen in its fixed_before_running")
+    named.add(DRAWING_COND)
 
     files = sorted(named)
     cm.same_as_head([COND, *(ROOT / p for p in CODE), *(ROOT / p for p in files)])
@@ -1256,6 +1299,9 @@ def main() -> None:
                **resolved,
                "dagger_rows": daggered,
                "judging_px": {"file": JUDGEMENT, "key": JUDGING_PX_KEY, "value": px},  # version 14
+               "when_exception": {"row": drawn[0]["id"], "when": drawn[0]["when"], "file": DRAWING_COND,
+                                  "key": "fixed_before_running", "names": DRAWING_SEEN,
+                                  "seen_part": seen_part, "not_seen_part": not_seen_part},  # version 15
                "words": {**words, "max_words": max_words, "how": "whitespace-separated tokens, a path one word, "
                          "a mark standing alone one word; titles, headers, band labels, the note and the cells"},
                "drawing": {"width_px": width, "height_px": fig.height, "empty_height_px": empty.height, "mode": fig.mode,
