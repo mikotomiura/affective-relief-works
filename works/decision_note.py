@@ -3,12 +3,12 @@ seen, with the reason, the alternatives tried, the images that used each one and
 and 2, with the same table empty below it, from the conditions and the files they name.
 
 Usage:  uv run python works/decision_note.py        (refuses to overwrite)
-Conditions: works/conditions/decision_note.json, version 7 (committed before this version of the script was written)
+Conditions: works/conditions/decision_note.json, version 8 (committed before this version of the script was written)
 Input:  the files named in the rows (conditions of works 1 and 2, of the drawing, of the blind judgement and of the record
-        of generation, the scoring of the blind judgement and its supplement, and the images each quantity acted on); every
+        of the share used, the scoring of the blind judgement and its supplement, and the images each quantity acted on); every
         one must be the committed bytes at HEAD. The range of f and s is read from the installed atact.mapping, which must be
-        the library of the record of generation
-Output: results/decision_note_v7/decision_note.png, decision_note.md and decision_note.json
+        the library of the record of the share used (results/paper_used_range/used_range.json)
+Output: results/decision_note_v8/decision_note.png, decision_note.md and decision_note.json
 """
 
 from __future__ import annotations
@@ -33,10 +33,10 @@ from PIL import Image, ImageDraw, ImageFont  # noqa: E402
 import _common as cm  # noqa: E402
 
 COND = ROOT / "works" / "conditions" / "decision_note.json"
-OUT_DIR = ROOT / "results" / "decision_note_v7"
+OUT_DIR = ROOT / "results" / "decision_note_v8"
 CODE = ["works/decision_note.py", "works/_common.py"]
 MM_PER_INCH = 25.4
-VERSION = 7
+VERSION = 8
 ROW_SETS = {"rows_work1": "Work 1", "rows_work2": "Work 2"}
 # the ids of the rows, in order (checks of the conditions); the number of rows follows from them
 ROW_IDS = {"rows_work1": ["w1_height_scale", "w1_drawing"], "rows_work2": ["w2_map_b", "w2_percentiles"]}
@@ -54,15 +54,16 @@ APPROVED_CELLS = {
     "w1_height_scale": {
         "quantity": "height scale",
         "value": ("format", "common to the series, assumed relief depth D = {D_mm} mm"),
-        "reason": "Keeps the depth differences between sentences. Tried: per-tile min-max.",
+        "reason": "Keeps the depth differences between sentences. Tried: none. Shown beside: per-tile min-max.",
         "when": "before: none",
         "judged": ("none", NONE_RECORDED)},
     "w1_drawing": {
         "quantity": "drawing",
         "value": ("literal", "four shown together, the series using the grey of the height; grey; lit at 45 degrees from "
                              "upper left, lower right; stretched per tile"),
-        "reason": "Also a quantity the maker sets (one viewpoint). Tried: only the four shown. Not tried: other viewpoints.",
-        "when": "after: every image and value of work 1",
+        "reason": "Also a quantity the maker sets (one viewpoint). Tried: none. Shown beside: the other three. "
+                  "Not tried: other viewpoints.",
+        "when": "before: every image and value of work 1",
         "judged": ("none", NONE_RECORDED)},
     "w2_map_b": {
         "quantity": "lexicon and map",
@@ -74,12 +75,143 @@ APPROVED_CELLS = {
     "w2_percentiles": {
         "quantity": "percentiles",
         "value": ("text", "V and A as percentiles in the 23 works, each author weighted equally"),
-        "reason": "Undoes the compression of map B (drops distances between values). Tried: map B; whole-lexicon percentiles.",
+        "reason": "Spreads values map B compresses; stretches small predicted differences, most in A. Tried: map B; "
+                  "whole-lexicon percentiles.",
         "when": "after: the whole-lexicon percentiles and the sketches",
         "judged": ("text", "same makers and sheet")},
 }
 APPROVED_TEXT = {(rid, f): cells[f][1] for rid, cells in APPROVED_CELLS.items() for f in ("value", "judged")
                  if cells[f][0] == "text"}
+# approved_text_rule of the conditions (version 8): every row as written in the conditions, and the frame of the table
+APPROVED_ROWS = {'w1_height_scale': {'id': 'w1_height_scale',
+                                     'quantity': 'height scale',
+                                     'value': {'file': 'works/conditions/work1.json',
+                                               'keys': ['relief.D_mm'],
+                                               'format': 'common to the series, assumed relief depth D = {D_mm} mm',
+                                               'used_range': {'file': 'results/paper_used_range/used_range.json',
+                                                              'set': 'work1_sentences',
+                                                              'n': 104,
+                                                              'unit': 'sentences',
+                                                              'shown': {'f': '7%', 's': '6%'}}},
+                                     'reason': {'why': 'keeps the depth differences between sentences',
+                                                'tried': [],
+                                                'shown_beside': ['per-tile min-max'],
+                                                'later_compared': [],
+                                                'not_tried': []},
+                                     'acted_on': ['results/work1/common.png',
+                                                  'results/work1/minmax.png',
+                                                  'results/work1/common_eps.png',
+                                                  'results/work1_drawing/drawing.png'],
+                                     'compared': ['results/work1/common.png', 'results/work1/minmax.png'],
+                                     'when': 'before: none',
+                                     'judged': 'none recorded',
+                                     'dagger': False},
+                 'w1_drawing': {'id': 'w1_drawing',
+                                'quantity': 'drawing',
+                                'value': {'literal': 'four shown together, the series using the grey of the height; grey; lit at 45 '
+                                                     'degrees from upper left, lower right; stretched per tile',
+                                          'check': {'file': 'works/conditions/work1_drawing.json',
+                                                    'keys': ['drawings.a_height',
+                                                             'drawings.b_light_upper_left',
+                                                             'drawings.c_light_lower_right'],
+                                                    'must_contain': ['z / D + 1/2',
+                                                                     'elevation 45 degrees',
+                                                                     'azimuth 135 degrees',
+                                                                     'azimuth 315 degrees']}},
+                                'reason': {'why': 'also a quantity the maker sets (one viewpoint)',
+                                           'tried': [],
+                                           'shown_beside': ['the other three'],
+                                           'later_compared': [],
+                                           'not_tried': ['other viewpoints']},
+                                'acted_on': ['results/work1_drawing/drawing.png'],
+                                'compared': ['results/work1_drawing/drawing.png'],
+                                'when': 'before: every image and value of work 1',
+                                'judged': 'none recorded',
+                                'dagger': False},
+                 'w2_map_b': {'id': 'w2_map_b',
+                              'quantity': 'lexicon and map',
+                              'value': {'text': 'MEmoLon (Japanese) through map B, fitted to English ratings',
+                                        'check': {'file': 'works/conditions/work2.json',
+                                                  'keys': ['lexicon.name', 'map.use'],
+                                                  'must_contain': ['MEmoLon', 'Japanese', 'map B']}},
+                              'reason': {'why': 'brings the Japanese values onto the English scale',
+                                         'tried': [],
+                                         'shown_beside': [],
+                                         'later_compared': ['the percentiles', 'two other maps, on check sentences'],
+                                         'not_tried': []},
+                              'acted_on': ['results/paper_figure6_scale/figure6_scale.png',
+                                           'results/paper_work2_figures/variants_judged.png'],
+                              'compared': ['results/paper_figure6_scale/figure6_scale.png'],
+                              'when': "before: both lexicons' values",
+                              'judged': {'text': 'two makers (one blind), with the sheet and example',
+                                         'check': {'file': 'works/conditions/blind_judgement.json',
+                                                   'keys': ['judges.deciding', 'judges.also'],
+                                                   'must_contain': ['has not seen the sheets', 'not as a blind judgement']},
+                                         'answers': {'main': {'file': 'results/blind_judgement/score.json',
+                                                              'key': 'decision.rows_remaining',
+                                                              'decided_key': 'decision.decided'},
+                                                     'also': {'file': 'results/blind_judgement/score-researcher-supplement.json',
+                                                              'key': 'rows_remaining',
+                                                              'pass_key': 'controls_pass'},
+                                                     'row': 'words20',
+                                                     'version': 'G0',
+                                                     'outcome': 'split'}},
+                              'dagger': False},
+                 'w2_percentiles': {'id': 'w2_percentiles',
+                                    'quantity': 'percentiles',
+                                    'value': {'text': 'V and A as percentiles in the 23 works, each author weighted equally',
+                                              'check': {'file': 'works/conditions/sketch_sp_color.json',
+                                                        'keys': ['reference.what'],
+                                                        'must_contain': ['the 23 works', 'each author weighs 1']},
+                                              'used_range': {'file': 'results/paper_used_range/used_range.json',
+                                                             'set': 'main_P.pooled',
+                                                             'n': 120,
+                                                             'unit': 'words',
+                                                             'shown': {'f': '54%', 's': '60%'},
+                                                             'beside': {'set': 'main_G0.pooled',
+                                                                        'label': 'under map B',
+                                                                        'shown': {'f': '8%', 's': '12%'}}}},
+                                    'reason': {'why': 'spreads values map B compresses; stretches small predicted differences, most '
+                                                      'in A',
+                                               'tried': ['map B', 'whole-lexicon percentiles'],
+                                               'shown_beside': [],
+                                               'later_compared': [],
+                                               'not_tried': []},
+                                    'acted_on': ['results/paper_figure6_scale/figure6_scale.png', 'results/work2_sp_color/SPC.png'],
+                                    'compared': ['results/paper_figure6_scale/figure6_scale.png'],
+                                    'when': 'after: the whole-lexicon percentiles and the sketches',
+                                    'judged': {'text': 'same makers and sheet',
+                                               'check': {'file': 'works/conditions/blind_judgement.json',
+                                                         'keys': ['judges.deciding', 'judges.also'],
+                                                         'must_contain': ['has not seen the sheets', 'not as a blind judgement']},
+                                               'answers': {'main': {'file': 'results/blind_judgement/score.json',
+                                                                    'key': 'decision.rows_remaining',
+                                                                    'decided_key': 'decision.decided'},
+                                                           'also': {'file': 'results/blind_judgement/score-researcher-supplement.json',
+                                                                    'key': 'rows_remaining',
+                                                                    'pass_key': 'controls_pass'},
+                                                           'row': 'words20',
+                                                           'version': 'P',
+                                                           'outcome': 'both differ'}},
+                                    'dagger': False}}
+APPROVED_FRAME = {'headers': ['Quantity',
+                              'Value',
+                              'Reason (alternatives tried)',
+                              'Images using it (* effect compared)',
+                              'When decided: before or after seeing what it produced (what had been seen)',
+                              'Who judged the look (sheet used)'],
+                  'titles': ['Decision note for works 1 and 2', 'Decision note, empty'],
+                  'note': "Judged: whether the two authors' rows differ within one version; versions not compared.",
+                  'acted_on_labels': 'in the repository the column holds the image files; the numbers of the figures of the paper are '
+                                     'put in when the manuscript is made, outside the repository',
+                  'compared_mark': ' *',
+                  'dagger': {'mark': '† ', 'meaning': 'claim weakened in the paper after the values were seen'}}
+APPROVED_LAYOUT = {'width_mm': 177.8,
+ 'dpi': 300,
+ 'colour': 'black and white',
+ 'font_file': '/System/Library/Fonts/Helvetica.ttc',
+ 'column_share': {'quantity': 0.1, 'value': 0.19, 'reason': 0.19, 'acted_on': 0.19, 'when': 0.17, 'judged': 0.16},
+ 'max_words': 340}
 # the files of the two judges (checks of the conditions)
 MAIN_FILE = "results/blind_judgement/score.json"
 ALSO_FILE = "results/blind_judgement/score-researcher-supplement.json"
@@ -88,8 +220,11 @@ SAID = re.compile(r";|\b(?:rows?|words|range|ranges|agreed?|disagreed?|differ|di
 JUDGEMENT = "works/conditions/blind_judgement.json"  # its rows are the rows an answer may name
 SHARE = re.compile(r"(\d+)%")
 USED_QUANTITIES = ["f", "s"]
-# used_range_rule of the conditions: the phrase of the share is fixed here
-USED_PHRASE = "{text}; f and s of the {words} words use {f} and {s} of their ranges (min to max; counted later, from the record)"
+# used_range_rule of the conditions: the record, the phrase of the share and the sets each row may read are fixed here
+USED_FILE = "results/paper_used_range/used_range.json"
+USED_CONDITIONS = "works/conditions/paper_used_range.json"
+USED_PHRASE = "{text}; the middle half of f and s of the {n} {unit} spans {f} and {s} of their ranges ({beside}counted later, from the record)"
+USED_SETS = {"w1_height_scale": ("work1_sentences", None), "w2_percentiles": ("main_P.pooled", "main_G0.pooled")}
 PERCENT = re.compile(r"(?<![\d.])(?:over )?\d+(?:\.\d+)?%")
 # any way of writing a share outside the built phrases (checks of the conditions)
 ANY_SHARE = re.compile(r"[%％]|\bper\s*cent\b|\bpercent(?:age)?s?\b", re.IGNORECASE)
@@ -157,9 +292,9 @@ def strings(x, where: str, what: str) -> list[str]:
     return x
 
 
-def resolve_value(v: dict, cache: dict, where: str, approved: str | None = None) -> tuple[str, dict]:
+def resolve_value(v: dict, cache: dict, where: str, approved: str | None = None, rid: str = "") -> tuple[str, dict]:
     """The text of a value and what was read for it; a text before a built phrase must be the approved one."""
-    if set(v) == {"file", "keys", "format"}:
+    if set(v) in ({"file", "keys", "format"}, {"file", "keys", "format", "used_range"}):
         if approved is not None:
             raise SystemExit(f"{where}: a text is fixed in the script for this cell but the cell is a format")
         if not isinstance(v["format"], str) or not PLACEHOLDER.search(v["format"]):
@@ -191,8 +326,14 @@ def resolve_value(v: dict, cache: dict, where: str, approved: str | None = None)
             raise SystemExit(f"{where}: keys read but not shown: {sorted(set(by_name) - used)}")
         if "{" in text or "}" in text:
             raise SystemExit(f"{where}: an unmatched brace is left in {text!r}")
+        if ANY_SHARE.search(text) or any(mk in text for mk in ("†", "*")):
+            raise SystemExit(f"{where}: a reserved mark or a percentage in the format {text!r}")
+        if "used_range" in v:
+            u, text = check_used_range(v["used_range"], text, cache, where, rid)
+            return text, {"file": v["file"], "read": read, "used_range": u}
         return text, {"file": v["file"], "read": read}
-    if set(v) in ({"literal"}, {"literal", "check"}, {"text", "check", "used_range"}, {"text", "check", "answers"}):
+    if set(v) in ({"literal"}, {"literal", "check"}, {"text", "check"}, {"text", "check", "used_range"},
+                  {"text", "check", "answers"}):
         base = v["literal"] if "literal" in v else v["text"]
         if not isinstance(base, str) or not base:
             raise SystemExit(f"{where}: the literal or text is not a non-empty string")
@@ -200,7 +341,7 @@ def resolve_value(v: dict, cache: dict, where: str, approved: str | None = None)
             raise SystemExit(f"{where}: a percentage in a literal (required_checks)")
         extra, text = {}, base
         if "used_range" in v:
-            extra["used_range"], text = check_used_range(v["used_range"], base, cache, where)
+            extra["used_range"], text = check_used_range(v["used_range"], base, cache, where, rid)
         if "answers" in v:
             extra["answers"], text = check_answers(v["answers"], base, cache, where)
         if any(mk in base for mk in ("†", "*")) or PERCENT.search(base):
@@ -233,55 +374,104 @@ def rule_ranges() -> dict[str, tuple[float, float]]:
     return {"f": (m.F0, m.F0 + m.F1), "s": (m.S0, m.S0 + m.S1)}
 
 
-def check_used_range(u: dict, base: str, cache: dict, where: str) -> tuple[dict, str]:
-    """The share of the range of f and s used by the words of the record, checked against the strings shown, and the value
-    built from it (used_range_rule)."""
-    if not isinstance(u, dict) or set(u) != {"file", "version", "quantities", "words_key", "words", "shown"}:
-        raise SystemExit(f"{where}: used_range needs file, version, quantities, words_key, words and shown")
-    rec = load_json(u["file"], cache)
-    meta = read_key(rec, "meta", where)
-    if not isinstance(meta, dict):
-        raise SystemExit(f"{where}: the meta of {u['file']} is not an object")
-    if cm.installed_commit() != meta.get("atact_commit") or cm.library_sha256() != meta.get("library_sha256"):
-        raise SystemExit(f"{where}: the installed atact is not the library of {u['file']}")
-    per = read_key(rec, u["words_key"], where)
-    n = u["words"]
-    if (isinstance(n, bool) or not isinstance(n, int) or not isinstance(per, list)
-            or not all(isinstance(x, int) and not isinstance(x, bool) for x in per) or sum(per) != n):
-        raise SystemExit(f"{where}: the words per author {per!r} of the record do not sum to {n!r}")
-    listed = read_key(rec, f"words.{u['version']}", where) if isinstance(u["version"], str) else None
-    if (not isinstance(listed, dict) or not all(isinstance(x, list) for x in listed.values())
-            or [len(x) for x in listed.values()] != per):
-        raise SystemExit(f"{where}: the record does not list {n!r} words under {u['version']!r}")
-    if not isinstance(u["version"], str) or not u["version"]:
-        raise SystemExit(f"{where}: used_range.version is not a non-empty string")
-    if strings(u["quantities"], where, "quantities") != USED_QUANTITIES:
-        raise SystemExit(f"{where}: the quantities are not {USED_QUANTITIES}")
-    shown = u["shown"]
+def share_of(rec: dict, set_name: str, n: int, where: str) -> dict[str, float]:
+    """The middle half of f and s of one set of the record, in percent of the range of the rule (used_range_rule)."""
+    ranges = rule_ranges()
+    out = {}
+    for q in USED_QUANTITIES:
+        t = read_key(rec, f"sets.{set_name}.{q}", where)
+        if not isinstance(t, dict):
+            raise SystemExit(f"{where}: sets.{set_name}.{q} is not an object")
+        if t.get("n") != n or isinstance(t.get("n"), bool):
+            raise SystemExit(f"{where}: sets.{set_name}.{q} counts {t.get('n')!r} values, not {n}")
+        q1, q3, lo, hi, rec_share = (number(read_key(t, k, where), where)
+                                     for k in ("q1", "q3", "min", "max", "share_quartiles_percent"))
+        if not lo <= q1 <= q3 <= hi:
+            raise SystemExit(f"{where}: sets.{set_name}.{q} is not ordered min <= q1 <= q3 <= max")
+        a, b = ranges[q]
+        out[q] = 100 * (q3 - q1) / (b - a)
+        if abs(out[q] - rec_share) > 1e-9:
+            raise SystemExit(f"{where}: the share of sets.{set_name}.{q} is not 100 (q3 - q1) / width")
+    return out
+
+
+def shown_matches(shown, shares: dict[str, float], where: str) -> None:
     if not isinstance(shown, dict) or list(shown) != USED_QUANTITIES:
         raise SystemExit(f"{where}: shown is not one string for each of {USED_QUANTITIES}")
-    ranges = rule_ranges()
-    shares = {}
     for q in USED_QUANTITIES:
         m = SHARE.fullmatch(shown[q]) if isinstance(shown[q], str) else None
         if m is None:
             raise SystemExit(f"{where}: shown.{q} {shown[q]!r} is not 'N%'")
-        if q not in ranges:
-            raise SystemExit(f"{where}: no range of the rule is known for {q}")
-        lo, hi = ranges[q]
-        pooled = read_key(rec, f"pooled.{u['version']}.{q}", where)
-        if not isinstance(pooled, dict):
-            raise SystemExit(f"{where}: pooled.{u['version']}.{q} is not an object")
-        top, bottom = (number(read_key(pooled, k, where), where) for k in ("max", "min"))
-        values = [number(w.get(q) if isinstance(w, dict) else None, where)
-                  for ws in listed.values() for w in ws]
-        if len(values) != n or (max(values), min(values)) != (top, bottom):
-            raise SystemExit(f"{where}: pooled.{u['version']}.{q} is not the smallest and the largest of the {n} words listed")
-        shares[q] = 100 * (top - bottom) / (hi - lo)
-        if round(shares[q]) != int(m.group(1)):
-            raise SystemExit(f"{where}: {q} uses {shares[q]:.2f}% of its range, which is not {shown[q]}")
-    text = USED_PHRASE.format(text=base, words=n, f=f"{round(shares['f'])}%", s=f"{round(shares['s'])}%")
-    return {"file": u["file"], "version": u["version"], "ranges": ranges, "shares_percent": shares, "shown": shown}, text
+        if abs(shares[q] - math.floor(shares[q]) - 0.5) < 1e-6 or round(shares[q]) != int(m.group(1)):
+            raise SystemExit(f"{where}: {q} spans {shares[q]:.2f}% of its range, which is not {shown[q]}")
+
+
+def quantiles_of(xs: list, where: str) -> dict:
+    import numpy as np
+
+    a = np.array([number(x, where) for x in xs])
+    q1, q3 = (float(x) for x in np.quantile(a, [0.25, 0.75], method="linear"))
+    return {"min": float(a.min()), "q1": q1, "q3": q3, "max": float(a.max()), "n": int(a.size)}
+
+
+def recheck(rec: dict, rid: str, cache: dict, where: str) -> None:
+    """Where the record of the values is committed (the sentences of work 1, the words of map B), the quartiles of the
+    record of the share are computed again from it (the percentiles of the words are not recorded elsewhere)."""
+    if rid == "w1_height_scale":
+        sents = read_key(load_json("results/work1/work1.json", cache), "sentences", where)
+        sets = {"work1_sentences": {q: [x[q] for x in sents] for q in USED_QUANTITIES}}
+    else:
+        authors = read_key(load_json("results/work2_words/words.json", cache), "authors", where)
+        sets = {"main_G0.pooled": {q: [w[q] for a in authors.values() for w in a["words"]] for q in USED_QUANTITIES}}
+    for name, per in sets.items():
+        for q, xs in per.items():
+            got = quantiles_of(xs, where)
+            want = {k: read_key(rec, f"sets.{name}.{q}.{k}", where) for k in got}
+            if got != want:
+                raise SystemExit(f"{where}: sets.{name}.{q} of the record is not computed from the values: {got} {want}")
+
+
+def check_used_range(u: dict, base: str, cache: dict, where: str, rid: str) -> tuple[dict, str]:
+    """The middle half of f and s of the set of the record fixed for the row (and of the set beside), checked against the
+    strings shown, and the value built from it (used_range_rule)."""
+    if not isinstance(u, dict) or not {"file", "set", "n", "unit", "shown"} <= set(u) <= {"file", "set", "n", "unit", "shown", "beside"}:
+        raise SystemExit(f"{where}: used_range needs file, set, n, unit and shown (and may have beside)")
+    if u["file"] != USED_FILE or rid not in USED_SETS:
+        raise SystemExit(f"{where}: used_range is not the record fixed in the script for {rid!r}")
+    rec = load_json(u["file"], cache)
+    meta = read_key(rec, "meta", where)
+    load_json(USED_CONDITIONS, cache)  # the bytes of the conditions of the record are those at HEAD
+    cond = ROOT / USED_CONDITIONS
+    if (not isinstance(meta, dict) or meta.get("conditions_sha256") != cm.sha256(cond) or meta.get("git_dirty") is not False):
+        raise SystemExit(f"{where}: {u['file']} is not the record of {USED_CONDITIONS} made on a clean tree")
+    if cm.library_sha256() != meta.get("library_sha256"):
+        raise SystemExit(f"{where}: the installed atact is not the library of {u['file']}")
+    rule = read_key(rec, "rule_range", where)
+    if rule != {q: list(v) for q, v in rule_ranges().items()}:
+        raise SystemExit(f"{where}: the range of the rule of the record is not the installed one")
+    n = u["n"]
+    if isinstance(n, bool) or not isinstance(n, int) or not isinstance(u["unit"], str) or u["unit"] not in ("words", "sentences"):
+        raise SystemExit(f"{where}: n or unit of used_range is not a count of words or sentences")
+    main_set, beside_set = USED_SETS[rid]
+    if u["set"] != main_set:
+        raise SystemExit(f"{where}: the set {u['set']!r} is not the one fixed for {rid!r} ({main_set!r})")
+    shares = share_of(rec, main_set, n, where)
+    recheck(rec, rid, cache, where)
+    shown_matches(u["shown"], shares, where)
+    beside_txt, beside = "", None
+    if beside_set is not None or "beside" in u:
+        b = u.get("beside")
+        if (beside_set is None or not isinstance(b, dict) or set(b) != {"set", "label", "shown"} or b["set"] != beside_set
+                or b["label"] != "under map B"):
+            raise SystemExit(f"{where}: the share beside is not the one fixed for {rid!r} ({beside_set!r}, 'under map B')")
+        beside = share_of(rec, beside_set, n, where)
+        shown_matches(b["shown"], beside, where)
+        beside_txt = f"{b['label']}, {round(beside['f'])}% and {round(beside['s'])}%; "
+    text = USED_PHRASE.format(text=base, n=n, unit=u["unit"], f=f"{round(shares['f'])}%", s=f"{round(shares['s'])}%",
+                              beside=beside_txt)
+    built = [f"{round(shares[q])}%" for q in USED_QUANTITIES] + ([f"{round(beside[q])}%" for q in USED_QUANTITIES] if beside else [])
+    return {"file": u["file"], "set": main_set, "shares_percent": shares, "beside_set": beside_set,
+            "beside_shares_percent": beside, "shown": u["shown"], "built": built}, text
 
 
 def check_answers(a: dict, base: str, cache: dict, where: str) -> tuple[dict, str]:
@@ -453,11 +643,11 @@ def check_row(row: dict, where: str) -> None:
     if not isinstance(row["dagger"], bool):
         raise SystemExit(f"{where}.dagger is not true or false")
     r = row["reason"]
-    if not isinstance(r, dict) or set(r) != {"why", "tried", "later_compared", "not_tried"}:
-        raise SystemExit(f"{where}.reason needs why, tried, later_compared and not_tried")
+    if not isinstance(r, dict) or set(r) != {"why", "tried", "shown_beside", "later_compared", "not_tried"}:
+        raise SystemExit(f"{where}.reason needs why, tried, shown_beside, later_compared and not_tried")
     if not isinstance(r["why"], str) or not r["why"]:
         raise SystemExit(f"{where}.reason.why is not a non-empty string")
-    for k in ("tried", "later_compared", "not_tried"):
+    for k in ("tried", "shown_beside", "later_compared", "not_tried"):
         if not isinstance(r[k], list) or not all(isinstance(t, str) and t for t in r[k]):
             raise SystemExit(f"{where}.reason.{k} is not a list of non-empty strings")
     j = row["judged"]
@@ -470,9 +660,10 @@ def check_row(row: dict, where: str) -> None:
 
 def reason_text(r: dict) -> str:
     tried = "; ".join(r["tried"]) if r["tried"] else "none"
+    beside = f" Shown beside: {'; '.join(r['shown_beside'])}." if r["shown_beside"] else ""
     later = f" Later compared with: {'; '.join(r['later_compared'])}." if r["later_compared"] else ""
     not_tried = f" Not tried: {'; '.join(r['not_tried'])}." if r["not_tried"] else ""
-    return f"{r['why'][:1].upper()}{r['why'][1:]}. Tried: {tried}.{later}{not_tried}"
+    return f"{r['why'][:1].upper()}{r['why'][1:]}. Tried: {tried}.{beside}{later}{not_tried}"
 
 
 def main() -> None:
@@ -507,6 +698,12 @@ def main() -> None:
     if not note or any(mk.strip() in note for mk in (mark_c, mark_d)):
         raise SystemExit("the note is empty or holds a reserved mark")
     max_words = cm.need(c, "max_words", int)
+    frame = {"headers": headers, "titles": titles, "note": note, "acted_on_labels": label, "compared_mark": mark_c, "dagger": dag}
+    if frame != APPROVED_FRAME:
+        raise SystemExit(f"the frame {[k for k in frame if frame[k] != APPROVED_FRAME[k]]} is not the one fixed in the script")
+    fixed = {**{k: lay.get(k) for k in APPROVED_LAYOUT if k != "max_words"}, "max_words": max_words}
+    if fixed != APPROVED_LAYOUT:
+        raise SystemExit(f"the layout or words {[k for k in fixed if fixed[k] != APPROVED_LAYOUT[k]]} are not fixed in the script")
     size = round(FONT_PT * dpi / 72)
     if size * 72 / dpi < MIN_FONT_PT:
         raise SystemExit(f"the font of {size} px at {dpi} dpi is below {MIN_FONT_PT} pt")
@@ -514,7 +711,7 @@ def main() -> None:
     cache: dict = {}
     named: set[str] = set()
     resolved: dict[str, list] = {}
-    if set(APPROVED_CELLS) != {rid for ids in ROW_IDS.values() for rid in ids}:
+    if not set(APPROVED_CELLS) == set(APPROVED_ROWS) == {rid for ids in ROW_IDS.values() for rid in ids}:
         raise SystemExit("the cells fixed in the script are not those of the rows fixed in the script")
     for key in ROW_SETS:
         rows = cm.need(c, key, list)
@@ -546,7 +743,10 @@ def main() -> None:
             if isinstance(row["judged"], dict) and "used_range" in row["judged"]:
                 raise SystemExit(f"{where}.judged: used_range belongs to the value")
             rid = row["id"]
-            text, read = resolve_value(row["value"], cache, where + ".value", APPROVED_TEXT.get((rid, "value")))
+            if row != APPROVED_ROWS[rid]:
+                diff = [k for k in ROW_FIELDS if row.get(k) != APPROVED_ROWS[rid].get(k)]
+                raise SystemExit(f"{where}: the fields {diff} are not the ones fixed in the script")
+            text, read = resolve_value(row["value"], cache, where + ".value", APPROVED_TEXT.get((rid, "value")), rid)
             if isinstance(row["judged"], dict):
                 if set(row["judged"]) not in ({"literal"}, {"literal", "check"}, {"text", "check", "answers"}):
                     raise SystemExit(f"{where}.judged is neither a literal nor a text with answers")
@@ -561,9 +761,10 @@ def main() -> None:
             bad = [t for t in plain if any(mk in t for mk in reserved)]
             if bad:
                 raise SystemExit(f"{where}: a reserved mark {reserved} is in {bad}")
-            # a percentage only in the two shares built from the record (checks of the conditions)
-            built = ([f"{round(read['used_range']['shares_percent'][q])}%" for q in USED_QUANTITIES]
-                     if "used_range" in read else [])
+            # a percentage only in the shares built from the record (checks of the conditions)
+            built = read["used_range"]["built"] if "used_range" in read else []
+            if ("used_range" in row["value"]) != (rid in USED_SETS):
+                raise SystemExit(f"{where}: a share is required in the rows {sorted(USED_SETS)} and in no other")
             others = [row["quantity"], reason_text(row["reason"]), *row["acted_on"], row["when"], judged]
             if PERCENT.findall(text) != built or any(ANY_SHARE.search(t) for t in others):
                 raise SystemExit(f"{where}: a percentage other than the shares built from the record")
@@ -581,13 +782,10 @@ def main() -> None:
             j = row["judged"]
             if isinstance(j, dict) and "literal" in j and SAID.search(j["literal"]):
                 raise SystemExit(f"{where}.judged: a literal that says an outcome or names words (required_checks)")
-            u = row["value"].get("used_range")
-            if key == "rows_work2" and (not isinstance(u, dict) or VERSION_OF.get(rid) != u.get("version")):
-                raise SystemExit(f"{where}: the version of {rid!r} is {VERSION_OF.get(rid)!r}, not that of its used_range")
-            if isinstance(j, dict) and "answers" in j:
-                u = row["value"].get("used_range")
-                if not isinstance(u, dict) or u.get("version") != j["answers"].get("version"):
-                    raise SystemExit(f"{where}: the version of the answers is not the version of the used_range of the row")
+            if key == "rows_work2" and not (isinstance(j, dict) and "answers" in j):
+                raise SystemExit(f"{where}: a row of work 2 needs answers")
+            if isinstance(j, dict) and "answers" in j and VERSION_OF.get(rid) != j["answers"].get("version"):
+                raise SystemExit(f"{where}: the version of the answers is not the version fixed for {rid!r}")
             resolved[key].append({
                 "id": rid, "quantity": row["quantity"], "dagger": row["dagger"], "value": text, "reason": reason_text(row["reason"]),
                 "acted_on": [p + (mark_c if p in row["compared"] else "") for p in row["acted_on"]],
@@ -598,7 +796,7 @@ def main() -> None:
         raise SystemExit("a text fixed in the script names a row that is not drawn")
     daggered = [r["quantity"] for rs in resolved.values() for r in rs if r["dagger"]]
     if daggered:
-        raise SystemExit(f"rows {daggered} carry the dagger; version 7 has none in the main table")
+        raise SystemExit(f"rows {daggered} carry the dagger; version 8 has none in the main table")
 
     files = sorted(named)
     cm.same_as_head([COND, *(ROOT / p for p in CODE), *(ROOT / p for p in files)])
