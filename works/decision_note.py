@@ -4,7 +4,7 @@ and 2, and the same table empty as its own image (for supplement S1, version 11;
 general lines, version 13), from the conditions and the files they name.
 
 Usage:  uv run python works/decision_note.py        (refuses to overwrite)
-Conditions: works/conditions/decision_note.json, version 17 (committed before this version of the script was written)
+Conditions: works/conditions/decision_note.json, version 18 (committed before this version of the script was written)
 Input:  the files named in the rows (conditions of works 1 and 2, of the drawing, of the blind judgement and of the records
         of the share used, the scoring of the blind judgement and its supplement, and the images each quantity acted on) and
         the values every share is computed again from (results/work1/work1.json, results/work2_words/words.json,
@@ -13,7 +13,7 @@ Input:  the files named in the rows (conditions of works 1 and 2, of the drawing
         version 13, and results/paper_distinct_range, version 14, read and checked by their provenance); every one
         must be the committed bytes at HEAD. The range of f and s
         is read from the installed atact.mapping, which must be the library of every record of the share used
-Output: results/decision_note_v17/decision_note.png (figure 8), decision_note_empty.png (S1), decision_note.md and
+Output: results/decision_note_v18/decision_note.png (figure 8), decision_note_empty.png (S1), decision_note.md and
         decision_note.json
 """
 
@@ -39,10 +39,10 @@ from PIL import Image, ImageDraw, ImageFont  # noqa: E402
 import _common as cm  # noqa: E402
 
 COND = ROOT / "works" / "conditions" / "decision_note.json"
-OUT_DIR = ROOT / "results" / "decision_note_v17"
+OUT_DIR = ROOT / "results" / "decision_note_v18"
 CODE = ["works/decision_note.py", "works/_common.py"]
 MM_PER_INCH = 25.4
-VERSION = 17
+VERSION = 18
 ROW_SETS = {"rows_work1": "Work 1", "rows_work2": "Work 2"}
 # the ids of the rows, in order (checks of the conditions); the number of rows follows from them
 ROW_IDS = {"rows_work1": ["w1_lexicon", "w1_height_scale", "w1_drawing"], "rows_work2": ["w2_map_b", "w2_percentiles", "w2_seed"]}
@@ -301,8 +301,9 @@ APPROVED_FRAME = {'headers': ['Quantity',
                            ["Compared with, work 2: the whole lexicon and the 23 works' words, each once (keep the row's "
                             "values, break the choice of words);",
                             # the same-size draws of the main comparison of work 2, and what the percentiles and
-                            # the other maps keep, in the words of the reason of map B (version 17)
-                            "same-size draws from them, 20 per writer, 10,000 times (S1); percentiles keep the words; "
+                            # the other maps keep, in the words of the reason of map B (version 17); the pools of the
+                            # draws named, each writer's own words (version 18)
+                            "same-size draws, 20 from each writer's own words, 10,000 times (S1); percentiles keep the words; "
                             "other maps: check sentences."],
                            # the time, by the standard of the line on the time of note_empty (version 15), its words
                            # read and pointing to S1 for the full standard (version 16), and its one exception with its
@@ -334,7 +335,7 @@ APPROVED_LAYOUT = {'width_mm': 177.8,
  'colour': 'black and white',
  'font_file': '/System/Library/Fonts/Helvetica.ttc',
  'column_share': {'quantity': 0.1, 'value': 0.19, 'reason': 0.19, 'acted_on': 0.19, 'when': 0.17, 'judged': 0.16},
- 'max_words': 533}
+ 'max_words': 534}
 # the files of the two judges (checks of the conditions)
 MAIN_FILE = "results/blind_judgement/score.json"
 ALSO_FILE = "results/blind_judgement/score-researcher-supplement.json"
@@ -392,12 +393,15 @@ REPLICATES_OF = [(SHUF_CONDITIONS, "random.replicates"), (SAME_FILE, "checks.W1_
 DRAWS_CONSTANTS = {"per_writer": "checks.D1_constants.words_per_author", "times": "checks.D1_constants.replicates",
                    "authors": "checks.D1_constants.authors", "tiles": "checks.D1_constants.tiles"}
 DRAWS_SETS = ["sets.draws_B.replicates", "sets.draws_P.replicates"]
-DRAWS_PHRASES = {"per_writer": "{} per writer", "times": "{:,} times"}
+DRAWS_PHRASES = {"per_writer": "{} from each writer's own words", "times": "{:,} times"}  # per writer: version 18
+# the pools of the draws as written in the conditions of the record of the distinct words (version 18)
+DRAWS_POOLS = (DIST_CONDITIONS, "sets.draws_B", "from the distinct words of the author")
 COMPARED_W2_KEEP = ["percentiles keep the words", "other maps: check sentences"]
 MAP_B_REASON = ("w2_map_b", "two other maps, on check sentences")
 NOT_SAID = "other maps keep the words"  # the phrase of version 16 that contradicted the reason of map B, any case
 # the numbers of the draws in any other text, written loosely (after the review of version 17): the number of words per
-# writer with up to one word before 'per writer', and the replicates with or without a separator of thousands
+# writer with up to one word before 'per writer', the number of words per writer with up to two words before 'from each
+# (or every) writer (or author)' (version 18), and the replicates with or without a separator of thousands
 LOOSE_SEP = r"[,\s\u2009\u202f]?"
 DRAWING_COND = "works/conditions/work1_drawing.json"
 # what was seen comes between SEEN_HEAD and NOT_SEEN_HEAD, what was not after NOT_SEEN_HEAD (case kept: "Not seen
@@ -1314,14 +1318,23 @@ def main() -> None:
             or any(not isinstance(x, list) or len(x) != dc["times"] for x in sizes)
             or dc["authors"] * dc["per_writer"] != dc["tiles"]):
         raise SystemExit(f"{DIST_FILE}: the constants {dc} or the replicates of {DRAWS_SETS} do not agree (version 17)")
+    # the pools of the draws, as written in their conditions (version 18; a string holding the phrase, not negated)
+    pools_text = read_key(load_json(DRAWS_POOLS[0], cache), DRAWS_POOLS[1], "note")
+    if (not isinstance(pools_text, str) or pools_text.count(DRAWS_POOLS[2]) != 1
+            or re.search(rf"\bnot\s+{re.escape(DRAWS_POOLS[2])}", pools_text)):
+        raise SystemExit(f"{DRAWS_POOLS[0]}: {DRAWS_POOLS[1]} does not name the pools {DRAWS_POOLS[2]!r} once (version 18)")
     drawn_phrases = {k: DRAWS_PHRASES[k].format(dc[k]) for k in DRAWS_PHRASES}
     i_w2 = NOTE_HEADS.index("Compared with, work 2")
     hits = {k: len(re.findall(rf"(?<![\d,.]){re.escape(p)}", w2_text)) for k, p in drawn_phrases.items()}
     loose = [rf"(?<![\d,.]){dc['per_writer']}\s*(?:\w+\s+)?per writer",
+             rf"(?<![\d,.]){dc['per_writer']}\s*(?:\w+[\s,]+){{0,2}}from (?:each|every) (?:writer|author)",  # version 18
              rf"(?<![\d,.]){LOOSE_SEP.join(f'{dc["times"]:,}'.split(','))}(?![\d,.]*\d)\s*times"]
     others = [x for i, x in enumerate(texts) if i != i_w2] + list(texts_empty)  # note and note_empty (after the review)
+    # in the text on work 2 itself: the old phrase of version 17 not at all, the new phrase and the replicates once in any
+    # spelling (after the review of version 18)
+    loose_in_w2 = [len(re.findall(p, w2_text, re.IGNORECASE)) for p in loose]
     map_b = [r for r in resolved["rows_work2"] if r["id"] == MAP_B_REASON[0]]
-    if (any(n != 1 for n in hits.values())
+    if (any(n != 1 for n in hits.values()) or loose_in_w2 != [0, 1, 1]
             or any(re.search(p, x, re.IGNORECASE) for x in others for p in loose)
             or not all(p in w2_text for p in COMPARED_W2_KEEP)
             or len(map_b) != 1 or MAP_B_REASON[1] not in map_b[0]["reason"]
@@ -1330,6 +1343,7 @@ def main() -> None:
                          f"or {COMPARED_W2_KEEP} against the reason of {MAP_B_REASON[0]} {MAP_B_REASON[1]!r}, or holds "
                          f"{NOT_SAID!r} (version 17)")
     named.add(DIST_FILE)
+    named.add(DRAWS_POOLS[0])  # version 18
 
     files = sorted(named)
     cm.same_as_head([COND, *(ROOT / p for p in CODE), *(ROOT / p for p in files)])
@@ -1417,7 +1431,11 @@ def main() -> None:
                                        "drawn": mean_of},  # version 16
                "compared_draws": {"file": DIST_FILE, "constants": [{"key": DRAWS_CONSTANTS[k], "value": v} for k, v in dc.items()],
                                   "replicates_counted": [{"key": key, "value": len(x)} for key, x in zip(DRAWS_SETS, sizes)],
-                                  "drawn": list(drawn_phrases.values()), "hits_in_work2": hits,
+                                  "drawn": list(drawn_phrases.values()),
+                                  "hits_in_work2": {"phrases": {drawn_phrases[k]: n for k, n in hits.items()},
+                                                    "loose": dict(zip(loose, loose_in_w2))},  # version 18
+                                  "pools": {"file": DRAWS_POOLS[0], "key": DRAWS_POOLS[1], "holds": DRAWS_POOLS[2],
+                                            "value": pools_text},  # version 18
                                   "not_elsewhere": {"patterns": loose, "texts": "the other texts of note and all of note_empty"},
                                   "keep": COMPARED_W2_KEEP,
                                   "map_b_reason": {"row": MAP_B_REASON[0], "holds": MAP_B_REASON[1]},
