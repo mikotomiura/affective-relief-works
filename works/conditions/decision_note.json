@@ -1,6 +1,6 @@
 {
  "purpose": "A template for noting the quantities a rule leaves open and the decisions changed after the values were seen, with the reason, the alternatives tried and the images that used each one, filled in for works 1 and 2 as the worked example (the only record of decisions in the main text). It is the table readers copy for their own series.",
- "fixed_before_running": "Written on 2026-10-28 and committed before any script for it exists and before anything is drawn. Seen before: everything of results/work1 and results/work1_drawing and the record of the decisions in the working notes. Version 2 (2026-10-28, still before any script or drawing), after the cross review of the task: every image a quantity acted on is listed (no 'all'; common_eps.png added where it applies); each value is a path to a key or a literal checked against one. Version 3 (2026-10-29, after round 5 of the pre-review, still before any change of the script and before anything of version 3 is drawn; question 3 of the verdict of round 5 and decision 3 of .steering/20261029-generation-record-v28): table 1 of the paper is dropped and this note becomes the only record of decisions in the main text, as the worked example of works 1 and 2. Six rows of work 2 are added, chosen by the rule 'the two sides of the central comparison, the quantities that the look of the main images of work 2 depends on, and one decision of interpretation' (the other decisions of work 2 stay in the full table of supplement S1); a fifth column names who judged the look and with which guide; the column of images marks the images on which the effect of the quantity was compared; a row whose claim was weakened in the paper after the values were seen is marked with a dagger. Seen before version 3: everything of version 2 and its outputs, the blind judgement and its scoring, figure 6, the record of the quantities of generation (results/paper_generation_record) and rounds 3 to 5 of the pre-review. Version 4 (2026-10-29, after round 6 of the critiques of earlier drafts, still before any change of the script and before anything of versions 3 or 4 is drawn; question 4 of the verdict of round 6, adopted by the researcher): a sixth column 'Reason (and alternatives tried)' is added, worded from the reason and alternative columns of the full decision table of the outline (advice/outline-v2.8.md, outside the repository) as statements of the makers, not checked against a file; the subject of work 2 is moved into a band 'Record of the paper'; the when of map B states that the comparison was read after the scoring; 'critiques of earlier drafts' replaces 'pre-review'; the judged of the subject says it is not a judgement of a look; the value of the subject states the unit of the judgement (the rows of the two authors within one version). When the words of the table were estimated (about 860 with 14 rows) the researcher decided to show only five rows in short wording, at most 340 words with the empty table (the estimate of the conditions was 332), the rest in S1. Seen before version 4: everything seen before version 3, round 6 of the critiques and its verdict. Nothing of version 3 was drawn; results/decision_note_v4 replaces results/decision_note_v3 as the output.",
+ "fixed_before_running": "Written on 2026-10-28 and committed before any script for it exists and before anything is drawn. Seen before: everything of results/work1 and results/work1_drawing and the record of the decisions in the working notes. Version 2 (2026-10-28, still before any script or drawing), after the cross review of the task: every image a quantity acted on is listed (no 'all'; common_eps.png added where it applies); each value is a path to a key or a literal checked against one. Version 3 (2026-10-29, after round 5 of the pre-review, still before any change of the script and before anything of version 3 is drawn; question 3 of the verdict of round 5 and decision 3 of .steering/20261029-generation-record-v28): table 1 of the paper is dropped and this note becomes the only record of decisions in the main text, as the worked example of works 1 and 2. Six rows of work 2 are added, chosen by the rule 'the two sides of the central comparison, the quantities that the look of the main images of work 2 depends on, and one decision of interpretation' (the other decisions of work 2 stay in the full table of supplement S1); a fifth column names who judged the look and with which guide; the column of images marks the images on which the effect of the quantity was compared; a row whose claim was weakened in the paper after the values were seen is marked with a dagger. Seen before version 3: everything of version 2 and its outputs, the blind judgement and its scoring, figure 6, the record of the quantities of generation (results/paper_generation_record) and rounds 3 to 5 of the pre-review. Version 4 (2026-10-29, after round 6 of the critiques of earlier drafts, still before any change of the script and before anything of versions 3 or 4 is drawn; question 4 of the verdict of round 6, adopted by the researcher): a sixth column 'Reason (and alternatives tried)' is added, worded from the reason and alternative columns of the full decision table of the outline (advice/outline-v2.8.md, outside the repository) as statements of the makers, not checked against a file; the subject of work 2 is moved into a band 'Record of the paper'; the when of map B states that the comparison was read after the scoring; 'critiques of earlier drafts' replaces 'pre-review'; the judged of the subject says it is not a judgement of a look; the value of the subject states the unit of the judgement (the rows of the two authors within one version). When the words of the table were estimated (about 860 with 14 rows) the researcher decided to show only five rows in short wording, at most 340 words with the empty table (the estimate of the conditions was 332), the rest in S1. Seen before version 4: everything seen before version 3, round 6 of the critiques and its verdict. Nothing of version 3 was drawn; results/decision_note_v4 replaces results/decision_note_v3 as the output. Amended before any run (2026-10-29): a trial render of the script in a scratch directory, with the checks of HEAD switched off and nothing kept, stopped at the check of the words (351 against 340, the legend of the dagger not being in the estimate); five cells and the meaning of the dagger were worded shorter, with the same content. The trial showed only the text of these conditions; after it the reason of the drawing was reworded ('Tried: no other viewpoint' read as an alternative tried) and the legend given a gap above it.",
  "version": 4,
  "columns": [
   {
@@ -61,7 +61,7 @@
   {
    "quantity": "drawing",
    "value": {
-    "literal": "grey; light at 45 degrees from the upper left and the lower right; stretched per tile",
+    "literal": "grey; lit at 45 degrees from the upper left and the lower right; stretched per tile",
     "check": {
      "file": "works/conditions/work1_drawing.json",
      "keys": [
@@ -76,10 +76,8 @@
     }
    },
    "reason": {
-    "why": "the drawing is also a quantity the maker sets",
-    "tried": [
-     "no other viewpoint"
-    ]
+    "why": "the drawing is also a quantity the maker sets (one viewpoint)",
+    "tried": []
    },
    "acted_on": [
     "results/work1_drawing/drawing.png"
@@ -96,7 +94,7 @@
   {
    "quantity": "lexicon and map",
    "value": {
-    "literal": "MEmoLon (Japanese) through map B, a line fitted to the English ratings",
+    "literal": "MEmoLon (Japanese) through map B, fitted to English ratings",
     "check": {
      "file": "works/conditions/work2.json",
      "keys": [
@@ -123,7 +121,7 @@
    "compared": [
     "results/paper_figure6_scale/figure6_scale.png"
    ],
-   "when": "before: the values of the two lexicons (the comparison read after the scoring)",
+   "when": "before: the two lexicons' values (the comparison read after the scoring)",
    "judged": {
     "literal": "two makers, one blind with the sheet and its example, one not blind; they split",
     "check": {
@@ -143,7 +141,7 @@
   {
    "quantity": "percentiles",
    "value": {
-    "literal": "V and A as percentiles among the tokens of the 23 works, each author weighing 1",
+    "literal": "V and A as percentiles in the 23 works, each author weighing 1",
     "check": {
      "file": "works/conditions/sketch_sp_color.json",
      "keys": [
@@ -263,6 +261,6 @@
  "compared_mark": " *",
  "dagger": {
   "mark": "† ",
-  "meaning": "the claim of the paper this row bears on was weakened after the values were seen"
+  "meaning": "its claim in the paper was weakened after the values were seen"
  }
 }
