@@ -3,12 +3,12 @@ seen, with the reason, the alternatives tried, the images that used each one and
 and 2, with the same table empty below it, from the conditions and the files they name.
 
 Usage:  uv run python works/decision_note.py        (refuses to overwrite)
-Conditions: works/conditions/decision_note.json, version 6 (committed before this version of the script was written)
+Conditions: works/conditions/decision_note.json, version 7 (committed before this version of the script was written)
 Input:  the files named in the rows (conditions of works 1 and 2, of the drawing, of the blind judgement and of the record
         of generation, the scoring of the blind judgement and its supplement, and the images each quantity acted on); every
         one must be the committed bytes at HEAD. The range of f and s is read from the installed atact.mapping, which must be
         the library of the record of generation
-Output: results/decision_note_v6/decision_note.png, decision_note.md and decision_note.json
+Output: results/decision_note_v7/decision_note.png, decision_note.md and decision_note.json
 """
 
 from __future__ import annotations
@@ -33,27 +33,66 @@ from PIL import Image, ImageDraw, ImageFont  # noqa: E402
 import _common as cm  # noqa: E402
 
 COND = ROOT / "works" / "conditions" / "decision_note.json"
-OUT_DIR = ROOT / "results" / "decision_note_v6"
+OUT_DIR = ROOT / "results" / "decision_note_v7"
 CODE = ["works/decision_note.py", "works/_common.py"]
 MM_PER_INCH = 25.4
-VERSION = 6
-ROW_SETS = {"rows_work1": ("Work 1", 2), "rows_work2": ("Work 2", 2)}
+VERSION = 7
+ROW_SETS = {"rows_work1": "Work 1", "rows_work2": "Work 2"}
+# the ids of the rows, in order (checks of the conditions); the number of rows follows from them
+ROW_IDS = {"rows_work1": ["w1_height_scale", "w1_drawing"], "rows_work2": ["w2_map_b", "w2_percentiles"]}
 COLUMNS = ["quantity", "value", "reason", "acted_on", "when", "judged"]
-ROW_FIELDS = {"quantity", "value", "reason", "acted_on", "compared", "when", "judged", "dagger"}
+ROW_FIELDS = {"id", "quantity", "value", "reason", "acted_on", "compared", "when", "judged", "dagger"}
 NONE_RECORDED = "none recorded"
 # answers_rule of the conditions: the phrase of each outcome and of each row is fixed here, not in the rows
 OUTCOME_PHRASE = {"both differ": "both said the rows differ", "neither": "neither said the rows differ", "split": "they split"}
 ROW_PHRASE = {"words20": "the 20 words"}
-# the version each quantity of work 2 speaks of (G0: map B, P: the percentiles of blind_judgement.json)
-VERSION_OF = {"lexicon and map": "G0", "percentiles": "P"}
+# the version each row of work 2 speaks of (G0: map B, P: the percentiles of blind_judgement.json)
+VERSION_OF = {"w2_map_b": "G0", "w2_percentiles": "P"}
+# approved_text_rule of the conditions: every cell of every row as written in the conditions (before a phrase is built),
+# with its kind, character for character
+APPROVED_CELLS = {
+    "w1_height_scale": {
+        "quantity": "height scale",
+        "value": ("format", "common to the series, assumed relief depth D = {D_mm} mm"),
+        "reason": "Keeps the depth differences between sentences. Tried: per-tile min-max.",
+        "when": "before: none",
+        "judged": ("none", NONE_RECORDED)},
+    "w1_drawing": {
+        "quantity": "drawing",
+        "value": ("literal", "four shown together, the series using the grey of the height; grey; lit at 45 degrees from "
+                             "upper left, lower right; stretched per tile"),
+        "reason": "Also a quantity the maker sets (one viewpoint). Tried: only the four shown. Not tried: other viewpoints.",
+        "when": "after: every image and value of work 1",
+        "judged": ("none", NONE_RECORDED)},
+    "w2_map_b": {
+        "quantity": "lexicon and map",
+        "value": ("text", "MEmoLon (Japanese) through map B, fitted to English ratings"),
+        "reason": "Brings the Japanese values onto the English scale. Tried: none. Later compared with: the percentiles; "
+                  "two other maps, on check sentences.",
+        "when": "before: both lexicons' values",
+        "judged": ("text", "two makers (one blind), with the sheet and example")},
+    "w2_percentiles": {
+        "quantity": "percentiles",
+        "value": ("text", "V and A as percentiles in the 23 works, each author weighted equally"),
+        "reason": "Undoes the compression of map B (drops distances between values). Tried: map B; whole-lexicon percentiles.",
+        "when": "after: the whole-lexicon percentiles and the sketches",
+        "judged": ("text", "same makers and sheet")},
+}
+APPROVED_TEXT = {(rid, f): cells[f][1] for rid, cells in APPROVED_CELLS.items() for f in ("value", "judged")
+                 if cells[f][0] == "text"}
+# the files of the two judges (checks of the conditions)
+MAIN_FILE = "results/blind_judgement/score.json"
+ALSO_FILE = "results/blind_judgement/score-researcher-supplement.json"
 # a text before a built phrase may not make a claim of its own: no clause of its own and none of these words
 SAID = re.compile(r";|\b(?:rows?|words|range|ranges|agreed?|disagreed?|differ|differs|split|both|neither|all|G0|P|SPC)\b")
 JUDGEMENT = "works/conditions/blind_judgement.json"  # its rows are the rows an answer may name
 SHARE = re.compile(r"(\d+)%")
 USED_QUANTITIES = ["f", "s"]
 # used_range_rule of the conditions: the phrase of the share is fixed here
-USED_PHRASE = "{text}; f and s of the {words} words use {f} and {s} of their ranges (min to max; counted after the record of generation was seen)"
+USED_PHRASE = "{text}; f and s of the {words} words use {f} and {s} of their ranges (min to max; counted later, from the record)"
 PERCENT = re.compile(r"(?<![\d.])(?:over )?\d+(?:\.\d+)?%")
+# any way of writing a share outside the built phrases (checks of the conditions)
+ANY_SHARE = re.compile(r"[%％]|\bper\s*cent\b|\bpercent(?:age)?s?\b", re.IGNORECASE)
 
 
 def number(x, where: str) -> float:
@@ -118,9 +157,11 @@ def strings(x, where: str, what: str) -> list[str]:
     return x
 
 
-def resolve_value(v: dict, cache: dict, where: str) -> tuple[str, dict]:
-    """The text of a value and what was read for it."""
+def resolve_value(v: dict, cache: dict, where: str, approved: str | None = None) -> tuple[str, dict]:
+    """The text of a value and what was read for it; a text before a built phrase must be the approved one."""
     if set(v) == {"file", "keys", "format"}:
+        if approved is not None:
+            raise SystemExit(f"{where}: a text is fixed in the script for this cell but the cell is a format")
         if not isinstance(v["format"], str) or not PLACEHOLDER.search(v["format"]):
             raise SystemExit(f"{where}: the format shows no key")
         c = load_json(v["file"], cache)
@@ -164,6 +205,10 @@ def resolve_value(v: dict, cache: dict, where: str) -> tuple[str, dict]:
             extra["answers"], text = check_answers(v["answers"], base, cache, where)
         if any(mk in base for mk in ("†", "*")) or PERCENT.search(base):
             raise SystemExit(f"{where}: a reserved mark or a percentage in the text {base!r}")
+        if "text" in v and base != approved:
+            raise SystemExit(f"{where}: the text {base!r} is not the one fixed in the script ({approved!r})")
+        if "text" not in v and approved is not None:
+            raise SystemExit(f"{where}: a text is fixed in the script for this cell but the cell has none")
         if "text" in v and SAID.search(base):
             raise SystemExit(f"{where}: the text {base!r} before the built phrase makes a claim of its own")
         if "check" not in v:
@@ -205,7 +250,8 @@ def check_used_range(u: dict, base: str, cache: dict, where: str) -> tuple[dict,
             or not all(isinstance(x, int) and not isinstance(x, bool) for x in per) or sum(per) != n):
         raise SystemExit(f"{where}: the words per author {per!r} of the record do not sum to {n!r}")
     listed = read_key(rec, f"words.{u['version']}", where) if isinstance(u["version"], str) else None
-    if not isinstance(listed, dict) or sum(len(x) for x in listed.values() if isinstance(x, list)) != n:
+    if (not isinstance(listed, dict) or not all(isinstance(x, list) for x in listed.values())
+            or [len(x) for x in listed.values()] != per):
         raise SystemExit(f"{where}: the record does not list {n!r} words under {u['version']!r}")
     if not isinstance(u["version"], str) or not u["version"]:
         raise SystemExit(f"{where}: used_range.version is not a non-empty string")
@@ -227,6 +273,10 @@ def check_used_range(u: dict, base: str, cache: dict, where: str) -> tuple[dict,
         if not isinstance(pooled, dict):
             raise SystemExit(f"{where}: pooled.{u['version']}.{q} is not an object")
         top, bottom = (number(read_key(pooled, k, where), where) for k in ("max", "min"))
+        values = [number(w.get(q) if isinstance(w, dict) else None, where)
+                  for ws in listed.values() for w in ws]
+        if len(values) != n or (max(values), min(values)) != (top, bottom):
+            raise SystemExit(f"{where}: pooled.{u['version']}.{q} is not the smallest and the largest of the {n} words listed")
         shares[q] = 100 * (top - bottom) / (hi - lo)
         if round(shares[q]) != int(m.group(1)):
             raise SystemExit(f"{where}: {q} uses {shares[q]:.2f}% of its range, which is not {shown[q]}")
@@ -251,6 +301,8 @@ def check_answers(a: dict, base: str, cache: dict, where: str) -> tuple[dict, st
         raise SystemExit(f"{where}: answers.main needs file, key and decided_key")
     if not isinstance(also, dict) or set(also) != {"file", "key", "pass_key"}:
         raise SystemExit(f"{where}: answers.also needs file, key and pass_key")
+    if (main["file"], also["file"]) != (MAIN_FILE, ALSO_FILE) or MAIN_FILE == ALSO_FILE:
+        raise SystemExit(f"{where}: the files of the judges are not {MAIN_FILE} and {ALSO_FILE}")
     cm_ = load_json(main["file"], cache)
     ca = load_json(also["file"], cache)
     if read_key(cm_, main["decided_key"], where) is not True:
@@ -381,7 +433,7 @@ def count_words(texts: list[str]) -> int:
 def check_row(row: dict, where: str) -> None:
     if set(row) != ROW_FIELDS:
         raise SystemExit(f"{where}: fields {sorted(row)} are not {sorted(ROW_FIELDS)}")
-    for k in ("quantity", "when"):
+    for k in ("id", "quantity", "when"):
         if not isinstance(row[k], str) or not row[k]:
             raise SystemExit(f"{where}.{k} is not a non-empty string")
     for k in ("acted_on", "compared"):
@@ -401,11 +453,11 @@ def check_row(row: dict, where: str) -> None:
     if not isinstance(row["dagger"], bool):
         raise SystemExit(f"{where}.dagger is not true or false")
     r = row["reason"]
-    if not isinstance(r, dict) or set(r) != {"why", "tried", "not_tried"}:
-        raise SystemExit(f"{where}.reason needs why, tried and not_tried")
+    if not isinstance(r, dict) or set(r) != {"why", "tried", "later_compared", "not_tried"}:
+        raise SystemExit(f"{where}.reason needs why, tried, later_compared and not_tried")
     if not isinstance(r["why"], str) or not r["why"]:
         raise SystemExit(f"{where}.reason.why is not a non-empty string")
-    for k in ("tried", "not_tried"):
+    for k in ("tried", "later_compared", "not_tried"):
         if not isinstance(r[k], list) or not all(isinstance(t, str) and t for t in r[k]):
             raise SystemExit(f"{where}.reason.{k} is not a list of non-empty strings")
     j = row["judged"]
@@ -418,8 +470,9 @@ def check_row(row: dict, where: str) -> None:
 
 def reason_text(r: dict) -> str:
     tried = "; ".join(r["tried"]) if r["tried"] else "none"
+    later = f" Later compared with: {'; '.join(r['later_compared'])}." if r["later_compared"] else ""
     not_tried = f" Not tried: {'; '.join(r['not_tried'])}." if r["not_tried"] else ""
-    return f"{r['why'][:1].upper()}{r['why'][1:]}. Tried: {tried}.{not_tried}"
+    return f"{r['why'][:1].upper()}{r['why'][1:]}. Tried: {tried}.{later}{not_tried}"
 
 
 def main() -> None:
@@ -461,10 +514,13 @@ def main() -> None:
     cache: dict = {}
     named: set[str] = set()
     resolved: dict[str, list] = {}
-    for key, (band, n) in ROW_SETS.items():
+    if set(APPROVED_CELLS) != {rid for ids in ROW_IDS.values() for rid in ids}:
+        raise SystemExit("the cells fixed in the script are not those of the rows fixed in the script")
+    for key in ROW_SETS:
         rows = cm.need(c, key, list)
-        if len(rows) != n:
-            raise SystemExit(f"{key} has {len(rows)} rows, not {n}")
+        got = [r.get("id") if isinstance(r, dict) else None for r in rows]
+        if got != ROW_IDS[key]:
+            raise SystemExit(f"{key} has the rows {got}, not {ROW_IDS[key]}")
         resolved[key] = []
         for i, row in enumerate(rows):
             where = f"{key}[{i}]"
@@ -489,38 +545,60 @@ def main() -> None:
                 raise SystemExit(f"{where}.value: answers belong to judged")
             if isinstance(row["judged"], dict) and "used_range" in row["judged"]:
                 raise SystemExit(f"{where}.judged: used_range belongs to the value")
-            text, read = resolve_value(row["value"], cache, where + ".value")
+            rid = row["id"]
+            text, read = resolve_value(row["value"], cache, where + ".value", APPROVED_TEXT.get((rid, "value")))
             if isinstance(row["judged"], dict):
                 if set(row["judged"]) not in ({"literal"}, {"literal", "check"}, {"text", "check", "answers"}):
                     raise SystemExit(f"{where}.judged is neither a literal nor a text with answers")
-                judged, judged_read = resolve_value(row["judged"], cache, where + ".judged")
+                judged, judged_read = resolve_value(row["judged"], cache, where + ".judged",
+                                                    APPROVED_TEXT.get((rid, "judged")))
             else:
+                if (rid, "judged") in APPROVED_TEXT:
+                    raise SystemExit(f"{where}.judged: a text is fixed in the script for this cell but the cell has none")
                 judged, judged_read = row["judged"], {"literal": True}
             reserved = [mk.strip() for mk in (mark_c, mark_d)]
             plain = [row["quantity"], text, reason_text(row["reason"]), *row["acted_on"], row["when"], judged]
             bad = [t for t in plain if any(mk in t for mk in reserved)]
             if bad:
                 raise SystemExit(f"{where}: a reserved mark {reserved} is in {bad}")
+            # a percentage only in the two shares built from the record (checks of the conditions)
+            built = ([f"{round(read['used_range']['shares_percent'][q])}%" for q in USED_QUANTITIES]
+                     if "used_range" in read else [])
+            others = [row["quantity"], reason_text(row["reason"]), *row["acted_on"], row["when"], judged]
+            if PERCENT.findall(text) != built or any(ANY_SHARE.search(t) for t in others):
+                raise SystemExit(f"{where}: a percentage other than the shares built from the record")
+            v = row["value"]
+            kind = "format" if "format" in v else "literal" if "literal" in v else "text"
+            j = row["judged"]
+            jkind = "none" if isinstance(j, str) else "literal" if "literal" in j else "text"
+            written = {"quantity": row["quantity"],
+                       "value": (kind, v.get("format", v.get("literal", v.get("text")))),
+                       "reason": reason_text(row["reason"]), "when": row["when"],
+                       "judged": (jkind, j if isinstance(j, str) else j.get("literal", j.get("text")))}
+            if written != APPROVED_CELLS[rid]:
+                diff = [k for k in written if written[k] != APPROVED_CELLS[rid][k]]
+                raise SystemExit(f"{where}: the cells {diff} are not the ones fixed in the script")
             j = row["judged"]
             if isinstance(j, dict) and "literal" in j and SAID.search(j["literal"]):
                 raise SystemExit(f"{where}.judged: a literal that says an outcome or names words (required_checks)")
             u = row["value"].get("used_range")
-            if key == "rows_work2" and (not isinstance(u, dict) or VERSION_OF.get(row["quantity"]) != u.get("version")):
-                raise SystemExit(f"{where}: the version of {row['quantity']!r} is {VERSION_OF.get(row['quantity'])!r}, "
-                                 f"not that of its used_range")
+            if key == "rows_work2" and (not isinstance(u, dict) or VERSION_OF.get(rid) != u.get("version")):
+                raise SystemExit(f"{where}: the version of {rid!r} is {VERSION_OF.get(rid)!r}, not that of its used_range")
             if isinstance(j, dict) and "answers" in j:
                 u = row["value"].get("used_range")
                 if not isinstance(u, dict) or u.get("version") != j["answers"].get("version"):
                     raise SystemExit(f"{where}: the version of the answers is not the version of the used_range of the row")
             resolved[key].append({
-                "quantity": row["quantity"], "dagger": row["dagger"], "value": text, "reason": reason_text(row["reason"]),
+                "id": rid, "quantity": row["quantity"], "dagger": row["dagger"], "value": text, "reason": reason_text(row["reason"]),
                 "acted_on": [p + (mark_c if p in row["compared"] else "") for p in row["acted_on"]],
                 "when": row["when"], "judged": judged, "read": {"value": read, "judged": judged_read}})
     if not font_file.is_file():
         raise SystemExit(f"{font_file} does not exist")
+    if {rid for rid, _ in APPROVED_TEXT} - {r["id"] for rs in resolved.values() for r in rs}:
+        raise SystemExit("a text fixed in the script names a row that is not drawn")
     daggered = [r["quantity"] for rs in resolved.values() for r in rs if r["dagger"]]
     if daggered:
-        raise SystemExit(f"rows {daggered} carry the dagger; version 6 has none in the main table")
+        raise SystemExit(f"rows {daggered} carry the dagger; version 7 has none in the main table")
 
     files = sorted(named)
     cm.same_as_head([COND, *(ROOT / p for p in CODE), *(ROOT / p for p in files)])
@@ -533,7 +611,7 @@ def main() -> None:
         return [r["quantity"], r["value"], r["reason"], r["acted_on"], r["when"], r["judged"]]
 
     filled_rows: list = []
-    for key, (band, _) in ROW_SETS.items():
+    for key, band in ROW_SETS.items():
         filled_rows.append(band)
         filled_rows += [[[x] if isinstance(x, str) else x for x in cells(r)] for r in resolved[key]]
 
@@ -550,7 +628,7 @@ def main() -> None:
     for p in parts:
         fig.paste(p, (0, y))
         y += p.height
-    drawn_filled = [titles[0], *headers, *(b for b, _ in ROW_SETS.values()), note,
+    drawn_filled = [titles[0], *headers, *ROW_SETS.values(), note,
                     *(t for rs in resolved.values() for r in rs for x in cells(r) for t in ([x] if isinstance(x, str) else x))]
     words = {"filled": count_words(drawn_filled), "empty": count_words([titles[1], *headers])}
     words["total"] = words["filled"] + words["empty"]
@@ -558,7 +636,7 @@ def main() -> None:
         raise SystemExit(f"the two tables have {words['total']} words, more than {max_words}")
 
     md_rows: list = []
-    for key, (band, _) in ROW_SETS.items():
+    for key, band in ROW_SETS.items():
         md_rows.append(band)
         md_rows += [[x if isinstance(x, str) else ", ".join(x) for x in cells(r)] for r in resolved[key]]
     md = (f"# {titles[0]}\n\n" + md_table(headers, md_rows) + f"\n{note}\n"
