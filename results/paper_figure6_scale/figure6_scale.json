@@ -1,0 +1,81 @@
+{
+ "meta": {
+  "conditions_sha256": "18e61c651c88feb1d47aa04f48a824fe1f6da482671efb31cb357166a5872d2e",
+  "script_sha256": "b00feb19ef859a096ba49b27ae48b5b34e7471827159d14838f7beb5623198f6",
+  "inputs_sha256": {
+   "values": "2a15808cef6cd5978acda504fb6d08b4c1df6fec736901d90c492e6e525db71e",
+   "sketch_record": "31609c71e1b34fc7e1fc412c720dc2220a1bc029a95e6befa741f82b1679437d",
+   "sketch_conditions": "e58d15b15fa08072c5914a5fe7509f7f3372a750c7a8c3bfbb0dfdd9e0cbc4e2",
+   "sketch_G0": "850906f037e05ac3a9cbbf9532b72de6f81abb47f6a318e599678e91097e3348",
+   "sketch_P": "a68e61cc51e5912b262b0586e64730413634e0b34e15fe5835451a14d6d0310b",
+   "words": "3f48ff8fd0233704a37042763680ab034e7dbc39fa33d2044c5858023d460cf9",
+   "words_conditions": "7978599bdeed5f2973cae03dfbd2f85f26fc25173ea022f68a0e0e6c9a671164",
+   "common_seed_image": "9335f3b99aadfc93b12378dd86d303724c63ff2b2dcdf618d0b7b874f27b28c8",
+   "judgement_conditions": "9bebf2dada90405580800416e107db6da1cf67f698429b2d9bb2f0caf9047383"
+  },
+  "font_sha256": "ca1e9bf621f13ddc4800bfb74d0124571dfc25a1678a28d6e7dbcf39fad2504a",
+  "python": "3.13.12",
+  "platform": "Darwin arm64",
+  "atact_commit": "b559a80c623d36357dd0736b887497a0cb789af5",
+  "numpy": "2.5.4",
+  "pillow": "13.0.0",
+  "git_commit": "7b29eeea0b37b9e6439b8c8a509d30d352c2a951",
+  "git_dirty": false,
+  "started": "2026-10-29T01:31:31+00:00",
+  "finished": "2026-10-29T01:31:37+00:00"
+ },
+ "checks": {
+  "F1_upper_equals_committed_below_titles": true,
+  "F2_tiles_equal_to_sketches": 80,
+  "F3_values_agree": 40
+ },
+ "words": {
+  "太宰治": [
+   "無い",
+   "いま",
+   "いい",
+   "ひとり",
+   "言い",
+   "もう",
+   "よい",
+   "なんだか",
+   "わから",
+   "気持",
+   "ばん",
+   "どんなに",
+   "きょう",
+   "いや",
+   "ちゃんと",
+   "これから",
+   "信じ",
+   "わかっ",
+   "申し",
+   "全部"
+  ],
+  "岡本かの子": [
+   "魚",
+   "客",
+   "体",
+   "店",
+   "いっ",
+   "現実",
+   "云っ",
+   "娘",
+   "気持ち",
+   "珍",
+   "池",
+   "時代",
+   "座敷",
+   "なっ",
+   "多少",
+   "意識",
+   "腕",
+   "ときどき",
+   "目的",
+   "女性"
+  ]
+ },
+ "outputs_sha256": {
+  "figure6_scale.png": "e680056fa4b68ad79530efc8c96cf384fb41f989800e949d72a01fa92b083652"
+ }
+}
