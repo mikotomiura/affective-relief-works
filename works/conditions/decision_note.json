@@ -1,7 +1,7 @@
 {
- "purpose": "A template for noting the quantities a rule leaves open and the decisions changed after the values were seen, with the image each one acted on, filled in for work 1 as the worked example. It is the table readers copy for their own series.",
- "fixed_before_running": "Written on 2026-10-28 and committed before any script for it exists and before anything is drawn. Seen before: everything of results/work1 and results/work1_drawing and the record of the decisions in the working notes. Version 2 (2026-10-28, still before any script or drawing), after the cross review of the task: every image a quantity acted on is listed (no 'all'; common_eps.png added where it applies); each value is a path to a key or a literal checked against one.",
- "version": 2,
+ "purpose": "A template for noting the quantities a rule leaves open and the decisions changed after the values were seen, with the images that used each one, filled in for works 1 and 2 as the worked example (the only record of decisions in the main text). It is the table readers copy for their own series.",
+ "fixed_before_running": "Written on 2026-10-28 and committed before any script for it exists and before anything is drawn. Seen before: everything of results/work1 and results/work1_drawing and the record of the decisions in the working notes. Version 2 (2026-10-28, still before any script or drawing), after the cross review of the task: every image a quantity acted on is listed (no 'all'; common_eps.png added where it applies); each value is a path to a key or a literal checked against one. Version 3 (2026-10-29, after round 5 of the pre-review, still before any change of the script and before anything of version 3 is drawn; question 3 of the verdict of round 5 and decision 3 of .steering/20261029-generation-record-v28): table 1 of the paper is dropped and this note becomes the only record of decisions in the main text, as the worked example of works 1 and 2. Six rows of work 2 are added, chosen by the rule 'the two sides of the central comparison, the quantities that the look of the main images of work 2 depends on, and one decision of interpretation' (the other decisions of work 2 stay in the full table of supplement S1); a fifth column names who judged the look and with which guide; the column of images marks the images on which the effect of the quantity was compared; a row whose claim was weakened in the paper after the values were seen is marked with a dagger. Seen before version 3: everything of version 2 and its outputs, the blind judgement and its scoring, figure 6, the record of the quantities of generation (results/paper_generation_record) and rounds 3 to 5 of the pre-review.",
+ "version": 3,
  "columns": [
   {
    "id": "quantity",
@@ -13,11 +13,15 @@
   },
   {
    "id": "acted_on",
-   "header": "Image it acted on"
+   "header": "Images that used it (* its effect compared there)"
   },
   {
    "id": "when",
    "header": "Before or after the values were seen (if after: what was seen)"
+  },
+  {
+   "id": "judged",
+   "header": "Who judged the look, with which guide"
   }
  ],
  "rows_work1": [
@@ -37,7 +41,10 @@
     "results/work1/common_eps.png",
     "results/work1_drawing/drawing.png"
    ],
-   "when": "before: counts without a lexicon only"
+   "when": "before: counts without a lexicon only",
+   "compared": [],
+   "judged": "none recorded",
+   "dagger": false
   },
   {
    "quantity": "lexicon",
@@ -54,7 +61,10 @@
     "results/work1/common_eps.png",
     "results/work1_drawing/drawing.png"
    ],
-   "when": "before: none"
+   "when": "before: none",
+   "compared": [],
+   "judged": "none recorded",
+   "dagger": false
   },
   {
    "quantity": "height scale",
@@ -71,7 +81,13 @@
     "results/work1/common_eps.png",
     "results/work1_drawing/drawing.png"
    ],
-   "when": "before: none"
+   "when": "before: none",
+   "compared": [
+    "results/work1/common.png",
+    "results/work1/minmax.png"
+   ],
+   "judged": "none recorded",
+   "dagger": false
   },
   {
    "quantity": "band",
@@ -88,7 +104,10 @@
     "results/work1/common_eps.png",
     "results/work1_drawing/drawing.png"
    ],
-   "when": "before: fixed before the works"
+   "when": "before: fixed before the works",
+   "compared": [],
+   "judged": "none recorded",
+   "dagger": false
   },
   {
    "quantity": "seed",
@@ -105,7 +124,10 @@
     "results/work1/common_eps.png",
     "results/work1_drawing/drawing.png"
    ],
-   "when": "before: none"
+   "when": "before: none",
+   "compared": [],
+   "judged": "none recorded",
+   "dagger": false
   },
   {
    "quantity": "eps",
@@ -120,7 +142,10 @@
    "acted_on": [
     "results/work1/common_eps.png"
    ],
-   "when": "before: none"
+   "when": "before: none",
+   "compared": [],
+   "judged": "none recorded",
+   "dagger": false
   },
   {
    "quantity": "drawing",
@@ -142,7 +167,12 @@
    "acted_on": [
     "results/work1_drawing/drawing.png"
    ],
-   "when": "after: every image and value of work 1 (the way of drawing and the twelve tiles were committed before drawing)"
+   "when": "after: every image and value of work 1 (the way of drawing and the twelve tiles were committed before drawing)",
+   "compared": [
+    "results/work1_drawing/drawing.png"
+   ],
+   "judged": "none recorded",
+   "dagger": false
   },
   {
    "quantity": "how the series is shown",
@@ -153,7 +183,10 @@
     "results/work1/common.png",
     "results/work1/minmax.png"
    ],
-   "when": "after: the check of the flow of the story"
+   "when": "after: the check of the flow of the story",
+   "compared": [],
+   "judged": "none recorded",
+   "dagger": false
   }
  ],
  "acted_on_labels": "in the repository the column holds the image files; the numbers of the figures of the paper are put in when the manuscript is made, outside the repository",
@@ -162,11 +195,230 @@
   "dpi": 300,
   "colour": "black and white",
   "font_file": "/System/Library/Fonts/Helvetica.ttc",
-  "empty_template": "the same table with the four headers and three empty rows is drawn next to it"
+  "empty_template": "the same table with the five headers and three empty rows is drawn below it",
+  "column_share": {
+   "quantity": 0.12,
+   "value": 0.25,
+   "acted_on": 0.25,
+   "when": 0.2,
+   "judged": 0.18
+  },
+  "titles": [
+   "Decision note, filled in for works 1 and 2",
+   "Decision note, empty"
+  ],
+  "row_order": "the rows of work 1, then a band 'Work 2', then the rows of work 2, each in the order of the conditions"
  },
- "outputs": "results/decision_note/decision_note.png, decision_note.md (the same table as text) and decision_note.json (the values read and the SHA-256 of the conditions)",
- "not_claimed": "A way of noting decisions; it does not show that noting them helps a reader (no study with people). Disclosure helps a reader repeat the work but does not by itself settle whether a reading is valid or a choice biased.",
+ "outputs": "results/decision_note_v3/decision_note.png, decision_note.md (the same table as text) and decision_note.json (the values read and the SHA-256 of the conditions); results/decision_note (version 2) is kept",
+ "not_claimed": "A way of noting decisions; it does not show that noting them helps a reader (no study with people). Disclosure helps a reader repeat the work but does not by itself settle whether a reading is valid or a choice biased. The column of who judged names the judgement made, not the viewers of the paper; 'none recorded' means no look was judged with a sheet, not that the makers did not look. The six rows of work 2 are chosen by the rule above, not as the decisions that mattered most.",
  "checks": [
-  "every file named exists and is the one at HEAD; every key read exists; every must_contain string occurs in the keys named (else the run stops)"
- ]
+  "every file named exists and is the one at HEAD; every key read exists; every must_contain string occurs in the keys named (else the run stops)",
+  "every image of compared is one of acted_on of its row; the judged of each row is the literal none recorded or a checked literal; exactly the rows with dagger true carry the mark",
+  "8 rows of work 1 and 6 of work 2 (asserted as constants)"
+ ],
+ "compared_mark": " *",
+ "dagger": {
+  "mark": "† ",
+  "meaning": "the claim of the paper this row bears on was weakened after the values were seen"
+ },
+ "rows_work2": [
+  {
+   "quantity": "lexicon and map",
+   "value": {
+    "file": "works/conditions/work2.json",
+    "keys": [
+     "lexicon.name",
+     "map.use"
+    ],
+    "format": "{name}; {use}"
+   },
+   "acted_on": [
+    "results/paper_figure6_scale/figure6_scale.png",
+    "results/paper_work2_figures/variants_judged.png"
+   ],
+   "compared": [
+    "results/paper_figure6_scale/figure6_scale.png"
+   ],
+   "when": "before: the values of the two lexicons only",
+   "judged": {
+    "literal": "two makers, on the images of the blind judgement (80 px, five common seeds): one blind, with the sheet and its worked example (brightness differs but the pattern is the same), one not blind; for map B their answers split",
+    "check": {
+     "file": "works/conditions/blind_judgement.json",
+     "keys": [
+      "judges.deciding",
+      "judges.also"
+     ],
+     "must_contain": [
+      "has not seen the sheets",
+      "not as a blind judgement"
+     ]
+    }
+   },
+   "dagger": false
+  },
+  {
+   "quantity": "percentiles",
+   "value": {
+    "literal": "V and A as percentiles among the tokens of the 23 works of work 2, each author weighing 1 in total, ties counted half (instead of map B)",
+    "check": {
+     "file": "works/conditions/sketch_sp_color.json",
+     "keys": [
+      "reference.what"
+     ],
+     "must_contain": [
+      "the 23 works",
+      "each author weighs 1",
+      "half the weight of those equal to it"
+     ]
+    }
+   },
+   "acted_on": [
+    "results/paper_figure6_scale/figure6_scale.png",
+    "results/work2_sp_color/SPC.png"
+   ],
+   "compared": [
+    "results/paper_figure6_scale/figure6_scale.png"
+   ],
+   "when": "after: the percentiles over the whole lexicon, where most frequent words lay at the pleasant end, and the sketches",
+   "judged": {
+    "literal": "as above for figure 6 (both answered differ under all five seeds); the deciding judge alone for the main images",
+    "check": {
+     "file": "works/conditions/blind_judgement.json",
+     "keys": [
+      "judges.deciding",
+      "judges.also"
+     ],
+     "must_contain": [
+      "has not seen the sheets",
+      "not as a blind judgement"
+     ]
+    }
+   },
+   "dagger": false
+  },
+  {
+   "quantity": "seed",
+   "value": {
+    "file": "works/conditions/work2_sp_color.json",
+    "keys": [
+     "common_seed"
+    ],
+    "format": "one per word: the SHA-256 of the word plus the common seed {common_seed}"
+   },
+   "acted_on": [
+    "results/work2_sp_color/SPC.png"
+   ],
+   "compared": [],
+   "when": "after: the sketches with a seed per author and per spelling",
+   "judged": {
+    "literal": "the deciding judge (blind), with the sheet, on the coloured version",
+    "check": {
+     "file": "works/conditions/blind_judgement.json",
+     "keys": [
+      "judges.deciding",
+      "judges.also"
+     ],
+     "must_contain": [
+      "has not seen the sheets",
+      "not as a blind judgement"
+     ]
+    }
+   },
+   "dagger": false
+  },
+  {
+   "quantity": "colour",
+   "value": {
+    "literal": "OKLCH: lightness the grey of the relief, chroma arousal, hue valence from blue to orange (the makers' convention)",
+    "check": {
+     "file": "works/conditions/work2_sp_color.json",
+     "keys": [
+      "colour.hue.SPC.reads",
+      "colour.status"
+     ],
+     "must_contain": [
+      "blue at p_valence 0",
+      "to orange at 1",
+      "convention"
+     ]
+    }
+   },
+   "acted_on": [
+    "results/work2_sp_color/SPC.png"
+   ],
+   "compared": [],
+   "when": "after: the dull colours of the percentiles over the whole lexicon; the direction of the hue kept after reading the literature",
+   "judged": {
+    "literal": "the deciding judge (blind), with the sheet, on the coloured version",
+    "check": {
+     "file": "works/conditions/blind_judgement.json",
+     "keys": [
+      "judges.deciding",
+      "judges.also"
+     ],
+     "must_contain": [
+      "has not seen the sheets",
+      "not as a blind judgement"
+     ]
+    }
+   },
+   "dagger": false
+  },
+  {
+   "quantity": "figures of work 2",
+   "value": {
+    "literal": "the main images; the two scales in grey under the common seed 100; two rows of variants; the own seeds of the authors in the supplement",
+    "check": {
+     "file": "works/conditions/paper_figure6_scale.json",
+     "keys": [
+      "drawing.seed",
+      "purpose"
+     ],
+     "must_contain": [
+      "100",
+      "the upper half with V and A through map B"
+     ]
+    }
+   },
+   "acted_on": [
+    "results/work2_sp_color/SPC.png",
+    "results/paper_figure6_scale/figure6_scale.png",
+    "results/paper_work2_figures/variants_judged.png"
+   ],
+   "compared": [],
+   "when": "after: the scoring of the blind judgement and two rounds of pre-review",
+   "judged": {
+    "literal": "none recorded"
+   },
+   "dagger": false
+  },
+  {
+   "quantity": "subject of work 2",
+   "value": {
+    "literal": "the scale of the values: changing it changed the quantities of generation, and whether that shows as a same or a different pattern split the two makers",
+    "check": {
+     "file": "works/conditions/paper_generation_record.json",
+     "keys": [
+      "purpose"
+     ],
+     "must_contain": [
+      "map B",
+      "the author-equal percentiles"
+     ]
+    }
+   },
+   "acted_on": [
+    "results/paper_figure6_scale/figure6_scale.png"
+   ],
+   "compared": [
+    "results/paper_figure6_scale/figure6_scale.png"
+   ],
+   "when": "after: the scoring, figure 6, the record of the quantities of generation and three rounds of pre-review (before: the seed and the unit of the tiles)",
+   "judged": {
+    "literal": "none recorded"
+   },
+   "dagger": true
+  }
+ ],
+ "row_rule": "rows_work2 holds the two sides of the central comparison (map B, percentiles), the quantities the look of the main images of work 2 depends on (seed, colour, figures), and one decision of interpretation (the subject); every other decision of work 2 is in the full table of supplement S1"
 }
