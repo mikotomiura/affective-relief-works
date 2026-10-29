@@ -1,0 +1,57 @@
+{
+ "purpose": "The share of the range of f and s used by the words and sentences of the works themselves (point 2 of the decisions of the researcher after round 10 of the pre-review, verdict section 7): the 120 words of the main images of work 2 (20 words of each of the six authors, the tiles of results/work2_sp_color) under both versions, map B (version G0, the values recorded in results/work2_words/words.json) and the author-equal percentiles (version P, the values of the main images, recomputed here as works/work2_sp_color.py computes them), and the 104 sentences of work 1 (results/work1/work1.json), minimum to maximum and quartiles, per author and pooled. Recommendation 2 of the outline asks to set the count next to something to compare it with: for work 2 the same 120 words under the other version (another map on the same words) and the quartiles of the reference sets already recorded in results/paper_reference_range/reference_range.json (read, not recomputed); for work 1, which has no other map and whose height scale (common or per-tile min-max) acts on the height after f and s are made and so leaves f and s unchanged (works/work1.py, relief.top_surface and relief.grey take the field already made), the whole NRC VAD lexicon v2.1 of work 1, each term once, under the same rule. These counts replace, in the main text and figure 8, the counts of the 40 words of the two trial authors, which move to the caption of figure 6 and S1.",
+ "fixed_before_running": "Written on 2026-10-29 and committed before the script was written or run. Seen before, for work 2: results/work2_words/words.json (2026-10-28), with the V, A, f, s and gamma under map B of every one of the 120 words and their standard deviation per author, and its reading in .steering/20261028-work2-redesign/decisions.md line 26: f of the 20 words of every author lies within 4.4 to 5.85 under map B (Dazai 4.63 to 5.30), that is the minimum and maximum of f per author under map B were seen; the s per author under map B was recorded there but its minimum and maximum were not read in any record found; results/work2_sp_color (2026-10-28), the main images SP and SPC of the six authors, every tile, and the blind judgement of them; results/paper_generation_record/generation_record.json and results/paper_reference_range/reference_range.json, with every value and share of the 40 words of the two trial authors under both versions and the shares of the reference sets. Not seen before, for work 2: the percentiles of the words of the four other authors (results/work2_sp_color/work2_sp_color.json records the words of the tiles, not their percentiles), so f and s of the 120 words under the percentiles, and any share of the 120 words or of their authors under either version other than the minimum and maximum of f per author under map B. Seen before, for work 1: results/work1/work1.json, with V, A, f, s and gamma of every one of the 104 sentences, the figures common.png and minmax.png of the 104 tiles, and the s of the 12 tiles of figure 4 (0.137 to 0.181, about 18% of the range of s, in the outline from v2.10). Not seen before, for work 1: any share of the 104 sentences (no record of one was found), and f and s on the whole NRC lexicon (results/calibrate_memolon.json records the percentiles of NRC on the 41,991 words it shares with English MEmoLon, not on the whole lexicon, and not f and s). The decision to count the 120 words and the 104 sentences was taken after all of this was seen, so every count of this record is counted later, after the record of the values and the images were seen.",
+ "version": 1,
+ "inputs": {
+  "work2_conditions": {"path": "works/conditions/work2.json"},
+  "words_conditions": {"path": "works/conditions/work2_words.json"},
+  "words": {"path": "results/work2_words/words.json"},
+  "main_conditions": {"path": "works/conditions/work2_sp_color.json"},
+  "main_record": {"path": "results/work2_sp_color/work2_sp_color.json"},
+  "reference_conditions": {"path": "works/conditions/sketch_sp_color.json"},
+  "values": {"path": "results/sketch_sp_color/values.json", "sha256": "2a15808cef6cd5978acda504fb6d08b4c1df6fec736901d90c492e6e525db71e"},
+  "calibration": {"path": "results/calibrate_memolon.json"},
+  "reference_range_conditions": {"path": "works/conditions/paper_reference_range.json"},
+  "reference_range": {"path": "results/paper_reference_range/reference_range.json"},
+  "work1_conditions": {"path": "works/conditions/work1.json"},
+  "work1": {"path": "results/work1/work1.json"},
+  "hashes": "values.json is checked against the SHA-256 above; the other JSON inputs are checked to be the committed bytes; the lexicon, the map, the tagger and the zips of the 23 works against work2.json; calibrate_memolon.json to be the map of work2.json computed on a clean tree; words.json, work2_sp_color.json, reference_range.json and work1.json to be made on their conditions on a clean tree; the NRC lexicon against the SHA-256 of works/conditions/work1.json (external/, not in the repository)"
+ },
+ "sets": {
+  "main_G0": "the 120 words of the main images (for each author of words.json its 20 words in the order of words.json, which are the words of the tiles of work2_sp_color.json), V and A as recorded in words.json (map B, clipped)",
+  "main_P": "the same 120 words, V = 2 p_valence - 1 and A = 2 p_arousal - 1, p the author-equal weighted percentile of the raw value of the word among the reference of works/conditions/work2_sp_color.json (reference.what, select all: the words of the lexicon met in the kept sentences of the 23 works, each author weighing 1), the function weighted_percentile of works/sketch_sp_color.py copied into the script, as works/paper_reference_range.py",
+  "pooled": "the 120 words are 120 tiles; a word shared by two authors (three such words, work2_sp_color.json shared_between_authors) is counted once for each tile, so the pooled set has 120 values",
+  "work1_sentences": "the 104 sentences of work 1, f and s as recorded in work1.json",
+  "work1_lexicon": "every term of the NRC VAD lexicon v2.1 of work 1 (atact.lexicon.load_lexicon of the file of works/conditions/work1.json), each term once, f and s = params(V, A)",
+  "reference_sets_of_work2": "lexicon_B and tokens_P of reference_range.json, read as recorded (minimum to maximum and quartiles), the reference of each version of work 2"
+ },
+ "statistics": {
+  "quantities": ["f", "s"],
+  "shape": "f, s = atact.mapping.params(V, A); the range of the rule is f in [F0, F0 + F1] = [3, 7] and s in [S0, S0 + S1] = [0.06, 0.30]",
+  "share": "100 (maximum - minimum) / (width of the range of the rule), and 100 (third quartile - first quartile) / (width), per set and quantity",
+  "quantiles": "minimum, maximum and numpy.quantile at 0.25 and 0.75 with method 'linear' (as the record of generation and the words of reference_range.json), unweighted for every set of this record",
+  "per_author": "main_G0 and main_P per author (20 words) and pooled (120); work 1 has one author"
+ },
+ "constants": {
+  "authors": 6,
+  "words_per_author": 20,
+  "tiles": 120,
+  "distinct_words": 117,
+  "works": 23,
+  "reference_words": 18301,
+  "work1_sentences": 104
+ },
+ "checks": [
+  "U1: the constants hold: 6 authors with 20 words each in words.json, in the same order as the tiles of work2_sp_color.json, 117 distinct words, 23 works, 18301 reference words with the tokens per author of values.json, 104 sentences in work1.json with no unmatched sentence",
+  "U2: the words of map B: V and A of every word of words.json equal map B (calibrate_memolon.json, clipped) of its entry in the lexicon, exactly, and its f and s equal params(V, A)",
+  "U3: the reconstruction of the reference: the text step of every work gives the sentences and matched tokens of results/work2, and the weighted percentiles of every key of values.json recomputed equal its p_valence_author_equal and p_arousal_author_equal exactly; for every word of the 120 that is a key of values.json whose entry is the word itself, the V and A of main_P equal 2 p - 1 of its author-equal percentiles there, exactly",
+  "U4: the reconstruction agrees with reference_range.json: the minimum, quartiles and maximum of f and s of tokens_P recomputed here equal those recorded there, exactly",
+  "U5: work 1: for every sentence V and A equal the mean of the lexicon values of its matched terms (atact.lexicon.sentence_point on the recorded matched terms) and f and s equal params(V, A), exactly",
+  "U6: every V and A of every set lies in [-1, 1], so params clips nothing; the installed atact is the generator of works/conditions/work2_words.json and of works/conditions/work1.json, and the range of the rule is read from atact.mapping"
+ ],
+ "outputs": {
+  "dir": "results/paper_used_range (refused if it exists)",
+  "record": "used_range.json: per set (per author where named, and pooled) and quantity the minimum, first quartile, third quartile, maximum, the two shares and the number of values; the reference sets of work 2 as read; the range of the rule; the checks U1 to U6 with their counts; the SHA-256 of the conditions, the script and every input; the versions and the git state"
+ },
+ "not_claimed": "These are quantities of the generation of the tiles, not of how any tile looks, and not of how reliable the values are (under the percentiles f is stretched from A, the dimension with the weakest agreement with the English ratings). The minimum and maximum move with one extreme word, which is why the quartiles are recorded next to them. A sentence value of work 1 is the mean of the values of its matched terms, so the 104 sentences are narrower than the terms of the lexicon partly by averaging; the comparison with the lexicon shows how much of the range the sentences use, not why. Work 1 and work 2 use different lexicons and different steps, so their shares are not on one scale of values, only on one rule. Every count here was made after the values and the images were seen."
+}
