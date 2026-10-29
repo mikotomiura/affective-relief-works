@@ -1,0 +1,74 @@
+{
+ "purpose": "Four counts asked for by the review of round 22 of the outline (v2.24) and decided by the researcher on 2026-10-30 (verdict §7, item 3 of the list to fix, (7) and (8), and §7 continued, Codex 1 and 3), to be placed in S1: (A) flat tiles: how many of the 104 tiles of work 1 and of the 12 tiles of figure 4 have a height or a shading whose maximum minus minimum is zero, so that the per-tile min-max scale (figure 3) or the stretch (figure 4, (g - min g) / (max g - min g) per tile) cannot be computed (S1 (xxxix)); (B) work 1: the share of the running words of the story covered by terms of the lexicon (results/work1/work1.json records matched_share 1.0, the share of sentences with at least one matched term, and 1,227 terms, but no share of the words; S1 (xxxviii)); (C) work 2: per author, the share of the distinct candidate words (the words of the part of speech of the main form, matched or not) found in MEmoLon, and the share among the candidate words that pass the filter on counts and works of the selection (S1 (xxxviii) gives 99.17% of the running candidate words only); (D) the percentiles of work 2: the largest weight of a group of tied values in the reference of the percentiles (the running words of the 23 works, each author weighing 1, a tie counted half, works/sketch_sp_color.py), as a share of the total weight, so that 'about half by construction' (S1 (xxxiii)) can be stated with its condition.",
+ "fixed_before_running": "Written on 2026-10-30 and committed before the script was written or run. Seen before: the code that computes the min-max scale and the stretch (src/relief.py scaled raises 'a flat tile has no min-max scale' and works/work1_drawing.py stretch raises 'a flat tile cannot be stretched' when the span is not positive; both runs finished and wrote their records); results/work1/work1.json (its keys, layout, figures, unmatched 0, matched_share 1.0, 104 sentences, 1,227 terms in all, no dropped piece, and the terms of the first sentence); in results/work1_drawing/drawing.json the mean and standard deviation of the four drawings of the first tile (all four standard deviations positive); in results/work2/work2.json the counts of the first work of 夏目漱石 (3,990 candidate tokens, 3,946 matched) and the totals of S1 (xxxviii) (89,336 and 88,591); in results/paper_reference_range/reference_range.json tokens_P (the middle half of f 52.40% and of s 49.18% of the range, 18,301 words, total weight 6); in results/paper_filtered_draws/filtered_draws.json the sizes of the pools of filtered words (288 to 401 per author). Not seen before: the span of any tile other than through these records, the number of running words of the story of work 1, the distinct candidate words of any author, any candidate word not in MEmoLon, and any tie in the values of MEmoLon.",
+ "version": 1,
+ "inputs": {
+  "work1_conditions": {"path": "works/conditions/work1.json"},
+  "work1_result": {"path": "results/work1/work1.json"},
+  "work1_figures": {"path": "results/work1", "files": ["common.png", "minmax.png", "common_eps.png"]},
+  "drawing_conditions": {"path": "works/conditions/work1_drawing.json"},
+  "drawing_result": {"path": "results/work1_drawing/drawing.json"},
+  "drawing_figure": {"path": "results/work1_drawing/drawing.png"},
+  "work2_conditions": {"path": "works/conditions/work2.json"},
+  "work2_result": {"path": "results/work2/work2.json"},
+  "words_conditions": {"path": "works/conditions/work2_words.json"},
+  "words": {"path": "results/work2_words/words.json"},
+  "reference_conditions": {"path": "works/conditions/sketch_sp_color.json"},
+  "values": {"path": "results/sketch_sp_color/values.json", "sha256": "2a15808cef6cd5978acda504fb6d08b4c1df6fec736901d90c492e6e525db71e"},
+  "calibration": {"path": "results/calibrate_memolon.json"},
+  "reference_range": {"path": "results/paper_reference_range/reference_range.json"},
+  "filtered_draws": {"path": "results/paper_filtered_draws/filtered_draws.json"},
+  "scripts": {"work1": "works/work1.py", "drawing": "works/work1_drawing.py", "words": "works/work2_words.py",
+              "reference_range": "works/paper_reference_range.py"},
+  "hashes": "values.json against the SHA-256 above; every other input, the scripts named and the code they import checked to be the committed bytes on a clean tree; the lexicons, the map, the tagger and the zips of the 23 works against the conditions of work 1 and work 2; each record read checked to be made on its conditions (its conditions_sha256) on a clean tree; the generator installed checked against the conditions of work 1; the functions used (tile, scaled, grey, closed_field and the constants of src/relief.py, lambert, block_mean, stretch, tile_place and u8 of works/work1_drawing.py, select and log_odds of works/work2_words.py, reference_weights, weighted_percentile, shapes and spread of works/paper_reference_range.py, tokenize and match_terms of atact.lexicon) imported from the committed or installed files, not copied"
+ },
+ "A_flat_tiles": {
+  "tiles_work1": "the 104 sentences of work1.json, in order",
+  "tiles_figure4": "the 12 tiles of drawing.json (sentences 0 to 11)",
+  "from_the_images": "per tile, maximum minus minimum of the 8-bit grey of the tile at its place: in common.png, minmax.png and common_eps.png (the place of tile_place of work1_drawing.py, a square of tile_px), and in drawing.png in each of its four rows (the place of figure of work1_drawing.py: column k at k (tile_px + gap_px), row r at r (row_label_px + tile_px + row_gap_px) + row_label_px)",
+  "from_the_arrays": "per tile, recomputed with the committed code and the conditions of work 1: H and H_eps on the grid of the figures (procedural_field_separable, tile_px), H_eps on the print grid (closed_field, grid_intervals of work 1); for the 12 tiles of figure 4 the shadings b and c (lambert of the common z on the grid supersample times finer, block_mean); each of these arrays checked first against the record: the grey of H under the common and the min-max scales and of H_eps under the common scale, as u8, equal to the tile in common.png, minmax.png and common_eps.png; the common z of H_eps on the print grid gives z_min_mm and z_max_mm of the STL of the common scale recorded in work1.json (tolerance 1e-9 mm); b, c and stretch(b), as u8, equal to their tiles in drawing.png; then maximum minus minimum of each array",
+  "also": "the standard deviations of drawing.json for the four drawings of the 12 tiles, read as recorded (a standard deviation of zero would mean a flat tile)",
+  "count": "the number of tiles whose maximum minus minimum is zero, per array or image, and the smallest maximum minus minimum over the tiles (with its sentence)"
+ },
+ "B_work1_coverage": {
+  "words": "the tokens of atact.lexicon.tokenize of each of the 104 kept sentences of work1.json (the running words of the story as the text step reads them; no dropped piece is recorded); the tokens of every dropped piece, if any, counted apart",
+  "covered": "match_terms of atact.lexicon on the tokens of each sentence (greedy, longest term first) must give the terms recorded for the sentence; a term of n words covers n tokens; covered = the sum of the words of the terms",
+  "share": "covered / running tokens, over the story and per sentence (minimum and quartiles of the share per sentence); also the number of terms of more than one word"
+ },
+ "C_work2_coverage": {
+  "candidates": "per work, the surface forms of the tokens of each kept sentence (MeCab with IPAdic through japanese_text.Tagger) that pass is_candidate with the selection 'pos' of the main form, matched or not, as sentence_point takes them; their number per work must equal candidate_tokens of work2.json, and those found in MEmoLon must number matched_tokens",
+  "distinct": "per author, the distinct surface forms among its candidates (no normalisation, as the lookup), and the share of them that are entries of MEmoLon; also over the six authors together (the union of their forms)",
+  "filtered": "per author, the candidate forms that pass the filter of the selection of works/conditions/work2_words.json as select of work2_words.py applies it: a count of at least min_count in at least min_works works of the author, and the share of one work max(rate) / sum(rate) at most max_share (+ 1e-12), the rate of a work being the count over the matched tokens of the work (the tokens of select), so that for a form in MEmoLon the filter gives exactly what it gives to the matched words; the forms passing that are in MEmoLon must number pool_sizes.filtered of filtered_draws.json; the share of the forms passing that are in MEmoLon",
+  "running": "per author, matched over candidate tokens (the sums of work2.json), for comparison with the distinct share"
+ },
+ "D_ties_of_the_percentiles": {
+  "reference": "the 18,301 words of the reference of the percentiles as works/paper_reference_range.py builds it (the matched words, selection 'all', of the kept sentences of the 23 works, counted per author; reference_weights, the weight author_equal, each author summing to 1, total 6)",
+  "values": "the values of MEmoLon as read (before the map), valence and arousal apart, as weighted_percentile takes them",
+  "groups": "the words with the same value (equal as floating-point numbers) form a group; the weight of a group is the sum of the weights of its words",
+  "reported": "per dimension: the number of distinct values, the number of groups of more than one word, the largest weight of a group as a share of the total weight (6) with its number of words, and the largest weight of a single word as a share of the total; the share of the total weight in groups of more than one word",
+  "check": "the middle half of f and s of tokens_P recomputed (weighted_percentile of every reference word, shapes and spread with the weights) equals tokens_P of reference_range.json; values.json gives the same tokens per author"
+ },
+ "constants": {
+  "work1_sentences": 104,
+  "work1_terms": 1227,
+  "figure4_tiles": 12,
+  "figure4_rows": 4,
+  "authors": 6,
+  "works": 23,
+  "reference_words": 18301,
+  "candidate_tokens": 89336,
+  "matched_tokens": 88591
+ },
+ "checks": [
+  "K1: the constants hold: 104 sentences and 1,227 terms in work1.json; 12 tiles in drawing.json; 6 authors and 23 works; 18,301 reference words; the candidate and matched tokens of work2.json sum to 89,336 and 88,591",
+  "K2: every array recomputed for A equals the record (images byte for byte as u8, the z of the STL within 1e-9 mm) before its span is counted",
+  "K3: the terms of every sentence of work 1 found again by match_terms equal those recorded, and their number is Z",
+  "K4: the candidate and matched tokens of every work counted again equal work2.json; the forms in MEmoLon passing the filter equal pool_sizes.filtered of filtered_draws.json for every author",
+  "K5: the reference rebuilt has 18,301 words and the tokens per author of values.json; tokens_P recomputed equals reference_range.json"
+ ],
+ "outputs": {
+  "dir": "results/paper_coverage_ties_flat (refused if it exists)",
+  "record": "coverage_ties_flat.json: A, B, C and D as above, the checks K1 to K5 with their counts, the SHA-256 of the conditions, the script and every input, the versions and the git state. The forms of C not in MEmoLon are not listed (counts only)."
+ },
+ "not_claimed": "These are counts on the records and the code of the two works; they test nothing. A says whether a tile of these two series could not be scaled or stretched, not whether a tile of another text could. B and C say how much of the text is valued by the lexicon, not whether the words left out would change any spread: a word with no entry has no value. B counts the words of the English tokenizer, which keeps hyphens and apostrophes inside a word and takes no number; C counts the candidate forms of the part of speech of the main form, not every word of the text. D gives the ties of these values in this reference; it does not say how much a tie moves the middle half of f or s. Every count was made after the records named above were seen."
+}
