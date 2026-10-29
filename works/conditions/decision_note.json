@@ -1,7 +1,7 @@
 {
  "purpose": "A template for noting the quantities a rule leaves open and the decisions changed after the values were seen, with the reason, the alternatives tried and the images that used each one, filled in for works 1 and 2 as the worked example (the only record of decisions in the main text). It is the table readers copy for their own series.",
- "fixed_before_running": "Written on 2026-10-28 and committed before any script for it exists and before anything is drawn. Seen before: everything of results/work1 and results/work1_drawing and the record of the decisions in the working notes. Version 2 (2026-10-28, still before any script or drawing), after the cross review of the task: every image a quantity acted on is listed (no 'all'; common_eps.png added where it applies); each value is a path to a key or a literal checked against one. Version 3 (2026-10-29, after round 5 of the pre-review, still before any change of the script and before anything of version 3 is drawn; question 3 of the verdict of round 5 and decision 3 of .steering/20261029-generation-record-v28): table 1 of the paper is dropped and this note becomes the only record of decisions in the main text, as the worked example of works 1 and 2. Six rows of work 2 are added, chosen by the rule 'the two sides of the central comparison, the quantities that the look of the main images of work 2 depends on, and one decision of interpretation' (the other decisions of work 2 stay in the full table of supplement S1); a fifth column names who judged the look and with which guide; the column of images marks the images on which the effect of the quantity was compared; a row whose claim was weakened in the paper after the values were seen is marked with a dagger. Seen before version 3: everything of version 2 and its outputs, the blind judgement and its scoring, figure 6, the record of the quantities of generation (results/paper_generation_record) and rounds 3 to 5 of the pre-review. Version 4 (2026-10-29, after round 6 of the critiques of earlier drafts, still before any change of the script and before anything of versions 3 or 4 is drawn; question 4 of the verdict of round 6, adopted by the researcher): a sixth column 'Reason (and alternatives tried)' is added, worded from the reason and alternative columns of the full decision table of the outline (advice/outline-v2.8.md, outside the repository) as statements of the makers, not checked against a file; the subject of work 2 is moved into a band 'Record of the paper'; the when of map B states that the comparison was read after the scoring; 'critiques of earlier drafts' replaces 'pre-review'; the judged of the subject says it is not a judgement of a look; the value of the subject states the unit of the judgement (the rows of the two authors within one version). When the words of the table were estimated (about 860 with 14 rows) the researcher decided to show only five rows in short wording, at most 340 words with the empty table (the estimate of the conditions was 332), the rest in S1. Seen before version 4: everything seen before version 3, round 6 of the critiques and its verdict. Nothing of version 3 was drawn; results/decision_note_v4 replaces results/decision_note_v3 as the output. Amended before any run (2026-10-29): a trial render of the script in a scratch directory, with the checks of HEAD switched off and nothing kept, stopped at the check of the words (351 against 340, the legend of the dagger not being in the estimate); five cells and the meaning of the dagger were worded shorter, with the same content. The trial showed only the text of these conditions; after it the reason of the drawing was reworded ('Tried: no other viewpoint' read as an alternative tried) and the legend given a gap above it. Amended again before any run, after the review of the script (2026-10-29): the review found that the script left the marks out of the count while the definition of the words counted every token (347 against 340); the definition now names the marks and the legend, four cells are worded shorter with the same content, the capital of the reason is written into its format, and the check of the image is made on the saved file.",
- "version": 4,
+ "fixed_before_running": "Written on 2026-10-28 and committed before any script for it exists and before anything is drawn. Seen before: everything of results/work1 and results/work1_drawing and the record of the decisions in the working notes. Version 2 (2026-10-28, still before any script or drawing), after the cross review of the task: every image a quantity acted on is listed (no 'all'; common_eps.png added where it applies); each value is a path to a key or a literal checked against one. Version 3 (2026-10-29, after round 5 of the pre-review, still before any change of the script and before anything of version 3 is drawn; question 3 of the verdict of round 5 and decision 3 of .steering/20261029-generation-record-v28): table 1 of the paper is dropped and this note becomes the only record of decisions in the main text, as the worked example of works 1 and 2. Six rows of work 2 are added, chosen by the rule 'the two sides of the central comparison, the quantities that the look of the main images of work 2 depends on, and one decision of interpretation' (the other decisions of work 2 stay in the full table of supplement S1); a fifth column names who judged the look and with which guide; the column of images marks the images on which the effect of the quantity was compared; a row whose claim was weakened in the paper after the values were seen is marked with a dagger. Seen before version 3: everything of version 2 and its outputs, the blind judgement and its scoring, figure 6, the record of the quantities of generation (results/paper_generation_record) and rounds 3 to 5 of the pre-review. Version 4 (2026-10-29, after round 6 of the critiques of earlier drafts, still before any change of the script and before anything of versions 3 or 4 is drawn; question 4 of the verdict of round 6, adopted by the researcher): a sixth column 'Reason (and alternatives tried)' is added, worded from the reason and alternative columns of the full decision table of the outline (advice/outline-v2.8.md, outside the repository) as statements of the makers, not checked against a file; the subject of work 2 is moved into a band 'Record of the paper'; the when of map B states that the comparison was read after the scoring; 'critiques of earlier drafts' replaces 'pre-review'; the judged of the subject says it is not a judgement of a look; the value of the subject states the unit of the judgement (the rows of the two authors within one version). When the words of the table were estimated (about 860 with 14 rows) the researcher decided to show only five rows in short wording, at most 340 words with the empty table (the estimate of the conditions was 332), the rest in S1. Seen before version 4: everything seen before version 3, round 6 of the critiques and its verdict. Nothing of version 3 was drawn; results/decision_note_v4 replaces results/decision_note_v3 as the output. Amended before any run (2026-10-29): a trial render of the script in a scratch directory, with the checks of HEAD switched off and nothing kept, stopped at the check of the words (351 against 340, the legend of the dagger not being in the estimate); five cells and the meaning of the dagger were worded shorter, with the same content. The trial showed only the text of these conditions; after it the reason of the drawing was reworded ('Tried: no other viewpoint' read as an alternative tried) and the legend given a gap above it. Amended again before any run, after the review of the script (2026-10-29): the review found that the script left the marks out of the count while the definition of the words counted every token (347 against 340); the definition now names the marks and the legend, four cells are worded shorter with the same content, the capital of the reason is written into its format, and the check of the image is made on the saved file. Version 5 (2026-10-29, after round 7 of the critiques of earlier drafts, still before any change of the script and before anything of version 5 is drawn; question 3 of the verdict of round 7, adopted by the researcher): the judged cells of map B and the percentiles are limited to the row of the 20 words (version 4 said 'they split' and 'both said the rows differ' without the row; under map B the makers split on all five rows and under the percentiles also on the row of 'いう', see score.json and the supplement), and each is checked against the lists of the two judges by answers_rule; the split is said once, in the row of map B, and the value of the subject no longer repeats it; the row of the percentiles names its guide; D is called the assumed relief depth and the deciding judge the main judge; the values of map B and the percentiles carry the share of the range used by the 40 words, checked by used_range_rule (recommendation 2 of the outline); the reason of the percentiles says what is given up; the dagger and the mark of compared images are reserved; the subject of the paper now names how far the scale moves the quantities of generation and how to note that; headers and cells worded shorter, at most 340 words (estimated 338 before the script was changed, with a counter that gives 338 for version 4). Seen before version 5: everything seen before version 4, the outputs of version 4 (results/decision_note_v4), round 7 of the critiques and its verdict. results/decision_note_v5 is the output.",
+ "version": 5,
  "columns": [
   {
    "id": "quantity",
@@ -13,19 +13,19 @@
   },
   {
    "id": "reason",
-   "header": "Reason (and alternatives tried)"
+   "header": "Reason (alternatives tried)"
   },
   {
    "id": "acted_on",
-   "header": "Images that used it (* effect compared)"
+   "header": "Images using it (* effect compared)"
   },
   {
    "id": "when",
-   "header": "Before or after the values were seen (if after: what was seen)"
+   "header": "Before or after seeing the values (if after: what was seen)"
   },
   {
    "id": "judged",
-   "header": "Who judged the look, with which guide"
+   "header": "Who judged the look (guide)"
   }
  ],
  "rows_work1": [
@@ -36,10 +36,10 @@
     "keys": [
      "relief.D_mm"
     ],
-    "format": "common to the series, D = {D_mm} mm"
+    "format": "common to the series, assumed relief depth D = {D_mm} mm"
    },
    "reason": {
-    "why": "keeps the differences of depth between sentences",
+    "why": "keeps the depth differences between sentences",
     "tried": [
      "per-tile min-max"
     ]
@@ -61,7 +61,7 @@
   {
    "quantity": "drawing",
    "value": {
-    "literal": "grey; lit at 45 degrees from upper left and lower right; stretched per tile",
+    "literal": "grey; lit at 45 degrees from upper left, lower right; stretched per tile",
     "check": {
      "file": "works/conditions/work1_drawing.json",
      "keys": [
@@ -76,7 +76,7 @@
     }
    },
    "reason": {
-    "why": "the drawing is also a quantity the maker sets (one viewpoint)",
+    "why": "also a quantity the maker sets (one viewpoint)",
     "tried": []
    },
    "acted_on": [
@@ -94,7 +94,7 @@
   {
    "quantity": "lexicon and map",
    "value": {
-    "literal": "MEmoLon (Japanese) through map B, fitted to English ratings",
+    "literal": "MEmoLon (Japanese) through map B, fitted to English ratings; f of the 40 words uses 22% of its range",
     "check": {
      "file": "works/conditions/work2.json",
      "keys": [
@@ -106,6 +106,16 @@
       "Japanese",
       "map B"
      ]
+    },
+    "used_range": {
+     "file": "results/paper_generation_record/generation_record.json",
+     "version": "G0",
+     "quantities": [
+      "f"
+     ],
+     "words_key": "checks.C1_constants.words_per_author",
+     "words": 40,
+     "shown": "22%"
     }
    },
    "reason": {
@@ -121,9 +131,9 @@
    "compared": [
     "results/paper_figure6_scale/figure6_scale.png"
    ],
-   "when": "before: the two lexicons' values (comparison read after the scoring)",
+   "when": "before: both lexicons' values (comparison read after the scoring)",
    "judged": {
-    "literal": "two makers (one blind, with the sheet and its example); they split",
+    "literal": "two makers (one blind), with the sheet and example; for the 20 words they split",
     "check": {
      "file": "works/conditions/blind_judgement.json",
      "keys": [
@@ -134,6 +144,23 @@
       "has not seen the sheets",
       "not as a blind judgement"
      ]
+    },
+    "answers": {
+     "main": {
+      "file": "results/blind_judgement/score.json",
+      "key": "decision.rows_remaining",
+      "decided_key": "decision.decided"
+     },
+     "also": {
+      "file": "results/blind_judgement/score-researcher-supplement.json",
+      "key": "rows_remaining",
+      "pass_key": "controls_pass"
+     },
+     "row": "words20",
+     "row_phrase": "the 20 words",
+     "version": "G0",
+     "outcome": "split",
+     "phrase": "they split"
     }
    },
    "dagger": false
@@ -141,7 +168,7 @@
   {
    "quantity": "percentiles",
    "value": {
-    "literal": "V and A as percentiles in the 23 works, each author weighing 1",
+    "literal": "V and A as percentiles in the 23 works, each author weighing 1; f and s of the 40 words use over 90%",
     "check": {
      "file": "works/conditions/sketch_sp_color.json",
      "keys": [
@@ -151,13 +178,24 @@
       "the 23 works",
       "each author weighs 1"
      ]
+    },
+    "used_range": {
+     "file": "results/paper_generation_record/generation_record.json",
+     "version": "P",
+     "quantities": [
+      "f",
+      "s"
+     ],
+     "words_key": "checks.C1_constants.words_per_author",
+     "words": 40,
+     "shown": "over 90%"
     }
    },
    "reason": {
-    "why": "removes the compression of map B",
+    "why": "undoes the compression of map B (drops distances between values)",
     "tried": [
      "map B",
-     "percentiles over the whole lexicon"
+     "whole-lexicon percentiles"
     ]
    },
    "acted_on": [
@@ -169,7 +207,7 @@
    ],
    "when": "after: the whole-lexicon percentiles and the sketches",
    "judged": {
-    "literal": "both makers; both said the rows differ",
+    "literal": "same makers and sheet; for the 20 words both said the rows differ",
     "check": {
      "file": "works/conditions/blind_judgement.json",
      "keys": [
@@ -180,6 +218,23 @@
       "has not seen the sheets",
       "not as a blind judgement"
      ]
+    },
+    "answers": {
+     "main": {
+      "file": "results/blind_judgement/score.json",
+      "key": "decision.rows_remaining",
+      "decided_key": "decision.decided"
+     },
+     "also": {
+      "file": "results/blind_judgement/score-researcher-supplement.json",
+      "key": "rows_remaining",
+      "pass_key": "controls_pass"
+     },
+     "row": "words20",
+     "row_phrase": "the 20 words",
+     "version": "P",
+     "outcome": "both differ",
+     "phrase": "both said the rows differ"
     }
    },
    "dagger": false
@@ -189,7 +244,7 @@
   {
    "quantity": "subject of work 2",
    "value": {
-    "literal": "the scale of the values: it changed the quantities of generation; whether the two authors' rows look different split the makers under map B only",
+    "literal": "the scale of the values: how far it moves the quantities of generation, and how to note that",
     "check": {
      "file": "works/conditions/paper_generation_record.json",
      "keys": [
@@ -204,8 +259,8 @@
    "reason": {
     "why": "the most controlled comparison changed only how the values enter",
     "tried": [
-     "the seed and the unit of the tiles",
-     "the deciding judge alone"
+     "seed and tile unit",
+     "the main judge alone"
     ]
    },
    "acted_on": [
@@ -214,7 +269,7 @@
    "compared": [
     "results/paper_figure6_scale/figure6_scale.png"
    ],
-   "when": "after: the scoring, figure 6, the record of generation and four rounds of critiques of earlier drafts",
+   "when": "after: the scoring, figure 6, the record of generation, five rounds of critiques of drafts",
    "judged": {
     "literal": "not a judgement of a look"
    },
@@ -238,7 +293,7 @@
    "judged": 0.16
   },
   "titles": [
-   "Decision note, filled in for works 1 and 2",
+   "Decision note for works 1 and 2",
    "Decision note, empty"
   ],
   "row_order": "a band 'Work 1' and its rows, a band 'Work 2' and its rows, then a band 'Record of the paper' and its row, each in the order of the conditions",
@@ -246,21 +301,27 @@
   "print": "drawn in one grey channel (mode L) on white, with no colour; every font size is at least 7 pt at the printed width",
   "legend": "under the filled table, one line: the meaning of the dagger, after its mark"
  },
- "outputs": "results/decision_note_v4/decision_note.png, decision_note.md (the same table as text) and decision_note.json (the values read, the SHA-256 of the conditions, the counts of words); results/decision_note (version 2) is kept",
+ "outputs": "results/decision_note_v5/decision_note.png, decision_note.md (the same table as text) and decision_note.json (the values read, the SHA-256 of the conditions, the counts of words); results/decision_note (version 2) and results/decision_note_v4 are kept",
  "words": "the words drawn are counted as whitespace-separated tokens of the text of each cell, the headers, the band labels, the legend and the titles, for the filled and the empty table; a path of an image is one word and a mark standing alone (* or †) is also one word; the counts are recorded and enter the word count of the outline (the template of the journal counts tables and charts); the run stops if the two tables together exceed max_words",
  "max_words": 340,
- "not_claimed": "A way of noting decisions; it does not show that noting them helps a reader (no study with people). Disclosure helps a reader repeat the work but does not by itself settle whether a reading is valid or a choice biased. The column of who judged names the judgement made, not the viewers of the paper; 'none recorded' means no look was judged with a sheet, not that the makers did not look. The five rows are chosen by the rule above, not as the decisions that mattered most. The reasons are the makers' statements as recorded in the decision table; they are not checked against a file and do not show that a choice was right.",
+ "not_claimed": "A way of noting decisions; it does not show that noting them helps a reader (no study with people). Disclosure helps a reader repeat the work but does not by itself settle whether a reading is valid or a choice biased. The column of who judged names the judgement made, not the viewers of the paper; 'none recorded' means no look was judged with a sheet, not that the makers did not look. The five rows are chosen by the rule above, not as the decisions that mattered most. The reasons are the makers' statements as recorded in the decision table; they are not checked against a file and do not show that a choice was right. The judged cells of work 2 speak of the row of the 20 words only (the other rows of the blind judgement are in S1); they were judged on the images of the judgement (80 px tiles under five common seeds), not on figure 6 itself. The share used is a record of the 40 words of two trial authors, not a property of the map or of the lexicon; using more of a range is not claimed to be better.",
  "checks": [
   "every file named exists and is the one at HEAD; every key read exists; every must_contain string occurs in the keys named (else the run stops)",
   "every image of compared is one of acted_on of its row; the judged of each row is a non-empty literal, checked where a check is given; exactly the rows with dagger true carry the mark",
   "every row has a reason with a non-empty why and a list tried of non-empty strings (possibly empty)",
   "2 rows of work 1, 2 of work 2 and 1 of the record of the paper (asserted as constants), and 6 columns",
   "the saved image, opened again, is mode L at the width of the layout and its dpi, the font drawn (after rounding to pixels) is at least 7 pt, and the legend is one line",
-  "the words of the two tables together are at most max_words"
+  "the words of the two tables together are at most max_words",
+  "the share used of each quantity named in used_range, computed by used_range_rule, matches the string shown, and the literal contains it and the number of words",
+  "the outcome of every judged row with answers, computed by answers_rule from the two lists, is the one written, and the literal contains its phrase and the phrase of the row",
+  "no cell text before marking contains a reserved mark (reserved_marks)"
  ],
  "compared_mark": " *",
  "dagger": {
   "mark": "† ",
-  "meaning": "its claim in the paper was weakened after the values were seen"
- }
+  "meaning": "claim weakened in the paper after the values were seen"
+ },
+ "used_range_rule": "the range of a quantity is the one the rule can give, read from atact.mapping (f in [F0, F0 + F1], s in [S0, S0 + S1], the ends of p and q in [0, 1]); its share used is (the largest minus the smallest value of the 40 words of the two trial authors, pooled, the key pooled.<version>.<quantity> of the record) divided by that range, in percent; 'N%' means every quantity named rounds to N, 'over N%' that every one is above N; the literal must contain the string shown and '<words> words', and the words per author of the record must sum to words. The smallest to the largest is sensitive to an outlier; the quartiles are in S1",
+ "answers_rule": "the judged literal of a row of work 2 covers one version and one row of the blind judgement, named by the phrase of the row: the row remains for a judge if it is in the list of that version (main: the deciding judge of score.json, called the main judge in the paper, whose decided must be true; also: the researcher, of the supplement, whose controls must pass); the outcome is 'both differ' if both lists hold the row, 'neither' if none does and 'split' otherwise; the run stops unless the outcome is the one written and the literal contains its phrase and the phrase of the row. The other rows and versions are in S1",
+ "reserved_marks": "the dagger and the mark of the compared images are drawn only by the script: a row whose quantity, value, reason, image paths, when or judged contains † or * stops the run"
 }
