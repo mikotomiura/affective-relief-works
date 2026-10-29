@@ -1,0 +1,48 @@
+{
+ "purpose": "A second comparison in the same unit for the 104 sentences of work 1 (point 2 of the decisions of the researcher after round 12 of the pre-review, verdict section 7, and the researcher's words of the same day that the needed computation be done): the matched terms of the story itself, each occurrence once (1227 tokens), shuffled among the sentences with each sentence keeping its number of matched terms, averaged as work 1 averages. The comparison of results/paper_work1_same_unit draws uniformly from the whole lexicon, so the gap between the sentences (7% and 6%) and those draws (10% and 10%) mixes two things: the story uses a narrower part of the lexicon than the whole (the matched tokens span 14% and 12%), and the terms are put together within sentences. Shuffling the story's own tokens keeps the first and breaks the second, so the three sets side by side (uniform draws, shuffled tokens, the sentences) show how much of the narrowness each step carries. It goes to S1, next to the record of paper_work1_same_unit.",
+ "fixed_before_running": "Written on 2026-10-29 and committed before the script was written or run. Seen before: everything seen before works/conditions/paper_work1_same_unit.json, and its record results/paper_work1_same_unit/same_unit.json with every share (the 104 sentences 6.6% and 6.0%, the matched tokens 14.1% and 11.8%, the distinct matched terms 19.9% and 21.4%, the lexicon 32.7% and 33.4%, the uniform draws 9.7% and 10.0% as the mean over 1000 replicates, with 1 and 0 replicates at or below the sentences), round 12 of the pre-review and its verdict. Not seen before: any shuffle of the story's tokens. The comparison was chosen after the reviewers pointed at the mixture, so every count of this record is counted later.",
+ "version": 1,
+ "inputs": {
+  "work1_conditions": {"path": "works/conditions/work1.json"},
+  "work1": {"path": "results/work1/work1.json"},
+  "same_unit_conditions": {"path": "works/conditions/paper_work1_same_unit.json"},
+  "same_unit": {"path": "results/paper_work1_same_unit/same_unit.json"},
+  "same_unit_script": {"path": "works/paper_work1_same_unit.py"},
+  "hashes": "the JSON inputs and the script of paper_work1_same_unit are checked to be the committed bytes; work1.json and same_unit.json to be made on their conditions on a clean tree, same_unit.json by that script and from that work1.json; the NRC lexicon against the SHA-256 of works/conditions/work1.json and the nrc_sha256 of same_unit.json"
+ },
+ "sets": {
+  "sentences": "the 104 sentences of work 1, f and s as recorded (unit: sentence)",
+  "shuffled_sentences": "R replicates; in each, the 1227 matched tokens of the 104 sentences (in the order of the sentences and, within each, of its matched terms) are permuted by one call of permutation of a generator, then split into 104 sentences in their order, each taking as many tokens as its own Z; V and A the mean of the lexicon values of its tokens, summed in order as work 1 sums its matched terms; f and s = params(V, A) (unit: sentence)",
+  "uniform_draws": "the summary of random_sentences of same_unit.json, read as recorded (unit: sentence)"
+ },
+ "random": {
+  "replicates": 1000,
+  "generator": "numpy.random.default_rng(seed) (PCG64), one generator for all replicates, one call of permutation(1227) per replicate",
+  "seed": 20261030,
+  "summary": "per quantity and share (quartiles and minimum to maximum): the mean, the median and the quantiles 0.025 and 0.975 (numpy.quantile, linear) of the share over the replicates, and the number of replicates whose share is at most that of the 104 sentences, as works/paper_work1_same_unit.py"
+ },
+ "statistics": {
+  "quantities": ["f", "s"],
+  "shape": "f, s = atact.mapping.params(V, A); the range of the rule is f in [3, 7] and s in [0.06, 0.30]",
+  "share": "the function spread of works/paper_work1_same_unit.py (imported): 100 (maximum - minimum) / width and 100 (third quartile - first quartile) / width, numpy.quantile linear, unweighted",
+  "main": "the quartiles; the minimum to maximum is recorded next to them"
+ },
+ "constants": {
+  "sentences": 104,
+  "matched_tokens": 1227,
+  "replicates": 1000,
+  "seed": 20261030
+ },
+ "checks": [
+  "X1: 104 sentences, Z of each equal to the number of its matched terms, 1227 tokens, every token an entry of the lexicon",
+  "X2: the sentences recomputed from their matched terms equal work1.json (V, A, f, s exactly) and their shares equal sets.sentences of same_unit.json exactly",
+  "X3: every replicate is a permutation of the 1227 tokens (the multiset of tokens is unchanged) and gives each sentence its own Z",
+  "X4: every V and A lies in [-1, 1]; the installed atact is the generator of works/conditions/work1.json and of same_unit.json",
+  "X5: the shuffles are made again from a new generator with the same seed and give the same shares in every replicate; the replicates do not all give the same share"
+ ],
+ "outputs": {
+  "dir": "results/paper_work1_shuffled (refused if it exists)",
+  "record": "shuffled.json: the shares of the sentences, the summary of the shuffled sentences and the shares of every replicate, the summary of the uniform draws as read from same_unit.json, the range of the rule, the checks X1 to X5 with their counts, the SHA-256 of the conditions, the script and every input, the versions and the git state"
+ },
+ "not_claimed": "A description, not a test: the number of replicates at or below the sentences is not a p-value. Shuffling keeps which terms the story uses and how often, and breaks only which terms share a sentence; it does not keep the order of the story, the length of the sentences in words or anything outside the matched terms. A difference between the sentences and the shuffles says that the way terms are put together in sentences matters for the spread, not why. Every count here was made after the values of the sentences, the record of paper_work1_same_unit and the reviews of round 12 were seen."
+}
