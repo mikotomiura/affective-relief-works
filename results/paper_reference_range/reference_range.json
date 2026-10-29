@@ -1,0 +1,564 @@
+{
+ "meta": {
+  "conditions_sha256": "09e2b172504857fa8a45f866518e3cb2b6c265fdef845f31fa81601ea70524fe",
+  "script_sha256": "0c798e9cf53e3e328f7879c505e333857e76d94e59336a924efe130b2c737368",
+  "inputs_sha256": {
+   "work2_conditions": "a56209998d026485c156f2d2d51539724dca50ad6c1dfad17af2fb2a06631859",
+   "work2_result": "5d6cce58ea564a77535d6c6f18c48e396ce6c570b151aa5d40c348a9dc9f7356",
+   "words_conditions": "7978599bdeed5f2973cae03dfbd2f85f26fc25173ea022f68a0e0e6c9a671164",
+   "reference_conditions": "e58d15b15fa08072c5914a5fe7509f7f3372a750c7a8c3bfbb0dfdd9e0cbc4e2",
+   "values": "2a15808cef6cd5978acda504fb6d08b4c1df6fec736901d90c492e6e525db71e",
+   "generation_conditions": "807cdadeaf6ba924cedc42ac863589dfd7994ea27b8b1299331c0c667c095df0",
+   "generation_record": "3fbfd0717f2cc1bf9be2794997474cd35d6d706094bc10b68b1f80e01da29581",
+   "calibration": "a84da6f57fd37091fe69f9f931d061c687e76c404ce900c5b342be1e37065989"
+  },
+  "lexicon_sha256": "537cf39afd50f89cc4c69842f9876df7ff48f9950da849d739bdde7fc00d9e83",
+  "dicdir_sha256": {
+   "COPYING": "fca02d9adb601d101eccdf3131119abfff2d9c825ef5c759d7a89ebbaa972099",
+   "char.bin": "81bba502ae48fa005a374819f15e44452eb68086a8b323ec20a044d514400832",
+   "dicrc": "add6bb131a75e69478961ea59712541ace3779f7c5daa4da80d281f097c9d4d1",
+   "matrix.bin": "ee44d7350cdcb680ebd699f83e121be1dc63310f8832d55bcb537a068177611a",
+   "mecabrc": "cf91ca4aec6bbf596eda5034aefb73ae90999678b59f20ce3deb35d91fddb009",
+   "sys.dic": "223af63996d5d9a104d8c8baaf32029fbbf6a370d7dff33fe19fda2e92ac0ac1",
+   "unk.dic": "f0bf15e3e28259f4470b9c1e775d98bef53207d4b09afcd6d8545209b7b53f88",
+   "version": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "library_sha256": {
+   "__init__.py": "d5980876e37cb7a1f5dc379028ab50f7a0c1d77d84c7651ee5d1beefd623b6ab",
+   "field.py": "4162e8faa60ca78257fd0777a3a7dceaaa7bbab6bfe6691de46f49a339b641c5",
+   "lexicon.py": "36cad1e49a25b352a7ae04868c6693ef349e8276d51909061eeb378085065e81",
+   "mapping.py": "83a50faaa664ddcb99004392e13a73fb096a85588a8b3c423b2c8b71ce626d26",
+   "transform.py": "5d35c9c10dfa6c8d5d3b2a9e8126ab45b895a1be14e05650c3ef60ffd3431bd1"
+  },
+  "python": "3.13.12",
+  "platform": "Darwin arm64",
+  "atact_commit": "b559a80c623d36357dd0736b887497a0cb789af5",
+  "numpy": "2.5.4",
+  "fugashi": "1.5.2",
+  "ipadic": "1.0.0",
+  "git_commit": "dd6cc0463e9d58b48a3a6dbd2417ce3f48ed1218",
+  "git_dirty": false,
+  "started": "2026-10-29T04:19:51+00:00",
+  "finished": "2026-10-29T04:19:57+00:00"
+ },
+ "checks": {
+  "R1_constants": {
+   "authors_reference": 6,
+   "trial_authors": 2,
+   "words_per_author": 20,
+   "works": 23,
+   "lexicon_entries": 2003306,
+   "reference_words": 18301,
+   "reference_tokens": {
+    "夏目漱石": 37536,
+    "芥川竜之介": 37792,
+    "梶井基次郎": 29569,
+    "岡本かの子": 41967,
+    "中島敦": 45771,
+    "太宰治": 39216
+   }
+  },
+  "R2_percentiles_of_the_mapped_lexicon_equal_calibrate_memolon": 8,
+  "R3_percentiles_of_values_json_recomputed": 64,
+  "R4_words_checked": 80,
+  "R5_entries_changed_by_the_clip_of_map_B": {
+   "valence": 270,
+   "arousal": 54
+  },
+  "R6_generator_and_rule": true
+ },
+ "rule_range": {
+  "f": [
+   3.0,
+   7.0
+  ],
+  "s": [
+   0.06,
+   0.3
+  ]
+ },
+ "sets": {
+  "lexicon_B": {
+   "f": {
+    "n": 2003306,
+    "min": 4.0500718496358905,
+    "q1": 4.952940543945744,
+    "q3": 5.222957349720653,
+    "max": 7.0,
+    "share_min_max_percent": 73.74820375910274,
+    "share_quartiles_percent": 6.750420144372726
+   },
+   "s": {
+    "n": 2003306,
+    "min": 0.06,
+    "q1": 0.16412830476739543,
+    "q3": 0.19166826763478986,
+    "max": 0.3,
+    "share_min_max_percent": 100.0,
+    "share_quartiles_percent": 11.474984528081016
+   }
+  },
+  "tokens_P": {
+   "f": {
+    "n": 18301,
+    "total_weight": 6.0,
+    "min": 3.000016442680668,
+    "q1": 3.9356044500908105,
+    "q3": 6.0316157274733655,
+    "max": 6.999988726932486,
+    "share_min_max_percent": 99.99930710629545,
+    "share_quartiles_percent": 52.40028193456388
+   },
+   "s": {
+    "n": 18301,
+    "total_weight": 6.0,
+    "min": 0.06000047656492003,
+    "q1": 0.11862093312495683,
+    "q3": 0.23665629784353565,
+    "max": 0.2999938800489596,
+    "share_min_max_percent": 99.99725145168317,
+    "share_quartiles_percent": 49.18140196607451
+   }
+  },
+  "tokens_B": {
+   "f": {
+    "n": 18301,
+    "total_weight": 6.0,
+    "min": 4.0500718496358905,
+    "q1": 4.708237813712232,
+    "q3": 4.961378569126211,
+    "max": 7.0,
+    "share_min_max_percent": 73.74820375910274,
+    "share_quartiles_percent": 6.328518885349466
+   },
+   "s": {
+    "n": 18301,
+    "total_weight": 6.0,
+    "min": 0.06,
+    "q1": 0.1444569027192566,
+    "q3": 0.16609544497220932,
+    "max": 0.3,
+    "share_min_max_percent": 100.0,
+    "share_quartiles_percent": 9.016059272063636
+   }
+  },
+  "tokens_P_per_author": {
+   "夏目漱石": {
+    "f": {
+     "n": 5325,
+     "min": 3.0002066884753553,
+     "q1": 3.9356044500908105,
+     "q3": 6.0316157274733655,
+     "max": 6.999348558337875,
+     "share_min_max_percent": 99.97854674656298,
+     "share_quartiles_percent": 52.40028193456388,
+     "tokens": 37536,
+     "total_weight": 1.0
+    },
+    "s": {
+     "n": 5325,
+     "min": 0.06004132631576726,
+     "q1": 0.12440614004040615,
+     "q3": 0.24522481039358274,
+     "max": 0.29996868740700633,
+     "share_min_max_percent": 99.96973378801628,
+     "share_quartiles_percent": 50.34111264715691,
+     "tokens": 37536,
+     "total_weight": 1.0
+    }
+   },
+   "芥川竜之介": {
+    "f": {
+     "n": 4865,
+     "min": 3.000375265595209,
+     "q1": 3.9356044500908105,
+     "q3": 6.0316157274733655,
+     "max": 6.999942795325291,
+     "share_min_max_percent": 99.98918824325204,
+     "share_quartiles_percent": 52.40028193456388,
+     "tokens": 37792,
+     "total_weight": 1.0
+    },
+    "s": {
+     "n": 4865,
+     "min": 0.060017390208285656,
+     "q1": 0.11862093312495683,
+     "q3": 0.23665629784353565,
+     "max": 0.29997907924210365,
+     "share_min_max_percent": 99.98403709742416,
+     "share_quartiles_percent": 49.18140196607451,
+     "tokens": 37792,
+     "total_weight": 1.0
+    }
+   },
+   "梶井基次郎": {
+    "f": {
+     "n": 4219,
+     "min": 3.0000441584288504,
+     "q1": 3.9356044500908105,
+     "q3": 6.0316157274733655,
+     "max": 6.999988726932486,
+     "share_min_max_percent": 99.99861421259088,
+     "share_quartiles_percent": 52.40028193456388,
+     "tokens": 29569,
+     "total_weight": 1.0
+    },
+    "s": {
+     "n": 4219,
+     "min": 0.06001210541121181,
+     "q1": 0.11862093312495683,
+     "q3": 0.23665629784353565,
+     "max": 0.29997907924210365,
+     "share_min_max_percent": 99.98623909620494,
+     "share_quartiles_percent": 49.18140196607451,
+     "tokens": 29569,
+     "total_weight": 1.0
+    }
+   },
+   "岡本かの子": {
+    "f": {
+     "n": 6666,
+     "min": 3.000016442680668,
+     "q1": 3.9356044500908105,
+     "q3": 6.0316157274733655,
+     "max": 6.999897759436244,
+     "share_min_max_percent": 99.9970329188894,
+     "share_quartiles_percent": 52.40028193456388,
+     "tokens": 41967,
+     "total_weight": 1.0
+    },
+    "s": {
+     "n": 6666,
+     "min": 0.06000047656492003,
+     "q1": 0.11862093312495683,
+     "q3": 0.23665629784353565,
+     "max": 0.2999864096172009,
+     "share_min_max_percent": 99.9941387717837,
+     "share_quartiles_percent": 49.18140196607451,
+     "tokens": 41967,
+     "total_weight": 1.0
+    }
+   },
+   "中島敦": {
+    "f": {
+     "n": 6777,
+     "min": 3.0002066884753553,
+     "q1": 3.9356044500908105,
+     "q3": 6.0316157274733655,
+     "max": 6.999970171233318,
+     "share_min_max_percent": 99.99408706894909,
+     "share_quartiles_percent": 52.40028193456388,
+     "tokens": 45771,
+     "total_weight": 1.0
+    },
+    "s": {
+     "n": 6777,
+     "min": 0.0600190327627674,
+     "q1": 0.12440614004040615,
+     "q3": 0.24757611407501023,
+     "max": 0.2999864096172009,
+     "share_min_max_percent": 99.98640702268062,
+     "share_quartiles_percent": 51.320822514418374,
+     "tokens": 45771,
+     "total_weight": 1.0
+    }
+   },
+   "太宰治": {
+    "f": {
+     "n": 5186,
+     "min": 3.000016442680668,
+     "q1": 4.1339862956025675,
+     "q3": 6.0316157274733655,
+     "max": 6.999914202116914,
+     "share_min_max_percent": 99.99744398590614,
+     "share_quartiles_percent": 47.44073579676995,
+     "tokens": 39216,
+     "total_weight": 1.0
+    },
+    "s": {
+     "n": 5186,
+     "min": 0.060002483117600175,
+     "q1": 0.11862093312495683,
+     "q3": 0.23665629784353565,
+     "max": 0.2999938800489596,
+     "share_min_max_percent": 99.99641538806644,
+     "share_quartiles_percent": 49.18140196607451,
+     "tokens": 39216,
+     "total_weight": 1.0
+    }
+   }
+  },
+  "tokens_B_per_author": {
+   "夏目漱石": {
+    "f": {
+     "n": 5325,
+     "min": 4.227270378425675,
+     "q1": 4.708237813712232,
+     "q3": 4.961378569126211,
+     "max": 6.69961175630219,
+     "share_min_max_percent": 61.80853444691288,
+     "share_quartiles_percent": 6.328518885349466,
+     "tokens": 37536,
+     "total_weight": 1.0
+    },
+    "s": {
+     "n": 5325,
+     "min": 0.06036165896346299,
+     "q1": 0.14494868777046005,
+     "q3": 0.16707901507461626,
+     "max": 0.3,
+     "share_min_max_percent": 99.84930876522375,
+     "share_quartiles_percent": 9.220969710065086,
+     "tokens": 37536,
+     "total_weight": 1.0
+    }
+   },
+   "芥川竜之介": {
+    "f": {
+     "n": 4865,
+     "min": 4.235708403606141,
+     "q1": 4.708237813712232,
+     "q3": 4.961378569126211,
+     "max": 6.978066587257565,
+     "share_min_max_percent": 68.5589545912856,
+     "share_quartiles_percent": 6.328518885349466,
+     "tokens": 37792,
+     "total_weight": 1.0
+    },
+    "s": {
+     "n": 4865,
+     "min": 0.06,
+     "q1": 0.1444569027192566,
+     "q3": 0.16609544497220932,
+     "max": 0.3,
+     "share_min_max_percent": 100.0,
+     "share_quartiles_percent": 9.016059272063636,
+     "tokens": 37792,
+     "total_weight": 1.0
+    }
+   },
+   "梶井基次郎": {
+    "f": {
+     "n": 4219,
+     "min": 4.17664222734288,
+     "q1": 4.708237813712232,
+     "q3": 4.961378569126211,
+     "max": 7.0,
+     "share_min_max_percent": 70.583944316428,
+     "share_quartiles_percent": 6.328518885349466,
+     "tokens": 29569,
+     "total_weight": 1.0
+    },
+    "s": {
+     "n": 4219,
+     "min": 0.06,
+     "q1": 0.1444569027192566,
+     "q3": 0.16609544497220932,
+     "max": 0.3,
+     "share_min_max_percent": 100.0,
+     "share_quartiles_percent": 9.016059272063636,
+     "tokens": 29569,
+     "total_weight": 1.0
+    }
+   },
+   "岡本かの子": {
+    "f": {
+     "n": 6666,
+     "min": 4.0500718496358905,
+     "q1": 4.708237813712232,
+     "q3": 4.961378569126211,
+     "max": 6.902124360633373,
+     "share_min_max_percent": 71.30131277493706,
+     "share_quartiles_percent": 6.328518885349466,
+     "tokens": 41967,
+     "total_weight": 1.0
+    },
+    "s": {
+     "n": 6666,
+     "min": 0.06,
+     "q1": 0.1444569027192566,
+     "q3": 0.16609544497220932,
+     "max": 0.3,
+     "share_min_max_percent": 100.0,
+     "share_quartiles_percent": 9.016059272063636,
+     "tokens": 41967,
+     "total_weight": 1.0
+    }
+   },
+   "中島敦": {
+    "f": {
+     "n": 6777,
+     "min": 4.227270378425675,
+     "q1": 4.708237813712232,
+     "q3": 4.961378569126211,
+     "max": 7.0,
+     "share_min_max_percent": 69.31824053935813,
+     "share_quartiles_percent": 6.328518885349466,
+     "tokens": 45771,
+     "total_weight": 1.0
+    },
+    "s": {
+     "n": 6777,
+     "min": 0.06,
+     "q1": 0.14494868777046005,
+     "q3": 0.16855437022822672,
+     "max": 0.3,
+     "share_min_max_percent": 100.0,
+     "share_quartiles_percent": 9.835701024069447,
+     "tokens": 45771,
+     "total_weight": 1.0
+    }
+   },
+   "太宰治": {
+    "f": {
+     "n": 5186,
+     "min": 4.0500718496358905,
+     "q1": 4.716675838892698,
+     "q3": 4.961378569126211,
+     "max": 6.961190536896634,
+     "share_min_max_percent": 72.77796718151859,
+     "share_quartiles_percent": 6.117568255837824,
+     "tokens": 39216,
+     "total_weight": 1.0
+    },
+    "s": {
+     "n": 5186,
+     "min": 0.06,
+     "q1": 0.1444569027192566,
+     "q3": 0.16609544497220932,
+     "max": 0.3,
+     "share_min_max_percent": 100.0,
+     "share_quartiles_percent": 9.016059272063636,
+     "tokens": 39216,
+     "total_weight": 1.0
+    }
+   }
+  },
+  "words": {
+   "G0": {
+    "太宰治": {
+     "f": {
+      "n": 20,
+      "min": 4.63229558708804,
+      "q1": 4.887545848797133,
+      "q3": 5.090058453128316,
+      "max": 5.298899576344847,
+      "share_min_max_percent": 16.665099731420185,
+      "share_quartiles_percent": 5.0628151082795725
+     },
+     "s": {
+      "n": 20,
+      "min": 0.09872089295733377,
+      "q1": 0.1301951362343559,
+      "q3": 0.16068580940897115,
+      "max": 0.2078971743245044,
+      "share_min_max_percent": 45.490117236321105,
+      "share_quartiles_percent": 12.704447156089683
+     }
+    },
+    "岡本かの子": {
+     "f": {
+      "n": 20,
+      "min": 4.539477310102914,
+      "q1": 4.8158226347631725,
+      "q3": 4.971926100601793,
+      "max": 5.41703192887137,
+      "share_min_max_percent": 21.9388654692114,
+      "share_quartiles_percent": 3.9025866459655223
+     },
+     "s": {
+      "n": 20,
+      "min": 0.11445801459584484,
+      "q1": 0.14039967604682796,
+      "q3": 0.16560365992100587,
+      "max": 0.18281613671312738,
+      "share_min_max_percent": 28.482550882201057,
+      "share_quartiles_percent": 10.50165994757413
+     }
+    },
+    "both": {
+     "f": {
+      "n": 40,
+      "min": 4.539477310102914,
+      "q1": 4.834808191419221,
+      "q3": 5.064744377586917,
+      "max": 5.41703192887137,
+      "share_min_max_percent": 21.9388654692114,
+      "share_quartiles_percent": 5.748404654192418
+     },
+     "s": {
+      "n": 40,
+      "min": 0.09872089295733377,
+      "q1": 0.13363763159278022,
+      "q3": 0.16560365992100587,
+      "max": 0.2078971743245044,
+      "share_min_max_percent": 45.490117236321105,
+      "share_quartiles_percent": 13.319178470094021
+     }
+    }
+   },
+   "P": {
+    "太宰治": {
+     "f": {
+      "n": 20,
+      "min": 3.4892484745067387,
+      "q1": 5.619170942091941,
+      "q3": 6.444366899813016,
+      "max": 6.744357527810687,
+      "share_min_max_percent": 81.3777263325987,
+      "share_quartiles_percent": 20.62989894302687
+     },
+     "s": {
+      "n": 20,
+      "min": 0.06134994175158066,
+      "q1": 0.08228066553647992,
+      "q3": 0.21764595003125162,
+      "max": 0.2863859915085796,
+      "share_min_max_percent": 93.76502073208289,
+      "share_quartiles_percent": 56.40220187282155
+     }
+    },
+    "岡本かの子": {
+     "f": {
+      "n": 20,
+      "min": 3.1453592548701246,
+      "q1": 5.236944993484171,
+      "q3": 6.157439980233811,
+      "max": 6.825704369201034,
+      "share_min_max_percent": 92.00862785827275,
+      "share_quartiles_percent": 23.012374668740996
+     },
+     "s": {
+      "n": 20,
+      "min": 0.06401418077229068,
+      "q1": 0.10616310777784392,
+      "q3": 0.23071004747739307,
+      "max": 0.2706578679787687,
+      "share_min_max_percent": 86.10153633603251,
+      "share_quartiles_percent": 51.89455820814548
+     }
+    },
+    "both": {
+     "f": {
+      "n": 40,
+      "min": 3.1453592548701246,
+      "q1": 5.425183015840984,
+      "q3": 6.395244890910229,
+      "max": 6.825704369201034,
+      "share_min_max_percent": 92.00862785827275,
+      "share_quartiles_percent": 24.251546876731123
+     },
+     "s": {
+      "n": 40,
+      "min": 0.06134994175158066,
+      "q1": 0.0890954375544095,
+      "q3": 0.23071004747739307,
+      "max": 0.2863859915085796,
+      "share_min_max_percent": 93.76502073208289,
+      "share_quartiles_percent": 59.00608746790983
+     }
+    }
+   }
+  }
+ }
+}
