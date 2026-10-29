@@ -4,15 +4,16 @@ and 2, and the same table empty as its own image (for supplement S1, version 11;
 general lines, version 13), from the conditions and the files they name.
 
 Usage:  uv run python works/decision_note.py        (refuses to overwrite)
-Conditions: works/conditions/decision_note.json, version 13 (committed before this version of the script was written)
+Conditions: works/conditions/decision_note.json, version 14 (committed before this version of the script was written)
 Input:  the files named in the rows (conditions of works 1 and 2, of the drawing, of the blind judgement and of the records
         of the share used, the scoring of the blind judgement and its supplement, and the images each quantity acted on) and
         the values every share is computed again from (results/work1/work1.json, results/work2_words/words.json,
         results/paper_words_values/words_values.json, and the shuffled sentences of results/paper_work1_shuffled
-        shuffled again), and the record of the reference sets beside map B (results/paper_reference_range, read and
-        checked by its provenance, version 13); every one must be the committed bytes at HEAD. The range of f and s
+        shuffled again), and the records of the sets beside map B and the percentiles (results/paper_reference_range,
+        version 13, and results/paper_distinct_range, version 14, read and checked by their provenance); every one
+        must be the committed bytes at HEAD. The range of f and s
         is read from the installed atact.mapping, which must be the library of every record of the share used
-Output: results/decision_note_v13/decision_note.png (figure 8), decision_note_empty.png (S1), decision_note.md and
+Output: results/decision_note_v14/decision_note.png (figure 8), decision_note_empty.png (S1), decision_note.md and
         decision_note.json
 """
 
@@ -38,10 +39,10 @@ from PIL import Image, ImageDraw, ImageFont  # noqa: E402
 import _common as cm  # noqa: E402
 
 COND = ROOT / "works" / "conditions" / "decision_note.json"
-OUT_DIR = ROOT / "results" / "decision_note_v13"
+OUT_DIR = ROOT / "results" / "decision_note_v14"
 CODE = ["works/decision_note.py", "works/_common.py"]
 MM_PER_INCH = 25.4
-VERSION = 13
+VERSION = 14
 ROW_SETS = {"rows_work1": "Work 1", "rows_work2": "Work 2"}
 # the ids of the rows, in order (checks of the conditions); the number of rows follows from them
 ROW_IDS = {"rows_work1": ["w1_lexicon", "w1_height_scale", "w1_drawing"], "rows_work2": ["w2_map_b", "w2_percentiles", "w2_seed"]}
@@ -58,8 +59,8 @@ VERSION_OF = {"w2_map_b": "G0", "w2_percentiles": "P", "w2_seed": "SPC"}
 # with its kind, character for character
 APPROVED_CELLS = {
     "w1_lexicon": {
-        "quantity": "lexicon",
-        "value": ("text", "NRC VAD v2.1, a sentence the mean of its terms"),
+        "quantity": "lexicon; sentence as mean",
+        "value": ("text", "NRC VAD v2.1"),
         "reason": "Human ratings of English words. Tried: none. Later compared with: those beside.",
         "when": "before; seen: none",
         "judged": ("none", NONE_RECORDED)},
@@ -96,14 +97,14 @@ APPROVED_CELLS = {
         "value": ("literal", "per word: SHA-256 of the word plus a common seed"),
         "reason": "Varies the pattern by word; rows can differ by spelling alone. Tried: per-author seeds; a common seed.",
         "when": "after; seen: sketches with this per-word rule",
-        "judged": ("text", "not apart from color")},
+        "judged": ("text", "judged only with color")},
 }
 APPROVED_TEXT = {(rid, f): cells[f][1] for rid, cells in APPROVED_CELLS.items() for f in ("value", "judged")
                  if cells[f][0] == "text"}
-# approved_text_rule of the conditions (version 13): every row as written in the conditions, and the frame of the table
+# approved_text_rule of the conditions (version 14): every row as written in the conditions, and the frame of the table
 APPROVED_ROWS = {'w1_lexicon': {'id': 'w1_lexicon',
-                'quantity': 'lexicon',
-                'value': {'text': 'NRC VAD v2.1, a sentence the mean of its terms',
+                'quantity': 'lexicon; sentence as mean',
+                'value': {'text': 'NRC VAD v2.1',
                           'check': {'file': 'works/conditions/work1.json',
                                     'keys': ['lexicon.name', 'steps'],
                                     'must_contain': ['NRC VAD Lexicon v2.1', 'every matched term averaged']},
@@ -188,10 +189,10 @@ APPROVED_ROWS = {'w1_lexicon': {'id': 'w1_lexicon',
                                                    'set': 'lexicon_B',
                                                    'label': 'whole lexicon',
                                                    'shown': {'f': '7%', 's': '11%'}},
-                                                  {'file': 'results/paper_reference_range/reference_range.json',
-                                                   'set': 'tokens_B',
-                                                   'label': 'words of the 23 works',
-                                                   'shown': {'f': '6%', 's': '9%'}}]}},
+                                                  {'file': 'results/paper_distinct_range/distinct_range.json',
+                                                   'set': 'distinct_B',
+                                                   'label': "23 works' words",
+                                                   'shown': {'f': '12%', 's': '21%'}}]}},
               'reason': {'why': 'brings the Japanese values onto the English scale',
                          'tried': [],
                          'shown_beside': [],
@@ -225,7 +226,11 @@ APPROVED_ROWS = {'w1_lexicon': {'id': 'w1_lexicon',
                                              'set': 'main_P.pooled',
                                              'n': 120,
                                              'unit': 'words',
-                                             'shown': {'f': '54%', 's': '60%'}}},
+                                             'shown': {'f': '54%', 's': '60%'},
+                                             'beside': [{'file': 'results/paper_distinct_range/distinct_range.json',
+                                                         'set': 'distinct_P',
+                                                         'label': "23 works' words",
+                                                         'shown': {'f': '49%', 's': '36%'}}]}},
                     'reason': {'why': 'spreads values map B compresses; stretches small predicted differences, most in '
                                       'A',
                                'tried': ['map B', 'whole-lexicon percentiles'],
@@ -263,10 +268,13 @@ APPROVED_ROWS = {'w1_lexicon': {'id': 'w1_lexicon',
              'acted_on': ['results/work2_sp_color/SPC.png'],
              'compared': [],
              'when': 'after; seen: sketches with this per-word rule',
-             'judged': {'text': 'not apart from color',
+             'judged': {'text': 'judged only with color',
                         'check': {'file': 'works/conditions/blind_judgement.json',
-                                  'keys': ['judges.deciding', 'judges.also'],
-                                  'must_contain': ['has not seen the sheets', 'not as a blind judgement']},
+                                  'keys': ['judges.deciding', 'judges.also', 'versions.SPC'],
+                                  'must_contain': ['has not seen the sheets',
+                                                   'not as a blind judgement',
+                                                   'the seed per spelling',
+                                                   'coloured']},
                         'answers': {'main': {'file': 'results/blind_judgement/score.json',
                                              'key': 'decision.rows_remaining',
                                              'decided_key': 'decision.decided'},
@@ -285,10 +293,15 @@ APPROVED_FRAME = {'headers': ['Quantity',
                               'Who judged the look (sheet used)'],
                   'titles': ['Decision note for works 1 and 2', 'Decision note, empty'],
                   'note': ["Middle half: Q3 − Q1 as % of the rule's range, counted and compared after seeing the records.",
-                           "Judged: whether the two authors' rows differ within one version; versions not compared."],
+                           "Judged: whether the two authors' rows differ within one version, on the 80 px judging sheets; "
+                           "versions not compared."],
                   # the lines under the empty template of S1, which leave the time and the judgement open (version 13)
                   'note_empty': ["Middle half: Q3 − Q1 as % of the rule's range; counted and compared before or after "
                                  "seeing the values: …",
+                                 # the time and the mark of the outline (version 14)
+                                 "When: by the time the quantity was last fixed for the work, had the maker who decided "
+                                 "seen its outputs, or been told of them: …",
+                                 "‡: before, but after seeing outputs of alternatives: …",
                                  "Judged: what the judges compared, and what they did not: …"],
                   'acted_on_labels': 'in the repository the column holds the image files; the numbers of the figures of the paper are '
                                      'put in when the manuscript is made, outside the repository',
@@ -299,7 +312,7 @@ APPROVED_LAYOUT = {'width_mm': 177.8,
  'colour': 'black and white',
  'font_file': '/System/Library/Fonts/Helvetica.ttc',
  'column_share': {'quantity': 0.1, 'value': 0.19, 'reason': 0.19, 'acted_on': 0.19, 'when': 0.17, 'judged': 0.16},
- 'max_words': 403}
+ 'max_words': 408}
 # the files of the two judges (checks of the conditions)
 MAIN_FILE = "results/blind_judgement/score.json"
 ALSO_FILE = "results/blind_judgement/score-researcher-supplement.json"
@@ -324,15 +337,26 @@ REF_FILE = "results/paper_reference_range/reference_range.json"
 REF_CONDITIONS = "works/conditions/paper_reference_range.json"
 REF_SCRIPT = "works/paper_reference_range.py"
 REF_N = {"lexicon_B": "lexicon_entries", "tokens_B": "reference_words"}  # the key of its n in checks.R1_constants
-REF_INPUTS: set[str] = set()  # the inputs of the record of the reference sets, as read (version 13)
+REF_INPUTS: set[str] = set()  # the inputs of the records of the sets beside, as read (versions 13 and 14)
+# the distinct words of the 23 works beside map B and the percentiles (version 14): read from their record, checked by its
+# provenance, not computed again
+DIST_FILE = "results/paper_distinct_range/distinct_range.json"
+DIST_CONDITIONS = "works/conditions/paper_distinct_range.json"
+DIST_SCRIPT = "works/paper_distinct_range.py"
+DIST_N = {"distinct_B": "reference_words", "distinct_P": "reference_words"}  # the key of its n in checks.D1_constants
+# per record beside: its conditions, its script, the key of its constants in its checks and the key of the n of each set
+BESIDE_RECORDS = {REF_FILE: (REF_CONDITIONS, REF_SCRIPT, "R1_constants", REF_N),
+                  DIST_FILE: (DIST_CONDITIONS, DIST_SCRIPT, "D1_constants", DIST_N)}
+# the number of the tiles of the row of the 20 words of the blind judgement, named in the second line of the note
+JUDGING_PX_KEY = "tiles.words20_px"
 # the shares beside, in order: (record, set, label); a share beside in the record of the row has no file in the conditions
 # (the form of version 12 and before; from version 13 no row uses it)
 USED_SETS = {"w1_lexicon": (SAME_FILE, SAME_CONDITIONS, "sentences",
                             [(SHUF_FILE, SHUF_SET, "terms shuffled among them"),
                              (SAME_FILE, RANDOM_SET, "uniform draws, same term counts")]),
              "w2_map_b": (USED_FILE, USED_CONDITIONS, "main_G0.pooled",
-                          [(REF_FILE, "lexicon_B", "whole lexicon"), (REF_FILE, "tokens_B", "words of the 23 works")]),
-             "w2_percentiles": (USED_FILE, USED_CONDITIONS, "main_P.pooled", [])}
+                          [(REF_FILE, "lexicon_B", "whole lexicon"), (DIST_FILE, "distinct_B", "23 works' words")]),
+             "w2_percentiles": (USED_FILE, USED_CONDITIONS, "main_P.pooled", [(DIST_FILE, "distinct_P", "23 works' words")])}
 # the values the quartiles of every set shown are computed again from (after the review of Codex on version 8)
 WORK1_FILE = "results/work1/work1.json"
 WORDS_FILE = "results/work2_words/words.json"
@@ -341,7 +365,8 @@ VALUES_CONDITIONS = "works/conditions/paper_words_values.json"
 SAME_SCRIPT = "works/paper_work1_same_unit.py"  # its function draw draws the random sentences again (version 10)
 WORK1_CONDITIONS = "works/conditions/work1.json"  # the lexicon of work 1
 RECHECK_FILES = [WORK1_FILE, WORDS_FILE, VALUES_FILE, VALUES_CONDITIONS, USED_CONDITIONS, SAME_CONDITIONS, SAME_SCRIPT,
-                 WORK1_CONDITIONS, SHUF_FILE, SHUF_CONDITIONS, SHUF_SCRIPT, REF_FILE, REF_CONDITIONS, REF_SCRIPT]
+                 WORK1_CONDITIONS, SHUF_FILE, SHUF_CONDITIONS, SHUF_SCRIPT, REF_FILE, REF_CONDITIONS, REF_SCRIPT,
+                 DIST_FILE, DIST_CONDITIONS, DIST_SCRIPT]
 PERCENT = re.compile(r"(?<![\d.])(?:over )?\d+(?:\.\d+)?%")
 # any way of writing a share outside the built phrases (checks of the conditions)
 ANY_SHARE = re.compile(r"[%％]|\bper\s*cent\b|\bpercent(?:age)?s?\b", re.IGNORECASE)
@@ -696,40 +721,49 @@ def shuffled_share(n: int, cache: dict, where: str) -> dict[str, float]:
     return out
 
 
-def reference_share(set_name: str, cache: dict, where: str) -> dict[str, float]:
-    """The middle half of f and s of a reference set beside map B (version 13), read from the record of the reference sets
-    and checked by its provenance (its conditions, script and inputs at HEAD, a clean tree, the installed library and range
-    of the rule) and as 100 (q3 - q1) / width; not computed again from the values, which need the whole lexicon and the
-    words of the 23 works (the record checked its reconstruction in R2 to R4)."""
-    rec = load_json(REF_FILE, cache)
-    cond = load_json(REF_CONDITIONS, cache)
+def reference_share(file: str, set_name: str, cache: dict, where: str) -> dict[str, float]:
+    """The middle half of f and s of a set beside (the reference sets beside map B, version 13; the distinct words of the
+    23 works beside map B and the percentiles, version 14), read from its record and checked by its provenance (its
+    conditions, script and inputs at HEAD, a clean tree, the installed library and range of the rule, its n the count of
+    its conditions) and as 100 (q3 - q1) / width; not computed again from the values, which need the whole lexicon and the
+    words of the 23 works (the records checked their reconstruction: R2 to R4 and D2, D3)."""
+    if file not in BESIDE_RECORDS:
+        raise SystemExit(f"{where}: {file} is not a record beside fixed in the script")
+    conditions, script, constants, n_key = BESIDE_RECORDS[file]
+    rec = load_json(file, cache)
+    cond = load_json(conditions, cache)
     meta = read_key(rec, "meta", where)
-    cm.same_as_head([ROOT / REF_SCRIPT])
+    cm.same_as_head([ROOT / script])
     inputs = {}
     for k, v in read_key(cond, "inputs", where).items():
         if k == "hashes":  # the text on how the inputs are checked, not an input
             continue
         if not isinstance(v, dict) or not isinstance(v.get("path"), str):
-            raise SystemExit(f"{where}: the input {k!r} of {REF_CONDITIONS} has no path")
+            raise SystemExit(f"{where}: the input {k!r} of {conditions} has no path")
         inputs[k] = v["path"]
     for p in inputs.values():
-        load_json(p, cache)  # the committed bytes at HEAD
+        if p.endswith(".json"):
+            load_json(p, cache)  # the committed bytes at HEAD
+        else:
+            cm.same_as_head([ROOT / p])  # a script named as an input (version 14)
         REF_INPUTS.add(p)  # recorded among the files named in the output
-    if (not isinstance(meta, dict) or meta.get("conditions_sha256") != cm.sha256(ROOT / REF_CONDITIONS)
-            or meta.get("git_dirty") is not False or meta.get("script_sha256") != cm.sha256(ROOT / REF_SCRIPT)):
-        raise SystemExit(f"{where}: {REF_FILE} is not the record of {REF_CONDITIONS} made on a clean tree by {REF_SCRIPT}")
+    if (not isinstance(meta, dict) or meta.get("conditions_sha256") != cm.sha256(ROOT / conditions)
+            or meta.get("git_dirty") is not False or meta.get("script_sha256") != cm.sha256(ROOT / script)):
+        raise SystemExit(f"{where}: {file} is not the record of {conditions} made on a clean tree by {script}")
     if meta.get("library_sha256") != cm.library_sha256():
-        raise SystemExit(f"{where}: the installed atact is not the library of {REF_FILE}")
+        raise SystemExit(f"{where}: the installed atact is not the library of {file}")
     if (not inputs or set(read_key(meta, "inputs_sha256", where)) != set(inputs)
             or any(read_key(meta, f"inputs_sha256.{k}", where) != cm.sha256(ROOT / p) for k, p in inputs.items())):
-        raise SystemExit(f"{where}: {REF_FILE} was not made from {sorted(inputs.values())} as committed")
+        raise SystemExit(f"{where}: {file} was not made from {sorted(inputs.values())} as committed")
     if read_key(rec, "rule_range", where) != {q: list(v) for q, v in rule_ranges().items()}:
-        raise SystemExit(f"{where}: the range of the rule of {REF_FILE} is not the installed one")
-    if set_name not in REF_N:
-        raise SystemExit(f"{where}: {set_name!r} is not a reference set fixed in the script")
-    n = read_key(rec, f"checks.R1_constants.{REF_N[set_name]}", where)
-    if isinstance(n, bool) or not isinstance(n, int) or n < 2 or n != read_key(cond, f"constants.{REF_N[set_name]}", where):
-        raise SystemExit(f"{where}: checks.R1_constants.{REF_N[set_name]} of {REF_FILE} is not the count of {REF_CONDITIONS}")
+        raise SystemExit(f"{where}: the range of the rule of {file} is not the installed one")
+    if set_name not in n_key:
+        raise SystemExit(f"{where}: {set_name!r} is not a set beside fixed in the script for {file}")
+    n = read_key(rec, f"checks.{constants}.{n_key[set_name]}", where)
+    if isinstance(n, bool) or not isinstance(n, int) or n < 2 or n != read_key(cond, f"constants.{n_key[set_name]}", where):
+        raise SystemExit(f"{where}: checks.{constants}.{n_key[set_name]} of {file} is not the count of {conditions}")
+    if file == DIST_FILE and read_key(rec, "checks.D3_weighted_tables_equal_reference_range", where) != 4:
+        raise SystemExit(f"{where}: {file} did not recompute the four weighted sets of {REF_FILE} (D3)")
     return share_of(rec, set_name, n, where)
 
 
@@ -785,8 +819,8 @@ def check_used_range(u: dict, base: str, cache: dict, where: str, rid: str) -> t
             beside = random_share(rec, n, where, cache)
         elif bset == SHUF_SET and bfile == SHUF_FILE:
             beside = shuffled_share(n, cache, where)
-        elif bfile == REF_FILE and bset in REF_N:
-            beside = reference_share(bset, cache, where)
+        elif bfile in BESIDE_RECORDS:
+            beside = reference_share(bfile, bset, cache, where)
         elif bfile is None:
             beside = share_of(rec, bset, n, where)
             recheck(rec, bset, cache, where)
@@ -1035,6 +1069,8 @@ def main() -> None:
                    for p in (*OUTCOME_PHRASE.values(), *ROW_PHRASE.values(), "later", "after seeing the records",
                              "versions not compared"))):
         raise SystemExit("note_empty is not a list of lines of its own, or a line holds a mark, a value or an outcome")
+    if not (any(x.startswith("When:") for x in note_empty) and any(x.startswith("‡") for x in note_empty)):
+        raise SystemExit("note_empty has no line on the time or none on the mark ‡ (version 14)")
     max_words = cm.need(c, "max_words", int)
     frame = {"headers": headers, "titles": titles, "note": note, "note_empty": note_empty, "acted_on_labels": label,
              "compared_mark": mark_c, "dagger": dag}
@@ -1136,7 +1172,16 @@ def main() -> None:
         raise SystemExit("a text fixed in the script names a row that is not drawn")
     daggered = [r["quantity"] for rs in resolved.values() for r in rs if r["dagger"]]
     if daggered:
-        raise SystemExit(f"rows {daggered} carry the dagger; version 13 has none in the main table")
+        raise SystemExit(f"rows {daggered} carry the dagger; version 14 has none in the main table")
+    px = read_key(load_json(JUDGEMENT, cache), JUDGING_PX_KEY, "note")  # the images judged, named in the note (version 14)
+    if isinstance(px, bool) or not isinstance(px, int) or sum(f" {px} px judging sheets" in x for x in note) != 1:
+        raise SystemExit(f"the note does not name the {JUDGING_PX_KEY} of {JUDGEMENT} once")
+    named.add(JUDGEMENT)
+    # the 'only' of the judged of the seed: SPC is the one version naming the seed per spelling (version 14)
+    vers = read_key(load_json(JUDGEMENT, cache), "versions", "w2_seed")
+    if (not isinstance(vers, dict) or "seed per spelling" not in vers.get(VERSION_OF["w2_seed"], "")
+            or any("seed per spelling" in v for k, v in vers.items() if k != VERSION_OF["w2_seed"])):
+        raise SystemExit("w2_seed: the seed per spelling is not judged only in the version with the color")
 
     files = sorted(named)
     cm.same_as_head([COND, *(ROOT / p for p in CODE), *(ROOT / p for p in files)])
@@ -1210,6 +1255,7 @@ def main() -> None:
                "files_named_sha256": {p: cm.sha256(ROOT / p) for p in files},
                **resolved,
                "dagger_rows": daggered,
+               "judging_px": {"file": JUDGEMENT, "key": JUDGING_PX_KEY, "value": px},  # version 14
                "words": {**words, "max_words": max_words, "how": "whitespace-separated tokens, a path one word, "
                          "a mark standing alone one word; titles, headers, band labels, the note and the cells"},
                "drawing": {"width_px": width, "height_px": fig.height, "empty_height_px": empty.height, "mode": fig.mode,
