@@ -1,0 +1,41 @@
+{
+ "purpose": "Figure 6 of the paper on the two works, rebuilt after round 4 of the pre-review (decision 1 of .steering/20261029-attack-me-r4, question 2 of the verdict of round 4): the 20 words of the two trial authors in grey under the common seed 100, the upper half with V and A through map B (version G0 of the blind judgement), the lower half with V and A from the author-equal percentiles (version P of the blind judgement). The two halves are the two sides of the central comparison of work 2 (the scale of the values). The halves under the own seeds of the authors go to supplement S2 (results/paper_work2_figures/seeds_two_rows.png, already made). Nothing new is computed from the texts: the values are read from the committed records and drawn as before.",
+ "fixed_before_running": "Written on 2026-10-29 and committed before the script was run. Seen before: the tiles of G0 and P of the 20 words under the common seeds 100 and 300 at 72 px (results/sketch_sp_color/sketch_G0.png, sketch_P.png), the tiles of G0 under the common seed 100 at 200 px (results/work2_words/tiles_common_seed.png), the images of the blind judgement (80 px, all five common seeds) and both judges' answers. Not seen before: the tiles of P at 200 px. The size, the layout and the seed are those of the committed figure of the 20 words, chosen before anything of P at 200 px was seen.",
+ "version": 1,
+ "inputs": {
+  "values": {"path": "results/sketch_sp_color/values.json", "sha256": "2a15808cef6cd5978acda504fb6d08b4c1df6fec736901d90c492e6e525db71e"},
+  "sketch_record": {"path": "results/sketch_sp_color/sketch.json"},
+  "sketch_conditions": {"path": "works/conditions/sketch_sp_color.json"},
+  "sketch_G0": {"path": "results/sketch_sp_color/sketch_G0.png", "sha256": "850906f037e05ac3a9cbbf9532b72de6f81abb47f6a318e599678e91097e3348"},
+  "sketch_P": {"path": "results/sketch_sp_color/sketch_P.png", "sha256": "a68e61cc51e5912b262b0586e64730413634e0b34e15fe5835451a14d6d0310b"},
+  "words": {"path": "results/work2_words/words.json"},
+  "words_conditions": {"path": "works/conditions/work2_words.json"},
+  "common_seed_image": {"path": "results/work2_words/tiles_common_seed.png", "sha256": "9335f3b99aadfc93b12378dd86d303724c63ff2b2dcdf618d0b7b874f27b28c8"},
+  "judgement_conditions": {"path": "works/conditions/blind_judgement.json"},
+  "hashes": "the images and values.json are checked against the SHA-256 above, which are those recorded in sketch.json and words.json; the JSON inputs are checked to be the committed bytes, to be computed on the conditions named in their meta, and the sketch record on a clean tree; values.json is the one named in the conditions of the blind judgement"
+ },
+ "values": {
+  "G0": "V and A as recorded in values.json (map B); checked equal to the V and A of the 20 words in words.json",
+  "P": "V = 2 p_valence_author_equal - 1, A = 2 p_arousal_author_equal - 1 from values.json (the percentile among the words of the 23 works of the six authors, each author weighing 1 in total; a percentile of 0.5 is the middle of these texts, not affective neutrality)",
+  "same_as": "the function tile of works/blind_judgement.py for G0 and P, and the candidates G0 and P of works/conditions/sketch_sp_color.json"
+ },
+ "drawing": {
+  "seed": 100,
+  "tiles": "z_mm of works/work2_words.py at tile_px x supersample of works/conditions/work2_words.json (200 px, 4), averaged over blocks; the grey z / D + 1/2 on the common scale, rows flipped (tile_figure of works/work2_words.py)",
+  "halves": "each half is tile_figure of works/work2_words.py for the two authors side by side (the first author on the left), 5 columns and 4 rows in the order of words.json; the upper half G0, the lower half P, 24 px of white between them; greyscale L",
+  "titles": "the title of a block is '{slug}, map B (common seed 100)' in the upper half and '{slug}, percentiles (common seed 100)' in the lower half; nothing else differs from tile_figure",
+  "font_file": "/System/Library/Fonts/Hiragino Sans GB.ttc"
+ },
+ "checks": [
+  "F1: the upper half below the band of the titles (the first 40 rows) equals the same rows of tiles_common_seed.png pixel for pixel, and the two have the same size (the G0 half is the committed figure of the 20 words with other titles)",
+  "F2: every tile of the 20 words of both authors under the seed 100, drawn again at 72 px as in the sketches (grey_u8 of works/sketch_color_features.py, the RGB grey), equals the tile at its place in sketch_G0.png (G0) and in sketch_P.png (P) (sketch_tile_place of works/blind_judgement.py, row words20, the lines of the seed 100); so the values and the seed of each half are those of the versions of the judgement",
+  "F3: the V and A read from values.json for G0 equal those of words.json for every word drawn; every word drawn has its percentiles in values.json"
+ ],
+ "outputs": {
+  "dir": "results/paper_figure6_scale (refused if it exists)",
+  "figure": "figure6_scale.png",
+  "record": "figure6_scale.json: the SHA-256 of the conditions, the script, every input and output, the checks F1 to F3, the versions and the git state"
+ },
+ "not_the_judged_image": "The blind judgement showed the 20 words at 80 px per tile, as one pair of rows per item (one author above the other, the order and the top drawn at random), under five common seeds, in RGB. This figure shows the same values and the same drawing at 200 px, 5 by 4 per author, under the seed 100 only, with the authors named. It is not an image any judge answered; the caption must not present it as one.",
+ "not_claimed": "The figure shows how the same 20 words look under two scales of the values chosen by the makers; it adds no judgement and no finding about the authors. The caption does not report the judgement (that is section 4 of the paper). The percentiles stretch small differences between predicted values (the values of the lexicon for Japanese are predicted, not rated by people), and the difference between the authors in level remains in them."
+}
