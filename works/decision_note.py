@@ -4,7 +4,7 @@ and 2, and the same table empty as its own image (for supplement S1, version 11;
 general lines, version 13), from the conditions and the files they name.
 
 Usage:  uv run python works/decision_note.py        (refuses to overwrite)
-Conditions: works/conditions/decision_note.json, version 19 (committed before this version of the script was written)
+Conditions: works/conditions/decision_note.json, version 20 (committed before this version of the script was written)
 Input:  the files named in the rows (conditions of works 1 and 2, of the drawing, of the blind judgement and of the records
         of the share used, the scoring of the blind judgement and its supplement, and the images each quantity acted on) and
         the values every share is computed again from (results/work1/work1.json, results/work2_words/words.json,
@@ -13,7 +13,7 @@ Input:  the files named in the rows (conditions of works 1 and 2, of the drawing
         version 13, and results/paper_distinct_range, version 14, read and checked by their provenance); every one
         must be the committed bytes at HEAD. The range of f and s
         is read from the installed atact.mapping, which must be the library of every record of the share used
-Output: results/decision_note_v19/decision_note.png (figure 8), decision_note_empty.png (S1), decision_note.md and
+Output: results/decision_note_v20/decision_note.png (figure 8), decision_note_empty.png (S1), decision_note.md and
         decision_note.json
 """
 
@@ -40,10 +40,10 @@ from PIL import Image, ImageDraw, ImageFont  # noqa: E402
 import _common as cm  # noqa: E402
 
 COND = ROOT / "works" / "conditions" / "decision_note.json"
-OUT_DIR = ROOT / "results" / "decision_note_v19"
+OUT_DIR = ROOT / "results" / "decision_note_v20"
 CODE = ["works/decision_note.py", "works/_common.py"]
 MM_PER_INCH = 25.4
-VERSION = 19
+VERSION = 20
 ROW_SETS = {"rows_work1": "Work 1", "rows_work2": "Work 2"}
 # the ids of the rows, in order (checks of the conditions); the number of rows follows from them
 ROW_IDS = {"rows_work1": ["w1_lexicon", "w1_height_scale", "w1_drawing"], "rows_work2": ["w2_map_b", "w2_percentiles", "w2_seed"]}
@@ -95,7 +95,7 @@ APPROVED_CELLS = {
         "judged": ("text", "same makers and sheet")},
     "w2_seed": {
         "quantity": "seed",
-        "value": ("literal", "per word: SHA-256 of the word plus a common seed"),
+        "value": ("literal", "per word: the word's SHA-256 plus a common seed"),  # version 20
         "reason": "Varies the pattern by word; rows can differ by spelling alone. Tried: per-author seeds; a common seed.",
         "when": "after; seen: sketches with this per-word rule",
         "judged": ("text", "judged only in the version with color")},
@@ -257,7 +257,7 @@ APPROVED_ROWS = {'w1_lexicon': {'id': 'w1_lexicon',
                     'dagger': False},
  'w2_seed': {'id': 'w2_seed',
              'quantity': 'seed',
-             'value': {'literal': 'per word: SHA-256 of the word plus a common seed',
+             'value': {'literal': "per word: the word's SHA-256 plus a common seed",
                        'check': {'file': 'works/conditions/work2_sp_color.json',
                                  'keys': ['seed'],
                                  'must_contain': ['per word', 'SHA-256 of the UTF-8 word', '+ the common seed']}},
@@ -337,7 +337,7 @@ APPROVED_LAYOUT = {'width_mm': 177.8,
  'colour': 'black and white',
  'font_file': '/System/Library/Fonts/Helvetica.ttc',
  'column_share': {'quantity': 0.1, 'value': 0.19, 'reason': 0.19, 'acted_on': 0.19, 'when': 0.17, 'judged': 0.16},
- 'max_words': 534}
+ 'max_words': 533}
 # the files of the two judges (checks of the conditions)
 MAIN_FILE = "results/blind_judgement/score.json"
 ALSO_FILE = "results/blind_judgement/score-researcher-supplement.json"
@@ -406,6 +406,10 @@ DRAWS_NOT_WEIGHTED = r"\bweight|\bfrequen|\bwith replacement"
 # one name for the writers of work 2 in the figure: this word in no text of the note, of note_empty or of the cells
 # (version 19; any case, after NFKC and without format characters, at the start of a word or after '_', after the review)
 NOT_NAMED = r"(?<![^\W_])writer"
+# a phrase of the pools of the draws negated: not, never, no, rather than or instead of up to three words before it
+# (version 20, after the review by Codex of versions 13 to 19: the count alone passed 'not drawn uniformly ...')
+NEGATED = r"\b(?:not|never|no|rather\s+than|instead\s+of)\W+(?:\w+\W+){0,3}?"
+POOLS_NOT_NEGATED = (DRAWS_UNIFORM, DRAWS_POOLS[2])
 COMPARED_W2_KEEP = ["percentiles keep the words", "other maps: check sentences"]
 MAP_B_REASON = ("w2_map_b", "two other maps, on check sentences")
 NOT_SAID = "other maps keep the words"  # the phrase of version 16 that contradicted the reason of map B, any case
@@ -1374,6 +1378,14 @@ def main() -> None:
     if named_writer:
         raise SystemExit(f"{NOT_NAMED!r} is written in {len(named_writer)} text(s) of the figure, e.g. "
                          f"{named_writer[0][:80]!r} (version 19)")
+    # the pools of the draws: each phrase once and not negated (version 20). The count repeats the checks of versions 18
+    # and 19 as a second guard (no input fails it here and passes them); the negation is what is new. The negators are
+    # those of the conditions; 'n't', 'cannot', 'neither', 'nor' and a negation after the phrase are not sought (after
+    # the review of version 20, a limit of the rule as committed)
+    not_once = [p for p in POOLS_NOT_NEGATED if pools_text.count(p) != 1]
+    negated = [p for p in POOLS_NOT_NEGATED if re.search(NEGATED + re.escape(p), pools_text, re.IGNORECASE)]
+    if not_once or negated:
+        raise SystemExit(f"{DRAWS_POOLS[0]} {DRAWS_POOLS[1]} does not hold {not_once} once or negates {negated} (version 20)")
     named.add(DIST_FILE)
     named.add(DRAWS_POOLS[0])  # version 18
 
@@ -1474,6 +1486,10 @@ def main() -> None:
                                                 "characters", "in": ["note", "note_empty", "every element of the cells"],
                                                 "not_in": "titles, headers, band labels (fixed in the script)",
                                                 "texts": len(sought), "found": len(named_writer)},  # version 19
+                                  "pools_not_negated": {"phrases": list(POOLS_NOT_NEGATED),
+                                                        "patterns": [NEGATED + re.escape(p) for p in POOLS_NOT_NEGATED],
+                                                        "flags": "IGNORECASE", "not_once": not_once,
+                                                        "negated": negated},  # version 20
                                   "not_elsewhere": {"patterns": loose, "texts": "the other texts of note and all of note_empty"},
                                   "keep": COMPARED_W2_KEEP,
                                   "map_b_reason": {"row": MAP_B_REASON[0], "holds": MAP_B_REASON[1]},
