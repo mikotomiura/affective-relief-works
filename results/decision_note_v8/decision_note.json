@@ -1,0 +1,295 @@
+{
+ "meta": {
+  "conditions_sha256": "73893cc7bdb4676c86f234974eaca8ddd97b03d82044cfb5d9bb659b6b6198b9",
+  "script_sha256": "5600e2e49ff50b1e5ea649f165da53003e93e2be16b3cefed39c1283786d4839",
+  "common_sha256": "54a3e6156b16cbdcd90772a0b980aefa3fb17ebe1c40217b297848d2baf710cc",
+  "font_sha256": "658718d77497145281cb0ec45ff2fe7c6e18062b2a38f837d0d792d9be3a9ba3",
+  "library_sha256": {
+   "__init__.py": "d5980876e37cb7a1f5dc379028ab50f7a0c1d77d84c7651ee5d1beefd623b6ab",
+   "field.py": "4162e8faa60ca78257fd0777a3a7dceaaa7bbab6bfe6691de46f49a339b641c5",
+   "lexicon.py": "36cad1e49a25b352a7ae04868c6693ef349e8276d51909061eeb378085065e81",
+   "mapping.py": "83a50faaa664ddcb99004392e13a73fb096a85588a8b3c423b2c8b71ce626d26",
+   "transform.py": "5d35c9c10dfa6c8d5d3b2a9e8126ab45b895a1be14e05650c3ef60ffd3431bd1"
+  },
+  "python": "3.13.12",
+  "platform": "Darwin arm64",
+  "atact_commit": "b559a80c623d36357dd0736b887497a0cb789af5",
+  "pillow": "13.0.0",
+  "git_commit": "860c74ca4ecb6df3e9f1614085bf5bb91845884d",
+  "git_dirty": false,
+  "started": "2026-10-29T06:27:41+00:00",
+  "finished": "2026-10-29T06:27:41+00:00"
+ },
+ "files_named_sha256": {
+  "results/blind_judgement/score-researcher-supplement.json": "8969cdf50c3e27bc62975d273b06faa650b24e623ed2e6fa47454aa05f039a06",
+  "results/blind_judgement/score.json": "d98dccf5662d49f4a8fec2c4fb062d28e60621fbabb0a382b8123897849fdd7f",
+  "results/paper_figure6_scale/figure6_scale.png": "e680056fa4b68ad79530efc8c96cf384fb41f989800e949d72a01fa92b083652",
+  "results/paper_used_range/used_range.json": "b4e7d2eb94e744f19cbe76806092bd8137c8854a1b069d53b151623f5feb496f",
+  "results/paper_work2_figures/variants_judged.png": "e43875a7a26c63f31fba3bf80cf301d87d731dba3eecf8c5fcedd899f20054c6",
+  "results/work1/common.png": "479f1be16edc6f6e96028cb90161a98567bfe867e7ed2543590664035f57451d",
+  "results/work1/common_eps.png": "2ec68492d5c01cdfee492d36a1b67e2d53aa53c365b5ee62820065af699abf51",
+  "results/work1/minmax.png": "44424f5e007e89cb69b8cf906c1103995db8a95c60941597587c5f625b9b37cb",
+  "results/work1_drawing/drawing.png": "fc0e11ef84aa8d9ffda19c2e6fe1fd8a383788a21ded5ba10f1a48b3f8b20a8d",
+  "results/work2_sp_color/SPC.png": "84f4a091e512c0ebf822de381566e0678b3108b592e150684258c41c64162c44",
+  "works/conditions/blind_judgement.json": "9bebf2dada90405580800416e107db6da1cf67f698429b2d9bb2f0caf9047383",
+  "works/conditions/sketch_sp_color.json": "e58d15b15fa08072c5914a5fe7509f7f3372a750c7a8c3bfbb0dfdd9e0cbc4e2",
+  "works/conditions/work1.json": "e1d66fd796ad22622f15fb35abbb6e8173abf6674b6ac7315e850b71ae0f332e",
+  "works/conditions/work1_drawing.json": "42cf0123a42fabfac2a4382907a0d32125c342bf6b6392fdd61f2e78c401967f",
+  "works/conditions/work2.json": "a56209998d026485c156f2d2d51539724dca50ad6c1dfad17af2fb2a06631859"
+ },
+ "rows_work1": [
+  {
+   "id": "w1_height_scale",
+   "quantity": "height scale",
+   "dagger": false,
+   "value": "common to the series, assumed relief depth D = 1.2 mm; the middle half of f and s of the 104 sentences spans 7% and 6% of their ranges (counted later, from the record)",
+   "reason": "Keeps the depth differences between sentences. Tried: none. Shown beside: per-tile min-max.",
+   "acted_on": [
+    "results/work1/common.png *",
+    "results/work1/minmax.png *",
+    "results/work1/common_eps.png",
+    "results/work1_drawing/drawing.png"
+   ],
+   "when": "before: none",
+   "judged": "none recorded",
+   "read": {
+    "value": {
+     "file": "works/conditions/work1.json",
+     "read": {
+      "relief.D_mm": 1.2
+     },
+     "used_range": {
+      "file": "results/paper_used_range/used_range.json",
+      "set": "work1_sentences",
+      "shares_percent": {
+       "f": 6.639236111111124,
+       "s": 6.0239583333333275
+      },
+      "beside_set": null,
+      "beside_shares_percent": null,
+      "shown": {
+       "f": "7%",
+       "s": "6%"
+      },
+      "built": [
+       "7%",
+       "6%"
+      ]
+     }
+    },
+    "judged": {
+     "literal": true
+    }
+   }
+  },
+  {
+   "id": "w1_drawing",
+   "quantity": "drawing",
+   "dagger": false,
+   "value": "four shown together, the series using the grey of the height; grey; lit at 45 degrees from upper left, lower right; stretched per tile",
+   "reason": "Also a quantity the maker sets (one viewpoint). Tried: none. Shown beside: the other three. Not tried: other viewpoints.",
+   "acted_on": [
+    "results/work1_drawing/drawing.png *"
+   ],
+   "when": "before: every image and value of work 1",
+   "judged": "none recorded",
+   "read": {
+    "value": {
+     "literal": true,
+     "check": {
+      "file": "works/conditions/work1_drawing.json",
+      "read": {
+       "drawings.a_height": "the grey of common_eps.png: z / D + 1/2 on the tile grid of the figure of work 1 (tile_px of its layout, no supersampling); every tile must equal its place in common_eps.png byte for byte",
+       "drawings.b_light_upper_left": "Lambert shading max(0, n . l) of the surface z, the normal n from the gradient of z (central differences, mm per mm), the light l at elevation 45 degrees and azimuth 135 degrees (from the upper left of the figure, whose rows are flipped so that the origin is at the lower left), no ambient term; computed on a grid supersample times finer and averaged over blocks to tile_px",
+       "drawings.c_light_lower_right": "as b with the azimuth 315 degrees (from the lower right)"
+      },
+      "found": [
+       "z / D + 1/2",
+       "elevation 45 degrees",
+       "azimuth 135 degrees",
+       "azimuth 315 degrees"
+      ]
+     }
+    },
+    "judged": {
+     "literal": true
+    }
+   }
+  }
+ ],
+ "rows_work2": [
+  {
+   "id": "w2_map_b",
+   "quantity": "lexicon and map",
+   "dagger": false,
+   "value": "MEmoLon (Japanese) through map B, fitted to English ratings",
+   "reason": "Brings the Japanese values onto the English scale. Tried: none. Later compared with: the percentiles; two other maps, on check sentences.",
+   "acted_on": [
+    "results/paper_figure6_scale/figure6_scale.png *",
+    "results/paper_work2_figures/variants_judged.png"
+   ],
+   "when": "before: both lexicons' values",
+   "judged": "two makers (one blind), with the sheet and example; for the 20 words they split",
+   "read": {
+    "value": {
+     "literal": true,
+     "check": {
+      "file": "works/conditions/work2.json",
+      "read": {
+       "lexicon.name": "MEmoLon, Japanese (MTL_grouped-ja.tsv)",
+       "map.use": "map B: V = 0.40982 x - 2.01110, A = 0.42190 x - 1.69426 per word, clipped to [-1, 1], then averaged"
+      },
+      "found": [
+       "MEmoLon",
+       "Japanese",
+       "map B"
+      ]
+     }
+    },
+    "judged": {
+     "literal": true,
+     "check": {
+      "file": "works/conditions/blind_judgement.json",
+      "read": {
+       "judges.deciding": "the co-author (Harada), who has not seen the sheets (the researcher confirms this before sending); the rule below is applied to these answers only",
+       "judges.also": "the researcher answers the same spreadsheet; reported as the second look of a judge who saw the sheets and the sketches, not as a blind judgement, and it does not decide"
+      },
+      "found": [
+       "has not seen the sheets",
+       "not as a blind judgement"
+      ]
+     },
+     "answers": {
+      "version": "G0",
+      "row": "words20",
+      "kept": {
+       "main": false,
+       "also": true
+      },
+      "outcome": "split"
+     }
+    }
+   }
+  },
+  {
+   "id": "w2_percentiles",
+   "quantity": "percentiles",
+   "dagger": false,
+   "value": "V and A as percentiles in the 23 works, each author weighted equally; the middle half of f and s of the 120 words spans 54% and 60% of their ranges (under map B, 8% and 12%; counted later, from the record)",
+   "reason": "Spreads values map B compresses; stretches small predicted differences, most in A. Tried: map B; whole-lexicon percentiles.",
+   "acted_on": [
+    "results/paper_figure6_scale/figure6_scale.png *",
+    "results/work2_sp_color/SPC.png"
+   ],
+   "when": "after: the whole-lexicon percentiles and the sketches",
+   "judged": "same makers and sheet; for the 20 words both said the rows differ",
+   "read": {
+    "value": {
+     "literal": true,
+     "check": {
+      "file": "works/conditions/sketch_sp_color.json",
+      "read": {
+       "reference.what": "the tokens of the 23 works of work 2 (the kept sentences, as cut for work 2) found in the lexicon under the form all of japanese_text (every part of speech except symbols); each author weighs 1 in total and its tokens share that weight equally (a token of an author with T tokens weighs 1/T), so that no author dominates by the length of its works; the percentile of a word is the weight of tokens whose raw value is below it plus half the weight of those equal to it, over the total weight (6)"
+      },
+      "found": [
+       "the 23 works",
+       "each author weighs 1"
+      ]
+     },
+     "used_range": {
+      "file": "results/paper_used_range/used_range.json",
+      "set": "main_P.pooled",
+      "shares_percent": {
+       "f": 54.18413341947221,
+       "s": 59.616611253008614
+      },
+      "beside_set": "main_G0.pooled",
+      "beside_shares_percent": {
+       "f": 7.646960319797258,
+       "s": 11.9872606230846
+      },
+      "shown": {
+       "f": "54%",
+       "s": "60%"
+      },
+      "built": [
+       "54%",
+       "60%",
+       "8%",
+       "12%"
+      ]
+     }
+    },
+    "judged": {
+     "literal": true,
+     "check": {
+      "file": "works/conditions/blind_judgement.json",
+      "read": {
+       "judges.deciding": "the co-author (Harada), who has not seen the sheets (the researcher confirms this before sending); the rule below is applied to these answers only",
+       "judges.also": "the researcher answers the same spreadsheet; reported as the second look of a judge who saw the sheets and the sketches, not as a blind judgement, and it does not decide"
+      },
+      "found": [
+       "has not seen the sheets",
+       "not as a blind judgement"
+      ]
+     },
+     "answers": {
+      "version": "P",
+      "row": "words20",
+      "kept": {
+       "main": true,
+       "also": true
+      },
+      "outcome": "both differ"
+     }
+    }
+   }
+  }
+ ],
+ "dagger_rows": [],
+ "words": {
+  "filled": 306,
+  "empty": 33,
+  "total": 339,
+  "max_words": 340,
+  "how": "whitespace-separated tokens, a path one word, a mark standing alone one word; titles, headers, band labels, the note and the cells"
+ },
+ "drawing": {
+  "width_px": 2100,
+  "height_px": 2629,
+  "mode": "L",
+  "dpi": 300,
+  "font_pt": 8.0,
+  "column_share": {
+   "quantity": 0.1,
+   "value": 0.19,
+   "reason": 0.19,
+   "acted_on": 0.19,
+   "when": 0.17,
+   "judged": 0.16
+  },
+  "empty_rows": 3,
+  "empty_row_lines": 2,
+  "minor_words": [
+   "a",
+   "an",
+   "and",
+   "as",
+   "at",
+   "but",
+   "by",
+   "for",
+   "in",
+   "nor",
+   "of",
+   "on",
+   "or",
+   "the",
+   "to"
+  ]
+ },
+ "outputs": {
+  "decision_note.png": "b0c9ab9c0091c6b22f08ca07c63e072e2bd3e90939866ccfa140d89d19ca6330",
+  "decision_note.md": "3aecea1873361f4c42cca6e0207a6f48558a8c1ff1bbc84654a0aef0521a842e"
+ }
+}
