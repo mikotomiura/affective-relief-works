@@ -1,14 +1,14 @@
 """The template for noting decisions: the quantities a rule leaves open and the decisions changed after the values were
 seen, with the reason, the alternatives tried, the images that used each one and who judged the look, filled in for works 1
-and 2 and for one decision of the paper, with the same table empty below it, from the conditions and the files they name.
+and 2, with the same table empty below it, from the conditions and the files they name.
 
 Usage:  uv run python works/decision_note.py        (refuses to overwrite)
-Conditions: works/conditions/decision_note.json, version 5 (committed before this version of the script was written)
+Conditions: works/conditions/decision_note.json, version 6 (committed before this version of the script was written)
 Input:  the files named in the rows (conditions of works 1 and 2, of the drawing, of the blind judgement and of the record
         of generation, the scoring of the blind judgement and its supplement, and the images each quantity acted on); every
         one must be the committed bytes at HEAD. The range of f and s is read from the installed atact.mapping, which must be
         the library of the record of generation
-Output: results/decision_note_v5/decision_note.png, decision_note.md and decision_note.json
+Output: results/decision_note_v6/decision_note.png, decision_note.md and decision_note.json
 """
 
 from __future__ import annotations
@@ -33,25 +33,27 @@ from PIL import Image, ImageDraw, ImageFont  # noqa: E402
 import _common as cm  # noqa: E402
 
 COND = ROOT / "works" / "conditions" / "decision_note.json"
-OUT_DIR = ROOT / "results" / "decision_note_v5"
+OUT_DIR = ROOT / "results" / "decision_note_v6"
 CODE = ["works/decision_note.py", "works/_common.py"]
 MM_PER_INCH = 25.4
-VERSION = 5
-ROW_SETS = {"rows_work1": ("Work 1", 2), "rows_work2": ("Work 2", 2), "rows_paper": ("Record of the paper", 1)}
+VERSION = 6
+ROW_SETS = {"rows_work1": ("Work 1", 2), "rows_work2": ("Work 2", 2)}
 COLUMNS = ["quantity", "value", "reason", "acted_on", "when", "judged"]
 ROW_FIELDS = {"quantity", "value", "reason", "acted_on", "compared", "when", "judged", "dagger"}
 NONE_RECORDED = "none recorded"
 # answers_rule of the conditions: the phrase of each outcome and of each row is fixed here, not in the rows
 OUTCOME_PHRASE = {"both differ": "both said the rows differ", "neither": "neither said the rows differ", "split": "they split"}
 ROW_PHRASE = {"words20": "the 20 words"}
+# the version each quantity of work 2 speaks of (G0: map B, P: the percentiles of blind_judgement.json)
+VERSION_OF = {"lexicon and map": "G0", "percentiles": "P"}
+# a text before a built phrase may not make a claim of its own: no clause of its own and none of these words
+SAID = re.compile(r";|\b(?:rows?|words|range|ranges|agreed?|disagreed?|differ|differs|split|both|neither|all|G0|P|SPC)\b")
 JUDGEMENT = "works/conditions/blind_judgement.json"  # its rows are the rows an answer may name
-SHARE = re.compile(r"(over )?(\d+)%")
+SHARE = re.compile(r"(\d+)%")
+USED_QUANTITIES = ["f", "s"]
+# used_range_rule of the conditions: the phrase of the share is fixed here
+USED_PHRASE = "{text}; f and s of the {words} words use {f} and {s} of their ranges (min to max; counted after the record of generation was seen)"
 PERCENT = re.compile(r"(?<![\d.])(?:over )?\d+(?:\.\d+)?%")
-
-
-def has(text: str, s: str) -> bool:
-    """s occurs in text with no digit or point just before it (22% is not found in 122%)."""
-    return re.search(r"(?<![\d.])" + re.escape(s), text) is not None
 
 
 def number(x, where: str) -> float:
@@ -149,15 +151,21 @@ def resolve_value(v: dict, cache: dict, where: str) -> tuple[str, dict]:
         if "{" in text or "}" in text:
             raise SystemExit(f"{where}: an unmatched brace is left in {text!r}")
         return text, {"file": v["file"], "read": read}
-    if set(v) in ({"literal"}, {"literal", "check"}, {"literal", "check", "used_range"}, {"literal", "check", "answers"}):
-        text = v["literal"]
-        if not isinstance(text, str) or not text:
-            raise SystemExit(f"{where}: the literal is not a non-empty string")
-        extra = {}
+    if set(v) in ({"literal"}, {"literal", "check"}, {"text", "check", "used_range"}, {"text", "check", "answers"}):
+        base = v["literal"] if "literal" in v else v["text"]
+        if not isinstance(base, str) or not base:
+            raise SystemExit(f"{where}: the literal or text is not a non-empty string")
+        if "literal" in v and PERCENT.search(base):
+            raise SystemExit(f"{where}: a percentage in a literal (required_checks)")
+        extra, text = {}, base
         if "used_range" in v:
-            extra["used_range"] = check_used_range(v["used_range"], text, cache, where)
+            extra["used_range"], text = check_used_range(v["used_range"], base, cache, where)
         if "answers" in v:
-            extra["answers"] = check_answers(v["answers"], text, cache, where)
+            extra["answers"], text = check_answers(v["answers"], base, cache, where)
+        if any(mk in base for mk in ("†", "*")) or PERCENT.search(base):
+            raise SystemExit(f"{where}: a reserved mark or a percentage in the text {base!r}")
+        if "text" in v and SAID.search(base):
+            raise SystemExit(f"{where}: the text {base!r} before the built phrase makes a claim of its own")
         if "check" not in v:
             return text, {"literal": True, **extra}
         ch = v["check"]
@@ -180,8 +188,9 @@ def rule_ranges() -> dict[str, tuple[float, float]]:
     return {"f": (m.F0, m.F0 + m.F1), "s": (m.S0, m.S0 + m.S1)}
 
 
-def check_used_range(u: dict, text: str, cache: dict, where: str) -> dict:
-    """The share of the range of each quantity used by the words of the record, against the string shown (used_range_rule)."""
+def check_used_range(u: dict, base: str, cache: dict, where: str) -> tuple[dict, str]:
+    """The share of the range of f and s used by the words of the record, checked against the strings shown, and the value
+    built from it (used_range_rule)."""
     if not isinstance(u, dict) or set(u) != {"file", "version", "quantities", "words_key", "words", "shown"}:
         raise SystemExit(f"{where}: used_range needs file, version, quantities, words_key, words and shown")
     rec = load_json(u["file"], cache)
@@ -195,15 +204,22 @@ def check_used_range(u: dict, text: str, cache: dict, where: str) -> dict:
     if (isinstance(n, bool) or not isinstance(n, int) or not isinstance(per, list)
             or not all(isinstance(x, int) and not isinstance(x, bool) for x in per) or sum(per) != n):
         raise SystemExit(f"{where}: the words per author {per!r} of the record do not sum to {n!r}")
+    listed = read_key(rec, f"words.{u['version']}", where) if isinstance(u["version"], str) else None
+    if not isinstance(listed, dict) or sum(len(x) for x in listed.values() if isinstance(x, list)) != n:
+        raise SystemExit(f"{where}: the record does not list {n!r} words under {u['version']!r}")
     if not isinstance(u["version"], str) or not u["version"]:
         raise SystemExit(f"{where}: used_range.version is not a non-empty string")
-    m = SHARE.fullmatch(u["shown"]) if isinstance(u["shown"], str) else None
-    if m is None:
-        raise SystemExit(f"{where}: shown {u['shown']!r} is neither 'N%' nor 'over N%'")
-    over, bound = bool(m.group(1)), int(m.group(2))
+    if strings(u["quantities"], where, "quantities") != USED_QUANTITIES:
+        raise SystemExit(f"{where}: the quantities are not {USED_QUANTITIES}")
+    shown = u["shown"]
+    if not isinstance(shown, dict) or list(shown) != USED_QUANTITIES:
+        raise SystemExit(f"{where}: shown is not one string for each of {USED_QUANTITIES}")
     ranges = rule_ranges()
     shares = {}
-    for q in strings(u["quantities"], where, "quantities"):
+    for q in USED_QUANTITIES:
+        m = SHARE.fullmatch(shown[q]) if isinstance(shown[q], str) else None
+        if m is None:
+            raise SystemExit(f"{where}: shown.{q} {shown[q]!r} is not 'N%'")
         if q not in ranges:
             raise SystemExit(f"{where}: no range of the rule is known for {q}")
         lo, hi = ranges[q]
@@ -212,30 +228,24 @@ def check_used_range(u: dict, text: str, cache: dict, where: str) -> dict:
             raise SystemExit(f"{where}: pooled.{u['version']}.{q} is not an object")
         top, bottom = (number(read_key(pooled, k, where), where) for k in ("max", "min"))
         shares[q] = 100 * (top - bottom) / (hi - lo)
-        if not (shares[q] > bound if over else round(shares[q]) == bound):
-            raise SystemExit(f"{where}: {q} uses {shares[q]:.2f}% of its range, which is not {u['shown']}")
-    for s in (u["shown"], f"{n} words"):
-        if not has(text, s):
-            raise SystemExit(f"{where}: the literal does not contain {s!r}")
-    others = [x for x in PERCENT.findall(text) if x != u["shown"]]
-    if others:
-        raise SystemExit(f"{where}: the percentages {others} of the literal are not the one shown, {u['shown']!r}")
-    return {"file": u["file"], "version": u["version"], "ranges": ranges, "shares_percent": shares, "shown": u["shown"]}
+        if round(shares[q]) != int(m.group(1)):
+            raise SystemExit(f"{where}: {q} uses {shares[q]:.2f}% of its range, which is not {shown[q]}")
+    text = USED_PHRASE.format(text=base, words=n, f=f"{round(shares['f'])}%", s=f"{round(shares['s'])}%")
+    return {"file": u["file"], "version": u["version"], "ranges": ranges, "shares_percent": shares, "shown": shown}, text
 
 
-def check_answers(a: dict, text: str, cache: dict, where: str) -> dict:
-    """The outcome of one row of one version under the two judges, against the one written (answers_rule)."""
-    if not isinstance(a, dict) or set(a) != {"main", "also", "row", "row_phrase", "version", "outcome", "phrase"}:
-        raise SystemExit(f"{where}: answers needs main, also, row, row_phrase, version, outcome and phrase")
-    for k in ("row", "row_phrase", "version", "outcome", "phrase"):
+def check_answers(a: dict, base: str, cache: dict, where: str) -> tuple[dict, str]:
+    """The outcome of one row of one version under the two judges, against the one written, and the judged built from it
+    (answers_rule)."""
+    if not isinstance(a, dict) or set(a) != {"main", "also", "row", "version", "outcome"}:
+        raise SystemExit(f"{where}: answers needs main, also, row, version and outcome")
+    for k in ("row", "version", "outcome"):
         if not isinstance(a[k], str) or not a[k]:
             raise SystemExit(f"{where}: answers.{k} is not a non-empty string")
     if a["row"] not in strings(read_key(load_json(JUDGEMENT, cache), "rows", where), where, "rows"):
         raise SystemExit(f"{where}: {a['row']!r} is not a row of {JUDGEMENT}")
-    if ROW_PHRASE.get(a["row"]) != a["row_phrase"]:
-        raise SystemExit(f"{where}: the phrase of the row {a['row']} is {ROW_PHRASE.get(a['row'])!r}, not {a['row_phrase']!r}")
-    if OUTCOME_PHRASE.get(a["outcome"]) != a["phrase"]:
-        raise SystemExit(f"{where}: the phrase of {a['outcome']!r} is {OUTCOME_PHRASE.get(a['outcome'])!r}, not {a['phrase']!r}")
+    if a["row"] not in ROW_PHRASE or a["outcome"] not in OUTCOME_PHRASE:
+        raise SystemExit(f"{where}: no phrase is fixed for the row {a['row']!r} or the outcome {a['outcome']!r}")
     main, also = a["main"], a["also"]
     if not isinstance(main, dict) or set(main) != {"file", "key", "decided_key"}:
         raise SystemExit(f"{where}: answers.main needs file, key and decided_key")
@@ -257,10 +267,8 @@ def check_answers(a: dict, text: str, cache: dict, where: str) -> dict:
     outcome = "both differ" if all(kept.values()) else "neither" if not any(kept.values()) else "split"
     if outcome != a["outcome"]:
         raise SystemExit(f"{where}: the row {a['row']} of {a['version']} is {outcome!r} by the lists, not {a['outcome']!r}")
-    for s in (a["phrase"], a["row_phrase"]):
-        if not has(text, s):
-            raise SystemExit(f"{where}: the literal does not contain {s!r}")
-    return {"version": a["version"], "row": a["row"], "kept": kept, "outcome": outcome}
+    text = f"{base}; for {ROW_PHRASE[a['row']]} {OUTCOME_PHRASE[outcome]}"
+    return {"version": a["version"], "row": a["row"], "kept": kept, "outcome": outcome}, text
 
 
 def wrap(draw: ImageDraw.ImageDraw, text: str, font: ImageFont.FreeTypeFont, width: int) -> list[str]:
@@ -393,23 +401,25 @@ def check_row(row: dict, where: str) -> None:
     if not isinstance(row["dagger"], bool):
         raise SystemExit(f"{where}.dagger is not true or false")
     r = row["reason"]
-    if not isinstance(r, dict) or set(r) != {"why", "tried"}:
-        raise SystemExit(f"{where}.reason needs why and tried")
+    if not isinstance(r, dict) or set(r) != {"why", "tried", "not_tried"}:
+        raise SystemExit(f"{where}.reason needs why, tried and not_tried")
     if not isinstance(r["why"], str) or not r["why"]:
         raise SystemExit(f"{where}.reason.why is not a non-empty string")
-    if not isinstance(r["tried"], list) or not all(isinstance(t, str) and t for t in r["tried"]):
-        raise SystemExit(f"{where}.reason.tried is not a list of non-empty strings")
+    for k in ("tried", "not_tried"):
+        if not isinstance(r[k], list) or not all(isinstance(t, str) and t for t in r[k]):
+            raise SystemExit(f"{where}.reason.{k} is not a list of non-empty strings")
     j = row["judged"]
     if isinstance(j, str):
         if j != NONE_RECORDED:
             raise SystemExit(f"{where}.judged: a string must be {NONE_RECORDED!r}; anything else is a literal")
-    elif not isinstance(j, dict) or "literal" not in j:
-        raise SystemExit(f"{where}.judged is neither {NONE_RECORDED!r} nor a literal")
+    elif not isinstance(j, dict) or not ("literal" in j or "answers" in j):
+        raise SystemExit(f"{where}.judged is neither {NONE_RECORDED!r}, a literal nor a text with answers")
 
 
 def reason_text(r: dict) -> str:
     tried = "; ".join(r["tried"]) if r["tried"] else "none"
-    return f"{r['why'][:1].upper()}{r['why'][1:]}. Tried: {tried}."
+    not_tried = f" Not tried: {'; '.join(r['not_tried'])}." if r["not_tried"] else ""
+    return f"{r['why'][:1].upper()}{r['why'][1:]}. Tried: {tried}.{not_tried}"
 
 
 def main() -> None:
@@ -439,7 +449,10 @@ def main() -> None:
     label = cm.need(c, "acted_on_labels", str)
     mark_c = cm.need(c, "compared_mark", str)
     dag = cm.need(c, "dagger", dict)
-    mark_d, meaning_d = cm.need(dag, "mark", str, "dagger."), cm.need(dag, "meaning", str, "dagger.")
+    mark_d = cm.need(dag, "mark", str, "dagger.")
+    note = cm.need(c, "note", str)
+    if not note or any(mk.strip() in note for mk in (mark_c, mark_d)):
+        raise SystemExit("the note is empty or holds a reserved mark")
     max_words = cm.need(c, "max_words", int)
     size = round(FONT_PT * dpi / 72)
     if size * 72 / dpi < MIN_FONT_PT:
@@ -478,8 +491,8 @@ def main() -> None:
                 raise SystemExit(f"{where}.judged: used_range belongs to the value")
             text, read = resolve_value(row["value"], cache, where + ".value")
             if isinstance(row["judged"], dict):
-                if set(row["judged"]) not in ({"literal"}, {"literal", "check"}, {"literal", "check", "answers"}):
-                    raise SystemExit(f"{where}.judged is not a literal")
+                if set(row["judged"]) not in ({"literal"}, {"literal", "check"}, {"text", "check", "answers"}):
+                    raise SystemExit(f"{where}.judged is neither a literal nor a text with answers")
                 judged, judged_read = resolve_value(row["judged"], cache, where + ".judged")
             else:
                 judged, judged_read = row["judged"], {"literal": True}
@@ -488,12 +501,13 @@ def main() -> None:
             bad = [t for t in plain if any(mk in t for mk in reserved)]
             if bad:
                 raise SystemExit(f"{where}: a reserved mark {reserved} is in {bad}")
-            v_lit = row["value"].get("literal", "")
-            if isinstance(v_lit, str) and PERCENT.search(v_lit) and "used_range" not in row["value"]:
-                raise SystemExit(f"{where}.value: a percentage without used_range")
             j = row["judged"]
-            if key == "rows_work2" and isinstance(j, dict) and "words" in j["literal"].split() and "answers" not in j:
-                raise SystemExit(f"{where}.judged: names words without answers")
+            if isinstance(j, dict) and "literal" in j and SAID.search(j["literal"]):
+                raise SystemExit(f"{where}.judged: a literal that says an outcome or names words (required_checks)")
+            u = row["value"].get("used_range")
+            if key == "rows_work2" and (not isinstance(u, dict) or VERSION_OF.get(row["quantity"]) != u.get("version")):
+                raise SystemExit(f"{where}: the version of {row['quantity']!r} is {VERSION_OF.get(row['quantity'])!r}, "
+                                 f"not that of its used_range")
             if isinstance(j, dict) and "answers" in j:
                 u = row["value"].get("used_range")
                 if not isinstance(u, dict) or u.get("version") != j["answers"].get("version"):
@@ -505,6 +519,8 @@ def main() -> None:
     if not font_file.is_file():
         raise SystemExit(f"{font_file} does not exist")
     daggered = [r["quantity"] for rs in resolved.values() for r in rs if r["dagger"]]
+    if daggered:
+        raise SystemExit(f"rows {daggered} carry the dagger; version 6 has none in the main table")
 
     files = sorted(named)
     cm.same_as_head([COND, *(ROOT / p for p in CODE), *(ROOT / p for p in files)])
@@ -514,21 +530,18 @@ def main() -> None:
     started = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
 
     def cells(r: dict) -> list[str]:
-        q = (mark_d if r["dagger"] else "") + r["quantity"]
-        return [q, r["value"], r["reason"], r["acted_on"], r["when"], r["judged"]]
+        return [r["quantity"], r["value"], r["reason"], r["acted_on"], r["when"], r["judged"]]
 
     filled_rows: list = []
     for key, (band, _) in ROW_SETS.items():
         filled_rows.append(band)
         filled_rows += [[[x] if isinstance(x, str) else x for x in cells(r)] for r in resolved[key]]
-    legend = (mark_d + meaning_d) if daggered else ""
 
     fonts = {k: ImageFont.truetype(str(font_file), size, index=i) for k, i in FONT_INDEX.items()}
     shares = [share[k] for k in COLUMNS]
     parts = [title_image(titles[0], width, fonts, dpi), table(headers, filled_rows, shares, width, fonts, dpi)]
-    if legend:
-        parts += [Image.new("L", (width, round(TITLE_GAP_PT * dpi / 72)), 255),
-                  title_image(legend, width, {"bold": fonts["regular"]}, dpi, one_line=True)]
+    parts += [Image.new("L", (width, round(TITLE_GAP_PT * dpi / 72)), 255),
+              title_image(note, width, {"bold": fonts["regular"]}, dpi, one_line=True)]
     gap = Image.new("L", (width, round(TABLE_GAP_PT * dpi / 72)), 255)
     parts += [gap, title_image(titles[1], width, fonts, dpi),
               table(headers, [[[""]] * len(headers)] * EMPTY_ROWS, shares, width, fonts, dpi, min_lines=EMPTY_ROW_LINES)]
@@ -537,7 +550,7 @@ def main() -> None:
     for p in parts:
         fig.paste(p, (0, y))
         y += p.height
-    drawn_filled = [titles[0], *headers, *(b for b, _ in ROW_SETS.values()), legend,
+    drawn_filled = [titles[0], *headers, *(b for b, _ in ROW_SETS.values()), note,
                     *(t for rs in resolved.values() for r in rs for x in cells(r) for t in ([x] if isinstance(x, str) else x))]
     words = {"filled": count_words(drawn_filled), "empty": count_words([titles[1], *headers])}
     words["total"] = words["filled"] + words["empty"]
@@ -548,7 +561,7 @@ def main() -> None:
     for key, (band, _) in ROW_SETS.items():
         md_rows.append(band)
         md_rows += [[x if isinstance(x, str) else ", ".join(x) for x in cells(r)] for r in resolved[key]]
-    md = (f"# {titles[0]}\n\n" + md_table(headers, md_rows) + (f"\n{legend}\n" if legend else "")
+    md = (f"# {titles[0]}\n\n" + md_table(headers, md_rows) + f"\n{note}\n"
           + "\n" + label[0].upper() + label[1:] + ".\n"
           + f"\n# {titles[1]}\n\n" + md_table(headers, [[""] * len(headers)] * EMPTY_ROWS))
 
@@ -571,7 +584,7 @@ def main() -> None:
                **resolved,
                "dagger_rows": daggered,
                "words": {**words, "max_words": max_words, "how": "whitespace-separated tokens, a path one word, "
-                         "a mark standing alone one word; titles, headers, band labels, the legend and the cells"},
+                         "a mark standing alone one word; titles, headers, band labels, the note and the cells"},
                "drawing": {"width_px": width, "height_px": fig.height, "mode": fig.mode, "dpi": dpi, "font_pt": FONT_PT,
                            "column_share": share, "empty_rows": EMPTY_ROWS, "empty_row_lines": EMPTY_ROW_LINES,
                            "minor_words": sorted(MINOR_WORDS)},
