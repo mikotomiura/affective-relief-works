@@ -1,0 +1,67 @@
+{
+ "purpose": "The share of the range of f and s used by the words of the 23 works of work 2 in the unit of the 120 words of the main images: each distinct word once, unweighted (point 2 of the decisions of the researcher after round 14 of the pre-review, verdict section 7). The record of results/paper_reference_range gave the words of the 23 works with each word weighted by its running tokens (tokens_B and tokens_P, each author weighing 1), while the 120 words are distinct words, each once; figure 8 and the outline set the two side by side, which changes the unit and the weights at once. Here two comparisons in the unit of the 120 words: the 18301 distinct words of the 23 works, each once (distinct_B and distinct_P); and, as the 120 words are 20 words of each of the six authors, sets of 120 drawn at random, 20 distinct words of each author drawn from the distinct words of that author (draws_B and draws_P, the proposal of Codex in the review of round 14, adopted by the researcher on 2026-10-29: both are counted, figure 8 shows the distinct words, the draws go to one phrase of the text and to S1).",
+ "fixed_before_running": "Written on 2026-10-29 and committed before the script was written or run. Seen before: results/paper_reference_range/reference_range.json (every set, among them tokens_B with f 73.7% and 6.3%, s 100% and 9.0% from minimum to maximum and between the quartiles, and tokens_P with f 100% and 52.4%, s 100% and 49.2%, weighted by running tokens with each author weighing 1, and the per author weighted sets); results/paper_used_range/used_range.json (the 120 words under map B with the middle half f 7.6% and s 12.0%, under the percentiles f 54% and s 60% as in figure 8, and the 20 words of each author); results/sketch_sp_color/values.json (the counts of reference words and tokens per author); the outputs of figure 8 up to version 13 and rounds 1 to 14 of the critiques. Not seen before: any statistic of the distinct words of the 23 works unweighted, the number of distinct words of each author, and any set drawn at random from them. The 120 words were chosen as distinctive of their author (weighted log-odds, works/conditions/work2_words.json, with a count of at least 2 in at least 2 works of the author); the draws take every distinct word of the author with the same chance, without that filter, so they show what 20 words of each author give without the choice of distinctive words and the filter, not what a typical choice would give.",
+ "version": 1,
+ "inputs": {
+  "work2_conditions": {"path": "works/conditions/work2.json"},
+  "work2_result": {"path": "results/work2/work2.json"},
+  "words_conditions": {"path": "works/conditions/work2_words.json"},
+  "reference_conditions": {"path": "works/conditions/sketch_sp_color.json"},
+  "values": {"path": "results/sketch_sp_color/values.json", "sha256": "2a15808cef6cd5978acda504fb6d08b4c1df6fec736901d90c492e6e525db71e"},
+  "calibration": {"path": "results/calibrate_memolon.json"},
+  "reference_range_conditions": {"path": "works/conditions/paper_reference_range.json"},
+  "reference_range": {"path": "results/paper_reference_range/reference_range.json"},
+  "reference_range_script": {"path": "works/paper_reference_range.py"},
+  "used_range_conditions": {"path": "works/conditions/paper_used_range.json"},
+  "used_range": {"path": "results/paper_used_range/used_range.json"},
+  "hashes": "values.json is checked against the SHA-256 above; the other inputs are checked to be the committed bytes; the lexicon, the map, the tagger and the zips of the 23 works against work2.json; calibrate_memolon.json to be the map of work2.json computed on a clean tree; reference_range.json and used_range.json to be made on their conditions on a clean tree, reference_range.json with the script named here (its SHA-256 equal to script_sha256 of the record), whose functions weighted_percentile, reference_weights, spread and shapes are imported from the committed file, not copied"
+ },
+ "sets": {
+  "distinct_B": "the 18301 reference words of works/conditions/sketch_sp_color.json (reference.what, select all: the words of the lexicon met in the kept sentences of the 23 works), each word once and unweighted, V and A by map B and clipped (the values of tokens_B of reference_range.json without its weights)",
+  "distinct_P": "the same words, each once and unweighted, V = 2 p_valence - 1 and A = 2 p_arousal - 1, p the author-equal weighted percentile of the raw value of the word among the reference (the values of tokens_P of reference_range.json without its weights; the percentiles themselves are those of work 2, each author weighing 1)",
+  "distinct_per_author": "for each of the six authors, the distinct words met in its works (tokens of the author above 0), each once and unweighted, under map B and the percentiles; the pools of the draws",
+  "draws_B": "R replicates; in each, for every author in the order of the authors of used_range.json, 20 distinct words drawn uniformly without replacement from the distinct words of the author (sorted), pooled to 120 values, a word drawn for two authors counted once for each (as the 120 tiles); V and A by map B",
+  "draws_P": "the same drawn words in every replicate, V and A by the percentiles",
+  "words_120": "main_G0 and main_P pooled of used_range.json (the 120 words of the main images), read as recorded, not recomputed"
+ },
+ "comparisons": {
+  "map_B": "words_120 (main_G0) next to distinct_B and draws_B",
+  "percentiles": "words_120 (main_P) next to distinct_P and draws_P"
+ },
+ "random": {
+  "replicates": 10000,
+  "generator": "numpy.random.default_rng(seed) (PCG64), one generator for all replicates; in a replicate, for every author in order, generator.choice(number of distinct words of the author, size 20, replace False) on the sorted distinct words of the author",
+  "seed": 20261029,
+  "summary": "per version, quantity and share (quartiles and minimum to maximum): the mean, the median and the quantiles 0.025 and 0.975 (numpy.quantile, linear) of the share over the replicates, and the number of replicates whose share is at most that of the 120 words"
+ },
+ "statistics": {
+  "quantities": ["f", "s"],
+  "shape": "f, s = atact.mapping.params(V, A); the range of the rule is f in [F0, F0 + F1] = [3, 7] and s in [S0, S0 + S1] = [0.06, 0.30]",
+  "share": "100 (maximum - minimum) / (width of the range of the rule), and 100 (third quartile - first quartile) / (width), per set and quantity, by spread of works/paper_reference_range.py without weights",
+  "quantiles": "minimum, maximum and numpy.quantile at 0.25 and 0.75 with method 'linear', unweighted, for every set and every replicate (as the 120 words of used_range.json)",
+  "main": "the quartiles (the middle half, as figure 8); the minimum to maximum is recorded next to them"
+ },
+ "constants": {
+  "authors": 6,
+  "words_per_author": 20,
+  "tiles": 120,
+  "works": 23,
+  "lexicon_entries": 2003306,
+  "reference_words": 18301,
+  "replicates": 10000,
+  "seed": 20261029
+ },
+ "checks": [
+  "D1: the constants hold: 23 works and 6 authors in work2.json, 2003306 entries in the lexicon, 18301 reference words and the tokens per author equal to those of values.json, 6 authors with 20 words each and 120 values pooled in used_range.json, the authors of used_range.json those of work2.json",
+  "D2: the reconstruction of the reference: the text step of every work gives the sentences and matched tokens of results/work2, and the weighted percentiles of every key of values.json recomputed equal its p_valence_author_equal and p_arousal_author_equal exactly (as R3 of paper_reference_range)",
+  "D3: the reconstruction agrees with reference_range.json: tokens_B and tokens_P recomputed here with the weights each author weighing 1 equal those recorded there (every number), exactly, so the distinct words are the words of that record with its values",
+  "D4: the pools: every distinct word of an author is a reference word, the union of the pools is the 18301 reference words, and every pool holds at least 20 words",
+  "D5: the draws are made again from a new generator with the same seed and give the same words and the same shares in every replicate, and the number of replicates is the constant; every replicate holds 120 values, 20 distinct words of each author",
+  "D6: every V and A of every set lies in [-1, 1], so params clips nothing; the installed atact is the generator of works/conditions/work2_words.json, and the range of the rule is read from atact.mapping"
+ ],
+ "outputs": {
+  "dir": "results/paper_distinct_range (refused if it exists)",
+  "record": "distinct_range.json: per set (per author for distinct_per_author) and quantity the minimum, first quartile, third quartile, maximum, the two shares and the number of values; for draws_B and draws_P the summary over the replicates and the shares of every replicate; words_120 as read; the range of the rule; the checks D1 to D6 with their counts; the SHA-256 of the conditions, the script and every input; the versions and the git state"
+ },
+ "not_claimed": "These are quantities of the generation of the tiles on sets of words, not of how any tile looks. The distinct words weigh every author by the number of its distinct words, the 120 words weigh the six authors equally; the draws weigh the authors equally but take every distinct word of an author with the same chance, rare words as often as frequent ones, without the filter on counts and works and without the choice of distinctive words. Under the percentiles the reference is spread evenly by its definition only with its weights; unweighted, the distinct words need not be. Neither comparison is a test, and the number of replicates at or below the 120 words is a description, not a p-value. Every count here was made after the values and the images of the 120 words, the weighted record of the 23 works and figure 8 up to version 13 were seen."
+}
