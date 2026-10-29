@@ -3,13 +3,13 @@ seen, with the reason, the alternatives tried, the images that used each one and
 and 2, with the same table empty below it, from the conditions and the files they name.
 
 Usage:  uv run python works/decision_note.py        (refuses to overwrite)
-Conditions: works/conditions/decision_note.json, version 9 (committed before this version of the script was written)
+Conditions: works/conditions/decision_note.json, version 10 (committed before this version of the script was written)
 Input:  the files named in the rows (conditions of works 1 and 2, of the drawing, of the blind judgement and of the records
         of the share used, the scoring of the blind judgement and its supplement, and the images each quantity acted on) and
         the values every share is computed again from (results/work1/work1.json, results/work2_words/words.json,
         results/paper_words_values/words_values.json); every one must be the committed bytes at HEAD. The range of f and s
         is read from the installed atact.mapping, which must be the library of every record of the share used
-Output: results/decision_note_v9/decision_note.png, decision_note.md and decision_note.json
+Output: results/decision_note_v10/decision_note.png, decision_note.md and decision_note.json
 """
 
 from __future__ import annotations
@@ -34,10 +34,10 @@ from PIL import Image, ImageDraw, ImageFont  # noqa: E402
 import _common as cm  # noqa: E402
 
 COND = ROOT / "works" / "conditions" / "decision_note.json"
-OUT_DIR = ROOT / "results" / "decision_note_v9"
+OUT_DIR = ROOT / "results" / "decision_note_v10"
 CODE = ["works/decision_note.py", "works/_common.py"]
 MM_PER_INCH = 25.4
-VERSION = 9
+VERSION = 10
 ROW_SETS = {"rows_work1": "Work 1", "rows_work2": "Work 2"}
 # the ids of the rows, in order (checks of the conditions); the number of rows follows from them
 ROW_IDS = {"rows_work1": ["w1_lexicon", "w1_height_scale", "w1_drawing"], "rows_work2": ["w2_map_b", "w2_percentiles"]}
@@ -70,7 +70,7 @@ APPROVED_CELLS = {
                              "upper left, lower right; stretched per tile"),
         "reason": "Also a quantity the maker sets (one viewpoint). Tried: none. Shown beside: the other three. "
                   "Not tried: other viewpoints.",
-        "when": "before; seen: every image and value of work 1",
+        "when": "before; seen: earlier images and values of work 1",
         "judged": ("none", NONE_RECORDED)},
     "w2_map_b": {
         "quantity": "lexicon and map",
@@ -89,7 +89,7 @@ APPROVED_CELLS = {
 }
 APPROVED_TEXT = {(rid, f): cells[f][1] for rid, cells in APPROVED_CELLS.items() for f in ("value", "judged")
                  if cells[f][0] == "text"}
-# approved_text_rule of the conditions (version 9): every row as written in the conditions, and the frame of the table
+# approved_text_rule of the conditions (version 10): every row as written in the conditions, and the frame of the table
 APPROVED_ROWS = {'w1_lexicon': {'id': 'w1_lexicon',
                 'quantity': 'lexicon',
                 'value': {'text': 'NRC VAD v2.1, a sentence the mean of its terms',
@@ -102,7 +102,7 @@ APPROVED_ROWS = {'w1_lexicon': {'id': 'w1_lexicon',
                                          'unit': 'sentences',
                                          'shown': {'f': '7%', 's': '6%'},
                                          'beside': {'set': 'random_sentences',
-                                                    'label': 'random ones of equal length',
+                                                    'label': 'random draws, same term counts',
                                                     'shown': {'f': '10%', 's': '10%'}}}},
                 'reason': {'why': 'human ratings of English words',
                            'tried': [],
@@ -154,7 +154,7 @@ APPROVED_ROWS = {'w1_lexicon': {'id': 'w1_lexicon',
                            'not_tried': ['other viewpoints']},
                 'acted_on': ['results/work1_drawing/drawing.png'],
                 'compared': ['results/work1_drawing/drawing.png'],
-                'when': 'before; seen: every image and value of work 1',
+                'when': 'before; seen: earlier images and values of work 1',
                 'judged': 'none recorded',
                 'dagger': False},
  'w2_map_b': {'id': 'w2_map_b',
@@ -235,7 +235,7 @@ APPROVED_FRAME = {'headers': ['Quantity',
                               'When: before or after its output; seen then',
                               'Who judged the look (sheet used)'],
                   'titles': ['Decision note for works 1 and 2', 'Decision note, empty'],
-                  'note': ["Middle half: first to third quartile, % of the rule's range, counted later.",
+                  'note': ["Middle half: Q3 − Q1 as % of the rule's range, counted later.",
                            "Judged: whether the two authors' rows differ within one version; versions not compared."],
                   'acted_on_labels': 'in the repository the column holds the image files; the numbers of the figures of the paper are '
                                      'put in when the manuscript is made, outside the repository',
@@ -262,7 +262,7 @@ SAME_FILE = "results/paper_work1_same_unit/same_unit.json"
 SAME_CONDITIONS = "works/conditions/paper_work1_same_unit.json"
 RANDOM_SET = "random_sentences"  # its share is the mean over the replicates, computed again from them
 USED_PHRASE = "{text} ({n} {unit} {f}, {s}{beside})"
-USED_SETS = {"w1_lexicon": (SAME_FILE, SAME_CONDITIONS, "sentences", (RANDOM_SET, "random ones of equal length")),
+USED_SETS = {"w1_lexicon": (SAME_FILE, SAME_CONDITIONS, "sentences", (RANDOM_SET, "random draws, same term counts")),
              "w2_map_b": (USED_FILE, USED_CONDITIONS, "main_G0.pooled", ("main_P.pooled", "under the percentiles")),
              "w2_percentiles": (USED_FILE, USED_CONDITIONS, "main_P.pooled", None)}
 # the values the quartiles of every set shown are computed again from (after the review of Codex on version 8)
@@ -270,7 +270,10 @@ WORK1_FILE = "results/work1/work1.json"
 WORDS_FILE = "results/work2_words/words.json"
 VALUES_FILE = "results/paper_words_values/words_values.json"
 VALUES_CONDITIONS = "works/conditions/paper_words_values.json"
-RECHECK_FILES = [WORK1_FILE, WORDS_FILE, VALUES_FILE, VALUES_CONDITIONS, USED_CONDITIONS, SAME_CONDITIONS]
+SAME_SCRIPT = "works/paper_work1_same_unit.py"  # its function draw draws the random sentences again (version 10)
+WORK1_CONDITIONS = "works/conditions/work1.json"  # the lexicon of work 1
+RECHECK_FILES = [WORK1_FILE, WORDS_FILE, VALUES_FILE, VALUES_CONDITIONS, USED_CONDITIONS, SAME_CONDITIONS, SAME_SCRIPT,
+                 WORK1_CONDITIONS]
 PERCENT = re.compile(r"(?<![\d.])(?:over )?\d+(?:\.\d+)?%")
 # any way of writing a share outside the built phrases (checks of the conditions)
 ANY_SHARE = re.compile(r"[%％]|\bper\s*cent\b|\bpercent(?:age)?s?\b", re.IGNORECASE)
@@ -477,10 +480,15 @@ def recheck(rec: dict, set_name: str, cache: dict, where: str) -> None:
                 or read_key(meta, "inputs_sha256.words", where) != cm.sha256(ROOT / WORDS_FILE)):
             raise SystemExit(f"{where}: {VALUES_FILE} is not the record of {VALUES_CONDITIONS} made on a clean tree from {USED_FILE}")
         rows = read_key(vals, "rows", where)
+        authors = read_key(load_json(WORDS_FILE, cache), "authors", where)
+        src = [(a, w) for a, x in authors.items() for w in x["words"]]
+        if (not isinstance(rows, list) or len(rows) != len(src)
+                or any((x.get("author"), x.get("word")) != (a, w["word"])
+                       or x.get("map_B") != {k: w[k] for k in ("V", "A", "f", "s")} for x, (a, w) in zip(rows, src))):
+            raise SystemExit(f"{where}: the rows of {VALUES_FILE} are not, one to one and in order, the words of {WORDS_FILE}")
         version = {"main_G0.pooled": "map_B", "main_P.pooled": "percentiles"}[set_name]
         sources = [{q: [read_key(x, f"{version}.{q}", where) for x in rows] for q in USED_QUANTITIES}]
         if set_name == "main_G0.pooled":
-            authors = read_key(load_json(WORDS_FILE, cache), "authors", where)
             sources.append({q: [w[q] for a in authors.values() for w in a["words"]] for q in USED_QUANTITIES})
     for per in sources:
         for q, xs in per.items():
@@ -490,11 +498,42 @@ def recheck(rec: dict, set_name: str, cache: dict, where: str) -> None:
                 raise SystemExit(f"{where}: sets.{set_name}.{q} of the record is not computed from the values: {got} {want}")
 
 
-def random_share(rec: dict, n: int, where: str) -> dict[str, float]:
+def redraw(rec: dict, cache: dict, where: str) -> None:
+    """Every replicate of the random sentences drawn again by the committed function of the record, with the seed and the
+    number of replicates of its conditions, and compared with the record exactly (used_range_rule, version 10)."""
+    import importlib
+
+    from atact.lexicon import load_lexicon
+
+    cm.same_as_head([ROOT / SAME_SCRIPT])  # the committed bytes, before they are imported
+    if read_key(rec, "meta.script_sha256", where) != cm.sha256(ROOT / SAME_SCRIPT):
+        raise SystemExit(f"{where}: {SAME_SCRIPT} is not the script of {SAME_FILE}")
+    rnd = read_key(load_json(SAME_CONDITIONS, cache), "random", where)
+    seed, reps = rnd.get("seed"), rnd.get("replicates")
+    if read_key(rec, "checks.W1_constants", where) != {**read_key(load_json(SAME_CONDITIONS, cache), "constants", where)} \
+            or not isinstance(seed, int) or not isinstance(reps, int):
+        raise SystemExit(f"{where}: the constants of {SAME_FILE} are not those of {SAME_CONDITIONS}")
+    lexc = read_key(load_json(WORK1_CONDITIONS, cache), "lexicon", where)
+    nrc = load_lexicon(ROOT / lexc["file"])
+    if nrc.sha256 != lexc["sha256"] or nrc.sha256 != read_key(rec, "meta.nrc_sha256", where):
+        raise SystemExit(f"{where}: the lexicon of work 1 is not the one of {SAME_FILE}")
+    terms = sorted(nrc.entries)
+    Z = [p["Z"] for p in read_key(load_json(WORK1_FILE, cache), "sentences", where)]
+    width = {q: b - a for q, (a, b) in rule_ranges().items()}
+    su = importlib.import_module("paper_work1_same_unit")
+    if Path(su.__file__).resolve() != (ROOT / SAME_SCRIPT).resolve():
+        raise SystemExit(f"{where}: the module imported is {su.__file__}, not {SAME_SCRIPT}")
+    got = su.draw(seed, reps, Z, [nrc.entries[x][0] for x in terms], [nrc.entries[x][1] for x in terms], width)
+    if got != read_key(rec, f"{RANDOM_SET}.replicates", where):
+        raise SystemExit(f"{where}: the random sentences drawn again differ from {SAME_FILE}")
+
+
+def random_share(rec: dict, n: int, where: str, cache: dict) -> dict[str, float]:
     """The mean over the replicates of the middle half of the random sentences, computed again from the replicates of
-    the record (used_range_rule)."""
+    the record, each drawn again (used_range_rule)."""
     import numpy as np
 
+    redraw(rec, cache, where)
     out = {}
     replicates = read_key(rec, "checks.W1_constants.replicates", where)
     if read_key(rec, "checks.W1_constants.sentences", where) != n:
@@ -551,7 +590,7 @@ def check_used_range(u: dict, base: str, cache: dict, where: str, rid: str) -> t
             raise SystemExit(f"{where}: the share beside is not the one fixed for {rid!r} ({beside_fixed!r})")
         beside_set = b["set"]
         if beside_set == RANDOM_SET:
-            beside = random_share(rec, n, where)
+            beside = random_share(rec, n, where, cache)
         else:
             beside = share_of(rec, beside_set, n, where)
             recheck(rec, beside_set, cache, where)
@@ -887,7 +926,7 @@ def main() -> None:
         raise SystemExit("a text fixed in the script names a row that is not drawn")
     daggered = [r["quantity"] for rs in resolved.values() for r in rs if r["dagger"]]
     if daggered:
-        raise SystemExit(f"rows {daggered} carry the dagger; version 9 has none in the main table")
+        raise SystemExit(f"rows {daggered} carry the dagger; version 10 has none in the main table")
 
     files = sorted(named)
     cm.same_as_head([COND, *(ROOT / p for p in CODE), *(ROOT / p for p in files)])
