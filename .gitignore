@@ -5,8 +5,12 @@ __pycache__/
 .DS_Store
 # Local material that is not part of the archive
 source/
-# External sources (downloaded texts, data and code) are kept outside the archive
-external/
+# External sources (downloaded texts, data and code) are kept outside the archive, except the three public-domain
+# translations of the sketch of a series of translators (their extraction from Wikisource cannot be repeated byte for byte)
+external/*
+!external/translations-20261028/
+external/translations-20261028/*
+!external/translations-20261028/little-mermaid/
 # Working notes
 advice/
 handoff/
