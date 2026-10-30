@@ -1,0 +1,727 @@
+{
+ "meta": {
+  "conditions_sha256": "79bdcec3bceffa7c4bf903eeee68cb32cc6b8247aa18de76947f53451da51bdb",
+  "lexicon_sha256": "42c718817fc91d5c133581b24b0bb31d2b14a0b16edb19bc6ce6ab70343e5a45",
+  "atact_library_sha256": {
+   "__init__.py": "d5980876e37cb7a1f5dc379028ab50f7a0c1d77d84c7651ee5d1beefd623b6ab",
+   "field.py": "4162e8faa60ca78257fd0777a3a7dceaaa7bbab6bfe6691de46f49a339b641c5",
+   "lexicon.py": "36cad1e49a25b352a7ae04868c6693ef349e8276d51909061eeb378085065e81",
+   "mapping.py": "83a50faaa664ddcb99004392e13a73fb096a85588a8b3c423b2c8b71ce626d26",
+   "transform.py": "5d35c9c10dfa6c8d5d3b2a9e8126ab45b895a1be14e05650c3ef60ffd3431bd1"
+  },
+  "uv_lock_sha256": "33888369e6efb8c679a50056dd54fa7aeade07bb75e8302279f0846cfccf9db6",
+  "python": "3.13.12",
+  "platform": "Darwin arm64",
+  "atact_commit": "b559a80c623d36357dd0736b887497a0cb789af5",
+  "numpy": "2.5.4",
+  "pillow": "13.0.0",
+  "git_commit": "d91f4df8c51a1e42d9c5db3f6fe6ebf7ef18cbe4",
+  "git_dirty": false,
+  "started": "2026-10-28T07:16:54+00:00",
+  "finished": "2026-10-28T07:17:00+00:00"
+ },
+ "figure": {
+  "file": "words.png",
+  "sha256": "85931dc69b53b91aae38206b0e04910e0cd14487aa16de7d025dc4731e7f531c"
+ },
+ "font_sha256": "658718d77497145281cb0ec45ff2fe7c6e18062b2a38f837d0d792d9be3a9ba3",
+ "vocabulary": 1918,
+ "slots_short": {
+  "block_runs_6": 0,
+  "block_runs_1": 0,
+  "block_runs_12": 0
+ },
+ "words_in_more_than_one": [
+  "mermaid"
+ ],
+ "n_words_in_more_than_one": 1,
+ "translations": {
+  "paull": {
+   "matched_tokens": 6050,
+   "candidates": 344,
+   "words": [
+    {
+     "word": "mermaid",
+     "count": 48,
+     "count_others": 51,
+     "runs": 36,
+     "log_odds": 0.5597619305783219,
+     "z": 2.9340067541137045,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "beneath",
+     "count": 9,
+     "count_others": 3,
+     "runs": 8,
+     "log_odds": 1.581809512991474,
+     "z": 2.5786244678341137,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "as",
+     "count": 66,
+     "count_others": 84,
+     "runs": 33,
+     "log_odds": 0.39764679667198344,
+     "z": 2.5515031826448697,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "that",
+     "count": 78,
+     "count_others": 107,
+     "runs": 44,
+     "log_odds": 0.33048533764262444,
+     "z": 2.345158971454907,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "of",
+     "count": 206,
+     "count_others": 331,
+     "runs": 59,
+     "log_odds": 0.19153603667994767,
+     "z": 2.28712164991309,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "rise to",
+     "count": 6,
+     "count_others": 1,
+     "runs": 6,
+     "log_odds": 2.138405110687575,
+     "z": 2.2834711055684633,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "also",
+     "count": 9,
+     "count_others": 5,
+     "runs": 8,
+     "log_odds": 1.1382302646565563,
+     "z": 2.168873697875098,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "very",
+     "count": 17,
+     "count_others": 15,
+     "runs": 14,
+     "log_odds": 0.7250928029897814,
+     "z": 2.158151490459895,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "till",
+     "count": 8,
+     "count_others": 4,
+     "runs": 7,
+     "log_odds": 1.2311276532085982,
+     "z": 2.1439117963478225,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "waves",
+     "count": 19,
+     "count_others": 20,
+     "runs": 16,
+     "log_odds": 0.5662017459148991,
+     "z": 1.8629001772025913,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "vessel",
+     "count": 5,
+     "count_others": 0,
+     "runs": 5,
+     "log_odds": 3.5582922120369407,
+     "z": 1.8260153637124616,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "and now",
+     "count": 4,
+     "count_others": 1,
+     "runs": 4,
+     "log_odds": 1.8202246863353464,
+     "z": 1.8051463210058039,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "number",
+     "count": 4,
+     "count_others": 1,
+     "runs": 4,
+     "log_odds": 1.8202246863353464,
+     "z": 1.8051463210058039,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "obtain",
+     "count": 4,
+     "count_others": 1,
+     "runs": 4,
+     "log_odds": 1.8202246863353464,
+     "z": 1.8051463210058039,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "spot",
+     "count": 4,
+     "count_others": 1,
+     "runs": 4,
+     "log_odds": 1.8202246863353464,
+     "z": 1.8051463210058039,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "then",
+     "count": 44,
+     "count_others": 60,
+     "runs": 31,
+     "log_odds": 0.3343086963834372,
+     "z": 1.7793477038899368,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "those",
+     "count": 7,
+     "count_others": 5,
+     "runs": 7,
+     "log_odds": 0.9140740742983686,
+     "z": 1.6497951901151247,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "excepting",
+     "count": 4,
+     "count_others": 0,
+     "runs": 4,
+     "log_odds": 3.5581466719165267,
+     "z": 1.6331709903226004,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "from",
+     "count": 27,
+     "count_others": 35,
+     "runs": 24,
+     "log_odds": 0.37907671651152697,
+     "z": 1.562338394279043,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "covered",
+     "count": 5,
+     "count_others": 3,
+     "runs": 5,
+     "log_odds": 1.0695181034293588,
+     "z": 1.5532766670112754,
+     "V": null,
+     "A": null
+    }
+   ],
+   "sd_V": 0.2117620067434194,
+   "sd_A": 0.23931587389891212,
+   "observed": {
+    "z20": 1.5532766670112754,
+    "m20": 2.0269126443384105
+   },
+   "p95": {
+    "z20": 1.4973705448116508,
+    "m20": 1.8199620146023507
+   },
+   "reading": "distinguishable from the relabelling of blocks",
+   "sensitivity": {
+    "block_runs_1_p95": {
+     "z20": 1.4942725256847424,
+     "m20": 1.6958119744959745
+    },
+    "block_runs_12_p95": {
+     "z20": 1.5189444458603691,
+     "m20": 2.0862227382874097
+    },
+    "alpha_0_500_overlap": 18,
+    "alpha_0_2000_overlap": 17
+   }
+  },
+  "braekstad": {
+   "matched_tokens": 6062,
+   "candidates": 351,
+   "words": [
+    {
+     "word": "mermaid",
+     "count": 49,
+     "count_others": 50,
+     "runs": 34,
+     "log_odds": 0.5937245588549489,
+     "z": 3.1130525646284335,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "right",
+     "count": 8,
+     "count_others": 1,
+     "runs": 7,
+     "log_odds": 2.344733738935041,
+     "z": 2.6467408081199126,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "big",
+     "count": 7,
+     "count_others": 1,
+     "runs": 6,
+     "log_odds": 2.2496732238611266,
+     "z": 2.473641114888078,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "toward",
+     "count": 8,
+     "count_others": 0,
+     "runs": 7,
+     "log_odds": 3.5561019315253892,
+     "z": 2.308325288973936,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "only",
+     "count": 25,
+     "count_others": 25,
+     "runs": 21,
+     "log_odds": 0.6102482101651887,
+     "z": 2.274014942917531,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "large",
+     "count": 16,
+     "count_others": 13,
+     "runs": 12,
+     "log_odds": 0.7966087385707219,
+     "z": 2.2508914370114965,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "began",
+     "count": 7,
+     "count_others": 3,
+     "runs": 7,
+     "log_odds": 1.3631973069271988,
+     "z": 2.119366048626354,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "most",
+     "count": 6,
+     "count_others": 2,
+     "runs": 5,
+     "log_odds": 1.5788193926886613,
+     "z": 2.101458117600982,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "sad",
+     "count": 5,
+     "count_others": 1,
+     "runs": 5,
+     "log_odds": 1.9958028353334507,
+     "z": 2.060782730965981,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "place",
+     "count": 11,
+     "count_others": 8,
+     "runs": 10,
+     "log_odds": 0.8956704948719239,
+     "z": 2.0365496315688714,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "middle",
+     "count": 6,
+     "count_others": 0,
+     "runs": 6,
+     "log_odds": 3.5558112568557068,
+     "z": 1.9989049372229397,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "now",
+     "count": 23,
+     "count_others": 25,
+     "runs": 20,
+     "log_odds": 0.5349053043114083,
+     "z": 1.9516125869109087,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "about",
+     "count": 24,
+     "count_others": 27,
+     "runs": 18,
+     "log_odds": 0.5039507932925513,
+     "z": 1.893935947019445,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "lofty",
+     "count": 7,
+     "count_others": 4,
+     "runs": 6,
+     "log_odds": 1.1104264030742295,
+     "z": 1.881432071639326,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "magnificent",
+     "count": 5,
+     "count_others": 0,
+     "runs": 4,
+     "log_odds": 3.5556659530612036,
+     "z": 1.824667641560087,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "beautifully",
+     "count": 4,
+     "count_others": 1,
+     "runs": 3,
+     "log_odds": 1.8175985975120694,
+     "z": 1.8025419861599137,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "thinking",
+     "count": 4,
+     "count_others": 1,
+     "runs": 4,
+     "log_odds": 1.8175985975120694,
+     "z": 1.8025419861599137,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "top",
+     "count": 4,
+     "count_others": 1,
+     "runs": 4,
+     "log_odds": 1.8175985975120694,
+     "z": 1.8025419861599137,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "up to",
+     "count": 9,
+     "count_others": 7,
+     "runs": 8,
+     "log_odds": 0.8352490886785322,
+     "z": 1.7494872678990474,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "caldron",
+     "count": 4,
+     "count_others": 0,
+     "runs": 2,
+     "log_odds": 3.555520671618,
+     "z": 1.6319656697151106,
+     "V": null,
+     "A": null
+    }
+   ],
+   "sd_V": 0.39031762706800727,
+   "sd_A": 0.24306719235635232,
+   "observed": {
+    "z20": 1.6319656697151106,
+    "m20": 2.0862227382874092
+   },
+   "p95": {
+    "z20": 1.4977941792776075,
+    "m20": 1.7977912207461477
+   },
+   "reading": "distinguishable from the relabelling of blocks",
+   "sensitivity": {
+    "block_runs_1_p95": {
+     "z20": 1.4946957414583943,
+     "m20": 1.6948111610702692
+    },
+    "block_runs_12_p95": {
+     "z20": 1.5136354915923236,
+     "m20": 2.0254780329193656
+    },
+    "alpha_0_500_overlap": 18,
+    "alpha_0_2000_overlap": 20
+   }
+  },
+  "craigie": {
+   "matched_tokens": 5927,
+   "candidates": 399,
+   "words": [
+    {
+     "word": "maid",
+     "count": 44,
+     "count_others": 0,
+     "runs": 33,
+     "log_odds": 3.5911311400045527,
+     "z": 5.4668281007553485,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "sea",
+     "count": 112,
+     "count_others": 111,
+     "runs": 56,
+     "log_odds": 0.6548380426843092,
+     "z": 5.153290112369182,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "there",
+     "count": 40,
+     "count_others": 41,
+     "runs": 30,
+     "log_odds": 0.6188411330847394,
+     "z": 2.934922638702834,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "upon",
+     "count": 24,
+     "count_others": 20,
+     "runs": 18,
+     "log_odds": 0.8042509409384335,
+     "z": 2.801951173556944,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "great",
+     "count": 29,
+     "count_others": 28,
+     "runs": 19,
+     "log_odds": 0.6719636486191476,
+     "z": 2.673196220834021,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "up",
+     "count": 36,
+     "count_others": 39,
+     "runs": 25,
+     "log_odds": 0.5685715478191566,
+     "z": 2.5931988796631056,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "glorious",
+     "count": 8,
+     "count_others": 2,
+     "runs": 6,
+     "log_odds": 1.8477827995766445,
+     "z": 2.591512621975223,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "certainly",
+     "count": 7,
+     "count_others": 2,
+     "runs": 6,
+     "log_odds": 1.737894207880455,
+     "z": 2.379280852499755,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "earth",
+     "count": 10,
+     "count_others": 6,
+     "runs": 10,
+     "log_odds": 1.0970841446229098,
+     "z": 2.2532823488396074,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "men",
+     "count": 10,
+     "count_others": 6,
+     "runs": 8,
+     "log_odds": 1.0970841446229098,
+     "z": 2.2532823488396074,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "splendid",
+     "count": 10,
+     "count_others": 6,
+     "runs": 9,
+     "log_odds": 1.0970841446229098,
+     "z": 2.2532823488396074,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "midst",
+     "count": 7,
+     "count_others": 3,
+     "runs": 6,
+     "log_odds": 1.3928717581084893,
+     "z": 2.165500987439438,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "so that",
+     "count": 22,
+     "count_others": 23,
+     "runs": 21,
+     "log_odds": 0.5996831417675335,
+     "z": 2.119546656373486,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "these",
+     "count": 10,
+     "count_others": 8,
+     "runs": 9,
+     "log_odds": 0.8397178776085124,
+     "z": 1.8680482876693685,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "beheld",
+     "count": 4,
+     "count_others": 1,
+     "runs": 4,
+     "log_odds": 1.847262181993738,
+     "z": 1.8319598436348252,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "charming",
+     "count": 4,
+     "count_others": 1,
+     "runs": 4,
+     "log_odds": 1.847262181993738,
+     "z": 1.8319598436348252,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "castle",
+     "count": 7,
+     "count_others": 5,
+     "runs": 6,
+     "log_odds": 0.9411232886821992,
+     "z": 1.6986158109396357,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "let",
+     "count": 12,
+     "count_others": 12,
+     "runs": 7,
+     "log_odds": 0.6390101180009635,
+     "z": 1.6497386658328108,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "received",
+     "count": 6,
+     "count_others": 4,
+     "runs": 6,
+     "log_odds": 1.0027461041537267,
+     "z": 1.6437568127201814,
+     "V": null,
+     "A": null
+    },
+    {
+     "word": "replied",
+     "count": 5,
+     "count_others": 3,
+     "runs": 5,
+     "log_odds": 1.0965601057992114,
+     "z": 1.592550159601698,
+     "V": null,
+     "A": null
+    }
+   ],
+   "sd_V": 0.3925702612272101,
+   "sd_A": 0.35203966750921695,
+   "observed": {
+    "z20": 1.592550159601698,
+    "m20": 2.4877852357360752
+   },
+   "p95": {
+    "z20": 1.4955113659656603,
+    "m20": 1.7939705018770538
+   },
+   "reading": "distinguishable from the relabelling of blocks",
+   "sensitivity": {
+    "block_runs_1_p95": {
+     "z20": 1.4942828476566468,
+     "m20": 1.692342949020415
+    },
+    "block_runs_12_p95": {
+     "z20": 1.5095861036040088,
+     "m20": 2.086186153193955
+    },
+    "alpha_0_500_overlap": 20,
+    "alpha_0_2000_overlap": 17
+   }
+  }
+ }
+}
