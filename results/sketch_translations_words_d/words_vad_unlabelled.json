@@ -1,0 +1,31 @@
+{
+ "meta": {
+  "conditions_sha256": "b52faf44e1f1d1167da08507c80dad1a963debc229544e5813a35163e1395418",
+  "lexicon_sha256": "42c718817fc91d5c133581b24b0bb31d2b14a0b16edb19bc6ce6ab70343e5a45",
+  "atact_library_sha256": {
+   "__init__.py": "d5980876e37cb7a1f5dc379028ab50f7a0c1d77d84c7651ee5d1beefd623b6ab",
+   "field.py": "4162e8faa60ca78257fd0777a3a7dceaaa7bbab6bfe6691de46f49a339b641c5",
+   "lexicon.py": "36cad1e49a25b352a7ae04868c6693ef349e8276d51909061eeb378085065e81",
+   "mapping.py": "83a50faaa664ddcb99004392e13a73fb096a85588a8b3c423b2c8b71ce626d26",
+   "transform.py": "5d35c9c10dfa6c8d5d3b2a9e8126ab45b895a1be14e05650c3ef60ffd3431bd1"
+  },
+  "uv_lock_sha256": "33888369e6efb8c679a50056dd54fa7aeade07bb75e8302279f0846cfccf9db6",
+  "python": "3.13.12",
+  "platform": "Darwin arm64",
+  "atact_commit": "b559a80c623d36357dd0736b887497a0cb789af5",
+  "numpy": "2.5.4",
+  "pillow": "13.0.0",
+  "git_commit": "1397275874aee0f3686979916bff352ecb990f18",
+  "git_dirty": false,
+  "finished": "2026-10-30T17:27:35+00:00"
+ },
+ "repeated_run_matches_record": {
+  "words_vad.png": "a4ffa2d1037b8435182d0b9a55f00bbcba192b51a7e819feba28bf0702e35852",
+  "pairs.png": "d247ea815a591d6f46c56f567397d8a3928e78d439d9e1f14820d91f3e698c0d"
+ },
+ "pixels_changed_all_white": 21771,
+ "figure": {
+  "file": "words_vad_unlabelled.png",
+  "sha256": "b41ad596895ba2d8c79dfb6fcfe1f3442cce23636219bda7c4b49f128dd76a2e"
+ }
+}
