@@ -4,7 +4,7 @@ and 2, and the same table empty as its own image (for supplement S1, version 11;
 general lines, version 13), from the conditions and the files they name.
 
 Usage:  uv run python works/decision_note.py        (refuses to overwrite)
-Conditions: works/conditions/decision_note.json, version 20 (committed before this version of the script was written)
+Conditions: works/conditions/decision_note.json, version 21 (committed before this version of the script was written)
 Input:  the files named in the rows (conditions of works 1 and 2, of the drawing, of the blind judgement and of the records
         of the share used, the scoring of the blind judgement and its supplement, and the images each quantity acted on) and
         the values every share is computed again from (results/work1/work1.json, results/work2_words/words.json,
@@ -13,7 +13,7 @@ Input:  the files named in the rows (conditions of works 1 and 2, of the drawing
         version 13, and results/paper_distinct_range, version 14, read and checked by their provenance); every one
         must be the committed bytes at HEAD. The range of f and s
         is read from the installed atact.mapping, which must be the library of every record of the share used
-Output: results/decision_note_v20/decision_note.png (figure 8), decision_note_empty.png (S1), decision_note.md and
+Output: results/decision_note_v21/decision_note.png (figure 8), decision_note_empty.png (S1), decision_note.md and
         decision_note.json
 """
 
@@ -21,6 +21,8 @@ from __future__ import annotations
 
 import datetime as dt
 import hashlib
+import importlib.util
+import inspect
 import json
 import math
 import re
@@ -35,15 +37,16 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.pycache_prefix = tempfile.mkdtemp(prefix="pycache-")  # never run a stale .pyc (ignored by git)
 sys.path.insert(0, str(ROOT / "works"))
 
+import numpy as np  # noqa: E402
 from PIL import Image, ImageDraw, ImageFont  # noqa: E402
 
 import _common as cm  # noqa: E402
 
 COND = ROOT / "works" / "conditions" / "decision_note.json"
-OUT_DIR = ROOT / "results" / "decision_note_v20"
+OUT_DIR = ROOT / "results" / "decision_note_v21"
 CODE = ["works/decision_note.py", "works/_common.py"]
 MM_PER_INCH = 25.4
-VERSION = 20
+VERSION = 21
 ROW_SETS = {"rows_work1": "Work 1", "rows_work2": "Work 2"}
 # the ids of the rows, in order (checks of the conditions); the number of rows follows from them
 ROW_IDS = {"rows_work1": ["w1_lexicon", "w1_height_scale", "w1_drawing"], "rows_work2": ["w2_map_b", "w2_percentiles", "w2_seed"]}
@@ -88,8 +91,8 @@ APPROVED_CELLS = {
         "judged": ("text", "two makers (one blind), with the sheet and example")},
     "w2_percentiles": {
         "quantity": "percentiles",
-        "value": ("text", "V and A as percentiles in the 23 works, each author weighted equally"),
-        "reason": "Spreads values map B compresses; stretches small predicted differences, most in A. Tried: map B; "
+        "value": ("text", "V and A as percentiles among all uses of lexicon words in the 23 works, each author weighted equally"),
+        "reason": "Spreads values map B compresses; stretches small predicted differences. Tried: map B; "
                   "whole-lexicon percentiles.",
         "when": "after; seen: sketches with these percentiles, whole-lexicon percentiles",
         "judged": ("text", "same makers and sheet")},
@@ -219,7 +222,7 @@ APPROVED_ROWS = {'w1_lexicon': {'id': 'w1_lexicon',
               'dagger': False},
  'w2_percentiles': {'id': 'w2_percentiles',
                     'quantity': 'percentiles',
-                    'value': {'text': 'V and A as percentiles in the 23 works, each author weighted equally',
+                    'value': {'text': 'V and A as percentiles among all uses of lexicon words in the 23 works, each author weighted equally',
                               'check': {'file': 'works/conditions/sketch_sp_color.json',
                                         'keys': ['reference.what'],
                                         'must_contain': ['the 23 works', 'each author weighs 1']},
@@ -232,8 +235,7 @@ APPROVED_ROWS = {'w1_lexicon': {'id': 'w1_lexicon',
                                                          'set': 'distinct_P',
                                                          'label': "23 works' words",
                                                          'shown': {'f': '49%', 's': '36%'}}]}},
-                    'reason': {'why': 'spreads values map B compresses; stretches small predicted differences, most in '
-                                      'A',
+                    'reason': {'why': 'spreads values map B compresses; stretches small predicted differences',
                                'tried': ['map B', 'whole-lexicon percentiles'],
                                'shown_beside': [],
                                'later_compared': [],
@@ -289,7 +291,7 @@ APPROVED_ROWS = {'w1_lexicon': {'id': 'w1_lexicon',
 APPROVED_FRAME = {'headers': ['Quantity',
                               'Value (middle half of f, s where counted)',
                               'Reason; tried by then / shown beside / compared later / not tried',
-                              'Images using it (* effect compared)',
+                              'Figures using it (* effect compared)',
                               'When: before or after its output; seen then',
                               'Who judged the look (sheet used)'],
                   'titles': ['Decision note for works 1 and 2', 'Decision note, empty'],
@@ -305,14 +307,14 @@ APPROVED_FRAME = {'headers': ['Quantity',
                             # the other maps keep, in the words of the reason of map B (version 17); the pools of the
                             # draws named, each writer's own words (version 18), with their weighting, each author's
                             # distinct words (version 19)
-                            "same-size draws, 20 from each author's distinct words, 10,000 times (S1); percentiles keep the words; "
+                            "same-size draws, 20 from each author's distinct words, 10,000 times (S1.5); percentiles keep the words; "
                             "other maps: check sentences."],
                            # the time, by the standard of the line on the time of note_empty (version 15), its words
                            # read and pointing to S1 for the full standard (version 16), and its one exception with its
                            # ground (version 16)
                            ["When: “after” means the maker who decided had seen the chosen value's outputs, or been told "
                             "of them,",
-                            "by the time the quantity was last fixed for the work (full standard in S1)."],
+                            "by the time the quantity was last fixed for the work (full standard in S1.7)."],
                            "Drawing: read as before; of its four drawings, only the series' gray had been seen.",
                            "Judged: whether the two authors' rows differ within one version, on the 80 px judging sheets; "
                            "versions not compared."],
@@ -328,20 +330,25 @@ APPROVED_FRAME = {'headers': ['Quantity',
                                   "or been told of them: …"],
                                  "‡: before, but after seeing outputs of alternatives: …",
                                  "Judged: what the judges compared, and what they did not: …"],
-                  'acted_on_labels': 'in the repository the column holds the image files; the numbers of the figures of the paper are '
-                                     'put in when the manuscript is made, outside the repository',
-                  'compared_mark': ' *',
+                  'acted_on_labels': 'from version 21 the column holds the numbers of the figures of the paper, mapped from the image files of the rows by figure_numbers (S2 for an image of supplement S2, written once in a cell), in ascending order with S2 last; the files stay in the rows and in the record',
+                  'compared_mark': '*',
+                  'figure_numbers': {'results/work1/common.png': '2', 'results/work1/minmax.png': '3', 'results/work1_drawing/drawing.png': '4', 'results/work2_sp_color/SPC.png': '5', 'results/paper_figure6_scale/figure6_scale.png': '6', 'results/work1/common_eps.png': 'S2', 'results/paper_work2_figures/variants_judged.png': 'S2'},
                   'dagger': {'mark': '† ', 'meaning': 'claim weakened in the paper after the values were seen'}}
 APPROVED_LAYOUT = {'width_mm': 177.8,
  'dpi': 300,
  'colour': 'black and white',
  'font_file': '/System/Library/Fonts/Helvetica.ttc',
  'column_share': {'quantity': 0.1, 'value': 0.19, 'reason': 0.19, 'acted_on': 0.19, 'when': 0.17, 'judged': 0.16},
- 'max_words': 533}
+ 'max_words': 531}
 # the files of the two judges (checks of the conditions)
 MAIN_FILE = "results/blind_judgement/score.json"
 ALSO_FILE = "results/blind_judgement/score-researcher-supplement.json"
 # a text before a built phrase may not make a claim of its own: no clause of its own and none of these words
+# version 21: the reference of the percentiles as section 2 names it; its 'all' and 'words' are not those of an outcome,
+# so this phrase alone, in the value of w2_percentiles alone, is taken out before SAID is sought (a change of the script
+# beyond the conditions, recorded in decision 7 of .steering/20261030-draft-fill-blanks)
+REFERENCE_ROW = "w2_percentiles"
+REFERENCE_PHRASE = "among all uses of lexicon words in the 23 works"
 SAID = re.compile(r";|\b(?:rows?|words|range|ranges|agreed?|disagreed?|differ|differs|split|both|neither|all|G0|P|SPC)\b")
 JUDGEMENT = "works/conditions/blind_judgement.json"  # its rows are the rows an answer may name
 SHARE = re.compile(r"(\d+)%")
@@ -382,7 +389,7 @@ EMPTY_HEADS = ["Middle half", "Compared with", "When", "‡", "Judged"]
 WHEN_STANDARD = ["by the time the quantity was last fixed for the work", "the maker who decided",
                  "seen the chosen value's outputs", "been told of them"]
 ALL_HEADS = {*NOTE_HEADS, *EMPTY_HEADS}  # no line after the first of a text begins with any of these (version 16)
-WHEN_POINTER = "full standard in S1"  # version 16
+WHEN_POINTER = "full standard in S1.7"  # version 16
 DRAWING_WORDS = ["read as before", "only the series' gray had been seen"]  # the ground of the exception (version 16)
 EMPTY_WEIGHTING = "weighting (each once or by frequency)"  # version 16
 # what the texts on works 1 and 2 must name of the sets beside (version 16): the words of the labels of work 1, the
@@ -406,10 +413,17 @@ DRAWS_NOT_WEIGHTED = r"\bweight|\bfrequen|\bwith replacement"
 # one name for the writers of work 2 in the figure: this word in no text of the note, of note_empty or of the cells
 # (version 19; any case, after NFKC and without format characters, at the start of a word or after '_', after the review)
 NOT_NAMED = r"(?<![^\W_])writer"
-# a phrase of the pools of the draws negated: not, never, no, rather than or instead of up to three words before it
-# (version 20, after the review by Codex of versions 13 to 19: the count alone passed 'not drawn uniformly ...')
-NEGATED = r"\b(?:not|never|no|rather\s+than|instead\s+of)\W+(?:\w+\W+){0,3}?"
-POOLS_NOT_NEGATED = (DRAWS_UNIFORM, DRAWS_POOLS[2])
+# version 21: the negation of version 20 is no longer sought in the text of the conditions of the draws (the phrases are
+# still checked once each); the record of the distinct words and the committed function draw are checked instead
+POOLS_ONCE = (DRAWS_UNIFORM, DRAWS_POOLS[2])
+DRAW_SOURCE_HAS, DRAW_SOURCE_HAS_NOT = "replace=False", "p="
+DRAW_POOL_SIZES, DRAW_REPLICATES_TWICE = "checks.D4_pool_sizes", "checks.D5_replicates_drawn_twice"
+DRAW_AUTHORS = "checks.D1_constants.reference_tokens"  # its keys are the authors in the order the record draws them
+DRAW_SEED = "checks.D1_constants.seed"
+RECORD_SCRIPT_SHA = "meta.script_sha256"
+FIGURE_NUMBER = re.compile(r"\d+|S2")  # the numbers of figures; S2 is the one number of supplement S2
+NOT_SAID_IN_A = "most in A"
+PERCENTILES_VALUE_HAS = ["among all uses of lexicon words in the 23 works", "each author weighted equally"]
 COMPARED_W2_KEEP = ["percentiles keep the words", "other maps: check sentences"]
 MAP_B_REASON = ("w2_map_b", "two other maps, on check sentences")
 NOT_SAID = "other maps keep the words"  # the phrase of version 16 that contradicted the reason of map B, any case
@@ -579,7 +593,8 @@ def resolve_value(v: dict, cache: dict, where: str, approved: str | None = None,
             raise SystemExit(f"{where}: the text {base!r} is not the one fixed in the script ({approved!r})")
         if "text" not in v and approved is not None:
             raise SystemExit(f"{where}: a text is fixed in the script for this cell but the cell has none")
-        if "text" in v and SAID.search(base):
+        said_in = base.replace(REFERENCE_PHRASE, "", 1) if rid == REFERENCE_ROW and where.endswith(".value") else base
+        if "text" in v and SAID.search(said_in):  # version 21: the reference is not a claim
             raise SystemExit(f"{where}: the text {base!r} before the built phrase makes a claim of its own")
         if "check" not in v:
             return text, {"literal": True, **extra}
@@ -1109,6 +1124,30 @@ def check_row(row: dict, where: str) -> None:
         raise SystemExit(f"{where}.judged is neither {NONE_RECORDED!r}, a literal nor a text with answers")
 
 
+def figure_cell(files: list[str], compared: list[str], fig_nums: dict, mark: str, where: str) -> str:
+    """The cell of the figures (version 21): the number of each image of the row, once, ascending with S2 last, the mark
+    joined to the number of a compared image (2*)."""
+    unmapped = [p for p in (*files, *compared) if p not in fig_nums]
+    if unmapped:
+        raise SystemExit(f"{where}: {unmapped} are not keys of figure_numbers (version 21)")
+    marked: dict[str, bool] = {}
+    for p in files:
+        marked[fig_nums[p]] = marked.get(fig_nums[p], False) or p in compared
+    bad = [n for n in marked if not isinstance(n, str) or not FIGURE_NUMBER.fullmatch(n)]
+    if bad:
+        raise SystemExit(f"{where}: {bad} are not numbers of figures (version 21)")
+    order = sorted(marked, key=lambda n: (n == "S2", int(n) if n != "S2" else 0))
+    cell = ", ".join(n + (mark if marked[n] else "") for n in order)
+    parts = cell.split(", ")
+    nums = [x.removesuffix(mark) for x in parts]
+    sort_key = lambda n: (n == "S2", int(n) if n != "S2" else 0)  # noqa: E731
+    if (len(set(nums)) != len(nums) or nums != sorted(nums, key=sort_key) or "results/" in cell or ".png" in cell
+            or mark != mark.strip() or not all(re.fullmatch(rf"(?:\d+|S2)(?:{re.escape(mark)})?", x) for x in parts)):
+        raise SystemExit(f"{where}: the cell of the figures {cell!r} is not once each, ascending, S2 last, the mark joined, "
+                         "without a path (version 21)")
+    return cell
+
+
 def reason_text(r: dict) -> str:
     tried = "; ".join(r["tried"]) if r["tried"] else "none"
     beside = f" Shown beside: {'; '.join(r['shown_beside'])}." if r["shown_beside"] else ""
@@ -1181,7 +1220,7 @@ def main() -> None:
         raise SystemExit(f"the text on the exception of the drawing does not hold {DRAWING_WORDS} (version 16)")
     max_words = cm.need(c, "max_words", int)
     frame = {"headers": headers, "titles": titles, "note": note, "note_empty": note_empty, "acted_on_labels": label,
-             "compared_mark": mark_c, "dagger": dag}
+             "compared_mark": mark_c, "dagger": dag, "figure_numbers": cm.need(c, "figure_numbers", dict)}  # version 21
     if frame != APPROVED_FRAME:
         raise SystemExit(f"the frame {[k for k in frame if frame[k] != APPROVED_FRAME[k]]} is not the one fixed in the script")
     fixed = {**{k: lay.get(k) for k in APPROVED_LAYOUT if k != "max_words"}, "max_words": max_words}
@@ -1193,6 +1232,8 @@ def main() -> None:
 
     cache: dict = {}
     named: set[str] = set()
+    fig_nums = frame["figure_numbers"]  # version 21: fixed in the script, checked against the rows below
+    used_files: set[str] = set()
     resolved: dict[str, list] = {}
     if not set(APPROVED_CELLS) == set(APPROVED_ROWS) == {rid for ids in ROW_IDS.values() for rid in ids}:
         raise SystemExit("the cells fixed in the script are not those of the rows fixed in the script")
@@ -1241,6 +1282,7 @@ def main() -> None:
                 judged, judged_read = row["judged"], {"literal": True}
             reserved = [mk.strip() for mk in (mark_c, mark_d)]
             plain = [row["quantity"], text, reason_text(row["reason"]), *row["acted_on"], row["when"], judged]
+            used_files.update(row["acted_on"], row["compared"])
             bad = [t for t in plain if any(mk in t for mk in reserved)]
             if bad:
                 raise SystemExit(f"{where}: a reserved mark {reserved} is in {bad}")
@@ -1272,10 +1314,15 @@ def main() -> None:
                 raise SystemExit(f"{where}: the version of the answers is not the version fixed for {rid!r}")
             resolved[key].append({
                 "id": rid, "quantity": row["quantity"], "dagger": row["dagger"], "value": text, "reason": reason_text(row["reason"]),
-                "acted_on": [p + (mark_c if p in row["compared"] else "") for p in row["acted_on"]],
+                "acted_on": figure_cell(row["acted_on"], row["compared"], fig_nums, mark_c, where),  # version 21
+                "acted_on_files": row["acted_on"], "compared_files": row["compared"],
                 "when": row["when"], "judged": judged, "read": {"value": read, "judged": judged_read}})
     if not font_file.is_file():
         raise SystemExit(f"{font_file} does not exist")
+    unused = sorted(set(fig_nums) - used_files)
+    if unused or sorted(used_files - set(fig_nums)):
+        raise SystemExit(f"figure_numbers has keys no row uses {unused} or rows use images it lacks "
+                         f"{sorted(used_files - set(fig_nums))} (version 21)")
     if {rid for rid, _ in APPROVED_TEXT} - {r["id"] for rs in resolved.values() for r in rs}:
         raise SystemExit("a text fixed in the script names a row that is not drawn")
     daggered = [r["quantity"] for rs in resolved.values() for r in rs if r["dagger"]]
@@ -1378,14 +1425,67 @@ def main() -> None:
     if named_writer:
         raise SystemExit(f"{NOT_NAMED!r} is written in {len(named_writer)} text(s) of the figure, e.g. "
                          f"{named_writer[0][:80]!r} (version 19)")
-    # the pools of the draws: each phrase once and not negated (version 20). The count repeats the checks of versions 18
-    # and 19 as a second guard (no input fails it here and passes them); the negation is what is new. The negators are
-    # those of the conditions; 'n't', 'cannot', 'neither', 'nor' and a negation after the phrase are not sought (after
-    # the review of version 20, a limit of the rule as committed)
-    not_once = [p for p in POOLS_NOT_NEGATED if pools_text.count(p) != 1]
-    negated = [p for p in POOLS_NOT_NEGATED if re.search(NEGATED + re.escape(p), pools_text, re.IGNORECASE)]
-    if not_once or negated:
-        raise SystemExit(f"{DRAWS_POOLS[0]} {DRAWS_POOLS[1]} does not hold {not_once} once or negates {negated} (version 20)")
+    # version 21. The pools of the draws: each phrase once in the text of their conditions (the negation of version 20 is not
+    # sought there any more); the record of the distinct words gives pools of at least words_per_author for each author and
+    # the replicates drawn twice; the committed function draw, called with the seed and the replicates of the record on
+    # the positions of those pools, gives in every replicate words_per_author distinct positions inside each pool
+    not_once = [p for p in POOLS_ONCE if pools_text.count(p) != 1]
+    if not_once:
+        raise SystemExit(f"{DRAWS_POOLS[0]} {DRAWS_POOLS[1]} does not hold {not_once} once (version 21)")
+    pool_sizes = read_key(dist, DRAW_POOL_SIZES, "note")
+    order = list(read_key(dist, DRAW_AUTHORS, "note"))
+    twice = read_key(dist, DRAW_REPLICATES_TWICE, "note")
+    seed = read_key(dist, DRAW_SEED, "note")
+    if (not isinstance(pool_sizes, dict) or set(pool_sizes) != set(order) or len(order) != dc["authors"]
+            or any(isinstance(v, bool) or not isinstance(v, int) or v < dc["per_writer"] for v in pool_sizes.values())
+            or isinstance(twice, bool) or twice != dc["times"] or isinstance(seed, bool) or not isinstance(seed, int)):
+        raise SystemExit(f"{DIST_FILE}: {DRAW_POOL_SIZES} {pool_sizes} is not a size of at least {dc['per_writer']} for each "
+                         f"author of {DRAW_AUTHORS}, or {DRAW_REPLICATES_TWICE} {twice} is not {dc['times']} (version 21)")
+    recorded_sha = read_key(dist, RECORD_SCRIPT_SHA, "note")
+    draw_path = (ROOT / DIST_SCRIPT).resolve()
+    if cm.sha256(draw_path) != recorded_sha:
+        raise SystemExit(f"{DIST_SCRIPT} is not the script of the record {DIST_FILE} ({RECORD_SCRIPT_SHA}) (version 21)")
+    spec = importlib.util.spec_from_file_location("paper_distinct_range_checked", draw_path)
+    if spec is None or spec.loader is None:
+        raise SystemExit(f"{DIST_SCRIPT} cannot be imported (version 21)")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)  # its import runs src/ modules too (not checked here); draw uses numpy alone
+    if Path(mod.__file__).resolve() != draw_path or cm.sha256(Path(mod.__file__)) != recorded_sha:
+        raise SystemExit(f"the module imported is not {DIST_SCRIPT} of the record (version 21)")
+    source = inspect.getsource(mod.draw)
+    if DRAW_SOURCE_HAS not in source or DRAW_SOURCE_HAS_NOT in source:
+        raise SystemExit(f"the source of draw in {DIST_SCRIPT} does not hold {DRAW_SOURCE_HAS!r} or holds "
+                         f"{DRAW_SOURCE_HAS_NOT!r} (version 21)")
+    pools = [np.arange(pool_sizes[au], dtype=np.int64) for au in order]
+    got = mod.draw(seed, dc["times"], pools, dc["per_writer"])
+    k = dc["per_writer"]
+    bad_draws = 0
+    for rep_i, d in enumerate(got):
+        d = np.asarray(d)
+        ok = d.shape == (len(pools) * k,)
+        if ok:
+            for j, pool in enumerate(pools):
+                part = d[j * k:(j + 1) * k]
+                if (not np.issubdtype(part.dtype, np.integer) or len(np.unique(part)) != k
+                        or not np.isin(part, pool).all()):
+                    ok = False
+                    break
+        bad_draws += not ok
+    if len(got) != dc["times"] or bad_draws:
+        raise SystemExit(f"draw gives {len(got)} replicates of which {bad_draws} do not hold {k} distinct positions inside "
+                         f"each pool (version 21)")
+    draw_check = {"file": DIST_SCRIPT, "sha256": recorded_sha, "record_key": RECORD_SCRIPT_SHA, "seed": seed,
+                  "replicates": len(got), "pools": len(pools), "pool_sizes": pool_sizes, "per_pool": k,
+                  "positions_checked": len(got) * len(pools) * k, "replicates_bad": bad_draws,
+                  "source_has": DRAW_SOURCE_HAS, "source_has_not": DRAW_SOURCE_HAS_NOT,
+                  "D5_replicates_drawn_twice": twice}
+    # the percentiles named as the reference of section 2, and 'most in A' in no text of a row or of the note
+    pct = [r for r in resolved["rows_work2"] if r["id"] == "w2_percentiles"]
+    all_texts = [*texts, *texts_empty, *note_lines, *empty_lines, *cell_texts]
+    said_a = [x for x in all_texts if NOT_SAID_IN_A.casefold() in x.casefold()]
+    if len(pct) != 1 or any(p not in pct[0]["value"] for p in PERCENTILES_VALUE_HAS) or said_a:
+        raise SystemExit(f"the value of the percentiles does not hold {PERCENTILES_VALUE_HAS}, or {NOT_SAID_IN_A!r} is in "
+                         f"{len(said_a)} text(s) (version 21)")
     named.add(DIST_FILE)
     named.add(DRAWS_POOLS[0])  # version 18
 
@@ -1461,6 +1561,9 @@ def main() -> None:
                "files_named_sha256": {p: cm.sha256(ROOT / p) for p in files},
                **resolved,
                "dagger_rows": daggered,
+               "figure_numbers": {"map": fig_nums, "source": cm.need(c, "figure_numbers_source", str),
+                                  "cells": {r["id"]: r["acted_on"] for rs in resolved.values() for r in rs},
+                                  "compared_mark": mark_c},  # version 21
                "judging_px": {"file": JUDGEMENT, "key": JUDGING_PX_KEY, "value": px},  # version 14
                "when_exception": {"row": drawn[0]["id"], "when": drawn[0]["when"], "file": DRAWING_COND,
                                   "key": "fixed_before_running", "names": DRAWING_SEEN,
@@ -1486,15 +1589,15 @@ def main() -> None:
                                                 "characters", "in": ["note", "note_empty", "every element of the cells"],
                                                 "not_in": "titles, headers, band labels (fixed in the script)",
                                                 "texts": len(sought), "found": len(named_writer)},  # version 19
-                                  "pools_not_negated": {"phrases": list(POOLS_NOT_NEGATED),
-                                                        "patterns": [NEGATED + re.escape(p) for p in POOLS_NOT_NEGATED],
-                                                        "flags": "IGNORECASE", "not_once": not_once,
-                                                        "negated": negated},  # version 20
+                                  "pools_once": {"phrases": list(POOLS_ONCE), "not_once": not_once},  # version 21
+                                  "draw_check": draw_check,  # version 21
+                                  "percentiles": {"holds": PERCENTILES_VALUE_HAS, "not_said": NOT_SAID_IN_A,
+                                                  "texts_sought": len(all_texts), "found": len(said_a)},  # version 21
                                   "not_elsewhere": {"patterns": loose, "texts": "the other texts of note and all of note_empty"},
                                   "keep": COMPARED_W2_KEEP,
                                   "map_b_reason": {"row": MAP_B_REASON[0], "holds": MAP_B_REASON[1]},
                                   "not_said": {"phrase": NOT_SAID, "how": "any case, as written; rewordings not sought"}},  # version 17
-               "words": {**words, "max_words": max_words, "how": "whitespace-separated tokens, a path one word, "
+               "words": {**words, "max_words": max_words, "how": "whitespace-separated tokens, a number of a figure with its mark joined one word, "
                          "a mark standing alone one word; titles, headers, band labels, the note and the cells"},
                "drawing": {"width_px": width, "height_px": fig.height, "empty_height_px": empty.height, "mode": fig.mode,
                            "dpi": dpi, "font_pt": FONT_PT,
