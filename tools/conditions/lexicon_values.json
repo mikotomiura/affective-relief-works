@@ -1,0 +1,49 @@
+{
+ "purpose": "Prepare the public archive: the two records of the sketch of a series of translators that hold values of the NRC VAD Lexicon v2.1 word by word are published with those values set to null, because its terms of use say 'Do not redistribute the data. ... nor otherwise permit third parties to use it.' Whoever has the lexicon can put the values back; the restored files must equal the originals byte for byte (SHA-256 below). Written and committed before the tool is run.",
+ "lexicon": {
+  "name": "NRC VAD Lexicon v2.1",
+  "file": "external/nrc-vad-v2.1-20261026/NRC-VAD-Lexicon-v2.1/NRC-VAD-Lexicon-v2.1.txt",
+  "sha256": "42c718817fc91d5c133581b24b0bb31d2b14a0b16edb19bc6ce6ab70343e5a45",
+  "source": "https://saifmohammad.com/WebPages/nrc-vad.html (the file NRC-VAD-Lexicon-v2.1.txt of the zip)"
+ },
+ "files": [
+  {
+   "path": "results/sketch_translations_words/sketch_translations_words.json",
+   "sha256_original": "e2fbe996f92a921c48766dd939874d5c138e6c88f1f120c013fcc04865ce7ac9",
+   "words_at": "translations.<name>.words[]",
+   "nulled": [
+    "V",
+    "A"
+   ],
+   "restored_from": "V and A: the entry of the word in atact.lexicon.load_lexicon(lexicon file), as works/sketch_translations_words.py read them"
+  },
+  {
+   "path": "results/sketch_translations_words_d/sketch_translations_words_d.json",
+   "sha256_original": "8e4bb7dad1eec0a4073ad01549127e23bd76d487f21b77cdc1dd536d22d1e2ab",
+   "words_at": "translations.<name>.words[]",
+   "nulled": [
+    "V",
+    "A",
+    "D",
+    "s",
+    "gamma",
+    "gamma_d",
+    "dH_mm",
+    "dH_over_s_mm"
+   ],
+   "kept": [
+    "word"
+   ],
+   "why_derived_are_nulled": "s and gamma follow from V and A by the rule, gamma_d from gamma and D; dH_mm is 0 exactly where D is 0 and, with V and A, fixes D; dH_over_s_mm with s gives dH_mm. Each would give values of the lexicon back. The summaries over the 20 words are kept.",
+   "restored_from": "the run of works/sketch_translations_words_d.py (its function run) repeated in a temporary directory on the restored record of version 3 and the lexicon: its rows for each translation replace those of the stripped record, after every value kept in the stripped record is checked to equal the rerun"
+  }
+ ],
+ "unchanged": "every other key and value, the order of the keys, and the serialisation json.dumps(indent=1, ensure_ascii=False, allow_nan=False) + newline; the summaries over the 20 words (sd, median, Spearman, the range of gamma_d, the mean and sd of D) are kept",
+ "checks": [
+  "the tool refuses to strip a file whose SHA-256 differs from sha256_original",
+  "after stripping, compared with the original independently of the stripping: the same keys in the same order, every listed key of every word null, every other value equal",
+  "restoring the stripped files with the lexicon gives the original SHA-256 (tried before publishing, with the lexicon, in a scratch copy)",
+  "restore refuses a lexicon whose SHA-256 differs, and writes nothing unless both files reach the original SHA-256"
+ ],
+ "order": "strip, commit the two records, then tools/words_vad_unlabelled.py"
+}

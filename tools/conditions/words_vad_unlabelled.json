@@ -1,0 +1,13 @@
+{
+ "purpose": "Draw words_vad.png of the sketch of a third input (results/sketch_translations_words_d/) again with the words only in its labels, for the public archive: the original labels print the dominance D of the NRC VAD Lexicon v2.1 to two decimals for 60 words, and its terms of use forbid redistribution. The original figure is left out of the history of the archive. Written and committed before the tool is run.",
+ "inputs": "the conditions, the record of version 3 (its 20 words per translation; its V and A may be null) and the lexicon named by works/conditions/sketch_translations_words_d.json and its base conditions",
+ "change": "each label 'word D+0.00' of words_vad.png becomes 'word'; the regular expression ' D[+-]\\\\d\\\\.\\\\d\\\\d$' must match all 60 labels; tiles, layout, font and pairs.png are not changed",
+ "checks": [
+  "a first run without the change gives words_vad.png and pairs.png with the SHA-256 recorded in sketch_translations_words_d.json#figures (the tiles of the new figure are those of the original)",
+  "the second run gives the same pairs.png byte for byte",
+  "compared in every channel with the figure of the first run, every changed pixel is white in the new figure, and the changed rows form at most one band per row of tiles, each no taller than 24 px (the labels)",
+  "the tracked inputs equal the last commit"
+ ],
+ "outputs": "results/sketch_translations_words_d/words_vad_unlabelled.png and words_vad_unlabelled.json (refuses to overwrite)",
+ "used_by": "the README of the archive and Supplement S2 (in place of words_vad.png)"
+}
