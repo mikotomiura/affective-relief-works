@@ -1,7 +1,7 @@
 {
  "purpose": "A schematic of the rule and of the quantities it leaves open, for the paper on the two works. Text and arrows only, plus one tile of work 1 cut from an existing image; it shows no value that has not been shown before.",
- "fixed_before_running": "Written on 2026-10-28 and committed before any script for it exists and before anything is drawn. Seen before: everything of results/work1, results/work1_drawing, results/work2_words, results/sketch_sp_color and the conditions they were made on. Version 2 (2026-10-28, still before any script or drawing), after the cross review of the task (.steering/20261028-while-blind-judgement): eps acts on the images of work 2 and only on the supplementary image of work 1 (version 1 had it the other way); the placeholders begin with FILL so that load_conditions catches them; the values of work 2 are read from works/conditions/work2_sp_color.json instead of being chosen after the scoring; a row for the scale of V and A (map B or percentiles); every value is either a path to a key of a conditions file or a literal checked against one. Version 3 (2026-10-29, still before any script or drawing for the schematic, after the scoring of the blind judgement, results/blind_judgement/score.json of 363b5c0, was read): the drawing of work 2 is filled in as the grey with colour (SPC). The rule promised in work2_main (written before the scoring is read) was not written; the choice rests on the decision of the researcher made before the scoring (decision 2 of .steering/20261028-while-blind-judgement: the coloured version in the body of the paper), and is recorded as a decision made without the promised rule in .steering/20261028-outline-v25 (decision 1).",
- "version": 3,
+ "fixed_before_running": "Written on 2026-10-28 and committed before any script for it exists and before anything is drawn. Seen before: everything of results/work1, results/work1_drawing, results/work2_words, results/sketch_sp_color and the conditions they were made on. Version 2 (2026-10-28, still before any script or drawing), after the cross review of the task (.steering/20261028-while-blind-judgement): eps acts on the images of work 2 and only on the supplementary image of work 1 (version 1 had it the other way); the placeholders begin with FILL so that load_conditions catches them; the values of work 2 are read from works/conditions/work2_sp_color.json instead of being chosen after the scoring; a row for the scale of V and A (map B or percentiles); every value is either a path to a key of a conditions file or a literal checked against one. Version 3 (2026-10-29, still before any script or drawing for the schematic, after the scoring of the blind judgement, results/blind_judgement/score.json of 363b5c0, was read): the drawing of work 2 is filled in as the grey with colour (SPC). The rule promised in work2_main (written before the scoring is read) was not written; the choice rests on the decision of the researcher made before the scoring (decision 2 of .steering/20261028-while-blind-judgement: the coloured version in the body of the paper), and is recorded as a decision made without the promised rule in .steering/20261028-outline-v25 (decision 1). Version 4 (2026-10-30, still before any script or drawing for the schematic, after the draft v0.1 of the paper; decision 4 of .steering/20261030-draft-fill-blanks): the label of eps reads 'smoothing parameter ε', the name of section 2 of the draft; the strings drawn spell gray and color; the box of the rule names the sharpness γ; a row for the warp of the field is added (work 1 names no warp and takes the default of the generator, none; work 2 reads field.warp of works/conditions/work2_words.json), since the caption of figure 1 in the draft names the warp among the quantities the maker sets; the scale of V and A of work 2 names its reference as section 2 and figure 8 do. Keys and notes keep their spelling. The checks of the literals of work 2 are written out (must_contain or equals), since version 3 named only a file and a key. Seen before version 4: everything of version 3, the draft v0.1 of the paper and figure 8 of version 20.",
+ "version": 4,
  "layout": {
   "width_mm": 177.8,
   "dpi": 300,
@@ -20,7 +20,7 @@
   },
   {
    "id": "rule",
-   "text": "the rule: V and A give fineness f, depth s and sharpness gamma"
+   "text": "the rule: V and A give fineness f, depth s and sharpness γ"
   },
   {
    "id": "field",
@@ -36,7 +36,7 @@
   }
  ],
  "open_quantities": {
-  "how": "labels in a second row under the box they act on, written as 'name: work 1 value / work 2 value'; each value is given either as a path {file, key} read at drawing time or as a literal; a literal is checked against the key named in its 'check' (else the run stops); a dash means the quantity does not act on the main images of that work",
+  "how": "labels in a second row under the box they act on, written as 'name: work 1 value / work 2 value'; each value is given either as a path {file, key} read at drawing time or as a literal; a literal is checked against the key named in its 'check' (else the run stops); a dash means the quantity does not act on the main images of that work; from version 4 a literal may carry check_absent instead of check: the key named must be absent from the file and the default named must hold in the installed generator (else the run stops); from version 4 every check is explicit: must_contain (each string occurs in the text of the keys named) or equals (the value of the key equals it), and a literal with neither check nor check_absent is drawn as written (the literals of the height scale and of the drawing and units of work 1)",
   "work2_main": "the main images of work 2 are those of works/conditions/work2_sp_color.json (its versions SP and SPC); the scoring of the blind judgement decides only which of the grey and the coloured images is shown as the main one, by a rule written in the conditions of the paper's figures before the scoring is read. Until then work2.image_shown is FILL",
   "list": [
    {
@@ -58,10 +58,19 @@
      "literal": "as rated (no map)"
     },
     "work2": {
-     "literal": "author-equal percentiles among the words of the works, 2p - 1",
+     "literal": "percentiles among all uses of lexicon words in the 23 works, each author weighted equally, spread over [-1, 1]",
      "check": {
       "file": "works/conditions/work2_sp_color.json",
-      "key": "versions.SP"
+      "keys": [
+       "versions.SP",
+       "reference.what"
+      ],
+      "must_contain": [
+       "2 p_valence - 1",
+       "2 p_arousal - 1",
+       "the 23 works",
+       "each author weighing 1"
+      ]
      }
     }
    },
@@ -74,8 +83,9 @@
     "work2": {
      "literal": "20 words per author",
      "check": {
-      "file": "works/conditions/work2_sp_color.json",
-      "key": "tiles"
+      "file": "results/paper_distinct_range/distinct_range.json",
+      "key": "checks.D1_constants.words_per_author",
+      "equals": 20
      }
     }
    },
@@ -90,7 +100,13 @@
      "literal": "one per word from its spelling",
      "check": {
       "file": "works/conditions/work2_sp_color.json",
-      "key": "seed"
+      "keys": [
+       "seed"
+      ],
+      "must_contain": [
+       "per word",
+       "SHA-256 of the UTF-8 word"
+      ]
      }
     }
    },
@@ -107,6 +123,22 @@
     }
    },
    {
+    "name": "warp",
+    "under": "field",
+    "work1": {
+     "literal": "none (generator default)",
+     "check_absent": {
+      "file": "works/conditions/work1.json",
+      "key": "relief.warp",
+      "default": "atact.field: the default of warp is 0.0"
+     }
+    },
+    "work2": {
+     "file": "works/conditions/work2_words.json",
+     "key": "field.warp"
+    }
+   },
+   {
     "name": "height scale",
     "under": "relief",
     "work1": {
@@ -117,7 +149,7 @@
     }
    },
    {
-    "name": "eps (shapes the relief near flat)",
+    "name": "smoothing parameter ε",
     "under": "relief",
     "work1": {
      "literal": "-",
@@ -132,14 +164,21 @@
     "name": "drawing",
     "under": "image",
     "work1": {
-     "literal": "grey; light from two directions; stretched"
+     "literal": "gray; light from two directions; stretched"
     },
     "work2": {
-     "literal": "grey with colour (OKLCH: lightness from the grey, chroma from arousal, hue from valence)",
-      "check": {
-       "file": "works/conditions/work2_sp_color.json",
-       "key": "versions.SPC"
-      }
+     "literal": "gray with color (OKLCH: lightness from the gray, chroma from arousal, hue from valence)",
+     "check": {
+      "file": "works/conditions/work2_sp_color.json",
+      "keys": [
+       "versions.SPC"
+      ],
+      "must_contain": [
+       "OKLCH",
+       "lightness of its grey",
+       "hue and chroma"
+      ]
+     }
     }
    }
   ]
