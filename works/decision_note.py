@@ -4,7 +4,7 @@ and 2, and the same table empty as its own image (for supplement S1, version 11;
 general lines, version 13), from the conditions and the files they name.
 
 Usage:  uv run python works/decision_note.py        (refuses to overwrite)
-Conditions: works/conditions/decision_note.json, version 22 (committed before this version of the script was written)
+Conditions: works/conditions/decision_note.json, version 23 (committed before this version of the script was written)
 Input:  the files named in the rows (conditions of works 1 and 2, of the drawing, of the blind judgement and of the records
         of the share used, the scoring of the blind judgement and its supplement, and the images each quantity acted on) and
         the values every share is computed again from (results/work1/work1.json, results/work2_words/words.json,
@@ -13,7 +13,7 @@ Input:  the files named in the rows (conditions of works 1 and 2, of the drawing
         version 13, and results/paper_distinct_range, version 14, read and checked by their provenance); every one
         must be the committed bytes at HEAD. The range of f and s
         is read from the installed atact.mapping, which must be the library of every record of the share used
-Output: results/decision_note_v22/decision_note.png (figure 8), decision_note_empty.png (S1), decision_note.md and
+Output: results/decision_note_v23/decision_note.png (figure 8), decision_note_empty.png (S1), decision_note.md and
         decision_note.json
 """
 
@@ -43,10 +43,10 @@ from PIL import Image, ImageDraw, ImageFont  # noqa: E402
 import _common as cm  # noqa: E402
 
 COND = ROOT / "works" / "conditions" / "decision_note.json"
-OUT_DIR = ROOT / "results" / "decision_note_v22"
+OUT_DIR = ROOT / "results" / "decision_note_v23"
 CODE = ["works/decision_note.py", "works/_common.py"]
 MM_PER_INCH = 25.4
-VERSION = 22
+VERSION = 23
 ROW_SETS = {"rows_work1": "Work 1", "rows_work2": "Work 2"}
 # the ids of the rows, in order (checks of the conditions); the number of rows follows from them
 # version 22: the height scale of work 1 moves to S1.7 and the color of work 2 enters
@@ -54,9 +54,17 @@ ROW_IDS = {"rows_work1": ["w1_lexicon", "w1_drawing"], "rows_work2": ["w2_map_b"
 COLUMNS = ["quantity", "value", "reason", "acted_on", "when", "judged"]
 ROW_FIELDS = {"id", "quantity", "value", "reason", "acted_on", "compared", "when", "judged", "dagger"}
 NONE_RECORDED = "none recorded"
-# answers_rule of the conditions: the phrase of each outcome and of each row is fixed here, not in the rows
-OUTCOME_PHRASE = {"both differ": "both said the rows differ", "neither": "neither said the rows differ", "split": "they split"}
-ROW_PHRASE = {"words20": "the 20 words"}
+# answers_rule of the conditions: the phrase of each outcome is fixed here, not in the rows; version 23: the judged covers
+# all the rows of the blind judgement, each outcome with its count, the counts written as words
+OUTCOMES = ["both differ", "split", "neither"]
+OUTCOME_PHRASE = {"both differ": "both said {k} differ", "split": "they split on {k}", "neither": "neither said {k} differ"}
+OUTCOME_PHRASE_ONE = {"neither": "neither said {k} differs"}
+NUMBER_WORD = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five"}
+JUDGED_PHRASE = "{base}; of the {n} rows, {phrases}"
+# the phrase of the one row judged up to version 22, in no text of the figure from version 23
+OLD_ROW_PHRASE = "the 20 words"
+# the rows of the blind judgement, read by hand before version 23 (its conditions name five)
+JUDGED_ROWS = ["L1_adversative", "L2_intensifier", "P1_first_person", "O1_iu", "words20"]
 # the version each row of work 2 speaks of (G0: map B, P: the percentiles, SPC: the seed with the color, of
 # blind_judgement.json; the seed from version 13, the color from version 22)
 VERSION_OF = {"w2_map_b": "G0", "w2_percentiles": "P", "w2_seed": "SPC", "w2_colour": "SPC"}
@@ -200,9 +208,9 @@ APPROVED_ROWS = {'w1_lexicon': {'id': 'w1_lexicon',
                                      'also': {'file': 'results/blind_judgement/score-researcher-supplement.json',
                                               'key': 'rows_remaining',
                                               'pass_key': 'controls_pass'},
-                                     'row': 'words20',
+                                     'rows': 'all',
                                      'version': 'G0',
-                                     'outcome': 'split'}},
+                                     'outcomes': {'both differ': 0, 'split': 5, 'neither': 0}}},
               'dagger': False},
  'w2_percentiles': {'id': 'w2_percentiles',
                     'quantity': 'percentiles',
@@ -237,9 +245,9 @@ APPROVED_ROWS = {'w1_lexicon': {'id': 'w1_lexicon',
                                            'also': {'file': 'results/blind_judgement/score-researcher-supplement.json',
                                                     'key': 'rows_remaining',
                                                     'pass_key': 'controls_pass'},
-                                           'row': 'words20',
+                                           'rows': 'all',
                                            'version': 'P',
-                                           'outcome': 'both differ'}},
+                                           'outcomes': {'both differ': 4, 'split': 1, 'neither': 0}}},
                     'dagger': False},
  'w2_seed': {'id': 'w2_seed',
              'quantity': 'seed',
@@ -268,9 +276,9 @@ APPROVED_ROWS = {'w1_lexicon': {'id': 'w1_lexicon',
                                     'also': {'file': 'results/blind_judgement/score-researcher-supplement.json',
                                              'key': 'rows_remaining',
                                              'pass_key': 'controls_pass'},
-                                    'row': 'words20',
+                                    'rows': 'all',
                                     'version': 'SPC',
-                                    'outcome': 'both differ'}},
+                                    'outcomes': {'both differ': 5, 'split': 0, 'neither': 0}}},
              'dagger': False},
  'w2_colour': {'id': 'w2_colour',
                'quantity': 'color',
@@ -300,9 +308,9 @@ APPROVED_ROWS = {'w1_lexicon': {'id': 'w1_lexicon',
                                       'also': {'file': 'results/blind_judgement/score-researcher-supplement.json',
                                                'key': 'rows_remaining',
                                                'pass_key': 'controls_pass'},
-                                      'row': 'words20',
+                                      'rows': 'all',
                                       'version': 'SPC',
-                                      'outcome': 'both differ'}},
+                                      'outcomes': {'both differ': 5, 'split': 0, 'neither': 0}}},
                'dagger': False}}
 APPROVED_FRAME = {'headers': ['Quantity',
                               'Value (middle half of f, s where counted)',
@@ -332,8 +340,9 @@ APPROVED_FRAME = {'headers': ['Quantity',
                            ["When: “mixed”: both within one row; “after” means the maker who decided had seen the chosen "
                             "value's outputs,",
                             "or been told of them, by the time the quantity was last fixed for the work (full standard in S1.7)."],
-                           "Judged: whether the two authors' rows differ within one version, on the 80 px judging sheets; "
-                           "versions not compared."],
+                           # version 23: the five rows, and the sizes of the tiles of the 20 words and of the other rows
+                           "Judged: whether the two authors' rows differ within one version, for five rows (S1.6), on 80 "
+                           "and 120 px judging sheets; versions not compared."],
                   # the lines under the empty template of S1, which leave the time and the judgement open (version 13)
                   'note_empty': ["Middle half: Q3 − Q1 as % of the rule's range; counted and compared before or after "
                                  "seeing the values: …",
@@ -355,7 +364,7 @@ APPROVED_LAYOUT = {'width_mm': 177.8,
  'colour': 'black and white',
  'font_file': '/System/Library/Fonts/Helvetica.ttc',
  'column_share': {'quantity': 0.1, 'value': 0.19, 'reason': 0.19, 'acted_on': 0.19, 'when': 0.17, 'judged': 0.16},
- 'max_words': 552}
+ 'max_words': 563}
 # the files of the two judges (checks of the conditions)
 MAIN_FILE = "results/blind_judgement/score.json"
 ALSO_FILE = "results/blind_judgement/score-researcher-supplement.json"
@@ -397,6 +406,9 @@ BESIDE_RECORDS = {REF_FILE: (REF_CONDITIONS, REF_SCRIPT, "R1_constants", REF_N),
                   DIST_FILE: (DIST_CONDITIONS, DIST_SCRIPT, "D1_constants", DIST_N)}
 # the number of the tiles of the row of the 20 words of the blind judgement, named in the last line of the note (the second up to version 14)
 JUDGING_PX_KEY = "tiles.words20_px"
+# version 23: the size of the tiles of the other rows, and the five rows named with their pointer
+JUDGING_PX_SETS_KEY = "tiles.sets_px"
+JUDGED_ROWS_POINTER = "for five rows (S1.6)"
 # the texts of the note (version 15; version 16): their heads in order, the heads of the texts of note_empty, the words of
 # the standard of the time shared with note_empty, and the record of the drawing of work 1 that names what had been seen
 # and what had not
@@ -966,17 +978,24 @@ def check_used_range(u: dict, base: str, cache: dict, where: str, rid: str) -> t
 
 
 def check_answers(a: dict, base: str, cache: dict, where: str) -> tuple[dict, str]:
-    """The outcome of one row of one version under the two judges, against the one written, and the judged built from it
-    (answers_rule)."""
-    if not isinstance(a, dict) or set(a) != {"main", "also", "row", "version", "outcome"}:
-        raise SystemExit(f"{where}: answers needs main, also, row, version and outcome")
-    for k in ("row", "version", "outcome"):
+    """The outcome of every row of the blind judgement in one version under the two judges, their counts against those
+    written, and the judged built from them (answers_rule; all the rows from version 23)."""
+    if not isinstance(a, dict) or set(a) != {"main", "also", "rows", "version", "outcomes"}:
+        raise SystemExit(f"{where}: answers needs main, also, rows, version and outcomes")
+    for k in ("rows", "version"):
         if not isinstance(a[k], str) or not a[k]:
             raise SystemExit(f"{where}: answers.{k} is not a non-empty string")
-    if a["row"] not in strings(read_key(load_json(JUDGEMENT, cache), "rows", where), where, "rows"):
-        raise SystemExit(f"{where}: {a['row']!r} is not a row of {JUDGEMENT}")
-    if a["row"] not in ROW_PHRASE or a["outcome"] not in OUTCOME_PHRASE:
-        raise SystemExit(f"{where}: no phrase is fixed for the row {a['row']!r} or the outcome {a['outcome']!r}")
+    if a["rows"] != "all":
+        raise SystemExit(f"{where}: answers.rows is {a['rows']!r}, not 'all' (version 23)")
+    written = a["outcomes"]
+    if (not isinstance(written, dict) or set(written) != set(OUTCOMES)
+            or not all(type(n) is int and n >= 0 for n in written.values())):
+        raise SystemExit(f"{where}: answers.outcomes needs the counts of {OUTCOMES} as integers >= 0")
+    rows_all = strings(read_key(load_json(JUDGEMENT, cache), "rows", where), where, "rows")
+    if rows_all != JUDGED_ROWS or len(rows_all) not in NUMBER_WORD:
+        raise SystemExit(f"{where}: the rows of {JUDGEMENT} are {rows_all}, not {JUDGED_ROWS}")
+    if sum(written.values()) != len(rows_all):
+        raise SystemExit(f"{where}: the counts written sum to {sum(written.values())}, not to the {len(rows_all)} rows")
     main, also = a["main"], a["also"]
     if not isinstance(main, dict) or set(main) != {"file", "key", "decided_key"}:
         raise SystemExit(f"{where}: answers.main needs file, key and decided_key")
@@ -990,18 +1009,34 @@ def check_answers(a: dict, base: str, cache: dict, where: str) -> tuple[dict, st
         raise SystemExit(f"{where}: {main['decided_key']} of {main['file']} is not true")
     if read_key(ca, also["pass_key"], where) is not True:
         raise SystemExit(f"{where}: {also['pass_key']} of {also['file']} is not true")
-    kept = {}
+    lists_of = {}
     for name, c, d in (("main", cm_, main), ("also", ca, also)):
         lists = read_key(c, d["key"], where)
         rows = lists.get(a["version"]) if isinstance(lists, dict) else None
-        if not isinstance(rows, list):
-            raise SystemExit(f"{where}: {d['key']} of {d['file']} has no list for {a['version']}")
-        kept[name] = a["row"] in rows
-    outcome = "both differ" if all(kept.values()) else "neither" if not any(kept.values()) else "split"
-    if outcome != a["outcome"]:
-        raise SystemExit(f"{where}: the row {a['row']} of {a['version']} is {outcome!r} by the lists, not {a['outcome']!r}")
-    text = f"{base}; for {ROW_PHRASE[a['row']]} {OUTCOME_PHRASE[outcome]}"
-    return {"version": a["version"], "row": a["row"], "kept": kept, "outcome": outcome}, text
+        if not isinstance(rows, list) or not all(isinstance(x, str) for x in rows) or len(set(rows)) != len(rows):
+            raise SystemExit(f"{where}: {d['key']} of {d['file']} has no list of distinct rows for {a['version']}")
+        if set(rows) - set(rows_all):
+            raise SystemExit(f"{where}: {d['key']} of {d['file']} names rows {sorted(set(rows) - set(rows_all))} "
+                             f"that are not rows of {JUDGEMENT}")
+        lists_of[name] = rows
+    per_row, counts = {}, {o: 0 for o in OUTCOMES}
+    for row in rows_all:
+        kept = {name: row in rows for name, rows in lists_of.items()}
+        outcome = "both differ" if all(kept.values()) else "neither" if not any(kept.values()) else "split"
+        per_row[row] = {"kept": kept, "outcome": outcome}
+        counts[outcome] += 1
+    if counts != {o: written[o] for o in OUTCOMES}:
+        raise SystemExit(f"{where}: the rows of {a['version']} are {counts} by the lists, not {written}")
+    n = len(rows_all)
+    phrases = []
+    for o in OUTCOMES:
+        k = counts[o]
+        if k:
+            k_word = f"all {NUMBER_WORD[n]}" if k == n else NUMBER_WORD[k]
+            phrase = OUTCOME_PHRASE_ONE.get(o, OUTCOME_PHRASE[o]) if k == 1 else OUTCOME_PHRASE[o]
+            phrases.append(phrase.format(k=k_word))
+    text = JUDGED_PHRASE.format(base=base, n=NUMBER_WORD[n], phrases=", ".join(phrases))
+    return {"version": a["version"], "rows": rows_all, "per_row": per_row, "counts": counts}, text
 
 
 def wrap(draw: ImageDraw.ImageDraw, text: str, font: ImageFont.FreeTypeFont, width: int) -> list[str]:
@@ -1221,7 +1256,9 @@ def main() -> None:
             or set(texts_empty) & set(texts) or set(empty_lines) & set(note_lines)
             or any(PERCENT.search(x) for x in texts_empty)
             or any(p in x.casefold() for x in texts_empty
-                   for p in (*OUTCOME_PHRASE.values(), *ROW_PHRASE.values(), "later", "after seeing the records",
+                   for p in (*(ph.split("{")[0].strip() for ph in OUTCOME_PHRASE.values()), "they split",
+                             OLD_ROW_PHRASE, "later",
+                             "after seeing the records",
                              "versions not compared"))):
         raise SystemExit("note_empty is not a list of lines of its own, or a line holds a mark, a value or an outcome")
     if not (any(x.startswith("When:") for x in texts_empty) and any(x.startswith("‡") for x in texts_empty)):
@@ -1364,9 +1401,16 @@ def main() -> None:
     if daggered:
         raise SystemExit(f"rows {daggered} carry the dagger; version 15 has none in the main table")
     px = read_key(load_json(JUDGEMENT, cache), JUDGING_PX_KEY, "note")  # the images judged, named in the note (version 14)
-    if (isinstance(px, bool) or not isinstance(px, int) or texts[-1].count(f" {px} px judging sheets") != 1
-            or any(f" {px} px judging sheets" in x for x in texts[:-1])):
-        raise SystemExit(f"the note does not name the {JUDGING_PX_KEY} of {JUDGEMENT} once")
+    px_sets = read_key(load_json(JUDGEMENT, cache), JUDGING_PX_SETS_KEY, "note")  # version 23
+    sizes = f" {px} and {px_sets} px judging sheets"
+    if (any(isinstance(x, bool) or not isinstance(x, int) for x in (px, px_sets)) or texts[-1].count(sizes) != 1
+            or any(sizes in x for x in texts[:-1])):
+        raise SystemExit(f"the note does not name the {JUDGING_PX_KEY} and {JUDGING_PX_SETS_KEY} of {JUDGEMENT} once")
+    n_rows = len(strings(read_key(load_json(JUDGEMENT, cache), "rows", "note"), "note", "rows"))
+    if (NUMBER_WORD.get(n_rows) != "five" or texts[-1].count(JUDGED_ROWS_POINTER) != 1
+            or any(JUDGED_ROWS_POINTER in x for x in texts[:-1])):
+        raise SystemExit(f"the note does not name {JUDGED_ROWS_POINTER!r} once in the text on the judged, or the blind "
+                         f"judgement has {n_rows} rows, not five (version 23)")
     named.add(JUDGEMENT)
     # the 'only' of the judged of the seed: SPC is the one version naming the seed per spelling (version 14)
     vers = read_key(load_json(JUDGEMENT, cache), "versions", "w2_seed")
@@ -1469,6 +1513,11 @@ def main() -> None:
     moved = [x for x in in_figure if NOT_IN_FIGURE_RE.search(plain(x))]
     if moved:
         raise SystemExit(f"{NOT_IN_FIGURE} is written in {len(moved)} text(s) of the figure, e.g. {moved[0][:80]!r} (version 22)")
+    # version 23: the one row judged up to version 22 is named in no text of the figure (any case, any spacing)
+    old_row = [x for x in in_figure if re.search(r"the\s+20\s+words", plain(x), re.IGNORECASE)]
+    if old_row:
+        raise SystemExit(f"{OLD_ROW_PHRASE!r} is written in {len(old_row)} text(s) of the figure, e.g. {old_row[0][:80]!r} "
+                         "(version 23)")
     if named_writer:
         raise SystemExit(f"{NOT_NAMED!r} is written in {len(named_writer)} text(s) of the figure, e.g. "
                          f"{named_writer[0][:80]!r} (version 19)")
@@ -1611,7 +1660,8 @@ def main() -> None:
                "figure_numbers": {"map": fig_nums, "source": cm.need(c, "figure_numbers_source", str),
                                   "cells": {r["id"]: r["acted_on"] for rs in resolved.values() for r in rs},
                                   "compared_mark": mark_c},  # version 21
-               "judging_px": {"file": JUDGEMENT, "key": JUDGING_PX_KEY, "value": px},  # version 14
+               "judging_px": {"file": JUDGEMENT, "key": JUDGING_PX_KEY, "value": px,  # version 14
+                              "sets_key": JUDGING_PX_SETS_KEY, "sets_value": px_sets},  # version 23
                "when_mixed": {"row": drawn[0]["id"], "when": drawn[0]["when"], "holds": DRAWING_WHEN, "file": DRAWING_COND,
                                   "key": "fixed_before_running", "names": DRAWING_SEEN,
                                   "seen_part": seen_part, "not_seen_part": not_seen_part},  # version 15; mixed from 22
