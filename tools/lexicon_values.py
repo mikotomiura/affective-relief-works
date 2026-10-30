@@ -7,6 +7,8 @@ Usage:
   uv run python tools/lexicon_values.py restore                         puts the values back from the lexicon in
                                                                         external/ and overwrites the two records only
                                                                         if the result has the original SHA-256
+                                                                        (if it stops while writing, run it again: a
+                                                                        record already restored is skipped)
 
 The lexicon is not in this archive (its terms of use forbid redistribution); restore needs your own copy at the path
 named in the conditions. Order of use when the archive was prepared: strip, commit the two records, then
@@ -133,7 +135,10 @@ def restore_words_d(s: dict, words_record: dict, lex, lex_raw: bytes) -> dict:
     _, base = cm.load_conditions(wd.BASE_COND)
     cm.check_generator(base["generator"])
     with tempfile.TemporaryDirectory() as tmp:
-        rows = wd.run(cd, v3, base, words_record, lex, wd.read_vad(lex_raw), Path(tmp) / "out")["translations"]
+        res = wd.run(cd, v3, base, words_record, lex, wd.read_vad(lex_raw), Path(tmp) / "out")
+    if res["figures"] != s["figures"]:
+        raise SystemExit("the rerun of the sketch does not give the figures of its record")
+    rows = res["translations"]
     d = copy.deepcopy(s)
     d["translations"] = rows
     check_stripped(d, s, json.loads(COND.read_text())["files"][1]["nulled"])
@@ -141,10 +146,16 @@ def restore_words_d(s: dict, words_record: dict, lex, lex_raw: bytes) -> dict:
 
 
 def write_whole(path: Path, b: bytes) -> None:
-    """Replaces the file whole: a stop leaves it as it was or as written, never in part."""
+    """Replaces the file whole, keeping its permissions: a stop leaves it as it was or as written, never in part."""
     with tempfile.NamedTemporaryFile(dir=path.parent, prefix=f".{path.name}.", delete=False) as fh:
-        fh.write(b)
-    os.replace(fh.name, path)
+        tmp = Path(fh.name)
+    try:
+        tmp.write_bytes(b)
+        os.chmod(tmp, path.stat().st_mode)
+        os.replace(tmp, path)
+    except BaseException:
+        tmp.unlink(missing_ok=True)
+        raise
 
 
 def main_restore() -> None:

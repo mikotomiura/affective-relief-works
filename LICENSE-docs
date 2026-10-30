@@ -9,7 +9,8 @@ MIT License in LICENSE.
 
 Material of others is not covered by these licenses and keeps its own terms: the words and the values derived from
 MEmoLon (Buechel, Rücker and Hahn 2020, https://doi.org/10.5281/zenodo.3756607, CC BY 4.0), and the passages of the
-texts quoted in results/ (Project Gutenberg #160, Wikisource and Aozora Bunko; in the public domain). The NRC VAD
+texts quoted in results/ and the three translations in external/translations-20261028/little-mermaid/ (Project
+Gutenberg #160, Wikisource and Aozora Bunko; in the public domain). The NRC VAD
 Lexicon v2.1 is not redistributed here (see README.md): the results computed from it are covered by CC BY 4.0 as our
 work, but any use of the values of the lexicon themselves is under its own terms of use.
 checks/reference/text_path_example.json is a copy of a result of affective-relief-audit

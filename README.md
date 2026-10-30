@@ -74,21 +74,24 @@ works (the text path of the rule's paper, sensitivity of the Japanese map, the f
 
 | Left out | Why | What is here instead |
 |---|---|---|
-| `external/` (lexicons and texts) | the NRC VAD Lexicon may not be redistributed; the others are kept at their sources | `external-manifest.tsv`: the path, SHA-256, size and source of each of the 32 files the scripts and conditions name (`checks/reference_stretch.py` fetches its Aozora Bunko files itself and records their URLs and SHA-256 in `results/reference_stretch.json`) |
+| `external/` (lexicons and texts), except the three translations | the NRC VAD Lexicon may not be redistributed; the others are kept at their sources | `external-manifest.tsv`: the path, SHA-256, size and source of each of the 32 files the scripts and conditions name; the three public-domain translations of 'The Little Mermaid' are in `external/translations-20261028/little-mermaid/`, because their extraction from Wikisource cannot be repeated byte for byte (`checks/reference_stretch.py` fetches its Aozora Bunko files itself and records their URLs and SHA-256 in `results/reference_stretch.json`) |
 | the values of the NRC VAD Lexicon in two records of the sketch of a series of translators (`results/sketch_translations_words*/`), and the quantities that would give them back (*s*, γ, the change of height by D) | its terms of use: "Do not redistribute the data" | the same records with those values set to `null` and their summaries over the words kept (`tools/lexicon_values.py`); with the lexicon, `restore` gives the original files byte for byte |
 | `results/sketch_translations_words_d/words_vad.png` | its labels print the lexicon's dominance for 60 words | `words_vad_unlabelled.png`: the same tiles with the words only (`tools/words_vad_unlabelled.py`) |
-| `results/blind_judgement/score.json` (the scoring of the blind judgement) | it holds the second author's answers and remarks, to be published after his consent | added in a later version of this archive; until then Table 1, the decision notes, `works/paper_work2_figures.py` and `works/blind_judgement_score_supplement.py` cannot be run again from here. Two commit messages that described the remarks carry a note in their place |
+| `results/blind_judgement/score.json` (the scoring of the blind judgement) | it holds the second author's answer to each item and his remarks, to be published after his consent; the counts by row, as in Table 1 and S1.6, are published (in the results and in two commit messages) | added in a later version of this archive; until then Table 1, the decision notes, `works/paper_work2_figures.py` and `works/blind_judgement_score_supplement.py` cannot be run again from here. Two commit messages that described the remarks carry a note in their place |
 | the working notes (`advice/`, `handoff/`, `.steering/`) and the large generated files (`output/`) | notes of the work, not inputs of any computation | some conditions name these notes as the place of a decision; they are named, not needed |
 
 What is kept, and why: the figures draw the values. The tiles of each word in `results/sketch_translations_words/words.png`, `results/sketch_translations_words_d/pairs.png` and `words_vad_unlabelled.png` are made from the lexicon's values by the rule, whose generator and seed are public, so the values could be estimated from them; we keep them as figures of the work, as any figure drawn from a lexicon is, and no value of the lexicon is printed or stored as a number. The tiles of work 1 and the records of its sentences hold means over the words of a sentence (no sentence of work 1 has a single matched word). `checks/reference/text_path_example.json` is a copy of a result already published with the rule's paper (`results/text_path_example.json` of [affective-relief-audit](https://doi.org/10.5281/zenodo.23681773)), not a new release.
 
-These four files were removed from every commit of the history, which is otherwise the history in which the
+The four files `results/blind_judgement/score.json`, `results/sketch_translations_words/sketch_translations_words.json`,
+`results/sketch_translations_words_d/sketch_translations_words_d.json` and `results/sketch_translations_words_d/words_vad.png`
+were removed from every commit of the history, which is otherwise the history in which the
 computations were run (see below).
 
 ## Reproduce
 
 Requirements: macOS (the figures are drawn with the system fonts named in their conditions; the tests and every run
-were on macOS), [uv](https://docs.astral.sh/uv/), and git. The generator `atact` is installed from
+were on macOS, Apple silicon; each result records the platform and the SHA-256 of the font it used, and a figure is the
+same byte for byte only with the same font file), [uv](https://docs.astral.sh/uv/), and git. The generator `atact` is installed from
 its public repository at a pinned commit (`pyproject.toml`; archived as
 [10.5281/zenodo.23681773](https://doi.org/10.5281/zenodo.23681773)).
 
@@ -106,21 +109,22 @@ uv run python works/work1.py                              # refuses to overwrite
 ```
 
 With the NRC lexicon in place, `uv run python tools/lexicon_values.py restore` puts its values back into the two
-records and writes them only if both reach their original SHA-256; it checks the published records against the
+records and writes them only if both reach their original SHA-256 (the record of the third input is computed again
+by its own script, `works/sketch_translations_words_d.py`); if it stops while writing, run it again; it checks the published records against the
 lexicon. It changes tracked files, and the scripts check that their inputs equal the last commit, so commit the
 restored files on a local branch before running a script that reads them.
 
-Notes on the sources: the three translations were taken from Wikisource at the revisions named, with the HTML
-stripped to text; the Aozora Bunko list changes over time, and its SHA-256 identifies the copy used (dated
-2026-08-22). The scripts stop if an input differs from the SHA-256 in their conditions.
+Notes on the sources: the three translations, taken from Wikisource at the revisions named with the HTML stripped to
+text, are in this archive. The Aozora Bunko list changes over time; its SHA-256 identifies the copy used (dated
+2026-08-22), and a later copy will stop the scripts that read it. The scripts stop if an input differs from the SHA-256 in their conditions.
 
 ## History and provenance
 
 The results cite commits by their hashes in the working repository in which the computations were run. This history
-was prepared from that repository by removing the four files above from every commit and by setting one author
+was prepared from that repository by removing those four files from every commit and by setting one author
 e-mail; the dates and the order are unchanged, the messages are unchanged except the two noted above, and the commit
 that had added only `score.json` is kept empty. `commit-map.tsv` maps each original hash to the commit here. The commits after the last mapped one add the
-tools of this section, the stripped records, the relabelled figure and this README.
+tools of this section, the stripped records, the relabelled figure, the three translations and this README.
 
 ## Citation
 

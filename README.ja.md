@@ -60,19 +60,19 @@
 
 | 入れていないもの | 理由 | 代わりにここにあるもの |
 |---|---|---|
-| `external/`（辞書と文章） | NRC VAD Lexicon は再配布できない。ほかは入手元に置いてある | `external-manifest.tsv`: スクリプトと条件が名指す 32 ファイルのパス・SHA-256・大きさ・入手元（`checks/reference_stretch.py` は青空文庫のファイルを自分で取り、URL と SHA-256 を `results/reference_stretch.json` に記録する） |
+| `external/`（辞書と文章）。翻訳 3 本を除く | NRC VAD Lexicon は再配布できない。ほかは入手元に置いてある | `external-manifest.tsv`: スクリプトと条件が名指す 32 ファイルのパス・SHA-256・大きさ・入手元。著作権の切れた『人魚姫』の英訳 3 本は、Wikisource からの取り出しをバイト単位で繰り返せないので `external/translations-20261028/little-mermaid/` に入れた（`checks/reference_stretch.py` は青空文庫のファイルを自分で取り、URL と SHA-256 を `results/reference_stretch.json` に記録する） |
 | 翻訳者の連作の下絵の記録 2 つ（`results/sketch_translations_words*/`）にある NRC VAD Lexicon の値と、それを逆算できる量（*s*・γ・D による高さの変化） | 使用条件「Do not redistribute the data」 | その値を `null` にし、語をまたぐ集計は残した同じ記録（`tools/lexicon_values.py`）。辞書があれば `restore` で元のファイルとバイト単位で同じに戻る |
 | `results/sketch_translations_words_d/words_vad.png` | 札に 60 語の dominance の値が描かれている | `words_vad_unlabelled.png`: 同じタイルで札は語だけ（`tools/words_vad_unlabelled.py`） |
-| `results/blind_judgement/score.json`（盲検の集計） | 第 2 著者の答えと書き込みを含み、本人の承諾の後に公開する | このアーカイブの後の版で足す。それまで表 1・決定メモ・`works/paper_work2_figures.py`・`works/blind_judgement_score_supplement.py` はここから走らせ直せない。書き込みに触れていたコミットのメッセージ 2 本は、その部分を注記に置き換えた |
+| `results/blind_judgement/score.json`（盲検の集計） | 第 2 著者の項目ごとの答えと書き込みを含み、本人の承諾の後に公開する。行ごとの集計（表 1・S1.6 と同じ水準）は公開している（結果とコミットのメッセージ 2 本） | このアーカイブの後の版で足す。それまで表 1・決定メモ・`works/paper_work2_figures.py`・`works/blind_judgement_score_supplement.py` はここから走らせ直せない。書き込みに触れていたコミットのメッセージ 2 本は、その部分を注記に置き換えた |
 | 作業記録（`advice/`・`handoff/`・`.steering/`）と大きな生成物（`output/`） | 作業の記録で、計算の入力ではない | いくつかの条件は判断の場所としてこれらを名指すが、名前だけで、計算には要らない |
 
 残したものとその理由: 図は値を描いています。`results/sketch_translations_words/words.png`・`results/sketch_translations_words_d/pairs.png`・`words_vad_unlabelled.png` の語ごとのタイルは辞書の値から規則で作られ、生成器と種は公開されているので、図から値を推定することはできます。辞書から描いた図の常として作品の図として残し、辞書の値を数字として印字・保存したものはありません。作品 1 のタイルと文の記録は、文の中の語の平均です（作品 1 に一致した語が 1 つだけの文はありません）。`checks/reference/text_path_example.json` は規則の論文とともに公開済みの結果（[affective-relief-audit](https://doi.org/10.5281/zenodo.23681773) の `results/text_path_example.json`）の写しで、新たに配るものではありません。
 
-この 4 ファイルは履歴のすべてのコミットから除きました。それ以外は、計算を行ったときの履歴そのままです（下記）。
+`results/blind_judgement/score.json`・`results/sketch_translations_words/sketch_translations_words.json`・`results/sketch_translations_words_d/sketch_translations_words_d.json`・`results/sketch_translations_words_d/words_vad.png` の 4 ファイルは、履歴のすべてのコミットから除きました。それ以外は、計算を行ったときの履歴そのままです（下記）。
 
 ## 再現
 
-必要なもの: macOS（図は条件に書いた macOS のフォントで描く。テストと実行はすべて macOS）、[uv](https://docs.astral.sh/uv/)、git。生成器 `atact` は公開リポジトリから固定したコミットで入ります（`pyproject.toml`。保管先 [10.5281/zenodo.23681773](https://doi.org/10.5281/zenodo.23681773)）。
+必要なもの: macOS（図は条件に書いた macOS のフォントで描く。テストと実行はすべて Apple silicon の macOS。結果は環境と使ったフォントの SHA-256 を記録し、図がバイト単位で同じになるのは同じフォントのときだけ）、[uv](https://docs.astral.sh/uv/)、git。生成器 `atact` は公開リポジトリから固定したコミットで入ります（`pyproject.toml`。保管先 [10.5281/zenodo.23681773](https://doi.org/10.5281/zenodo.23681773)）。
 
 ```bash
 uv sync --frozen                                          # Python 3.13 と uv.lock の固定版
@@ -87,13 +87,13 @@ tail -n +2 external-manifest.tsv | awk -F'\t' '{print $2"  "$1}' | shasum -a 256
 uv run python works/work1.py                              # 上書きしない。先に results/work1/ を退避する
 ```
 
-NRC の辞書を置けば、`uv run python tools/lexicon_values.py restore` が 2 つの記録に値を戻し、両方が元の SHA-256 になったときだけ書きます。公開した記録を辞書と照らし合わせるためのものです。追跡しているファイルを書き換え、スクリプトは入力が最後のコミットと同じかを確かめるので、戻したファイルを手元のブランチでコミットしてから、それを読むスクリプトを走らせてください。
+NRC の辞書を置けば、`uv run python tools/lexicon_values.py restore` が 2 つの記録に値を戻し、両方が元の SHA-256 になったときだけ書きます（第 3 の入力の記録は、そのスクリプト `works/sketch_translations_words_d.py` で計算し直します）。書く途中で止まったら、もう一度走らせてください。公開した記録を辞書と照らし合わせるためのものです。追跡しているファイルを書き換え、スクリプトは入力が最後のコミットと同じかを確かめるので、戻したファイルを手元のブランチでコミットしてから、それを読むスクリプトを走らせてください。
 
-入手元についての注意: 3 つの翻訳は Wikisource の記載の版から HTML を文字にして取りました。青空文庫の一覧は時とともに変わるので、使った写し（2026-08-22 付）は SHA-256 で特定します。入力が条件の SHA-256 と違えば、スクリプトは止まります。
+入手元についての注意: 3 つの翻訳は Wikisource の記載の版から HTML を文字にして取ったもので、このアーカイブに入れています。青空文庫の一覧は時とともに変わります。使った写し（2026-08-22 付）は SHA-256 で特定し、後の写しではそれを読むスクリプトが止まります。入力が条件の SHA-256 と違えば、スクリプトは止まります。
 
 ## 履歴と来歴
 
-結果は、計算を行った作業用リポジトリのハッシュでコミットを引きます。この履歴はそのリポジトリから、上の 4 ファイルをすべてのコミットから除き、作者のメールアドレスを 1 つにそろえて作りました。日付と順序は変えておらず、メッセージも上に記した 2 本を除いて変えておらず、`score.json` だけを足していたコミットは空のまま残しています。`commit-map.tsv` が元のハッシュとここのコミットを対応させます。対応表の最後のコミットより後は、この節のツール、値を外した記録、札を直した図、この README を足すコミットです。
+結果は、計算を行った作業用リポジトリのハッシュでコミットを引きます。この履歴はそのリポジトリから、この 4 ファイルをすべてのコミットから除き、作者のメールアドレスを 1 つにそろえて作りました。日付と順序は変えておらず、メッセージも上に記した 2 本を除いて変えておらず、`score.json` だけを足していたコミットは空のまま残しています。`commit-map.tsv` が元のハッシュとここのコミットを対応させます。対応表の最後のコミットより後は、この節のツール、値を外した記録、札を直した図、翻訳 3 本、この README を足すコミットです。
 
 ## 引用
 
