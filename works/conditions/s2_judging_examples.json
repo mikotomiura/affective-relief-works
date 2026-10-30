@@ -1,0 +1,10 @@
+{
+ "purpose": "Five images of the blind judgement shown in supplement S2 (S2.9), copied byte for byte from the judging spreadsheet, which is outside the repository.",
+ "fixed_before_running": "Written on 2026-10-30 and committed before the script was written and before any image was taken out (decision 13 of .steering/20261030-draft-fill-blanks: the researcher chose five representative images). Seen before: the counts of kinds and of versions and rows in advice/blind-judgement/sealed/key.json, and the sheets as answered on 2026-10-29. The rule names the items by the key, not by how they look.",
+ "version": 1,
+ "inputs": {"key": "advice/blind-judgement/sealed/key.json", "spreadsheet": "advice/blind-judgement/judgement.xlsx", "spreadsheet_check": "its SHA-256 equals spreadsheet_sha256 of the key"},
+ "rule": "for each of the versions G0, P and SPC, the item of kind test whose top and bottom row is words20 with the smallest number; and the item of kind set_differs and the item of kind same_image with the smallest number; five items, in the order G0, P, SPC, set_differs, same_image",
+ "match": "the image of an item is the one file of xl/media of the spreadsheet whose SHA-256 equals image_sha256 of the item in the key (else the run stops); the file is copied unchanged",
+ "outputs": "results/s2_judging_examples/item<number>.png for the five items and s2_judging_examples.json (the items, their kinds, versions, rows, seeds and the SHA-256 of the key, of the spreadsheet and of each image)",
+ "not_claimed": "The five images show the form of the sheets; they are not a sample of the answers, and the answers are in S1.6."
+}
