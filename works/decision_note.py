@@ -4,7 +4,7 @@ and 2, and the same table empty as its own image (for supplement S1, version 11;
 general lines, version 13), from the conditions and the files they name.
 
 Usage:  uv run python works/decision_note.py        (refuses to overwrite)
-Conditions: works/conditions/decision_note.json, version 21 (committed before this version of the script was written)
+Conditions: works/conditions/decision_note.json, version 22 (committed before this version of the script was written)
 Input:  the files named in the rows (conditions of works 1 and 2, of the drawing, of the blind judgement and of the records
         of the share used, the scoring of the blind judgement and its supplement, and the images each quantity acted on) and
         the values every share is computed again from (results/work1/work1.json, results/work2_words/words.json,
@@ -13,7 +13,7 @@ Input:  the files named in the rows (conditions of works 1 and 2, of the drawing
         version 13, and results/paper_distinct_range, version 14, read and checked by their provenance); every one
         must be the committed bytes at HEAD. The range of f and s
         is read from the installed atact.mapping, which must be the library of every record of the share used
-Output: results/decision_note_v21/decision_note.png (figure 8), decision_note_empty.png (S1), decision_note.md and
+Output: results/decision_note_v22/decision_note.png (figure 8), decision_note_empty.png (S1), decision_note.md and
         decision_note.json
 """
 
@@ -43,13 +43,14 @@ from PIL import Image, ImageDraw, ImageFont  # noqa: E402
 import _common as cm  # noqa: E402
 
 COND = ROOT / "works" / "conditions" / "decision_note.json"
-OUT_DIR = ROOT / "results" / "decision_note_v21"
+OUT_DIR = ROOT / "results" / "decision_note_v22"
 CODE = ["works/decision_note.py", "works/_common.py"]
 MM_PER_INCH = 25.4
-VERSION = 21
+VERSION = 22
 ROW_SETS = {"rows_work1": "Work 1", "rows_work2": "Work 2"}
 # the ids of the rows, in order (checks of the conditions); the number of rows follows from them
-ROW_IDS = {"rows_work1": ["w1_lexicon", "w1_height_scale", "w1_drawing"], "rows_work2": ["w2_map_b", "w2_percentiles", "w2_seed"]}
+# version 22: the height scale of work 1 moves to S1.7 and the color of work 2 enters
+ROW_IDS = {"rows_work1": ["w1_lexicon", "w1_drawing"], "rows_work2": ["w2_map_b", "w2_percentiles", "w2_seed", "w2_colour"]}
 COLUMNS = ["quantity", "value", "reason", "acted_on", "when", "judged"]
 ROW_FIELDS = {"id", "quantity", "value", "reason", "acted_on", "compared", "when", "judged", "dagger"}
 NONE_RECORDED = "none recorded"
@@ -57,8 +58,8 @@ NONE_RECORDED = "none recorded"
 OUTCOME_PHRASE = {"both differ": "both said the rows differ", "neither": "neither said the rows differ", "split": "they split"}
 ROW_PHRASE = {"words20": "the 20 words"}
 # the version each row of work 2 speaks of (G0: map B, P: the percentiles, SPC: the seed with the color, of
-# blind_judgement.json; the seed from version 13)
-VERSION_OF = {"w2_map_b": "G0", "w2_percentiles": "P", "w2_seed": "SPC"}
+# blind_judgement.json; the seed from version 13, the color from version 22)
+VERSION_OF = {"w2_map_b": "G0", "w2_percentiles": "P", "w2_seed": "SPC", "w2_colour": "SPC"}
 # approved_text_rule of the conditions: every cell of every row as written in the conditions (before a phrase is built),
 # with its kind, character for character
 APPROVED_CELLS = {
@@ -68,19 +69,13 @@ APPROVED_CELLS = {
         "reason": "Human ratings of English words. Tried: none. Later compared with: shuffled and drawn sentences.",
         "when": "before; seen: none",
         "judged": ("none", NONE_RECORDED)},
-    "w1_height_scale": {
-        "quantity": "height scale",
-        "value": ("format", "common to the series, assumed relief depth D = {D_mm} mm"),
-        "reason": "Keeps the depth differences between sentences. Tried: none. Shown beside: per-tile min-max.",
-        "when": "before; seen: none",
-        "judged": ("none", NONE_RECORDED)},
     "w1_drawing": {
         "quantity": "drawing",
         "value": ("literal", "four shown together, the series using the gray of the height; gray; lit at 45 degrees from "
                              "upper left, lower right; stretched per tile"),
         "reason": "Also a quantity the maker sets (one viewpoint). Tried: none. Shown beside: the other three. "
                   "Not tried: other viewpoints.",
-        "when": "before; seen: earlier images and values of work 1",
+        "when": "mixed; seen: the series' gray; not seen: the other three",  # version 22
         "judged": ("none", NONE_RECORDED)},
     "w2_map_b": {
         "quantity": "lexicon and map",
@@ -102,6 +97,13 @@ APPROVED_CELLS = {
         "reason": "Varies the pattern by word; rows can differ by spelling alone. Tried: per-author seeds; a common seed.",
         "when": "after; seen: sketches with this per-word rule",
         "judged": ("text", "judged only in the version with color")},
+    "w2_colour": {  # version 22
+        "quantity": "color",
+        "value": ("literal", "OKLCH: lightness of the gray relief; hue from V's percentile, blue to orange; chroma from A's"),
+        "reason": "Keeps the relief's shading under the color. Tried: HLS colors; a color per way of saying; five basic "
+                  "emotions. Shown beside: hue reversed.",
+        "when": "after; seen: sketches with this coloring",
+        "judged": ("text", "judged only with the per-word seed")},
 }
 APPROVED_TEXT = {(rid, f): cells[f][1] for rid, cells in APPROVED_CELLS.items() for f in ("value", "judged")
                  if cells[f][0] == "text"}
@@ -138,24 +140,6 @@ APPROVED_ROWS = {'w1_lexicon': {'id': 'w1_lexicon',
                 'when': 'before; seen: none',
                 'judged': 'none recorded',
                 'dagger': False},
- 'w1_height_scale': {'id': 'w1_height_scale',
-                     'quantity': 'height scale',
-                     'value': {'file': 'works/conditions/work1.json',
-                               'keys': ['relief.D_mm'],
-                               'format': 'common to the series, assumed relief depth D = {D_mm} mm'},
-                     'reason': {'why': 'keeps the depth differences between sentences',
-                                'tried': [],
-                                'shown_beside': ['per-tile min-max'],
-                                'later_compared': [],
-                                'not_tried': []},
-                     'acted_on': ['results/work1/common.png',
-                                  'results/work1/minmax.png',
-                                  'results/work1/common_eps.png',
-                                  'results/work1_drawing/drawing.png'],
-                     'compared': ['results/work1/common.png', 'results/work1/minmax.png'],
-                     'when': 'before; seen: none',
-                     'judged': 'none recorded',
-                     'dagger': False},
  'w1_drawing': {'id': 'w1_drawing',
                 'quantity': 'drawing',
                 'value': {'literal': 'four shown together, the series using the gray of the height; gray; lit at 45 '
@@ -175,7 +159,7 @@ APPROVED_ROWS = {'w1_lexicon': {'id': 'w1_lexicon',
                            'not_tried': ['other viewpoints']},
                 'acted_on': ['results/work1_drawing/drawing.png'],
                 'compared': ['results/work1_drawing/drawing.png'],
-                'when': 'before; seen: earlier images and values of work 1',
+                'when': "mixed; seen: the series' gray; not seen: the other three",
                 'judged': 'none recorded',
                 'dagger': False},
  'w2_map_b': {'id': 'w2_map_b',
@@ -287,12 +271,44 @@ APPROVED_ROWS = {'w1_lexicon': {'id': 'w1_lexicon',
                                     'row': 'words20',
                                     'version': 'SPC',
                                     'outcome': 'both differ'}},
-             'dagger': False}}
+             'dagger': False},
+ 'w2_colour': {'id': 'w2_colour',
+               'quantity': 'color',
+               'value': {'literal': "OKLCH: lightness of the gray relief; hue from V's percentile, blue to orange; chroma from A's",
+                         'check': {'file': 'works/conditions/work2_sp_color.json',
+                                   'keys': ['versions.SPC', 'colour.hue.SPC.reads', 'colour.status'],
+                                   'must_contain': ['L = the OKLab lightness of its grey', 'blue at p_valence 0',
+                                                    'to orange at 1', 'saturation raises arousal']}},
+               'reason': {'why': "keeps the relief's shading under the color",
+                          'tried': ['HLS colors', 'a color per way of saying', 'five basic emotions'],
+                          'shown_beside': ['hue reversed'],
+                          'later_compared': [],
+                          'not_tried': []},
+               'acted_on': ['results/work2_sp_color/SPC.png', 'results/work2_sp_color/SPC_reversed.png'],
+               'compared': ['results/work2_sp_color/SPC_reversed.png'],
+               'when': 'after; seen: sketches with this coloring',
+               'judged': {'text': 'judged only with the per-word seed',
+                          'check': {'file': 'works/conditions/blind_judgement.json',
+                                    'keys': ['judges.deciding', 'judges.also', 'versions.SPC'],
+                                    'must_contain': ['has not seen the sheets',
+                                                     'not as a blind judgement',
+                                                     'the seed per spelling',
+                                                     'coloured']},
+                          'answers': {'main': {'file': 'results/blind_judgement/score.json',
+                                               'key': 'decision.rows_remaining',
+                                               'decided_key': 'decision.decided'},
+                                      'also': {'file': 'results/blind_judgement/score-researcher-supplement.json',
+                                               'key': 'rows_remaining',
+                                               'pass_key': 'controls_pass'},
+                                      'row': 'words20',
+                                      'version': 'SPC',
+                                      'outcome': 'both differ'}},
+               'dagger': False}}
 APPROVED_FRAME = {'headers': ['Quantity',
                               'Value (middle half of f, s where counted)',
                               'Reason; tried by then / shown beside / compared later / not tried',
                               'Figures using it (* effect compared)',
-                              'When: before or after its output; seen then',
+                              'When: before, after, mixed or not recorded; seen then',  # version 22
                               'Who judged the look (sheet used)'],
                   'titles': ['Decision note for works 1 and 2', 'Decision note, empty'],
                   # a text of the note is one line or a list of lines, the lines drawn one under the other (version 16)
@@ -310,12 +326,12 @@ APPROVED_FRAME = {'headers': ['Quantity',
                             "same-size draws, 20 from each author's distinct words, 10,000 times (S1.5); percentiles keep the words; "
                             "other maps: check sentences."],
                            # the time, by the standard of the line on the time of note_empty (version 15), its words
-                           # read and pointing to S1 for the full standard (version 16), and its one exception with its
-                           # ground (version 16)
-                           ["When: “after” means the maker who decided had seen the chosen value's outputs, or been told "
-                            "of them,",
-                            "by the time the quantity was last fixed for the work (full standard in S1.7)."],
-                           "Drawing: read as before; of its four drawings, only the series' gray had been seen.",
+                           # read and pointing to S1 for the full standard (version 16); its one exception with its
+                           # ground (version 16) was taken out in version 22
+                           # version 22: 'mixed' defined, and the line of the exception of the drawing taken out
+                           ["When: “mixed”: both within one row; “after” means the maker who decided had seen the chosen "
+                            "value's outputs,",
+                            "or been told of them, by the time the quantity was last fixed for the work (full standard in S1.7)."],
                            "Judged: whether the two authors' rows differ within one version, on the 80 px judging sheets; "
                            "versions not compared."],
                   # the lines under the empty template of S1, which leave the time and the judgement open (version 13)
@@ -327,19 +343,19 @@ APPROVED_FRAME = {'headers': ['Quantity',
                                  # two lines (version 16)
                                  ["When: by the time the quantity was last fixed for the work, had the maker who decided "
                                   "seen the chosen value's outputs,",
-                                  "or been told of them: …"],
+                                  "or been told of them (“mixed”: both within one row): …"],  # version 22
                                  "‡: before, but after seeing outputs of alternatives: …",
                                  "Judged: what the judges compared, and what they did not: …"],
                   'acted_on_labels': 'from version 21 the column holds the numbers of the figures of the paper, mapped from the image files of the rows by figure_numbers (S2 for an image of supplement S2, written once in a cell), in ascending order with S2 last; the files stay in the rows and in the record',
                   'compared_mark': '*',
-                  'figure_numbers': {'results/work1/common.png': '2', 'results/work1/minmax.png': '3', 'results/work1_drawing/drawing.png': '4', 'results/work2_sp_color/SPC.png': '5', 'results/paper_figure6_scale/figure6_scale.png': '6', 'results/work1/common_eps.png': 'S2', 'results/paper_work2_figures/variants_judged.png': 'S2'},
+                  'figure_numbers': {'results/work1/common.png': '2', 'results/work1/minmax.png': '3', 'results/work1_drawing/drawing.png': '4', 'results/work2_sp_color/SPC.png': '5', 'results/paper_figure6_scale/figure6_scale.png': '6', 'results/work1/common_eps.png': 'S2', 'results/paper_work2_figures/variants_judged.png': 'S2', 'results/work2_sp_color/SPC_reversed.png': 'S2'},
                   'dagger': {'mark': '† ', 'meaning': 'claim weakened in the paper after the values were seen'}}
 APPROVED_LAYOUT = {'width_mm': 177.8,
  'dpi': 300,
  'colour': 'black and white',
  'font_file': '/System/Library/Fonts/Helvetica.ttc',
  'column_share': {'quantity': 0.1, 'value': 0.19, 'reason': 0.19, 'acted_on': 0.19, 'when': 0.17, 'judged': 0.16},
- 'max_words': 531}
+ 'max_words': 552}
 # the files of the two judges (checks of the conditions)
 MAIN_FILE = "results/blind_judgement/score.json"
 ALSO_FILE = "results/blind_judgement/score-researcher-supplement.json"
@@ -384,13 +400,22 @@ JUDGING_PX_KEY = "tiles.words20_px"
 # the texts of the note (version 15; version 16): their heads in order, the heads of the texts of note_empty, the words of
 # the standard of the time shared with note_empty, and the record of the drawing of work 1 that names what had been seen
 # and what had not
-NOTE_HEADS = ["Middle half", "Compared with, work 1", "Compared with, work 2", "When", "Drawing", "Judged"]
+NOTE_HEADS = ["Middle half", "Compared with, work 1", "Compared with, work 2", "When", "Judged"]  # no "Drawing" from version 22
 EMPTY_HEADS = ["Middle half", "Compared with", "When", "‡", "Judged"]
 WHEN_STANDARD = ["by the time the quantity was last fixed for the work", "the maker who decided",
                  "seen the chosen value's outputs", "been told of them"]
 ALL_HEADS = {*NOTE_HEADS, *EMPTY_HEADS}  # no line after the first of a text begins with any of these (version 16)
 WHEN_POINTER = "full standard in S1.7"  # version 16
-DRAWING_WORDS = ["read as before", "only the series' gray had been seen"]  # the ground of the exception (version 16)
+# version 22: the four values of the time, in the order of the header; the definition of 'mixed' in the note and in
+# note_empty; the drawing of work 1, mixed, names in its cell what had been seen and what had not (in place of the
+# ground of the exception of version 16); words of the height scale moved to S1.7, in no text (audit 3-4 of round 1)
+WHEN_VALUES = ["before", "after", "mixed", "not recorded"]
+WHEN_HEADER = "before, after, mixed or not recorded"
+MIXED_DEF = "“mixed”: both within one row"
+DRAWING_WHEN = ("mixed; seen: ", ["seen: the series' gray", "not seen: the other three"])
+# sought in any case, and D with any spacing around "=" (after the review of the script, stricter than the conditions)
+NOT_IN_FIGURE = ["assumed relief depth", "D = "]
+NOT_IN_FIGURE_RE = re.compile(r"assumed\s+relief\s+depth|\bD\s*=", re.IGNORECASE)
 EMPTY_WEIGHTING = "weighting (each once or by frequency)"  # version 16
 # what the texts on works 1 and 2 must name of the sets beside (version 16): the words of the labels of work 1, the
 # labels of work 2, and the records of the number of replicates of both sets beside of work 1
@@ -1206,7 +1231,7 @@ def main() -> None:
         raise SystemExit(f"note_empty has not one line on what each share is compared with naming {EMPTY_WEIGHTING!r} "
                          "(versions 15 and 16)")
     # the texts of the note in order (version 16), the text on the time holding the words of the standard of note_empty
-    # (version 15) and pointing to S1 (version 16), the text on the exception holding its ground (version 16)
+    # (version 15) and pointing to S1 (version 16); the text on the exception (version 16) was taken out in version 22
     if len(texts) != len(NOTE_HEADS) or not all(x.startswith(h + ":") for x, h in zip(texts, NOTE_HEADS)):
         raise SystemExit(f"the texts of the note do not begin, in order, with {NOTE_HEADS}")
     when_empty = [x for x in texts_empty if x.startswith("When:")]
@@ -1215,9 +1240,14 @@ def main() -> None:
     if len(when_empty) != 1 or missing or WHEN_POINTER not in when_text:
         raise SystemExit(f"the text on the time of the note and that of note_empty do not both hold {missing}, or the "
                          f"note does not point to S1 ({WHEN_POINTER!r})")
-    drawing_text = texts[NOTE_HEADS.index("Drawing")]
-    if not all(w in drawing_text for w in DRAWING_WORDS):
-        raise SystemExit(f"the text on the exception of the drawing does not hold {DRAWING_WORDS} (version 16)")
+    # version 22: the header of the time names the four values in order, and 'mixed' is defined once in the note's text on
+    # the time and once in that of note_empty
+    when_header = headers[COLUMNS.index("when")]
+    if (when_header.count(WHEN_HEADER) != 1 or when_text.count(MIXED_DEF) != 1 or len(when_empty) != 1
+            or when_empty[0].count(MIXED_DEF) != 1
+            or any(MIXED_DEF in x for x in (*texts, *texts_empty) if x not in (when_text, when_empty[0]))):
+        raise SystemExit(f"the header of the time does not name {WHEN_HEADER!r}, or {MIXED_DEF!r} is not once in the "
+                         "texts on the time of the note and of note_empty and in no other (version 22)")
     max_words = cm.need(c, "max_words", int)
     frame = {"headers": headers, "titles": titles, "note": note, "note_empty": note_empty, "acted_on_labels": label,
              "compared_mark": mark_c, "dagger": dag, "figure_numbers": cm.need(c, "figure_numbers", dict)}  # version 21
@@ -1312,6 +1342,11 @@ def main() -> None:
                 raise SystemExit(f"{where}: answers are required in the rows {sorted(VERSION_OF)} and in no other")
             if isinstance(j, dict) and "answers" in j and VERSION_OF.get(rid) != j["answers"].get("version"):
                 raise SystemExit(f"{where}: the version of the answers is not the version fixed for {rid!r}")
+            # version 22: the time is one of the four values, followed by what had been seen
+            if [v for v in WHEN_VALUES if row["when"].startswith(f"{v}; seen: ")] == [] or not row["when"].split(
+                    "; seen: ", 1)[1].strip():
+                raise SystemExit(f"{where}.when {row['when']!r} does not begin with one of {WHEN_VALUES} and '; seen: ' "
+                                 "and something after it (version 22)")
             resolved[key].append({
                 "id": rid, "quantity": row["quantity"], "dagger": row["dagger"], "value": text, "reason": reason_text(row["reason"]),
                 "acted_on": figure_cell(row["acted_on"], row["compared"], fig_nums, mark_c, where),  # version 21
@@ -1335,15 +1370,22 @@ def main() -> None:
     named.add(JUDGEMENT)
     # the 'only' of the judged of the seed: SPC is the one version naming the seed per spelling (version 14)
     vers = read_key(load_json(JUDGEMENT, cache), "versions", "w2_seed")
-    if (not isinstance(vers, dict) or "seed per spelling" not in vers.get(VERSION_OF["w2_seed"], "")
+    if (not isinstance(vers, dict) or not all(isinstance(v, str) for v in vers.values())  # version 22: types first
+            or "seed per spelling" not in vers.get(VERSION_OF["w2_seed"], "")
             or any("seed per spelling" in v for k, v in vers.items() if k != VERSION_OF["w2_seed"])):
         raise SystemExit("w2_seed: the seed per spelling is not judged only in the version with the color")
-    # the one exception to the line on the time: the drawing of work 1, before though one of its images had been seen
-    # (version 15)
+    # version 22: the 'only' of the judged of the color: SPC is the one version naming the color and the seed per spelling
+    if ("coloured" not in vers[VERSION_OF["w2_colour"]]
+            or any(w in v.casefold() for w in ("colour", "color", "oklch", "hue")
+                   for k, v in vers.items() if k != VERSION_OF["w2_colour"])):
+        raise SystemExit("w2_colour: the color is not judged only in the version with the seed per spelling (version 22)")
+    # version 22: the drawing of work 1 is mixed (of its four drawings only the series' gray had been seen), with what had
+    # been seen and what had not in its cell, against the record of the drawing (in place of the exception of version 15)
     drawn = [r for r in resolved["rows_work1"] if r["quantity"] == "drawing"]
-    seen = drawn[0]["when"].removeprefix("before; seen: ") if len(drawn) == 1 else ""
-    if len(drawn) != 1 or not drawn[0]["when"].startswith("before; seen: ") or not seen or seen == "none":
-        raise SystemExit("work 1 has not one row of the drawing read as before with something seen (version 15)")
+    if (len(drawn) != 1 or not drawn[0]["when"].startswith(DRAWING_WHEN[0])
+            or not all(drawn[0]["when"].count(w) == 1 for w in DRAWING_WHEN[1])):
+        raise SystemExit(f"work 1 has not one row of the drawing whose time begins {DRAWING_WHEN[0]!r} and holds "
+                         f"{DRAWING_WHEN[1]} once each (version 22)")
     told = read_key(load_json(DRAWING_COND, cache), "fixed_before_running", "note")
     a = told.find(SEEN_HEAD) if isinstance(told, str) else -1
     b = told.find(NOT_SEEN_HEAD, a) if a >= 0 else -1
@@ -1422,6 +1464,11 @@ def main() -> None:
 
     sought = (*texts, *texts_empty, *cell_texts)
     named_writer = [x for x in sought if re.search(NOT_NAMED, plain(x), re.IGNORECASE)]
+    # version 22: the words of the height scale, moved to S1.7, in no text of the figure (titles and headers included)
+    in_figure = [*sought, *titles, *headers, *ROW_SETS.values()]
+    moved = [x for x in in_figure if NOT_IN_FIGURE_RE.search(plain(x))]
+    if moved:
+        raise SystemExit(f"{NOT_IN_FIGURE} is written in {len(moved)} text(s) of the figure, e.g. {moved[0][:80]!r} (version 22)")
     if named_writer:
         raise SystemExit(f"{NOT_NAMED!r} is written in {len(named_writer)} text(s) of the figure, e.g. "
                          f"{named_writer[0][:80]!r} (version 19)")
@@ -1565,13 +1612,14 @@ def main() -> None:
                                   "cells": {r["id"]: r["acted_on"] for rs in resolved.values() for r in rs},
                                   "compared_mark": mark_c},  # version 21
                "judging_px": {"file": JUDGEMENT, "key": JUDGING_PX_KEY, "value": px},  # version 14
-               "when_exception": {"row": drawn[0]["id"], "when": drawn[0]["when"], "file": DRAWING_COND,
+               "when_mixed": {"row": drawn[0]["id"], "when": drawn[0]["when"], "holds": DRAWING_WHEN, "file": DRAWING_COND,
                                   "key": "fixed_before_running", "names": DRAWING_SEEN,
-                                  "seen_part": seen_part, "not_seen_part": not_seen_part},  # version 15
+                                  "seen_part": seen_part, "not_seen_part": not_seen_part},  # version 15; mixed from 22
                "note_texts": {"note": texts, "note_empty": texts_empty, "lines_drawn": note_lines,
                               "empty_lines_drawn": empty_lines,
                               "checked": {"when_standard": WHEN_STANDARD, "when_pointer": WHEN_POINTER,
-                                          "drawing_words": DRAWING_WORDS, "empty_weighting": EMPTY_WEIGHTING,
+                                          "when_values": WHEN_VALUES, "when_header": WHEN_HEADER, "mixed_def": MIXED_DEF,
+                                          "not_in_figure": NOT_IN_FIGURE_RE.pattern, "empty_weighting": EMPTY_WEIGHTING,
                                           "compared_w1_words": COMPARED_W1_WORDS, "w1_labels": w1_labels,
                                           "compared_w2_words": COMPARED_W2_WORDS, "w2_labels": w2_labels}},  # version 16
                "compared_replicates": {"records": [{"file": f, "key": k, "value": n} for (f, k), n in zip(REPLICATES_OF, reps)],
