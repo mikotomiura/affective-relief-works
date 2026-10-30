@@ -1,10 +1,10 @@
 """Figure 1 of the paper: a schematic of the rule and of the quantities it leaves open, from the conditions of
-works/conditions/rule_schematic.json (version 5, committed before this script was written).
+works/conditions/rule_schematic.json (version 6, committed before this script was written).
 
 Usage:  uv run python works/rule_schematic.py     (refuses to overwrite; stops if an input is still "FILL")
 Input:  the conditions; the files named in them (read at drawing time or checked against a literal); results/work1/
         common.png and work1.json for the one tile of work 1
-Output: results/rule_schematic/rule_schematic.png and rule_schematic.json (the SHA-256 of the conditions, every value
+Output: results/rule_schematic_v6/rule_schematic.png and rule_schematic.json (the SHA-256 of the conditions, every value
         read, every literal checked, the words, the smallest type)
 
 Text and arrows only, plus one tile cut from an existing image (no resampling): six boxes joined by arrows; under the box
@@ -37,12 +37,12 @@ import work1  # noqa: E402
 from atact.field import procedural_field_separable  # noqa: E402
 
 COND = ROOT / "works" / "conditions" / "rule_schematic.json"
-OUT_DIR = ROOT / "results" / "rule_schematic"
+OUT_DIR = ROOT / "results" / "rule_schematic_v6"
 WORK1_COND = ROOT / "works" / "conditions" / "work1.json"
 WORK1_RECORD = "results/work1/work1.json"
 COMMON_PNG = "results/work1/common.png"
 MM_PER_INCH = 25.4
-VERSION = 5
+VERSION = 6
 MIN_FONT_PT = 7.0  # the check of the conditions
 FONT_PX = 30  # 7.2 pt at 300 dpi
 FONT_INDEX = {"regular": 0, "bold": 1}  # faces of Helvetica.ttc
@@ -58,8 +58,8 @@ ABSENT_KEYS = {"file", "key", "default"}
 NUMBER_WORDS = {4: "four"}
 SEP = " / "  # between the value of work 1 and that of work 2 in a label
 
-# approved_text_rule: what the conditions say and the figure draws, as fixed in this script (copied from version 5)
-APPROVED = {'version': 5,
+# approved_text_rule: what the conditions say and the figure draws, as fixed in this script (copied from version 6)
+APPROVED = {'version': 6,
  'top_keys': ['boxes',
               'fixed_before_running',
               'layout',
@@ -98,7 +98,10 @@ APPROVED = {'version': 5,
                      'list': [{'name': 'lexicon',
                                'under': 'values',
                                'work1': {'file': 'works/conditions/work1.json', 'key': 'lexicon.name'},
-                               'work2': {'file': 'works/conditions/work2.json', 'key': 'lexicon.name'}},
+                               'work2': {'literal': 'MEmoLon, Japanese',  # version 6
+                                         'check': {'file': 'works/conditions/work2.json',
+                                                   'keys': ['lexicon.name'],
+                                                   'must_contain': ['MEmoLon, Japanese']}}},
                               {'name': 'scale of V and A',
                                'under': 'values',
                                'work1': {'literal': 'as rated (no map)'},
@@ -142,7 +145,9 @@ APPROVED = {'version': 5,
                               {'name': 'smoothing parameter ε',
                                'under': 'relief',
                                'work1': {'literal': '-',
-                                         'note': 'work 1 uses eps only in the supplementary image common_eps.png'},
+                                         'note': 'work 1 uses eps in the supplementary image common_eps.png and in the four '
+                                                 'drawings of figure 4 (works/work1_drawing.py), not in its main images '
+                                                 '(figures 2 and 3)'},
                                'work2': {'file': 'results/work2_sp_color/work2_sp_color.json', 'key': 'eps'}},
                               {'name': 'drawing',
                                'under': 'image',
@@ -161,8 +166,8 @@ APPROVED = {'version': 5,
                   "box 'image'",
           'check': 'the cut equals the tile drawn afresh by works/work1.py for sentence 1 byte for byte (else the '
                    'run stops)'},
- 'outputs': 'results/rule_schematic/rule_schematic.png and rule_schematic.json (provenance: the conditions read and '
-            'their SHA-256, every value read and every literal checked)'}
+ 'outputs': 'results/rule_schematic_v6/rule_schematic.png and rule_schematic.json (provenance: the conditions read and '
+            'their SHA-256, every value read and every literal checked); results/rule_schematic (version 5) is kept'}
 
 
 # ---------------------------------------------------------------- reading values
