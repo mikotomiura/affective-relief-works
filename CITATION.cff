@@ -1,0 +1,56 @@
+cff-version: 1.2.0
+message: "If you use this archive, please cite it and the article it accompanies."
+type: software
+title: "Scripts, conditions and results of 'What Makers Chose, and When: Noting the Quantities a Rule Leaves Open'"
+abstract: >-
+  Two series of reliefs made from the emotional values of words (tiles for the sentences of an English short story,
+  portraits of six Japanese authors), with the scripts, the conditions committed before each computation, the results,
+  and the note recording when each quantity left open by the rule was set. Supplement S3 of the article.
+authors:
+  - family-names: Miura
+    given-names: Mikoto
+    affiliation: Independent Researcher
+    orcid: "https://orcid.org/0009-0000-4196-0508"
+  - family-names: Harada
+    given-names: Yuusuke
+    affiliation: "Graduate School of Humanities and Social Sciences, Hiroshima University, Japan"
+    orcid: "https://orcid.org/0009-0006-7252-5115"
+license:
+  - MIT
+  - CC-BY-4.0
+version: 0.1.0
+keywords:
+  - generative art
+  - data physicalization
+  - emotion lexicons
+  - relief
+  - practice-based research
+  - documentation
+references:
+  - type: article
+    title: "What Makers Chose, and When: Noting the Quantities a Rule Leaves Open"
+    authors:
+      - family-names: Miura
+        given-names: Mikoto
+      - family-names: Harada
+        given-names: Yuusuke
+    notes: Manuscript.
+  - type: article
+    title: "Affective Tactility: Cross-Modal Translation from Natural Language to Procedural Height Maps"
+    authors:
+      - family-names: Harada
+        given-names: Yuusuke
+    year: 2026
+    publisher:
+      name: Research Square
+    doi: 10.21203/rs.3.rs-8696852/v1
+    notes: Preprint.
+  - type: software
+    title: "affective-relief-audit"
+    authors:
+      - family-names: Miura
+        given-names: Mikoto
+      - family-names: Harada
+        given-names: Yuusuke
+    doi: 10.5281/zenodo.23681773
+    notes: The generator atact, installed at a pinned commit.

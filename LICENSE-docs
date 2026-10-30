@@ -1,0 +1,19 @@
+Copyright (c) 2026 Mikoto Miura and Yuusuke Harada
+
+The documents, conditions, results and figures of this repository (README.md, README.ja.md, works/conditions/,
+checks/conditions/, experiments/conditions/, tools/conditions/, checks/reference/, results/, docs/media/,
+commit-map.tsv, external-manifest.tsv and CITATION.cff) are licensed under the Creative Commons Attribution 4.0
+International License (CC BY 4.0). The source code and the files of the environment (src/, works/*.py, checks/*.py,
+experiments/*.py, tests/, tools/*.py, pyproject.toml, uv.lock, .python-version and .gitignore) are licensed under the
+MIT License in LICENSE.
+
+Material of others is not covered by these licenses and keeps its own terms: the words and the values derived from
+MEmoLon (Buechel, Rücker and Hahn 2020, https://doi.org/10.5281/zenodo.3756607, CC BY 4.0), and the passages of the
+texts quoted in results/ (Project Gutenberg #160, Wikisource and Aozora Bunko; in the public domain). The NRC VAD
+Lexicon v2.1 is not redistributed here (see README.md): the results computed from it are covered by CC BY 4.0 as our
+work, but any use of the values of the lexicon themselves is under its own terms of use.
+checks/reference/text_path_example.json is a copy of a result of affective-relief-audit
+(https://doi.org/10.5281/zenodo.23681773), released there under the same license.
+
+To view a copy of the CC BY 4.0 license, visit https://creativecommons.org/licenses/by/4.0/
+The full legal code is at https://creativecommons.org/licenses/by/4.0/legalcode

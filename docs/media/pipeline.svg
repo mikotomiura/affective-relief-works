@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 230" width="980" height="230" role="img" aria-labelledby="t d">
+  <title id="t">From text to image</title>
+  <desc id="d">Six boxes joined by arrows: text, words in a lexicon, valence and arousal, the rule giving f, s and gamma, a height field, and the drawn image. Below, what the makers set: everything outside the rule.</desc>
+  <style>
+    .box { fill: #ffffff; stroke: #8a8a8a; stroke-width: 1.2; }
+    .key { fill: #fff4ec; stroke: #d66e28; stroke-width: 1.6; }
+    .h { font: 600 15px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #222222; }
+    .s { font: 12.5px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #555555; }
+    .m { font: italic 12.5px -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; fill: #b4561a; }
+    .a { stroke: #8a8a8a; stroke-width: 1.6; fill: none; }
+    .ah { fill: #8a8a8a; }
+        @media (prefers-color-scheme: dark) {
+      .box { fill: #1c1c1c; stroke: #8a8a8a; }
+      .key { fill: #2e1d12; stroke: #e58a4a; }
+      .h { fill: #eeeeee; }
+      .s { fill: #b8b8b8; }
+      .m { fill: #e58a4a; }
+    }
+  </style>
+  <g>
+    <rect class="box" x="10" y="20" width="135" height="92" rx="8"/>
+    <text class="h" x="77.5" y="48" text-anchor="middle">Text</text>
+    <text class="s" x="77.5" y="70" text-anchor="middle">a story (work 1),</text>
+    <text class="s" x="77.5" y="88" text-anchor="middle">six authors (work 2)</text>
+
+    <rect class="box" x="175" y="20" width="135" height="92" rx="8"/>
+    <text class="h" x="242.5" y="48" text-anchor="middle">Lexicon</text>
+    <text class="s" x="242.5" y="70" text-anchor="middle">NRC VAD (English)</text>
+    <text class="s" x="242.5" y="88" text-anchor="middle">MEmoLon (Japanese)</text>
+
+    <rect class="box" x="340" y="20" width="135" height="92" rx="8"/>
+    <text class="h" x="407.5" y="48" text-anchor="middle">V, A</text>
+    <text class="s" x="407.5" y="70" text-anchor="middle">sentence mean (1)</text>
+    <text class="s" x="407.5" y="88" text-anchor="middle">word percentile (2)</text>
+
+    <rect class="key" x="505" y="20" width="135" height="92" rx="8"/>
+    <text class="h" x="572.5" y="48" text-anchor="middle">The rule</text>
+    <text class="s" x="572.5" y="70" text-anchor="middle">fineness f, depth s,</text>
+    <text class="s" x="572.5" y="88" text-anchor="middle">sharpness γ</text>
+
+    <rect class="box" x="670" y="20" width="135" height="92" rx="8"/>
+    <text class="h" x="737.5" y="48" text-anchor="middle">Relief</text>
+    <text class="s" x="737.5" y="70" text-anchor="middle">a height field</text>
+    <text class="s" x="737.5" y="88" text-anchor="middle">per unit (tile)</text>
+
+    <rect class="box" x="835" y="20" width="135" height="92" rx="8"/>
+    <text class="h" x="902.5" y="48" text-anchor="middle">Image</text>
+    <text class="s" x="902.5" y="70" text-anchor="middle">gray, lit,</text>
+    <text class="s" x="902.5" y="88" text-anchor="middle">or in color</text>
+  </g>
+  <g>
+    <path class="a" d="M147 66 H168"/><path class="ah" d="M174 66 l-8 -5 v10 z"/>
+    <path class="a" d="M312 66 H333"/><path class="ah" d="M339 66 l-8 -5 v10 z"/>
+    <path class="a" d="M477 66 H498"/><path class="ah" d="M504 66 l-8 -5 v10 z"/>
+    <path class="a" d="M642 66 H663"/><path class="ah" d="M669 66 l-8 -5 v10 z"/>
+    <path class="a" d="M807 66 H828"/><path class="ah" d="M834 66 l-8 -5 v10 z"/>
+  </g>
+  <text class="s" x="572.5" y="132" text-anchor="middle">fixed: two values in, three quantities out</text>
+  <text class="m" x="490" y="172" text-anchor="middle">Everything outside the rule is set by the makers: the lexicon and the words, how values enter the rule,</text>
+  <text class="m" x="490" y="192" text-anchor="middle">the seed, the scale of heights across tiles, the drawing and the color.</text>
+</svg>
