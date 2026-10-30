@@ -11,7 +11,7 @@
   <img alt="Python 3.13" src="https://img.shields.io/badge/python-3.13-4b8bbe">
   <a href="https://docs.astral.sh/uv/"><img alt="Environment: uv.lock" src="https://img.shields.io/badge/environment-uv.lock-5c5c5c"></a>
   <img alt="Tests: 300 passed" src="https://img.shields.io/badge/tests-300%20passed-3f8f4f">
-  <!-- DOI badge: added when Zenodo assigns the DOI -->
+  <a href="https://doi.org/10.5281/zenodo.23814560"><img alt="DOI 10.5281/zenodo.23814560" src="https://img.shields.io/badge/DOI-10.5281%2Fzenodo.23814560-1682d4"></a>
 </p>
 
 <p align="center"><b>English</b> | <a href="README.ja.md">日本語</a></p>
@@ -133,7 +133,7 @@ Please cite the article and this archive (also in `CITATION.cff`):
 > Miura, M. and Harada, Y. What Makers Chose, and When: Noting the Quantities a Rule Leaves Open. Manuscript.
 
 > Miura, M. and Harada, Y. (2026). Scripts, conditions and results of "What Makers Chose, and When". Zenodo.
-> (DOI to be added)
+> https://doi.org/10.5281/zenodo.23814560
 
 The rule comes from the preprint of the second author:
 

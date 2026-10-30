@@ -11,7 +11,7 @@
   <img alt="Python 3.13" src="https://img.shields.io/badge/python-3.13-4b8bbe">
   <a href="https://docs.astral.sh/uv/"><img alt="Environment: uv.lock" src="https://img.shields.io/badge/environment-uv.lock-5c5c5c"></a>
   <img alt="Tests: 300 passed" src="https://img.shields.io/badge/tests-300%20passed-3f8f4f">
-  <!-- DOI のバッジ: Zenodo で DOI が付いたら足す -->
+  <a href="https://doi.org/10.5281/zenodo.23814560"><img alt="DOI 10.5281/zenodo.23814560" src="https://img.shields.io/badge/DOI-10.5281%2Fzenodo.23814560-1682d4"></a>
 </p>
 
 <p align="center"><a href="README.md">English</a> | <b>日本語</b></p>
@@ -102,7 +102,7 @@ NRC の辞書を置けば、`uv run python tools/lexicon_values.py restore` が 
 > Miura, M. and Harada, Y. What Makers Chose, and When: Noting the Quantities a Rule Leaves Open. Manuscript.
 
 > Miura, M. and Harada, Y. (2026). Scripts, conditions and results of "What Makers Chose, and When". Zenodo.
-> (DOI は後で足す)
+> https://doi.org/10.5281/zenodo.23814560
 
 規則は第 2 著者のプレプリントによります。
 
