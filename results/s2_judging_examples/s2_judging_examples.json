@@ -1,0 +1,108 @@
+{
+ "conditions_sha256": "d67717b87e6c67128c2e76a91680116991b85a3bec66eda7cce85ebcea0cc0ef",
+ "script_sha256": "e2b3915ee89cd33b9bb596552dffee7aa7fea6a08f53bee7737af00008e96ecd",
+ "key_sha256": "cd9082351f7a7d736fea79563ba1a11c2c152704f3df81b4a5d1227ec3d6989f",
+ "spreadsheet_sha256": "eb48ba69680d71a2605f12e28cd975363a15b6b9eac3ed16468cdbb4eff8919a",
+ "items": [
+  {
+   "number": 26,
+   "kind": "test",
+   "top": {
+    "version": "G0",
+    "row": "words20",
+    "seed": 400,
+    "author": 1
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "words20",
+    "seed": 400,
+    "author": 0
+   },
+   "media": [
+    "xl/media/image26.png"
+   ],
+   "sha256": "551f856d45bc69f46c867d16c48738be61e1e5ed3afd9c946a480c4c4db70d1f"
+  },
+  {
+   "number": 3,
+   "kind": "test",
+   "top": {
+    "version": "P",
+    "row": "words20",
+    "seed": 400,
+    "author": 1
+   },
+   "bottom": {
+    "version": "P",
+    "row": "words20",
+    "seed": 400,
+    "author": 0
+   },
+   "media": [
+    "xl/media/image3.png"
+   ],
+   "sha256": "92de0c47670fbb9aaf90f95648ed5a9b203cc270be41ca33032f212512c4b486"
+  },
+  {
+   "number": 37,
+   "kind": "test",
+   "top": {
+    "version": "SPC",
+    "row": "words20",
+    "seed": 300,
+    "author": 0
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "words20",
+    "seed": 300,
+    "author": 1
+   },
+   "media": [
+    "xl/media/image37.png"
+   ],
+   "sha256": "4e52a3c85c3b6e757a42b318b7bfbec5998c885326b6ddf825389ab0522c8ee2"
+  },
+  {
+   "number": 2,
+   "kind": "set_differs",
+   "top": {
+    "version": "G0",
+    "row": "P1_first_person",
+    "seed": 400,
+    "author": 1
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "L1_adversative",
+    "seed": 400,
+    "author": 1
+   },
+   "media": [
+    "xl/media/image2.png"
+   ],
+   "sha256": "be949c4ba0db76e66a9560967320774c53988ecc6bf949ae3fac72f092889180"
+  },
+  {
+   "number": 24,
+   "kind": "same_image",
+   "top": {
+    "version": "SPC",
+    "row": "O1_iu",
+    "seed": 500,
+    "author": 1
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "O1_iu",
+    "seed": 500,
+    "author": 1
+   },
+   "media": [
+    "xl/media/image24.png"
+   ],
+   "sha256": "31bf76ae895c03ab219fe072b8302450968d64a57937b9697b78d9afea1a5cbb"
+  }
+ ]
+}
