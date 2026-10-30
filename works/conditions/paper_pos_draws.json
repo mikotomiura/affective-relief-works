@@ -1,0 +1,64 @@
+{
+ "purpose": "To tell whether the narrower spread of the 120 words of work 2 under map B, and their place within the draws under the percentiles, still hold against draws that pass the same selection of parts of speech as the words of work 2 but not the filter on counts and works (decision of the researcher on 2026-10-30 after round 25 of the outline, verdict section 7 point 3; R2 M1). The draws from all distinct words of results/paper_distinct_range take the reference words of works/conditions/sketch_sp_color.json (select all: every part of speech), while the 120 words and the pools of results/paper_filtered_draws come from the matched words of the text step of work 2 (select pos: the parts of speech of POS_ALLOWED of src/japanese_text.py). So the step from all distinct words to the filtered words applied the selection of parts of speech and the filter on counts and works at once. Here sets of 120 are drawn, 20 words of each author, from the words of the author that pass the selection of parts of speech alone (pos), beside the 120 words, the draws from all distinct words and the draws from the filtered words and the candidates as recorded. So the steps all distinct -> pos -> filtered -> candidates -> largest z can be read one after the other.",
+ "fixed_before_running": "Written on 2026-10-30 and committed before the script was written or run. Seen before: everything of results/paper_distinct_range/distinct_range.json and of results/paper_filtered_draws/filtered_draws.json (among them the medians of the middle half of the draws under map B, all distinct f 11.0% and s 19.4%, filtered f 8.8% and s 14.3%, candidates f 9.3% and s 14.6%; under the percentiles all distinct f 49.4% and s 41.8%, filtered f 55.0% and s 64.0%; the 120 words f 7.6% and s 12.0% under map B and f 54.2% and s 59.6% under the percentiles; the sizes of the filtered pools 288 to 401 and of the candidates 239 to 325), results/work2_words/words.json, everything seen before the conditions of those records, everything of results/paper_coverage_ties_flat/coverage_ties_flat.json (its distinct_in_lexicon of each author of work 2, 4,730 for 夏目漱石, is the number of distinct candidate forms of the author found in MEmoLon, that is the size of the pos pool here; seen while these conditions were written), the outline up to version 2.27 and rounds 1 to 25 of its critiques. Not seen before: any value of the words of the pos pools other than the 120 words and the filtered words, and any set drawn from them. This count is added after the records were seen.",
+ "version": 1,
+ "inputs": {
+  "work2_conditions": {"path": "works/conditions/work2.json"},
+  "work2_result": {"path": "results/work2/work2.json"},
+  "words_conditions": {"path": "works/conditions/work2_words.json"},
+  "words": {"path": "results/work2_words/words.json"},
+  "words_script": {"path": "works/work2_words.py"},
+  "reference_conditions": {"path": "works/conditions/sketch_sp_color.json"},
+  "values": {"path": "results/sketch_sp_color/values.json", "sha256": "2a15808cef6cd5978acda504fb6d08b4c1df6fec736901d90c492e6e525db71e"},
+  "calibration": {"path": "results/calibrate_memolon.json"},
+  "distinct_conditions": {"path": "works/conditions/paper_distinct_range.json"},
+  "distinct_range": {"path": "results/paper_distinct_range/distinct_range.json"},
+  "distinct_script": {"path": "works/paper_distinct_range.py"},
+  "filtered_conditions": {"path": "works/conditions/paper_filtered_draws.json"},
+  "filtered_draws": {"path": "results/paper_filtered_draws/filtered_draws.json"},
+  "filtered_script": {"path": "works/paper_filtered_draws.py"},
+  "coverage_conditions": {"path": "works/conditions/paper_coverage_ties_flat.json"},
+  "coverage": {"path": "results/paper_coverage_ties_flat/coverage_ties_flat.json"},
+  "reference_range_script": {"path": "works/paper_reference_range.py"},
+  "hashes": "values.json is checked against the SHA-256 above; the other inputs are checked to be the committed bytes; the lexicon, the map, the tagger and the zips of the 23 works against work2.json; distinct_range.json, filtered_draws.json and coverage_ties_flat.json to be made on their conditions on a clean tree by the scripts named here, from the same inputs where they are shared, with the same lexicon, dictionary and generator; select of works/work2_words.py, draw and summary of works/paper_distinct_range.py, and weighted_percentile, reference_weights, spread and shapes of works/paper_reference_range.py imported from the committed files, not copied"
+ },
+ "sets": {
+  "pos": "for each author, the distinct matched words of the points of the text step of work 2 (works/conditions/work2.json, select pos) over the works of the author, each once, sorted by Unicode code point: a surface form is in the pool if at least one of its tokens in the kept sentences of the author has a part of speech of POS_ALLOWED; no filter on counts and works and no sign",
+  "values": "V and A of every word under map B and under the percentiles, as distinct_B and distinct_P of results/paper_distinct_range (every word of the pool must be one of its 18301 reference words); f and s = params(V, A)",
+  "draws_pos_B, draws_pos_P": "R replicates; in each, for every author in the order of words.json, 20 words drawn uniformly without replacement from the pos pool of the author, by the function draw of works/paper_distinct_range.py with the seed (its own generator, started from the same seed as the other draws), pooled to 120 values, a word drawn for two authors counted once for each; the same drawn words under map B and the percentiles",
+  "words_120": "the 20 words of each author of words.json, computed here as in filtered_draws.json and checked to equal its words_120",
+  "beside, read as recorded": "draws_all (the summaries of draws_B and draws_P of distinct_range.json) and the summaries of draws_filtered_B, draws_filtered_P, draws_candidates_B and draws_candidates_P of filtered_draws.json"
+ },
+ "pos_allowed": {"名詞": ["サ変接続", "ナイ形容詞語幹", "一般", "副詞可能", "形容動詞語幹"], "動詞": ["自立"], "形容詞": ["自立"], "副詞": ["一般", "助詞類接続"]},
+ "random": {
+  "replicates": 10000,
+  "seed": 20261029,
+  "summary": "per version, quantity and share (quartiles and minimum to maximum): the summary of works/paper_distinct_range.py (mean, median, quantiles 0.025 and 0.975, linear, and the number of replicates at most the 120 words)"
+ },
+ "statistics": {
+  "quantities": ["f", "s"],
+  "share": "100 (third quartile - first quartile) / (width of the range of the rule) and 100 (maximum - minimum) / width, by spread of works/paper_reference_range.py without weights (numpy.quantile, linear), as distinct_range.json",
+  "main": "the quartiles (the middle half, as figure 8)"
+ },
+ "constants": {
+  "authors": 6,
+  "words_per_author": 20,
+  "tiles": 120,
+  "reference_words": 18301,
+  "replicates": 10000,
+  "seed": 20261029
+ },
+ "checks": [
+  "G1: the constants hold: 6 authors in the order of words.json, 20 words each; every pos pool holds at least 20 words",
+  "G2: the text step again: every work gives the sentences and matched tokens of results/work2; the selection of parts of speech of work2.json is pos and POS_ALLOWED of src/japanese_text.py equals pos_allowed of these conditions (unchanged since its first commit 604091d, before the inputs of work 2 were filled in at c1e21b7 and before its first run at 500c58f)",
+  "G3: the values again: the reference words and the f and s of the reference recomputed have the SHA-256 recorded in distinct_range.json; the 120 words computed here equal words_120 of filtered_draws.json",
+  "G4: the pools nest: for every author, the pos pool is a subset of the distinct words of the author in the reference (select all) and holds the filtered words of the author, computed by select of works/work2_words.py with every z set to 1, whose numbers equal pool_sizes.filtered of filtered_draws.json; the size of the pos pool of every author equals distinct_in_lexicon of coverage_ties_flat.json; every word of a pool is a reference word; the 20 words of the author are in its pos pool",
+  "G5: the draws are made again from a new generator with the same seed and give the same words in every replicate; every replicate holds 120 values, 20 distinct words of each author from its pool",
+  "G6: every V and A lies in [-1, 1], so params clips nothing; the installed atact is the generator of work2_words.json, of distinct_range.json and of filtered_draws.json; the range of the rule is read from atact.mapping"
+ ],
+ "outputs": {
+  "dir": "results/paper_pos_draws (refused if it exists)",
+  "record": "pos_draws.json: the size of the pos pool per author beside those of the reference (select all), filtered and candidates; per author the middle half of the pos pool itself (each word once); the summary over the replicates and the shares of every replicate of draws_pos_B and draws_pos_P; words_120 and the summaries beside as read; the checks G1 to G6 with their counts; the SHA-256 of the conditions, the script and every input; the versions and the git state"
+ },
+ "not_claimed": "These are quantities of the generation of the tiles on sets of words, not of how any tile looks. Each step is compared with the next by sets drawn at random, so a difference between steps is read from where the 120 words and the medians of the draws fall, not tested; the number of replicates at or below the 120 words is a description, not a p-value. The selection of parts of speech acts on tokens, so a form tagged once in an allowed part of speech enters the pool with all its other uses; the pool is a set of forms, not of uses. The steps are those of this selection and in its order; another set of parts of speech, filter or statistic could narrow or widen otherwise. This count was added after the values and images of the 120 words and the records of all draws named above were seen."
+}
