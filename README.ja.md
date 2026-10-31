@@ -11,7 +11,7 @@
   <img alt="Python 3.13" src="https://img.shields.io/badge/python-3.13-4b8bbe">
   <a href="https://docs.astral.sh/uv/"><img alt="Environment: uv.lock" src="https://img.shields.io/badge/environment-uv.lock-5c5c5c"></a>
   <img alt="Tests: 300 passed" src="https://img.shields.io/badge/tests-300%20passed-3f8f4f">
-  <a href="https://doi.org/10.5281/zenodo.23814560"><img alt="DOI 10.5281/zenodo.23814560" src="https://img.shields.io/badge/DOI-10.5281%2Fzenodo.23814560-1682d4"></a>
+  <a href="https://doi.org/10.5281/zenodo.23814559"><img alt="DOI 10.5281/zenodo.23814559" src="https://img.shields.io/badge/DOI-10.5281%2Fzenodo.23814559-1682d4"></a>
 </p>
 
 <p align="center"><a href="README.md">English</a> | <b>日本語</b></p>
@@ -63,12 +63,13 @@
 | `external/`（辞書と文章）。翻訳 3 本を除く | NRC VAD Lexicon は再配布できない。ほかは入手元に置いてある | `external-manifest.tsv`: スクリプトと条件が名指す 32 ファイルのパス・SHA-256・大きさ・入手元。著作権の切れた『人魚姫』の英訳 3 本は、Wikisource からの取り出しをバイト単位で繰り返せないので `external/translations-20261028/little-mermaid/` に入れた（`checks/reference_stretch.py` は青空文庫のファイルを自分で取り、URL と SHA-256 を `results/reference_stretch.json` に記録する） |
 | 翻訳者の連作の下絵の記録 2 つ（`results/sketch_translations_words*/`）にある NRC VAD Lexicon の値と、それを逆算できる量（*s*・γ・D による高さの変化） | 使用条件「Do not redistribute the data」 | その値を `null` にし、語をまたぐ集計は残した同じ記録（`tools/lexicon_values.py`）。辞書があれば `restore` で元のファイルとバイト単位で同じに戻る |
 | `results/sketch_translations_words_d/words_vad.png` | 札に 60 語の dominance の値が描かれている | `words_vad_unlabelled.png`: 同じタイルで札は語だけ（`tools/words_vad_unlabelled.py`） |
-| `results/blind_judgement/score.json`（盲検の集計） | 第 2 著者の項目ごとの答えと書き込みを含み、本人の承諾の後に公開する。行ごとの集計（表 1・S1.6 と同じ水準）は公開している（結果とコミットのメッセージ 2 本） | このアーカイブの後の版で足す。それまで表 1・決定メモ・`works/paper_work2_figures.py`・`works/blind_judgement_score_supplement.py` はここから走らせ直せない。書き込みに触れていたコミットのメッセージ 2 本は、その部分を注記に置き換えた |
 | 作業記録（`advice/`・`handoff/`・`.steering/`）と大きな生成物（`output/`） | 作業の記録で、計算の入力ではない | いくつかの条件は判断の場所としてこれらを名指すが、名前だけで、計算には要らない |
 
 残したものとその理由: 図は値を描いています。`results/sketch_translations_words/words.png`・`results/sketch_translations_words_d/pairs.png`・`words_vad_unlabelled.png` の語ごとのタイルは辞書の値から規則で作られ、生成器と種は公開されているので、図から値を推定することはできます。辞書から描いた図の常として作品の図として残し、辞書の値を数字として印字・保存したものはありません。作品 1 のタイルと文の記録は、文の中の語の平均です（作品 1 に一致した語が 1 つだけの文はありません）。`checks/reference/text_path_example.json` は規則の論文とともに公開済みの結果（[affective-relief-audit](https://doi.org/10.5281/zenodo.23681773) の `results/text_path_example.json`）の写しで、新たに配るものではありません。
 
-`results/blind_judgement/score.json`・`results/sketch_translations_words/sketch_translations_words.json`・`results/sketch_translations_words_d/sketch_translations_words_d.json`・`results/sketch_translations_words_d/words_vad.png` の 4 ファイルは、履歴のすべてのコミットから除きました。それ以外は、計算を行ったときの履歴そのままです（下記）。
+`results/blind_judgement/score.json`・`results/sketch_translations_words/sketch_translations_words.json`・`results/sketch_translations_words_d/sketch_translations_words_d.json`・`results/sketch_translations_words_d/words_vad.png` の 4 ファイルは、版 0.1.0 として公開した履歴のすべてのコミットから除きました。それ以外は、計算を行ったときの履歴そのままです（下記）。
+
+盲検の集計 `results/blind_judgement/score.json` は、第 2 著者の項目ごとの答えと書き込み（日本語）を含むので版 0.1.0 には入れず、本人の承諾の後、版 0.2.0 で履歴の上に新しいコミットとして足しました。結果が SHA-256 を記録しているファイル（d98dccf5…）とバイト単位で同じです。これと外部のファイルがあれば、`works/decision_note.py`（表 1）と `works/paper_work2_figures.py` は記録の図と表をもう一度出します（両方を確かめました。違うのは `meta` の時刻とコミットだけです）。`works/blind_judgement_score.py` と `works/blind_judgement_score_supplement.py` は判定者の回答の表計算ファイルを読み、それはこのアーカイブに無いので、ここからは走らせ直せません。書き込みに触れていたコミットのメッセージ 2 本は注記に置き換えたままで、元には戻していません。
 
 ## 再現
 
@@ -93,7 +94,9 @@ NRC の辞書を置けば、`uv run python tools/lexicon_values.py restore` が 
 
 ## 履歴と来歴
 
-結果は、計算を行った作業用リポジトリのハッシュでコミットを引きます。この履歴はそのリポジトリから、この 4 ファイルをすべてのコミットから除き、作者のメールアドレスを 1 つにそろえて作りました。日付と順序は変えておらず、メッセージも上に記した 2 本を除いて変えておらず、`score.json` だけを足していたコミットは空のまま残しています。`commit-map.tsv` が元のハッシュとここのコミットを対応させます。対応表の最後のコミットより後は、この節のツール、値を外した記録、札を直した図、翻訳 3 本、この README を足すコミットです。
+結果は、計算を行った作業用リポジトリのハッシュでコミットを引きます。この履歴はそのリポジトリから、この 4 ファイルをすべてのコミットから除き、作者のメールアドレスを 1 つにそろえて作りました。日付と順序は変えておらず、メッセージも上に記した 2 本を除いて変えておらず、`score.json` だけを足していたコミットは空のまま残しています。`commit-map.tsv` が元のハッシュとここのコミットを対応させます。対応表の最後のコミットより後は、この節のツール、値を外した記録、札を直した図、翻訳 3 本、この README を足すコミットと、版 0.2.0 で `score.json` を足すコミットです。
+
+版: 0.1.0（[10.5281/zenodo.23814560](https://doi.org/10.5281/zenodo.23814560)）、0.2.0（`score.json` を足した版。[10.5281/zenodo.23828355](https://doi.org/10.5281/zenodo.23828355)）。[10.5281/zenodo.23814559](https://doi.org/10.5281/zenodo.23814559) は最新の版を指します。
 
 ## 引用
 
@@ -102,7 +105,7 @@ NRC の辞書を置けば、`uv run python tools/lexicon_values.py restore` が 
 > Miura, M. and Harada, Y. What Makers Chose, and When: Noting the Quantities a Rule Leaves Open. Manuscript.
 
 > Miura, M. and Harada, Y. (2026). Scripts, conditions and results of "What Makers Chose, and When". Zenodo.
-> https://doi.org/10.5281/zenodo.23814560
+> https://doi.org/10.5281/zenodo.23814559
 
 規則は第 2 著者のプレプリントによります。
 

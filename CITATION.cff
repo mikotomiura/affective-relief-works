@@ -15,12 +15,20 @@ authors:
     given-names: Yuusuke
     affiliation: "Graduate School of Humanities and Social Sciences, Hiroshima University, Japan"
     orcid: "https://orcid.org/0009-0006-7252-5115"
-doi: 10.5281/zenodo.23814560
+doi: 10.5281/zenodo.23814559
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.23828355
+    description: Version 0.2.0.
+  - type: doi
+    value: 10.5281/zenodo.23814560
+    description: Version 0.1.0.
 repository-code: "https://github.com/mikotomiura/affective-relief-works"
 license:
   - MIT
   - CC-BY-4.0
-version: 0.1.0
+version: 0.2.0
+date-released: 2026-10-31
 keywords:
   - generative art
   - data physicalization
