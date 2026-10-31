@@ -1,0 +1,2153 @@
+{
+ "meta": {
+  "conditions_sha256": "549313ca7a26495e99059e6d34031533ddb0bad79d16e4e20a6c3f03b009ec61",
+  "script_sha256": "5011600c4fed73141f731da8100ded5b1370c1efd26493d004e8b68b03ee12cc",
+  "python": "3.13.12",
+  "platform": "Darwin arm64",
+  "atact_commit": "b559a80c623d36357dd0736b887497a0cb789af5",
+  "numpy": "2.5.4",
+  "pillow": "13.0.0",
+  "openpyxl": "3.1.5",
+  "git_commit": "1839ee8ae128bce1436fb74ddc5bf2a1ac9452f7",
+  "git_dirty": false,
+  "finished": "2026-10-28T13:55:38+00:00"
+ },
+ "decision": {
+  "decided": true,
+  "rows_remaining": {
+   "G0": [
+    "L1_adversative",
+    "L2_intensifier",
+    "P1_first_person",
+    "O1_iu"
+   ],
+   "P": [
+    "L1_adversative",
+    "L2_intensifier",
+    "P1_first_person",
+    "O1_iu",
+    "words20"
+   ],
+   "SPC": [
+    "L1_adversative",
+    "L2_intensifier",
+    "P1_first_person",
+    "O1_iu",
+    "words20"
+   ]
+  },
+  "two_claims": true
+ },
+ "agreement": null,
+ "excluded": {
+  "researcher": {
+   "reply_sha256": "35d766846cbb7d17b7ac06347ac7baf1748d1c8185318b8e0496296eb1266301",
+   "problems": [
+    "説明: cells changed at [((2, 1), '')]"
+   ]
+  }
+ },
+ "judges": {
+  "harada": {
+   "reply_sha256": "e11ec4edb56eb4905687383e1f4c37509bf6a5bc9a77554154779d0ea90fe50a",
+   "controls": {
+    "same_image": [
+     "同じに見える",
+     "同じに見える",
+     "同じに見える",
+     "同じに見える",
+     "同じに見える"
+    ],
+    "seed_differs": [
+     "違って見える",
+     "違って見える",
+     "違って見える",
+     "違って見える",
+     "違って見える"
+    ],
+    "pass": true
+   },
+   "test": {
+    "G0": {
+     "L1_adversative": {
+      "answers": {
+       "400": "違って見える",
+       "200": "違って見える",
+       "100": "違って見える",
+       "300": "違って見える",
+       "500": "違って見える"
+      },
+      "remains": true
+     },
+     "L2_intensifier": {
+      "answers": {
+       "200": "違って見える",
+       "400": "違って見える",
+       "300": "違って見える",
+       "500": "違って見える",
+       "100": "違って見える"
+      },
+      "remains": true
+     },
+     "P1_first_person": {
+      "answers": {
+       "500": "違って見える",
+       "400": "違って見える",
+       "300": "違って見える",
+       "100": "違って見える",
+       "200": "違って見える"
+      },
+      "remains": true
+     },
+     "O1_iu": {
+      "answers": {
+       "200": "違って見える",
+       "300": "違って見える",
+       "500": "違って見える",
+       "400": "違って見える",
+       "100": "違って見える"
+      },
+      "remains": true
+     },
+     "words20": {
+      "answers": {
+       "400": "同じに見える",
+       "500": "同じに見える",
+       "200": "同じに見える",
+       "100": "同じに見える",
+       "300": "同じに見える"
+      },
+      "remains": false
+     }
+    },
+    "P": {
+     "L1_adversative": {
+      "answers": {
+       "100": "違って見える",
+       "500": "違って見える",
+       "200": "違って見える",
+       "400": "違って見える",
+       "300": "違って見える"
+      },
+      "remains": true
+     },
+     "L2_intensifier": {
+      "answers": {
+       "300": "違って見える",
+       "200": "違って見える",
+       "400": "違って見える",
+       "100": "違って見える",
+       "500": "違って見える"
+      },
+      "remains": true
+     },
+     "P1_first_person": {
+      "answers": {
+       "400": "違って見える",
+       "200": "違って見える",
+       "300": "違って見える",
+       "500": "違って見える",
+       "100": "違って見える"
+      },
+      "remains": true
+     },
+     "O1_iu": {
+      "answers": {
+       "200": "違って見える",
+       "100": "違って見える",
+       "400": "違って見える",
+       "300": "違って見える",
+       "500": "違って見える"
+      },
+      "remains": true
+     },
+     "words20": {
+      "answers": {
+       "400": "違って見える",
+       "500": "違って見える",
+       "100": "違って見える",
+       "300": "違って見える",
+       "200": "違って見える"
+      },
+      "remains": true
+     }
+    },
+    "SPC": {
+     "L1_adversative": {
+      "answers": {
+       "100": "違って見える",
+       "300": "違って見える",
+       "200": "違って見える",
+       "500": "違って見える",
+       "400": "違って見える"
+      },
+      "remains": true
+     },
+     "L2_intensifier": {
+      "answers": {
+       "300": "違って見える",
+       "200": "違って見える",
+       "100": "違って見える",
+       "400": "違って見える",
+       "500": "違って見える"
+      },
+      "remains": true
+     },
+     "P1_first_person": {
+      "answers": {
+       "100": "違って見える",
+       "200": "違って見える",
+       "300": "違って見える",
+       "500": "違って見える",
+       "400": "違って見える"
+      },
+      "remains": true
+     },
+     "O1_iu": {
+      "answers": {
+       "200": "違って見える",
+       "400": "違って見える",
+       "300": "違って見える",
+       "100": "違って見える",
+       "500": "違って見える"
+      },
+      "remains": true
+     },
+     "words20": {
+      "answers": {
+       "300": "違って見える",
+       "200": "違って見える",
+       "400": "違って見える",
+       "500": "違って見える",
+       "100": "違って見える"
+      },
+      "remains": true
+     }
+    }
+   },
+   "counts": {
+    "G0": {
+     "違って見える": 20,
+     "同じに見える": 5,
+     "わからない": 0,
+     "empty": 0
+    },
+    "P": {
+     "違って見える": 25,
+     "同じに見える": 0,
+     "わからない": 0,
+     "empty": 0
+    },
+    "SPC": {
+     "違って見える": 25,
+     "同じに見える": 0,
+     "わからない": 0,
+     "empty": 0
+    }
+   },
+   "repeats": [
+    {
+     "item": 22,
+     "first": 10,
+     "answer_first": "違って見える",
+     "answer_repeat": "違って見える",
+     "agree": true
+    },
+    {
+     "item": 48,
+     "first": 12,
+     "answer_first": "違って見える",
+     "answer_repeat": "違って見える",
+     "agree": true
+    },
+    {
+     "item": 52,
+     "first": 11,
+     "answer_first": "違って見える",
+     "answer_repeat": "違って見える",
+     "agree": true
+    },
+    {
+     "item": 59,
+     "first": 16,
+     "answer_first": "違って見える",
+     "answer_repeat": "違って見える",
+     "agree": true
+    },
+    {
+     "item": 72,
+     "first": 30,
+     "answer_first": "違って見える",
+     "answer_repeat": "違って見える",
+     "agree": true
+    }
+   ],
+   "set_differs": [
+    {
+     "item": 2,
+     "rows": [
+      "P1_first_person",
+      "L1_adversative"
+     ],
+     "version": "G0",
+     "answer": "違って見える"
+    },
+    {
+     "item": 18,
+     "rows": [
+      "O1_iu",
+      "L1_adversative"
+     ],
+     "version": "SPC",
+     "answer": "違って見える"
+    },
+    {
+     "item": 23,
+     "rows": [
+      "L2_intensifier",
+      "L1_adversative"
+     ],
+     "version": "G0",
+     "answer": "違って見える"
+    },
+    {
+     "item": 65,
+     "rows": [
+      "P1_first_person",
+      "O1_iu"
+     ],
+     "version": "G0",
+     "answer": "違って見える"
+    },
+    {
+     "item": 81,
+     "rows": [
+      "P1_first_person",
+      "L2_intensifier"
+     ],
+     "version": "G0",
+     "answer": "違って見える"
+    }
+   ],
+   "empty_total": 0,
+   "comments": {
+    "1": "下段が3枚目から異なる模様に切り替わっている（上段は一様）",
+    "2": "1・2・3・5など枚目のタイルの模様が上下で異なる",
+    "3": "2・4・5・7など枚目のタイルの模様が上下で異なる",
+    "4": "上段が3枚目から異なる模様に切り替わっている（下段は一様）",
+    "5": "3・4・5・6など枚目のタイルの模様が上下で異なる",
+    "6": "5・6・8・9など枚目のタイルの模様が上下で異なる",
+    "7": "上段が3枚目から異なる模様に切り替わっている（下段は一様）",
+    "8": "上段が3枚目から異なる模様に切り替わっている（下段は一様）",
+    "9": "5枚目のタイルの模様が上下で異なる",
+    "10": "5枚目のタイルの模様が上下で異なる",
+    "11": "5・6・8・9など枚目のタイルの模様が上下で異なる",
+    "12": "3・4・5・6など枚目のタイルの模様が上下で異なる",
+    "13": "下段が3枚目から異なる模様に切り替わっている（上段は一様）",
+    "14": "上段が3枚目から異なる模様に切り替わっている（下段は一様）",
+    "15": "下段が3枚目から異なる模様に切り替わっている（上段は一様）",
+    "16": "上段が3枚目から異なる模様に切り替わっている（下段は一様）",
+    "17": "5・6・10枚目のタイルの模様が上下で異なる",
+    "18": "上下で並んでいるタイルの模様が全体的に異なる",
+    "19": "上段が3枚目から異なる模様に切り替わっている（下段は一様）",
+    "20": "5・6・8・9など枚目のタイルの模様が上下で異なる",
+    "21": "3・4・5・6など枚目のタイルの模様が上下で異なる",
+    "22": "5枚目のタイルの模様が上下で異なる",
+    "23": "上下で並んでいるタイルの模様が全体的に異なる",
+    "24": "上下のタイルの並び・模様は完全に一致している",
+    "25": "3・4・5・6など枚目のタイルの模様が上下で異なる",
+    "26": "明るさは違うが模様は同じ（全体の明暗分布のみ異なる）",
+    "27": "下段が3枚目から異なる模様に切り替わっている（上段は一様）",
+    "28": "上段が3枚目から異なる模様に切り替わっている（下段は一様）",
+    "29": "3・4・5・6など枚目のタイルの模様が上下で異なる",
+    "30": "下段が3枚目から異なる模様に切り替わっている（上段は一様）",
+    "31": "下段が3枚目から異なる模様に切り替わっている（上段は一様）",
+    "32": "3・4・5・6など枚目のタイルの模様が上下で異なる",
+    "33": "上下で並んでいるタイルの模様が全体的に異なる",
+    "34": "1・9・19枚目のタイルの模様が上下で異なる",
+    "35": "5・6・8・9など枚目のタイルの模様が上下で異なる",
+    "36": "上段が3枚目から異なる模様に切り替わっている（下段は一様）",
+    "37": "1・5・10・11など枚目のタイルの模様が上下で異なる",
+    "38": "上下で並んでいるタイルの模様が全体的に異なる",
+    "39": "3・4・5・6など枚目のタイルの模様が上下で異なる",
+    "40": "5・6・8・9など枚目のタイルの模様が上下で異なる",
+    "41": "上段が3枚目から異なる模様に切り替わっている（下段は一様）",
+    "42": "1・2・5・10など枚目のタイルの模様が上下で異なる",
+    "43": "上段が3枚目から異なる模様に切り替わっている（下段は一様）",
+    "44": "5・6・8・9など枚目のタイルの模様が上下で異なる",
+    "45": "3・4・5・6など枚目のタイルの模様が上下で異なる",
+    "46": "上下のタイルの並び・模様は完全に一致している",
+    "47": "明るさは違うが模様は同じ（全体の明暗分布のみ異なる）",
+    "48": "3・4・5・6など枚目のタイルの模様が上下で異なる",
+    "49": "3・4・5・6など枚目のタイルの模様が上下で異なる",
+    "50": "上下のタイルの並び・模様は完全に一致している",
+    "51": "下段が3枚目から異なる模様に切り替わっている（上段は一様）",
+    "52": "5・6・8・9など枚目のタイルの模様が上下で異なる",
+    "53": "明るさは違うが模様は同じ（全体の明暗分布のみ異なる）",
+    "54": "上下で並んでいるタイルの模様が全体的に異なる",
+    "55": "5・6・9・10枚目のタイルの模様が上下で異なる",
+    "56": "上下のタイルの並び・模様は完全に一致している",
+    "57": "上下で並んでいるタイルの模様が全体的に異なる",
+    "58": "上段が3枚目から異なる模様に切り替わっている（下段は一様）",
+    "59": "下段が3枚目から異なる模様に切り替わっている（上段は一様）",
+    "60": "1・2・5・7など枚目のタイルの模様が上下で異なる",
+    "61": "上段が3枚目から異なる模様に切り替わっている（下段は一様）",
+    "62": "下段が3枚目から異なる模様に切り替わっている（上段は一様）",
+    "63": "5・6・8・9など枚目のタイルの模様が上下で異なる",
+    "64": "下段が3枚目から異なる模様に切り替わっている（上段は一様）",
+    "65": "1・2・4・5など枚目のタイルの模様が上下で異なる",
+    "66": "5・11枚目のタイルの模様が上下で異なる",
+    "67": "上段が3枚目から異なる模様に切り替わっている（下段は一様）",
+    "68": "下段が3枚目から異なる模様に切り替わっている（上段は一様）",
+    "69": "明るさは違うが模様は同じ（全体の明暗分布のみ異なる）",
+    "70": "2・5・11・13枚目のタイルの模様が上下で異なる",
+    "71": "3・4・5・6など枚目のタイルの模様が上下で異なる",
+    "72": "上段が3枚目から異なる模様に切り替わっている（下段は一様）",
+    "73": "3・4・5・6など枚目のタイルの模様が上下で異なる",
+    "74": "上段が3枚目から異なる模様に切り替わっている（下段は一様）",
+    "75": "3・4・5・6など枚目のタイルの模様が上下で異なる",
+    "76": "3・4・5・6など枚目のタイルの模様が上下で異なる",
+    "77": "上段が3枚目から異なる模様に切り替わっている（下段は一様）",
+    "78": "5・6・8・9など枚目のタイルの模様が上下で異なる",
+    "79": "明るさは違うが模様は同じ（全体の明暗分布のみ異なる）",
+    "80": "5・6枚目のタイルの模様が上下で異なる",
+    "81": "上下で並んでいるタイルの模様が全体的に異なる",
+    "82": "5・6・8・9など枚目のタイルの模様が上下で異なる",
+    "83": "3・4・5・6など枚目のタイルの模様が上下で異なる",
+    "84": "1・2・3・5など枚目のタイルの模様が上下で異なる",
+    "85": "上段が3枚目から異なる模様に切り替わっている（下段は一様）",
+    "86": "上段が3枚目から異なる模様に切り替わっている（下段は一様）",
+    "87": "5・6・10枚目のタイルの模様が上下で異なる",
+    "88": "下段が3枚目から異なる模様に切り替わっている（上段は一様）",
+    "89": "5・6・10枚目のタイルの模様が上下で異なる",
+    "90": "5・6・10枚目のタイルの模様が上下で異なる",
+    "91": "3・4・5・6など枚目のタイルの模様が上下で異なる",
+    "92": "2・5・10・11枚目のタイルの模様が上下で異なる",
+    "93": "下段が3枚目から異なる模様に切り替わっている（上段は一様）",
+    "94": "上段が3枚目から異なる模様に切り替わっている（下段は一様）",
+    "95": "上下のタイルの並び・模様は完全に一致している"
+   }
+  }
+ },
+ "answers": {
+  "harada": {
+   "1": "違って見える",
+   "2": "違って見える",
+   "3": "違って見える",
+   "4": "違って見える",
+   "5": "違って見える",
+   "6": "違って見える",
+   "7": "違って見える",
+   "8": "違って見える",
+   "9": "違って見える",
+   "10": "違って見える",
+   "11": "違って見える",
+   "12": "違って見える",
+   "13": "違って見える",
+   "14": "違って見える",
+   "15": "違って見える",
+   "16": "違って見える",
+   "17": "違って見える",
+   "18": "違って見える",
+   "19": "違って見える",
+   "20": "違って見える",
+   "21": "違って見える",
+   "22": "違って見える",
+   "23": "違って見える",
+   "24": "同じに見える",
+   "25": "違って見える",
+   "26": "同じに見える",
+   "27": "違って見える",
+   "28": "違って見える",
+   "29": "違って見える",
+   "30": "違って見える",
+   "31": "違って見える",
+   "32": "違って見える",
+   "33": "違って見える",
+   "34": "違って見える",
+   "35": "違って見える",
+   "36": "違って見える",
+   "37": "違って見える",
+   "38": "違って見える",
+   "39": "違って見える",
+   "40": "違って見える",
+   "41": "違って見える",
+   "42": "違って見える",
+   "43": "違って見える",
+   "44": "違って見える",
+   "45": "違って見える",
+   "46": "同じに見える",
+   "47": "同じに見える",
+   "48": "違って見える",
+   "49": "違って見える",
+   "50": "同じに見える",
+   "51": "違って見える",
+   "52": "違って見える",
+   "53": "同じに見える",
+   "54": "違って見える",
+   "55": "違って見える",
+   "56": "同じに見える",
+   "57": "違って見える",
+   "58": "違って見える",
+   "59": "違って見える",
+   "60": "違って見える",
+   "61": "違って見える",
+   "62": "違って見える",
+   "63": "違って見える",
+   "64": "違って見える",
+   "65": "違って見える",
+   "66": "違って見える",
+   "67": "違って見える",
+   "68": "違って見える",
+   "69": "同じに見える",
+   "70": "違って見える",
+   "71": "違って見える",
+   "72": "違って見える",
+   "73": "違って見える",
+   "74": "違って見える",
+   "75": "違って見える",
+   "76": "違って見える",
+   "77": "違って見える",
+   "78": "違って見える",
+   "79": "同じに見える",
+   "80": "違って見える",
+   "81": "違って見える",
+   "82": "違って見える",
+   "83": "違って見える",
+   "84": "違って見える",
+   "85": "違って見える",
+   "86": "違って見える",
+   "87": "違って見える",
+   "88": "違って見える",
+   "89": "違って見える",
+   "90": "違って見える",
+   "91": "違って見える",
+   "92": "違って見える",
+   "93": "違って見える",
+   "94": "違って見える",
+   "95": "同じに見える"
+  }
+ },
+ "key": [
+  {
+   "number": 1,
+   "kind": "test",
+   "top": {
+    "version": "SPC",
+    "row": "O1_iu",
+    "seed": 200,
+    "author": 0
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "O1_iu",
+    "seed": 200,
+    "author": 1
+   },
+   "image_sha256": "addf346c1f4da5c4885358e3c225e4c390a56029d65f9fd9ce0f56df508705dc"
+  },
+  {
+   "number": 2,
+   "kind": "set_differs",
+   "top": {
+    "version": "G0",
+    "row": "P1_first_person",
+    "seed": 400,
+    "author": 1
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "L1_adversative",
+    "seed": 400,
+    "author": 1
+   },
+   "image_sha256": "be949c4ba0db76e66a9560967320774c53988ecc6bf949ae3fac72f092889180"
+  },
+  {
+   "number": 3,
+   "kind": "test",
+   "top": {
+    "version": "P",
+    "row": "words20",
+    "seed": 400,
+    "author": 1
+   },
+   "bottom": {
+    "version": "P",
+    "row": "words20",
+    "seed": 400,
+    "author": 0
+   },
+   "image_sha256": "92de0c47670fbb9aaf90f95648ed5a9b203cc270be41ca33032f212512c4b486"
+  },
+  {
+   "number": 4,
+   "kind": "test",
+   "top": {
+    "version": "SPC",
+    "row": "O1_iu",
+    "seed": 400,
+    "author": 1
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "O1_iu",
+    "seed": 400,
+    "author": 0
+   },
+   "image_sha256": "c37d756a913b4dcd0af54da0d5ef231255bc6a3dcfbe61fa9328835aa0810ec3"
+  },
+  {
+   "number": 5,
+   "kind": "test",
+   "top": {
+    "version": "P",
+    "row": "L1_adversative",
+    "seed": 100,
+    "author": 1
+   },
+   "bottom": {
+    "version": "P",
+    "row": "L1_adversative",
+    "seed": 100,
+    "author": 0
+   },
+   "image_sha256": "1ec00c9285271144b8fce08d3013b29e9d97a5b2777fd5dbc318157e46bed2dd"
+  },
+  {
+   "number": 6,
+   "kind": "test",
+   "top": {
+    "version": "SPC",
+    "row": "L2_intensifier",
+    "seed": 300,
+    "author": 1
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "L2_intensifier",
+    "seed": 300,
+    "author": 0
+   },
+   "image_sha256": "98ee310d57216fb3563b5f77cec8a033b3ede0248158154e490c1f5fa49d044d"
+  },
+  {
+   "number": 7,
+   "kind": "test",
+   "top": {
+    "version": "SPC",
+    "row": "O1_iu",
+    "seed": 300,
+    "author": 1
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "O1_iu",
+    "seed": 300,
+    "author": 0
+   },
+   "image_sha256": "b42b3f0e5d5eb09ec530cfad4c9207f13a7e3d85ef5198c984646410eae9258d"
+  },
+  {
+   "number": 8,
+   "kind": "test",
+   "top": {
+    "version": "P",
+    "row": "O1_iu",
+    "seed": 200,
+    "author": 1
+   },
+   "bottom": {
+    "version": "P",
+    "row": "O1_iu",
+    "seed": 200,
+    "author": 0
+   },
+   "image_sha256": "0fcaa4c889ddfd915026ebcce492ac9499a3e4a5bf0e62896b92cad04cbe221d"
+  },
+  {
+   "number": 9,
+   "kind": "test",
+   "top": {
+    "version": "P",
+    "row": "words20",
+    "seed": 500,
+    "author": 1
+   },
+   "bottom": {
+    "version": "P",
+    "row": "words20",
+    "seed": 500,
+    "author": 0
+   },
+   "image_sha256": "bf55ccc989e1fcf436b70df61bdc1a45b3b2f85bc8db1e6dad7915a492d27667"
+  },
+  {
+   "number": 10,
+   "kind": "test",
+   "top": {
+    "version": "P",
+    "row": "words20",
+    "seed": 100,
+    "author": 0
+   },
+   "bottom": {
+    "version": "P",
+    "row": "words20",
+    "seed": 100,
+    "author": 1
+   },
+   "image_sha256": "1e6cebf91688aaf7af2b9eeab0da3b7dddb08df20858e85b50626d3486bfa093"
+  },
+  {
+   "number": 11,
+   "kind": "test",
+   "top": {
+    "version": "P",
+    "row": "L2_intensifier",
+    "seed": 300,
+    "author": 0
+   },
+   "bottom": {
+    "version": "P",
+    "row": "L2_intensifier",
+    "seed": 300,
+    "author": 1
+   },
+   "image_sha256": "c350c7de473724f2d42edda0bad103f2c554a811f04a6751ea73105b91910b0b"
+  },
+  {
+   "number": 12,
+   "kind": "test",
+   "top": {
+    "version": "G0",
+    "row": "L1_adversative",
+    "seed": 400,
+    "author": 1
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "L1_adversative",
+    "seed": 400,
+    "author": 0
+   },
+   "image_sha256": "0d0ff5eb454521501dbe13cc10985439739a768440fdddd453b838f3d27a4f08"
+  },
+  {
+   "number": 13,
+   "kind": "test",
+   "top": {
+    "version": "P",
+    "row": "P1_first_person",
+    "seed": 400,
+    "author": 0
+   },
+   "bottom": {
+    "version": "P",
+    "row": "P1_first_person",
+    "seed": 400,
+    "author": 1
+   },
+   "image_sha256": "5c06bbe6f89b50d9ba81ed986385b3feafbc219d38fda45d5c97c2229f519114"
+  },
+  {
+   "number": 14,
+   "kind": "test",
+   "top": {
+    "version": "G0",
+    "row": "P1_first_person",
+    "seed": 500,
+    "author": 1
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "P1_first_person",
+    "seed": 500,
+    "author": 0
+   },
+   "image_sha256": "612ca2a98c83514f1b9a4d670c9fab8b06e32225bdf8b7ba927ec406d71be88c"
+  },
+  {
+   "number": 15,
+   "kind": "test",
+   "top": {
+    "version": "G0",
+    "row": "O1_iu",
+    "seed": 200,
+    "author": 0
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "O1_iu",
+    "seed": 200,
+    "author": 1
+   },
+   "image_sha256": "a3c0775b5f85e57a16b35d79292707cefabcbe993e4eb62a6ddafd440855b522"
+  },
+  {
+   "number": 16,
+   "kind": "test",
+   "top": {
+    "version": "P",
+    "row": "O1_iu",
+    "seed": 100,
+    "author": 1
+   },
+   "bottom": {
+    "version": "P",
+    "row": "O1_iu",
+    "seed": 100,
+    "author": 0
+   },
+   "image_sha256": "4bb4af5f65606327453ec7f26de210fe22f09e8e6ea613dd5458483bebc4611b"
+  },
+  {
+   "number": 17,
+   "kind": "test",
+   "top": {
+    "version": "G0",
+    "row": "L2_intensifier",
+    "seed": 200,
+    "author": 0
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "L2_intensifier",
+    "seed": 200,
+    "author": 1
+   },
+   "image_sha256": "96b3e7b9fac69e2808f07a395ff1216fc58def9566194bf632bdf13bfb0134cd"
+  },
+  {
+   "number": 18,
+   "kind": "set_differs",
+   "top": {
+    "version": "SPC",
+    "row": "O1_iu",
+    "seed": 300,
+    "author": 0
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "L1_adversative",
+    "seed": 300,
+    "author": 0
+   },
+   "image_sha256": "6e5c1212dea712e951aff7869c5c0eca982bfe287ecfad975c2f1dd7ab6a33d8"
+  },
+  {
+   "number": 19,
+   "kind": "test",
+   "top": {
+    "version": "P",
+    "row": "P1_first_person",
+    "seed": 200,
+    "author": 1
+   },
+   "bottom": {
+    "version": "P",
+    "row": "P1_first_person",
+    "seed": 200,
+    "author": 0
+   },
+   "image_sha256": "27c57ab05e173e5bda4076e9cbfec1c16fb21b7ff997583d69dbea3efa631023"
+  },
+  {
+   "number": 20,
+   "kind": "test",
+   "top": {
+    "version": "SPC",
+    "row": "L2_intensifier",
+    "seed": 200,
+    "author": 0
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "L2_intensifier",
+    "seed": 200,
+    "author": 1
+   },
+   "image_sha256": "3035e24ef06f1f977cbb514a73df8a1ed8acf5999a34a352bc9523755432ff1c"
+  },
+  {
+   "number": 21,
+   "kind": "test",
+   "top": {
+    "version": "SPC",
+    "row": "L1_adversative",
+    "seed": 100,
+    "author": 0
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "L1_adversative",
+    "seed": 100,
+    "author": 1
+   },
+   "image_sha256": "d6ccaf6d7f19c0792abab0bde0600b81e2ff42c9f4cff9e1a0a759d39e8ec62c"
+  },
+  {
+   "number": 22,
+   "kind": "repeat",
+   "top": {
+    "version": "P",
+    "row": "words20",
+    "seed": 100,
+    "author": 1
+   },
+   "bottom": {
+    "version": "P",
+    "row": "words20",
+    "seed": 100,
+    "author": 0
+   },
+   "repeat_of": 10,
+   "image_sha256": "158a32232e758be05f1dc7e3e7882388335a142618645838ce4e944fcd441d76"
+  },
+  {
+   "number": 23,
+   "kind": "set_differs",
+   "top": {
+    "version": "G0",
+    "row": "L2_intensifier",
+    "seed": 500,
+    "author": 1
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "L1_adversative",
+    "seed": 500,
+    "author": 1
+   },
+   "image_sha256": "655248e02c38638dee8e4b3adaf71346222b48d4cb26107d1dcd61022a82beaa"
+  },
+  {
+   "number": 24,
+   "kind": "same_image",
+   "top": {
+    "version": "SPC",
+    "row": "O1_iu",
+    "seed": 500,
+    "author": 1
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "O1_iu",
+    "seed": 500,
+    "author": 1
+   },
+   "image_sha256": "31bf76ae895c03ab219fe072b8302450968d64a57937b9697b78d9afea1a5cbb"
+  },
+  {
+   "number": 25,
+   "kind": "test",
+   "top": {
+    "version": "G0",
+    "row": "L1_adversative",
+    "seed": 200,
+    "author": 0
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "L1_adversative",
+    "seed": 200,
+    "author": 1
+   },
+   "image_sha256": "1ca97f541d53f34c40a654535daacf110ffc292a90cc5f5d42e00e7a5248cf24"
+  },
+  {
+   "number": 26,
+   "kind": "test",
+   "top": {
+    "version": "G0",
+    "row": "words20",
+    "seed": 400,
+    "author": 1
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "words20",
+    "seed": 400,
+    "author": 0
+   },
+   "image_sha256": "551f856d45bc69f46c867d16c48738be61e1e5ed3afd9c946a480c4c4db70d1f"
+  },
+  {
+   "number": 27,
+   "kind": "test",
+   "top": {
+    "version": "P",
+    "row": "P1_first_person",
+    "seed": 300,
+    "author": 0
+   },
+   "bottom": {
+    "version": "P",
+    "row": "P1_first_person",
+    "seed": 300,
+    "author": 1
+   },
+   "image_sha256": "ae1f665f868aa5780d382ecab588bd691d3e39cc9a4b9a55e8eb049f4bdedb2a"
+  },
+  {
+   "number": 28,
+   "kind": "test",
+   "top": {
+    "version": "SPC",
+    "row": "P1_first_person",
+    "seed": 100,
+    "author": 1
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "P1_first_person",
+    "seed": 100,
+    "author": 0
+   },
+   "image_sha256": "0a4975d9571232874ef2e2a28c6e4867269cf91c54cf968dc3535742d3ea1fef"
+  },
+  {
+   "number": 29,
+   "kind": "test",
+   "top": {
+    "version": "G0",
+    "row": "L1_adversative",
+    "seed": 100,
+    "author": 0
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "L1_adversative",
+    "seed": 100,
+    "author": 1
+   },
+   "image_sha256": "a38046f4567ba87833626dc6d0fa5434e3f2e83af2a0c5cfa1d74d4a584a1083"
+  },
+  {
+   "number": 30,
+   "kind": "test",
+   "top": {
+    "version": "SPC",
+    "row": "P1_first_person",
+    "seed": 200,
+    "author": 0
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "P1_first_person",
+    "seed": 200,
+    "author": 1
+   },
+   "image_sha256": "42f7055db5ee83f8d1443b4249fc8d1c4e1cffdb0412c872c3ec0cf3e48ede58"
+  },
+  {
+   "number": 31,
+   "kind": "test",
+   "top": {
+    "version": "G0",
+    "row": "O1_iu",
+    "seed": 300,
+    "author": 0
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "O1_iu",
+    "seed": 300,
+    "author": 1
+   },
+   "image_sha256": "e2910b5bf3ebb2d2de3dbea0ae7092e41d4f0944c0bd0aa9694c48ab9c80b180"
+  },
+  {
+   "number": 32,
+   "kind": "test",
+   "top": {
+    "version": "SPC",
+    "row": "L1_adversative",
+    "seed": 300,
+    "author": 1
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "L1_adversative",
+    "seed": 300,
+    "author": 0
+   },
+   "image_sha256": "45d16f505cda34ffc78dd8d392498ddcebb7e7101389875fdd27b2440e43617f"
+  },
+  {
+   "number": 33,
+   "kind": "seed_differs",
+   "top": {
+    "version": "P",
+    "row": "L1_adversative",
+    "seed": 200,
+    "author": 0
+   },
+   "bottom": {
+    "version": "P",
+    "row": "L1_adversative",
+    "seed": 300,
+    "author": 0
+   },
+   "image_sha256": "aac5d1c6f866567765455ca6593439362b554038ea9fb9fa1ee3fbd6f5ee4104"
+  },
+  {
+   "number": 34,
+   "kind": "seed_differs",
+   "top": {
+    "version": "G0",
+    "row": "words20",
+    "seed": 300,
+    "author": 0
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "words20",
+    "seed": 200,
+    "author": 0
+   },
+   "image_sha256": "9e9189a0085e079d9f35d13dfc7896fcf25c640ec38b1b039cccaced52942b41"
+  },
+  {
+   "number": 35,
+   "kind": "test",
+   "top": {
+    "version": "SPC",
+    "row": "L2_intensifier",
+    "seed": 100,
+    "author": 0
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "L2_intensifier",
+    "seed": 100,
+    "author": 1
+   },
+   "image_sha256": "48d66f94f289490049ada46890f6fc7f3580adcbe8f9a183ee99b6f4e7e7582e"
+  },
+  {
+   "number": 36,
+   "kind": "test",
+   "top": {
+    "version": "P",
+    "row": "O1_iu",
+    "seed": 400,
+    "author": 1
+   },
+   "bottom": {
+    "version": "P",
+    "row": "O1_iu",
+    "seed": 400,
+    "author": 0
+   },
+   "image_sha256": "8bd906902287b35a874e9158eade0e7ba216c0b1d561f09fb7c9d369980bc341"
+  },
+  {
+   "number": 37,
+   "kind": "test",
+   "top": {
+    "version": "SPC",
+    "row": "words20",
+    "seed": 300,
+    "author": 0
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "words20",
+    "seed": 300,
+    "author": 1
+   },
+   "image_sha256": "4e52a3c85c3b6e757a42b318b7bfbec5998c885326b6ddf825389ab0522c8ee2"
+  },
+  {
+   "number": 38,
+   "kind": "seed_differs",
+   "top": {
+    "version": "P",
+    "row": "O1_iu",
+    "seed": 100,
+    "author": 0
+   },
+   "bottom": {
+    "version": "P",
+    "row": "O1_iu",
+    "seed": 500,
+    "author": 0
+   },
+   "image_sha256": "4aa77050565787b742a59701414710e9ef6c184609e9d185aafe5e7d59d0f831"
+  },
+  {
+   "number": 39,
+   "kind": "test",
+   "top": {
+    "version": "P",
+    "row": "L1_adversative",
+    "seed": 500,
+    "author": 1
+   },
+   "bottom": {
+    "version": "P",
+    "row": "L1_adversative",
+    "seed": 500,
+    "author": 0
+   },
+   "image_sha256": "b3ceeed7cf530837e841f68c5667a9383fb6f194e3fefaac526892178511aa43"
+  },
+  {
+   "number": 40,
+   "kind": "test",
+   "top": {
+    "version": "SPC",
+    "row": "L2_intensifier",
+    "seed": 400,
+    "author": 0
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "L2_intensifier",
+    "seed": 400,
+    "author": 1
+   },
+   "image_sha256": "c14b7bc16d355c40d1304e3b9ef18a29889bb677a8d1f6a9c07e5f2440a4a6a8"
+  },
+  {
+   "number": 41,
+   "kind": "test",
+   "top": {
+    "version": "SPC",
+    "row": "P1_first_person",
+    "seed": 300,
+    "author": 1
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "P1_first_person",
+    "seed": 300,
+    "author": 0
+   },
+   "image_sha256": "51168f5742e85d503af272c52f5b953fa1daeb794afbb12a1a6adc7e2146127e"
+  },
+  {
+   "number": 42,
+   "kind": "test",
+   "top": {
+    "version": "SPC",
+    "row": "words20",
+    "seed": 200,
+    "author": 1
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "words20",
+    "seed": 200,
+    "author": 0
+   },
+   "image_sha256": "75b98440252ca8d1db3ef6a11a2837bb7166c5b2d484cc86a3aa306328e733eb"
+  },
+  {
+   "number": 43,
+   "kind": "test",
+   "top": {
+    "version": "G0",
+    "row": "O1_iu",
+    "seed": 500,
+    "author": 1
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "O1_iu",
+    "seed": 500,
+    "author": 0
+   },
+   "image_sha256": "2491c34c326e6ef8d0f16d296268735dec39ff70948ecb206ce925accf2f51f3"
+  },
+  {
+   "number": 44,
+   "kind": "test",
+   "top": {
+    "version": "P",
+    "row": "L2_intensifier",
+    "seed": 200,
+    "author": 0
+   },
+   "bottom": {
+    "version": "P",
+    "row": "L2_intensifier",
+    "seed": 200,
+    "author": 1
+   },
+   "image_sha256": "be9b74fba21b6054ebcc3348dbae2b491b8adeae606d36509a3dd898b8320479"
+  },
+  {
+   "number": 45,
+   "kind": "test",
+   "top": {
+    "version": "SPC",
+    "row": "L1_adversative",
+    "seed": 200,
+    "author": 1
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "L1_adversative",
+    "seed": 200,
+    "author": 0
+   },
+   "image_sha256": "57bba07b387bd53d40f7169efcb3eecc0df1877fd9f4d8cc2aa46063ae944e3f"
+  },
+  {
+   "number": 46,
+   "kind": "same_image",
+   "top": {
+    "version": "G0",
+    "row": "L2_intensifier",
+    "seed": 500,
+    "author": 0
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "L2_intensifier",
+    "seed": 500,
+    "author": 0
+   },
+   "image_sha256": "6ee0ce87a625e043916c82521afe509592bfb9915628ed497477072eb76919f9"
+  },
+  {
+   "number": 47,
+   "kind": "test",
+   "top": {
+    "version": "G0",
+    "row": "words20",
+    "seed": 500,
+    "author": 1
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "words20",
+    "seed": 500,
+    "author": 0
+   },
+   "image_sha256": "fbfedfd10961a77a7171396262cc40cfe719a8b454a28b0d5e4f5f80b6432f09"
+  },
+  {
+   "number": 48,
+   "kind": "repeat",
+   "top": {
+    "version": "G0",
+    "row": "L1_adversative",
+    "seed": 400,
+    "author": 0
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "L1_adversative",
+    "seed": 400,
+    "author": 1
+   },
+   "repeat_of": 12,
+   "image_sha256": "eb7b7824a17020280af6a1caf909a9f149f2e45a80043455ca8c433172281c69"
+  },
+  {
+   "number": 49,
+   "kind": "test",
+   "top": {
+    "version": "P",
+    "row": "L1_adversative",
+    "seed": 200,
+    "author": 0
+   },
+   "bottom": {
+    "version": "P",
+    "row": "L1_adversative",
+    "seed": 200,
+    "author": 1
+   },
+   "image_sha256": "509789d7555eedd9470ea8195dc5dadcfc7e6ae575c49f79fc7c4a83342ca35e"
+  },
+  {
+   "number": 50,
+   "kind": "same_image",
+   "top": {
+    "version": "SPC",
+    "row": "words20",
+    "seed": 300,
+    "author": 0
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "words20",
+    "seed": 300,
+    "author": 0
+   },
+   "image_sha256": "05e5a7b8f24c5b1eac63b6ad1bc7340b06cabf14193473b5c10a6aa3c634292c"
+  },
+  {
+   "number": 51,
+   "kind": "test",
+   "top": {
+    "version": "SPC",
+    "row": "P1_first_person",
+    "seed": 500,
+    "author": 0
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "P1_first_person",
+    "seed": 500,
+    "author": 1
+   },
+   "image_sha256": "48a9f726aba767b35a648afe34135af038a864141b44c68f70be45c09f425fb7"
+  },
+  {
+   "number": 52,
+   "kind": "repeat",
+   "top": {
+    "version": "P",
+    "row": "L2_intensifier",
+    "seed": 300,
+    "author": 1
+   },
+   "bottom": {
+    "version": "P",
+    "row": "L2_intensifier",
+    "seed": 300,
+    "author": 0
+   },
+   "repeat_of": 11,
+   "image_sha256": "febaf7360eee9def75399f17faf234c21bfde0db0e48ea65608e017a7459372f"
+  },
+  {
+   "number": 53,
+   "kind": "test",
+   "top": {
+    "version": "G0",
+    "row": "words20",
+    "seed": 200,
+    "author": 0
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "words20",
+    "seed": 200,
+    "author": 1
+   },
+   "image_sha256": "96123b0ba0598d2c4b7aa21d6f70e04022947ab09422aa1fb9a1b1aa9f68e72c"
+  },
+  {
+   "number": 54,
+   "kind": "seed_differs",
+   "top": {
+    "version": "P",
+    "row": "L2_intensifier",
+    "seed": 400,
+    "author": 1
+   },
+   "bottom": {
+    "version": "P",
+    "row": "L2_intensifier",
+    "seed": 100,
+    "author": 1
+   },
+   "image_sha256": "45b595f8b7fb6e3fe0fb6f22418ffa96952da13ff1f15b802745812768e80962"
+  },
+  {
+   "number": 55,
+   "kind": "test",
+   "top": {
+    "version": "P",
+    "row": "L2_intensifier",
+    "seed": 400,
+    "author": 0
+   },
+   "bottom": {
+    "version": "P",
+    "row": "L2_intensifier",
+    "seed": 400,
+    "author": 1
+   },
+   "image_sha256": "7898a664648a26807b3a83fc989802ffa10d023114046c6926e6861e7f6bad36"
+  },
+  {
+   "number": 56,
+   "kind": "same_image",
+   "top": {
+    "version": "P",
+    "row": "P1_first_person",
+    "seed": 300,
+    "author": 0
+   },
+   "bottom": {
+    "version": "P",
+    "row": "P1_first_person",
+    "seed": 300,
+    "author": 0
+   },
+   "image_sha256": "589076ac11bf126068c1ca377820a60636c24b7ef3d02ce4ad92362dd48937ae"
+  },
+  {
+   "number": 57,
+   "kind": "seed_differs",
+   "top": {
+    "version": "G0",
+    "row": "P1_first_person",
+    "seed": 100,
+    "author": 0
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "P1_first_person",
+    "seed": 300,
+    "author": 0
+   },
+   "image_sha256": "c8cf131fe3cf49e1d72f569e7d6b26b0169e8e7b11e99b60fe2975b464ea6648"
+  },
+  {
+   "number": 58,
+   "kind": "test",
+   "top": {
+    "version": "G0",
+    "row": "P1_first_person",
+    "seed": 400,
+    "author": 1
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "P1_first_person",
+    "seed": 400,
+    "author": 0
+   },
+   "image_sha256": "d425721fbff4e931b53b71eea5ded6b144c7410214c292a218877a8817762c58"
+  },
+  {
+   "number": 59,
+   "kind": "repeat",
+   "top": {
+    "version": "P",
+    "row": "O1_iu",
+    "seed": 100,
+    "author": 0
+   },
+   "bottom": {
+    "version": "P",
+    "row": "O1_iu",
+    "seed": 100,
+    "author": 1
+   },
+   "repeat_of": 16,
+   "image_sha256": "ef20435c72ab1aa38c63f5c7f239d1e11ffd24bf6729904f2d1d01bc05e882df"
+  },
+  {
+   "number": 60,
+   "kind": "test",
+   "top": {
+    "version": "SPC",
+    "row": "words20",
+    "seed": 400,
+    "author": 0
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "words20",
+    "seed": 400,
+    "author": 1
+   },
+   "image_sha256": "841b4de200e295cb89dd32e5328094f6b0f523aefb4586f3f963946c354539f7"
+  },
+  {
+   "number": 61,
+   "kind": "test",
+   "top": {
+    "version": "G0",
+    "row": "P1_first_person",
+    "seed": 300,
+    "author": 1
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "P1_first_person",
+    "seed": 300,
+    "author": 0
+   },
+   "image_sha256": "cb185f9f6d7264e4c18841433f41a4b824b3586b06404c38f260b54c71235b57"
+  },
+  {
+   "number": 62,
+   "kind": "test",
+   "top": {
+    "version": "P",
+    "row": "O1_iu",
+    "seed": 300,
+    "author": 0
+   },
+   "bottom": {
+    "version": "P",
+    "row": "O1_iu",
+    "seed": 300,
+    "author": 1
+   },
+   "image_sha256": "b6b2299d4086ad222263204faf23356802af9141ed605785d78b49545136bd55"
+  },
+  {
+   "number": 63,
+   "kind": "test",
+   "top": {
+    "version": "SPC",
+    "row": "L2_intensifier",
+    "seed": 500,
+    "author": 0
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "L2_intensifier",
+    "seed": 500,
+    "author": 1
+   },
+   "image_sha256": "ca5d48e50f4bb79915f638c9cb1a4cdf2405c8bf8c24947a3576b5c8a44079e1"
+  },
+  {
+   "number": 64,
+   "kind": "test",
+   "top": {
+    "version": "P",
+    "row": "P1_first_person",
+    "seed": 500,
+    "author": 0
+   },
+   "bottom": {
+    "version": "P",
+    "row": "P1_first_person",
+    "seed": 500,
+    "author": 1
+   },
+   "image_sha256": "c93a0bb67af34fab5eab78e40b1e5970e19655811fe795cc6bfcbaf06ddd180b"
+  },
+  {
+   "number": 65,
+   "kind": "set_differs",
+   "top": {
+    "version": "G0",
+    "row": "P1_first_person",
+    "seed": 100,
+    "author": 1
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "O1_iu",
+    "seed": 100,
+    "author": 1
+   },
+   "image_sha256": "50c785890e3f9a7696bb1c6bfc719cfd1e72a7ccd4d55036ff7d1fd8e35bcd2d"
+  },
+  {
+   "number": 66,
+   "kind": "test",
+   "top": {
+    "version": "P",
+    "row": "words20",
+    "seed": 300,
+    "author": 0
+   },
+   "bottom": {
+    "version": "P",
+    "row": "words20",
+    "seed": 300,
+    "author": 1
+   },
+   "image_sha256": "b62bc5f88be8815a4c76db49fa9a00dae96f19b922d19a6b72e250e96470fb87"
+  },
+  {
+   "number": 67,
+   "kind": "test",
+   "top": {
+    "version": "G0",
+    "row": "P1_first_person",
+    "seed": 100,
+    "author": 1
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "P1_first_person",
+    "seed": 100,
+    "author": 0
+   },
+   "image_sha256": "590a013c363228443f137c134f2d113170cdce3d463e81e9c2b163e961f630fa"
+  },
+  {
+   "number": 68,
+   "kind": "test",
+   "top": {
+    "version": "P",
+    "row": "O1_iu",
+    "seed": 500,
+    "author": 0
+   },
+   "bottom": {
+    "version": "P",
+    "row": "O1_iu",
+    "seed": 500,
+    "author": 1
+   },
+   "image_sha256": "0a7fbfe1680256e7f884bf2d3fccae0ffc7be663120bea4a01a04f405f25bcfd"
+  },
+  {
+   "number": 69,
+   "kind": "test",
+   "top": {
+    "version": "G0",
+    "row": "words20",
+    "seed": 100,
+    "author": 1
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "words20",
+    "seed": 100,
+    "author": 0
+   },
+   "image_sha256": "8e705f9ae34cb96195e00d6c1a6ba08b8fbfa85267dad2869407c9af6cd024e1"
+  },
+  {
+   "number": 70,
+   "kind": "test",
+   "top": {
+    "version": "SPC",
+    "row": "words20",
+    "seed": 500,
+    "author": 1
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "words20",
+    "seed": 500,
+    "author": 0
+   },
+   "image_sha256": "e2b3e62ff6820aa9242513380a1f06d5093e8877143357e22eb16b2b8693adba"
+  },
+  {
+   "number": 71,
+   "kind": "test",
+   "top": {
+    "version": "G0",
+    "row": "L1_adversative",
+    "seed": 300,
+    "author": 1
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "L1_adversative",
+    "seed": 300,
+    "author": 0
+   },
+   "image_sha256": "7d103ff0cc097cea1197b4358bcf3614031b34994ebabbbc22559a6ad4ded3cb"
+  },
+  {
+   "number": 72,
+   "kind": "repeat",
+   "top": {
+    "version": "SPC",
+    "row": "P1_first_person",
+    "seed": 200,
+    "author": 1
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "P1_first_person",
+    "seed": 200,
+    "author": 0
+   },
+   "repeat_of": 30,
+   "image_sha256": "ed17a821c2c98c4b6a6628c49966f02febe65379b953ed141d6dafdc7eb6c06d"
+  },
+  {
+   "number": 73,
+   "kind": "test",
+   "top": {
+    "version": "G0",
+    "row": "L1_adversative",
+    "seed": 500,
+    "author": 1
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "L1_adversative",
+    "seed": 500,
+    "author": 0
+   },
+   "image_sha256": "8b15330043e1dd0b0d7367a1ba2849ecee1b21881806a3badfadbeab7ae9aab8"
+  },
+  {
+   "number": 74,
+   "kind": "test",
+   "top": {
+    "version": "G0",
+    "row": "O1_iu",
+    "seed": 400,
+    "author": 1
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "O1_iu",
+    "seed": 400,
+    "author": 0
+   },
+   "image_sha256": "3f6c4c598299ae19ad25c822c9fe546130ea6fe4b7180ff00aa422183ba9e65b"
+  },
+  {
+   "number": 75,
+   "kind": "test",
+   "top": {
+    "version": "SPC",
+    "row": "L1_adversative",
+    "seed": 500,
+    "author": 1
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "L1_adversative",
+    "seed": 500,
+    "author": 0
+   },
+   "image_sha256": "6d3865676a19901950b05e26228daa603d3cadf3f87feaffbf94d6a04f65c6aa"
+  },
+  {
+   "number": 76,
+   "kind": "test",
+   "top": {
+    "version": "SPC",
+    "row": "L1_adversative",
+    "seed": 400,
+    "author": 1
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "L1_adversative",
+    "seed": 400,
+    "author": 0
+   },
+   "image_sha256": "8168e93f438a5da1c153d5ec99afd6378c4bd1a0706b317a22414a06d3dcc116"
+  },
+  {
+   "number": 77,
+   "kind": "test",
+   "top": {
+    "version": "SPC",
+    "row": "O1_iu",
+    "seed": 100,
+    "author": 1
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "O1_iu",
+    "seed": 100,
+    "author": 0
+   },
+   "image_sha256": "96abcaf6ee3bc85ececb68ccee5fe7585c399eb99e66d359effae3855b3c8edb"
+  },
+  {
+   "number": 78,
+   "kind": "test",
+   "top": {
+    "version": "P",
+    "row": "L2_intensifier",
+    "seed": 100,
+    "author": 0
+   },
+   "bottom": {
+    "version": "P",
+    "row": "L2_intensifier",
+    "seed": 100,
+    "author": 1
+   },
+   "image_sha256": "fae349486819c8a1fc6890a8b0d12e8b95036fa9c78500a41346daf7c85e21d5"
+  },
+  {
+   "number": 79,
+   "kind": "test",
+   "top": {
+    "version": "G0",
+    "row": "words20",
+    "seed": 300,
+    "author": 1
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "words20",
+    "seed": 300,
+    "author": 0
+   },
+   "image_sha256": "3c17d281835aafd42c00d82acd27b9f2fe87e3d34408d85089456e3d4182b68f"
+  },
+  {
+   "number": 80,
+   "kind": "test",
+   "top": {
+    "version": "G0",
+    "row": "L2_intensifier",
+    "seed": 400,
+    "author": 1
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "L2_intensifier",
+    "seed": 400,
+    "author": 0
+   },
+   "image_sha256": "0fcdd3d45d0fc2f3c3addf292c870a5adb8745375308db194fe6bfaf404d0f96"
+  },
+  {
+   "number": 81,
+   "kind": "set_differs",
+   "top": {
+    "version": "G0",
+    "row": "P1_first_person",
+    "seed": 400,
+    "author": 0
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "L2_intensifier",
+    "seed": 400,
+    "author": 0
+   },
+   "image_sha256": "834658c3670f991a93722b28ba20e2e4813c08e3ecc9ae0fbd289e49838a3cbf"
+  },
+  {
+   "number": 82,
+   "kind": "test",
+   "top": {
+    "version": "P",
+    "row": "L2_intensifier",
+    "seed": 500,
+    "author": 0
+   },
+   "bottom": {
+    "version": "P",
+    "row": "L2_intensifier",
+    "seed": 500,
+    "author": 1
+   },
+   "image_sha256": "c312be746ef580bcb2a814f5a79cb475f647b36b4d680f1ffe666475774d8fc6"
+  },
+  {
+   "number": 83,
+   "kind": "test",
+   "top": {
+    "version": "P",
+    "row": "L1_adversative",
+    "seed": 400,
+    "author": 0
+   },
+   "bottom": {
+    "version": "P",
+    "row": "L1_adversative",
+    "seed": 400,
+    "author": 1
+   },
+   "image_sha256": "6702e2283c19a078210318ff4ec19d7a8bec9bee727d90242edd101cf2f63bd8"
+  },
+  {
+   "number": 84,
+   "kind": "test",
+   "top": {
+    "version": "SPC",
+    "row": "words20",
+    "seed": 100,
+    "author": 1
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "words20",
+    "seed": 100,
+    "author": 0
+   },
+   "image_sha256": "a02df13960d6c29a7e334defc63c20dcfe9bec047f4c4daac18b24ad7bb52814"
+  },
+  {
+   "number": 85,
+   "kind": "test",
+   "top": {
+    "version": "G0",
+    "row": "O1_iu",
+    "seed": 100,
+    "author": 1
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "O1_iu",
+    "seed": 100,
+    "author": 0
+   },
+   "image_sha256": "6396f5928bd21341c64fc8d7e95d3933a33722ce738ebb9b1e6d70b38591395e"
+  },
+  {
+   "number": 86,
+   "kind": "test",
+   "top": {
+    "version": "SPC",
+    "row": "O1_iu",
+    "seed": 500,
+    "author": 1
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "O1_iu",
+    "seed": 500,
+    "author": 0
+   },
+   "image_sha256": "3c16d7dcdb9b6e58b1c99f1ff18f024d1bcfc66282d287271e379e730352769b"
+  },
+  {
+   "number": 87,
+   "kind": "test",
+   "top": {
+    "version": "G0",
+    "row": "L2_intensifier",
+    "seed": 300,
+    "author": 1
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "L2_intensifier",
+    "seed": 300,
+    "author": 0
+   },
+   "image_sha256": "589c12d6f9c3cf99adf32ac073cbba25601fdfd489748a5cff1ecc6638e041e9"
+  },
+  {
+   "number": 88,
+   "kind": "test",
+   "top": {
+    "version": "SPC",
+    "row": "P1_first_person",
+    "seed": 400,
+    "author": 0
+   },
+   "bottom": {
+    "version": "SPC",
+    "row": "P1_first_person",
+    "seed": 400,
+    "author": 1
+   },
+   "image_sha256": "bdafd1509c8f8f6ba620a3baba62192daaf9f37b3eb35c224e935859953d3aa6"
+  },
+  {
+   "number": 89,
+   "kind": "test",
+   "top": {
+    "version": "G0",
+    "row": "L2_intensifier",
+    "seed": 500,
+    "author": 1
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "L2_intensifier",
+    "seed": 500,
+    "author": 0
+   },
+   "image_sha256": "ad85f26da95f268c2206d524af049319ab6f2d0c1b709af05563723b2db3ff1c"
+  },
+  {
+   "number": 90,
+   "kind": "test",
+   "top": {
+    "version": "G0",
+    "row": "L2_intensifier",
+    "seed": 100,
+    "author": 0
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "L2_intensifier",
+    "seed": 100,
+    "author": 1
+   },
+   "image_sha256": "1828e0423c3c3ae6f40c64e4ba7f0ea1b6aaedaa2299d126496709f5c2a55aa0"
+  },
+  {
+   "number": 91,
+   "kind": "test",
+   "top": {
+    "version": "P",
+    "row": "L1_adversative",
+    "seed": 300,
+    "author": 1
+   },
+   "bottom": {
+    "version": "P",
+    "row": "L1_adversative",
+    "seed": 300,
+    "author": 0
+   },
+   "image_sha256": "94cf6949e13688222f23995495d499279ccb1616220dc5341f198a9360bbf5ab"
+  },
+  {
+   "number": 92,
+   "kind": "test",
+   "top": {
+    "version": "P",
+    "row": "words20",
+    "seed": 200,
+    "author": 1
+   },
+   "bottom": {
+    "version": "P",
+    "row": "words20",
+    "seed": 200,
+    "author": 0
+   },
+   "image_sha256": "4ade8ee11dda50cb054828e8e6ff7adf7bf956cf5f7c7ad88154722671e67d09"
+  },
+  {
+   "number": 93,
+   "kind": "test",
+   "top": {
+    "version": "G0",
+    "row": "P1_first_person",
+    "seed": 200,
+    "author": 0
+   },
+   "bottom": {
+    "version": "G0",
+    "row": "P1_first_person",
+    "seed": 200,
+    "author": 1
+   },
+   "image_sha256": "d0e9481141f53ba46dc0ee26190f7d2ff2e3df837e22c116dbec069e4be4f5c4"
+  },
+  {
+   "number": 94,
+   "kind": "test",
+   "top": {
+    "version": "P",
+    "row": "P1_first_person",
+    "seed": 100,
+    "author": 1
+   },
+   "bottom": {
+    "version": "P",
+    "row": "P1_first_person",
+    "seed": 100,
+    "author": 0
+   },
+   "image_sha256": "477b6f9cd03b2b3a6e64f1600e9b4deb3f388ea01ed76299a0dfe0ea7b5f4d8f"
+  },
+  {
+   "number": 95,
+   "kind": "same_image",
+   "top": {
+    "version": "P",
+    "row": "L1_adversative",
+    "seed": 500,
+    "author": 0
+   },
+   "bottom": {
+    "version": "P",
+    "row": "L1_adversative",
+    "seed": 500,
+    "author": 0
+   },
+   "image_sha256": "a8db7d6944c3c604b9ccea9b132145eb6d85be4f1e6d8c0eeddc3024808d2674"
+  }
+ ]
+}
