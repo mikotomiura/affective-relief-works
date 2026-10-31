@@ -17,7 +17,7 @@
 <p align="center"><b>English</b> | <a href="README.ja.md">日本語</a></p>
 
 This repository accompanies the article *What Makers Chose, and When: Noting the Quantities a Rule Leaves Open*
-(Mikoto Miura and Yuusuke Harada; manuscript). It is Supplement S3 of the article.
+(Mikoto Miura and Yuusuke Harada; submitted to *Leonardo*, 31 October 2026; preprint, not peer reviewed, [10.5281/zenodo.23829420](https://doi.org/10.5281/zenodo.23829420)). It is Supplement S3 of the article.
 
 <p align="center">
   <img alt="Left, work 1: 104 gray tiles of a diagonal mesh, one per sentence of an English short story. Right, work 2:
@@ -133,17 +133,19 @@ was prepared from that repository by removing those four files from every commit
 e-mail; the dates and the order are unchanged, the messages are unchanged except the two noted above, and the commit
 that had added only `score.json` is kept empty. `commit-map.tsv` maps each original hash to the commit here. The commits after the last mapped one add the
 tools of this section, the stripped records, the relabelled figure, the three translations and this README, and, in
-version 0.2.0, `score.json`.
+version 0.2.0, `score.json`, and, in version 0.2.1, the record that the article was submitted and the link to its preprint.
 
 Versions: 0.1.0 ([10.5281/zenodo.23814560](https://doi.org/10.5281/zenodo.23814560)); 0.2.0, which adds `score.json`
-([10.5281/zenodo.23828355](https://doi.org/10.5281/zenodo.23828355)). [10.5281/zenodo.23814559](https://doi.org/10.5281/zenodo.23814559)
+([10.5281/zenodo.23828355](https://doi.org/10.5281/zenodo.23828355)); 0.2.1, which records that the article was submitted and
+links its preprint ([10.5281/zenodo.23830047](https://doi.org/10.5281/zenodo.23830047)). [10.5281/zenodo.23814559](https://doi.org/10.5281/zenodo.23814559)
 resolves to the latest version.
 
 ## Citation
 
 Please cite the article and this archive (also in `CITATION.cff`):
 
-> Miura, M. and Harada, Y. What Makers Chose, and When: Noting the Quantities a Rule Leaves Open. Manuscript.
+> Miura, M. and Harada, Y. What Makers Chose, and When: Noting the Quantities a Rule Leaves Open. Submitted to *Leonardo*.
+> Preprint, Zenodo, 2026. https://doi.org/10.5281/zenodo.23829420
 
 > Miura, M. and Harada, Y. (2026). Scripts, conditions and results of "What Makers Chose, and When". Zenodo.
 > https://doi.org/10.5281/zenodo.23814559

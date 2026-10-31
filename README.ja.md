@@ -16,7 +16,7 @@
 
 <p align="center"><a href="README.md">English</a> | <b>日本語</b></p>
 
-このリポジトリは論文 *What Makers Chose, and When: Noting the Quantities a Rule Leaves Open*（Mikoto Miura・Yuusuke Harada、原稿）の補足 S3 です。
+このリポジトリは論文 *What Makers Chose, and When: Noting the Quantities a Rule Leaves Open*（Mikoto Miura・Yuusuke Harada、2026 年 10 月 31 日に *Leonardo* に投稿、査読前のプレプリント [10.5281/zenodo.23829420](https://doi.org/10.5281/zenodo.23829420)）の補足 S3 です。
 
 <p align="center">
   <img alt="左は作品 1: 英語の短編の文ごとの灰色のタイル 104 枚。右は作品 2: 日本の作家 6 人の、語 20 個ずつの色つきのタイルの区画"
@@ -94,15 +94,16 @@ NRC の辞書を置けば、`uv run python tools/lexicon_values.py restore` が 
 
 ## 履歴と来歴
 
-結果は、計算を行った作業用リポジトリのハッシュでコミットを引きます。この履歴はそのリポジトリから、この 4 ファイルをすべてのコミットから除き、作者のメールアドレスを 1 つにそろえて作りました。日付と順序は変えておらず、メッセージも上に記した 2 本を除いて変えておらず、`score.json` だけを足していたコミットは空のまま残しています。`commit-map.tsv` が元のハッシュとここのコミットを対応させます。対応表の最後のコミットより後は、この節のツール、値を外した記録、札を直した図、翻訳 3 本、この README を足すコミットと、版 0.2.0 で `score.json` を足すコミットです。
+結果は、計算を行った作業用リポジトリのハッシュでコミットを引きます。この履歴はそのリポジトリから、この 4 ファイルをすべてのコミットから除き、作者のメールアドレスを 1 つにそろえて作りました。日付と順序は変えておらず、メッセージも上に記した 2 本を除いて変えておらず、`score.json` だけを足していたコミットは空のまま残しています。`commit-map.tsv` が元のハッシュとここのコミットを対応させます。対応表の最後のコミットより後は、この節のツール、値を外した記録、札を直した図、翻訳 3 本、この README を足すコミットと、版 0.2.0 で `score.json` を足すコミット、版 0.2.1 で論文の投稿とプレプリントを記すコミットです。
 
-版: 0.1.0（[10.5281/zenodo.23814560](https://doi.org/10.5281/zenodo.23814560)）、0.2.0（`score.json` を足した版。[10.5281/zenodo.23828355](https://doi.org/10.5281/zenodo.23828355)）。[10.5281/zenodo.23814559](https://doi.org/10.5281/zenodo.23814559) は最新の版を指します。
+版: 0.1.0（[10.5281/zenodo.23814560](https://doi.org/10.5281/zenodo.23814560)）、0.2.0（`score.json` を足した版。[10.5281/zenodo.23828355](https://doi.org/10.5281/zenodo.23828355)）、0.2.1（論文の投稿とプレプリントを記した版。[10.5281/zenodo.23830047](https://doi.org/10.5281/zenodo.23830047)）。[10.5281/zenodo.23814559](https://doi.org/10.5281/zenodo.23814559) は最新の版を指します。
 
 ## 引用
 
 論文とこのアーカイブを引いてください（`CITATION.cff` にもあります）。
 
-> Miura, M. and Harada, Y. What Makers Chose, and When: Noting the Quantities a Rule Leaves Open. Manuscript.
+> Miura, M. and Harada, Y. What Makers Chose, and When: Noting the Quantities a Rule Leaves Open. Submitted to *Leonardo*.
+> Preprint, Zenodo, 2026. https://doi.org/10.5281/zenodo.23829420
 
 > Miura, M. and Harada, Y. (2026). Scripts, conditions and results of "What Makers Chose, and When". Zenodo.
 > https://doi.org/10.5281/zenodo.23814559

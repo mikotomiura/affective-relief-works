@@ -18,6 +18,9 @@ authors:
 doi: 10.5281/zenodo.23814559
 identifiers:
   - type: doi
+    value: 10.5281/zenodo.23830047
+    description: Version 0.2.1.
+  - type: doi
     value: 10.5281/zenodo.23828355
     description: Version 0.2.0.
   - type: doi
@@ -27,7 +30,7 @@ repository-code: "https://github.com/mikotomiura/affective-relief-works"
 license:
   - MIT
   - CC-BY-4.0
-version: 0.2.0
+version: 0.2.1
 date-released: 2026-10-31
 keywords:
   - generative art
@@ -44,7 +47,12 @@ references:
         given-names: Mikoto
       - family-names: Harada
         given-names: Yuusuke
-    notes: Manuscript.
+    year: 2026
+    status: preprint
+    publisher:
+      name: Zenodo
+    doi: 10.5281/zenodo.23829420
+    notes: "Submitted to Leonardo, 31 October 2026. Preprint (not peer reviewed)."
   - type: article
     title: "Affective Tactility: Cross-Modal Translation from Natural Language to Procedural Height Maps"
     authors:
